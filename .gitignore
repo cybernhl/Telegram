@@ -4,3 +4,10 @@ build/
 obj/
 *.iml
 local.properties
+**/.cxx
+.cxx
+.DS_Store
+Thumbs.db
+/build
+/captures
+.externalNativeBuild
