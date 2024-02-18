@@ -1,50 +1,40 @@
 apply plugin: 'com.android.application'
 
-repositories {
-    mavenCentral()
-    google()
-}
-
-configurations {
-    compile.exclude module: 'support-v4'
-}
-
-configurations.all {
-    exclude group: 'com.google.firebase', module: 'firebase-core'
-    exclude group: 'androidx.recyclerview', module: 'recyclerview'
-}
-
-dependencies {
-    implementation project(':TMessagesProj')
-    implementation 'androidx.multidex:multidex:2.0.1'
-    implementation 'androidx.core:core:1.10.1'
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
-    implementation files('../TMessagesProj/libs/libgsaverification-client.aar')
-}
-
 android {
     compileSdkVersion 33
     buildToolsVersion '33.0.0'
-
-    defaultConfig.applicationId = APP_PACKAGE
-
-    sourceSets.main.jniLibs.srcDirs = ['../TMessagesProj/jni/']
-
-    lintOptions {
-        disable 'MissingTranslation'
-        disable 'ExtraTranslation'
-        disable 'BlockedPrivateApi'
-    }
+    ndkVersion "21.4.7075529"
 
     dexOptions {
         jumboMode = true
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+    lintOptions {
+        checkReleaseBuilds false
+        disable 'MissingTranslation'
+        disable 'ExtraTranslation'
+        disable 'BlockedPrivateApi'
+    }
 
-        coreLibraryDesugaringEnabled true
+    buildFeatures {
+        buildConfig = true
+    }
+
+    defaultConfig {
+        namespace "org.telegram.messenger.web"
+        applicationId = APP_PACKAGE
+        minSdkVersion 19
+        targetSdkVersion 33
+        versionName APP_VERSION_NAME
+        versionCode = Integer.parseInt(APP_VERSION_CODE)
+        multiDexEnabled true
+        vectorDrawables.generatedDensities = ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi']
+        externalNativeBuild {
+            cmake {
+                version '3.10.2'
+                arguments '-DANDROID_STL=c++_static', '-DANDROID_PLATFORM=android-16'
+            }
+        }
     }
 
     signingConfigs {
@@ -86,6 +76,8 @@ android {
         }
     }
 
+    sourceSets.main.jniLibs.srcDirs = ['../TMessagesProj/jni/']
+
     sourceSets.debug {
         manifest.srcFile '../TMessagesProj/config/release/AndroidManifest_standalone.xml'
     }
@@ -109,8 +101,6 @@ android {
         }
     }
 
-    defaultConfig.versionCode = Integer.parseInt(APP_VERSION_CODE)
-
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
             outputFileName = "app.apk"
@@ -125,32 +115,29 @@ android {
         }
     }
 
-    defaultConfig {
-        namespace "org.telegram.messenger.web"
-        minSdkVersion 19
-        targetSdkVersion 33
-        versionName APP_VERSION_NAME
-        ndkVersion "21.4.7075529"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
 
-        multiDexEnabled true
-
-        vectorDrawables.generatedDensities = ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi']
-
-        externalNativeBuild {
-            cmake {
-                version '3.10.2'
-                arguments '-DANDROID_STL=c++_static', '-DANDROID_PLATFORM=android-16'
-            }
-        }
+        coreLibraryDesugaringEnabled true
     }
+}
 
-    buildFeatures {
-        buildConfig = true
-    }
+configurations {
+    compile.exclude module: 'support-v4'
+}
 
-    lintOptions {
-        checkReleaseBuilds false
-    }
+configurations.all {
+    exclude group: 'com.google.firebase', module: 'firebase-core'
+    exclude group: 'androidx.recyclerview', module: 'recyclerview'
+}
+
+dependencies {
+    implementation project(':TMessagesProj')
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.core:core:1.10.1'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+    implementation files('../TMessagesProj/libs/libgsaverification-client.aar')
 }
 
 apply plugin: 'com.google.gms.google-services'
