@@ -136,6 +136,7 @@ android {
     }
 
     defaultConfig {
+        namespace "org.telegram.messenger"
         minSdkVersion 19
         targetSdkVersion 33
         versionName APP_VERSION_NAME

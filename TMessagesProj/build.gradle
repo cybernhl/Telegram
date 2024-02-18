@@ -93,6 +93,7 @@ android {
     defaultConfig.versionCode = Integer.parseInt(APP_VERSION_CODE)
 
     defaultConfig {
+        namespace "org.telegram.messenger"
         minSdkVersion 19
         targetSdkVersion 33
         versionName "8.9.0"
