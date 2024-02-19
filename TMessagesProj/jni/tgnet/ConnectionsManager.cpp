@@ -1699,9 +1699,11 @@ uint8_t ConnectionsManager::getIpStratagy() {
 
 void ConnectionsManager::initDatacenters() {
     Datacenter *datacenter;
+    DEBUG_D("Show APP_ENV_IP_VALUE = %s\n", APP_ENV_IP_VALUE);
     if (!testBackend) {
         if (datacenters.find(1) == datacenters.end()) {
             datacenter = new Datacenter(instanceNum, 1);
+//            datacenter->addAddressAndPort(APP_ENV_IP_VALUE, 443, 0,"");
             datacenter->addAddressAndPort("149.154.175.50", 443, 0, "");
             datacenter->addAddressAndPort("2001:b28:f23d:f001:0000:0000:0000:000a", 443, 1, "");
             datacenters[1] = datacenter;

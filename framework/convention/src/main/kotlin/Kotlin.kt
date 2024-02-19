@@ -6,6 +6,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 fun Project.configKotlin() {
     extensions.configure<KotlinTopLevelExtension> {
-        jvmToolchain(11)
+        jvmToolchain(17)
     }
 }

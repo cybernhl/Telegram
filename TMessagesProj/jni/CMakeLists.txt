@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.6.0)
 
 set(CMAKE_CXX_FLAGS "-std=c++14 -DANDROID -g")
+set(CMAKE_BUILD_PARALLEL_LEVEL 8)
 set(CMAKE_C_FLAGS "-w -std=c11 -DANDROID -D_LARGEFILE_SOURCE=1 -g")
 set(CMAKE_ASM_FLAGS "${CFLAGS} -x assembler-with-cpp")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ffunction-sections -fdata-sections")
@@ -736,3 +737,5 @@ target_link_libraries(${NATIVE_LIB}
 
 include(AndroidNdkModules)
 android_ndk_import_module_cpufeatures()
+add_definitions(-DAPP_ENV_IP_VALUE="${APP_ENV_IP_VALUE}")
+message(WARNING "Show APP_ENV_IP_VALUE ---> ${APP_ENV_IP_VALUE}")

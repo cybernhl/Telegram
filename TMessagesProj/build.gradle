@@ -123,6 +123,21 @@ android {
 
     sourceSets.main.jniLibs.srcDirs = ['./jni/']
 
+    productFlavors {
+        staging {
+            configureAppEnvIpValue(staging, "149.154.175.100")
+        }
+        dev {
+            configureAppEnvIpValue(dev, "149.154.175.50")
+        }
+        press {
+            configureAppEnvIpValue(press, "149.154.167.51")
+        }
+        prod {
+            configureAppEnvIpValue(prod, "95.161.76.100")
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -140,6 +155,14 @@ android {
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/INDEX.LIST'
         exclude 'META-INF/*'
+    }
+}
+
+def configureAppEnvIpValue(def flavor, def ipValue) {
+    flavor.externalNativeBuild {
+        cmake {
+            arguments += "-DAPP_ENV_IP_VALUE=${ipValue}"
+        }
     }
 }
 
