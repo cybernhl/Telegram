@@ -37,3 +37,69 @@ You will require Android Studio 3.4, Android NDK rev. 20 and Android SDK 8.1
 ### Localization
 
 We moved all translations to https://translations.telegram.org/en/android/. Please use it.
+
+## Modify to yourself
+#### 1.網路環境配置
+1. 找到ConnectionsManager.cpp 
+> TMessagesProj/jni/tgnet/ConnectionsManager.cpp
+
+```c
+void ConnectionsManager::initDatacenters() {
+// dev
+datacenter->addAddressAndPort("192.168.1.1", 443, 0, "");
+
+// stag/test
+datacenter->addAddressAndPort("192.168.2.1", 443, 0, "");
+
+// prod
+datacenter->addAddressAndPort("192.168.3.1", 443, 0, "");
+}
+```
+目前改成可以在build.gradle內配置 
+搭配cmake的arguments在編譯間段傳入 fd264efbe03169549945b827711b8a9d62193757
+
+#### 2.介面相關
+##### LaunchActivity
+> TMessagesProj/src/main/java/org/telegram/ui/LaunchActivity.java
+
+
+TG 採用了單 Activity + 自訂 Fragment 的實作方式，LaunchActivity 就是這個單 Activity 容器；
+
+LaunchActivity 的 contentView 是一個 FrameLayout，它會預設加入一個 DrawerLayoutContainer 用來管理自訂 Fragment；
+> TMessagesProj/src/main/java/org/telegram/ui/ActionBar/DrawerLayoutContainer.java
+
+##### IntroActivity (預設啟動頁)
+> TMessagesProj/src/main/java/org/telegram/ui/IntroActivity.java
+
+
+在 IntroActivity 中，中間的圖示是使用 OpenGL 的 EGL 在 c 層 IntroRender 繪製的；
+> TMessagesProj/jni/intro/IntroRenderer.c
+
+
+##### LoginActivity
+> TMessagesProj/src/main/java/org/telegram/ui/LoginActivity.java
+
+登陸介面，目前只實現了手機號登陸，
+#### ViewTree
+
+- SizeNotifierFrameLayout
+    - ScrollView
+       - keyboardLinearLayout(Blue)
+          - space (填滿頂部statusbar高度)
+          - slideViewsContainer(Green)
+             - VIEW_SWITCH_LOGIN_TYPE(Red)
+             - VIEW_PHONE_INPUT
+             - ....
+          - keyboardView
+    - floatingButtonContainer
+    - backButtonView
+    - radialProgressView
+
+ 
+最外層是個SizeNotifierFrameLayout，主要作用是監聽軟鍵盤的高度，從而對內部的view 做些位置上的調整；在其內部目前有4個view，backButtonView 左上角的返回鍵，radialProgressView 暫不清楚是哪裡的 進度條，floatingButtonContainer 是原本用於下一步的圓形floatButton的容器，會根據軟鍵盤的高度自適應底部間距，現在ui 調整把原來的floatButton 改成了“繼續”/“註冊”/“創建帳號” 這些底部按鈕；最後一個view是ScrollVIew；
+
+ScrollView 預設佔滿整個螢幕，內部只有一個 keyboardLinearLayout，在 TG 中它在幾個 code 頁會把底部間距增加 40dp，原因不太清楚，對於我們 ui 來說只起到 ScrollView 本身的滑動作用；
+
+keyboardLinearLayout 內部有三個view(space、slideViewsContainer、keyboardView)，space 用來填滿頂部狀態列的高度，起適配作用，keyboardView 用來顯示app內部自訂的軟鍵盤，中間的slideViewsContainer 則是顯示真正login ui 的 容器；
+
+login ui 中所有的頁面都SlideView，父類為LinearLayout，擴展了一些onShow/onHide/onBackPressed, 所有SlideView 維護在一個views 數組中，並且TG 在LoginAcitivty 中提供了一個setPage 函數來實現SlideView 的切換，效果看 上去和Activity 的切換一樣。
