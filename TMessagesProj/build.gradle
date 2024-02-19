@@ -1,43 +1,35 @@
 import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
+plugins {
+    id 'idv.neo.plugin.library'
+}
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 def isWindows = String.valueOf(DefaultNativePlatform.currentOperatingSystem.toFamilyName() == OperatingSystemFamily.WINDOWS)
 
 android {
-    compileSdkVersion 33
-    buildToolsVersion '33.0.0'
-    ndkVersion "21.4.7075529"
-
-    dexOptions {
-        jumboMode = true
-    }
+    compileSdk = 34
 
     lintOptions {
+        abortOnError false
         disable 'MissingTranslation'
         disable 'ExtraTranslation'
         disable 'BlockedPrivateApi'
     }
 
     buildFeatures {
+        viewBinding true
         buildConfig = true
     }
 
     defaultConfig {
         namespace "org.telegram.messenger"
-        minSdkVersion 19
-        targetSdkVersion 33
         versionName "8.9.0"
         versionCode = Integer.parseInt(APP_VERSION_CODE)
         vectorDrawables.generatedDensities = ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi']
+    }
 
-        multiDexEnabled true
-
-        externalNativeBuild {
-            cmake {
-                version '3.10.2'
-                arguments '-DANDROID_STL=c++_static', '-DANDROID_PLATFORM=android-16'
-            }
+    externalNativeBuild {
+        cmake {
+            path 'jni/CMakeLists.txt'
         }
     }
 
@@ -130,12 +122,6 @@ android {
     }
 
     sourceSets.main.jniLibs.srcDirs = ['./jni/']
-
-    externalNativeBuild {
-        cmake {
-            path 'jni/CMakeLists.txt'
-        }
-    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

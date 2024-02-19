@@ -1,18 +1,12 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
+    id 'idv.neo.plugin.application'
 }
 
 android {
-    compileSdkVersion 33
-    buildToolsVersion '33.0.0'
-    ndkVersion "21.4.7075529"
-
-    dexOptions {
-        jumboMode = true
-    }
+    compileSdk = 34
 
     lintOptions {
+        abortOnError false
         checkReleaseBuilds false
         disable 'MissingTranslation'
         disable 'ExtraTranslation'
@@ -21,23 +15,15 @@ android {
 
     buildFeatures {
         buildConfig = true
+        viewBinding true
     }
 
     defaultConfig {
         namespace "org.telegram.messenger.regular"
         applicationId = APP_PACKAGE
-        minSdkVersion 19
-        targetSdkVersion 33
         versionName APP_VERSION_NAME
         versionCode = Integer.parseInt(APP_VERSION_CODE)
-        multiDexEnabled true
         vectorDrawables.generatedDensities = ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi']
-        externalNativeBuild {
-            cmake {
-                version '3.10.2'
-                arguments '-DANDROID_STL=c++_static', '-DANDROID_PLATFORM=android-16'
-            }
-        }
     }
 
     signingConfigs {
@@ -106,10 +92,10 @@ android {
         manifest.srcFile '../TMessagesProj/config/release/AndroidManifest.xml'
     }
 
-    flavorDimensions "minApi"
-
     productFlavors {
         bundleAfat {
+            getIsDefault().set(true)
+            matchingFallbacks = ['debug', 'standalone', 'release']
             ndk {
                 abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
             }
@@ -118,6 +104,7 @@ android {
             }
         }
         bundleAfat_SDK23 {
+            matchingFallbacks = ['debug', 'standalone', 'release']
             ndk {
                 abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
             }
@@ -133,6 +120,7 @@ android {
             }
         }
         afat {
+            matchingFallbacks = ['debug', 'standalone', 'release']
             ndk {
                 abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
             }
