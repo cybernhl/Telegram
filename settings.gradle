@@ -1,6 +1,12 @@
+pluginManagement {
+    includeBuild("framework")
+}
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
+}
 rootProject.name = "Telegram"
 include ':TMessagesProj'
 include ':TMessagesProj_App'
-include ':TMessagesProj_AppHuawei'
-include ':TMessagesProj_AppHockeyApp'
-include ':TMessagesProj_AppStandalone'
+//include ':TMessagesProj_AppHuawei'
+//include ':TMessagesProj_AppHockeyApp'
+//include ':TMessagesProj_AppStandalone'
