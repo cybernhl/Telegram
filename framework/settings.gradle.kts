@@ -13,3 +13,5 @@ dependencyResolutionManagement {
 }
 
 include(":convention")
+include(":modify_collect_i18n")
+project(":modify_collect_i18n").projectDir = file("./modify/collect _i18n")
