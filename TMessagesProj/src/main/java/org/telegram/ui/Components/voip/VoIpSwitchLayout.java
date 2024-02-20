@@ -78,26 +78,26 @@ public class VoIpSwitchLayout extends FrameLayout {
         switch (type) {
             case MICRO:
                 if (isSelectedState) {
-                    newText = LocaleController.getString("VoipUnmute", R.string.VoipUnmute);
+                    newText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPUNMUTE, R.string.VoipUnmute);
                 } else {
-                    newText = LocaleController.getString("VoipMute", R.string.VoipMute);
+                    newText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPMUTE, R.string.VoipMute);
                 }
                 break;
             case CAMERA:
-                newText = LocaleController.getString("VoipFlip", R.string.VoipFlip);
+                newText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPFLIP, R.string.VoipFlip);
                 break;
             case VIDEO:
                 if (isSelectedState) {
-                    newText = LocaleController.getString("VoipStartVideo", R.string.VoipStartVideo);
+                    newText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPSTARTVIDEO, R.string.VoipStartVideo);
                 } else {
-                    newText = LocaleController.getString("VoipStopVideo", R.string.VoipStopVideo);
+                    newText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPSTOPVIDEO, R.string.VoipStopVideo);
                 }
                 break;
             case BLUETOOTH:
-                newText = LocaleController.getString("VoipAudioRoutingBluetooth", R.string.VoipAudioRoutingBluetooth);
+                newText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPAUDIOROUTINGBLUETOOTH, R.string.VoipAudioRoutingBluetooth);
                 break;
             case SPEAKER:
-                newText = LocaleController.getString("VoipSpeaker", R.string.VoipSpeaker);
+                newText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPSPEAKER, R.string.VoipSpeaker);
                 break;
             default:
                 newText = "";

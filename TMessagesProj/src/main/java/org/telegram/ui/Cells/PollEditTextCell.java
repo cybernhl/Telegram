@@ -156,7 +156,7 @@ public class PollEditTextCell extends FrameLayout {
             deleteImageView.setImageResource(R.drawable.poll_remove);
             deleteImageView.setOnClickListener(onDelete);
             deleteImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_windowBackgroundWhiteGrayIcon), PorterDuff.Mode.MULTIPLY));
-            deleteImageView.setContentDescription(LocaleController.getString("Delete", R.string.Delete));
+            deleteImageView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete));
             addView(deleteImageView, LayoutHelper.createFrame(48, 50, (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.TOP, LocaleController.isRTL ? 3 : 0, 0, LocaleController.isRTL ? 0 : 3, 0));
 
             textView2 = new SimpleTextView(context);
@@ -166,7 +166,7 @@ public class PollEditTextCell extends FrameLayout {
 
             checkBox = new CheckBox2(context, 21);
             checkBox.setColor(-1, Theme.key_windowBackgroundWhiteGrayIcon, Theme.key_checkboxCheck);
-            checkBox.setContentDescription(LocaleController.getString("AccDescrQuizCorrectAnswer", R.string.AccDescrQuizCorrectAnswer));
+            checkBox.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRQUIZCORRECTANSWER, R.string.AccDescrQuizCorrectAnswer));
             checkBox.setDrawUnchecked(true);
             checkBox.setChecked(true, false);
             checkBox.setAlpha(0.0f);

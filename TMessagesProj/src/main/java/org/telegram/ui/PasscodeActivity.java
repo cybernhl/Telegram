@@ -256,7 +256,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
 
         switch (type) {
             case TYPE_MANAGE_CODE_SETTINGS: {
-                actionBar.setTitle(LocaleController.getString("Passcode", R.string.Passcode));
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSCODE, R.string.Passcode));
                 frameLayout.setTag(Theme.key_windowBackgroundGray);
                 frameLayout.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundGray));
                 listView = new RecyclerListView(context);
@@ -277,10 +277,10 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                     }
                     if (position == disablePasscodeRow) {
                         AlertDialog alertDialog = new AlertDialog.Builder(getParentActivity())
-                                .setTitle(LocaleController.getString(R.string.DisablePasscode))
-                                .setMessage(LocaleController.getString(R.string.DisablePasscodeConfirmMessage))
-                                .setNegativeButton(LocaleController.getString(R.string.Cancel), null)
-                                .setPositiveButton(LocaleController.getString(R.string.DisablePasscodeTurnOff), (dialog, which) -> {
+                                .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISABLEPASSCODE, R.string.DisablePasscode))
+                                .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISABLEPASSCODECONFIRMMESSAGE, R.string.DisablePasscodeConfirmMessage))
+                                .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null)
+                                .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISABLEPASSCODETURNOFF, R.string.DisablePasscodeTurnOff), (dialog, which) -> {
                                     SharedConfig.passcodeHash = "";
                                     SharedConfig.appLocked = false;
                                     SharedConfig.saveConfig();
@@ -306,7 +306,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                             return;
                         }
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setTitle(LocaleController.getString("AutoLock", R.string.AutoLock));
+                        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTOLOCK, R.string.AutoLock));
                         final NumberPicker numberPicker = new NumberPicker(getParentActivity());
                         numberPicker.setMinValue(0);
                         numberPicker.setMaxValue(4);
@@ -323,7 +323,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                         }
                         numberPicker.setFormatter(value -> {
                             if (value == 0) {
-                                return LocaleController.getString("AutoLockDisabled", R.string.AutoLockDisabled);
+                                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTOLOCKDISABLED, R.string.AutoLockDisabled);
                             } else if (value == 1) {
                                 return LocaleController.formatString("AutoLockInTime", R.string.AutoLockInTime, LocaleController.formatPluralString("Minutes", 1));
                             } else if (value == 2) {
@@ -336,7 +336,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                             return "";
                         });
                         builder.setView(numberPicker);
-                        builder.setNegativeButton(LocaleController.getString("Done", R.string.Done), (dialog, which) -> {
+                        builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done), (dialog, which) -> {
                             which = numberPicker.getValue();
                             if (which == 0) {
                                 SharedConfig.autoLockIn = 0;
@@ -363,7 +363,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                         ((TextCheckCell) view).setChecked(SharedConfig.allowScreenCapture);
                         NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.didSetPasscode, false);
                         if (!SharedConfig.allowScreenCapture) {
-                            AlertsCreator.showSimpleAlert(PasscodeActivity.this, LocaleController.getString("ScreenCaptureAlert", R.string.ScreenCaptureAlert));
+                            AlertsCreator.showSimpleAlert(PasscodeActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SCREENCAPTUREALERT, R.string.ScreenCaptureAlert));
                         }
                     }
                 });
@@ -383,7 +383,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                     ActionBarMenuSubItem switchItem;
                     if (type == TYPE_SETUP_CODE) {
                         otherItem = menu.addItem(0, R.drawable.ic_ab_other);
-                        switchItem = otherItem.addSubItem(ID_SWITCH_TYPE, R.drawable.msg_permissions, LocaleController.getString(R.string.PasscodeSwitchToPassword));
+                        switchItem = otherItem.addSubItem(ID_SWITCH_TYPE, R.drawable.msg_permissions, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSCODESWITCHTOPASSWORD, R.string.PasscodeSwitchToPassword));
                     } else switchItem = null;
 
                     actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
@@ -432,12 +432,12 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
                 if (type == TYPE_SETUP_CODE) {
                     if (SharedConfig.passcodeHash.length() != 0) {
-                        titleTextView.setText(LocaleController.getString("EnterNewPasscode", R.string.EnterNewPasscode));
+                        titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENTERNEWPASSCODE, R.string.EnterNewPasscode));
                     } else {
-                        titleTextView.setText(LocaleController.getString("CreatePasscode", R.string.CreatePasscode));
+                        titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATEPASSCODE, R.string.CreatePasscode));
                     }
                 } else {
-                    titleTextView.setText(LocaleController.getString(R.string.EnterYourPasscode));
+                    titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENTERYOURPASSCODE, R.string.EnterYourPasscode));
                 }
                 titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
                 titleTextView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -464,20 +464,20 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
 
                 forgotPasswordButton.setOnClickListener(v -> AlertsCreator.createForgotPasscodeDialog(context).show());
                 forgotPasswordButton.setVisibility(type == TYPE_ENTER_CODE_TO_MANAGE_SETTINGS ? View.VISIBLE : View.GONE);
-                forgotPasswordButton.setText(LocaleController.getString(R.string.ForgotPasscode));
+                forgotPasswordButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORGOTPASSCODE, R.string.ForgotPasscode));
                 frameLayout.addView(forgotPasswordButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 56 : 60, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0, 0, 16));
                 VerticalPositionAutoAnimator.attach(forgotPasswordButton);
 
                 passcodesDoNotMatchTextView = new TextView(context);
                 passcodesDoNotMatchTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 passcodesDoNotMatchTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText6));
-                passcodesDoNotMatchTextView.setText(LocaleController.getString(R.string.PasscodesDoNotMatchTryAgain));
+                passcodesDoNotMatchTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSCODESDONOTMATCHTRYAGAIN, R.string.PasscodesDoNotMatchTryAgain));
                 passcodesDoNotMatchTextView.setPadding(0, AndroidUtilities.dp(12), 0, AndroidUtilities.dp(12));
                 AndroidUtilities.updateViewVisibilityAnimated(passcodesDoNotMatchTextView, false, 1f, false);
                 frameLayout.addView(passcodesDoNotMatchTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0, 0, 16));
 
                 outlinePasswordView = new OutlineTextContainerView(context);
-                outlinePasswordView.setText(LocaleController.getString(R.string.EnterPassword));
+                outlinePasswordView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENTERPASSWORD, R.string.EnterPassword));
 
                 passwordEditText = new EditTextBoldCursor(context);
                 passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
@@ -673,7 +673,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 floatingButtonIcon.setProgress(0f);
                 floatingButtonIcon.setColor(Theme.getColor(Theme.key_chats_actionIcon));
                 floatingButtonIcon.setDrawBackground(false);
-                floatingButtonContainer.setContentDescription(LocaleController.getString(R.string.Next));
+                floatingButtonContainer.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEXT, R.string.Next));
                 floatingButtonContainer.addView(floatingButtonIcon, LayoutHelper.createFrame(Build.VERSION.SDK_INT >= 21 ? 56 : 60, Build.VERSION.SDK_INT >= 21 ? 56 : 60));
 
                 Drawable drawable = Theme.createSimpleSelectorCircleDrawable(AndroidUtilities.dp(56), Theme.getColor(Theme.key_chats_actionBackground), Theme.getColor(Theme.key_chats_actionPressedBackground));
@@ -916,14 +916,14 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
     private void updateFields() {
         String text;
         if (type == TYPE_ENTER_CODE_TO_MANAGE_SETTINGS) {
-            text = LocaleController.getString(R.string.EnterYourPasscodeInfo);
+            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENTERYOURPASSCODEINFO, R.string.EnterYourPasscodeInfo);
         } else if (passcodeSetStep == 0) {
             text = LocaleController.getString(currentPasswordType == SharedConfig.PASSCODE_TYPE_PIN ? R.string.CreatePasscodeInfoPIN : R.string.CreatePasscodeInfoPassword);
         } else text = descriptionTextSwitcher.getCurrentView().getText().toString();
 
         boolean animate = !(descriptionTextSwitcher.getCurrentView().getText().equals(text) || TextUtils.isEmpty(descriptionTextSwitcher.getCurrentView().getText()));
         if (type == TYPE_ENTER_CODE_TO_MANAGE_SETTINGS) {
-            descriptionTextSwitcher.setText(LocaleController.getString(R.string.EnterYourPasscodeInfo), animate);
+            descriptionTextSwitcher.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENTERYOURPASSCODEINFO, R.string.EnterYourPasscodeInfo), animate);
         } else if (passcodeSetStep == 0) {
             descriptionTextSwitcher.setText(LocaleController.getString(currentPasswordType == SharedConfig.PASSCODE_TYPE_PIN ? R.string.CreatePasscodeInfoPIN : R.string.CreatePasscodeInfoPassword), animate);
         }
@@ -966,8 +966,8 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
             otherItem.setVisibility(View.GONE);
         }
 
-        titleTextView.setText(LocaleController.getString("ConfirmCreatePasscode", R.string.ConfirmCreatePasscode));
-        descriptionTextSwitcher.setText(AndroidUtilities.replaceTags(LocaleController.getString("PasscodeReinstallNotice", R.string.PasscodeReinstallNotice)));
+        titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONFIRMCREATEPASSCODE, R.string.ConfirmCreatePasscode));
+        descriptionTextSwitcher.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSCODEREINSTALLNOTICE, R.string.PasscodeReinstallNotice)));
         firstPassword = isPinCode() ? codeFieldContainer.getCode() : passwordEditText.getText().toString();
         passwordEditText.setText("");
         passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
@@ -1172,16 +1172,16 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 case VIEW_TYPE_CHECK: {
                     TextCheckCell textCell = (TextCheckCell) holder.itemView;
                     if (position == fingerprintRow) {
-                        textCell.setTextAndCheck(LocaleController.getString("UnlockFingerprint", R.string.UnlockFingerprint), SharedConfig.useFingerprint, true);
+                        textCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNLOCKFINGERPRINT, R.string.UnlockFingerprint), SharedConfig.useFingerprint, true);
                     } else if (position == captureRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.ScreenCaptureShowContent), SharedConfig.allowScreenCapture, false);
+                        textCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SCREENCAPTURESHOWCONTENT, R.string.ScreenCaptureShowContent), SharedConfig.allowScreenCapture, false);
                     }
                     break;
                 }
                 case VIEW_TYPE_SETTING: {
                     TextSettingsCell textCell = (TextSettingsCell) holder.itemView;
                     if (position == changePasscodeRow) {
-                        textCell.setText(LocaleController.getString("ChangePasscode", R.string.ChangePasscode), true);
+                        textCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANGEPASSCODE, R.string.ChangePasscode), true);
                         if (SharedConfig.passcodeHash.length() == 0) {
                             textCell.setTag(Theme.key_windowBackgroundWhiteGrayText7);
                             textCell.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText7));
@@ -1200,11 +1200,11 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                         } else {
                             val = LocaleController.formatString("AutoLockInTime", R.string.AutoLockInTime, LocaleController.formatPluralString("Days", (int) Math.ceil(SharedConfig.autoLockIn / 60.0f / 60 / 24)));
                         }
-                        textCell.setTextAndValue(LocaleController.getString("AutoLock", R.string.AutoLock), val, true);
+                        textCell.setTextAndValue(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTOLOCK, R.string.AutoLock), val, true);
                         textCell.setTag(Theme.key_windowBackgroundWhiteBlackText);
                         textCell.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
                     } else if (position == disablePasscodeRow) {
-                        textCell.setText(LocaleController.getString(R.string.DisablePasscode), false);
+                        textCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISABLEPASSCODE, R.string.DisablePasscode), false);
                         textCell.setTag(Theme.key_text_RedBold);
                         textCell.setTextColor(Theme.getColor(Theme.key_text_RedBold));
                     }
@@ -1214,7 +1214,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                     HeaderCell cell = (HeaderCell) holder.itemView;
                     cell.setHeight(46);
                     if (position == captureHeaderRow) {
-                        cell.setText(LocaleController.getString(R.string.ScreenCaptureHeader));
+                        cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SCREENCAPTUREHEADER, R.string.ScreenCaptureHeader));
                     }
                     break;
                 }
@@ -1227,15 +1227,15 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 case VIEW_TYPE_INFO: {
                     TextInfoPrivacyCell cell = (TextInfoPrivacyCell) holder.itemView;
                     if (position == hintRow) {
-                        cell.setText(LocaleController.getString(R.string.PasscodeScreenHint));
+                        cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSCODESCREENHINT, R.string.PasscodeScreenHint));
                         cell.setBackground(null);
                         cell.getTextView().setGravity(Gravity.CENTER_HORIZONTAL);
                     } else if (position == autoLockDetailRow) {
-                        cell.setText(LocaleController.getString(R.string.AutoLockInfo));
+                        cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTOLOCKINFO, R.string.AutoLockInfo));
                         cell.setBackground(Theme.getThemedDrawableByKey(mContext, R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
                         cell.getTextView().setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
                     } else if (position == captureDetailRow) {
-                        cell.setText(LocaleController.getString(R.string.ScreenCaptureInfo));
+                        cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SCREENCAPTUREINFO, R.string.ScreenCaptureInfo));
                         cell.setBackground(Theme.getThemedDrawableByKey(mContext, R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
                         cell.getTextView().setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
                     }

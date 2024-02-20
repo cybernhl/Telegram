@@ -391,7 +391,7 @@ public class ReactionsContainerLayout extends FrameLayout implements Notificatio
                         }
                         customEmojiReactionsIconView.setBackground(Theme.createSimpleSelectorCircleDrawable(dp(28), Color.TRANSPARENT, ColorUtils.setAlphaComponent(Theme.getColor(Theme.key_listSelector), 40)));
                         customEmojiReactionsIconView.setPadding(dp(2), dp(2), dp(2), dp(2));
-                        customEmojiReactionsIconView.setContentDescription(LocaleController.getString(R.string.AccDescrExpandPanel));
+                        customEmojiReactionsIconView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCREXPANDPANEL, R.string.AccDescrExpandPanel));
                         customReactionsContainer.addView(customEmojiReactionsIconView, LayoutHelper.createFrame(30, 30, Gravity.CENTER));
                         customEmojiReactionsIconView.setOnClickListener(v -> {
                             showCustomEmojiReactionDialog();
@@ -1453,9 +1453,9 @@ public class ReactionsContainerLayout extends FrameLayout implements Notificatio
 
     public void clearRecentReactions() {
         AlertDialog alertDialog = new AlertDialog.Builder(getContext())
-                .setTitle(LocaleController.getString(R.string.ClearRecentReactionsAlertTitle))
-                .setMessage(LocaleController.getString(R.string.ClearRecentReactionsAlertMessage))
-                .setPositiveButton(LocaleController.getString(R.string.ClearButton), (dialog, which) -> {
+                .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARRECENTREACTIONSALERTTITLE, R.string.ClearRecentReactionsAlertTitle))
+                .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARRECENTREACTIONSALERTMESSAGE, R.string.ClearRecentReactionsAlertMessage))
+                .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARBUTTON, R.string.ClearButton), (dialog, which) -> {
                     MediaDataController.getInstance(currentAccount).clearRecentReactions();
                     List<ReactionsLayoutInBubble.VisibleReaction> visibleReactions = new ArrayList<>();
                     fillRecentReactionsList(visibleReactions);
@@ -1463,7 +1463,7 @@ public class ReactionsContainerLayout extends FrameLayout implements Notificatio
                     lastVisibleViews.clear();
                     reactionsWindow.setRecentReactions(visibleReactions);
                 })
-                .setNegativeButton(LocaleController.getString(R.string.Cancel), null)
+                .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null)
                 .create();
         alertDialog.show();
         TextView button = (TextView) alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
@@ -1672,7 +1672,7 @@ public class ReactionsContainerLayout extends FrameLayout implements Notificatio
                     info.setText(currentReaction.emojicon);
                     info.setEnabled(true);
                 } else {
-                    info.setText(LocaleController.getString(R.string.AccDescrCustomEmoji));
+                    info.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRCUSTOMEMOJI, R.string.AccDescrCustomEmoji));
                     info.setEnabled(true);
                 }
             }

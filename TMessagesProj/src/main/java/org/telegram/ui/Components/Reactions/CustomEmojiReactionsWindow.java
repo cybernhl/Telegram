@@ -204,8 +204,8 @@ public class CustomEmojiReactionsWindow {
                     windowView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
                     BulletinFactory.of(windowView, null).createEmojiBulletin(
                             document,
-                            AndroidUtilities.replaceTags(LocaleController.getString("UnlockPremiumEmojiReaction", R.string.UnlockPremiumEmojiReaction)),
-                            LocaleController.getString("PremiumMore", R.string.PremiumMore),
+                            AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNLOCKPREMIUMEMOJIREACTION, R.string.UnlockPremiumEmojiReaction)),
+                            LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMMORE, R.string.PremiumMore),
                             () -> showUnlockPremiumAlert()
                     ).show();
                     return;

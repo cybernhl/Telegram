@@ -178,9 +178,9 @@ public class SearchAdapter extends RecyclerListView.SelectionAdapter {
                         names[1] = null;
                     }
                     if (UserObject.isReplyUser(user)) {
-                        names[2] = LocaleController.getString("RepliesTitle", R.string.RepliesTitle).toLowerCase();
+                        names[2] = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLIESTITLE, R.string.RepliesTitle).toLowerCase();
                     } else if (user.self) {
-                        names[2] = LocaleController.getString("SavedMessages", R.string.SavedMessages).toLowerCase();
+                        names[2] = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages).toLowerCase();
                     }
 
                     int found = 0;
@@ -418,7 +418,7 @@ public class SearchAdapter extends RecyclerListView.SelectionAdapter {
                     } else {
                         ProfileSearchCell profileSearchCell = (ProfileSearchCell) holder.itemView;
                         if (self) {
-                            name = LocaleController.getString("SavedMessages", R.string.SavedMessages);
+                            name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages);
                         }
                         profileSearchCell.setData(object, null, name, username, false, self);
                         profileSearchCell.useSeparator = (position != getItemCount() - 1 && position != searchResult.size() - 1);
@@ -436,11 +436,11 @@ public class SearchAdapter extends RecyclerListView.SelectionAdapter {
             case 1: {
                 GraySectionCell cell = (GraySectionCell) holder.itemView;
                 if (position ==  unregistredContactsHeaderRow) {
-                    cell.setText(LocaleController.getString("InviteToTelegramShort", R.string.InviteToTelegramShort));
+                    cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITETOTELEGRAMSHORT, R.string.InviteToTelegramShort));
                 } else if (getItem(position) == null) {
-                    cell.setText(LocaleController.getString("GlobalSearch", R.string.GlobalSearch));
+                    cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALSEARCH, R.string.GlobalSearch));
                 } else {
-                    cell.setText(LocaleController.getString("PhoneNumberSearch", R.string.PhoneNumberSearch));
+                    cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHONENUMBERSEARCH, R.string.PhoneNumberSearch));
                 }
                 break;
             }

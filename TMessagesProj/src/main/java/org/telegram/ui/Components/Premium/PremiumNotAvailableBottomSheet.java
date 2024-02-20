@@ -49,7 +49,7 @@ public class PremiumNotAvailableBottomSheet extends BottomSheet {
         buttonTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         buttonTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         buttonTextView.setBackground(Theme.AdaptiveRipple.filledRectByKey(Theme.key_featuredStickers_addButton, 8));
-        buttonTextView.setText(LocaleController.getString(R.string.InstallOfficialApp));
+        buttonTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INSTALLOFFICIALAPP, R.string.InstallOfficialApp));
         buttonTextView.setOnClickListener(v -> {
             try {
                 v.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=org.telegram.messenger")));
@@ -63,8 +63,8 @@ public class PremiumNotAvailableBottomSheet extends BottomSheet {
         buttonContainer.setBackgroundColor(getThemedColor(Theme.key_dialogBackground));
         linearLayout.addView(buttonContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 68, Gravity.BOTTOM));
 
-        title.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.SubscribeToPremiumOfficialAppNeeded)));
-        description.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.SubscribeToPremiumOfficialAppNeededDescription)));
+        title.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SUBSCRIBETOPREMIUMOFFICIALAPPNEEDED, R.string.SubscribeToPremiumOfficialAppNeeded)));
+        description.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SUBSCRIBETOPREMIUMOFFICIALAPPNEEDEDDESCRIPTION, R.string.SubscribeToPremiumOfficialAppNeededDescription)));
         ScrollView scrollView = new ScrollView(context);
         scrollView.addView(linearLayout);
         setCustomView(scrollView);

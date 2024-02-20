@@ -414,20 +414,20 @@ public class SharedDocumentCell extends FrameLayout implements DownloadControlle
             if (TextUtils.isEmpty(fileName) && document.mime_type != null) {
                 if (document.mime_type.startsWith("video")) {
                     if (MessageObject.isGifDocument(document)) {
-                        fileName = LocaleController.getString("AttachGif", R.string.AttachGif);
+                        fileName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHGIF, R.string.AttachGif);
                     } else {
-                        fileName = LocaleController.getString("AttachVideo", R.string.AttachVideo);
+                        fileName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHVIDEO, R.string.AttachVideo);
                     }
                 } else if (document.mime_type.startsWith("image")) {
                     if (MessageObject.isGifDocument(document)) {
-                        fileName = LocaleController.getString("AttachGif", R.string.AttachGif);
+                        fileName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHGIF, R.string.AttachGif);
                     } else {
-                        fileName = LocaleController.getString("AttachPhoto", R.string.AttachPhoto);
+                        fileName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHPHOTO, R.string.AttachPhoto);
                     }
                 } else if (document.mime_type.startsWith("audio")) {
-                    fileName = LocaleController.getString("AttachAudio", R.string.AttachAudio);
+                    fileName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHAUDIO, R.string.AttachAudio);
                 } else {
-                    fileName = LocaleController.getString("AttachDocument", R.string.AttachDocument);
+                    fileName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHDOCUMENT, R.string.AttachDocument);
                 }
             }
             if (name == null) {

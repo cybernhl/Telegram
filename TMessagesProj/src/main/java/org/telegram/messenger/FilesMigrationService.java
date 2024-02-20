@@ -249,14 +249,14 @@ public class FilesMigrationService extends Service {
             title.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
             title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             title.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-            title.setText(LocaleController.getString("MigrateOldFolderTitle", R.string.MigrateOldFolderTitle));
+            title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MIGRATEOLDFOLDERTITLE, R.string.MigrateOldFolderTitle));
             linearLayout.addView(title, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 21, 30, 21, 0));
 
             TextView description = new TextView(context);
             description.setGravity(Gravity.START);
             description.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             description.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
-            description.setText(AndroidUtilities.replaceTags(LocaleController.getString("MigrateOldFolderDescription", R.string.MigrateOldFolderDescription)));
+            description.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MIGRATEOLDFOLDERDESCRIPTION, R.string.MigrateOldFolderDescription)));
             linearLayout.addView(description, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 21, 15, 21, 16));
 
 
@@ -265,7 +265,7 @@ public class FilesMigrationService extends Service {
             buttonTextView.setGravity(Gravity.CENTER);
             buttonTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             buttonTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-            buttonTextView.setText(LocaleController.getString("MigrateOldFolderButton", R.string.MigrateOldFolderButton));
+            buttonTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MIGRATEOLDFOLDERBUTTON, R.string.MigrateOldFolderButton));
 
             buttonTextView.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));
             buttonTextView.setBackground(Theme.AdaptiveRipple.filledRectByKey(Theme.key_featuredStickers_addButton, 6));

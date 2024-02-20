@@ -128,7 +128,7 @@ public class StorageUsageView extends FrameLayout {
         calculatingTextView = new TextView(context);
         calculatingTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
 
-        String calculatingString = LocaleController.getString("CalculatingSize",R.string.CalculatingSize);
+        String calculatingString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALCULATINGSIZE, R.string.CalculatingSize);
         int indexOfDots = calculatingString.indexOf("...");
         if (indexOfDots >= 0) {
             SpannableString spannableString = new SpannableString(calculatingString);
@@ -217,7 +217,7 @@ public class StorageUsageView extends FrameLayout {
                 textSettingsCell.setVisibility(VISIBLE);
                 telegramCacheTextView.setVisibility(View.VISIBLE);
                 telegramDatabaseTextView.setVisibility(GONE);
-                textSettingsCell.setTextAndValue(LocaleController.getString("ClearTelegramCache", R.string.ClearTelegramCache), AndroidUtilities.formatFileSize(totalSize), true);
+                textSettingsCell.setTextAndValue(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARTELEGRAMCACHE, R.string.ClearTelegramCache), AndroidUtilities.formatFileSize(totalSize), true);
                 telegramCacheTextView.setText(LocaleController.formatString("TelegramCacheSize", R.string.TelegramCacheSize, AndroidUtilities.formatFileSize(totalSize + database)));
             } else {
                 telegramCacheTextView.setVisibility(View.GONE);

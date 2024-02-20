@@ -290,7 +290,7 @@ public class SharingLiveLocationCell extends FrameLayout {
             if (address != null) {
                 distanceTextView.setText(address);
             } else if (!userLocationDenied) {
-                distanceTextView.setText(LocaleController.getString("Loading", R.string.Loading));
+                distanceTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOADING, R.string.Loading));
             } else {
                 distanceTextView.setText("");
             }

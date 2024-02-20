@@ -443,7 +443,7 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
         actionBar.setItemsColor(getThemedColor(Theme.key_player_actionBarTitle), false);
         actionBar.setItemsBackgroundColor(getThemedColor(Theme.key_player_actionBarSelector), false);
         actionBar.setTitleColor(getThemedColor(Theme.key_player_actionBarTitle));
-        actionBar.setTitle(LocaleController.getString("AttachMusic", R.string.AttachMusic));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHMUSIC, R.string.AttachMusic));
         actionBar.setSubtitleColor(getThemedColor(Theme.key_player_actionBarSubtitle));
         actionBar.setOccupyStatusBar(true);
         actionBar.setAlpha(0.0f);
@@ -460,9 +460,9 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
                 }
             } else if (did == UserConfig.getInstance(currentAccount).getClientUserId()) {
                 if (messageObject.getSavedDialogId() == UserObject.ANONYMOUS) {
-                    actionBar.setTitle(LocaleController.getString(R.string.AnonymousForward));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ANONYMOUSFORWARD, R.string.AnonymousForward));
                 } else {
-                    actionBar.setTitle(LocaleController.getString(R.string.SavedMessages));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages));
                 }
             } else if (DialogObject.isUserDialog(did)) {
                 TLRPC.User user = MessagesController.getInstance(currentAccount).getUser(did);
@@ -509,9 +509,9 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
                 }
             }
         });
-        searchItem.setContentDescription(LocaleController.getString("Search", R.string.Search));
+        searchItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
         EditTextBoldCursor editText = searchItem.getSearchField();
-        editText.setHint(LocaleController.getString("Search", R.string.Search));
+        editText.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
         editText.setTextColor(getThemedColor(Theme.key_player_actionBarTitle));
         editText.setHintTextColor(getThemedColor(Theme.key_player_time));
         editText.setCursorColor(getThemedColor(Theme.key_player_actionBarTitle));
@@ -691,7 +691,7 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
         playbackSpeedButton.setLongClickEnabled(false);
         playbackSpeedButton.setShowSubmenuByMove(false);
         playbackSpeedButton.setAdditionalYOffset(-AndroidUtilities.dp(224));
-        playbackSpeedButton.setContentDescription(LocaleController.getString("AccDescrPlayerSpeed", R.string.AccDescrPlayerSpeed));
+        playbackSpeedButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRPLAYERSPEED, R.string.AccDescrPlayerSpeed));
         playbackSpeedButton.setDelegate(id -> {
             if (id < 0 || id >= speeds.length) {
                 return;
@@ -708,12 +708,12 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
             slidingSpeed = !isFinal;
             MediaController.getInstance().setPlaybackSpeed(true, speedSlider.getSpeed(value));
         });
-        speedItems[0] = playbackSpeedButton.addSubItem(0, R.drawable.msg_speed_slow, LocaleController.getString("SpeedSlow", R.string.SpeedSlow));
-        speedItems[1] = playbackSpeedButton.addSubItem(1, R.drawable.msg_speed_normal, LocaleController.getString("SpeedNormal", R.string.SpeedNormal));
-        speedItems[2] = playbackSpeedButton.addSubItem(2, R.drawable.msg_speed_medium, LocaleController.getString("SpeedMedium", R.string.SpeedMedium));
-        speedItems[3] = playbackSpeedButton.addSubItem(3, R.drawable.msg_speed_fast, LocaleController.getString("SpeedFast", R.string.SpeedFast));
-        speedItems[4] = playbackSpeedButton.addSubItem(4, R.drawable.msg_speed_veryfast, LocaleController.getString("SpeedVeryFast", R.string.SpeedVeryFast));
-        speedItems[5] = playbackSpeedButton.addSubItem(5, R.drawable.msg_speed_superfast, LocaleController.getString("SpeedSuperFast", R.string.SpeedSuperFast));
+        speedItems[0] = playbackSpeedButton.addSubItem(0, R.drawable.msg_speed_slow, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SPEEDSLOW, R.string.SpeedSlow));
+        speedItems[1] = playbackSpeedButton.addSubItem(1, R.drawable.msg_speed_normal, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SPEEDNORMAL, R.string.SpeedNormal));
+        speedItems[2] = playbackSpeedButton.addSubItem(2, R.drawable.msg_speed_medium, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SPEEDMEDIUM, R.string.SpeedMedium));
+        speedItems[3] = playbackSpeedButton.addSubItem(3, R.drawable.msg_speed_fast, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SPEEDFAST, R.string.SpeedFast));
+        speedItems[4] = playbackSpeedButton.addSubItem(4, R.drawable.msg_speed_veryfast, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SPEEDVERYFAST, R.string.SpeedVeryFast));
+        speedItems[5] = playbackSpeedButton.addSubItem(5, R.drawable.msg_speed_superfast, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SPEEDSUPERFAST, R.string.SpeedSuperFast));
         if (AndroidUtilities.density >= 3.0f) {
             playbackSpeedButton.setPadding(0, 1, 0, 0);
         }
@@ -775,10 +775,10 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
             updateSubMenu();
             repeatButton.toggleSubMenu();
         });
-        repeatSongItem = repeatButton.addSubItem(3, R.drawable.player_new_repeatone, LocaleController.getString("RepeatSong", R.string.RepeatSong));
-        repeatListItem = repeatButton.addSubItem(4, R.drawable.player_new_repeatall, LocaleController.getString("RepeatList", R.string.RepeatList));
-        shuffleListItem = repeatButton.addSubItem(2, R.drawable.player_new_shuffle, LocaleController.getString("ShuffleList", R.string.ShuffleList));
-        reverseOrderItem = repeatButton.addSubItem(1, R.drawable.player_new_order, LocaleController.getString("ReverseOrder", R.string.ReverseOrder));
+        repeatSongItem = repeatButton.addSubItem(3, R.drawable.player_new_repeatone, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPEATSONG, R.string.RepeatSong));
+        repeatListItem = repeatButton.addSubItem(4, R.drawable.player_new_repeatall, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPEATLIST, R.string.RepeatList));
+        shuffleListItem = repeatButton.addSubItem(2, R.drawable.player_new_shuffle, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHUFFLELIST, R.string.ShuffleList));
+        reverseOrderItem = repeatButton.addSubItem(1, R.drawable.player_new_order, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REVERSEORDER, R.string.ReverseOrder));
         repeatButton.setShowedFromBottom(true);
 
         repeatButton.setDelegate(id -> {
@@ -957,7 +957,7 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
             prevButton.setBackgroundDrawable(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector), 1, AndroidUtilities.dp(22)));
         }
         bottomView.addView(prevButton, LayoutHelper.createFrame(48, 48, Gravity.LEFT | Gravity.TOP));
-        prevButton.setContentDescription(LocaleController.getString("AccDescrPrevious", R.string.AccDescrPrevious));
+        prevButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRPREVIOUS, R.string.AccDescrPrevious));
 
         buttons[2] = playButton = new ImageView(context);
         playButton.setScaleType(ImageView.ScaleType.CENTER);
@@ -1081,7 +1081,7 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
             nextButton.setBackgroundDrawable(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector), 1, AndroidUtilities.dp(22)));
         }
         bottomView.addView(nextButton, LayoutHelper.createFrame(48, 48, Gravity.LEFT | Gravity.TOP));
-        nextButton.setContentDescription(LocaleController.getString("Next", R.string.Next));
+        nextButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEXT, R.string.Next));
 
         buttons[4] = optionsButton = new ActionBarMenuItem(context, null, 0, iconColor, false, resourcesProvider);
         optionsButton.setLongClickEnabled(false);
@@ -1093,14 +1093,14 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
             optionsButton.setBackgroundDrawable(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector), 1, AndroidUtilities.dp(18)));
         }
         bottomView.addView(optionsButton, LayoutHelper.createFrame(48, 48, Gravity.LEFT | Gravity.TOP));
-        optionsButton.addSubItem(1, R.drawable.msg_forward, LocaleController.getString("Forward", R.string.Forward));
-        optionsButton.addSubItem(2, R.drawable.msg_shareout, LocaleController.getString("ShareFile", R.string.ShareFile));
-        optionsButton.addSubItem(5, R.drawable.msg_download, LocaleController.getString("SaveToMusic", R.string.SaveToMusic));
-        optionsButton.addSubItem(4, R.drawable.msg_message, LocaleController.getString("ShowInChat", R.string.ShowInChat));
+        optionsButton.addSubItem(1, R.drawable.msg_forward, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARD, R.string.Forward));
+        optionsButton.addSubItem(2, R.drawable.msg_shareout, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREFILE, R.string.ShareFile));
+        optionsButton.addSubItem(5, R.drawable.msg_download, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOMUSIC, R.string.SaveToMusic));
+        optionsButton.addSubItem(4, R.drawable.msg_message, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHOWINCHAT, R.string.ShowInChat));
         optionsButton.setShowedFromBottom(true);
         optionsButton.setOnClickListener(v -> optionsButton.toggleSubMenu());
         optionsButton.setDelegate(this::onSubItemClick);
-        optionsButton.setContentDescription(LocaleController.getString("AccDescrMoreOptions", R.string.AccDescrMoreOptions));
+        optionsButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRMOREOPTIONS, R.string.AccDescrMoreOptions));
 
         emptyView = new LinearLayout(context);
         emptyView.setOrientation(LinearLayout.VERTICAL);
@@ -1117,7 +1117,7 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
         emptyTitleTextView = new TextView(context);
         emptyTitleTextView.setTextColor(getThemedColor(Theme.key_dialogEmptyText));
         emptyTitleTextView.setGravity(Gravity.CENTER);
-        emptyTitleTextView.setText(LocaleController.getString("NoAudioFound", R.string.NoAudioFound));
+        emptyTitleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOAUDIOFOUND, R.string.NoAudioFound));
         emptyTitleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         emptyTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17);
         emptyTitleTextView.setPadding(AndroidUtilities.dp(40), 0, AndroidUtilities.dp(40), 0);
@@ -1406,7 +1406,7 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
                 }
             };
             speedHintView.setExtraTranslationY(AndroidUtilities.dp(6));
-            speedHintView.setText(LocaleController.getString("SpeedHint"));
+            speedHintView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SPEEDHINT));
             playerLayout.addView(speedHintView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 0, 0, 6, 0));
             speedHintView.showForView(playbackSpeedButton, true);
         }
@@ -1541,12 +1541,12 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
                         intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(f));
                     }
 
-                    parentActivity.startActivityForResult(Intent.createChooser(intent, LocaleController.getString("ShareFile", R.string.ShareFile)), 500);
+                    parentActivity.startActivityForResult(Intent.createChooser(intent, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREFILE, R.string.ShareFile)), 500);
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
-                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-                    builder.setMessage(LocaleController.getString("PleaseDownload", R.string.PleaseDownload));
+                    builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
+                    builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
+                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PLEASEDOWNLOAD, R.string.PleaseDownload));
                     builder.show();
                 }
             } catch (Exception e) {
@@ -1901,19 +1901,19 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
                 repeatButton.setTag(Theme.key_player_button);
                 repeatButton.setIconColor(getThemedColor(Theme.key_player_button));
                 Theme.setSelectorDrawableColor(repeatButton.getBackground(), getThemedColor(Theme.key_listSelector), true);
-                repeatButton.setContentDescription(LocaleController.getString("AccDescrRepeatOff", R.string.AccDescrRepeatOff));
+                repeatButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRREPEATOFF, R.string.AccDescrRepeatOff));
             } else {
                 repeatButton.setTag(Theme.key_player_buttonActive);
                 repeatButton.setIconColor(getThemedColor(Theme.key_player_buttonActive));
                 Theme.setSelectorDrawableColor(repeatButton.getBackground(), getThemedColor(Theme.key_player_buttonActive) & 0x19ffffff, true);
                 if (mode == 0) {
                     if (SharedConfig.shuffleMusic) {
-                        repeatButton.setContentDescription(LocaleController.getString("ShuffleList", R.string.ShuffleList));
+                        repeatButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHUFFLELIST, R.string.ShuffleList));
                     } else {
-                        repeatButton.setContentDescription(LocaleController.getString("ReverseOrder", R.string.ReverseOrder));
+                        repeatButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REVERSEORDER, R.string.ReverseOrder));
                     }
                 } else {
-                    repeatButton.setContentDescription(LocaleController.getString("AccDescrRepeatList", R.string.AccDescrRepeatList));
+                    repeatButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRREPEATLIST, R.string.AccDescrRepeatList));
                 }
             }
         } else if (mode == 2) {
@@ -1921,7 +1921,7 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
             repeatButton.setTag(Theme.key_player_buttonActive);
             repeatButton.setIconColor(getThemedColor(Theme.key_player_buttonActive));
             Theme.setSelectorDrawableColor(repeatButton.getBackground(), getThemedColor(Theme.key_player_buttonActive) & 0x19ffffff, true);
-            repeatButton.setContentDescription(LocaleController.getString("AccDescrRepeatOne", R.string.AccDescrRepeatOne));
+            repeatButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRREPEATONE, R.string.AccDescrRepeatOne));
         }
     }
 
@@ -2041,10 +2041,10 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
 
             if (MediaController.getInstance().isMessagePaused()) {
                 playPauseDrawable.setPause(false);
-                playButton.setContentDescription(LocaleController.getString("AccActionPlay", R.string.AccActionPlay));
+                playButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONPLAY, R.string.AccActionPlay));
             } else {
                 playPauseDrawable.setPause(true);
-                playButton.setContentDescription(LocaleController.getString("AccActionPause", R.string.AccActionPause));
+                playButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONPAUSE, R.string.AccActionPause));
             }
             String title = messageObject.getMusicTitle();
             String author = messageObject.getMusicAuthor();

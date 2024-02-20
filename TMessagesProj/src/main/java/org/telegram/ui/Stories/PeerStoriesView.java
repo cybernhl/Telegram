@@ -848,7 +848,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                     processExternalUrl(2, url, span, span instanceof URLSpanReplacement);
                 } else if (span instanceof URLSpanMono) {
                     ((URLSpanMono) span).copyToClipboard();
-                    BulletinFactory.of(storyContainer, resourcesProvider).createCopyBulletin(LocaleController.getString("TextCopied", R.string.TextCopied)).show();
+                    BulletinFactory.of(storyContainer, resourcesProvider).createCopyBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TEXTCOPIED, R.string.TextCopied)).show();
                 } else if (span instanceof ClickableSpan) {
                     ((ClickableSpan) span).onClick(spoilersTextView);
                 }
@@ -897,7 +897,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                 BottomSheet.Builder builder = new BottomSheet.Builder(getContext(), false, resourcesProvider);
                 builder.setTitle(formattedUrl);
                 builder.setTitleMultipleLines(true);
-                builder.setItems(currentStory != null && !currentStory.allowScreenshots() ? new CharSequence[] {LocaleController.getString("Open", R.string.Open)} : new CharSequence[]{LocaleController.getString("Open", R.string.Open), LocaleController.getString("Copy", R.string.Copy)}, (dialog, which) -> {
+                builder.setItems(currentStory != null && !currentStory.allowScreenshots() ? new CharSequence[] {LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPEN, R.string.Open)} : new CharSequence[]{LocaleController.getString("Open", R.string.Open), LocaleController.getString("Copy", R.string.Copy)}, (dialog, which) -> {
                     if (which == 0) {
                         onLinkClick(span, spoilersTextView);
                     } else if (which == 1) {
@@ -927,7 +927,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                 }
                 if (reply.peerId == null || reply.storyId == null) {
                     BulletinFactory.of(storyContainer, resourcesProvider)
-                        .createSimpleBulletin(R.raw.error, LocaleController.getString(R.string.StoryHidAccount))
+                        .createSimpleBulletin(R.raw.error, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYHIDACCOUNT, R.string.StoryHidAccount))
                         .setTag(3)
                         .show(true);
                     return;
@@ -949,7 +949,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                         });
                     } else {
                         BulletinFactory.of(storyContainer, resourcesProvider)
-                            .createSimpleBulletin(R.raw.story_bomb2, LocaleController.getString(R.string.StoryNotFound))
+                            .createSimpleBulletin(R.raw.story_bomb2, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYNOTFOUND, R.string.StoryNotFound))
                             .setTag(3)
                             .show(true);
                     }
@@ -1166,7 +1166,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                                 chatFull = MessagesStorage.getInstance(currentAccount).loadChatInfo(chat.id, true, new CountDownLatch(1), false, false);
                             }
                             if (chatFull != null && chatFull.can_view_stats) {
-                                ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_stats, LocaleController.getString("ViewStatistics", R.string.ViewStatistics), false, resourcesProvider).setOnClickListener(v -> {
+                                ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_stats, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWSTATISTICS, R.string.ViewStatistics), false, resourcesProvider).setOnClickListener(v -> {
                                     if (popupMenu != null) {
                                         popupMenu.dismiss();
                                     }
@@ -1213,7 +1213,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                     speedLayout.update(StoryViewer.currentSpeed, true);
 
                     speedItem = new ActionBarMenuSubItem(getContext(), false, false, false, resourcesProvider);
-                    speedItem.setTextAndIcon(LocaleController.getString(R.string.Speed), R.drawable.msg_speed, null);
+                    speedItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SPEED, R.string.Speed), R.drawable.msg_speed, null);
                     updateSpeedItem(true);
                     speedItem.setMinimumWidth(AndroidUtilities.dp(196));
                     speedItem.setRightIcon(R.drawable.msg_arrowright);
@@ -1249,7 +1249,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                     if (canEditStory || currentStory.uploadingStory != null) {
                         TL_stories.StoryItem storyItem = currentStory.storyItem;
                         if (currentStory.uploadingStory != null) {
-                            ActionBarMenuSubItem item = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_cancel, LocaleController.getString("Cancel", R.string.Cancel), false, resourcesProvider);
+                            ActionBarMenuSubItem item = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_cancel, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), false, resourcesProvider);
                             item.setOnClickListener(v -> {
                                 if (currentStory.uploadingStory != null) {
                                     currentStory.uploadingStory.cancel();
@@ -1263,11 +1263,11 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                         if (storyItem == null) {
                             return;
                         }
-                        String str = currentStory.isVideo() ? LocaleController.getString("SaveVideo", R.string.SaveVideo) : LocaleController.getString("SaveImage", R.string.SaveImage);
+                        String str = currentStory.isVideo() ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEVIDEO, R.string.SaveVideo) : LocaleController.getString("SaveImage", R.string.SaveImage);
 
                         if (isSelf) {
                             final StoryPrivacyBottomSheet.StoryPrivacy storyPrivacy = new StoryPrivacyBottomSheet.StoryPrivacy(currentAccount, storyItem.privacy);
-                            ActionBarMenuSubItem item = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_view_file, LocaleController.getString("WhoCanSee", R.string.WhoCanSee), false, resourcesProvider);
+                            ActionBarMenuSubItem item = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_view_file, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WHOCANSEE, R.string.WhoCanSee), false, resourcesProvider);
                             item.setSubtext(storyPrivacy.toString());
                             item.setOnClickListener(v -> {
                                 editPrivacy(storyPrivacy, storyItem);
@@ -1285,7 +1285,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                         }
 
                         if (!unsupported && MessagesController.getInstance(currentAccount).storiesEnabled() && userCanEditStory) {
-                            editStoryItem = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_edit, LocaleController.getString("EditStory", R.string.EditStory), false, resourcesProvider);
+                            editStoryItem = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_edit, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDITSTORY, R.string.EditStory), false, resourcesProvider);
                             editStoryItem.setOnClickListener(v -> {
                                 if (v.getAlpha() < 1) {
                                     AndroidUtilities.shakeViewSpring(v, shiftDp = -shiftDp);
@@ -1368,9 +1368,9 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                             final boolean pin = !storyItem.pinned;
                             String title;
                             if (isSelf) {
-                                title = pin ? LocaleController.getString("SaveToProfile", R.string.SaveToProfile) : LocaleController.getString("ArchiveStory", R.string.ArchiveStory);
+                                title = pin ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOPROFILE, R.string.SaveToProfile) : LocaleController.getString("ArchiveStory", R.string.ArchiveStory);
                             } else {
-                                title = pin ? LocaleController.getString("SaveToPosts", R.string.SaveToPosts) : LocaleController.getString("RemoveFromPosts", R.string.RemoveFromPosts);
+                                title = pin ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOPOSTS, R.string.SaveToPosts) : LocaleController.getString("RemoveFromPosts", R.string.RemoveFromPosts);
                             }
                             ActionBarMenuItem.addItem(popupLayout, pin ? R.drawable.msg_save_story : R.drawable.menu_unsave_story, title, false, resourcesProvider).setOnClickListener(v -> {
                                 ArrayList<TL_stories.StoryItem> storyItems = new ArrayList<>();
@@ -1379,19 +1379,19 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                                     if (success) {
                                         storyItem.pinned = pin;
                                         if (isSelf) {
-                                            BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(pin ? R.raw.contact_check : R.raw.chats_archived, pin ? LocaleController.getString("StoryPinnedToProfile", R.string.StoryPinnedToProfile) : LocaleController.getString("StoryArchivedFromProfile", R.string.StoryArchivedFromProfile)).show();
+                                            BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(pin ? R.raw.contact_check : R.raw.chats_archived, pin ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPINNEDTOPROFILE, R.string.StoryPinnedToProfile) : LocaleController.getString("StoryArchivedFromProfile", R.string.StoryArchivedFromProfile)).show();
                                         } else {
                                             if (pin) {
                                                 BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.contact_check,
-                                                        LocaleController.getString("StoryPinnedToPosts", R.string.StoryPinnedToPosts),
-                                                        LocaleController.getString("StoryPinnedToPostsDescription", R.string.StoryPinnedToPostsDescription)
+                                                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPINNEDTOPOSTS, R.string.StoryPinnedToPosts),
+                                                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPINNEDTOPOSTSDESCRIPTION, R.string.StoryPinnedToPostsDescription)
                                                 ).show();
                                             } else {
-                                                BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.chats_archived, LocaleController.getString("StoryUnpinnedFromPosts", R.string.StoryUnpinnedFromPosts)).show();
+                                                BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.chats_archived, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYUNPINNEDFROMPOSTS, R.string.StoryUnpinnedFromPosts)).show();
                                             }
                                         }
                                     } else {
-                                        BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.error, LocaleController.getString("UnknownError", R.string.UnknownError)).show();
+                                        BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.error, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNKNOWNERROR, R.string.UnknownError)).show();
                                     }
                                 });
                                 if (popupMenu != null) {
@@ -1416,7 +1416,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                         }
 
                         if (isChannel && allowShareLink) {
-                            ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_link, LocaleController.getString("CopyLink", R.string.CopyLink), false, resourcesProvider).setOnClickListener(v -> {
+                            ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_link, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_COPYLINK, R.string.CopyLink), false, resourcesProvider).setOnClickListener(v -> {
                                 AndroidUtilities.addToClipboard(currentStory.createLink());
                                 onLinkCopied();
                                 if (popupMenu != null) {
@@ -1426,7 +1426,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                         }
 
                         if (allowShareLink) {
-                            ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_shareout, LocaleController.getString("BotShare", R.string.BotShare), false, resourcesProvider).setOnClickListener(v -> {
+                            ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_shareout, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTSHARE, R.string.BotShare), false, resourcesProvider).setOnClickListener(v -> {
                                 shareStory(false);
                                 if (popupMenu != null) {
                                     popupMenu.dismiss();
@@ -1435,7 +1435,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                         }
 
                         if (isSelf || MessagesController.getInstance(currentAccount).getStoriesController().canDeleteStory(currentStory.storyItem)) {
-                            ActionBarMenuSubItem deleteItem = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_delete, LocaleController.getString("Delete", R.string.Delete), false, resourcesProvider);
+                            ActionBarMenuSubItem deleteItem = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_delete, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete), false, resourcesProvider);
                             deleteItem.setSelectorColor(Theme.multAlpha(Theme.getColor(Theme.key_text_RedBold, resourcesProvider), .12f));
                             deleteItem.setColors(resourcesProvider.getColor(Theme.key_text_RedBold), resourcesProvider.getColor(Theme.key_text_RedBold));
                             deleteItem.setOnClickListener(v -> {
@@ -1446,7 +1446,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                             });
                         }
                     } else {
-//                        ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_mute, LocaleController.getString("Mute", R.string.Mute), false, resourcesProvider).setOnClickListener(v -> {
+//                        ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_mute, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MUTE, R.string.Mute), false, resourcesProvider).setOnClickListener(v -> {
 //                            if (popupMenu != null) {
 //                                popupMenu.dismiss();
 //                            }
@@ -1472,7 +1472,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                         String finalName = name;
                         if (!UserObject.isService(dialogId)) {
                             if (!muted) {
-                                ActionBarMenuSubItem item = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_mute, LocaleController.getString("NotificationsStoryMute2", R.string.NotificationsStoryMute2), false, resourcesProvider);
+                                ActionBarMenuSubItem item = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_mute, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSSTORYMUTE2, R.string.NotificationsStoryMute2), false, resourcesProvider);
                                 item.setOnClickListener(v -> {
                                     MessagesController.getNotificationsSettings(currentAccount).edit().putBoolean("stories_" + key, false).apply();
                                     NotificationsController.getInstance(currentAccount).updateServerNotificationsSettings(dialogId, 0);
@@ -1484,7 +1484,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                                 });
                                 item.setMultiline(false);
                             } else {
-                                ActionBarMenuSubItem item = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_unmute, LocaleController.getString("NotificationsStoryUnmute2", R.string.NotificationsStoryUnmute2), false, resourcesProvider);
+                                ActionBarMenuSubItem item = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_unmute, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSSTORYUNMUTE2, R.string.NotificationsStoryUnmute2), false, resourcesProvider);
                                 item.setOnClickListener(v -> {
                                     MessagesController.getNotificationsSettings(currentAccount).edit().putBoolean("stories_" + key, true).apply();
                                     NotificationsController.getInstance(currentAccount).updateServerNotificationsSettings(dialogId, 0);
@@ -1506,14 +1506,14 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                             }
                             if (canShowArchive) {
                                 if (!storiesIsHidden) {
-                                    ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_archive, LocaleController.getString("ArchivePeerStories", R.string.ArchivePeerStories), false, resourcesProvider).setOnClickListener(v -> {
+                                    ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_archive, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVEPEERSTORIES, R.string.ArchivePeerStories), false, resourcesProvider).setOnClickListener(v -> {
                                         toggleArchiveForStory(dialogId);
                                         if (popupMenu != null) {
                                             popupMenu.dismiss();
                                         }
                                     });
                                 } else {
-                                    ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_unarchive, LocaleController.getString("UnarchiveStories", R.string.UnarchiveStories), false, resourcesProvider).setOnClickListener(v -> {
+                                    ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_unarchive, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNARCHIVESTORIES, R.string.UnarchiveStories), false, resourcesProvider).setOnClickListener(v -> {
                                         toggleArchiveForStory(dialogId);
                                         if (popupMenu != null) {
                                             popupMenu.dismiss();
@@ -1529,7 +1529,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
 
                         if (!unsupported && allowShare) {
                             if (UserConfig.getInstance(currentAccount).isPremium()) {
-                                ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_gallery, LocaleController.getString("SaveToGallery", R.string.SaveToGallery), false, resourcesProvider).setOnClickListener(v -> {
+                                ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_gallery, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERY, R.string.SaveToGallery), false, resourcesProvider).setOnClickListener(v -> {
                                     saveToGallery();
                                     if (popupMenu != null) {
                                         popupMenu.dismiss();
@@ -1547,14 +1547,14 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
 
                                     }
                                 };
-                                ActionBarMenuSubItem item = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_gallery, LocaleController.getString("SaveToGallery", R.string.SaveToGallery), false, resourcesProvider);
+                                ActionBarMenuSubItem item = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_gallery, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERY, R.string.SaveToGallery), false, resourcesProvider);
                                 item.setIcon(combinedDrawable);
                                 item.setOnClickListener(v -> {
                                     item.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
                                     BulletinFactory bulletinFactory = BulletinFactory.global();
                                     if (bulletinFactory != null) {
                                         bulletinFactory.createSimpleBulletin(R.raw.ic_save_to_gallery, AndroidUtilities.replaceSingleTag(
-                                                LocaleController.getString("SaveStoryToGalleryPremiumHint", R.string.SaveStoryToGalleryPremiumHint),
+                                                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVESTORYTOGALLERYPREMIUMHINT, R.string.SaveStoryToGalleryPremiumHint),
                                                 () -> {
                                                     PremiumFeatureBottomSheet sheet = new PremiumFeatureBottomSheet(storyViewer.fragment, PremiumPreviewFragment.PREMIUM_FEATURE_STORIES, false);
                                                     delegate.showDialog(sheet);
@@ -1568,7 +1568,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                             createStealthModeItem(popupLayout);
                         }
                         if (allowShareLink) {
-                            ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_link2, LocaleController.getString("CopyLink", R.string.CopyLink), false, resourcesProvider).setOnClickListener(v -> {
+                            ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_link2, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_COPYLINK, R.string.CopyLink), false, resourcesProvider).setOnClickListener(v -> {
                                 AndroidUtilities.addToClipboard(currentStory.createLink());
                                 onLinkCopied();
                                 if (popupMenu != null) {
@@ -1577,7 +1577,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                             });
                         }
                         if (allowShareLink) {
-                            ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_shareout, LocaleController.getString("BotShare", R.string.BotShare), false, resourcesProvider).setOnClickListener(v -> {
+                            ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_shareout, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTSHARE, R.string.BotShare), false, resourcesProvider).setOnClickListener(v -> {
                                 shareStory(false);
                                 if (popupMenu != null) {
                                     popupMenu.dismiss();
@@ -1587,7 +1587,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
 
                         if (currentStory.storyItem != null) {
                             if (currentStory.storyItem.translated && TextUtils.equals(currentStory.storyItem.translatedLng, TranslateAlert2.getToLanguage())) {
-                                ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_translate, LocaleController.getString("HideTranslation", R.string.HideTranslation), false, resourcesProvider).setOnClickListener(v -> {
+                                ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_translate, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_HIDETRANSLATION, R.string.HideTranslation), false, resourcesProvider).setOnClickListener(v -> {
                                     currentStory.storyItem.translated = false;
                                     MessagesController.getInstance(currentAccount).getStoriesController().getStoriesStorage().updateStoryItem(currentStory.storyItem.dialogId, currentStory.storyItem);
                                     cancelTextSelection();
@@ -1597,7 +1597,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                                     }
                                 });
                             } else if (MessagesController.getInstance(currentAccount).getTranslateController().canTranslateStory(currentStory.storyItem)) {
-                                ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_translate, LocaleController.getString("TranslateMessage", R.string.TranslateMessage), false, resourcesProvider).setOnClickListener(v -> {
+                                ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_translate, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TRANSLATEMESSAGE, R.string.TranslateMessage), false, resourcesProvider).setOnClickListener(v -> {
                                     currentStory.storyItem.translated = true;
                                     cancelTextSelection();
                                     if (delegate != null) {
@@ -1628,7 +1628,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
 
                         if (!unsupported) {
                             if (!UserObject.isService(dialogId)) {
-                                ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_report, LocaleController.getString("ReportChat", R.string.ReportChat), false, resourcesProvider).setOnClickListener(v -> {
+                                ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_report, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPORTCHAT, R.string.ReportChat), false, resourcesProvider).setOnClickListener(v -> {
                                     AlertsCreator.createReportAlert(getContext(), dialogId, 0, currentStory.storyItem.id, storyViewer.fragment, resourcesProvider, null);
                                     if (popupMenu != null) {
                                         popupMenu.dismiss();
@@ -1787,7 +1787,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
 
     private void createStealthModeItem(ActionBarPopupWindow.ActionBarPopupWindowLayout popupLayout) {
         if (UserConfig.getInstance(currentAccount).isPremium()) {
-            ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_stories_stealth2, LocaleController.getString(R.string.StealthModeButton), false, resourcesProvider).setOnClickListener(v -> {
+            ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_stories_stealth2, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STEALTHMODEBUTTON, R.string.StealthModeButton), false, resourcesProvider).setOnClickListener(v -> {
                 if (stealthModeIsActive) {
                     StealthModeAlert.showStealthModeEnabledBulletin();
                 } else {
@@ -1810,7 +1810,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
 
                 }
             };
-            ActionBarMenuSubItem item2 = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_stories_stealth2, LocaleController.getString(R.string.StealthModeButton), false, resourcesProvider);
+            ActionBarMenuSubItem item2 = ActionBarMenuItem.addItem(popupLayout, R.drawable.msg_stories_stealth2, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STEALTHMODEBUTTON, R.string.StealthModeButton), false, resourcesProvider);
             item2.setOnClickListener(v -> {
                 StealthModeAlert stealthModeAlert = new StealthModeAlert(getContext(), getY() + storyContainer.getY(), resourcesProvider);
                 delegate.showDialog(stealthModeAlert);
@@ -1853,7 +1853,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
             };
             combinedDrawable2.setIconSize(dp(24), dp(24));
             combinedDrawable2.setIconOffset(dp(1), -dp(2));
-            ActionBarMenuSubItem item2 = ActionBarMenuItem.addItem(popupLayout, R.drawable.menu_quality_hd, LocaleController.getString(R.string.StoryQualityIncrease), false, resourcesProvider);
+            ActionBarMenuSubItem item2 = ActionBarMenuItem.addItem(popupLayout, R.drawable.menu_quality_hd, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYQUALITYINCREASE, R.string.StoryQualityIncrease), false, resourcesProvider);
             item2.setOnClickListener(v -> {
                 BottomSheet sheet = new BottomSheet(getContext(), false, resourcesProvider);
                 sheet.fixNavigationBar(Theme.getColor(Theme.key_dialogBackground, resourcesProvider));
@@ -1875,23 +1875,23 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                 headerView.setGravity(Gravity.CENTER);
                 headerView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
                 headerView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-                headerView.setText(LocaleController.getString(R.string.StoryQualityPremium));
+                headerView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYQUALITYPREMIUM, R.string.StoryQualityPremium));
                 layout.addView(headerView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 12, 0, 12, 0));
 
                 TextView descriptionView = new TextView(getContext());
                 descriptionView.setGravity(Gravity.CENTER);
                 descriptionView.setTextColor(Theme.getColor(Theme.key_dialogTextGray3, resourcesProvider));
                 descriptionView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-                descriptionView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.StoryQualityPremiumText)));
+                descriptionView.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYQUALITYPREMIUMTEXT, R.string.StoryQualityPremiumText)));
                 layout.addView(descriptionView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 32, 9, 32, 19));
 
                 ButtonWithCounterView button = new ButtonWithCounterView(getContext(), resourcesProvider);
-                button.setText(LocaleController.getString(R.string.StoryQualityIncrease), false);
+                button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYQUALITYINCREASE, R.string.StoryQualityIncrease), false);
                 SpannableStringBuilder lock = new SpannableStringBuilder("l");
                 ColoredImageSpan coloredImageSpan = new ColoredImageSpan(R.drawable.mini_switch_lock);
                 coloredImageSpan.setTopOffset(1);
                 lock.setSpan(coloredImageSpan, 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                button.setSubText(new SpannableStringBuilder().append(lock).append(LocaleController.getString(R.string.OptionPremiumRequiredTitle)), false);
+                button.setSubText(new SpannableStringBuilder().append(lock).append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPTIONPREMIUMREQUIREDTITLE, R.string.OptionPremiumRequiredTitle)), false);
                 layout.addView(button, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48, Gravity.CENTER_HORIZONTAL));
                 button.setOnClickListener(view -> {
                     delegate.showDialog(new PremiumFeatureBottomSheet(storyViewer.fragment, PremiumPreviewFragment.PREMIUM_FEATURE_STORIES, false));
@@ -2208,7 +2208,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
         premiumBlockedText1 = new TextView(getContext());
         premiumBlockedText1.setTextColor(0xFF858585);
         premiumBlockedText1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-        premiumBlockedText1.setText(LocaleController.getString(R.string.StoryRepliesLocked));
+        premiumBlockedText1.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYREPLIESLOCKED, R.string.StoryRepliesLocked));
 
         premiumBlockedText2 = new TextView(getContext());
         premiumBlockedText2.setTextColor(0xFFFFFFFF);
@@ -2216,7 +2216,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
         premiumBlockedText2.setBackground(Theme.createSimpleSelectorRoundRectDrawable(dp(40), 0x1affffff, 0x32ffffff));
         premiumBlockedText2.setGravity(Gravity.CENTER);
         ScaleStateListAnimator.apply(premiumBlockedText2);
-        premiumBlockedText2.setText(LocaleController.getString(R.string.StoryRepliesLockedButton));
+        premiumBlockedText2.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYREPLIESLOCKEDBUTTON, R.string.StoryRepliesLockedButton));
         premiumBlockedText2.setPadding(dp(7), 0, dp(7), 0);
 
         premiumBlockedText.addView(imageView, LayoutHelper.createLinear(22, 22, Gravity.CENTER_VERTICAL, 12, 1, 4, 0));
@@ -2228,10 +2228,10 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
 
     private void updatePremiumBlockedText() {
         if (premiumBlockedText1 != null) {
-            premiumBlockedText1.setText(LocaleController.getString(R.string.StoryRepliesLocked));
+            premiumBlockedText1.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYREPLIESLOCKED, R.string.StoryRepliesLocked));
         }
         if (premiumBlockedText2 != null) {
-            premiumBlockedText2.setText(LocaleController.getString(R.string.StoryRepliesLockedButton));
+            premiumBlockedText2.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYREPLIESLOCKEDBUTTON, R.string.StoryRepliesLockedButton));
         }
     }
 
@@ -2248,7 +2248,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                     .createSimpleBulletin(R.raw.star_premium_2, AndroidUtilities.replaceTags(LocaleController.formatString(R.string.UserBlockedRepliesNonPremium, username)));
         } else {
             bulletin = BulletinFactory.of(storyContainer, resourcesProvider)
-                .createSimpleBulletin(R.raw.star_premium_2, AndroidUtilities.replaceTags(LocaleController.formatString(R.string.UserBlockedRepliesNonPremium, username)), LocaleController.getString(R.string.UserBlockedNonPremiumButton), () -> {
+                .createSimpleBulletin(R.raw.star_premium_2, AndroidUtilities.replaceTags(LocaleController.formatString(R.string.UserBlockedRepliesNonPremium, username)), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERBLOCKEDNONPREMIUMBUTTON, R.string.UserBlockedNonPremiumButton), () -> {
                     if (storyViewer != null) {
                         storyViewer.presentFragment(new PremiumPreviewFragment("noncontacts"));
                     }
@@ -2264,15 +2264,15 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
         }
         if (isFinal) {
             if (Math.abs(StoryViewer.currentSpeed - 0.2f) < 0.05f) {
-                speedItem.setSubtext(LocaleController.getString(R.string.VideoSpeedVerySlow));
+                speedItem.setSubtext(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIDEOSPEEDVERYSLOW, R.string.VideoSpeedVerySlow));
             } else if (Math.abs(StoryViewer.currentSpeed - 0.5f) < 0.05f) {
-                speedItem.setSubtext(LocaleController.getString(R.string.VideoSpeedSlow));
+                speedItem.setSubtext(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIDEOSPEEDSLOW, R.string.VideoSpeedSlow));
             } else if (Math.abs(StoryViewer.currentSpeed - 1.0f) < 0.05f) {
-                speedItem.setSubtext(LocaleController.getString(R.string.VideoSpeedNormal));
+                speedItem.setSubtext(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIDEOSPEEDNORMAL, R.string.VideoSpeedNormal));
             } else if (Math.abs(StoryViewer.currentSpeed - 1.5f) < 0.05f) {
-                speedItem.setSubtext(LocaleController.getString(R.string.VideoSpeedFast));
+                speedItem.setSubtext(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIDEOSPEEDFAST, R.string.VideoSpeedFast));
             } else if (Math.abs(StoryViewer.currentSpeed - 2f) < 0.05f) {
-                speedItem.setSubtext(LocaleController.getString(R.string.VideoSpeedVeryFast));
+                speedItem.setSubtext(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIDEOSPEEDVERYFAST, R.string.VideoSpeedVeryFast));
             } else {
                 speedItem.setSubtext(LocaleController.formatString(R.string.VideoSpeedCustom, SpeedIconDrawable.formatNumber(StoryViewer.currentSpeed) + "x"));
             }
@@ -2681,12 +2681,12 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
             SharedConfig.stealthModeSendMessageConfirm--;
             SharedConfig.updateStealthModeSendMessageConfirm(SharedConfig.stealthModeSendMessageConfirm);
             AlertDialog alertDialog = new AlertDialog(getContext(), 0, resourcesProvider);
-            alertDialog.setTitle(LocaleController.getString("StealthModeConfirmTitle", R.string.StealthModeConfirmTitle));
-            alertDialog.setMessage(LocaleController.getString("StealthModeConfirmMessage", R.string.StealthModeConfirmMessage));
-            alertDialog.setPositiveButton(LocaleController.getString("Proceed", R.string.Proceed), (dialog, which) -> {
+            alertDialog.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STEALTHMODECONFIRMTITLE, R.string.StealthModeConfirmTitle));
+            alertDialog.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STEALTHMODECONFIRMMESSAGE, R.string.StealthModeConfirmMessage));
+            alertDialog.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PROCEED, R.string.Proceed), (dialog, which) -> {
                 runnable.run();
             });
-            alertDialog.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), (dialog, which) -> dialog.dismiss());
+            alertDialog.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), (dialog, which) -> dialog.dismiss());
             alertDialog.show();
         } else {
             runnable.run();
@@ -2714,13 +2714,13 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
 
     private void showDownloadAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), resourcesProvider);
-        builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
+        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
         //  boolean alreadyDownloading = currentMessageObject != null && currentMessageObject.isVideo() && FileLoader.getInstance(currentMessageObject.currentAccount).isLoadingFile(currentFileNames[0]);
 //        if (alreadyDownloading) {
-//            builder.setMessage(LocaleController.getString("PleaseStreamDownload", R.string.PleaseStreamDownload));
+//            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PLEASESTREAMDOWNLOAD, R.string.PleaseStreamDownload));
 //        } else {
-        builder.setMessage(LocaleController.getString("PleaseDownload", R.string.PleaseDownload));
+        builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PLEASEDOWNLOAD, R.string.PleaseDownload));
         // }
         delegate.showDialog(builder.create());
     }
@@ -2978,7 +2978,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_TEXT, link);
-                LaunchActivity.instance.startActivityForResult(Intent.createChooser(intent, LocaleController.getString("StickersShare", R.string.StickersShare)), 500);
+                LaunchActivity.instance.startActivityForResult(Intent.createChooser(intent, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STICKERSSHARE, R.string.StickersShare)), 500);
             }
         }
     }
@@ -3139,7 +3139,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
             avatarDrawable.setInfo(currentAccount, user);
             headerView.backupImageView.getImageReceiver().setForUserOrChat(user, avatarDrawable);
             if (isSelf) {
-                headerView.titleView.setText(LocaleController.getString("SelfStoryTitle", R.string.SelfStoryTitle));
+                headerView.titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELFSTORYTITLE, R.string.SelfStoryTitle));
                 headerView.titleView.setRightDrawable(null);
             } else {
                 if (user != null && user.verified) {
@@ -3310,12 +3310,12 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
         textView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         textView.setGravity(Gravity.CENTER_HORIZONTAL);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-        textView.setText(LocaleController.getString("StoryUnsupported", R.string.StoryUnsupported));
+        textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYUNSUPPORTED, R.string.StoryUnsupported));
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
 
         TextView buttonTextView = new TextView(getContext());
         ScaleStateListAnimator.apply(buttonTextView);
-        buttonTextView.setText(LocaleController.getString("AppUpdate", R.string.AppUpdate));
+        buttonTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPUPDATE, R.string.AppUpdate));
         buttonTextView.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText, resourcesProvider));
         buttonTextView.setPadding(AndroidUtilities.dp(16), AndroidUtilities.dp(12), AndroidUtilities.dp(16), AndroidUtilities.dp(12));
         buttonTextView.setGravity(Gravity.CENTER);
@@ -3510,9 +3510,9 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
 
     private void deleteStory() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), resourcesProvider);
-        builder.setTitle(LocaleController.getString("DeleteStoryTitle", R.string.DeleteStoryTitle));
-        builder.setMessage(LocaleController.getString("DeleteStorySubtitle", R.string.DeleteStorySubtitle));
-        builder.setPositiveButton(LocaleController.getString("Delete", R.string.Delete), (dialog, which) -> {
+        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETESTORYTITLE, R.string.DeleteStoryTitle));
+        builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETESTORYSUBTITLE, R.string.DeleteStorySubtitle));
+        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete), (dialog, which) -> {
             currentStory.cancelOrDelete();
             updateStoryItems();
             if (isActive && count == 0) {
@@ -3526,7 +3526,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
             }
             updatePosition();
         });
-        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), (DialogInterface.OnClickListener) (dialog, which) -> {
+        builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), (DialogInterface.OnClickListener) (dialog, which) -> {
             dialog.dismiss();
         });
         AlertDialog dialog = builder.create();
@@ -3539,7 +3539,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
 //            performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
 //            BulletinFactory bulletinFactory = BulletinFactory.global();
 //            if (bulletinFactory != null) {
-//                bulletinFactory.createErrorBulletin(AndroidUtilities.replaceTags(LocaleController.getString("ExpiredViewsStub", R.string.ExpiredViewsStub))).show();
+//                bulletinFactory.createErrorBulletin(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EXPIREDVIEWSSTUB, R.string.ExpiredViewsStub))).show();
 //            }
 //        } else {
             storyViewer.openViews();
@@ -3782,7 +3782,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
         } else {
             stealthModeIsActive = false;
             chatActivityEnterView.setEnabled(true);
-            chatActivityEnterView.setOverrideHint(LocaleController.getString("ReplyPrivately", R.string.ReplyPrivately), animated);
+            chatActivityEnterView.setOverrideHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLYPRIVATELY, R.string.ReplyPrivately), animated);
         }
     }
 
@@ -3992,13 +3992,13 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
             headerView.setOnSubtitleClick(null);
             if (currentStory.uploadingStory != null) {
                 if (currentStory.uploadingStory.failed) {
-                    headerView.setSubtitle(LocaleController.getString("FailedToUploadStory", R.string.FailedToUploadStory), animateSubtitle);
+                    headerView.setSubtitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FAILEDTOUPLOADSTORY, R.string.FailedToUploadStory), animateSubtitle);
                 } else {
                     headerView.setSubtitle(StoriesUtilities.getUploadingStr(headerView.subtitleView[0], false, isEditing), animateSubtitle);
                 }
             } else if (currentStory.storyItem != null) {
                 if (currentStory.storyItem.date == -1) {
-                    headerView.setSubtitle(LocaleController.getString("CachedStory", R.string.CachedStory));
+                    headerView.setSubtitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CACHEDSTORY, R.string.CachedStory));
                 } else if (currentStory.getReply() != null) {
                     StoryCaptionView.Reply reply = currentStory.getReply();
 
@@ -4041,7 +4041,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                             }
                         } else {
                             BulletinFactory.of(storyContainer, resourcesProvider)
-                                .createSimpleBulletin(R.raw.error, LocaleController.getString(R.string.StoryHidAccount))
+                                .createSimpleBulletin(R.raw.error, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYHIDACCOUNT, R.string.StoryHidAccount))
                                 .setTag(3)
                                 .show(true);
                         }
@@ -4063,7 +4063,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                         dotDividerSpan.setTopPadding(AndroidUtilities.dp(1.5f));
                         dotDividerSpan.setSize(5);
                         spannableStringBuilder.append(" . ").setSpan(dotDividerSpan, spannableStringBuilder.length() - 2, spannableStringBuilder.length() - 1, 0);
-                        spannableStringBuilder.append(LocaleController.getString("EditedMessage", R.string.EditedMessage));
+                        spannableStringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDITEDMESSAGE, R.string.EditedMessage));
                         string = spannableStringBuilder;
                     }
                     headerView.setSubtitle(string, animateSubtitle);
@@ -4276,7 +4276,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                     reactionsLongpressTooltip = new HintView2(getContext(), HintView2.DIRECTION_BOTTOM).setJoint(1, -22);
                     reactionsLongpressTooltip.setBgColor(ColorUtils.setAlphaComponent(ColorUtils.blendARGB(Color.BLACK, Color.WHITE, 0.13f), 240));
                     reactionsLongpressTooltip.setBounce(false);
-                    reactionsLongpressTooltip.setText(LocaleController.getString("ReactionLongTapHint", R.string.ReactionLongTapHint));
+                    reactionsLongpressTooltip.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REACTIONLONGTAPHINT, R.string.ReactionLongTapHint));
                     reactionsLongpressTooltip.setPadding(AndroidUtilities.dp(8), 0, AndroidUtilities.dp(8), AndroidUtilities.dp(1));
                     storyContainer.addView(reactionsLongpressTooltip, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.RIGHT | Gravity.BOTTOM, 0, 0, 0, BIG_SCREEN ? 0 : 56));
                 }
@@ -4309,7 +4309,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
         replyDisabledTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         replyDisabledTextView.setTextColor(ColorUtils.blendARGB(Color.BLACK, Color.WHITE, 0.5f));
         replyDisabledTextView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
-        replyDisabledTextView.setText(LocaleController.getString("StoryReplyDisabled", R.string.StoryReplyDisabled));
+        replyDisabledTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYREPLYDISABLED, R.string.StoryReplyDisabled));
         addView(replyDisabledTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 40, Gravity.LEFT, 16, 0, 16, 0));
     }
 
@@ -4500,7 +4500,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                     }
                 }
                 if (storyItem.views.views_count > 0) {
-                    selfStatusView.setText(storyViewer.storiesList == null ? LocaleController.getString("NobodyViews", R.string.NobodyViews) : LocaleController.getString("NobodyViewsArchived", R.string.NobodyViewsArchived));
+                    selfStatusView.setText(storyViewer.storiesList == null ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOBODYVIEWS, R.string.NobodyViews) : LocaleController.getString("NobodyViewsArchived", R.string.NobodyViewsArchived));
                     selfStatusView.setTranslationX(AndroidUtilities.dp(16));
                     SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
                     stringBuilder.append("d  ");
@@ -4570,7 +4570,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                     }
                     selfAvatarsContainer.setVisibility(View.VISIBLE);
                 } else {
-                    selfStatusView.setText(storyViewer.storiesList == null ? LocaleController.getString("NobodyViews", R.string.NobodyViews) : LocaleController.getString("NobodyViewsArchived", R.string.NobodyViewsArchived));
+                    selfStatusView.setText(storyViewer.storiesList == null ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOBODYVIEWS, R.string.NobodyViews) : LocaleController.getString("NobodyViewsArchived", R.string.NobodyViewsArchived));
                     selfStatusView.setTranslationX(AndroidUtilities.dp(16));
                     selfAvatarsView.setVisibility(View.GONE);
                     selfAvatarsContainer.setVisibility(View.GONE);
@@ -4996,7 +4996,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
     }
 
     private void showAttachmentError() {
-        BulletinFactory.of(storyContainer, resourcesProvider).createErrorBulletin(LocaleController.getString("UnsupportedAttachment", R.string.UnsupportedAttachment), resourcesProvider).show();
+        BulletinFactory.of(storyContainer, resourcesProvider).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNSUPPORTEDATTACHMENT, R.string.UnsupportedAttachment), resourcesProvider).show();
     }
 
     public void setLongpressed(boolean isLongpressed) {
@@ -6172,7 +6172,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
         storyViewer.closeKeyboardOrEmoji();
         BulletinFactory bulletinFactory = BulletinFactory.of(storyContainer, resourcesProvider);
         if (bulletinFactory != null) {
-            bulletinFactory.createSimpleBulletin(R.raw.forward, LocaleController.getString("MessageSent", R.string.MessageSent), LocaleController.getString("ViewInChat", R.string.ViewInChat), Bulletin.DURATION_PROLONG, this::openChat).hideAfterBottomSheet(false).show(false);
+            bulletinFactory.createSimpleBulletin(R.raw.forward, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGESENT, R.string.MessageSent), LocaleController.getString("ViewInChat", R.string.ViewInChat), Bulletin.DURATION_PROLONG, this::openChat).hideAfterBottomSheet(false).show(false);
         }
         MessagesController.getInstance(currentAccount).ensureMessagesLoaded(dialogId, 0, null);
     }
@@ -6219,7 +6219,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                     sparseIntArray.put(Theme.key_chat_emojiPanelBackground, ColorUtils.setAlphaComponent(Color.WHITE, 30));
                 }
             });
-            reactionsContainerLayout.setHint(LocaleController.getString(R.string.StoryReactionsHint));
+            reactionsContainerLayout.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYREACTIONSHINT, R.string.StoryReactionsHint));
             reactionsContainerLayout.skipEnterAnimation = true;
             addView(reactionsContainerLayout, reactionsContainerIndex, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 52 + 20, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0, 0, 64));
             reactionsContainerLayout.setDelegate(new ReactionsContainerLayout.ReactionsContainerDelegate() {
@@ -6277,8 +6277,8 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                     }
 
                     BulletinFactory.of(storyContainer, resourcesProvider).createEmojiBulletin(document,
-                            LocaleController.getString("ReactionSent", R.string.ReactionSent),
-                            LocaleController.getString("ViewInChat", R.string.ViewInChat), () -> {
+                            LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REACTIONSENT, R.string.ReactionSent),
+                            LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWINCHAT, R.string.ViewInChat), () -> {
                                 openChat();
                             }).setDuration(Bulletin.DURATION_PROLONG).show();
                     if (reactionsContainerLayout.getReactionsWindow() != null) {
@@ -6592,12 +6592,12 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                         editedPrivacy = true;
 
                         if (privacy.type == StoryPrivacyBottomSheet.TYPE_EVERYONE) {
-                            BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.contact_check, LocaleController.getString("StorySharedToEveryone")).show();
+                            BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.contact_check, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYSHAREDTOEVERYONE)).show();
                         } else if (privacy.type == StoryPrivacyBottomSheet.TYPE_CLOSE_FRIENDS) {
-                            BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.contact_check, LocaleController.getString("StorySharedToCloseFriends")).show();
+                            BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.contact_check, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYSHAREDTOCLOSEFRIENDS)).show();
                         } else if (privacy.type == StoryPrivacyBottomSheet.TYPE_CONTACTS) {
                             if (privacy.selectedUserIds.isEmpty()) {
-                                BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.contact_check, LocaleController.getString("StorySharedToAllContacts")).show();
+                                BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.contact_check, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYSHAREDTOALLCONTACTS)).show();
                             } else {
                                 BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.contact_check, LocaleController.formatPluralString("StorySharedToAllContactsExcluded", privacy.selectedUserIds.size())).show();
                             }
@@ -6610,7 +6610,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                             BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.contact_check, LocaleController.formatPluralString("StorySharedToContacts", userIds.size())).show();
                         }
                     } else {
-                        BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.error, LocaleController.getString("UnknownError", R.string.UnknownError)).show();
+                        BulletinFactory.of(storyContainer, resourcesProvider).createSimpleBulletin(R.raw.error, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNKNOWNERROR, R.string.UnknownError)).show();
                     }
 
                     updatePosition();
@@ -6622,13 +6622,13 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
         if (chatActivityEnterView != null && chatActivityEnterView.isRecordLocked()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), resourcesProvider);
             if (chatActivityEnterView.isInVideoMode()) {
-                builder.setTitle(LocaleController.getString("DiscardVideoMessageTitle", R.string.DiscardVideoMessageTitle));
-                builder.setMessage(LocaleController.getString("DiscardVideoMessageDescription", R.string.DiscardVideoMessageDescription));
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISCARDVIDEOMESSAGETITLE, R.string.DiscardVideoMessageTitle));
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISCARDVIDEOMESSAGEDESCRIPTION, R.string.DiscardVideoMessageDescription));
             } else {
-                builder.setTitle(LocaleController.getString("DiscardVoiceMessageTitle", R.string.DiscardVoiceMessageTitle));
-                builder.setMessage(LocaleController.getString("DiscardVoiceMessageDescription", R.string.DiscardVoiceMessageDescription));
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISCARDVOICEMESSAGETITLE, R.string.DiscardVoiceMessageTitle));
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISCARDVOICEMESSAGEDESCRIPTION, R.string.DiscardVoiceMessageDescription));
             }
-            builder.setPositiveButton(LocaleController.getString("DiscardVoiceMessageAction", R.string.DiscardVoiceMessageAction), (dialog, which) -> {
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISCARDVOICEMESSAGEACTION, R.string.DiscardVoiceMessageAction), (dialog, which) -> {
                 if (chatActivityEnterView != null) {
                     if (forceCloseOnDiscard) {
                         storyViewer.close(true);
@@ -6637,7 +6637,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                     }
                 }
             });
-            builder.setNegativeButton(LocaleController.getString("Continue", R.string.Continue), null);
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTINUE, R.string.Continue), null);
             delegate.showDialog(builder.create());
             return true;
         }

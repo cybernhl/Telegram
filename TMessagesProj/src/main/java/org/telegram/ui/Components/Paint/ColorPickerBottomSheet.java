@@ -259,11 +259,11 @@ public class ColorPickerBottomSheet extends BottomSheet {
                     switch (position) {
                         default:
                         case 0:
-                            return LocaleController.getString(R.string.PaintPaletteGrid).toUpperCase();
+                            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTPALETTEGRID, R.string.PaintPaletteGrid).toUpperCase();
                         case 1:
-                            return LocaleController.getString(R.string.PaintPaletteSpectrum).toUpperCase();
+                            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTPALETTESPECTRUM, R.string.PaintPaletteSpectrum).toUpperCase();
                         case 2:
-                            return LocaleController.getString(R.string.PaintPaletteSliders).toUpperCase();
+                            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTPALETTESLIDERS, R.string.PaintPaletteSliders).toUpperCase();
                     }
                 }
 
@@ -624,7 +624,7 @@ public class ColorPickerBottomSheet extends BottomSheet {
             TextView hexTitle = new TextView(context);
             hexTitle.setTextColor(0x99ffffff);
             hexTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-            hexTitle.setText(LocaleController.getString(R.string.PaintPaletteSlidersHexColor).toUpperCase());
+            hexTitle.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTPALETTESLIDERSHEXCOLOR, R.string.PaintPaletteSlidersHexColor).toUpperCase());
             hexTitle.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             hexLayout.addView(hexTitle, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, 0, 8, 0));
 
@@ -636,7 +636,7 @@ public class ColorPickerBottomSheet extends BottomSheet {
             hexEdit.setGravity(Gravity.CENTER);
             hexEdit.setSingleLine();
             hexEdit.setImeOptions(EditorInfo.IME_ACTION_DONE);
-            hexEdit.setImeActionLabel(LocaleController.getString(R.string.Done), EditorInfo.IME_ACTION_DONE);
+            hexEdit.setImeActionLabel(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done), EditorInfo.IME_ACTION_DONE);
             hexEdit.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             hexEdit.addTextChangedListener(new TextWatcher() {
                 private Pattern pattern = Pattern.compile("^[0-9a-fA-F]*$");
@@ -754,7 +754,7 @@ public class ColorPickerBottomSheet extends BottomSheet {
             valueView.setGravity(Gravity.CENTER);
             valueView.setSingleLine();
             valueView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-            valueView.setImeActionLabel(LocaleController.getString(R.string.Done), EditorInfo.IME_ACTION_DONE);
+            valueView.setImeActionLabel(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done), EditorInfo.IME_ACTION_DONE);
             valueView.setInputType(EditorInfo.TYPE_CLASS_NUMBER);
             valueView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             valueView.addTextChangedListener(new TextWatcher() {
@@ -820,13 +820,13 @@ public class ColorPickerBottomSheet extends BottomSheet {
             sliderView.setMode(mode);
             switch (mode) {
                 case ColorSliderView.MODE_RED:
-                    titleView.setText(LocaleController.getString(R.string.PaintPaletteSlidersRed).toUpperCase());
+                    titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTPALETTESLIDERSRED, R.string.PaintPaletteSlidersRed).toUpperCase());
                     break;
                 case ColorSliderView.MODE_GREEN:
-                    titleView.setText(LocaleController.getString(R.string.PaintPaletteSlidersGreen).toUpperCase());
+                    titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTPALETTESLIDERSGREEN, R.string.PaintPaletteSlidersGreen).toUpperCase());
                     break;
                 case ColorSliderView.MODE_BLUE:
-                    titleView.setText(LocaleController.getString(R.string.PaintPaletteSlidersBlue).toUpperCase());
+                    titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTPALETTESLIDERSBLUE, R.string.PaintPaletteSlidersBlue).toUpperCase());
                     break;
             }
             invalidateColor();

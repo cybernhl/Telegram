@@ -96,9 +96,9 @@ public class LinkEditActivity extends BaseFragment {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
         if (type == CREATE_TYPE) {
-            actionBar.setTitle(LocaleController.getString("NewLink", R.string.NewLink));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWLINK, R.string.NewLink));
         } else if (type == EDIT_TYPE) {
-            actionBar.setTitle(LocaleController.getString("EditLink", R.string.EditLink));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDITLINK, R.string.EditLink));
         }
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
@@ -116,9 +116,9 @@ public class LinkEditActivity extends BaseFragment {
         createTextView.setOnClickListener(this::onCreateClicked);
         createTextView.setSingleLine();
         if (type == CREATE_TYPE) {
-            createTextView.setText(LocaleController.getString("CreateLinkHeader", R.string.CreateLinkHeader));
+            createTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATELINKHEADER, R.string.CreateLinkHeader));
         } else if (type == EDIT_TYPE) {
-            createTextView.setText(LocaleController.getString("SaveLinkHeader", R.string.SaveLinkHeader));
+            createTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVELINKHEADER, R.string.SaveLinkHeader));
         }
         createTextView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultTitle));
         createTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14f);
@@ -277,9 +277,9 @@ public class LinkEditActivity extends BaseFragment {
         buttonTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
 
         if (type == CREATE_TYPE) {
-            buttonTextView.setText(LocaleController.getString("CreateLink", R.string.CreateLink));
+            buttonTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATELINK, R.string.CreateLink));
         } else if (type == EDIT_TYPE) {
-            buttonTextView.setText(LocaleController.getString("SaveLink", R.string.SaveLink));
+            buttonTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVELINK, R.string.SaveLink));
         }
 
         TLRPC.Chat chatLocal = getMessagesController().getChat(chatId);
@@ -300,7 +300,7 @@ public class LinkEditActivity extends BaseFragment {
             approveCell.setDrawCheckRipple(true);
             approveCell.setHeight(56);
             approveCell.setTag(Theme.key_windowBackgroundUnchecked);
-            approveCell.setTextAndCheck(LocaleController.getString("ApproveNewMembers", R.string.ApproveNewMembers), false, false);
+            approveCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPROVENEWMEMBERS, R.string.ApproveNewMembers), false, false);
             approveCell.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
             approveCell.setOnClickListener(view -> {
                 TextCheckCell cell = (TextCheckCell) view;
@@ -316,12 +316,12 @@ public class LinkEditActivity extends BaseFragment {
         TextInfoPrivacyCell hintCell = new TextInfoPrivacyCell(context);
         hintCell.setBackground(Theme.getThemedDrawableByKey(context, R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
         if (hasApproveCell) {
-            hintCell.setText(LocaleController.getString("ApproveNewMembersDescription", R.string.ApproveNewMembersDescription));
+            hintCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPROVENEWMEMBERSDESCRIPTION, R.string.ApproveNewMembersDescription));
         }
         linearLayout.addView(hintCell);
 
         timeHeaderCell = new HeaderCell(context);
-        timeHeaderCell.setText(LocaleController.getString("LimitByPeriod", R.string.LimitByPeriod));
+        timeHeaderCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LIMITBYPERIOD, R.string.LimitByPeriod));
         linearLayout.addView(timeHeaderCell);
         timeChooseView = new SlideChooseView(context);
         linearLayout.addView(timeChooseView);
@@ -329,7 +329,7 @@ public class LinkEditActivity extends BaseFragment {
         timeEditText.setPadding(AndroidUtilities.dp(22), 0, AndroidUtilities.dp(22), 0);
         timeEditText.setGravity(Gravity.CENTER_VERTICAL);
         timeEditText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-        timeEditText.setHint(LocaleController.getString("TimeLimitHint", R.string.TimeLimitHint));
+        timeEditText.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TIMELIMITHINT, R.string.TimeLimitHint));
         timeEditText.setOnClickListener(view -> AlertsCreator.createDatePickerDialog(context, -1, (notify, scheduleDate) -> chooseDate(scheduleDate)));
 
         timeChooseView.setCallback(index -> {
@@ -344,11 +344,11 @@ public class LinkEditActivity extends BaseFragment {
         linearLayout.addView(timeEditText, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
 
         divider = new TextInfoPrivacyCell(context);
-        divider.setText(LocaleController.getString("TimeLimitHelp", R.string.TimeLimitHelp));
+        divider.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TIMELIMITHELP, R.string.TimeLimitHelp));
         linearLayout.addView(divider);
 
         usesHeaderCell = new HeaderCell(context);
-        usesHeaderCell.setText(LocaleController.getString("LimitNumberOfUses", R.string.LimitNumberOfUses));
+        usesHeaderCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LIMITNUMBEROFUSES, R.string.LimitNumberOfUses));
         linearLayout.addView(usesHeaderCell);
         usesChooseView = new SlideChooseView(context);
         usesChooseView.setCallback(index -> {
@@ -376,7 +376,7 @@ public class LinkEditActivity extends BaseFragment {
         usesEditText.setPadding(AndroidUtilities.dp(22), 0, AndroidUtilities.dp(22), 0);
         usesEditText.setGravity(Gravity.CENTER_VERTICAL);
         usesEditText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-        usesEditText.setHint(LocaleController.getString("UsesLimitHint", R.string.UsesLimitHint));
+        usesEditText.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USESLIMITHINT, R.string.UsesLimitHint));
         usesEditText.setKeyListener(DigitsKeyListener.getInstance("0123456789."));
         usesEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
         usesEditText.addTextChangedListener(new TextWatcher() {
@@ -416,7 +416,7 @@ public class LinkEditActivity extends BaseFragment {
         linearLayout.addView(usesEditText, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
 
         dividerUses = new TextInfoPrivacyCell(context);
-        dividerUses.setText(LocaleController.getString("UsesLimitHelp", R.string.UsesLimitHelp));
+        dividerUses.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USESLIMITHELP, R.string.UsesLimitHelp));
         linearLayout.addView(dividerUses);
 
         nameEditText = new EditText(context) {
@@ -440,7 +440,7 @@ public class LinkEditActivity extends BaseFragment {
         nameEditText.setCursorVisible(false);
         nameEditText.setFilters(new InputFilter[]{ new InputFilter.LengthFilter(32) });
         nameEditText.setGravity(Gravity.CENTER_VERTICAL);
-        nameEditText.setHint(LocaleController.getString("LinkNameHint", R.string.LinkNameHint));
+        nameEditText.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKNAMEHINT, R.string.LinkNameHint));
         nameEditText.setHintTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         nameEditText.setLines(1);
         nameEditText.setPadding(AndroidUtilities.dp(22), 0, AndroidUtilities.dp(22), 0);
@@ -451,23 +451,23 @@ public class LinkEditActivity extends BaseFragment {
 
         dividerName = new TextInfoPrivacyCell(context);
         dividerName.setBackground(Theme.getThemedDrawableByKey(context, R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
-        dividerName.setText(LocaleController.getString("LinkNameHelp", R.string.LinkNameHelp));
+        dividerName.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKNAMEHELP, R.string.LinkNameHelp));
         linearLayout.addView(dividerName);
 
         if (type == EDIT_TYPE) {
             revokeLink = new TextSettingsCell(context);
             revokeLink.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
-            revokeLink.setText(LocaleController.getString("RevokeLink", R.string.RevokeLink), false);
+            revokeLink.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REVOKELINK, R.string.RevokeLink), false);
             revokeLink.setTextColor(Theme.getColor(Theme.key_text_RedRegular));
             revokeLink.setOnClickListener(view -> {
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
-                builder2.setMessage(LocaleController.getString("RevokeAlert", R.string.RevokeAlert));
-                builder2.setTitle(LocaleController.getString("RevokeLink", R.string.RevokeLink));
-                builder2.setPositiveButton(LocaleController.getString("RevokeButton", R.string.RevokeButton), (dialogInterface2, i2) -> {
+                builder2.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REVOKEALERT, R.string.RevokeAlert));
+                builder2.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REVOKELINK, R.string.RevokeLink));
+                builder2.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REVOKEBUTTON, R.string.RevokeButton), (dialogInterface2, i2) -> {
                     callback.revokeLink(inviteToEdit);
                     finishFragment();
                 });
-                builder2.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                builder2.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                 showDialog(builder2.create());
 
             });
@@ -685,7 +685,7 @@ public class LinkEditActivity extends BaseFragment {
         String[] options = new String[dispalyedUses.size() + 1];
         for (int i = 0; i < options.length; i++) {
             if (i == options.length - 1) {
-                options[i] = LocaleController.getString("NoLimit", R.string.NoLimit);
+                options[i] = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOLIMIT, R.string.NoLimit);
             } else {
                 options[i] = dispalyedUses.get(i).toString();
             }
@@ -717,7 +717,7 @@ public class LinkEditActivity extends BaseFragment {
         String[] options = new String[dispalyedDates.size() + 1];
         for (int i = 0; i < options.length; i++) {
             if (i == options.length - 1) {
-                options[i] = LocaleController.getString("NoLimit", R.string.NoLimit);
+                options[i] = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOLIMIT, R.string.NoLimit);
             } else {
                 if (dispalyedDates.get(i) == defaultDates[0]) {
                     options[i] = LocaleController.formatPluralString("Hours", 1);
@@ -727,7 +727,7 @@ public class LinkEditActivity extends BaseFragment {
                     options[i] = LocaleController.formatPluralString("Weeks", 1);
                 } else {
                     if (selectedDate < 86400L) {
-                        options[i] = LocaleController.getString("MessageScheduleToday", R.string.MessageScheduleToday);
+                        options[i] = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGESCHEDULETODAY, R.string.MessageScheduleToday);
                     } else if (selectedDate < 364 * 86400L) {
                         options[i] = LocaleController.getInstance().formatterScheduleDay.format(originDate * 1000L);
                     } else {
@@ -744,7 +744,7 @@ public class LinkEditActivity extends BaseFragment {
         for (int i = 0; i < defaultDates.length; i++) {
             dispalyedDates.add(defaultDates[i]);
         }
-        String[] options = new String[]{ LocaleController.formatPluralString("Hours", 1), LocaleController.formatPluralString("Days", 1), LocaleController.formatPluralString("Weeks", 1), LocaleController.getString("NoLimit", R.string.NoLimit) };
+        String[] options = new String[]{ LocaleController.formatPluralString("Hours", 1), LocaleController.formatPluralString("Days", 1), LocaleController.formatPluralString("Weeks", 1), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOLIMIT, R.string.NoLimit) };
         timeChooseView.setOptions(options.length - 1, options);
     }
 
@@ -757,7 +757,7 @@ public class LinkEditActivity extends BaseFragment {
         for (int i = 0; i < defaultUses.length; i++) {
             dispalyedUses.add(defaultUses[i]);
         }
-        String[] options = new String[]{ "1", "10", "100", LocaleController.getString("NoLimit", R.string.NoLimit) };
+        String[] options = new String[]{ "1", "10", "100", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOLIMIT, R.string.NoLimit) };
         usesChooseView.setOptions(options.length - 1, options);
     }
 

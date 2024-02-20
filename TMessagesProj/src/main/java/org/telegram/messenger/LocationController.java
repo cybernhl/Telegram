@@ -1217,7 +1217,7 @@ public class LocationController extends BaseController implements NotificationCe
                     cityLocation.title = city;
                     cityLocation.icon = onlyCountry ? "https://ss3.4sqi.net/img/categories_v2/building/government_capitolbuilding_64.png" : "https://ss3.4sqi.net/img/categories_v2/travel/hotel_64.png";
                     cityLocation.emoji = countryCodeToEmoji(countryCode);
-                    cityLocation.address = onlyCountry ? LocaleController.getString("Country", R.string.Country) : LocaleController.getString("PassportCity", R.string.PassportCity);
+                    cityLocation.address = onlyCountry ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_COUNTRY, R.string.Country) : LocaleController.getString("PassportCity", R.string.PassportCity);
                 }
                 if (!TextUtils.isEmpty(street)) {
                     streetLocation = new TLRPC.TL_messageMediaVenue();
@@ -1227,7 +1227,7 @@ public class LocationController extends BaseController implements NotificationCe
                     streetLocation.query_id = -1;
                     streetLocation.title = street;
                     streetLocation.icon = "pin";
-                    streetLocation.address = LocaleController.getString("PassportStreet1", R.string.PassportStreet1);
+                    streetLocation.address = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSPORTSTREET1, R.string.PassportStreet1);
                 }
                 if (cityLocation == null && streetLocation == null && location != null) {
                     String ocean = detectOcean(location.getLongitude(), location.getLatitude());

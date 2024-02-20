@@ -150,12 +150,12 @@ public class UserSelectorBottomSheet extends BottomSheetWithRecyclerListView imp
         if (selectedIds.size() > 0) {
             if (!isHintSearchText) {
                 isHintSearchText = true;
-                AndroidUtilities.runOnUIThread(() -> searchField.setHintText(LocaleController.getString("Search", R.string.Search), true), 10);
+                AndroidUtilities.runOnUIThread(() -> searchField.setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search), true), 10);
             }
         } else {
             if (isHintSearchText) {
                 isHintSearchText = false;
-                AndroidUtilities.runOnUIThread(() -> searchField.setHintText(LocaleController.getString("GiftPremiumUsersSearchHint", R.string.GiftPremiumUsersSearchHint), true), 10);
+                AndroidUtilities.runOnUIThread(() -> searchField.setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GIFTPREMIUMUSERSSEARCHHINT, R.string.GiftPremiumUsersSearchHint), true), 10);
             }
         }
     }
@@ -212,7 +212,7 @@ public class UserSelectorBottomSheet extends BottomSheetWithRecyclerListView imp
         };
         searchField.setBackgroundColor(getThemedColor(Theme.key_dialogBackground));
         searchField.setOnSearchTextChange(this::onSearch);
-        searchField.setHintText(LocaleController.getString("GiftPremiumUsersSearchHint", R.string.GiftPremiumUsersSearchHint), false);
+        searchField.setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GIFTPREMIUMUSERSSEARCHHINT, R.string.GiftPremiumUsersSearchHint), false);
 
         sectionCell = new View(getContext()) {
             @Override
@@ -396,7 +396,7 @@ public class UserSelectorBottomSheet extends BottomSheetWithRecyclerListView imp
     }
 
     private void showMaximumUsersToast() {
-        String text = LocaleController.getString("BoostingSelectUpToWarningUsers", R.string.BoostingSelectUpToWarningUsers);
+        String text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGSELECTUPTOWARNINGUSERS, R.string.BoostingSelectUpToWarningUsers);
         BulletinFactory.of(container, resourcesProvider).createSimpleBulletin(R.raw.chats_infotip, text).show(true);
         try {
             container.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
@@ -445,14 +445,14 @@ public class UserSelectorBottomSheet extends BottomSheetWithRecyclerListView imp
         SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
         if (selectedIds.size() == 0) {
             if (LocaleController.isRTL) {
-                stringBuilder.append(LocaleController.getString("GiftPremiumChooseRecipientsBtn", R.string.GiftPremiumChooseRecipientsBtn));
+                stringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GIFTPREMIUMCHOOSERECIPIENTSBTN, R.string.GiftPremiumChooseRecipientsBtn));
                 stringBuilder.append("d").setSpan(recipientsBtnSpaceSpan, stringBuilder.length() - 1, stringBuilder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             } else {
                 stringBuilder.append("d").setSpan(recipientsBtnSpaceSpan, 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                stringBuilder.append(LocaleController.getString("GiftPremiumChooseRecipientsBtn", R.string.GiftPremiumChooseRecipientsBtn));
+                stringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GIFTPREMIUMCHOOSERECIPIENTSBTN, R.string.GiftPremiumChooseRecipientsBtn));
             }
         } else {
-            stringBuilder.append(LocaleController.getString("GiftPremiumProceedBtn", R.string.GiftPremiumProceedBtn));
+            stringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GIFTPREMIUMPROCEEDBTN, R.string.GiftPremiumProceedBtn));
         }
         actionButton.setCount(selectedIds.size(), true);
         actionButton.setText(stringBuilder, animated, false);
@@ -519,7 +519,7 @@ public class UserSelectorBottomSheet extends BottomSheetWithRecyclerListView imp
                 }
                 if (!userItems.isEmpty()) {
                     h += dp(32);
-                    items.add(Item.asTopSection(LocaleController.getString("GiftPremiumFrequentContacts", R.string.GiftPremiumFrequentContacts)));
+                    items.add(Item.asTopSection(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GIFTPREMIUMFREQUENTCONTACTS, R.string.GiftPremiumFrequentContacts)));
                     items.addAll(userItems);
                 }
             }
@@ -569,7 +569,7 @@ public class UserSelectorBottomSheet extends BottomSheetWithRecyclerListView imp
 
     @Override
     protected CharSequence getTitle() {
-        return LocaleController.getString("GiftTelegramPremiumTitle", R.string.GiftTelegramPremiumTitle);
+        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GIFTTELEGRAMPREMIUMTITLE, R.string.GiftTelegramPremiumTitle);
     }
 
     @Override

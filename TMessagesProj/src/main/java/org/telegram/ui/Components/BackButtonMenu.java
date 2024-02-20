@@ -117,15 +117,15 @@ public class BackButtonMenu {
                     thumb = user.photo.strippedBitmap;
                 }
                 if (pDialog.activity == ChatActivity.class && UserObject.isUserSelf(user)) {
-                    name = LocaleController.getString("SavedMessages", R.string.SavedMessages);
+                    name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages);
                     avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_SAVED);
                     imageView.setImageDrawable(avatarDrawable);
                 } else if (UserObject.isReplyUser(user)) {
-                    name = LocaleController.getString("RepliesTitle", R.string.RepliesTitle);
+                    name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLIESTITLE, R.string.RepliesTitle);
                     avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_REPLIES);
                     imageView.setImageDrawable(avatarDrawable);
                 } else if (UserObject.isDeleted(user)) {
-                    name = LocaleController.getString("HiddenName", R.string.HiddenName);
+                    name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_HIDDENNAME, R.string.HiddenName);
                     avatarDrawable.setInfo(thisFragment.getCurrentAccount(), user);
                     imageView.setImage(ImageLocation.getForUser(user, ImageLocation.TYPE_SMALL), "50_50", avatarDrawable, user);
                 } else {
@@ -139,7 +139,7 @@ public class BackButtonMenu {
                 imageView.setImageDrawable(drawable);
                 imageView.setSize(AndroidUtilities.dp(24), AndroidUtilities.dp(24));
                 imageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_actionBarDefaultSubmenuItemIcon, resourcesProvider), PorterDuff.Mode.MULTIPLY));
-                titleView.setText(LocaleController.getString("AllChats", R.string.AllChats));
+                titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ALLCHATS, R.string.AllChats));
                 addDivider = true;
             }
 

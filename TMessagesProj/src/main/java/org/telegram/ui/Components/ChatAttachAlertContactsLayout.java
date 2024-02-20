@@ -162,7 +162,7 @@ public class ChatAttachAlertContactsLayout extends ChatAttachAlert.AttachAlertLa
                 statusTextView.setText(currentStatus);
             } else if (currentUser != null) {
                 if (TextUtils.isEmpty(currentUser.phone)) {
-                    statusTextView.setText(LocaleController.getString("NumberUnknown", R.string.NumberUnknown));
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NUMBERUNKNOWN, R.string.NumberUnknown));
                 } else {
                     if (formattedPhoneNumberUser != currentUser && formattedPhoneNumber != null) {
                         statusTextView.setText(formattedPhoneNumber);
@@ -289,12 +289,12 @@ public class ChatAttachAlertContactsLayout extends ChatAttachAlert.AttachAlertLa
             public void onTextChange(String text) {
                 if (text.length() != 0) {
                     if (emptyView != null) {
-                        emptyView.setText(LocaleController.getString("NoResult", R.string.NoResult));
+                        emptyView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NORESULT, R.string.NoResult));
                     }
                 } else {
                     if (listView.getAdapter() != listAdapter) {
                         int top = getCurrentTop();
-                        emptyView.setText(LocaleController.getString("NoContacts", R.string.NoContacts));
+                        emptyView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOCONTACTS, R.string.NoContacts));
                         emptyView.showTextView();
                         listView.setAdapter(listAdapter);
                         listAdapter.notifyDataSetChanged();
@@ -327,12 +327,12 @@ public class ChatAttachAlertContactsLayout extends ChatAttachAlert.AttachAlertLa
                 parentAlert.makeFocusable(editText, true);
             }
         };
-        searchField.setHint(LocaleController.getString("SearchFriends", R.string.SearchFriends));
+        searchField.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHFRIENDS, R.string.SearchFriends));
         frameLayout.addView(searchField, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
 
         emptyView = new EmptyTextProgressView(context, null, resourcesProvider);
         emptyView.showTextView();
-        emptyView.setText(LocaleController.getString("NoContacts", R.string.NoContacts));
+        emptyView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOCONTACTS, R.string.NoContacts));
         addView(emptyView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT, 0, 52, 0, 0));
 
         listView = new RecyclerListView(context, resourcesProvider) {

@@ -68,31 +68,31 @@ public class ChatNotificationsPopupWrapper {
         windowLayout.setFitItems(true);
 
         if (swipeBackLayout != null) {
-            backItem = ActionBarMenuItem.addItem(windowLayout, R.drawable.msg_arrow_back, LocaleController.getString("Back", R.string.Back), false, resourcesProvider);
+            backItem = ActionBarMenuItem.addItem(windowLayout, R.drawable.msg_arrow_back, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BACK, R.string.Back), false, resourcesProvider);
             backItem.setOnClickListener(view -> {
                 swipeBackLayout.closeForeground();
             });
         }
 
-        soundToggle = ActionBarMenuItem.addItem(windowLayout, R.drawable.msg_tone_on, LocaleController.getString("SoundOn", R.string.SoundOn), false, resourcesProvider);
+        soundToggle = ActionBarMenuItem.addItem(windowLayout, R.drawable.msg_tone_on, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SOUNDON, R.string.SoundOn), false, resourcesProvider);
         soundToggle.setOnClickListener(view -> {
             dismiss();
             callback.toggleSound();
         });
 
-        muteForLastSelected = ActionBarMenuItem.addItem(windowLayout, R.drawable.msg_mute_1h, LocaleController.getString("MuteFor1h", R.string.MuteFor1h), false, resourcesProvider);
+        muteForLastSelected = ActionBarMenuItem.addItem(windowLayout, R.drawable.msg_mute_1h, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MUTEFOR1H, R.string.MuteFor1h), false, resourcesProvider);
         muteForLastSelected.setOnClickListener(view -> {
             dismiss();
             callback.muteFor(muteForLastSelected1Time);
         });
 
-        muteForLastSelected2 = ActionBarMenuItem.addItem(windowLayout, R.drawable.msg_mute_1h, LocaleController.getString("MuteFor1h", R.string.MuteFor1h), false, resourcesProvider);
+        muteForLastSelected2 = ActionBarMenuItem.addItem(windowLayout, R.drawable.msg_mute_1h, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MUTEFOR1H, R.string.MuteFor1h), false, resourcesProvider);
         muteForLastSelected2.setOnClickListener(view -> {
             dismiss();
             callback.muteFor(muteForLastSelected2Time);
         });
 
-        ActionBarMenuSubItem item = ActionBarMenuItem.addItem(windowLayout, R.drawable.msg_mute_period, LocaleController.getString("MuteForPopup", R.string.MuteForPopup), false, resourcesProvider);
+        ActionBarMenuSubItem item = ActionBarMenuItem.addItem(windowLayout, R.drawable.msg_mute_period, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MUTEFORPOPUP, R.string.MuteForPopup), false, resourcesProvider);
         item.setOnClickListener(view -> {
             dismiss();
             AlertsCreator.createMuteForPickerDialog(context, resourcesProvider, (notify, inSecond) -> {
@@ -113,7 +113,7 @@ public class ChatNotificationsPopupWrapper {
             });
         });
 
-        item = ActionBarMenuItem.addItem(windowLayout, R.drawable.msg_customize, LocaleController.getString("NotificationsCustomize", R.string.NotificationsCustomize), false, resourcesProvider);
+        item = ActionBarMenuItem.addItem(windowLayout, R.drawable.msg_customize, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSCUSTOMIZE, R.string.NotificationsCustomize), false, resourcesProvider);
         item.setOnClickListener(view -> {
             dismiss();
             callback.showCustomize();
@@ -170,18 +170,18 @@ public class ChatNotificationsPopupWrapper {
 
         int color;
         if (muted) {
-            muteUnmuteButton.setTextAndIcon(LocaleController.getString("UnmuteNotifications", R.string.UnmuteNotifications), R.drawable.msg_unmute);
+            muteUnmuteButton.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNMUTENOTIFICATIONS, R.string.UnmuteNotifications), R.drawable.msg_unmute);
             color = Theme.getColor(Theme.key_windowBackgroundWhiteGreenText2);
             soundToggle.setVisibility(View.GONE);
         } else {
-            muteUnmuteButton.setTextAndIcon(LocaleController.getString("MuteNotifications", R.string.MuteNotifications), R.drawable.msg_mute);
+            muteUnmuteButton.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MUTENOTIFICATIONS, R.string.MuteNotifications), R.drawable.msg_mute);
             color = Theme.getColor(Theme.key_text_RedBold);
             soundToggle.setVisibility(View.VISIBLE);
             boolean soundOn = MessagesController.getInstance(currentAccount).isDialogNotificationsSoundEnabled(dialogId, topicId);
             if (soundOn) {
-                soundToggle.setTextAndIcon(LocaleController.getString("SoundOff", R.string.SoundOff), R.drawable.msg_tone_off);
+                soundToggle.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SOUNDOFF, R.string.SoundOff), R.drawable.msg_tone_off);
             } else {
-                soundToggle.setTextAndIcon(LocaleController.getString("SoundOn", R.string.SoundOn), R.drawable.msg_tone_on);
+                soundToggle.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SOUNDON, R.string.SoundOn), R.drawable.msg_tone_on);
             }
         }
 
@@ -244,19 +244,19 @@ public class ChatNotificationsPopupWrapper {
         int minutes = time / 60;
 
         if (days != 0) {
-            stringBuilder.append(days).append(LocaleController.getString("SecretChatTimerDays", R.string.SecretChatTimerDays));
+            stringBuilder.append(days).append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SECRETCHATTIMERDAYS, R.string.SecretChatTimerDays));
         }
         if (hours != 0) {
             if (stringBuilder.length() > 0) {
                 stringBuilder.append(" ");
             }
-            stringBuilder.append(hours).append(LocaleController.getString("SecretChatTimerHours", R.string.SecretChatTimerHours));
+            stringBuilder.append(hours).append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SECRETCHATTIMERHOURS, R.string.SecretChatTimerHours));
         }
         if (minutes != 0) {
             if (stringBuilder.length() > 0) {
                 stringBuilder.append(" ");
             }
-            stringBuilder.append(minutes).append(LocaleController.getString("SecretChatTimerMinutes", R.string.SecretChatTimerMinutes));
+            stringBuilder.append(minutes).append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SECRETCHATTIMERMINUTES, R.string.SecretChatTimerMinutes));
         }
         return LocaleController.formatString("MuteForButton", R.string.MuteForButton, stringBuilder.toString());
     }

@@ -333,7 +333,7 @@ public class ThemeSmallPreviewView extends FrameLayout implements NotificationCe
         }
 
         if (chatThemeItem.chatTheme == null || chatThemeItem.chatTheme.showAsDefaultStub) {
-            setContentDescription(LocaleController.getString(R.string.ChatNoTheme));
+            setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATNOTHEME, R.string.ChatNoTheme));
         } else {
             setContentDescription(chatThemeItem.chatTheme.getEmoticon());
         }
@@ -553,7 +553,7 @@ public class ThemeSmallPreviewView extends FrameLayout implements NotificationCe
     }
 
     protected String noThemeString() {
-        return LocaleController.getString(R.string.ChatNoTheme);
+        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATNOTHEME, R.string.ChatNoTheme);
     }
 
     private int getThemedColor(int key) {

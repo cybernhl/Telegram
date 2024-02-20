@@ -109,9 +109,9 @@ public class LocationActivitySearchAdapter extends BaseLocationAdapter {
             locationCell.setLocation(place, p, oposition != getItemCount() - 1 && (searchingLocations || locations.isEmpty() || oposition != (locations.size())));
         } else if (holder.getItemViewType() == VIEW_TYPE_SECTION) {
             if (position == 0 && !locations.isEmpty()) {
-                ((GraySectionCell) holder.itemView).setText(LocaleController.getString("LocationOnMap", R.string.LocationOnMap));
+                ((GraySectionCell) holder.itemView).setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOCATIONONMAP, R.string.LocationOnMap));
             } else {
-                ((GraySectionCell) holder.itemView).setText(LocaleController.getString("NearbyVenue", R.string.NearbyVenue));
+                ((GraySectionCell) holder.itemView).setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEARBYVENUE, R.string.NearbyVenue));
             }
         }
     }

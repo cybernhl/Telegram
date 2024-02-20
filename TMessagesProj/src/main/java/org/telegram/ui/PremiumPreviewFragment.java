@@ -665,27 +665,27 @@ public class PremiumPreviewFragment extends BaseFragment implements Notification
 
     public static void fillPremiumFeaturesList(ArrayList<PremiumFeatureData> premiumFeatures, int currentAccount) {
         MessagesController messagesController = MessagesController.getInstance(currentAccount);
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_LIMITS, R.drawable.msg_premium_limits, LocaleController.getString("PremiumPreviewLimits", R.string.PremiumPreviewLimits), LocaleController.formatString("PremiumPreviewLimitsDescription", R.string.PremiumPreviewLimitsDescription,
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_LIMITS, R.drawable.msg_premium_limits, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWLIMITS, R.string.PremiumPreviewLimits), LocaleController.formatString("PremiumPreviewLimitsDescription", R.string.PremiumPreviewLimitsDescription,
                 messagesController.channelsLimitPremium, messagesController.dialogFiltersLimitPremium, messagesController.dialogFiltersPinnedLimitPremium, messagesController.publicLinksLimitPremium, 4)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_STORIES, R.drawable.msg_filled_stories, LocaleController.getString("PremiumPreviewStories", R.string.PremiumPreviewStories), LocaleController.formatString("PremiumPreviewStoriesDescription", R.string.PremiumPreviewStoriesDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_UPLOAD_LIMIT, R.drawable.msg_premium_uploads, LocaleController.getString("PremiumPreviewUploads", R.string.PremiumPreviewUploads), LocaleController.getString("PremiumPreviewUploadsDescription", R.string.PremiumPreviewUploadsDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_DOWNLOAD_SPEED, R.drawable.msg_premium_speed, LocaleController.getString("PremiumPreviewDownloadSpeed", R.string.PremiumPreviewDownloadSpeed), LocaleController.getString("PremiumPreviewDownloadSpeedDescription", R.string.PremiumPreviewDownloadSpeedDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_VOICE_TO_TEXT, R.drawable.msg_premium_voice, LocaleController.getString("PremiumPreviewVoiceToText", R.string.PremiumPreviewVoiceToText), LocaleController.getString("PremiumPreviewVoiceToTextDescription", R.string.PremiumPreviewVoiceToTextDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_ADS, R.drawable.msg_premium_ads, LocaleController.getString("PremiumPreviewNoAds", R.string.PremiumPreviewNoAds), LocaleController.getString("PremiumPreviewNoAdsDescription", R.string.PremiumPreviewNoAdsDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_REACTIONS, R.drawable.msg_premium_reactions, LocaleController.getString(R.string.PremiumPreviewReactions2), LocaleController.getString(R.string.PremiumPreviewReactions2Description)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_STICKERS, R.drawable.msg_premium_stickers, LocaleController.getString(R.string.PremiumPreviewStickers), LocaleController.getString(R.string.PremiumPreviewStickersDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_ANIMATED_EMOJI, R.drawable.msg_premium_emoji, LocaleController.getString(R.string.PremiumPreviewEmoji), LocaleController.getString(R.string.PremiumPreviewEmojiDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_ADVANCED_CHAT_MANAGEMENT, R.drawable.menu_premium_tools, LocaleController.getString(R.string.PremiumPreviewAdvancedChatManagement), LocaleController.getString(R.string.PremiumPreviewAdvancedChatManagementDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_PROFILE_BADGE, R.drawable.msg_premium_badge, LocaleController.getString(R.string.PremiumPreviewProfileBadge), LocaleController.getString(R.string.PremiumPreviewProfileBadgeDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_ANIMATED_AVATARS, R.drawable.msg_premium_avatar, LocaleController.getString(R.string.PremiumPreviewAnimatedProfiles), LocaleController.getString(R.string.PremiumPreviewAnimatedProfilesDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_SAVED_TAGS, R.drawable.premium_tags, applyNewSpan(LocaleController.getString(R.string.PremiumPreviewTags2)), LocaleController.getString(R.string.PremiumPreviewTagsDescription2)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_APPLICATION_ICONS, R.drawable.msg_premium_icons, LocaleController.getString(R.string.PremiumPreviewAppIcon), LocaleController.getString(R.string.PremiumPreviewAppIconDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_EMOJI_STATUS, R.drawable.premium_status, LocaleController.getString(R.string.PremiumPreviewEmojiStatus), LocaleController.getString(R.string.PremiumPreviewEmojiStatusDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_TRANSLATIONS, R.drawable.msg_premium_translate, LocaleController.getString(R.string.PremiumPreviewTranslations), LocaleController.getString(R.string.PremiumPreviewTranslationsDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_WALLPAPER, R.drawable.premium_wallpaper, LocaleController.getString(R.string.PremiumPreviewWallpaper), LocaleController.getString(R.string.PremiumPreviewWallpaperDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_NAME_COLOR, R.drawable.premium_colors, LocaleController.getString(R.string.PremiumPreviewProfileColor), LocaleController.getString(R.string.PremiumPreviewProfileColorDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_LAST_SEEN, R.drawable.menu_premium_seen, applyNewSpan(LocaleController.getString(R.string.PremiumPreviewLastSeen)), LocaleController.getString(R.string.PremiumPreviewLastSeenDescription)));
-        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_MESSAGE_PRIVACY, R.drawable.menu_premium_privacy, applyNewSpan(LocaleController.getString(R.string.PremiumPreviewMessagePrivacy)), LocaleController.getString(R.string.PremiumPreviewMessagePrivacyDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_STORIES, R.drawable.msg_filled_stories, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWSTORIES, R.string.PremiumPreviewStories), LocaleController.formatString("PremiumPreviewStoriesDescription", R.string.PremiumPreviewStoriesDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_UPLOAD_LIMIT, R.drawable.msg_premium_uploads, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWUPLOADS, R.string.PremiumPreviewUploads), LocaleController.getString("PremiumPreviewUploadsDescription", R.string.PremiumPreviewUploadsDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_DOWNLOAD_SPEED, R.drawable.msg_premium_speed, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWDOWNLOADSPEED, R.string.PremiumPreviewDownloadSpeed), LocaleController.getString("PremiumPreviewDownloadSpeedDescription", R.string.PremiumPreviewDownloadSpeedDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_VOICE_TO_TEXT, R.drawable.msg_premium_voice, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWVOICETOTEXT, R.string.PremiumPreviewVoiceToText), LocaleController.getString("PremiumPreviewVoiceToTextDescription", R.string.PremiumPreviewVoiceToTextDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_ADS, R.drawable.msg_premium_ads, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWNOADS, R.string.PremiumPreviewNoAds), LocaleController.getString("PremiumPreviewNoAdsDescription", R.string.PremiumPreviewNoAdsDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_REACTIONS, R.drawable.msg_premium_reactions, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWREACTIONS2, R.string.PremiumPreviewReactions2), LocaleController.getString(R.string.PremiumPreviewReactions2Description)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_STICKERS, R.drawable.msg_premium_stickers, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWSTICKERS, R.string.PremiumPreviewStickers), LocaleController.getString(R.string.PremiumPreviewStickersDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_ANIMATED_EMOJI, R.drawable.msg_premium_emoji, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWEMOJI, R.string.PremiumPreviewEmoji), LocaleController.getString(R.string.PremiumPreviewEmojiDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_ADVANCED_CHAT_MANAGEMENT, R.drawable.menu_premium_tools, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWADVANCEDCHATMANAGEMENT, R.string.PremiumPreviewAdvancedChatManagement), LocaleController.getString(R.string.PremiumPreviewAdvancedChatManagementDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_PROFILE_BADGE, R.drawable.msg_premium_badge, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWPROFILEBADGE, R.string.PremiumPreviewProfileBadge), LocaleController.getString(R.string.PremiumPreviewProfileBadgeDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_ANIMATED_AVATARS, R.drawable.msg_premium_avatar, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWANIMATEDPROFILES, R.string.PremiumPreviewAnimatedProfiles), LocaleController.getString(R.string.PremiumPreviewAnimatedProfilesDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_SAVED_TAGS, R.drawable.premium_tags, applyNewSpan(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWTAGS2, R.string.PremiumPreviewTags2)), LocaleController.getString(R.string.PremiumPreviewTagsDescription2)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_APPLICATION_ICONS, R.drawable.msg_premium_icons, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWAPPICON, R.string.PremiumPreviewAppIcon), LocaleController.getString(R.string.PremiumPreviewAppIconDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_EMOJI_STATUS, R.drawable.premium_status, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWEMOJISTATUS, R.string.PremiumPreviewEmojiStatus), LocaleController.getString(R.string.PremiumPreviewEmojiStatusDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_TRANSLATIONS, R.drawable.msg_premium_translate, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWTRANSLATIONS, R.string.PremiumPreviewTranslations), LocaleController.getString(R.string.PremiumPreviewTranslationsDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_WALLPAPER, R.drawable.premium_wallpaper, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWWALLPAPER, R.string.PremiumPreviewWallpaper), LocaleController.getString(R.string.PremiumPreviewWallpaperDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_NAME_COLOR, R.drawable.premium_colors, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWPROFILECOLOR, R.string.PremiumPreviewProfileColor), LocaleController.getString(R.string.PremiumPreviewProfileColorDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_LAST_SEEN, R.drawable.menu_premium_seen, applyNewSpan(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWLASTSEEN, R.string.PremiumPreviewLastSeen)), LocaleController.getString(R.string.PremiumPreviewLastSeenDescription)));
+        premiumFeatures.add(new PremiumFeatureData(PREMIUM_FEATURE_MESSAGE_PRIVACY, R.drawable.menu_premium_privacy, applyNewSpan(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWMESSAGEPRIVACY, R.string.PremiumPreviewMessagePrivacy)), LocaleController.getString(R.string.PremiumPreviewMessagePrivacyDescription)));
 
         if (messagesController.premiumFeaturesTypesToPosition.size() > 0) {
             for (int i = 0; i < premiumFeatures.size(); i++) {
@@ -896,7 +896,7 @@ public class PremiumPreviewFragment extends BaseFragment implements Notification
 
     public static String getPremiumButtonText(int currentAccount, SubscriptionTier tier) {
         if (BuildVars.IS_BILLING_UNAVAILABLE) {
-            return LocaleController.getString(R.string.SubscribeToPremiumNotAvailable);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SUBSCRIBETOPREMIUMNOTAVAILABLE, R.string.SubscribeToPremiumNotAvailable);
         }
 
         if (tier == null) {
@@ -914,7 +914,7 @@ public class PremiumPreviewFragment extends BaseFragment implements Notification
                     }
 
                     if (selectedOption == null) {
-                        return LocaleController.getString(R.string.SubscribeToPremiumNoPrice);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SUBSCRIBETOPREMIUMNOPRICE, R.string.SubscribeToPremiumNoPrice);
                     }
 
                     final String price;
@@ -927,7 +927,7 @@ public class PremiumPreviewFragment extends BaseFragment implements Notification
                     return LocaleController.formatString(R.string.SubscribeToPremium, price);
                 }
 
-                return LocaleController.getString(R.string.SubscribeToPremiumNoPrice);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SUBSCRIBETOPREMIUMNOPRICE, R.string.SubscribeToPremiumNoPrice);
             }
 
             String price = null;
@@ -947,13 +947,13 @@ public class PremiumPreviewFragment extends BaseFragment implements Notification
             }
 
             if (price == null) {
-                return LocaleController.getString(R.string.Loading);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOADING, R.string.Loading);
             }
 
             return LocaleController.formatString(R.string.SubscribeToPremium, price);
         } else {
             if (!BuildVars.useInvoiceBilling() && tier.getOfferDetails() == null) {
-                return LocaleController.getString(R.string.Loading);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOADING, R.string.Loading);
             }
             final boolean isPremium = UserConfig.getInstance(currentAccount).isPremium();
             final boolean isYearTier = tier.getMonths() == 12;
@@ -1579,7 +1579,7 @@ public class PremiumPreviewFragment extends BaseFragment implements Notification
             return;
         }
         if (!BuildVars.useInvoiceBilling() && (!BillingController.getInstance().isReady() || subscriptionTiers.isEmpty() || selectedTierIndex >= subscriptionTiers.size() || subscriptionTiers.get(selectedTierIndex).googlePlayProductDetails == null)) {
-            premiumButtonView.setButton(LocaleController.getString(R.string.Loading), v -> {}, animated);
+            premiumButtonView.setButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOADING, R.string.Loading), v -> {}, animated);
             premiumButtonView.setFlickerDisabled(true);
             return;
         }

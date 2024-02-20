@@ -67,7 +67,7 @@ public class SelectorAdapter extends AdapterWithDiffUtils {
             if (topSectionClickListener == null) {
                 topSectionCell.setRightText(null);
             } else {
-                topSectionCell.setRightText(LocaleController.getString(R.string.UsersDeselectAll), true, topSectionClickListener);
+                topSectionCell.setRightText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERSDESELECTALL, R.string.UsersDeselectAll), true, topSectionClickListener);
             }
         }
     }
@@ -91,8 +91,8 @@ public class SelectorAdapter extends AdapterWithDiffUtils {
             view = new SelectorUserCell(context, resourcesProvider, isGreenSelector);
         } else if (viewType == VIEW_TYPE_NO_USERS) {
             StickerEmptyView searchEmptyView = new StickerEmptyView(context, null, StickerEmptyView.STICKER_TYPE_SEARCH, resourcesProvider);
-            searchEmptyView.title.setText(LocaleController.getString("NoResult", R.string.NoResult));
-            searchEmptyView.subtitle.setText(LocaleController.getString("SearchEmptyViewFilteredSubtitle2", R.string.SearchEmptyViewFilteredSubtitle2));
+            searchEmptyView.title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NORESULT, R.string.NoResult));
+            searchEmptyView.subtitle.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHEMPTYVIEWFILTEREDSUBTITLE2, R.string.SearchEmptyViewFilteredSubtitle2));
             searchEmptyView.linearLayout.setTranslationY(AndroidUtilities.dp(24));
             view = searchEmptyView;
         } else if (viewType == VIEW_TYPE_LETTER) {
@@ -180,7 +180,7 @@ public class SelectorAdapter extends AdapterWithDiffUtils {
             if (topSectionClickListener == null) {
                 cell.setRightText(null, null);
             } else {
-                cell.setRightText(LocaleController.getString(R.string.UsersDeselectAll), topSectionClickListener);
+                cell.setRightText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERSDESELECTALL, R.string.UsersDeselectAll), topSectionClickListener);
             }
             topSectionCell = cell;
         }

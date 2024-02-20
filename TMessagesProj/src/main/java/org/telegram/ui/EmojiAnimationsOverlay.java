@@ -792,7 +792,7 @@ public class EmojiAnimationsOverlay implements NotificationCenter.NotificationCe
         }
         StickerSetBulletinLayout layout = new StickerSetBulletinLayout(contentLayout.getContext(), null, StickerSetBulletinLayout.TYPE_EMPTY, messageObject.getDocument(), chatActivity.getResourceProvider());
         layout.titleTextView.setText(stickerSet.set.title);
-        layout.subtitleTextView.setText(LocaleController.getString("PremiumStickerTooltip", R.string.PremiumStickerTooltip));
+        layout.subtitleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTICKERTOOLTIP, R.string.PremiumStickerTooltip));
 
         Bulletin.UndoButton viewButton = new Bulletin.UndoButton(chatActivity.getParentActivity(), true, chatActivity.getResourceProvider());
         layout.setButton(viewButton);
@@ -801,7 +801,7 @@ public class EmojiAnimationsOverlay implements NotificationCenter.NotificationCe
             alert.setCalcMandatoryInsets(chatActivity.isKeyboardVisible());
             chatActivity.showDialog(alert);
         });
-        viewButton.setText(LocaleController.getString("ViewAction", R.string.ViewAction));
+        viewButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWACTION, R.string.ViewAction));
         Bulletin bulletin = Bulletin.make(chatActivity, layout, Bulletin.DURATION_LONG);
         bulletin.hash = messageObject.getId();
         bulletin.show();

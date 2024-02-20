@@ -926,6 +926,6 @@ public class FlickerLoadingView extends View {
         TextPaint paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         paint.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         paint.setTextSize(AndroidUtilities.dp(14));
-        memberRequestButtonWidth = AndroidUtilities.dp(17 + 17) + paint.measureText(isChannel ? LocaleController.getString("AddToChannel", R.string.AddToChannel) : LocaleController.getString("AddToGroup", R.string.AddToGroup));
+        memberRequestButtonWidth = AndroidUtilities.dp(17 + 17) + paint.measureText(isChannel ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDTOCHANNEL, R.string.AddToChannel) : LocaleController.getString("AddToGroup", R.string.AddToGroup));
     }
 }

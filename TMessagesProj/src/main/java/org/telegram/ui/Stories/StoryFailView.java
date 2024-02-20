@@ -42,7 +42,7 @@ public class StoryFailView extends FrameLayout {
 
         titleTextView = new TextView(context);
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-        titleTextView.setText(LocaleController.getString(R.string.StoryError));
+        titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYERROR, R.string.StoryError));
         titleTextView.setTextColor(Color.WHITE);
         addView(titleTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL | Gravity.LEFT, 44, 0, 0, 0));
 
@@ -57,7 +57,7 @@ public class StoryFailView extends FrameLayout {
         button.setPadding(dp(13), 0, dp(13), 0);
         button.setBackground(Theme.createSimpleSelectorRoundRectDrawable(dp(16), 0x1fffffff, 0x38ffffff));
         button.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
-        button.setText(LocaleController.getString(R.string.TryAgain));
+        button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TRYAGAIN, R.string.TryAgain));
         button.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         button.setTextColor(Color.WHITE);
         button.setGravity(Gravity.CENTER);

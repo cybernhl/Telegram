@@ -392,7 +392,7 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
         CharSequence newText;
         if (scheduled) {
             if (date == 0x7ffffffe) {
-                newText = LocaleController.getString("MessageScheduledUntilOnline", R.string.MessageScheduledUntilOnline);
+                newText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGESCHEDULEDUNTILONLINE, R.string.MessageScheduledUntilOnline);
             } else {
                 newText = LocaleController.formatString("MessageScheduledOn", R.string.MessageScheduledOn, LocaleController.formatDateChat(date));
             }
@@ -1203,14 +1203,14 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
             if (text == null) {
                 if (messageObject.messageOwner != null && messageObject.messageOwner.media != null && messageObject.messageOwner.media.ttl_seconds != 0) {
                     if (messageObject.messageOwner.media.photo != null) {
-                        text = LocaleController.getString(R.string.AttachPhotoExpired);
+                        text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHPHOTOEXPIRED, R.string.AttachPhotoExpired);
                     } else if (messageObject.messageOwner.media.document instanceof TLRPC.TL_documentEmpty || messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaDocument && messageObject.messageOwner.media.document == null) {
                         if (messageObject.messageOwner.media.voice) {
-                            text = LocaleController.getString(R.string.AttachVoiceExpired);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHVOICEEXPIRED, R.string.AttachVoiceExpired);
                         } else if (messageObject.messageOwner.media.round) {
-                            text = LocaleController.getString(R.string.AttachRoundExpired);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHROUNDEXPIRED, R.string.AttachRoundExpired);
                         } else {
-                            text = LocaleController.getString(R.string.AttachVideoExpired);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHVIDEOEXPIRED, R.string.AttachVideoExpired);
                         }
                     } else {
                         text = AnimatedEmojiSpan.cloneSpans(messageObject.messageText);
@@ -1229,9 +1229,9 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
             } else if (messageObject.type == MessageObject.TYPE_GIFT_PREMIUM_CHANNEL) {
                 createGiftPremiumChannelLayouts();
             } else if (messageObject.type == MessageObject.TYPE_GIFT_PREMIUM) {
-                String actionName = isGiftCode() && !isSelfGiftCode() ? LocaleController.getString("GiftPremiumUseGiftBtn", R.string.GiftPremiumUseGiftBtn) :
-                        LocaleController.getString("ActionGiftPremiumView", R.string.ActionGiftPremiumView);
-                createGiftPremiumLayouts(LocaleController.getString(R.string.ActionGiftPremiumTitle), LocaleController.formatString(R.string.ActionGiftPremiumSubtitle, LocaleController.formatPluralString("Months", messageObject.messageOwner.action.months)), actionName, giftRectSize, true);
+                String actionName = isGiftCode() && !isSelfGiftCode() ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GIFTPREMIUMUSEGIFTBTN, R.string.GiftPremiumUseGiftBtn) :
+                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACTIONGIFTPREMIUMVIEW, R.string.ActionGiftPremiumView);
+                createGiftPremiumLayouts(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACTIONGIFTPREMIUMTITLE, R.string.ActionGiftPremiumTitle), LocaleController.formatString(R.string.ActionGiftPremiumSubtitle, LocaleController.formatPluralString("Months", messageObject.messageOwner.action.months)), actionName, giftRectSize, true);
             } else if (messageObject.type == MessageObject.TYPE_SUGGEST_PHOTO) {
                 TLRPC.TL_messageActionSuggestProfilePhoto actionSuggestProfilePhoto = (TLRPC.TL_messageActionSuggestProfilePhoto) messageObject.messageOwner.action;
                 String description;
@@ -1253,9 +1253,9 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
                 }
                 String action;
                 if (actionSuggestProfilePhoto.video || (actionSuggestProfilePhoto.photo.video_sizes != null && !actionSuggestProfilePhoto.photo.video_sizes.isEmpty())) {
-                    action = LocaleController.getString(R.string.ViewVideoAction);
+                    action = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWVIDEOACTION, R.string.ViewVideoAction);
                 } else {
-                    action = LocaleController.getString(R.string.ViewPhotoAction);
+                    action = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWPHOTOACTION, R.string.ViewPhotoAction);
                 }
                 createGiftPremiumLayouts(null, description, action, giftRectSize, true);
                 textLayout = null;
@@ -1270,13 +1270,13 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
                     description = messageObject.messageText;
                 } else if (!messageObject.isOutOwner() && messageObject.isWallpaperForBoth() && messageObject.isCurrentWallpaper()) {
                     description = messageObject.messageText;
-                    action = LocaleController.getString(R.string.RemoveWallpaperAction);
+                    action = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REMOVEWALLPAPERACTION, R.string.RemoveWallpaperAction);
                     actionClickableAsImage = false;
                 } else if (user != null && user.id == UserConfig.getInstance(currentAccount).clientUserId) {
                     description = messageObject.messageText;
                 } else {
                     description = messageObject.messageText;
-                    action = LocaleController.getString(R.string.ViewWallpaperAction);
+                    action = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWWALLPAPERACTION, R.string.ViewWallpaperAction);
                 }
                 createGiftPremiumLayouts(null, description, action, giftRectSize, actionClickableAsImage);
                 textLayout = null;
@@ -1293,7 +1293,7 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
                 } else {
                     description = AndroidUtilities.replaceTags(LocaleController.formatString("StoryMentionedTitle", R.string.StoryMentionedTitle, user.first_name));
                 }
-                action = LocaleController.getString(R.string.StoryMentionedAction);
+                action = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYMENTIONEDACTION, R.string.StoryMentionedAction);
 
                 createGiftPremiumLayouts(null, description, action, giftRectSize, true);
                 textLayout = null;
@@ -1314,8 +1314,8 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
         String from = chat == null ? null : chat.title;
         boolean isPrize = gifCodeAction.via_giveaway;
         CharSequence title = gifCodeAction.unclaimed ?
-                LocaleController.getString("BoostingUnclaimedPrize", R.string.BoostingUnclaimedPrize)
-                : LocaleController.getString("BoostingCongratulations", R.string.BoostingCongratulations);
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGUNCLAIMEDPRIZE, R.string.BoostingUnclaimedPrize)
+                : LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGCONGRATULATIONS, R.string.BoostingCongratulations);
         SpannableStringBuilder subtitle;
         CharSequence monthsStr = months == 12 ? LocaleController.formatPluralString("BoldYears", 1) : LocaleController.formatPluralString("BoldMonths", months);
         if (isPrize) {
@@ -1329,12 +1329,12 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
                 subtitle.append(AndroidUtilities.replaceTags(LocaleController.formatString("BoostingReceivedPrizeDuration", R.string.BoostingReceivedPrizeDuration, monthsStr)));
             }
         } else {
-            subtitle = new SpannableStringBuilder(AndroidUtilities.replaceTags(from == null ? LocaleController.getString("BoostingReceivedGiftNoName", R.string.BoostingReceivedGiftNoName) : LocaleController.formatString("BoostingReceivedGiftFrom", R.string.BoostingReceivedGiftFrom, from)));
+            subtitle = new SpannableStringBuilder(AndroidUtilities.replaceTags(from == null ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGRECEIVEDGIFTNONAME, R.string.BoostingReceivedGiftNoName) : LocaleController.formatString("BoostingReceivedGiftFrom", R.string.BoostingReceivedGiftFrom, from)));
             subtitle.append("\n\n");
             subtitle.append(AndroidUtilities.replaceTags(LocaleController.formatString("BoostingReceivedGiftDuration", R.string.BoostingReceivedGiftDuration, monthsStr)));
         }
 
-        String btnText = LocaleController.getString("BoostingReceivedGiftOpenBtn", R.string.BoostingReceivedGiftOpenBtn);
+        String btnText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGRECEIVEDGIFTOPENBTN, R.string.BoostingReceivedGiftOpenBtn);
 
         SpannableStringBuilder titleBuilder = SpannableStringBuilder.valueOf(title);
         titleBuilder.setSpan(new TypefaceSpan(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM)), 0, titleBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -1561,7 +1561,7 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
                     if (settingWallpaperLayout == null) {
                         settingWallpaperPaint = new TextPaint();
                         settingWallpaperPaint.setTextSize(dp(13));
-                        SpannableStringBuilder cs = new SpannableStringBuilder(LocaleController.getString(R.string.ActionSettingWallpaper));
+                        SpannableStringBuilder cs = new SpannableStringBuilder(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACTIONSETTINGWALLPAPER, R.string.ActionSettingWallpaper));
                         int index = cs.toString().indexOf("..."), len = 3;
                         if (index < 0) {
                             index = cs.toString().indexOf("…");

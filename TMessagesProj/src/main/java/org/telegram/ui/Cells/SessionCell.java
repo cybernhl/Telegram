@@ -207,7 +207,7 @@ public class SessionCell extends FrameLayout {
             String timeText;
             if ((session.flags & 1) != 0) {
                 setTag(Theme.key_windowBackgroundWhiteValueText);
-                timeText = LocaleController.getString("Online", R.string.Online);
+                timeText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ONLINE, R.string.Online);
             } else {
                 setTag(Theme.key_windowBackgroundWhiteGrayText3);
                 timeText = LocaleController.stringForMessageListDate(session.date_active);

@@ -520,7 +520,7 @@ public class ManageLinksActivity extends BaseFragment {
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("InviteLinks", R.string.InviteLinks));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITELINKS, R.string.InviteLinks));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -606,9 +606,9 @@ public class ManageLinksActivity extends BaseFragment {
                 }
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setTitle(LocaleController.getString("DeleteAllRevokedLinks", R.string.DeleteAllRevokedLinks));
-                builder.setMessage(LocaleController.getString("DeleteAllRevokedLinkHelp", R.string.DeleteAllRevokedLinkHelp));
-                builder.setPositiveButton(LocaleController.getString("Delete", R.string.Delete), (dialogInterface2, i2) -> {
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETEALLREVOKEDLINKS, R.string.DeleteAllRevokedLinks));
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETEALLREVOKEDLINKHELP, R.string.DeleteAllRevokedLinkHelp));
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete), (dialogInterface2, i2) -> {
                     TLRPC.TL_messages_deleteRevokedExportedChatInvites req = new TLRPC.TL_messages_deleteRevokedExportedChatInvites();
                     req.peer = getMessagesController().getInputPeer(-currentChatId);
                     if (adminId == getUserConfig().getClientUserId()) {
@@ -626,7 +626,7 @@ public class ManageLinksActivity extends BaseFragment {
                         }
                     }));
                 });
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                 showDialog(builder.create());
             } else if (position >= adminsStartRow && position < adminsEndRow) {
                 int p = position - adminsStartRow;
@@ -690,7 +690,7 @@ public class ManageLinksActivity extends BaseFragment {
             messageTextView.setTextColor(Theme.getColor(Theme.key_chats_message));
             messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             messageTextView.setGravity(Gravity.CENTER);
-            messageTextView.setText(isChannel ? LocaleController.getString("PrimaryLinkHelpChannel", R.string.PrimaryLinkHelpChannel) : LocaleController.getString("PrimaryLinkHelp", R.string.PrimaryLinkHelp));
+            messageTextView.setText(isChannel ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIMARYLINKHELPCHANNEL, R.string.PrimaryLinkHelpChannel) : LocaleController.getString("PrimaryLinkHelp", R.string.PrimaryLinkHelp));
 
             addView(messageTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 52, 143, 52, 18));
         }
@@ -789,13 +789,13 @@ public class ManageLinksActivity extends BaseFragment {
                 case 8:
                     TextSettingsCell revokeAll = new TextSettingsCell(mContext);
                     revokeAll.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
-                    revokeAll.setText(LocaleController.getString("DeleteAllRevokedLinks", R.string.DeleteAllRevokedLinks), false);
+                    revokeAll.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETEALLREVOKEDLINKS, R.string.DeleteAllRevokedLinks), false);
                     revokeAll.setTextColor(Theme.getColor(Theme.key_text_RedRegular));
                     view = revokeAll;
                     break;
                 case 9:
                     TextInfoPrivacyCell cell = new TextInfoPrivacyCell(mContext);
-                    cell.setText(LocaleController.getString("CreateNewLinkHelp", R.string.CreateNewLinkHelp));
+                    cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATENEWLINKHELP, R.string.CreateNewLinkHelp));
                     cell.setBackground(Theme.getThemedDrawableByKey(mContext, R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
                     view = cell;
                     break;
@@ -837,18 +837,18 @@ public class ManageLinksActivity extends BaseFragment {
                     HeaderCell headerCell = (HeaderCell) holder.itemView;
                     if (position == permanentLinkHeaderRow) {
                         if (isPublic && adminId == getAccountInstance().getUserConfig().clientUserId) {
-                            headerCell.setText(LocaleController.getString("PublicLink", R.string.PublicLink));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PUBLICLINK, R.string.PublicLink));
                         } else if (adminId == getAccountInstance().getUserConfig().clientUserId) {
-                            headerCell.setText(LocaleController.getString("ChannelInviteLinkTitle", R.string.ChannelInviteLinkTitle));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELINVITELINKTITLE, R.string.ChannelInviteLinkTitle));
                         } else {
-                            headerCell.setText(LocaleController.getString("PermanentLinkForThisAdmin", R.string.PermanentLinkForThisAdmin));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PERMANENTLINKFORTHISADMIN, R.string.PermanentLinkForThisAdmin));
                         }
                     } else if (position == revokedHeader) {
-                        headerCell.setText(LocaleController.getString("RevokedLinks", R.string.RevokedLinks));
+                        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REVOKEDLINKS, R.string.RevokedLinks));
                     } else if (position == linksHeaderRow) {
-                        headerCell.setText(LocaleController.getString("LinksCreatedByThisAdmin", R.string.LinksCreatedByThisAdmin));
+                        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKSCREATEDBYTHISADMIN, R.string.LinksCreatedByThisAdmin));
                     } else if (position == adminsHeaderRow) {
-                        headerCell.setText(LocaleController.getString("LinksCreatedByOtherAdmins", R.string.LinksCreatedByOtherAdmins));
+                        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKSCREATEDBYOTHERADMINS, R.string.LinksCreatedByOtherAdmins));
                     }
                     break;
                 case 3:
@@ -859,7 +859,7 @@ public class ManageLinksActivity extends BaseFragment {
                     drawable2.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_checkboxCheck), PorterDuff.Mode.MULTIPLY));
                     CombinedDrawable combinedDrawable = new CombinedDrawable(drawable1, drawable2);
 
-                    textCell.setTextAndIcon(LocaleController.getString("CreateNewLink", R.string.CreateNewLink), combinedDrawable, !invites.isEmpty());
+                    textCell.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATENEWLINK, R.string.CreateNewLink), combinedDrawable, !invites.isEmpty());
                     break;
                 case 5:
                     TLRPC.TL_chatInviteExported invite;
@@ -963,7 +963,7 @@ public class ManageLinksActivity extends BaseFragment {
                     DiffCallback callback = saveListState();
                     revokedInvites.add(0, oldInvite);
                     updateRecyclerViewAnimated(callback);
-                    BulletinFactory.of(this).createSimpleBulletin(R.raw.linkbroken, LocaleController.getString("InviteRevokedHint", R.string.InviteRevokedHint)).show();
+                    BulletinFactory.of(this).createSimpleBulletin(R.raw.linkbroken, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITEREVOKEDHINT, R.string.InviteRevokedHint)).show();
                 }
 
             }));
@@ -1039,27 +1039,27 @@ public class ManageLinksActivity extends BaseFragment {
 
                 boolean redLastItem = false;
                 if (invite.revoked) {
-                    items.add(LocaleController.getString("Delete", R.string.Delete));
+                    items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete));
                     icons.add(R.drawable.msg_delete);
                     actions.add(4);
                     redLastItem = true;
                 } else {
-                    items.add(LocaleController.getString("CopyLink", R.string.CopyLink));
+                    items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_COPYLINK, R.string.CopyLink));
                     icons.add(R.drawable.msg_copy);
                     actions.add(0);
 
-                    items.add(LocaleController.getString("ShareLink", R.string.ShareLink));
+                    items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHARELINK, R.string.ShareLink));
                     icons.add(R.drawable.msg_share);
                     actions.add(1);
 
                     if (!invite.permanent && canEdit) {
-                        items.add(LocaleController.getString("EditLink", R.string.EditLink));
+                        items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDITLINK, R.string.EditLink));
                         icons.add(R.drawable.msg_edit);
                         actions.add(2);
                     }
 
                     if (canEdit) {
-                        items.add(LocaleController.getString("RevokeLink", R.string.RevokeLink));
+                        items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REVOKELINK, R.string.RevokeLink));
                         icons.add(R.drawable.msg_delete);
                         actions.add(3);
                         redLastItem = true;
@@ -1090,7 +1090,7 @@ public class ManageLinksActivity extends BaseFragment {
                                 Intent intent = new Intent(Intent.ACTION_SEND);
                                 intent.setType("text/plain");
                                 intent.putExtra(Intent.EXTRA_TEXT, invite.link);
-                                startActivityForResult(Intent.createChooser(intent, LocaleController.getString("InviteToGroupByLink", R.string.InviteToGroupByLink)), 500);
+                                startActivityForResult(Intent.createChooser(intent, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITETOGROUPBYLINK, R.string.InviteToGroupByLink)), 500);
                             } catch (Exception e) {
                                 FileLog.e(e);
                             }
@@ -1101,24 +1101,24 @@ public class ManageLinksActivity extends BaseFragment {
                         case 3:
                             TLRPC.TL_chatInviteExported inviteFinal = invite;
                             AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
-                            builder2.setMessage(LocaleController.getString("RevokeAlert", R.string.RevokeAlert));
-                            builder2.setTitle(LocaleController.getString("RevokeLink", R.string.RevokeLink));
-                            builder2.setPositiveButton(LocaleController.getString("RevokeButton", R.string.RevokeButton), (dialogInterface2, i2) -> revokeLink(inviteFinal));
-                            builder2.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                            builder2.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REVOKEALERT, R.string.RevokeAlert));
+                            builder2.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REVOKELINK, R.string.RevokeLink));
+                            builder2.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REVOKEBUTTON, R.string.RevokeButton), (dialogInterface2, i2) -> revokeLink(inviteFinal));
+                            builder2.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                             showDialog(builder2.create());
                             break;
                         case 4:
                             inviteFinal = invite;
                             builder2 = new AlertDialog.Builder(getParentActivity());
-                            builder2.setTitle(LocaleController.getString("DeleteLink", R.string.DeleteLink));
-                            builder2.setMessage(LocaleController.getString("DeleteLinkHelp", R.string.DeleteLinkHelp));
-                            builder2.setPositiveButton(LocaleController.getString("Delete", R.string.Delete), (dialogInterface2, i2) -> deleteLink(inviteFinal));
-                            builder2.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                            builder2.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETELINK, R.string.DeleteLink));
+                            builder2.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETELINKHELP, R.string.DeleteLinkHelp));
+                            builder2.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete), (dialogInterface2, i2) -> deleteLink(inviteFinal));
+                            builder2.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                             showDialog(builder2.create());
                             break;
                     }
                 });
-                builder.setTitle(LocaleController.getString("InviteLink", R.string.InviteLink));
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITELINK, R.string.InviteLink));
                 AlertDialog alert = builder.create();
                 builder.show();
                 if (redLastItem) {
@@ -1303,7 +1303,7 @@ public class ManageLinksActivity extends BaseFragment {
 
             String joinedString = "";
             if (invite.usage == 0 && invite.usage_limit == 0 && invite.requested == 0) {
-                joinedString = LocaleController.getString("NoOneJoinedYet", R.string.NoOneJoinedYet);
+                joinedString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOONEJOINEDYET, R.string.NoOneJoinedYet);
             } else {
                 if (invite.usage_limit > 0 && invite.usage == 0 && !invite.expired && !invite.revoked) {
                     joinedString = LocaleController.formatPluralString("CanJoin", invite.usage_limit);
@@ -1326,20 +1326,20 @@ public class ManageLinksActivity extends BaseFragment {
                 DotDividerSpan dotDividerSpan = new DotDividerSpan();
                 dotDividerSpan.setTopPadding(AndroidUtilities.dp(1.5f));
                 spannableStringBuilder.append("  .  ").setSpan(dotDividerSpan, spannableStringBuilder.length() - 3, spannableStringBuilder.length() - 2, 0);
-                spannableStringBuilder.append(LocaleController.getString("Permanent", R.string.Permanent));
+                spannableStringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PERMANENT, R.string.Permanent));
                 subtitleView.setText(spannableStringBuilder);
             } else if (invite.expired || invite.revoked) {
                 if (invite.revoked && invite.usage == 0) {
-                    joinedString = LocaleController.getString("NoOneJoined", R.string.NoOneJoined);
+                    joinedString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOONEJOINED, R.string.NoOneJoined);
                 }
                 SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(joinedString);
                 DotDividerSpan dotDividerSpan = new DotDividerSpan();
                 dotDividerSpan.setTopPadding(AndroidUtilities.dp(1.5f));
                 spannableStringBuilder.append("  .  ").setSpan(dotDividerSpan, spannableStringBuilder.length() - 3, spannableStringBuilder.length() - 2, 0);
                 if (!invite.revoked && invite.usage_limit > 0 && invite.usage >= invite.usage_limit) {
-                    spannableStringBuilder.append(LocaleController.getString("LinkLimitReached", R.string.LinkLimitReached));
+                    spannableStringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKLIMITREACHED, R.string.LinkLimitReached));
                 } else {
-                    spannableStringBuilder.append(invite.revoked ? LocaleController.getString("Revoked", R.string.Revoked) : LocaleController.getString("Expired", R.string.Expired));
+                    spannableStringBuilder.append(invite.revoked ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REVOKED, R.string.Revoked) : LocaleController.getString("Expired", R.string.Expired));
                 }
                 subtitleView.setText(spannableStringBuilder);
             } else if (invite.expire_date > 0) {
@@ -1422,7 +1422,7 @@ public class ManageLinksActivity extends BaseFragment {
                     }
                 }
                 if (getParentActivity() != null) {
-                    BulletinFactory.of(this).createSimpleBulletin(R.raw.linkbroken, LocaleController.getString("InviteRevokedHint", R.string.InviteRevokedHint)).show();
+                    BulletinFactory.of(this).createSimpleBulletin(R.raw.linkbroken, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITEREVOKEDHINT, R.string.InviteRevokedHint)).show();
                 }
             }
         }));

@@ -195,7 +195,7 @@ public class EditTextCaption extends EditTextBoldCursor {
         } else {
             builder = new AlertDialog.Builder(getContext(), resourcesProvider);
         }
-        builder.setTitle(LocaleController.getString("CreateLink", R.string.CreateLink));
+        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATELINK, R.string.CreateLink));
 
         final EditTextBoldCursor editText = new EditTextBoldCursor(getContext()) {
             @Override
@@ -206,7 +206,7 @@ public class EditTextCaption extends EditTextBoldCursor {
         editText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
         editText.setText("http://");
         editText.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
-        editText.setHintText(LocaleController.getString("URL", R.string.URL));
+        editText.setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_URL, R.string.URL));
         editText.setHeaderHintColor(getThemedColor(Theme.key_windowBackgroundWhiteBlueHeader));
         editText.setSingleLine(true);
         editText.setFocusable(true);
@@ -229,7 +229,7 @@ public class EditTextCaption extends EditTextBoldCursor {
             end = getSelectionEnd();
         }
 
-        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialogInterface, i) -> {
+        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), (dialogInterface, i) -> {
             Editable editable = getText();
             CharacterStyle[] spans = editable.getSpans(start, end, CharacterStyle.class);
             if (spans != null && spans.length > 0) {
@@ -257,7 +257,7 @@ public class EditTextCaption extends EditTextBoldCursor {
                 delegate.onSpansChanged();
             }
         });
-        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+        builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
         if (adaptiveCreateLinkDialog) {
             creationLinkDialog = builder.create();
             creationLinkDialog.setOnDismissListener(dialog -> {
@@ -564,14 +564,14 @@ public class EditTextCaption extends EditTextBoldCursor {
             }
         }
         if (hasSelection()) {
-            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_spoiler, LocaleController.getString("Spoiler", R.string.Spoiler)));
-            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_bold, LocaleController.getString("Bold", R.string.Bold)));
-            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_italic, LocaleController.getString("Italic", R.string.Italic)));
-            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_mono, LocaleController.getString("Mono", R.string.Mono)));
-            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_strike, LocaleController.getString("Strike", R.string.Strike)));
-            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_underline, LocaleController.getString("Underline", R.string.Underline)));
-            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_link, LocaleController.getString("CreateLink", R.string.CreateLink)));
-            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_regular, LocaleController.getString("Regular", R.string.Regular)));
+            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_spoiler, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SPOILER, R.string.Spoiler)));
+            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_bold, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOLD, R.string.Bold)));
+            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_italic, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ITALIC, R.string.Italic)));
+            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_mono, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MONO, R.string.Mono)));
+            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_strike, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STRIKE, R.string.Strike)));
+            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_underline, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNDERLINE, R.string.Underline)));
+            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_link, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATELINK, R.string.CreateLink)));
+            infoCompat.addAction(new AccessibilityNodeInfoCompat.AccessibilityActionCompat(R.id.menu_regular, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REGULAR, R.string.Regular)));
         }
     }
 

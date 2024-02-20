@@ -449,7 +449,7 @@ public class DialogStoriesCell extends FrameLayout implements NotificationCenter
 
         if (storiesController.hasOnlySelfStories()) {
             if (storiesController.hasUploadingStories(UserConfig.getInstance(currentAccount).getClientUserId())) {
-                String str = LocaleController.getString("UploadingStory", R.string.UploadingStory);
+                String str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UPLOADINGSTORY, R.string.UploadingStory);
                 int index = str.indexOf("…");
                 if (index > 0) {
                     if (uploadingString == null) {
@@ -464,7 +464,7 @@ public class DialogStoriesCell extends FrameLayout implements NotificationCenter
                     currentTitle = str;
                 }
             } else {
-                currentTitle = LocaleController.getString("MyStory", R.string.MyStory);
+                currentTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MYSTORY, R.string.MyStory);
             }
         } else {
             currentTitle = LocaleController.formatPluralString("Stories", totalCount);
@@ -1172,7 +1172,7 @@ public class DialogStoriesCell extends FrameLayout implements NotificationCenter
             }
             textView.setRightDrawable(null);
             if (storiesController.isLastUploadingFailed(dialogId)) {
-                textView.setText(LocaleController.getString("FailedStory", R.string.FailedStory));
+                textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FAILEDSTORY, R.string.FailedStory));
                 isUploadingState = false;
             } else if (!Utilities.isNullOrEmpty(storiesController.getUploadingStories(dialogId))) {
                 StoriesUtilities.applyUploadingStr(textView, true, false);
@@ -1221,7 +1221,7 @@ public class DialogStoriesCell extends FrameLayout implements NotificationCenter
                     }
                     AndroidUtilities.runOnUIThread(animationRunnable, 500);
                     isUploadingState = false;
-                    textView.setText(LocaleController.getString("MyStory", R.string.MyStory));//, animated);
+                    textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MYSTORY, R.string.MyStory));//, animated);
                 } else if (user != null) {
                     String name = user.first_name == null ? "" : user.first_name.trim();
                     int index = name.indexOf(" ");
@@ -1762,7 +1762,7 @@ public class DialogStoriesCell extends FrameLayout implements NotificationCenter
             .setMultilineText(true)
             .setTextAlign(Layout.Alignment.ALIGN_CENTER)
             .setJoint(0, 37 - 8);
-        Spannable text = AndroidUtilities.replaceSingleTag(LocaleController.getString("StoriesPremiumHint2").replace('\n', ' '), Theme.key_undo_cancelColor, 0, () -> {
+        Spannable text = AndroidUtilities.replaceSingleTag(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORIESPREMIUMHINT2).replace('\n', ' '), Theme.key_undo_cancelColor, 0, () -> {
             if (premiumHint != null) {
                 premiumHint.hide();
             }

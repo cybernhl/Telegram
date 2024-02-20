@@ -286,7 +286,7 @@ public class CalendarActivity extends BaseFragment implements NotificationCenter
         };
         createActionBar(context);
         contentView.addView(actionBar);
-        actionBar.setTitle(LocaleController.getString("Calendar", R.string.Calendar));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALENDAR, R.string.Calendar));
         actionBar.setCastShadows(false);
 
         listView = new RecyclerListView(context) {
@@ -311,13 +311,13 @@ public class CalendarActivity extends BaseFragment implements NotificationCenter
         contentView.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 0, 0, 36, 0, showBottomPanel ? 48 : 0));
 
         final String[] daysOfWeek = new String[]{
-                LocaleController.getString("CalendarWeekNameShortMonday", R.string.CalendarWeekNameShortMonday),
-                LocaleController.getString("CalendarWeekNameShortTuesday", R.string.CalendarWeekNameShortTuesday),
-                LocaleController.getString("CalendarWeekNameShortWednesday", R.string.CalendarWeekNameShortWednesday),
-                LocaleController.getString("CalendarWeekNameShortThursday", R.string.CalendarWeekNameShortThursday),
-                LocaleController.getString("CalendarWeekNameShortFriday", R.string.CalendarWeekNameShortFriday),
-                LocaleController.getString("CalendarWeekNameShortSaturday", R.string.CalendarWeekNameShortSaturday),
-                LocaleController.getString("CalendarWeekNameShortSunday", R.string.CalendarWeekNameShortSunday),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALENDARWEEKNAMESHORTMONDAY, R.string.CalendarWeekNameShortMonday),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALENDARWEEKNAMESHORTTUESDAY, R.string.CalendarWeekNameShortTuesday),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALENDARWEEKNAMESHORTWEDNESDAY, R.string.CalendarWeekNameShortWednesday),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALENDARWEEKNAMESHORTTHURSDAY, R.string.CalendarWeekNameShortThursday),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALENDARWEEKNAMESHORTFRIDAY, R.string.CalendarWeekNameShortFriday),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALENDARWEEKNAMESHORTSATURDAY, R.string.CalendarWeekNameShortSaturday),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALENDARWEEKNAMESHORTSUNDAY, R.string.CalendarWeekNameShortSunday),
         };
 
 
@@ -397,7 +397,7 @@ public class CalendarActivity extends BaseFragment implements NotificationCenter
                 inSelectionMode = true;
                 updateTitle();
             });
-            selectDaysButton.setText(LocaleController.getString("SelectDays", R.string.SelectDays));
+            selectDaysButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTDAYS, R.string.SelectDays));
             selectDaysButton.setAllCaps(true);
             bottomBar.addView(selectDaysButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 0, 0, 0f, 0, 0));
 
@@ -411,7 +411,7 @@ public class CalendarActivity extends BaseFragment implements NotificationCenter
                         selectDaysHint = new HintView(contentView.getContext(), 8);
                         selectDaysHint.setExtraTranslationY(AndroidUtilities.dp(24));
                         contentView.addView(selectDaysHint, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 19, 0, 19, 0));
-                        selectDaysHint.setText(LocaleController.getString("SelectDaysTooltip", R.string.SelectDaysTooltip));
+                        selectDaysHint.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTDAYSTOOLTIP, R.string.SelectDaysTooltip));
                     }
                     selectDaysHint.showForView(bottomBar, true);
                     return;
@@ -915,7 +915,7 @@ public class CalendarActivity extends BaseFragment implements NotificationCenter
                         previewMenu.setBackgroundColor(getThemedColor(Theme.key_actionBarDefaultSubmenuBackground));
 
                         ActionBarMenuSubItem cellJump = new ActionBarMenuSubItem(getParentActivity(), true, false);
-                        cellJump.setTextAndIcon(LocaleController.getString("JumpToDate", R.string.JumpToDate), R.drawable.msg_message);
+                        cellJump.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_JUMPTODATE, R.string.JumpToDate), R.drawable.msg_message);
                         cellJump.setMinimumWidth(160);
                         cellJump.setOnClickListener(view -> {
                             if (parentLayout != null && parentLayout.getFragmentStack().size() >= 3) {
@@ -933,7 +933,7 @@ public class CalendarActivity extends BaseFragment implements NotificationCenter
 
                         if (canClearHistory) {
                             ActionBarMenuSubItem cellSelect = new ActionBarMenuSubItem(getParentActivity(), false, false);
-                            cellSelect.setTextAndIcon(LocaleController.getString("SelectThisDay", R.string.SelectThisDay), R.drawable.msg_select);
+                            cellSelect.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTTHISDAY, R.string.SelectThisDay), R.drawable.msg_select);
                             cellSelect.setMinimumWidth(160);
                             cellSelect.setOnClickListener(view -> {
                                 dateSelectedStart = dateSelectedEnd = periodDay.date;
@@ -945,7 +945,7 @@ public class CalendarActivity extends BaseFragment implements NotificationCenter
                             previewMenu.addView(cellSelect);
 
                             ActionBarMenuSubItem cellDelete = new ActionBarMenuSubItem(getParentActivity(), false, true);
-                            cellDelete.setTextAndIcon(LocaleController.getString("ClearHistory", R.string.ClearHistory), R.drawable.msg_delete);
+                            cellDelete.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARHISTORY, R.string.ClearHistory), R.drawable.msg_delete);
                             cellDelete.setMinimumWidth(160);
                             cellDelete.setOnClickListener(view -> {
                                 if (parentLayout.getFragmentStack().size() >= 3) {
@@ -1372,7 +1372,7 @@ public class CalendarActivity extends BaseFragment implements NotificationCenter
 
     private void updateTitle() {
         if (!canClearHistory) {
-            actionBar.setTitle(LocaleController.getString("Calendar", R.string.Calendar));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALENDAR, R.string.Calendar));
             backDrawable.setRotation(0f, true);
             return;
         }
@@ -1392,10 +1392,10 @@ public class CalendarActivity extends BaseFragment implements NotificationCenter
                 title = LocaleController.formatPluralString("Days", daysSelected);
                 backDrawable.setRotation(1f, true);
             } else if (inSelectionMode) {
-                title = LocaleController.getString("SelectDays", R.string.SelectDays);
+                title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTDAYS, R.string.SelectDays);
                 backDrawable.setRotation(1f, true);
             } else {
-                title = LocaleController.getString("Calendar", R.string.Calendar);
+                title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALENDAR, R.string.Calendar);
                 backDrawable.setRotation(0f, true);
             }
             if (daysSelected > 1) {

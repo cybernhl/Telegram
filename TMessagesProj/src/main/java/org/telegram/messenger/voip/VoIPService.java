@@ -2742,13 +2742,13 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 	public void toggleSpeakerphoneOrShowRouteSheet(Context context, boolean fromOverlayWindow, Integer selectedPos) {
 		if (isBluetoothHeadsetConnected() && hasEarpiece()) {
 			BottomSheet.Builder builder = new BottomSheet.Builder(context)
-					.setTitle(LocaleController.getString("VoipOutputDevices", R.string.VoipOutputDevices), true)
+					.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPOUTPUTDEVICES, R.string.VoipOutputDevices), true)
 					.selectedPos(selectedPos)
 					.setCellType(selectedPos != null ? BottomSheet.Builder.CELL_TYPE_CALL : 0)
 					.setItems(new CharSequence[]{
-									LocaleController.getString("VoipAudioRoutingSpeaker", R.string.VoipAudioRoutingSpeaker),
-									isHeadsetPlugged ? LocaleController.getString("VoipAudioRoutingHeadset", R.string.VoipAudioRoutingHeadset) : LocaleController.getString("VoipAudioRoutingEarpiece", R.string.VoipAudioRoutingEarpiece),
-									currentBluetoothDeviceName != null ? currentBluetoothDeviceName : LocaleController.getString("VoipAudioRoutingBluetooth", R.string.VoipAudioRoutingBluetooth)},
+									LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPAUDIOROUTINGSPEAKER, R.string.VoipAudioRoutingSpeaker),
+									isHeadsetPlugged ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPAUDIOROUTINGHEADSET, R.string.VoipAudioRoutingHeadset) : LocaleController.getString("VoipAudioRoutingEarpiece", R.string.VoipAudioRoutingEarpiece),
+									currentBluetoothDeviceName != null ? currentBluetoothDeviceName : LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPAUDIOROUTINGBLUETOOTH, R.string.VoipAudioRoutingBluetooth)},
 							new int[]{R.drawable.msg_call_speaker,
 									isHeadsetPlugged ? R.drawable.calls_menu_headset : R.drawable.msg_call_earpiece,
 									R.drawable.msg_call_bluetooth}, (dialog, which) -> {
@@ -2961,10 +2961,10 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 				.setContentText(name)
 				.setContentIntent(PendingIntent.getActivity(this, 50, intent, PendingIntent.FLAG_MUTABLE));
 		if (groupCall != null) {
-			builder.setContentTitle(ChatObject.isChannelOrGiga(chat) ? LocaleController.getString("VoipLiveStream", R.string.VoipLiveStream) : LocaleController.getString("VoipVoiceChat", R.string.VoipVoiceChat));
+			builder.setContentTitle(ChatObject.isChannelOrGiga(chat) ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPLIVESTREAM, R.string.VoipLiveStream) : LocaleController.getString("VoipVoiceChat", R.string.VoipVoiceChat));
 			builder.setSmallIcon(isMicMute() ? R.drawable.voicechat_muted : R.drawable.voicechat_active);
 		} else {
-			builder.setContentTitle(LocaleController.getString("VoipOutgoingCall", R.string.VoipOutgoingCall));
+			builder.setContentTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPOUTGOINGCALL, R.string.VoipOutgoingCall));
 			builder.setSmallIcon(R.drawable.ic_call);
             builder.setOngoing(true);
 		}
@@ -2972,9 +2972,9 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 			Intent endIntent = new Intent(this, VoIPActionsReceiver.class);
 			endIntent.setAction(getPackageName() + ".END_CALL");
 			if (groupCall != null) {
-				builder.addAction(R.drawable.ic_call_end_white_24dp, ChatObject.isChannelOrGiga(chat) ? LocaleController.getString("VoipChannelLeaveAlertTitle", R.string.VoipChannelLeaveAlertTitle) : LocaleController.getString("VoipGroupLeaveAlertTitle", R.string.VoipGroupLeaveAlertTitle), PendingIntent.getBroadcast(this, 0, endIntent, PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
+				builder.addAction(R.drawable.ic_call_end_white_24dp, ChatObject.isChannelOrGiga(chat) ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPCHANNELLEAVEALERTTITLE, R.string.VoipChannelLeaveAlertTitle) : LocaleController.getString("VoipGroupLeaveAlertTitle", R.string.VoipGroupLeaveAlertTitle), PendingIntent.getBroadcast(this, 0, endIntent, PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
 			} else {
-				builder.addAction(R.drawable.ic_call_end_white_24dp, LocaleController.getString("VoipEndCall", R.string.VoipEndCall), PendingIntent.getBroadcast(this, 0, endIntent, PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
+				builder.addAction(R.drawable.ic_call_end_white_24dp, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPENDCALL, R.string.VoipEndCall), PendingIntent.getBroadcast(this, 0, endIntent, PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
 			}
 			builder.setPriority(Notification.PRIORITY_MAX);
 		}
@@ -3637,7 +3637,7 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 		if (callIShouldHavePutIntoIntent != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 			NotificationsController.checkOtherNotificationsChannel();
 			Notification.Builder bldr = new Notification.Builder(this, NotificationsController.OTHER_NOTIFICATIONS_CHANNEL)
-					.setContentTitle(LocaleController.getString("VoipOutgoingCall", R.string.VoipOutgoingCall))
+					.setContentTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPOUTGOINGCALL, R.string.VoipOutgoingCall))
 					.setShowWhen(false);
 			if (groupCall != null) {
 				bldr.setSmallIcon(isMicMute() ? R.drawable.voicechat_muted : R.drawable.voicechat_active);
@@ -4092,7 +4092,7 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 		intent.setAction("voip");
 
 		Notification.Builder builder = new Notification.Builder(this)
-				.setContentTitle(video ? LocaleController.getString("VoipInVideoCallBranding", R.string.VoipInVideoCallBranding) : LocaleController.getString("VoipInCallBranding", R.string.VoipInCallBranding))
+				.setContentTitle(video ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPINVIDEOCALLBRANDING, R.string.VoipInVideoCallBranding) : LocaleController.getString("VoipInCallBranding", R.string.VoipInCallBranding))
 				.setSmallIcon(R.drawable.ic_call)
 				.setContentIntent(PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_MUTABLE));
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -4127,13 +4127,13 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 						.setLegacyStreamType(AudioManager.STREAM_RING)
 						.setUsage(AudioAttributes.USAGE_VOICE_COMMUNICATION)
 						.build();
-				NotificationChannel chan = new NotificationChannel("incoming_calls4" + chanIndex, LocaleController.getString("IncomingCallsSystemSetting", R.string.IncomingCallsSystemSetting), NotificationManager.IMPORTANCE_HIGH);
+				NotificationChannel chan = new NotificationChannel("incoming_calls4" + chanIndex, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INCOMINGCALLSSYSTEMSETTING, R.string.IncomingCallsSystemSetting), NotificationManager.IMPORTANCE_HIGH);
                 try {
                     chan.setSound(null, attrs);
                 } catch (Exception e) {
                     FileLog.e(e);
                 }
-                chan.setDescription(LocaleController.getString("IncomingCallsSystemSettingDescription", R.string.IncomingCallsSystemSettingDescription));
+                chan.setDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INCOMINGCALLSSYSTEMSETTINGDESCRIPTION, R.string.IncomingCallsSystemSettingDescription));
 				chan.enableVibration(false);
 				chan.enableLights(false);
 				chan.setBypassDnd(true);
@@ -4152,7 +4152,7 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 		Intent endIntent = new Intent(this, VoIPActionsReceiver.class);
 		endIntent.setAction(getPackageName() + ".DECLINE_CALL");
 		endIntent.putExtra("call_id", getCallID());
-		CharSequence endTitle = LocaleController.getString("VoipDeclineCall", R.string.VoipDeclineCall);
+		CharSequence endTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPDECLINECALL, R.string.VoipDeclineCall);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
 			endTitle = new SpannableString(endTitle);
 			((SpannableString) endTitle).setSpan(new ForegroundColorSpan(0xFFF44336), 0, endTitle.length(), 0);
@@ -4161,7 +4161,7 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 		Intent answerIntent = new Intent(this, VoIPActionsReceiver.class);
 		answerIntent.setAction(getPackageName() + ".ANSWER_CALL");
 		answerIntent.putExtra("call_id", getCallID());
-		CharSequence answerTitle = LocaleController.getString("VoipAnswerCall", R.string.VoipAnswerCall);
+		CharSequence answerTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPANSWERCALL, R.string.VoipAnswerCall);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
 			answerTitle = new SpannableString(answerTitle);
 			((SpannableString) answerTitle).setSpan(new ForegroundColorSpan(0xFF00AA00), 0, answerTitle.length(), 0);
@@ -4210,11 +4210,11 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 				TLRPC.User self = UserConfig.getInstance(currentAccount).getCurrentUser();
 				customView.setTextViewText(R.id.title, video ? LocaleController.formatString("VoipInVideoCallBrandingWithName", R.string.VoipInVideoCallBrandingWithName, ContactsController.formatName(self.first_name, self.last_name)) : LocaleController.formatString("VoipInCallBrandingWithName", R.string.VoipInCallBrandingWithName, ContactsController.formatName(self.first_name, self.last_name)));
 			} else {
-				customView.setTextViewText(R.id.title, video ? LocaleController.getString("VoipInVideoCallBranding", R.string.VoipInVideoCallBranding) : LocaleController.getString("VoipInCallBranding", R.string.VoipInCallBranding));
+				customView.setTextViewText(R.id.title, video ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPINVIDEOCALLBRANDING, R.string.VoipInVideoCallBranding) : LocaleController.getString("VoipInCallBranding", R.string.VoipInCallBranding));
 			}
 			Bitmap avatar = getRoundAvatarBitmap(userOrChat);
-			customView.setTextViewText(R.id.answer_text, LocaleController.getString("VoipAnswerCall", R.string.VoipAnswerCall));
-			customView.setTextViewText(R.id.decline_text, LocaleController.getString("VoipDeclineCall", R.string.VoipDeclineCall));
+			customView.setTextViewText(R.id.answer_text, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPANSWERCALL, R.string.VoipAnswerCall));
+			customView.setTextViewText(R.id.decline_text, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPDECLINECALL, R.string.VoipDeclineCall));
 			customView.setImageViewBitmap(R.id.photo, avatar);
 			customView.setOnClickPendingIntent(R.id.answer_btn, answerPendingIntent);
 			customView.setOnClickPendingIntent(R.id.decline_btn, endPendingIntent);

@@ -775,12 +775,12 @@ public class SecretVoicePlayer extends Dialog {
             backDialog = new AlertDialog.Builder(getContext(), resourcesProvider)
                     .setTitle(LocaleController.getString(isRound ? R.string.VideoOnceCloseTitle : R.string.VoiceOnceCloseTitle))
                     .setMessage(LocaleController.getString(isRound ? R.string.VideoOnceCloseMessage : R.string.VoiceOnceCloseMessage))
-                    .setPositiveButton(LocaleController.getString(R.string.Continue), (di, w) -> {
+                    .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTINUE, R.string.Continue), (di, w) -> {
                         if (backDialog != null) {
                             backDialog.dismiss();
                         }
                     })
-                    .setNegativeButton(LocaleController.getString(R.string.Delete), (di, w) -> {
+                    .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete), (di, w) -> {
                         if (backDialog != null) {
                             backDialog.dismiss();
                             backDialog = null;

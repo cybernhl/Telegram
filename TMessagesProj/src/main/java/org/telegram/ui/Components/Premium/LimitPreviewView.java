@@ -109,7 +109,7 @@ public class LimitPreviewView extends LinearLayout {
 
         defaultText = new TextView(context);
         defaultText.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-        defaultText.setText(LocaleController.getString("LimitFree", R.string.LimitFree));
+        defaultText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LIMITFREE, R.string.LimitFree));
         defaultText.setGravity(Gravity.CENTER_VERTICAL);
         defaultText.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
 
@@ -131,7 +131,7 @@ public class LimitPreviewView extends LinearLayout {
 
         premiumText = new TextView(context);
         premiumText.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-        premiumText.setText(LocaleController.getString("LimitPremium", R.string.LimitPremium));
+        premiumText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LIMITPREMIUM, R.string.LimitPremium));
         premiumText.setGravity(Gravity.CENTER_VERTICAL);
         premiumText.setTextColor(Color.WHITE);
 

@@ -4741,8 +4741,8 @@ public class MediaDataController extends BaseController {
                 intent.setAction("new_dialog");
                 ArrayList<ShortcutInfoCompat> arrayList = new ArrayList<>();
                 ShortcutInfoCompat shortcut = new ShortcutInfoCompat.Builder(ApplicationLoader.applicationContext, "compose")
-                        .setShortLabel(LocaleController.getString("NewConversationShortcut", R.string.NewConversationShortcut))
-                        .setLongLabel(LocaleController.getString("NewConversationShortcut", R.string.NewConversationShortcut))
+                        .setShortLabel(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWCONVERSATIONSHORTCUT, R.string.NewConversationShortcut))
+                        .setLongLabel(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWCONVERSATIONSHORTCUT, R.string.NewConversationShortcut))
                         .setIcon(IconCompat.createWithResource(ApplicationLoader.applicationContext, R.drawable.shortcut_compose))
                         .setRank(0)
                         .setIntent(intent)
@@ -5263,10 +5263,10 @@ public class MediaDataController extends BaseController {
 
             if (user != null) {
                 if (UserObject.isReplyUser(user)) {
-                    name = LocaleController.getString("RepliesTitle", R.string.RepliesTitle);
+                    name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLIESTITLE, R.string.RepliesTitle);
                     overrideAvatar = true;
                 } else if (UserObject.isUserSelf(user)) {
-                    name = LocaleController.getString("SavedMessages", R.string.SavedMessages);
+                    name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages);
                     overrideAvatar = true;
                 } else {
                     name = ContactsController.formatName(user.first_name, user.last_name);

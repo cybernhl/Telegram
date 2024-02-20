@@ -478,7 +478,7 @@ public class CameraScanActivity extends BaseFragment {
         }
 
         if (currentType == TYPE_QR_LOGIN || currentType == TYPE_QR_WEB_BOT) {
-            actionBar.setTitle(LocaleController.getString("AuthAnotherClientScan", R.string.AuthAnotherClientScan));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTHANOTHERCLIENTSCAN, R.string.AuthAnotherClientScan));
         }
 
         Paint selectionPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -581,23 +581,23 @@ public class CameraScanActivity extends BaseFragment {
         recognizedMrzView.setAlpha(0);
 
         if (currentType == TYPE_MRZ) {
-            titleTextView.setText(LocaleController.getString("PassportScanPassport", R.string.PassportScanPassport));
-            descriptionText.setText(LocaleController.getString("PassportScanPassportInfo", R.string.PassportScanPassportInfo));
+            titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSPORTSCANPASSPORT, R.string.PassportScanPassport));
+            descriptionText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSPORTSCANPASSPORTINFO, R.string.PassportScanPassportInfo));
             titleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             recognizedMrzView.setTypeface(Typeface.MONOSPACE);
         } else {
             if (needGalleryButton) {
-                //titleTextView.setText(LocaleController.getString("WalletScanCode", R.string.WalletScanCode));
+                //titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WALLETSCANCODE, R.string.WalletScanCode));
             } else {
                 if (currentType == TYPE_QR || currentType == TYPE_QR_WEB_BOT) {
-                    titleTextView.setText(LocaleController.getString("AuthAnotherClientScan", R.string.AuthAnotherClientScan));
+                    titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTHANOTHERCLIENTSCAN, R.string.AuthAnotherClientScan));
                 } else {
-                    String text = LocaleController.getString("AuthAnotherClientInfo5", R.string.AuthAnotherClientInfo5);
+                    String text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTHANOTHERCLIENTINFO5, R.string.AuthAnotherClientInfo5);
                     SpannableStringBuilder spanned = new SpannableStringBuilder(text);
 
                     String[] links = new String[] {
-                        LocaleController.getString("AuthAnotherClientDownloadClientUrl", R.string.AuthAnotherClientDownloadClientUrl),
-                        LocaleController.getString("AuthAnotherWebClientUrl", R.string.AuthAnotherWebClientUrl)
+                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTHANOTHERCLIENTDOWNLOADCLIENTURL, R.string.AuthAnotherClientDownloadClientUrl),
+                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTHANOTHERWEBCLIENTURL, R.string.AuthAnotherWebClientUrl)
                     };
                     for (int i = 0; i < links.length; ++i) {
                         text = spanned.toString();
@@ -632,9 +632,9 @@ public class CameraScanActivity extends BaseFragment {
             recognizedMrzView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             recognizedMrzView.setPadding(AndroidUtilities.dp(10), 0, AndroidUtilities.dp(10), AndroidUtilities.dp(10));
             if (needGalleryButton) {
-                //recognizedMrzView.setText(LocaleController.getString("WalletScanCodeNotFound", R.string.WalletScanCodeNotFound));
+                //recognizedMrzView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WALLETSCANCODENOTFOUND, R.string.WalletScanCodeNotFound));
             } else {
-                recognizedMrzView.setText(LocaleController.getString("AuthAnotherClientNotFound", R.string.AuthAnotherClientNotFound));
+                recognizedMrzView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTHANOTHERCLIENTNOTFOUND, R.string.AuthAnotherClientNotFound));
             }
             viewGroup.addView(recognizedMrzView);
 

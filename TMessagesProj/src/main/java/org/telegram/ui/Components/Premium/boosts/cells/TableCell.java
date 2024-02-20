@@ -78,11 +78,11 @@ public class TableCell extends FrameLayout {
         linePaint.setStyle(Paint.Style.STROKE);
         this.resourcesProvider = resourcesProvider;
 
-        fromNameTextView = createTextView(LocaleController.getString("BoostingFrom", R.string.BoostingFrom), false);
-        toNameTextView = createTextView(LocaleController.getString("BoostingTo", R.string.BoostingTo), false);
-        giftNameTextView = createTextView(LocaleController.getString("BoostingGift", R.string.BoostingGift), false);
-        reasonNameTextView = createTextView(LocaleController.getString("BoostingReason", R.string.BoostingReason), false);
-        dateNameTextView = createTextView(LocaleController.getString("BoostingDate", R.string.BoostingDate), false);
+        fromNameTextView = createTextView(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGFROM, R.string.BoostingFrom), false);
+        toNameTextView = createTextView(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGTO, R.string.BoostingTo), false);
+        giftNameTextView = createTextView(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIFT, R.string.BoostingGift), false);
+        reasonNameTextView = createTextView(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGREASON, R.string.BoostingReason), false);
+        dateNameTextView = createTextView(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGDATE, R.string.BoostingDate), false);
 
         fromTextView = createTextView(true);
         toTextView = createTextView(true);
@@ -212,13 +212,13 @@ public class TableCell extends FrameLayout {
         if (giftCode.via_giveaway) {
             SpannableStringBuilder builder = new SpannableStringBuilder();
             builder.append("**");
-            builder.append(LocaleController.getString("BoostingGiveaway", R.string.BoostingGiveaway));
+            builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIVEAWAY, R.string.BoostingGiveaway));
             builder.append("**");
             builder = AndroidUtilities.replaceSingleTag(builder.toString(), Theme.key_chat_messageLinkIn, 0, () -> onObjectClicked.run(giftCode), resourcesProvider);
             reasonTextView.setText(builder);
             reasonTextView.setOnClickListener(v -> onObjectClicked.run(giftCode));
         } else {
-            reasonTextView.setText(LocaleController.getString("BoostingYouWereSelected", R.string.BoostingYouWereSelected));
+            reasonTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGYOUWERESELECTED, R.string.BoostingYouWereSelected));
             reasonTextView.setOnClickListener(null);
         }
 
@@ -245,11 +245,11 @@ public class TableCell extends FrameLayout {
         if (giftCode.to_id == NO_USER_ID && giftCode.via_giveaway) {
             SpannableStringBuilder builder = new SpannableStringBuilder();
             builder.append("**");
-            builder.append(LocaleController.getString("BoostingIncompleteGiveaway", R.string.BoostingIncompleteGiveaway));
+            builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGINCOMPLETEGIVEAWAY, R.string.BoostingIncompleteGiveaway));
             builder.append("**");
             builder = AndroidUtilities.replaceSingleTag(builder.toString(), Theme.key_chat_messageLinkIn, 0, () -> onObjectClicked.run(giftCode), resourcesProvider);
             reasonTextView.setText(builder);
-            toTextView.setText(LocaleController.getString("BoostingNoRecipient", R.string.BoostingNoRecipient));
+            toTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGNORECIPIENT, R.string.BoostingNoRecipient));
             toTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             ((MarginLayoutParams) toTextView.getLayoutParams()).leftMargin = 0;
             ((MarginLayoutParams) toTextView.getLayoutParams()).rightMargin = 0;

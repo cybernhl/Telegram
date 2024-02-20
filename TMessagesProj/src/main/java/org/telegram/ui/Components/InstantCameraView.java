@@ -327,7 +327,7 @@ public class InstantCameraView extends FrameLayout implements NotificationCenter
 
         switchCameraButton = new ImageView(context);
         switchCameraButton.setScaleType(ImageView.ScaleType.CENTER);
-        switchCameraButton.setContentDescription(LocaleController.getString("AccDescrSwitchCamera", R.string.AccDescrSwitchCamera));
+        switchCameraButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRSWITCHCAMERA, R.string.AccDescrSwitchCamera));
         addView(switchCameraButton, LayoutHelper.createFrame(62, 62, Gravity.LEFT | Gravity.BOTTOM, 8, 0, 0, 0));
         switchCameraButton.setOnClickListener(v -> {
             if (!cameraReady || cameraSession == null || !cameraSession.isInitied() || cameraThread == null) {

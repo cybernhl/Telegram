@@ -1586,7 +1586,7 @@ public class NotificationsController extends BaseController {
 
     private String getShortStringForMessage(MessageObject messageObject, String[] userName, boolean[] preview) {
         if (AndroidUtilities.needShowPasscode() || SharedConfig.isWaitingForPasscodeEnter) {
-            return LocaleController.getString("NotificationHiddenMessage", R.string.NotificationHiddenMessage);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONHIDDENMESSAGE, R.string.NotificationHiddenMessage);
         }
         long dialogId = messageObject.messageOwner.dialog_id;
         long chat_id = messageObject.messageOwner.peer_id.chat_id != 0 ? messageObject.messageOwner.peer_id.chat_id : messageObject.messageOwner.peer_id.channel_id;
@@ -1605,7 +1605,7 @@ public class NotificationsController extends BaseController {
                     if (preview != null) {
                         preview[0] = false;
                     }
-                    return LocaleController.getString("Message", R.string.Message);
+                    return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGE, R.string.Message);
                 }
             } else if (chat_id != 0) {
                 if (messageObject.messageOwner.peer_id.channel_id == 0 || messageObject.isSupergroup()) {
@@ -1700,16 +1700,16 @@ public class NotificationsController extends BaseController {
         String msg = null;
         if (DialogObject.isEncryptedDialog(dialogId)) {
             userName[0] = null;
-            return LocaleController.getString("NotificationHiddenMessage", R.string.NotificationHiddenMessage);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONHIDDENMESSAGE, R.string.NotificationHiddenMessage);
         } else {
             boolean isChannel = ChatObject.isChannel(chat) && !chat.megagroup;
             if (dialogPreviewEnabled && (chat_id == 0 && fromId != 0 && preferences.getBoolean("EnablePreviewAll", true) || chat_id != 0 && (!isChannel && preferences.getBoolean("EnablePreviewGroup", true) || isChannel && preferences.getBoolean("EnablePreviewChannel", true)))) {
                 if (messageObject.messageOwner instanceof TLRPC.TL_messageService) {
                     userName[0] = null;
                     if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionSetSameChatWallPaper) {
-                        return LocaleController.getString("WallpaperSameNotification", R.string.WallpaperSameNotification);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WALLPAPERSAMENOTIFICATION, R.string.WallpaperSameNotification);
                     } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionSetChatWallPaper) {
-                        return LocaleController.getString("WallpaperNotification", R.string.WallpaperNotification);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WALLPAPERNOTIFICATION, R.string.WallpaperNotification);
                     } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionGeoProximityReached) {
                         return messageObject.messageText.toString();
                     } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserJoined || messageObject.messageOwner.action instanceof TLRPC.TL_messageActionContactSignUp) {
@@ -1723,9 +1723,9 @@ public class NotificationsController extends BaseController {
                         return messageObject.messageText.toString();
                     } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionPhoneCall) {
                         if (messageObject.messageOwner.action.video) {
-                            return LocaleController.getString("CallMessageVideoIncomingMissed", R.string.CallMessageVideoIncomingMissed);
+                            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLMESSAGEVIDEOINCOMINGMISSED, R.string.CallMessageVideoIncomingMissed);
                         } else {
-                            return LocaleController.getString("CallMessageIncomingMissed", R.string.CallMessageIncomingMissed);
+                            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLMESSAGEINCOMINGMISSED, R.string.CallMessageIncomingMissed);
                         }
                     } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionChatAddUser) {
                         long singleUserId = messageObject.messageOwner.action.user_id;
@@ -1802,7 +1802,7 @@ public class NotificationsController extends BaseController {
                             return LocaleController.formatString("NotificationGroupInvitedToCall", R.string.NotificationGroupInvitedToCall, name, chat.title, names.toString());
                         }
                     } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionGiftCode) {
-                        return LocaleController.getString("BoostingReceivedGiftNoName", R.string.BoostingReceivedGiftNoName);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGRECEIVEDGIFTNONAME, R.string.BoostingReceivedGiftNoName);
                     } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionChatJoinedByLink) {
                         return LocaleController.formatString("NotificationInvitedToGroupByLink", R.string.NotificationInvitedToGroupByLink, name, chat.title);
                     } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionChatEditTitle) {
@@ -2081,71 +2081,71 @@ public class NotificationsController extends BaseController {
                         if (!TextUtils.isEmpty(messageObject.messageOwner.message)) {
                             return replaceSpoilers(messageObject);
                         } else {
-                            return LocaleController.getString("Message", R.string.Message);
+                            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGE, R.string.Message);
                         }
                     } else if (messageObject.isVoiceOnce()) {
-                        return LocaleController.getString(R.string.AttachOnceAudio);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHONCEAUDIO, R.string.AttachOnceAudio);
                     } else if (messageObject.isRoundOnce()) {
-                        return LocaleController.getString(R.string.AttachOnceRound);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHONCEROUND, R.string.AttachOnceRound);
                     } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaPhoto) {
                         if (Build.VERSION.SDK_INT >= 19 && !TextUtils.isEmpty(messageObject.messageOwner.message)) {
                             return "\uD83D\uDDBC " + replaceSpoilers(messageObject);
                         } else if (messageObject.messageOwner.media.ttl_seconds != 0) {
-                            return LocaleController.getString("AttachDestructingPhoto", R.string.AttachDestructingPhoto);
+                            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHDESTRUCTINGPHOTO, R.string.AttachDestructingPhoto);
                         } else {
-                            return LocaleController.getString("AttachPhoto", R.string.AttachPhoto);
+                            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHPHOTO, R.string.AttachPhoto);
                         }
                     } else if (messageObject.isVideo()) {
                         if (Build.VERSION.SDK_INT >= 19 && !TextUtils.isEmpty(messageObject.messageOwner.message)) {
                             return "\uD83D\uDCF9 " + replaceSpoilers(messageObject);
                         } else if (messageObject.messageOwner.media.ttl_seconds != 0) {
-                            return LocaleController.getString("AttachDestructingVideo", R.string.AttachDestructingVideo);
+                            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHDESTRUCTINGVIDEO, R.string.AttachDestructingVideo);
                         } else {
-                            return LocaleController.getString("AttachVideo", R.string.AttachVideo);
+                            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHVIDEO, R.string.AttachVideo);
                         }
                     } else if (messageObject.isGame()) {
-                        return LocaleController.getString("AttachGame", R.string.AttachGame);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHGAME, R.string.AttachGame);
                     } else if (messageObject.isVoice()) {
-                        return LocaleController.getString("AttachAudio", R.string.AttachAudio);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHAUDIO, R.string.AttachAudio);
                     } else if (messageObject.isRoundVideo()) {
-                        return LocaleController.getString("AttachRound", R.string.AttachRound);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHROUND, R.string.AttachRound);
                     } else if (messageObject.isMusic()) {
-                        return LocaleController.getString("AttachMusic", R.string.AttachMusic);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHMUSIC, R.string.AttachMusic);
                     } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaContact) {
-                        return LocaleController.getString("AttachContact", R.string.AttachContact);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHCONTACT, R.string.AttachContact);
                     } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaPoll) {
                         if (((TLRPC.TL_messageMediaPoll) messageObject.messageOwner.media).poll.quiz) {
-                            return LocaleController.getString("QuizPoll", R.string.QuizPoll);
+                            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_QUIZPOLL, R.string.QuizPoll);
                         } else {
-                            return LocaleController.getString("Poll", R.string.Poll);
+                            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_POLL, R.string.Poll);
                         }
                     } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaGiveaway) {
-                        return LocaleController.getString("BoostingGiveaway", R.string.BoostingGiveaway);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIVEAWAY, R.string.BoostingGiveaway);
                     } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaGiveawayResults) {
-                        return LocaleController.getString("BoostingGiveawayResults", R.string.BoostingGiveawayResults);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIVEAWAYRESULTS, R.string.BoostingGiveawayResults);
                     } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaGeo || messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaVenue) {
-                        return LocaleController.getString("AttachLocation", R.string.AttachLocation);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHLOCATION, R.string.AttachLocation);
                     } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaGeoLive) {
-                        return LocaleController.getString("AttachLiveLocation", R.string.AttachLiveLocation);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHLIVELOCATION, R.string.AttachLiveLocation);
                     } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
                         if (messageObject.isSticker() || messageObject.isAnimatedSticker()) {
                             String emoji = messageObject.getStickerEmoji();
                             if (emoji != null) {
-                                return emoji + " " + LocaleController.getString("AttachSticker", R.string.AttachSticker);
+                                return emoji + " " + LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHSTICKER, R.string.AttachSticker);
                             } else {
-                                return LocaleController.getString("AttachSticker", R.string.AttachSticker);
+                                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHSTICKER, R.string.AttachSticker);
                             }
                         } else if (messageObject.isGif()) {
                             if (Build.VERSION.SDK_INT >= 19 && !TextUtils.isEmpty(messageObject.messageOwner.message)) {
                                 return "\uD83C\uDFAC " + replaceSpoilers(messageObject);
                             } else {
-                                return LocaleController.getString("AttachGif", R.string.AttachGif);
+                                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHGIF, R.string.AttachGif);
                             }
                         } else {
                             if (Build.VERSION.SDK_INT >= 19 && !TextUtils.isEmpty(messageObject.messageOwner.message)) {
                                 return "\uD83D\uDCCE " + replaceSpoilers(messageObject);
                             } else {
-                                return LocaleController.getString("AttachDocument", R.string.AttachDocument);
+                                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHDOCUMENT, R.string.AttachDocument);
                             }
                         }
                     } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaStory) {
@@ -2153,19 +2153,19 @@ public class NotificationsController extends BaseController {
                         if (storyMedia.via_mention) {
                             return LocaleController.formatString("StoryNotificationMention", R.string.StoryNotificationMention, userName[0] == null ? "" : userName[0]);
                         } else {
-                            return LocaleController.getString("Story", R.string.Story);
+                            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORY, R.string.Story);
                         }
                     } else if (!TextUtils.isEmpty(messageObject.messageText)) {
                         return replaceSpoilers(messageObject);
                     } else {
-                        return LocaleController.getString("Message", R.string.Message);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGE, R.string.Message);
                     }
                 }
             } else {
                 if (preview != null) {
                     preview[0] = false;
                 }
-                return LocaleController.getString("Message", R.string.Message);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGE, R.string.Message);
             }
         }
         return null;
@@ -2197,7 +2197,7 @@ public class NotificationsController extends BaseController {
 
     private String getStringForMessage(MessageObject messageObject, boolean shortMessage, boolean[] text, boolean[] preview) {
         if (AndroidUtilities.needShowPasscode() || SharedConfig.isWaitingForPasscodeEnter) {
-            return LocaleController.getString("YouHaveNewMessage", R.string.YouHaveNewMessage);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOUHAVENEWMESSAGE, R.string.YouHaveNewMessage);
         }
         if (messageObject.isStoryPush || messageObject.isStoryMentionPush) {
             return "!" + messageObject.messageOwner.message;
@@ -2255,9 +2255,9 @@ public class NotificationsController extends BaseController {
         if (fromId > 0) {
             if (messageObject.messageOwner.from_scheduled) {
                 if (dialogId == selfUsedId) {
-                    name = LocaleController.getString("MessageScheduledReminderNotification", R.string.MessageScheduledReminderNotification);
+                    name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGESCHEDULEDREMINDERNOTIFICATION, R.string.MessageScheduledReminderNotification);
                 } else {
-                    name = LocaleController.getString("NotificationMessageScheduledName", R.string.NotificationMessageScheduledName);
+                    name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONMESSAGESCHEDULEDNAME, R.string.NotificationMessageScheduledName);
                 }
             } else {
                 TLRPC.User user = getMessagesController().getUser(fromId);
@@ -2285,15 +2285,15 @@ public class NotificationsController extends BaseController {
 
         String msg = null;
         if (DialogObject.isEncryptedDialog(dialogId)) {
-            msg = LocaleController.getString("YouHaveNewMessage", R.string.YouHaveNewMessage);
+            msg = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOUHAVENEWMESSAGE, R.string.YouHaveNewMessage);
         } else {
             if (chatId == 0 && fromId != 0) {
                 if (dialogPreviewEnabled && preferences.getBoolean("EnablePreviewAll", true)) {
                     if (messageObject.messageOwner instanceof TLRPC.TL_messageService) {
                         if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionSetSameChatWallPaper) {
-                            msg = LocaleController.getString("WallpaperSameNotification", R.string.WallpaperSameNotification);
+                            msg = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WALLPAPERSAMENOTIFICATION, R.string.WallpaperSameNotification);
                         } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionSetChatWallPaper) {
-                            msg = LocaleController.getString("WallpaperNotification", R.string.WallpaperNotification);
+                            msg = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WALLPAPERNOTIFICATION, R.string.WallpaperNotification);
                         } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionGeoProximityReached) {
                             msg = messageObject.messageText.toString();
                         } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserJoined || messageObject.messageOwner.action instanceof TLRPC.TL_messageActionContactSignUp) {
@@ -2307,9 +2307,9 @@ public class NotificationsController extends BaseController {
                             msg = messageObject.messageText.toString();
                         } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionPhoneCall) {
                             if (messageObject.messageOwner.action.video) {
-                                msg = LocaleController.getString("CallMessageVideoIncomingMissed", R.string.CallMessageVideoIncomingMissed);
+                                msg = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLMESSAGEVIDEOINCOMINGMISSED, R.string.CallMessageVideoIncomingMissed);
                             } else {
-                                msg = LocaleController.getString("CallMessageIncomingMissed", R.string.CallMessageIncomingMissed);
+                                msg = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLMESSAGEINCOMINGMISSED, R.string.CallMessageIncomingMissed);
                             }
                         } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionSetChatTheme) {
                             String emoticon = ((TLRPC.TL_messageActionSetChatTheme) messageObject.messageOwner.action).emoticon;
@@ -2506,7 +2506,7 @@ public class NotificationsController extends BaseController {
                             TLRPC.Chat fromChat = MessagesController.getInstance(currentAccount).getChat(-DialogObject.getPeerDialogId(giftCode.boost_peer));
                             String from = fromChat == null ? null : fromChat.title;
                             if (from == null) {
-                                msg = LocaleController.getString("BoostingReceivedGiftNoName", R.string.BoostingReceivedGiftNoName);
+                                msg = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGRECEIVEDGIFTNONAME, R.string.BoostingReceivedGiftNoName);
                             } else {
                                 msg = LocaleController.formatString("NotificationMessageGiftCode", R.string.NotificationMessageGiftCode, from, LocaleController.formatPluralString("Months", giftCode.months));
                             }
@@ -3384,19 +3384,19 @@ public class NotificationsController extends BaseController {
 
                 ArrayList<NotificationChannelGroup> channelGroups = new ArrayList<>();
                 if (channelsId != null) {
-                    channelGroups.add(new NotificationChannelGroup(channelsId, LocaleController.getString("NotificationsChannels", R.string.NotificationsChannels) + userName));
+                    channelGroups.add(new NotificationChannelGroup(channelsId, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSCHANNELS, R.string.NotificationsChannels) + userName));
                 }
                 if (groupsId != null) {
-                    channelGroups.add(new NotificationChannelGroup(groupsId, LocaleController.getString("NotificationsGroups", R.string.NotificationsGroups) + userName));
+                    channelGroups.add(new NotificationChannelGroup(groupsId, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSGROUPS, R.string.NotificationsGroups) + userName));
                 }
                 if (storiesId != null) {
-                    channelGroups.add(new NotificationChannelGroup(storiesId, LocaleController.getString("NotificationsStories", R.string.NotificationsStories) + userName));
+                    channelGroups.add(new NotificationChannelGroup(storiesId, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSSTORIES, R.string.NotificationsStories) + userName));
                 }
                 if (privateId != null) {
-                    channelGroups.add(new NotificationChannelGroup(privateId, LocaleController.getString("NotificationsPrivateChats", R.string.NotificationsPrivateChats) + userName));
+                    channelGroups.add(new NotificationChannelGroup(privateId, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSPRIVATECHATS, R.string.NotificationsPrivateChats) + userName));
                 }
                 if (otherId != null) {
-                    channelGroups.add(new NotificationChannelGroup(otherId, LocaleController.getString("NotificationsOther", R.string.NotificationsOther) + userName));
+                    channelGroups.add(new NotificationChannelGroup(otherId, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSOTHER, R.string.NotificationsOther) + userName));
                 }
 
                 systemNotificationManager.createNotificationChannelGroups(channelGroups);
@@ -3443,10 +3443,10 @@ public class NotificationsController extends BaseController {
             soundHash = soundHash.substring(0, 5);
         }
         if (isSilent) {
-            name = LocaleController.getString("NotificationsSilent", R.string.NotificationsSilent);
+            name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSSILENT, R.string.NotificationsSilent);
             key = "silent";
         } else if (isDefault) {
-            name = isInApp ? LocaleController.getString("NotificationsInAppDefault", R.string.NotificationsInAppDefault) : LocaleController.getString("NotificationsDefault", R.string.NotificationsDefault);
+            name = isInApp ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSINAPPDEFAULT, R.string.NotificationsInAppDefault) : LocaleController.getString("NotificationsDefault", R.string.NotificationsDefault);
             if (type == TYPE_CHANNEL) {
                 key = isInApp ? "channels_ia" : "channels";
             } else if (type == TYPE_GROUP) {
@@ -3658,7 +3658,7 @@ public class NotificationsController extends BaseController {
             } else {
                 channelId = currentAccount + "channel_" + dialogId + "_" + Utilities.random.nextLong();
             }
-            NotificationChannel notificationChannel = new NotificationChannel(channelId, secretChat ? LocaleController.getString("SecretChatName", R.string.SecretChatName) : name, importance);
+            NotificationChannel notificationChannel = new NotificationChannel(channelId, secretChat ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SECRETCHATNAME, R.string.SecretChatName) : name, importance);
             notificationChannel.setGroup(groupId);
             if (ledColor != 0) {
                 notificationChannel.enableLights(true);
@@ -3755,7 +3755,7 @@ public class NotificationsController extends BaseController {
                     msg.message = "";
                 } else if (names.size() == 1) {
                     if (storiesCount == 1) {
-                        msg.message = LocaleController.getString("StoryNotificationSingle");
+                        msg.message = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYNOTIFICATIONSINGLE);
                     } else {
                         msg.message = LocaleController.formatPluralString("StoryNotification1", storiesCount, names.get(0));
                     }
@@ -3835,12 +3835,12 @@ public class NotificationsController extends BaseController {
             if (DialogObject.isEncryptedDialog(dialog_id) || pushDialogs.size() > 1 || passcode) {
                 if (passcode) {
                     if (chatId != 0) {
-                        name = LocaleController.getString("NotificationHiddenChatName", R.string.NotificationHiddenChatName);
+                        name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONHIDDENCHATNAME, R.string.NotificationHiddenChatName);
                     } else {
-                        name = LocaleController.getString("NotificationHiddenName", R.string.NotificationHiddenName);
+                        name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONHIDDENNAME, R.string.NotificationHiddenName);
                     }
                 } else {
-                    name = LocaleController.getString("AppName", R.string.AppName);
+                    name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName);
                 }
                 replace = false;
             } else {
@@ -4300,9 +4300,9 @@ public class NotificationsController extends BaseController {
                 Intent replyIntent = new Intent(ApplicationLoader.applicationContext, PopupReplyReceiver.class);
                 replyIntent.putExtra("currentAccount", currentAccount);
                 if (Build.VERSION.SDK_INT <= 19) {
-                    mBuilder.addAction(R.drawable.ic_ab_reply2, LocaleController.getString("Reply", R.string.Reply), PendingIntent.getBroadcast(ApplicationLoader.applicationContext, 2, replyIntent, PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
+                    mBuilder.addAction(R.drawable.ic_ab_reply2, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLY, R.string.Reply), PendingIntent.getBroadcast(ApplicationLoader.applicationContext, 2, replyIntent, PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
                 } else {
-                    mBuilder.addAction(R.drawable.ic_ab_reply, LocaleController.getString("Reply", R.string.Reply), PendingIntent.getBroadcast(ApplicationLoader.applicationContext, 2, replyIntent, PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
+                    mBuilder.addAction(R.drawable.ic_ab_reply, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLY, R.string.Reply), PendingIntent.getBroadcast(ApplicationLoader.applicationContext, 2, replyIntent, PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
                 }
             }
             showExtraNotifications(mBuilder, detailText, dialog_id, topicId, chatName, vibrationPattern, ledColor, sound, configImportance, isDefault, isInApp, notifyDisabled, chatType);
@@ -4332,7 +4332,7 @@ public class NotificationsController extends BaseController {
             SharedPreferences.Editor editor = preferences.edit();
 
             String newSound = defaultSound.toString();
-            String ringtoneName = LocaleController.getString("DefaultRingtone", R.string.DefaultRingtone);
+            String ringtoneName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DEFAULTRINGTONE, R.string.DefaultRingtone);
             if (isDefault) {
                 if (chatType == TYPE_CHANNEL) {
                     editor.putString("ChannelSound", ringtoneName);
@@ -4546,9 +4546,9 @@ public class NotificationsController extends BaseController {
                         }
                     }
                     if (UserObject.isReplyUser(dialogId)) {
-                        name = LocaleController.getString("RepliesTitle", R.string.RepliesTitle);
+                        name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLIESTITLE, R.string.RepliesTitle);
                     } else if (dialogId == selfUserId) {
-                        name = LocaleController.getString("MessageScheduledReminderNotification", R.string.MessageScheduledReminderNotification);
+                        name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGESCHEDULEDREMINDERNOTIFICATION, R.string.MessageScheduledReminderNotification);
                     }
                 } else {
                     chat = getMessagesController().getChat(-dialogId);
@@ -4602,15 +4602,15 @@ public class NotificationsController extends BaseController {
                         continue;
                     }
                 }
-                name = LocaleController.getString("SecretChatName", R.string.SecretChatName);
+                name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SECRETCHATNAME, R.string.SecretChatName);
                 photoPath = null;
             }
 
             if (waitingForPasscode) {
                 if (DialogObject.isChatDialog(dialogId)) {
-                    name = LocaleController.getString("NotificationHiddenChatName", R.string.NotificationHiddenChatName);
+                    name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONHIDDENCHATNAME, R.string.NotificationHiddenChatName);
                 } else {
-                    name = LocaleController.getString("NotificationHiddenName", R.string.NotificationHiddenName);
+                    name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONHIDDENNAME, R.string.NotificationHiddenName);
                 }
                 photoPath = null;
                 canReply = false;
@@ -4654,7 +4654,7 @@ public class NotificationsController extends BaseController {
                 replyIntent.putExtra("topic_id", topicId);
                 replyIntent.putExtra("currentAccount", currentAccount);
                 PendingIntent replyPendingIntent = PendingIntent.getBroadcast(ApplicationLoader.applicationContext, internalId, replyIntent, PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
-                RemoteInput remoteInputWear = new RemoteInput.Builder(EXTRA_VOICE_REPLY).setLabel(LocaleController.getString("Reply", R.string.Reply)).build();
+                RemoteInput remoteInputWear = new RemoteInput.Builder(EXTRA_VOICE_REPLY).setLabel(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLY, R.string.Reply)).build();
                 String replyToString;
                 if (DialogObject.isChatDialog(dialogId)) {
                     replyToString = LocaleController.formatString("ReplyToGroup", R.string.ReplyToGroup, name);
@@ -4694,7 +4694,7 @@ public class NotificationsController extends BaseController {
                 }
                 try {
                     if (sender != null && sender.photo != null && sender.photo.photo_small != null && sender.photo.photo_small.volume_id != 0 && sender.photo.photo_small.local_id != 0) {
-                        Person.Builder personBuilder = new Person.Builder().setName(LocaleController.getString("FromYou", R.string.FromYou));
+                        Person.Builder personBuilder = new Person.Builder().setName(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FROMYOU, R.string.FromYou));
                         File avatar = getFileLoader().getPathToAttach(sender.photo.photo_small, true);
                         loadRoundAvatar(avatar, personBuilder);
                         selfPerson = personBuilder.build();
@@ -4734,7 +4734,7 @@ public class NotificationsController extends BaseController {
                     continue;
                 } else if (names.size() == 1) {
                     if (storiesCount == 1) {
-                        text.append(LocaleController.getString("StoryNotificationSingle"));
+                        text.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYNOTIFICATIONSINGLE));
                     } else {
                         text.append(LocaleController.formatPluralString("StoryNotification1", storiesCount, names.get(0)));
                     }
@@ -4768,7 +4768,7 @@ public class NotificationsController extends BaseController {
                     if (dialogId == selfUserId) {
                         senderName[0] = name;
                     } else if (DialogObject.isChatDialog(dialogId) && messageObject.messageOwner.from_scheduled) {
-                        senderName[0] = LocaleController.getString("NotificationMessageScheduledName", R.string.NotificationMessageScheduledName);
+                        senderName[0] = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONMESSAGESCHEDULEDNAME, R.string.NotificationMessageScheduledName);
                     }
                     if (message == null) {
                         if (BuildVars.LOGS_ENABLED) {
@@ -4780,7 +4780,7 @@ public class NotificationsController extends BaseController {
                         text.append("\n\n");
                     }
                     if (dialogId != selfUserId && messageObject.messageOwner.from_scheduled && DialogObject.isUserDialog(dialogId)) {
-                        message = String.format("%1$s: %2$s", LocaleController.getString("NotificationMessageScheduledName", R.string.NotificationMessageScheduledName), message);
+                        message = String.format("%1$s: %2$s", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONMESSAGESCHEDULEDNAME, R.string.NotificationMessageScheduledName), message);
                         text.append(message);
                     } else {
                         if (senderName[0] != null) {
@@ -4807,13 +4807,13 @@ public class NotificationsController extends BaseController {
                             if (DialogObject.isChatDialog(dialogId)) {
                                 if (isChannel) {
                                     if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O_MR1) {
-                                        personName = LocaleController.getString("NotificationHiddenChatName", R.string.NotificationHiddenChatName);
+                                        personName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONHIDDENCHATNAME, R.string.NotificationHiddenChatName);
                                     }
                                 } else {
-                                    personName = LocaleController.getString("NotificationHiddenChatUserName", R.string.NotificationHiddenChatUserName);
+                                    personName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONHIDDENCHATUSERNAME, R.string.NotificationHiddenChatUserName);
                                 }
                             } else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O_MR1) {
-                                personName = LocaleController.getString("NotificationHiddenName", R.string.NotificationHiddenName);
+                                personName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONHIDDENNAME, R.string.NotificationHiddenName);
                             }
                         }
                     } else {
@@ -4995,7 +4995,7 @@ public class NotificationsController extends BaseController {
             msgHeardIntent.putExtra("max_id", maxId);
             msgHeardIntent.putExtra("currentAccount", currentAccount);
             PendingIntent readPendingIntent = PendingIntent.getBroadcast(ApplicationLoader.applicationContext, internalId, msgHeardIntent, PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
-            NotificationCompat.Action readAction = new NotificationCompat.Action.Builder(R.drawable.msg_markread, LocaleController.getString("MarkAsRead", R.string.MarkAsRead), readPendingIntent)
+            NotificationCompat.Action readAction = new NotificationCompat.Action.Builder(R.drawable.msg_markread, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MARKASREAD, R.string.MarkAsRead), readPendingIntent)
                     .setSemanticAction(NotificationCompat.Action.SEMANTIC_ACTION_MARK_AS_READ)
                     .setShowsUserInterface(false)
                     .build();

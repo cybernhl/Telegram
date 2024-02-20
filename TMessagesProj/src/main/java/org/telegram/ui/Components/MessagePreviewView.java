@@ -792,7 +792,7 @@ public class MessagePreviewView extends FrameLayout {
 
                     if (!showOutdatedQuote) {
                         ActionBarMenuSubItem backButton = new ActionBarMenuSubItem(context, false, true, false, resourcesProvider);
-                        backButton.setTextAndIcon(LocaleController.getString(R.string.Back), R.drawable.msg_arrow_back);
+                        backButton.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BACK, R.string.Back), R.drawable.msg_arrow_back);
                         backButton.setOnClickListener(v -> {
                             messagePreviewParams.quote = null;
                             textSelectionHelper.clear();
@@ -806,7 +806,7 @@ public class MessagePreviewView extends FrameLayout {
                         swipeback.addView(gap, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 8));
 
                         ActionBarMenuSubItem selectQuoteButton = new ActionBarMenuSubItem(context, false, false, true, resourcesProvider);
-                        selectQuoteButton.setTextAndIcon(LocaleController.getString(R.string.QuoteSelectedPart), R.drawable.menu_quote_specific);
+                        selectQuoteButton.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_QUOTESELECTEDPART, R.string.QuoteSelectedPart), R.drawable.menu_quote_specific);
                         selectQuoteButton.setOnClickListener(v -> {
                             MessageObject replyMessage = getReplyMessage();
                             if (replyMessage != null) {
@@ -862,7 +862,7 @@ public class MessagePreviewView extends FrameLayout {
                             setBackground(null);
                         }
                     };
-                    clearQuoteButton.setTextAndIcon(LocaleController.getString(R.string.ClearQuote), R.drawable.menu_quote_delete);
+                    clearQuoteButton.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARQUOTE, R.string.ClearQuote), R.drawable.menu_quote_delete);
                     btn1.setBackground(Theme.createRadSelectorDrawable(getThemedColor(Theme.key_dialogButtonSelector), 6, 0));
                     btn1.setOnClickListener(v -> {
                         if (messagePreviewParams.quote != null && !showOutdatedQuote) {
@@ -913,10 +913,10 @@ public class MessagePreviewView extends FrameLayout {
                 if (!messagePreviewParams.noforwards && !messagePreviewParams.hasSecretMessages) {
                     FrameLayout btn2 = new FrameLayout(context);
                     replyAnotherChatButton = new ActionBarMenuSubItem(context, true, false, false, resourcesProvider);
-                    replyAnotherChatButton.setTextAndIcon(LocaleController.getString(R.string.ReplyToAnotherChat), R.drawable.msg_forward_replace);
+                    replyAnotherChatButton.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLYTOANOTHERCHAT, R.string.ReplyToAnotherChat), R.drawable.msg_forward_replace);
                     replyAnotherChatButton.setOnClickListener(v -> selectAnotherChat(false));
                     quoteAnotherChatButton = new ActionBarMenuSubItem(context, true, false, false, resourcesProvider);
-                    quoteAnotherChatButton.setTextAndIcon(LocaleController.getString(R.string.QuoteToAnotherChat), R.drawable.msg_forward_replace);
+                    quoteAnotherChatButton.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_QUOTETOANOTHERCHAT, R.string.QuoteToAnotherChat), R.drawable.msg_forward_replace);
                     quoteAnotherChatButton.setOnClickListener(v -> selectAnotherChat(false));
                     btn2.addView(quoteAnotherChatButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48));
                     btn2.addView(replyAnotherChatButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48));
@@ -932,7 +932,7 @@ public class MessagePreviewView extends FrameLayout {
                 switchToQuote(messagePreviewParams.quote != null, false);
 
                 ActionBarMenuSubItem applyChanges = new ActionBarMenuSubItem(context, true, false, false, resourcesProvider);
-                applyChanges.setTextAndIcon(LocaleController.getString(R.string.ApplyChanges), R.drawable.msg_select);
+                applyChanges.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPLYCHANGES, R.string.ApplyChanges), R.drawable.msg_select);
                 applyChanges.setOnClickListener(v -> dismiss(true));
                 menu.addView(applyChanges, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
 
@@ -953,8 +953,8 @@ public class MessagePreviewView extends FrameLayout {
 
                 ToggleButton sendersNameButton = new ToggleButton(
                     context,
-                    R.raw.name_hide, messagePreviewParams.multipleUsers ? LocaleController.getString(R.string.ShowSenderNames) : LocaleController.getString(R.string.ShowSendersName),
-                    R.raw.name_show, messagePreviewParams.multipleUsers ? LocaleController.getString(R.string.HideSenderNames) : LocaleController.getString(R.string.HideSendersName)
+                    R.raw.name_hide, messagePreviewParams.multipleUsers ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHOWSENDERNAMES, R.string.ShowSenderNames) : LocaleController.getString(R.string.ShowSendersName),
+                    R.raw.name_show, messagePreviewParams.multipleUsers ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_HIDESENDERNAMES, R.string.HideSenderNames) : LocaleController.getString(R.string.HideSendersName)
                 );
                 menu.addView(sendersNameButton, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
 
@@ -962,8 +962,8 @@ public class MessagePreviewView extends FrameLayout {
                 if (messagePreviewParams.hasCaption) {
                     captionButton = new ToggleButton(
                         context,
-                        R.raw.caption_hide, LocaleController.getString(R.string.ShowCaption),
-                        R.raw.caption_show, LocaleController.getString(R.string.HideCaption)
+                        R.raw.caption_hide, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHOWCAPTION, R.string.ShowCaption),
+                        R.raw.caption_show, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_HIDECAPTION, R.string.HideCaption)
                     );
                     captionButton.setState(messagePreviewParams.hideCaption, false);
                     menu.addView(captionButton, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
@@ -973,7 +973,7 @@ public class MessagePreviewView extends FrameLayout {
 
                 ActionBarMenuSubItem changeRecipientView = new ActionBarMenuSubItem(context, true, false, resourcesProvider);
                 changeRecipientView.setOnClickListener(view -> selectAnotherChat(true));
-                changeRecipientView.setTextAndIcon(LocaleController.getString(R.string.ChangeRecipient), R.drawable.msg_forward_replace);
+                changeRecipientView.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANGERECIPIENT, R.string.ChangeRecipient), R.drawable.msg_forward_replace);
                 menu.addView(changeRecipientView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
 
                 ActionBarPopupWindow.GapView gap = new ActionBarPopupWindow.GapView(context, resourcesProvider);
@@ -981,19 +981,19 @@ public class MessagePreviewView extends FrameLayout {
                 menu.addView(gap, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 8));
 
                 ActionBarMenuSubItem applyChanges = new ActionBarMenuSubItem(context, true, false, false, resourcesProvider);
-                applyChanges.setTextAndIcon(LocaleController.getString(R.string.ApplyChanges), R.drawable.msg_select);
+                applyChanges.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPLYCHANGES, R.string.ApplyChanges), R.drawable.msg_select);
                 applyChanges.setOnClickListener(v -> dismiss(true));
                 menu.addView(applyChanges, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
 
                 ActionBarMenuSubItem deleteLink = new ActionBarMenuSubItem(context, true, false, true, resourcesProvider);
-                deleteLink.setTextAndIcon(LocaleController.getString(R.string.DoNotForward), R.drawable.msg_delete);
+                deleteLink.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONOTFORWARD, R.string.DoNotForward), R.drawable.msg_delete);
                 deleteLink.setColors(getThemedColor(Theme.key_text_RedBold), getThemedColor(Theme.key_text_RedRegular));
                 deleteLink.setOnClickListener(v -> removeForward());
                 deleteLink.setSelectorColor(Theme.multAlpha(Theme.getColor(Theme.key_text_RedRegular), .12f));
                 menu.addView(deleteLink, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
 
 //                ActionBarMenuSubItem sendMessagesView = new ActionBarMenuSubItem(context, false, true, resourcesProvider);
-//                sendMessagesView.setTextAndIcon(LocaleController.getString("ForwardSendMessages", R.string.ForwardSendMessages), R.drawable.msg_send);
+//                sendMessagesView.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDSENDMESSAGES, R.string.ForwardSendMessages), R.drawable.msg_send);
 //                menu.addView(sendMessagesView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
 //                sendMessagesView.setOnClickListener(View -> didSendPressed());
 
@@ -1037,8 +1037,8 @@ public class MessagePreviewView extends FrameLayout {
 
                 changePositionBtn = new ToggleButton(
                     context,
-                    R.raw.position_below, LocaleController.getString(R.string.LinkAbove),
-                    R.raw.position_above, LocaleController.getString(R.string.LinkBelow)
+                    R.raw.position_below, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKABOVE, R.string.LinkAbove),
+                    R.raw.position_above, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKBELOW, R.string.LinkBelow)
                 );
                 changePositionBtn.setState(!messagePreviewParams.webpageTop, false);
                 menu.addView(changePositionBtn, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
@@ -1047,16 +1047,16 @@ public class MessagePreviewView extends FrameLayout {
                 changeSizeBtnContainer.setBackground(Theme.createRadSelectorDrawable(getThemedColor(Theme.key_dialogButtonSelector), 0, 0));
                 changeSizeBtn = new ToggleButton(
                     context,
-                    R.raw.media_shrink, LocaleController.getString(R.string.LinkMediaLarger),
-                    R.raw.media_enlarge, LocaleController.getString(R.string.LinkMediaSmaller)
+                    R.raw.media_shrink, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKMEDIALARGER, R.string.LinkMediaLarger),
+                    R.raw.media_enlarge, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKMEDIASMALLER, R.string.LinkMediaSmaller)
                 );
                 changeSizeBtn.setBackground(null);
                 changeSizeBtn.setVisibility(messagePreviewParams.isVideo ? View.INVISIBLE : View.VISIBLE);
                 changeSizeBtnContainer.addView(changeSizeBtn, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
                 videoChangeSizeBtn = new ToggleButton(
                         context,
-                        R.raw.media_shrink, LocaleController.getString(R.string.LinkVideoLarger),
-                        R.raw.media_enlarge, LocaleController.getString(R.string.LinkVideoSmaller)
+                        R.raw.media_shrink, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKVIDEOLARGER, R.string.LinkVideoLarger),
+                        R.raw.media_enlarge, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKVIDEOSMALLER, R.string.LinkVideoSmaller)
                 );
                 videoChangeSizeBtn.setBackground(null);
                 videoChangeSizeBtn.setVisibility(!messagePreviewParams.isVideo ? View.INVISIBLE : View.VISIBLE);
@@ -1072,12 +1072,12 @@ public class MessagePreviewView extends FrameLayout {
                 menu.addView(gap, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 8));
 
                 ActionBarMenuSubItem applyChanges = new ActionBarMenuSubItem(context, true, false, false, resourcesProvider);
-                applyChanges.setTextAndIcon(LocaleController.getString(R.string.ApplyChanges), R.drawable.msg_select);
+                applyChanges.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPLYCHANGES, R.string.ApplyChanges), R.drawable.msg_select);
                 applyChanges.setOnClickListener(v -> dismiss(true));
                 menu.addView(applyChanges, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
 
                 ActionBarMenuSubItem deleteLink = new ActionBarMenuSubItem(context, true, false, true, resourcesProvider);
-                deleteLink.setTextAndIcon(LocaleController.getString(R.string.DoNotLinkPreview), R.drawable.msg_delete);
+                deleteLink.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONOTLINKPREVIEW, R.string.DoNotLinkPreview), R.drawable.msg_delete);
                 deleteLink.setColors(getThemedColor(Theme.key_text_RedBold), getThemedColor(Theme.key_text_RedRegular));
                 deleteLink.setOnClickListener(v -> removeLink());
                 deleteLink.setSelectorColor(Theme.multAlpha(Theme.getColor(Theme.key_text_RedRegular), .12f));
@@ -1168,7 +1168,7 @@ public class MessagePreviewView extends FrameLayout {
         }
 
         private void showQuoteLengthError() {
-            BulletinFactory.of(MessagePreviewView.this, resourcesProvider).createSimpleBulletin(R.raw.error, LocaleController.getString(R.string.QuoteMaxError), LocaleController.getString(R.string.QuoteMaxErrorMessage)).show();
+            BulletinFactory.of(MessagePreviewView.this, resourcesProvider).createSimpleBulletin(R.raw.error, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_QUOTEMAXERROR, R.string.QuoteMaxError), LocaleController.getString(R.string.QuoteMaxErrorMessage)).show();
         }
 
         public void bind() {
@@ -1186,9 +1186,9 @@ public class MessagePreviewView extends FrameLayout {
                             subtitle = LocaleController.formatString("ForwardPreviewSendersNameVisible", R.string.ForwardPreviewSendersNameVisible, ContactsController.formatName(currentUser.first_name, currentUser.last_name));
                         } else {
                             if (ChatObject.isChannel(currentChat) && !currentChat.megagroup) {
-                                subtitle = LocaleController.getString("ForwardPreviewSendersNameVisibleChannel", R.string.ForwardPreviewSendersNameVisibleChannel);
+                                subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDPREVIEWSENDERSNAMEVISIBLECHANNEL, R.string.ForwardPreviewSendersNameVisibleChannel);
                             } else {
-                                subtitle = LocaleController.getString("ForwardPreviewSendersNameVisibleGroup", R.string.ForwardPreviewSendersNameVisibleGroup);
+                                subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDPREVIEWSENDERSNAMEVISIBLEGROUP, R.string.ForwardPreviewSendersNameVisibleGroup);
                             }
                         }
                     } else {
@@ -1196,9 +1196,9 @@ public class MessagePreviewView extends FrameLayout {
                             subtitle = LocaleController.formatString("ForwardPreviewSendersNameVisible", R.string.ForwardPreviewSendersNameVisible, ContactsController.formatName(currentUser.first_name, currentUser.last_name));
                         } else {
                             if (ChatObject.isChannel(currentChat) && !currentChat.megagroup) {
-                                subtitle = LocaleController.getString(R.string.ForwardPreviewSendersNameHiddenChannel);
+                                subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDPREVIEWSENDERSNAMEHIDDENCHANNEL, R.string.ForwardPreviewSendersNameHiddenChannel);
                             } else {
-                                subtitle = LocaleController.getString(R.string.ForwardPreviewSendersNameHiddenGroup);
+                                subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDPREVIEWSENDERSNAMEHIDDENGROUP, R.string.ForwardPreviewSendersNameHiddenGroup);
                             }
                         }
                     }
@@ -1207,9 +1207,9 @@ public class MessagePreviewView extends FrameLayout {
                         subtitle = LocaleController.formatString("ForwardPreviewSendersNameVisible", R.string.ForwardPreviewSendersNameVisible, ContactsController.formatName(currentUser.first_name, currentUser.last_name));
                     } else {
                         if (ChatObject.isChannel(currentChat) && !currentChat.megagroup) {
-                            subtitle = LocaleController.getString(R.string.ForwardPreviewSendersNameVisibleChannel);
+                            subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDPREVIEWSENDERSNAMEVISIBLECHANNEL, R.string.ForwardPreviewSendersNameVisibleChannel);
                         } else {
-                            subtitle = LocaleController.getString(R.string.ForwardPreviewSendersNameVisibleGroup);
+                            subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDPREVIEWSENDERSNAMEVISIBLEGROUP, R.string.ForwardPreviewSendersNameVisibleGroup);
                         }
                     }
                 } else {
@@ -1217,24 +1217,24 @@ public class MessagePreviewView extends FrameLayout {
                         subtitle = LocaleController.formatString("ForwardPreviewSendersNameHidden", R.string.ForwardPreviewSendersNameHidden, ContactsController.formatName(currentUser.first_name, currentUser.last_name));
                     } else {
                         if (ChatObject.isChannel(currentChat) && !currentChat.megagroup) {
-                            subtitle = LocaleController.getString(R.string.ForwardPreviewSendersNameHiddenChannel);
+                            subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDPREVIEWSENDERSNAMEHIDDENCHANNEL, R.string.ForwardPreviewSendersNameHiddenChannel);
                         } else {
-                            subtitle = LocaleController.getString(R.string.ForwardPreviewSendersNameHiddenGroup);
+                            subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDPREVIEWSENDERSNAMEHIDDENGROUP, R.string.ForwardPreviewSendersNameHiddenGroup);
                         }
                     }
                 }
                 actionBar.setSubtitle(subtitle, animated);
             } else if (currentTab == TAB_REPLY) {
                 if (messagePreviewParams.quote != null && messagePreviewParams.replyMessage.hasText) {
-                    actionBar.setTitle(LocaleController.getString(R.string.PreviewQuoteUpdate), animated);
-                    actionBar.setSubtitle(LocaleController.getString(R.string.PreviewQuoteUpdateSubtitle), animated);
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREVIEWQUOTEUPDATE, R.string.PreviewQuoteUpdate), animated);
+                    actionBar.setSubtitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREVIEWQUOTEUPDATESUBTITLE, R.string.PreviewQuoteUpdateSubtitle), animated);
                 } else {
-                    actionBar.setTitle(LocaleController.getString(R.string.MessageOptionsReplyTitle), animated);
-                    actionBar.setSubtitle(messagePreviewParams.replyMessage.hasText ? LocaleController.getString(R.string.MessageOptionsReplySubtitle) : "", animated);
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGEOPTIONSREPLYTITLE, R.string.MessageOptionsReplyTitle), animated);
+                    actionBar.setSubtitle(messagePreviewParams.replyMessage.hasText ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGEOPTIONSREPLYSUBTITLE, R.string.MessageOptionsReplySubtitle) : "", animated);
                 }
             } else if (currentTab == TAB_LINK) {
-                actionBar.setTitle(LocaleController.getString(R.string.MessageOptionsLinkTitle), animated);
-                actionBar.setSubtitle(LocaleController.getString(R.string.MessageOptionsLinkSubtitle), animated);
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGEOPTIONSLINKTITLE, R.string.MessageOptionsLinkTitle), animated);
+                actionBar.setSubtitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGEOPTIONSLINKSUBTITLE, R.string.MessageOptionsLinkSubtitle), animated);
             }
         }
 
@@ -1767,11 +1767,11 @@ public class MessagePreviewView extends FrameLayout {
         int p = 0;
         for (int i = 0; i < 3; ++i) {
             if (i == TAB_REPLY && params.replyMessage != null) {
-                tabsView.addTab(TAB_REPLY, LocaleController.getString(R.string.MessageOptionsReply));
+                tabsView.addTab(TAB_REPLY, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGEOPTIONSREPLY, R.string.MessageOptionsReply));
             } else if (i == TAB_FORWARD && params.forwardMessages != null && !showOutdatedQuote) {
-                tabsView.addTab(TAB_FORWARD, LocaleController.getString(R.string.MessageOptionsForward));
+                tabsView.addTab(TAB_FORWARD, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGEOPTIONSFORWARD, R.string.MessageOptionsForward));
             } else if (i == TAB_LINK && params.linkMessage != null && !showOutdatedQuote) {
-                tabsView.addTab(TAB_LINK, LocaleController.getString(R.string.MessageOptionsLink));
+                tabsView.addTab(TAB_LINK, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGEOPTIONSLINK, R.string.MessageOptionsLink));
             } else {
                 continue;
             }

@@ -142,7 +142,7 @@ public class ChatPullingDownDrawable implements NotificationCenter.NotificationC
             circleRadius = AndroidUtilities.dp(56) / 2f;
             lastWidth = width;
 
-            String nameStr = nextChat != null ? nextChat.title : LocaleController.getString("SwipeToGoNextChannelEnd", R.string.SwipeToGoNextChannelEnd);
+            String nameStr = nextChat != null ? nextChat.title : LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SWIPETOGONEXTCHANNELEND, R.string.SwipeToGoNextChannelEnd);
             chatNameWidth = (int) textPaint.measureText(nameStr);
             chatNameWidth = Math.min(chatNameWidth, lastWidth - AndroidUtilities.dp(60));
             chatNameLayout = new StaticLayout(nameStr, textPaint, chatNameWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
@@ -151,14 +151,14 @@ public class ChatPullingDownDrawable implements NotificationCenter.NotificationC
             String str2 = null;
 
             if (drawFolderBackground && dialogFolderId != folderId && dialogFolderId != 0) {
-                str1 = LocaleController.getString("SwipeToGoNextArchive", R.string.SwipeToGoNextArchive);
-                str2 = LocaleController.getString("ReleaseToGoNextArchive", R.string.ReleaseToGoNextArchive);
+                str1 = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SWIPETOGONEXTARCHIVE, R.string.SwipeToGoNextArchive);
+                str2 = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RELEASETOGONEXTARCHIVE, R.string.ReleaseToGoNextArchive);
             } else if (drawFolderBackground) {
-                str1 = LocaleController.getString("SwipeToGoNextFolder", R.string.SwipeToGoNextFolder);
-                str2 = LocaleController.getString("ReleaseToGoNextFolder", R.string.ReleaseToGoNextFolder);
+                str1 = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SWIPETOGONEXTFOLDER, R.string.SwipeToGoNextFolder);
+                str2 = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RELEASETOGONEXTFOLDER, R.string.ReleaseToGoNextFolder);
             } else {
-                str1 = LocaleController.getString("SwipeToGoNextChannel", R.string.SwipeToGoNextChannel);
-                str2 = LocaleController.getString("ReleaseToGoNextChannel", R.string.ReleaseToGoNextChannel);
+                str1 = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SWIPETOGONEXTCHANNEL, R.string.SwipeToGoNextChannel);
+                str2 = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RELEASETOGONEXTCHANNEL, R.string.ReleaseToGoNextChannel);
             }
             layout1Width = (int) textPaint2.measureText(str1);
             layout1Width = Math.min(layout1Width, lastWidth - AndroidUtilities.dp(60));

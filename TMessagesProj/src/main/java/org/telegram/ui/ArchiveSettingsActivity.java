@@ -51,7 +51,7 @@ public class ArchiveSettingsActivity extends BaseFragment implements Notificatio
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("ArchiveSettings"));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVESETTINGS));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -98,7 +98,7 @@ public class ArchiveSettingsActivity extends BaseFragment implements Notificatio
             } else if (item.id == 7) {
                 if (!getUserConfig().isPremium() && !getMessagesController().autoarchiveAvailable && !settings.archive_and_mute_new_noncontact_peers) {
                     final Bulletin.SimpleLayout layout = new Bulletin.SimpleLayout(getContext(), getResourceProvider());
-                    layout.textView.setText(AndroidUtilities.replaceSingleTag(LocaleController.getString(R.string.UnlockPremium), Theme.key_undo_cancelColor, 0, () -> {
+                    layout.textView.setText(AndroidUtilities.replaceSingleTag(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNLOCKPREMIUM, R.string.UnlockPremium), Theme.key_undo_cancelColor, 0, () -> {
                         presentFragment(new PremiumPreviewFragment("settings"));
                     }));
                     layout.textView.setSingleLine(false);
@@ -133,20 +133,20 @@ public class ArchiveSettingsActivity extends BaseFragment implements Notificatio
         oldItems.addAll(items);
         items.clear();
 
-        items.add(new ItemInner(VIEW_TYPE_HEADER, 0, LocaleController.getString("ArchiveSettingUnmutedFolders")));
-        items.add(new ItemInner(VIEW_TYPE_CHECK, 1, LocaleController.getString("ArchiveSettingUnmutedFoldersCheck")));
-        items.add(new ItemInner(VIEW_TYPE_SHADOW, 2, LocaleController.getString("ArchiveSettingUnmutedFoldersInfo")));
+        items.add(new ItemInner(VIEW_TYPE_HEADER, 0, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVESETTINGUNMUTEDFOLDERS)));
+        items.add(new ItemInner(VIEW_TYPE_CHECK, 1, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVESETTINGUNMUTEDFOLDERSCHECK)));
+        items.add(new ItemInner(VIEW_TYPE_SHADOW, 2, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVESETTINGUNMUTEDFOLDERSINFO)));
 
         final boolean hasFolders = getMessagesController().getDialogFilters().size() > 1;
         if (hasFolders) {
-            items.add(new ItemInner(VIEW_TYPE_HEADER, 3, LocaleController.getString("ArchiveSettingUnmutedChats")));
-            items.add(new ItemInner(VIEW_TYPE_CHECK, 4, LocaleController.getString("ArchiveSettingUnmutedChatsCheck")));
-            items.add(new ItemInner(VIEW_TYPE_SHADOW, 5, LocaleController.getString("ArchiveSettingUnmutedChatsInfo")));
+            items.add(new ItemInner(VIEW_TYPE_HEADER, 3, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVESETTINGUNMUTEDCHATS)));
+            items.add(new ItemInner(VIEW_TYPE_CHECK, 4, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVESETTINGUNMUTEDCHATSCHECK)));
+            items.add(new ItemInner(VIEW_TYPE_SHADOW, 5, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVESETTINGUNMUTEDCHATSINFO)));
         }
 
-        items.add(new ItemInner(VIEW_TYPE_HEADER, 6, LocaleController.getString("NewChatsFromNonContacts")));
-        items.add(new ItemInner(VIEW_TYPE_CHECK, 7, LocaleController.getString("NewChatsFromNonContactsCheck")));
-        items.add(new ItemInner(VIEW_TYPE_SHADOW, 8, LocaleController.getString("ArchiveAndMuteInfo")));
+        items.add(new ItemInner(VIEW_TYPE_HEADER, 6, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWCHATSFROMNONCONTACTS)));
+        items.add(new ItemInner(VIEW_TYPE_CHECK, 7, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWCHATSFROMNONCONTACTSCHECK)));
+        items.add(new ItemInner(VIEW_TYPE_SHADOW, 8, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVEANDMUTEINFO)));
 
         if (adapter == null) {
             return;

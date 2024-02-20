@@ -546,10 +546,10 @@ public class MentionsAdapter extends RecyclerListView.SelectionAdapter implement
                 if (!allowGeo && parentFragment != null && parentFragment.getParentActivity() != null) {
                     final TLRPC.User foundContextBotFinal = foundContextBot;
                     AlertDialog.Builder builder = new AlertDialog.Builder(parentFragment.getParentActivity());
-                    builder.setTitle(LocaleController.getString("ShareYouLocationTitle", R.string.ShareYouLocationTitle));
-                    builder.setMessage(LocaleController.getString("ShareYouLocationInline", R.string.ShareYouLocationInline));
+                    builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREYOULOCATIONTITLE, R.string.ShareYouLocationTitle));
+                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREYOULOCATIONINLINE, R.string.ShareYouLocationInline));
                     final boolean[] buttonClicked = new boolean[1];
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialogInterface, i) -> {
+                    builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), (dialogInterface, i) -> {
                         buttonClicked[0] = true;
                         if (foundContextBotFinal != null) {
                             SharedPreferences preferences1 = MessagesController.getNotificationsSettings(currentAccount);
@@ -557,7 +557,7 @@ public class MentionsAdapter extends RecyclerListView.SelectionAdapter implement
                             checkLocationPermissionsOrStart();
                         }
                     });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), (dialog, which) -> {
+                    builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), (dialog, which) -> {
                         buttonClicked[0] = true;
                         onLocationUnavailable();
                     });
@@ -715,7 +715,7 @@ public class MentionsAdapter extends RecyclerListView.SelectionAdapter implement
         if (foundContextBot != null) {
             return foundContextBot.bot_inline_placeholder;
         } else if (searchingContextUsername != null && searchingContextUsername.equals("gif")) {
-            return LocaleController.getString("SearchGifsTitle", R.string.SearchGifsTitle);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHGIFSTITLE, R.string.SearchGifsTitle);
         }
         return null;
     }
@@ -1724,9 +1724,9 @@ public class MentionsAdapter extends RecyclerListView.SelectionAdapter implement
             TLRPC.Chat chat = parentFragment.getCurrentChat();
             if (chat != null) {
                 if (!ChatObject.hasAdminRights(chat) && chat.default_banned_rights != null && chat.default_banned_rights.send_inline) {
-                    textView.setText(LocaleController.getString("GlobalAttachInlineRestricted", R.string.GlobalAttachInlineRestricted));
+                    textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHINLINERESTRICTED, R.string.GlobalAttachInlineRestricted));
                 } else if (AndroidUtilities.isBannedForever(chat.banned_rights)) {
-                    textView.setText(LocaleController.getString("AttachInlineRestrictedForever", R.string.AttachInlineRestrictedForever));
+                    textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHINLINERESTRICTEDFOREVER, R.string.AttachInlineRestrictedForever));
                 } else {
                     textView.setText(LocaleController.formatString("AttachInlineRestricted", R.string.AttachInlineRestricted, LocaleController.formatDateForBan(chat.banned_rights.until_date)));
                 }

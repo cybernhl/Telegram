@@ -607,7 +607,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
         dropDown.setMaxLines(1);
         dropDown.setEllipsize(TextUtils.TruncateAt.END);
         dropDown.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
-        dropDown.setText(LocaleController.getString("ChatGallery", R.string.ChatGallery));
+        dropDown.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATGALLERY, R.string.ChatGallery));
         dropDown.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         dropDownDrawable = context.getResources().getDrawable(R.drawable.ic_arrow_drop_down).mutate();
         dropDownDrawable.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_dialogTextBlack), PorterDuff.Mode.MULTIPLY));
@@ -617,12 +617,12 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
 
         checkCamera(false);
 
-        compressItem = parentAlert.selectedMenuItem.addSubItem(compress, R.drawable.msg_filehq, LocaleController.getString("SendWithoutCompression", R.string.SendWithoutCompression));
-        parentAlert.selectedMenuItem.addSubItem(group, R.drawable.msg_ungroup, LocaleController.getString("SendWithoutGrouping", R.string.SendWithoutGrouping));
-        spoilerItem = parentAlert.selectedMenuItem.addSubItem(spoiler, R.drawable.msg_spoiler, LocaleController.getString("EnablePhotoSpoiler", R.string.EnablePhotoSpoiler));
-        parentAlert.selectedMenuItem.addSubItem(open_in, R.drawable.msg_openin, LocaleController.getString("OpenInExternalApp", R.string.OpenInExternalApp));
+        compressItem = parentAlert.selectedMenuItem.addSubItem(compress, R.drawable.msg_filehq, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDWITHOUTCOMPRESSION, R.string.SendWithoutCompression));
+        parentAlert.selectedMenuItem.addSubItem(group, R.drawable.msg_ungroup, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDWITHOUTGROUPING, R.string.SendWithoutGrouping));
+        spoilerItem = parentAlert.selectedMenuItem.addSubItem(spoiler, R.drawable.msg_spoiler, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENABLEPHOTOSPOILER, R.string.EnablePhotoSpoiler));
+        parentAlert.selectedMenuItem.addSubItem(open_in, R.drawable.msg_openin, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENINEXTERNALAPP, R.string.OpenInExternalApp));
         parentAlert.selectedMenuItem.addColoredGap(preview_gap);
-        previewItem = parentAlert.selectedMenuItem.addSubItem(preview, R.drawable.msg_view_file, LocaleController.getString("AttachMediaPreviewButton", R.string.AttachMediaPreviewButton));
+        previewItem = parentAlert.selectedMenuItem.addSubItem(preview, R.drawable.msg_view_file, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHMEDIAPREVIEWBUTTON, R.string.AttachMediaPreviewButton));
         parentAlert.selectedMenuItem.setFitSubItems(true);
 
         gridView = new RecyclerListView(context, resourcesProvider) {
@@ -923,7 +923,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
         gridView.addOnItemTouchListener(itemRangeSelector);
 
         progressView = new EmptyTextProgressView(context, null, resourcesProvider);
-        progressView.setText(LocaleController.getString("NoPhotos", R.string.NoPhotos));
+        progressView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOPHOTOS, R.string.NoPhotos));
         progressView.setOnTouchListener(null);
         progressView.setTextSize(16);
         addView(progressView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
@@ -1066,7 +1066,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
                     return false;
                 }
                 if (!videoEnabled) {
-                    BulletinFactory.of(cameraView, resourcesProvider).createErrorBulletin(LocaleController.getString(R.string.GlobalAttachVideoRestricted)).show();
+                    BulletinFactory.of(cameraView, resourcesProvider).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHVIDEORESTRICTED, R.string.GlobalAttachVideoRestricted)).show();
                     return false;
                 }
                 if (Build.VERSION.SDK_INT >= 23) {
@@ -1145,7 +1145,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
                     return;
                 }
                 if (!photoEnabled) {
-                    BulletinFactory.of(cameraView, resourcesProvider).createErrorBulletin(LocaleController.getString(R.string.GlobalAttachPhotoRestricted)).show();
+                    BulletinFactory.of(cameraView, resourcesProvider).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHPHOTORESTRICTED, R.string.GlobalAttachPhotoRestricted)).show();
                     return;
                 }
                 final File cameraFile = AndroidUtilities.generatePicturePath(parentAlert.baseFragment instanceof ChatActivity && ((ChatActivity) parentAlert.baseFragment).isSecretChat(), null);
@@ -1198,7 +1198,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
             }
         });
         shutterButton.setFocusable(true);
-        shutterButton.setContentDescription(LocaleController.getString("AccDescrShutter", R.string.AccDescrShutter));
+        shutterButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRSHUTTER, R.string.AccDescrShutter));
 
         switchCameraButton = new ImageView(context);
         switchCameraButton.setScaleType(ImageView.ScaleType.CENTER);
@@ -1220,7 +1220,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
             animator.start();
 
         });
-        switchCameraButton.setContentDescription(LocaleController.getString("AccDescrSwitchCamera", R.string.AccDescrSwitchCamera));
+        switchCameraButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRSWITCHCAMERA, R.string.AccDescrSwitchCamera));
 
         for (int a = 0; a < 2; a++) {
             flashModeButton[a] = new ImageView(context);
@@ -1265,7 +1265,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
         tooltipTextView = new TextView(context);
         tooltipTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         tooltipTextView.setTextColor(0xffffffff);
-        tooltipTextView.setText(LocaleController.getString("TapForVideo", R.string.TapForVideo));
+        tooltipTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TAPFORVIDEO, R.string.TapForVideo));
         tooltipTextView.setShadowLayer(AndroidUtilities.dp(3.33333f), 0, AndroidUtilities.dp(0.666f), 0x4c000000);
         tooltipTextView.setPadding(AndroidUtilities.dp(6), 0, AndroidUtilities.dp(6), 0);
         cameraPanel.addView(tooltipTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, 0, 0, 16));
@@ -1485,12 +1485,12 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
     private boolean checkSendMediaEnabled(MediaController.PhotoEntry photoEntry) {
         if (!videoEnabled && photoEntry.isVideo) {
             BulletinFactory.of(parentAlert.sizeNotifierFrameLayout, resourcesProvider).createErrorBulletin(
-                    LocaleController.getString("GlobalAttachVideoRestricted", R.string.GlobalAttachVideoRestricted)
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHVIDEORESTRICTED, R.string.GlobalAttachVideoRestricted)
             ).show();
             return true;
         } else if (!photoEnabled && !photoEntry.isVideo) {
             BulletinFactory.of(parentAlert.sizeNotifierFrameLayout, resourcesProvider).createErrorBulletin(
-                    LocaleController.getString("GlobalAttachPhotoRestricted", R.string.GlobalAttachPhotoRestricted)
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHPHOTORESTRICTED, R.string.GlobalAttachPhotoRestricted)
             ).show();
             return true;
         }
@@ -1521,7 +1521,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
     }
 
     private void clearSelectedPhotos() {
-        spoilerItem.setText(LocaleController.getString(R.string.EnablePhotoSpoiler));
+        spoilerItem.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENABLEPHOTOSPOILER, R.string.EnablePhotoSpoiler));
         spoilerItem.setAnimatedIcon(R.raw.photo_spoiler);
         parentAlert.selectedMenuItem.showSubItem(compress);
         if (!selectedPhotos.isEmpty()) {
@@ -2025,15 +2025,15 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
         switch (mode) {
             case Camera.Parameters.FLASH_MODE_OFF:
                 imageView.setImageResource(R.drawable.flash_off);
-                imageView.setContentDescription(LocaleController.getString("AccDescrCameraFlashOff", R.string.AccDescrCameraFlashOff));
+                imageView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRCAMERAFLASHOFF, R.string.AccDescrCameraFlashOff));
                 break;
             case Camera.Parameters.FLASH_MODE_ON:
                 imageView.setImageResource(R.drawable.flash_on);
-                imageView.setContentDescription(LocaleController.getString("AccDescrCameraFlashOn", R.string.AccDescrCameraFlashOn));
+                imageView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRCAMERAFLASHON, R.string.AccDescrCameraFlashOn));
                 break;
             case Camera.Parameters.FLASH_MODE_AUTO:
                 imageView.setImageResource(R.drawable.flash_auto);
-                imageView.setContentDescription(LocaleController.getString("AccDescrCameraFlashAuto", R.string.AccDescrCameraFlashAuto));
+                imageView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRCAMERAFLASHAUTO, R.string.AccDescrCameraFlashAuto));
                 break;
         }
     }
@@ -2281,7 +2281,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
                 });
                 cameraView.setClipToOutline(true);
             }
-            cameraView.setContentDescription(LocaleController.getString("AccDescrInstantCamera", R.string.AccDescrInstantCamera));
+            cameraView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRINSTANTCAMERA, R.string.AccDescrInstantCamera));
             parentAlert.getContainer().addView(cameraView, 1, new FrameLayout.LayoutParams(itemSize, itemSize));
             cameraView.setDelegate(new CameraView.CameraViewDelegate() {
                 @Override
@@ -3006,7 +3006,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
                 ChatActivity chatActivity = (ChatActivity) parentAlert.baseFragment;
                 TLRPC.Chat chat = chatActivity.getCurrentChat();
                 if (chat != null && !ChatObject.hasAdminRights(chat) && chat.slowmode_enabled) {
-                    AlertsCreator.createSimpleAlert(getContext(), LocaleController.getString("Slowmode", R.string.Slowmode), LocaleController.getString("SlowmodeSendError", R.string.SlowmodeSendError), resourcesProvider).show();
+                    AlertsCreator.createSimpleAlert(getContext(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SLOWMODE, R.string.Slowmode), LocaleController.getString("SlowmodeSendError", R.string.SlowmodeSendError), resourcesProvider).show();
                     return;
                 }
             }
@@ -3120,7 +3120,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
         } else if (id >= 10) {
             selectedAlbumEntry = dropDownAlbums.get(id - 10);
             if (selectedAlbumEntry == galleryAlbumEntry) {
-                dropDown.setText(LocaleController.getString("ChatGallery", R.string.ChatGallery));
+                dropDown.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATGALLERY, R.string.ChatGallery));
             } else {
                 dropDown.setText(selectedAlbumEntry.bucketName);
             }
@@ -3161,16 +3161,16 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
         if (count > 1) {
             parentAlert.selectedMenuItem.showSubItem(preview_gap);
             parentAlert.selectedMenuItem.showSubItem(preview);
-            compressItem.setText(LocaleController.getString(R.string.SendAsFiles));
+            compressItem.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDASFILES, R.string.SendAsFiles));
         } else {
             parentAlert.selectedMenuItem.hideSubItem(preview_gap);
             parentAlert.selectedMenuItem.hideSubItem(preview);
             if (count != 0) {
-                compressItem.setText(LocaleController.getString(R.string.SendAsFile));
+                compressItem.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDASFILE, R.string.SendAsFile));
             }
         }
         if (count == 0 || parentAlert != null && parentAlert.baseFragment instanceof ChatActivity && ((ChatActivity) parentAlert.baseFragment).isSecretChat()) {
-            spoilerItem.setText(LocaleController.getString(R.string.EnablePhotoSpoiler));
+            spoilerItem.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENABLEPHOTOSPOILER, R.string.EnablePhotoSpoiler));
             spoilerItem.setAnimatedIcon(R.raw.photo_spoiler);
             parentAlert.selectedMenuItem.hideSubItem(spoiler);
         } else {
@@ -3328,13 +3328,13 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
         if (parentAlert.baseFragment instanceof ChatActivity && parentAlert.avatarPicker == 0) {
             galleryAlbumEntry = MediaController.allMediaAlbumEntry;
             if (mediaEnabled) {
-                progressView.setText(LocaleController.getString("NoPhotos", R.string.NoPhotos));
+                progressView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOPHOTOS, R.string.NoPhotos));
                 progressView.setLottie(0, 0, 0);
             } else {
                 TLRPC.Chat chat = ((ChatActivity) parentAlert.baseFragment).getCurrentChat();
                 progressView.setLottie(R.raw.media_forbidden, 150, 150);
                 if (ChatObject.isActionBannedByDefault(chat, ChatObject.ACTION_SEND_MEDIA)) {
-                    progressView.setText(LocaleController.getString("GlobalAttachMediaRestricted", R.string.GlobalAttachMediaRestricted));
+                    progressView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHMEDIARESTRICTED, R.string.GlobalAttachMediaRestricted));
                 } else if (AndroidUtilities.isBannedForever(chat.banned_rights)) {
                     progressView.setText(LocaleController.formatString("AttachMediaRestrictedForever", R.string.AttachMediaRestrictedForever));
                 } else {
@@ -3362,7 +3362,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
         cameraPhotoLayoutManager.scrollToPositionWithOffset(0, 1000000);
         layoutManager.scrollToPositionWithOffset(0, 1000000);
 
-        dropDown.setText(LocaleController.getString("ChatGallery", R.string.ChatGallery));
+        dropDown.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATGALLERY, R.string.ChatGallery));
 
         selectedAlbumEntry = galleryAlbumEntry;
         if (selectedAlbumEntry != null) {
@@ -3958,7 +3958,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
                         TLRPC.Chat chat = chatActivity.getCurrentChat();
                         if (chat != null && !ChatObject.hasAdminRights(chat) && chat.slowmode_enabled) {
                             if (alertOnlyOnce != 2) {
-                                AlertsCreator.createSimpleAlert(getContext(), LocaleController.getString("Slowmode", R.string.Slowmode), LocaleController.getString("SlowmodeSelectSendError", R.string.SlowmodeSelectSendError), resourcesProvider).show();
+                                AlertsCreator.createSimpleAlert(getContext(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SLOWMODE, R.string.Slowmode), LocaleController.getString("SlowmodeSelectSendError", R.string.SlowmodeSelectSendError), resourcesProvider).show();
                                 if (alertOnlyOnce == 1) {
                                     alertOnlyOnce = 2;
                                 }

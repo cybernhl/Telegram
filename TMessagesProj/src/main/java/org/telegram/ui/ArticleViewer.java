@@ -1245,7 +1245,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
         }
         builder.setTitle(formattedUrl);
         builder.setTitleMultipleLines(true);
-        builder.setItems(new CharSequence[]{LocaleController.getString("Open", R.string.Open), LocaleController.getString("Copy", R.string.Copy)}, (dialog, which) -> {
+        builder.setItems(new CharSequence[]{LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPEN, R.string.Open), LocaleController.getString("Copy", R.string.Copy)}, (dialog, which) -> {
             if (parentActivity == null) {
                 return;
             }
@@ -1326,12 +1326,12 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
             deleteView.setPadding(AndroidUtilities.dp(20), 0, AndroidUtilities.dp(20), 0);
             deleteView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             deleteView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-            deleteView.setText(LocaleController.getString("Copy", R.string.Copy).toUpperCase());
+            deleteView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_COPY, R.string.Copy).toUpperCase());
             deleteView.setOnClickListener(v -> {
                 if (pressedLinkOwnerLayout != null) {
                     AndroidUtilities.addToClipboard(pressedLinkOwnerLayout.getText());
                     if (AndroidUtilities.shouldShowClipboardToast()) {
-                        Toast.makeText(parentActivity, LocaleController.getString("TextCopied", R.string.TextCopied), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(parentActivity, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TEXTCOPIED, R.string.TextCopied), Toast.LENGTH_SHORT).show();
                     }
                 }
                 if (popupWindow != null && popupWindow.isShowing()) {
@@ -1729,7 +1729,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
                 };
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                 textView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-                textView.setText(LocaleController.getString("InstantViewReference", R.string.InstantViewReference));
+                textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INSTANTVIEWREFERENCE, R.string.InstantViewReference));
                 textView.setGravity((adapter[0].isRtl ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
                 textView.setTextColor(getTextColor());
                 textView.setPadding(AndroidUtilities.dp(18), 0, AndroidUtilities.dp(18), 0);
@@ -3431,7 +3431,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
         searchField.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
         searchField.setHintTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteHintText));
         searchField.setSingleLine(true);
-        searchField.setHint(LocaleController.getString("Search", R.string.Search));
+        searchField.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
         searchField.setBackgroundResource(0);
         searchField.setPadding(0, 0, 0, 0);
         int inputType = searchField.getInputType() | EditorInfo.TYPE_TEXT_FLAG_NO_SUGGESTIONS;
@@ -3555,7 +3555,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
             searchField.requestFocus();
             AndroidUtilities.showKeyboard(searchField);
         });
-        clearButton.setContentDescription(LocaleController.getString("ClearButton", R.string.ClearButton));
+        clearButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARBUTTON, R.string.ClearButton));
         searchContainer.addView(clearButton, LayoutHelper.createFrame(48, LayoutHelper.MATCH_PARENT, Gravity.CENTER_VERTICAL | Gravity.RIGHT));
 
         backButton = new ImageView(activity);
@@ -3580,7 +3580,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
                 close(true, true);
             }
         });
-        backButton.setContentDescription(LocaleController.getString("AccDescrGoBack", R.string.AccDescrGoBack));
+        backButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRGOBACK, R.string.AccDescrGoBack));
 
         menuButton = new ActionBarMenuItem(parentActivity, null, Theme.ACTION_BAR_WHITE_SELECTOR_COLOR, 0xffb3b3b3) {
             @Override
@@ -3594,12 +3594,12 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
         menuButton.setDuplicateParentStateEnabled(false);
         menuButton.setClickable(true);
         menuButton.setIcon(R.drawable.ic_ab_other);
-        menuButton.addSubItem(search_item, R.drawable.msg_search, LocaleController.getString("Search", R.string.Search));
-        menuButton.addSubItem(share_item, R.drawable.msg_share, LocaleController.getString("ShareFile", R.string.ShareFile));
-        menuButton.addSubItem(open_item, R.drawable.msg_openin, LocaleController.getString("OpenInExternalApp", R.string.OpenInExternalApp));
-        menuButton.addSubItem(settings_item, R.drawable.msg_settings_old, LocaleController.getString("Settings", R.string.Settings));
+        menuButton.addSubItem(search_item, R.drawable.msg_search, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
+        menuButton.addSubItem(share_item, R.drawable.msg_share, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREFILE, R.string.ShareFile));
+        menuButton.addSubItem(open_item, R.drawable.msg_openin, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENINEXTERNALAPP, R.string.OpenInExternalApp));
+        menuButton.addSubItem(settings_item, R.drawable.msg_settings_old, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETTINGS, R.string.Settings));
         menuButton.setBackgroundDrawable(Theme.createSelectorDrawable(Theme.ACTION_BAR_WHITE_SELECTOR_COLOR));
-        menuButton.setContentDescription(LocaleController.getString("AccDescrMoreOptions", R.string.AccDescrMoreOptions));
+        menuButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRMOREOPTIONS, R.string.AccDescrMoreOptions));
         menuContainer.addView(menuButton, LayoutHelper.createFrame(48, 56));
         progressView = new ContextProgressView(activity, 2);
         progressView.setVisibility(View.GONE);
@@ -3630,21 +3630,21 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
                 settingsContainer.setOrientation(LinearLayout.VERTICAL);
 
                 HeaderCell headerCell = new HeaderCell(parentActivity);
-                headerCell.setText(LocaleController.getString("FontSize", R.string.FontSize));
+                headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FONTSIZE, R.string.FontSize));
                 settingsContainer.addView(headerCell, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 3, 1, 3, 0));
 
                 TextSizeCell sizeCell = new TextSizeCell(parentActivity);
                 settingsContainer.addView(sizeCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 3, 0, 3, 0));
 
                 headerCell = new HeaderCell(parentActivity);
-                headerCell.setText(LocaleController.getString("FontType", R.string.FontType));
+                headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FONTTYPE, R.string.FontType));
                 settingsContainer.addView(headerCell, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 3, 4, 3, 2));
 
                 for (int a = 0; a < 2; a++) {
                     fontCells[a] = new FontCell(parentActivity);
                     switch (a) {
                         case 0:
-                            fontCells[a].setTextAndTypeface(LocaleController.getString("Default", R.string.Default), Typeface.DEFAULT);
+                            fontCells[a].setTextAndTypeface(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DEFAULT, R.string.Default), Typeface.DEFAULT);
                             break;
                         case 1:
                             fontCells[a].setTextAndTypeface("Serif", Typeface.SERIF);
@@ -3696,7 +3696,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
         searchUpButton.setBackgroundDrawable(Theme.createSelectorDrawable(Theme.getColor(Theme.key_actionBarActionModeDefaultSelector), 1));
         searchPanel.addView(searchUpButton, LayoutHelper.createFrame(48, 48, Gravity.RIGHT | Gravity.TOP, 0, 0, 48, 0));
         searchUpButton.setOnClickListener(view -> scrollToSearchIndex(currentSearchIndex - 1));
-        searchUpButton.setContentDescription(LocaleController.getString("AccDescrSearchNext", R.string.AccDescrSearchNext));
+        searchUpButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRSEARCHNEXT, R.string.AccDescrSearchNext));
 
         searchDownButton = new ImageView(parentActivity);
         searchDownButton.setScaleType(ImageView.ScaleType.CENTER);
@@ -3705,7 +3705,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
         searchDownButton.setBackgroundDrawable(Theme.createSelectorDrawable(Theme.getColor(Theme.key_actionBarActionModeDefaultSelector), 1));
         searchPanel.addView(searchDownButton, LayoutHelper.createFrame(48, 48, Gravity.RIGHT | Gravity.TOP, 0, 0, 0, 0));
         searchDownButton.setOnClickListener(view -> scrollToSearchIndex(currentSearchIndex + 1));
-        searchDownButton.setContentDescription(LocaleController.getString("AccDescrSearchPrev", R.string.AccDescrSearchPrev));
+        searchDownButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRSEARCHPREV, R.string.AccDescrSearchPrev));
 
         searchCountText = new SimpleTextView(parentActivity);
         searchCountText.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
@@ -3761,7 +3761,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
             @Override
             public void onTextCopied() {
                 if (AndroidUtilities.shouldShowClipboardToast()) {
-                    BulletinFactory.of(containerView, null).createCopyBulletin(LocaleController.getString("TextCopied", R.string.TextCopied)).show();
+                    BulletinFactory.of(containerView, null).createCopyBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TEXTCOPIED, R.string.TextCopied)).show();
                 }
             }
         });
@@ -3943,9 +3943,9 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
         if (count < 0) {
             searchCountText.setText("");
         } else if (count == 0) {
-            searchCountText.setText(LocaleController.getString("NoResult", R.string.NoResult));
+            searchCountText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NORESULT, R.string.NoResult));
         } else if (count == 1) {
-            searchCountText.setText(LocaleController.getString("OneResult", R.string.OneResult));
+            searchCountText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ONERESULT, R.string.OneResult));
         } else {
             searchCountText.setText(String.format(LocaleController.getPluralString("CountOfResults", count), currentSearchIndex + 1, count));
         }
@@ -6530,7 +6530,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
         public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
             super.onInitializeAccessibilityNodeInfo(info);
             info.setEnabled(true);
-            StringBuilder sb = new StringBuilder(LocaleController.getString("AttachVideo", R.string.AttachVideo));
+            StringBuilder sb = new StringBuilder(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHVIDEO, R.string.AttachVideo));
             if (captionLayout != null) {
                 sb.append(", ");
                 sb.append(captionLayout.getText());
@@ -9676,7 +9676,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
             info.setEnabled(true);
             if (textLayout == null)
                 return;
-            info.setText(textLayout.getText() + ", " + LocaleController.getString("AccDescrIVHeading", R.string.AccDescrIVHeading));
+            info.setText(textLayout.getText() + ", " + LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRIVHEADING, R.string.AccDescrIVHeading));
         }
 
         @Override
@@ -9774,7 +9774,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
             if (textLayout == null) {
                 return;
             }
-            info.setText(textLayout.getText() + ", " + LocaleController.getString("AccDescrIVHeading", R.string.AccDescrIVHeading));
+            info.setText(textLayout.getText() + ", " + LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRIVHEADING, R.string.AccDescrIVHeading));
         }
 
         @Override
@@ -10378,7 +10378,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
         public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
             super.onInitializeAccessibilityNodeInfo(info);
             info.setEnabled(true);
-            StringBuilder sb = new StringBuilder(LocaleController.getString("AttachPhoto", R.string.AttachPhoto));
+            StringBuilder sb = new StringBuilder(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHPHOTO, R.string.AttachPhoto));
             if (captionLayout != null) {
                 sb.append(", ");
                 sb.append(captionLayout.getText());
@@ -10580,7 +10580,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
         public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
             super.onInitializeAccessibilityNodeInfo(info);
             info.setEnabled(true);
-            StringBuilder sb = new StringBuilder(LocaleController.getString("Map", R.string.Map));
+            StringBuilder sb = new StringBuilder(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MAP, R.string.Map));
             if (captionLayout != null) {
                 sb.append(", ");
                 sb.append(captionLayout.getText());
@@ -10629,7 +10629,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
             textView = new TextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             textView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-            textView.setText(LocaleController.getString("ChannelJoin", R.string.ChannelJoin));
+            textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELJOIN, R.string.ChannelJoin));
             textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
             addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 39, Gravity.RIGHT | Gravity.TOP));
             textView.setOnClickListener(v -> {
@@ -10968,7 +10968,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
             info.setEnabled(true);
             if (textLayout == null)
                 return;
-            info.setText(textLayout.getText() + ", " + LocaleController.getString("AccDescrIVTitle", R.string.AccDescrIVTitle));
+            info.setText(textLayout.getText() + ", " + LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRIVTITLE, R.string.AccDescrIVTitle));
         }
 
         @Override
@@ -11323,7 +11323,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
             if (textLayout == null) {
                 return;
             }
-            info.setText(textLayout.getText() + ", " + LocaleController.getString("AccDescrIVHeading", R.string.AccDescrIVHeading));
+            info.setText(textLayout.getText() + ", " + LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRIVHEADING, R.string.AccDescrIVHeading));
         }
 
         @Override
@@ -11345,7 +11345,7 @@ public class ArticleViewer implements NotificationCenter.NotificationCenterDeleg
             setTag(90);
 
             textView = new TextView(context);
-            textView.setText(LocaleController.getString("PreviewFeedback2", R.string.PreviewFeedback2));
+            textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREVIEWFEEDBACK2, R.string.PreviewFeedback2));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
             textView.setGravity(Gravity.CENTER);
             textView.setPadding(AndroidUtilities.dp(18), 0, AndroidUtilities.dp(18), 0);

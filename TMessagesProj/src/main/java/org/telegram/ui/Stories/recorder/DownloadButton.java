@@ -183,7 +183,7 @@ public class DownloadButton extends ImageView {
                     if (!downloading || currentEntry == null) {
                         return;
                     }
-                    toast.setDone(R.raw.ic_save_to_gallery, LocaleController.getString("VideoSavedHint"), 3500);
+                    toast.setDone(R.raw.ic_save_to_gallery, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIDEOSAVEDHINT), 3500);
                     downloading = false;
                     updateImage();
 
@@ -197,7 +197,7 @@ public class DownloadButton extends ImageView {
                 if (!downloading || currentEntry == null) {
                     return;
                 }
-                toast.setDone(R.raw.error, LocaleController.getString("VideoConvertFail"), 3500);
+                toast.setDone(R.raw.error, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIDEOCONVERTFAIL), 3500);
                 downloading = false;
                 updateImage();
             });
@@ -205,7 +205,7 @@ public class DownloadButton extends ImageView {
             downloadingVideo = false;
             final File file = AndroidUtilities.generatePicturePath(false, "png");
             if (file == null) {
-                toast.setDone(R.raw.error, LocaleController.getString("UnknownError"), 3500);
+                toast.setDone(R.raw.error, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNKNOWNERROR), 3500);
                 downloading = false;
                 updateImage();
                 return;
@@ -224,7 +224,7 @@ public class DownloadButton extends ImageView {
                             toast = null;
                         }
                         toast = new PreparingVideoToast(getContext());
-                        toast.setDone(R.raw.ic_save_to_gallery, LocaleController.getString("PhotoSavedHint"), 2500);
+                        toast.setDone(R.raw.ic_save_to_gallery, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHOTOSAVEDHINT), 2500);
                         container.addView(toast);
 
                         savedToGalleryUri = uri;
@@ -263,7 +263,7 @@ public class DownloadButton extends ImageView {
     }
 
     public void showFailedVideo() {
-        showToast(R.raw.error, LocaleController.getString("VideoConvertFail"));
+        showToast(R.raw.error, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIDEOCONVERTFAIL));
     }
 
     private static class BuildingVideo implements NotificationCenter.NotificationCenterDelegate {
@@ -401,7 +401,7 @@ public class DownloadButton extends ImageView {
             textPaint.setTextSize(dp(14));
             textPaint2.setTextSize(dpf2(14.66f));
 
-            preparingLayout = new StaticLayout(LocaleController.getString("PreparingVideo"), textPaint, AndroidUtilities.displaySize.x, Layout.Alignment.ALIGN_NORMAL, 1f, 0, false);
+            preparingLayout = new StaticLayout(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREPARINGVIDEO), textPaint, AndroidUtilities.displaySize.x, Layout.Alignment.ALIGN_NORMAL, 1f, 0, false);
             preparingLayoutWidth = preparingLayout.getLineCount() > 0 ? preparingLayout.getLineWidth(0) : 0;
             preparingLayoutLeft = preparingLayout.getLineCount() > 0 ? preparingLayout.getLineLeft(0) : 0;
 

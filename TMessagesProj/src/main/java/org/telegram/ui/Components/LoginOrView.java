@@ -25,7 +25,7 @@ public class LoginOrView extends View {
     public LoginOrView(Context context) {
         super(context);
 
-        string = LocaleController.getString(R.string.LoginOrSingInWithGoogle);
+        string = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOGINORSINGINWITHGOOGLE, R.string.LoginOrSingInWithGoogle);
         textPaint.setTextSize(AndroidUtilities.dp(14));
         updateColors();
     }

@@ -100,14 +100,14 @@ public class CaptionPhotoViewer extends CaptionContainerView {
 
             timerPopup = ItemOptions.makeOptions(rootView, new DarkThemeResourceProvider(), timerButton);
             timerPopup.setDimAlpha(0);
-            timerPopup.addText(LocaleController.getString(R.string.TimerPeriodHint), 13);
+            timerPopup.addText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TIMERPERIODHINT, R.string.TimerPeriodHint), 13);
             timerPopup.addGap();
             for (int value : values) {
                 String text;
                 if (value == 0) {
-                    text = LocaleController.getString(R.string.TimerPeriodDoNotDelete);
+                    text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TIMERPERIODDONOTDELETE, R.string.TimerPeriodDoNotDelete);
                 } else if (value == SHOW_ONCE) {
-                    text = LocaleController.getString(R.string.TimerPeriodOnce);
+                    text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TIMERPERIODONCE, R.string.TimerPeriodOnce);
                 } else {
                     text = LocaleController.formatPluralString("Seconds", value);
                 }

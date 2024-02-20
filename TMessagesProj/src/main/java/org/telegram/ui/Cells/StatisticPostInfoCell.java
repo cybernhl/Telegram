@@ -224,7 +224,7 @@ public class StatisticPostInfoCell extends FrameLayout {
         if (messageObject.isMusic()) {
             text = String.format("%s, %s", messageObject.getMusicTitle().trim(), messageObject.getMusicAuthor().trim());
         } else if (messageObject.isStory()) {
-            text = LocaleController.getString("Story", R.string.Story);
+            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORY, R.string.Story);
         } else {
             text = messageObject.caption != null ? messageObject.caption : messageObject.messageText;
         }

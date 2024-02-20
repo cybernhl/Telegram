@@ -220,7 +220,7 @@ public class FiltersListBottomSheet extends BottomSheet implements NotificationC
         titleTextView.setEllipsize(TextUtils.TruncateAt.END);
         titleTextView.setPadding(AndroidUtilities.dp(18), 0, AndroidUtilities.dp(18), 0);
         titleTextView.setGravity(Gravity.CENTER_VERTICAL);
-        titleTextView.setText(LocaleController.getString("FilterChoose", R.string.FilterChoose));
+        titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERCHOOSE, R.string.FilterChoose));
         titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         containerView.addView(titleTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 50, Gravity.LEFT | Gravity.TOP, 0, 0, 40, 0));
 
@@ -426,7 +426,7 @@ public class FiltersListBottomSheet extends BottomSheet implements NotificationC
                 drawable2.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_checkboxCheck), PorterDuff.Mode.MULTIPLY));
                 CombinedDrawable combinedDrawable = new CombinedDrawable(drawable1, drawable2);
                 cell.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText4));
-                cell.setTextAndIcon(LocaleController.getString("CreateNewFilter", R.string.CreateNewFilter), combinedDrawable);
+                cell.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATENEWFILTER, R.string.CreateNewFilter), combinedDrawable);
             }
         }
     }

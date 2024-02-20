@@ -49,7 +49,7 @@ public class MemberRequestsBottomSheet extends UsersAlertBase {
         this.delegate.setShowLastItemDivider(false);
         setDimBehindAlpha(75);
 
-        searchView.searchEditText.setHint(LocaleController.getString("SearchMemberRequests", R.string.SearchMemberRequests));
+        searchView.searchEditText.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHMEMBERREQUESTS, R.string.SearchMemberRequests));
 
         searchListViewAdapter = listViewAdapter = delegate.getAdapter();
         listView.setAdapter(listViewAdapter);

@@ -281,7 +281,7 @@ public class ReactedUserHolderView extends FrameLayout {
                 ssb.setSpan(dotSpan, ssb.length() - 1, ssb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 ssb.append(" ");
                 int index = ssb.length();
-                ssb.append(LocaleController.getString(R.string.StoryRepostCommented));
+                ssb.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYREPOSTCOMMENTED, R.string.StoryRepostCommented));
                 ssb.setSpan(new RelativeSizeSpan(.95f), index, ssb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             } else if (!isForward && storyItem != null && storyItem.fwd_from != null && storyItem.fwd_from.modified) {
                 ssb.append(" ");

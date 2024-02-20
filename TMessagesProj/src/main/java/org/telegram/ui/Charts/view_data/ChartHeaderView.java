@@ -77,7 +77,7 @@ public class ChartHeaderView extends FrameLayout {
 
 
         back.setVisibility(View.GONE);
-        back.setText(LocaleController.getString("ZoomOut", R.string.ZoomOut));
+        back.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ZOOMOUT, R.string.ZoomOut));
         zoomIcon = ContextCompat.getDrawable(getContext(), R.drawable.msg_zoomout_stats);
         back.setCompoundDrawablesWithIntrinsicBounds(zoomIcon, null, null, null);
         back.setCompoundDrawablePadding(AndroidUtilities.dp(4));

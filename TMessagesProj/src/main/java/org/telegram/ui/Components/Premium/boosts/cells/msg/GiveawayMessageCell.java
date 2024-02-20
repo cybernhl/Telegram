@@ -336,7 +336,7 @@ public class GiveawayMessageCell {
             CharSequence txt = Emoji.replaceEmoji(AndroidUtilities.replaceTags(LocaleController.formatPluralString("BoostingGiveawayMsgPrizes", giveaway.quantity, giveaway.prize_description)), countriesTextPaint.getFontMetricsInt(), false);
             additionPrizeLayout = StaticLayoutEx.createStaticLayout(txt, textPaint, maxRowLength, Layout.Alignment.ALIGN_CENTER, 1.0f, AndroidUtilities.dp(2), false, TextUtils.TruncateAt.END, maxRowLength, 20);
             additionPrizeHeight = additionPrizeLayout.getLineBottom(additionPrizeLayout.getLineCount() - 1) + dp(22);
-            textDivider = LocaleController.getString("BoostingGiveawayMsgWithDivider", R.string.BoostingGiveawayMsgWithDivider);
+            textDivider = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIVEAWAYMSGWITHDIVIDER, R.string.BoostingGiveawayMsgWithDivider);
             textDividerWidth = textDividerPaint.measureText(textDivider, 0, textDivider.length());
         }
 

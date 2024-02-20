@@ -141,8 +141,8 @@ public class GiftInfoBottomSheet extends BottomSheetWithRecyclerListView {
 
     @Override
     protected CharSequence getTitle() {
-        return isUnused ? LocaleController.getString("BoostingGiftLink", R.string.BoostingGiftLink)
-                : LocaleController.getString("BoostingUsedGiftLink", R.string.BoostingUsedGiftLink);
+        return isUnused ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIFTLINK, R.string.BoostingGiftLink)
+                : LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGUSEDGIFTLINK, R.string.BoostingUsedGiftLink);
     }
 
     @Override
@@ -183,9 +183,9 @@ public class GiftInfoBottomSheet extends BottomSheetWithRecyclerListView {
             protected void onHiddenLinkClicked() {
                 String text;
                 if ((slug == null || slug.isEmpty()) && giftCode.to_id == NO_USER_ID) {
-                    text = LocaleController.getString("BoostingOnlyGiveawayCreatorSeeLink", R.string.BoostingOnlyGiveawayCreatorSeeLink);
+                    text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGONLYGIVEAWAYCREATORSEELINK, R.string.BoostingOnlyGiveawayCreatorSeeLink);
                 } else {
-                    text = LocaleController.getString("BoostingOnlyRecipientCode", R.string.BoostingOnlyRecipientCode);
+                    text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGONLYRECIPIENTCODE, R.string.BoostingOnlyRecipientCode);
                 }
                 BulletinFactory.of(container, resourcesProvider).createSimpleBulletin(R.raw.chats_infotip, text).show(true);
             }

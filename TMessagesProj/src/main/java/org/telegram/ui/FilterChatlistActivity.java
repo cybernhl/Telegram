@@ -129,7 +129,7 @@ public class FilterChatlistActivity extends BaseFragment {
     }
 
     private void updateActionBarTitle(boolean animated) {
-        String title = TextUtils.isEmpty(invite == null ? null : invite.title) ? LocaleController.getString("FilterShare", R.string.FilterShare) : invite.title;
+        String title = TextUtils.isEmpty(invite == null ? null : invite.title) ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERSHARE, R.string.FilterShare) : invite.title;
         if (animated) {
             actionBar.setTitleAnimated(title, false, 220);
         } else {
@@ -163,7 +163,7 @@ public class FilterChatlistActivity extends BaseFragment {
         Drawable checkmark = context.getResources().getDrawable(R.drawable.ic_ab_done).mutate();
         checkmark.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_actionBarDefaultIcon), PorterDuff.Mode.MULTIPLY));
         doneButtonDrawable = new CrossfadeDrawable(checkmark, new CircularProgressDrawable(Theme.getColor(Theme.key_actionBarDefaultIcon)));
-        doneButton = menu.addItemWithWidth(1, doneButtonDrawable, AndroidUtilities.dp(56), LocaleController.getString("Done", R.string.Done));
+        doneButton = menu.addItemWithWidth(1, doneButtonDrawable, AndroidUtilities.dp(56), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done));
         checkDoneButton();
 
         fragmentView = new FrameLayout(context);
@@ -210,23 +210,23 @@ public class FilterChatlistActivity extends BaseFragment {
                         array.add(getMessagesController().getUser(did));
                         TLRPC.User user = getMessagesController().getUser(did);
                         if (user != null && user.bot) {
-                            text = LocaleController.getString("FilterInviteBotToast", R.string.FilterInviteBotToast);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEBOTTOAST, R.string.FilterInviteBotToast);
                         } else {
-                            text = LocaleController.getString("FilterInviteUserToast", R.string.FilterInviteUserToast);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEUSERTOAST, R.string.FilterInviteUserToast);
                         }
                     } else {
                         TLRPC.Chat chat = getMessagesController().getChat(-did);
                         if (ChatObject.isChannelAndNotMegaGroup(chat)) {
                             if (ChatObject.isPublic(chat)) {
-                                text = LocaleController.getString("FilterInviteChannelToast", R.string.FilterInviteChannelToast);
+                                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITECHANNELTOAST, R.string.FilterInviteChannelToast);
                             } else {
-                                text = LocaleController.getString("FilterInvitePrivateChannelToast", R.string.FilterInvitePrivateChannelToast);
+                                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEPRIVATECHANNELTOAST, R.string.FilterInvitePrivateChannelToast);
                             }
                         } else {
                             if (ChatObject.isPublic(chat)) {
-                                text = LocaleController.getString("FilterInviteGroupToast", R.string.FilterInviteGroupToast);
+                                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEGROUPTOAST, R.string.FilterInviteGroupToast);
                             } else {
-                                text = LocaleController.getString("FilterInvitePrivateGroupToast", R.string.FilterInvitePrivateGroupToast);
+                                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEPRIVATEGROUPTOAST, R.string.FilterInvitePrivateGroupToast);
                             }
                         }
                         array.add(chat);
@@ -369,7 +369,7 @@ public class FilterChatlistActivity extends BaseFragment {
         savingTitleReqId = getConnectionsManager().sendRequest(req, (res, err) -> AndroidUtilities.runOnUIThread(() -> {
             savingTitleReqId = 0;
             if (err == null) {
-                BulletinFactory.of(this).createSimpleBulletin(R.raw.contact_check, LocaleController.getString("FilterInviteNameEdited", R.string.FilterInviteNameEdited)).show();
+                BulletinFactory.of(this).createSimpleBulletin(R.raw.contact_check, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITENAMEEDITED, R.string.FilterInviteNameEdited)).show();
             }
         }));
 
@@ -410,7 +410,7 @@ public class FilterChatlistActivity extends BaseFragment {
         }
 
         if (invite == null) {
-            hintCountCell.setText(LocaleController.getString("FilterInviteHeaderNo", R.string.FilterInviteHeaderNo), animated);
+            hintCountCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEHEADERNO, R.string.FilterInviteHeaderNo), animated);
         } else {
             hintCountCell.setText(AndroidUtilities.replaceTags(LocaleController.formatPluralString("FilterInviteHeader", selectedPeers.size(), filter.name)), animated);
         }
@@ -421,10 +421,10 @@ public class FilterChatlistActivity extends BaseFragment {
             return;
         }
 
-        headerCountCell.setText(selectedPeers.size() <= 0 ? LocaleController.getString("FilterInviteHeaderChatsEmpty") : LocaleController.formatPluralString("FilterInviteHeaderChats", selectedPeers.size()), animated);
+        headerCountCell.setText(selectedPeers.size() <= 0 ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEHEADERCHATSEMPTY) : LocaleController.formatPluralString("FilterInviteHeaderChats", selectedPeers.size()), animated);
         if (allowedPeers.size() > 1) {
             final boolean deselect = selectedPeers.size() >= Math.min(getMaxChats(), allowedPeers.size());
-            headerCountCell.setAction(!deselect ? LocaleController.getString(R.string.SelectAll) : LocaleController.getString(R.string.DeselectAll), () -> deselectAll(headerCountCell, deselect));
+            headerCountCell.setAction(!deselect ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTALL, R.string.SelectAll) : LocaleController.getString(R.string.DeselectAll), () -> deselectAll(headerCountCell, deselect));
         } else {
             headerCountCell.setAction("", null);
         }
@@ -535,9 +535,9 @@ public class FilterChatlistActivity extends BaseFragment {
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                         builder.setDialogButtonColorKey(Theme.key_dialogButton);
-                        builder.setTitle(LocaleController.getString("FilterInviteEditName", R.string.FilterInviteEditName));
+                        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEEDITNAME, R.string.FilterInviteEditName));
 //                        builder.setCheckFocusable(false);
-                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), (dialog, which) -> AndroidUtilities.hideKeyboard(editText));
+                        builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), (dialog, which) -> AndroidUtilities.hideKeyboard(editText));
 
                         LinearLayout linearLayout = new LinearLayout(getContext());
                         linearLayout.setOrientation(LinearLayout.VERTICAL);
@@ -589,7 +589,7 @@ public class FilterChatlistActivity extends BaseFragment {
                             editText.setText(invite.title);
                             editText.setSelection(editText.length());
                         }
-                        builder.setPositiveButton(LocaleController.getString("Save", R.string.Save), (dialog, which) -> {
+                        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVE, R.string.Save), (dialog, which) -> {
                             AndroidUtilities.hideKeyboard(editText);
 //                            call.setTitle(editText.getText().toString());
                             builder.getDismissRunnable().run();
@@ -643,9 +643,9 @@ public class FilterChatlistActivity extends BaseFragment {
                 if (position == chatsSectionRow) {
                     cell.setFixedSize(0);
                     if (invite == null || allowedPeers.isEmpty()) {
-                        cell.setText(LocaleController.getString("FilterInviteHintNo", R.string.FilterInviteHintNo));
+                        cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEHINTNO, R.string.FilterInviteHintNo));
                     } else {
-                        cell.setText(LocaleController.getString("FilterInviteHint", R.string.FilterInviteHint));
+                        cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEHINT, R.string.FilterInviteHint));
                     }
                 } else {
                     cell.setFixedSize(12);
@@ -676,9 +676,9 @@ public class FilterChatlistActivity extends BaseFragment {
                             }
                         } else {
                             if (ChatObject.isChannelAndNotMegaGroup(chat)) {
-                                status = LocaleController.getString("ChannelPublic");
+                                status = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPUBLIC);
                             } else {
-                                status = LocaleController.getString("MegaPublic");
+                                status = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEGAPUBLIC);
                             }
                         }
                     }
@@ -692,15 +692,15 @@ public class FilterChatlistActivity extends BaseFragment {
                     userCell.setChecked(false, false);
                     if (object instanceof TLRPC.User) {
                         if (((TLRPC.User) object).bot) {
-                            status = LocaleController.getString("FilterInviteBot", R.string.FilterInviteBot);
+                            status = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEBOT, R.string.FilterInviteBot);
                         } else {
-                            status = LocaleController.getString("FilterInviteUser", R.string.FilterInviteUser);
+                            status = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEUSER, R.string.FilterInviteUser);
                         }
                     } else if (object instanceof TLRPC.Chat) {
                         if (ChatObject.isChannelAndNotMegaGroup((TLRPC.Chat) object)) {
-                            status = LocaleController.getString("FilterInviteChannel", R.string.FilterInviteChannel);
+                            status = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITECHANNEL, R.string.FilterInviteChannel);
                         } else {
-                            status = LocaleController.getString("FilterInviteGroup", R.string.FilterInviteGroup);
+                            status = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEGROUP, R.string.FilterInviteGroup);
                         }
                     }
                 }
@@ -712,12 +712,12 @@ public class FilterChatlistActivity extends BaseFragment {
                     headerCountCell = null;
                 }
                 if (position == linkHeaderRow) {
-                    headerCell.setText(LocaleController.getString("InviteLink", R.string.InviteLink), false);
+                    headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITELINK, R.string.InviteLink), false);
                     headerCell.setAction("", null);
                 } else {
                     headerCountCell = headerCell;
                     if (invite == null || allowedPeers.isEmpty()) {
-                        headerCell.setText(LocaleController.getString("FilterInviteHeaderChatsNo", R.string.FilterInviteHeaderChatsNo), false);
+                        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEHEADERCHATSNO, R.string.FilterInviteHeaderChatsNo), false);
                         headerCell.setAction("", null);
                     } else {
                         updateHeaderCell(false);
@@ -763,7 +763,7 @@ public class FilterChatlistActivity extends BaseFragment {
             selectedPeers.addAll(allowedPeers.subList(0, Math.min(getMaxChats(), allowedPeers.size())));
         }
         final boolean newDeselect = selectedPeers.size() >= Math.min(getMaxChats(), allowedPeers.size());
-        headerCell.setAction(!newDeselect ? LocaleController.getString(R.string.SelectAll) : LocaleController.getString(R.string.DeselectAll), () -> deselectAll(headerCell, !deselect));
+        headerCell.setAction(!newDeselect ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTALL, R.string.SelectAll) : LocaleController.getString(R.string.DeselectAll), () -> deselectAll(headerCell, !deselect));
         peersChanged = true;
         checkPeersChanged();
         checkDoneButton();
@@ -869,10 +869,10 @@ public class FilterChatlistActivity extends BaseFragment {
         }
         if (peersChanged) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-            builder.setTitle(LocaleController.getString("UnsavedChanges", R.string.UnsavedChanges));
-            builder.setMessage(LocaleController.getString("UnsavedChangesMessage", R.string.UnsavedChangesMessage));
-            builder.setPositiveButton(LocaleController.getString("ApplyTheme", R.string.ApplyTheme), (dialogInterface, i) -> save());
-            builder.setNegativeButton(LocaleController.getString("PassportDiscard", R.string.PassportDiscard), (dialog, which) -> finishFragment());
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNSAVEDCHANGES, R.string.UnsavedChanges));
+            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNSAVEDCHANGESMESSAGE, R.string.UnsavedChangesMessage));
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPLYTHEME, R.string.ApplyTheme), (dialogInterface, i) -> save());
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSPORTDISCARD, R.string.PassportDiscard), (dialog, which) -> finishFragment());
             showDialog(builder.create());
             return false;
         }
@@ -968,7 +968,7 @@ public class FilterChatlistActivity extends BaseFragment {
             optionsIcon.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_dialogTextGray3), PorterDuff.Mode.SRC_IN));
             optionsIcon.setAlpha(0f);
             optionsIcon.setVisibility(GONE);
-            optionsIcon.setContentDescription(LocaleController.getString("AccDescrMoreOptions", R.string.AccDescrMoreOptions));
+            optionsIcon.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRMOREOPTIONS, R.string.AccDescrMoreOptions));
             optionsIcon.setOnClickListener(e -> {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && linkBox.getBackground() instanceof RippleDrawable) {
                     linkBox.getBackground().setState(new int[] { android.R.attr.state_pressed, android.R.attr.state_enabled });
@@ -998,7 +998,7 @@ public class FilterChatlistActivity extends BaseFragment {
             SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
             spannableStringBuilder.append("..").setSpan(new ColoredImageSpan(ContextCompat.getDrawable(context, R.drawable.msg_copy_filled)), 0, 1, 0);
             spannableStringBuilder.setSpan(new DialogCell.FixedWidthSpan(AndroidUtilities.dp(8)), 1, 2, 0);
-            spannableStringBuilder.append(LocaleController.getString("LinkActionCopy", R.string.LinkActionCopy));
+            spannableStringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKACTIONCOPY, R.string.LinkActionCopy));
             spannableStringBuilder.append(".").setSpan(new DialogCell.FixedWidthSpan(AndroidUtilities.dp(5)), spannableStringBuilder.length() - 1, spannableStringBuilder.length(), 0);
             copyButton.setText(spannableStringBuilder);
             copyButton.setOnClickListener(e -> copy());
@@ -1023,7 +1023,7 @@ public class FilterChatlistActivity extends BaseFragment {
             spannableStringBuilder = new SpannableStringBuilder();
             spannableStringBuilder.append("..").setSpan(new ColoredImageSpan(ContextCompat.getDrawable(context, R.drawable.msg_share_filled)), 0, 1, 0);
             spannableStringBuilder.setSpan(new DialogCell.FixedWidthSpan(AndroidUtilities.dp(8)), 1, 2, 0);
-            spannableStringBuilder.append(LocaleController.getString("LinkActionShare", R.string.LinkActionShare));
+            spannableStringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKACTIONSHARE, R.string.LinkActionShare));
             spannableStringBuilder.append(".").setSpan(new DialogCell.FixedWidthSpan(AndroidUtilities.dp(5)), spannableStringBuilder.length() - 1, spannableStringBuilder.length(), 0);
             shareButton.setText(spannableStringBuilder);
             shareButton.setOnClickListener(e -> share());
@@ -1153,7 +1153,7 @@ public class FilterChatlistActivity extends BaseFragment {
             ActionBarMenuSubItem subItem;
 
             subItem = new ActionBarMenuSubItem(getContext(), true, false);
-            subItem.setTextAndIcon(LocaleController.getString("EditName", R.string.EditName), R.drawable.msg_edit);
+            subItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDITNAME, R.string.EditName), R.drawable.msg_edit);
             layout.addView(subItem, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
             subItem.setOnClickListener(view12 -> {
                 if (actionBarPopupWindow != null) {
@@ -1163,7 +1163,7 @@ public class FilterChatlistActivity extends BaseFragment {
             });
 
             subItem = new ActionBarMenuSubItem(getContext(), false, false);
-            subItem.setTextAndIcon(LocaleController.getString("GetQRCode", R.string.GetQRCode), R.drawable.msg_qrcode);
+            subItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GETQRCODE, R.string.GetQRCode), R.drawable.msg_qrcode);
             layout.addView(subItem, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
             subItem.setOnClickListener(view12 -> {
                 if (actionBarPopupWindow != null) {
@@ -1174,7 +1174,7 @@ public class FilterChatlistActivity extends BaseFragment {
 
             subItem = new ActionBarMenuSubItem(getContext(), false, true);
 //            if (!isRevoked()) {
-//                subItem.setTextAndIcon(LocaleController.getString("RevokeLink", R.string.RevokeLink), R.drawable.msg_delete);
+//                subItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REVOKELINK, R.string.RevokeLink), R.drawable.msg_delete);
 //                subItem.setColors(Theme.getColor(Theme.key_text_RedRegular), Theme.getColor(Theme.key_text_RedRegular));
 //                subItem.setSelectorColor(Theme.multAlpha(Theme.getColor(Theme.key_text_RedRegular), .12f));
 //                subItem.setOnClickListener(view1 -> {
@@ -1193,7 +1193,7 @@ public class FilterChatlistActivity extends BaseFragment {
 //                    revoke(false);
 //                });
 //            }
-            subItem.setTextAndIcon(LocaleController.getString("DeleteLink", R.string.DeleteLink), R.drawable.msg_delete);
+            subItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETELINK, R.string.DeleteLink), R.drawable.msg_delete);
             subItem.setColors(Theme.getColor(Theme.key_text_RedRegular), Theme.getColor(Theme.key_text_RedRegular));
             subItem.setSelectorColor(Theme.multAlpha(Theme.getColor(Theme.key_text_RedRegular), .12f));
             subItem.setOnClickListener(view1 -> {
@@ -1289,7 +1289,7 @@ public class FilterChatlistActivity extends BaseFragment {
             }
 
             AndroidUtilities.addToClipboard(lastUrl);
-            BulletinFactory.of(parentFragment).createCopyBulletin(LocaleController.getString("LinkCopied", R.string.LinkCopied)).show();
+            BulletinFactory.of(parentFragment).createCopyBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKCOPIED, R.string.LinkCopied)).show();
         }
 
         protected void share() {
@@ -1301,7 +1301,7 @@ public class FilterChatlistActivity extends BaseFragment {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_TEXT, lastUrl);
-                parentFragment.startActivityForResult(Intent.createChooser(intent, LocaleController.getString("InviteToGroupByLink", R.string.InviteToGroupByLink)), 500);
+                parentFragment.startActivityForResult(Intent.createChooser(intent, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITETOGROUPBYLINK, R.string.InviteToGroupByLink)), 500);
             } catch (Exception e) {
                 FileLog.e(e);
             }
@@ -1318,7 +1318,7 @@ public class FilterChatlistActivity extends BaseFragment {
                 return;
             }
 
-            QRCodeBottomSheet qrCodeBottomSheet = new QRCodeBottomSheet(getContext(), LocaleController.getString("InviteByQRCode", R.string.InviteByQRCode), lastUrl, LocaleController.getString("QRCodeLinkHelpFolder", R.string.QRCodeLinkHelpFolder), false);
+            QRCodeBottomSheet qrCodeBottomSheet = new QRCodeBottomSheet(getContext(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITEBYQRCODE, R.string.InviteByQRCode), lastUrl, LocaleController.getString("QRCodeLinkHelpFolder", R.string.QRCodeLinkHelpFolder), false);
             qrCodeBottomSheet.setCenterAnimation(R.raw.qr_code_logo);
             qrCodeBottomSheet.show();
         }

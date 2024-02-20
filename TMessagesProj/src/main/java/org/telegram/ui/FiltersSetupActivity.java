@@ -159,7 +159,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
             addView(valueTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT, 22, 35, 22, 0));
 
             addButton = new ProgressButton(context);
-            addButton.setText(LocaleController.getString("Add", R.string.Add));
+            addButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADD, R.string.Add));
             addButton.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));
             addButton.setProgressColor(Theme.getColor(Theme.key_featuredStickers_buttonProgress));
             addButton.setBackgroundRoundRect(Theme.getColor(Theme.key_featuredStickers_addButton), Theme.getColor(Theme.key_featuredStickers_addButtonPressed));
@@ -268,7 +268,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
             moveImageView.setScaleType(ImageView.ScaleType.CENTER);
             moveImageView.setImageResource(R.drawable.list_reorder);
             moveImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_stickers_menu), PorterDuff.Mode.MULTIPLY));
-            moveImageView.setContentDescription(LocaleController.getString("FilterReorder", R.string.FilterReorder));
+            moveImageView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERREORDER, R.string.FilterReorder));
             moveImageView.setClickable(true);
             addView(moveImageView, LayoutHelper.createFrame(48, 48, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL, 6, 0, 6, 0));
 
@@ -327,7 +327,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
             shareImageView.setScaleType(ImageView.ScaleType.CENTER);
             shareImageView.setBackground(Theme.createSelectorDrawable(selector));
             shareImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_stickers_menu), PorterDuff.Mode.MULTIPLY));
-            shareImageView.setContentDescription(LocaleController.getString("FilterShare", R.string.FilterShare));
+            shareImageView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERSHARE, R.string.FilterShare));
             shareImageView.setVisibility(View.GONE);
             shareImageView.setImageResource(R.drawable.msg_link_folder);
             shareImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_stickers_menu), PorterDuff.Mode.MULTIPLY));
@@ -353,7 +353,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
             optionsImageView.setBackgroundDrawable(Theme.createSelectorDrawable(Theme.getColor(Theme.key_listSelector)));
             optionsImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_stickers_menu), PorterDuff.Mode.MULTIPLY));
             optionsImageView.setImageResource(R.drawable.msg_actions);
-            optionsImageView.setContentDescription(LocaleController.getString("AccDescrMoreOptions", R.string.AccDescrMoreOptions));
+            optionsImageView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRMOREOPTIONS, R.string.AccDescrMoreOptions));
             addView(optionsImageView, LayoutHelper.createFrame(40, 40, (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.CENTER_VERTICAL, 6, 0, 6, 0));
         }
 
@@ -372,37 +372,37 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
 
             StringBuilder info = new StringBuilder();
             if (filter.isDefault() || (filter.flags & MessagesController.DIALOG_FILTER_FLAG_ALL_CHATS) == MessagesController.DIALOG_FILTER_FLAG_ALL_CHATS) {
-                info.append(LocaleController.getString("FilterAllChats", R.string.FilterAllChats));
+                info.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERALLCHATS, R.string.FilterAllChats));
             } else {
                 if ((filter.flags & MessagesController.DIALOG_FILTER_FLAG_CONTACTS) != 0) {
                     if (info.length() != 0) {
                         info.append(", ");
                     }
-                    info.append(LocaleController.getString("FilterContacts", R.string.FilterContacts));
+                    info.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERCONTACTS, R.string.FilterContacts));
                 }
                 if ((filter.flags & MessagesController.DIALOG_FILTER_FLAG_NON_CONTACTS) != 0) {
                     if (info.length() != 0) {
                         info.append(", ");
                     }
-                    info.append(LocaleController.getString("FilterNonContacts", R.string.FilterNonContacts));
+                    info.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERNONCONTACTS, R.string.FilterNonContacts));
                 }
                 if ((filter.flags & MessagesController.DIALOG_FILTER_FLAG_GROUPS) != 0) {
                     if (info.length() != 0) {
                         info.append(", ");
                     }
-                    info.append(LocaleController.getString("FilterGroups", R.string.FilterGroups));
+                    info.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERGROUPS, R.string.FilterGroups));
                 }
                 if ((filter.flags & MessagesController.DIALOG_FILTER_FLAG_CHANNELS) != 0) {
                     if (info.length() != 0) {
                         info.append(", ");
                     }
-                    info.append(LocaleController.getString("FilterChannels", R.string.FilterChannels));
+                    info.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERCHANNELS, R.string.FilterChannels));
                 }
                 if ((filter.flags & MessagesController.DIALOG_FILTER_FLAG_BOTS) != 0) {
                     if (info.length() != 0) {
                         info.append(", ");
                     }
-                    info.append(LocaleController.getString("FilterBots", R.string.FilterBots));
+                    info.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERBOTS, R.string.FilterBots));
                 }
             }
             if (!filter.alwaysShow.isEmpty() || !filter.neverShow.isEmpty()) {
@@ -412,12 +412,12 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
                 info.append(LocaleController.formatPluralString("Exception", filter.alwaysShow.size() + filter.neverShow.size()));
             }
             if (info.length() == 0) {
-                info.append(LocaleController.getString("FilterNoChats", R.string.FilterNoChats));
+                info.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERNOCHATS, R.string.FilterNoChats));
             }
 
             String name = filter.name;
             if (filter.isDefault()) {
-                name = LocaleController.getString("FilterAllChats", R.string.FilterAllChats);
+                name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERALLCHATS, R.string.FilterAllChats);
             }
             if (!animated) {
                 progressToLock = currentFilter.locked ? 1f : 0;
@@ -495,7 +495,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
         ArrayList<MessagesController.DialogFilter> dialogFilters = getMessagesController().getDialogFilters();
         items.add(ItemInner.asHint());
         if (!suggestedFilters.isEmpty() && dialogFilters.size() < 10) {
-            items.add(ItemInner.asHeader(LocaleController.getString("FilterRecommended", R.string.FilterRecommended)));
+            items.add(ItemInner.asHeader(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERRECOMMENDED, R.string.FilterRecommended)));
             for (int i = 0; i < suggestedFilters.size(); ++i) {
                 items.add(ItemInner.asSuggested(suggestedFilters.get(i)));
             }
@@ -503,7 +503,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
         }
         if (!dialogFilters.isEmpty()) {
             filtersSectionStart = items.size();
-            items.add(ItemInner.asHeader(LocaleController.getString("Filters", R.string.Filters)));
+            items.add(ItemInner.asHeader(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERS, R.string.Filters)));
             filtersStartPosition = items.size();
             for (int i = 0; i < dialogFilters.size(); ++i) {
                 items.add(ItemInner.asFilter(dialogFilters.get(i)));
@@ -513,7 +513,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
             filtersSectionStart = filtersSectionEnd = -1;
         }
         if (dialogFilters.size() < getMessagesController().dialogFiltersLimitPremium) {
-            items.add(ItemInner.asButton(LocaleController.getString("CreateNewFilter", R.string.CreateNewFilter)));
+            items.add(ItemInner.asButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATENEWFILTER, R.string.CreateNewFilter)));
         }
         items.add(ItemInner.asShadow(null));
 
@@ -550,7 +550,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("Filters", R.string.Filters));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERS, R.string.Filters));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -784,14 +784,14 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
                         FilterCell cell = (FilterCell) v.getParent();
                         MessagesController.DialogFilter filter = cell.getCurrentFilter();
                         ItemOptions options = ItemOptions.makeOptions(FiltersSetupActivity.this, cell);
-                        options.add(R.drawable.msg_edit, LocaleController.getString("FilterEditItem", R.string.FilterEditItem), () -> {
+                        options.add(R.drawable.msg_edit, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTEREDITITEM, R.string.FilterEditItem), () -> {
                             if (filter.locked) {
                                 showDialog(new LimitReachedBottomSheet(FiltersSetupActivity.this, mContext, LimitReachedBottomSheet.TYPE_FOLDERS, currentAccount, null));
                             } else {
                                 presentFragment(new FilterCreateActivity(filter));
                             }
                         });
-                        options.add(R.drawable.msg_delete, LocaleController.getString("FilterDeleteItem", R.string.FilterDeleteItem), true, () -> {
+                        options.add(R.drawable.msg_delete, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERDELETEITEM, R.string.FilterDeleteItem), true, () -> {
                             if (filter.isChatlist()) {
                                 FolderBottomSheet.showForDeletion(FiltersSetupActivity.this, filter.id, success -> {
                                     updateRows(true);
@@ -800,10 +800,10 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
                             }
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                            builder.setTitle(LocaleController.getString("FilterDelete", R.string.FilterDelete));
-                            builder.setMessage(LocaleController.getString("FilterDeleteAlert", R.string.FilterDeleteAlert));
-                            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                            builder.setPositiveButton(LocaleController.getString("Delete", R.string.Delete), (dialog2, which2) -> {
+                            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERDELETE, R.string.FilterDelete));
+                            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERDELETEALERT, R.string.FilterDeleteAlert));
+                            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
+                            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete), (dialog2, which2) -> {
                                 AlertDialog progressDialog = null;
                                 if (getParentActivity() != null) {
                                     progressDialog = new AlertDialog(getParentActivity(), AlertDialog.ALERT_TYPE_SPINNER);
@@ -1072,7 +1072,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
         try {
             fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
         } catch (Exception ignore) {}
-        BulletinFactory.of(this).createSimpleBulletin(R.raw.filter_reorder, AndroidUtilities.replaceTags(LocaleController.formatString("LimitReachedReorderFolder", R.string.LimitReachedReorderFolder, LocaleController.getString(R.string.FilterAllChats))), LocaleController.getString("PremiumMore", R.string.PremiumMore), Bulletin.DURATION_PROLONG, () -> {
+        BulletinFactory.of(this).createSimpleBulletin(R.raw.filter_reorder, AndroidUtilities.replaceTags(LocaleController.formatString("LimitReachedReorderFolder", R.string.LimitReachedReorderFolder, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERALLCHATS, R.string.FilterAllChats))), LocaleController.getString("PremiumMore", R.string.PremiumMore), Bulletin.DURATION_PROLONG, () -> {
             showDialog(new PremiumFeatureBottomSheet(FiltersSetupActivity.this, PremiumPreviewFragment.PREMIUM_FEATURE_ADVANCED_CHAT_MANAGEMENT, true));
         }).show();
     }

@@ -43,7 +43,7 @@ public class MuteButtonHint extends View {
 
     private Runnable hideRunnable;
     public void setMuted(boolean muted) {
-        textDrawable.setText(muted ? LocaleController.getString("StorySoundMuted") : LocaleController.getString("StorySoundNotMuted"), !LocaleController.isRTL && shown);
+        textDrawable.setText(muted ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYSOUNDMUTED) : LocaleController.getString("StorySoundNotMuted"), !LocaleController.isRTL && shown);
         show(true, true);
         if (hideRunnable != null) {
             AndroidUtilities.cancelRunOnUIThread(hideRunnable);

@@ -1959,7 +1959,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         selectedMenuItem = new ActionBarMenuItem(context, null, 0, getThemedColor(Theme.key_dialogTextBlack), false, resourcesProvider);
         selectedMenuItem.setLongClickEnabled(false);
         selectedMenuItem.setIcon(R.drawable.ic_ab_other);
-        selectedMenuItem.setContentDescription(LocaleController.getString("AccDescrMoreOptions", R.string.AccDescrMoreOptions));
+        selectedMenuItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRMOREOPTIONS, R.string.AccDescrMoreOptions));
         selectedMenuItem.setVisibility(View.INVISIBLE);
         selectedMenuItem.setAlpha(0.0f);
         selectedMenuItem.setSubMenuOpenSide(2);
@@ -1971,7 +1971,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
 
         doneItem = new ActionBarMenuItem(context, null, 0, getThemedColor(Theme.key_windowBackgroundWhiteBlueHeader), true, resourcesProvider);
         doneItem.setLongClickEnabled(false);
-        doneItem.setText(LocaleController.getString("Create", R.string.Create).toUpperCase());
+        doneItem.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATE, R.string.Create).toUpperCase());
         doneItem.setVisibility(View.INVISIBLE);
         doneItem.setAlpha(0.0f);
         doneItem.setTranslationX(-AndroidUtilities.dp(12));
@@ -1982,7 +1982,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             searchItem = new ActionBarMenuItem(context, null, 0, getThemedColor(Theme.key_dialogTextBlack), false, resourcesProvider);
             searchItem.setLongClickEnabled(false);
             searchItem.setIcon(R.drawable.ic_ab_search);
-            searchItem.setContentDescription(LocaleController.getString("Search", R.string.Search));
+            searchItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
             searchItem.setVisibility(View.INVISIBLE);
             searchItem.setAlpha(0.0f);
             searchItem.setTranslationX(-AndroidUtilities.dp(42));
@@ -2125,7 +2125,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         mediaPreviewTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         mediaPreviewTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         mediaPreviewTextView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
-        mediaPreviewTextView.setText(LocaleController.getString("AttachMediaPreview", R.string.AttachMediaPreview));
+        mediaPreviewTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHMEDIAPREVIEW, R.string.AttachMediaPreview));
         mediaPreviewView.setAlpha(0);
 
         mediaPreviewView.addView(mediaPreviewTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL));
@@ -2475,7 +2475,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                 updateCommentTextViewPosition();
             }
         };
-        commentTextView.setHint(LocaleController.getString("AddCaption", R.string.AddCaption));
+        commentTextView.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDCAPTION, R.string.AddCaption));
         commentTextView.onResume();
         commentTextView.getEditText().addTextChangedListener(new TextWatcher() {
 
@@ -2707,12 +2707,12 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                 itemCells[a] = new ActionBarMenuSubItem(getContext(), a == 0, a == 1, resourcesProvider);
                 if (num == 0) {
                     if (UserObject.isUserSelf(user)) {
-                        itemCells[a].setTextAndIcon(LocaleController.getString("SetReminder", R.string.SetReminder), R.drawable.msg_calendar2);
+                        itemCells[a].setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETREMINDER, R.string.SetReminder), R.drawable.msg_calendar2);
                     } else {
-                        itemCells[a].setTextAndIcon(LocaleController.getString("ScheduleMessage", R.string.ScheduleMessage), R.drawable.msg_calendar2);
+                        itemCells[a].setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SCHEDULEMESSAGE, R.string.ScheduleMessage), R.drawable.msg_calendar2);
                     }
                 } else if (num == 1) {
-                    itemCells[a].setTextAndIcon(LocaleController.getString("SendWithoutSound", R.string.SendWithoutSound), R.drawable.input_notify_off);
+                    itemCells[a].setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDWITHOUTSOUND, R.string.SendWithoutSound), R.drawable.input_notify_off);
                 }
                 itemCells[a].setMinimumWidth(AndroidUtilities.dp(196));
 
@@ -2881,9 +2881,9 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         }
         description = LocaleController.formatString("BotRemoveFromMenu", R.string.BotRemoveFromMenu, botName);
         new AlertDialog.Builder(getContext())
-                .setTitle(LocaleController.getString(R.string.BotRemoveFromMenuTitle))
+                .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTREMOVEFROMMENUTITLE, R.string.BotRemoveFromMenuTitle))
                 .setMessage(AndroidUtilities.replaceTags(attachMenuBot != null ? description : LocaleController.formatString("BotRemoveInlineFromMenu", R.string.BotRemoveInlineFromMenu, botName)))
-                .setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialogInterface, i) -> {
+                .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), (dialogInterface, i) -> {
                     if (attachMenuBot != null) {
                         TLRPC.TL_messages_toggleBotInAttachMenu req = new TLRPC.TL_messages_toggleBotInAttachMenu();
                         req.bot = MessagesController.getInstance(currentAccount).getInputUser(currentUser);
@@ -2898,7 +2898,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                         MediaDataController.getInstance(currentAccount).removeInline(currentUser.id);
                     }
                 })
-                .setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null)
+                .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null)
                 .show();
     }
 
@@ -4236,7 +4236,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             MediaController.loadGalleryPhotosAlbums(0);
         }
         currentAttachLayout.onOpenAnimationEnd();
-        AndroidUtilities.makeAccessibilityAnnouncement(LocaleController.getString("AccDescrAttachButton", R.string.AccDescrAttachButton));
+        AndroidUtilities.makeAccessibilityAnnouncement(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRATTACHBUTTON, R.string.AccDescrAttachButton));
         openTransitionFinished = true;
     }
 
@@ -4270,9 +4270,9 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                 shadow.setVisibility(View.GONE);
             }
             if (avatarPicker == 2) {
-                selectedTextView.setText(LocaleController.getString("ChoosePhotoOrVideo", R.string.ChoosePhotoOrVideo));
+                selectedTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEPHOTOORVIDEO, R.string.ChoosePhotoOrVideo));
             } else {
-                selectedTextView.setText(LocaleController.getString("ChoosePhoto", R.string.ChoosePhoto));
+                selectedTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEPHOTO, R.string.ChoosePhoto));
             }
         } else {
             typeButtonsAvailable = true;
@@ -4290,7 +4290,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         isSoundPicker = true;
         buttonsRecyclerView.setVisibility(View.GONE);
         shadow.setVisibility(View.GONE);
-        selectedTextView.setText(LocaleController.getString("ChoosePhotoOrVideo", R.string.ChoosePhotoOrVideo));
+        selectedTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEPHOTOORVIDEO, R.string.ChoosePhotoOrVideo));
     }
 
     public boolean storyLocationPickerFileIsVideo;
@@ -4383,22 +4383,22 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                 case VIEW_TYPE_BUTTON:
                     AttachButton attachButton = (AttachButton) holder.itemView;
                     if (position == galleryButton) {
-                        attachButton.setTextAndIcon(1, LocaleController.getString("ChatGallery", R.string.ChatGallery), Theme.chat_attachButtonDrawables[0], Theme.key_chat_attachGalleryBackground, Theme.key_chat_attachGalleryText);
+                        attachButton.setTextAndIcon(1, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATGALLERY, R.string.ChatGallery), Theme.chat_attachButtonDrawables[0], Theme.key_chat_attachGalleryBackground, Theme.key_chat_attachGalleryText);
                         attachButton.setTag(1);
                     } else if (position == documentButton) {
-                        attachButton.setTextAndIcon(4, LocaleController.getString("ChatDocument", R.string.ChatDocument), Theme.chat_attachButtonDrawables[2], Theme.key_chat_attachFileBackground, Theme.key_chat_attachFileText);
+                        attachButton.setTextAndIcon(4, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATDOCUMENT, R.string.ChatDocument), Theme.chat_attachButtonDrawables[2], Theme.key_chat_attachFileBackground, Theme.key_chat_attachFileText);
                         attachButton.setTag(4);
                     } else if (position == locationButton) {
-                        attachButton.setTextAndIcon(6, LocaleController.getString("ChatLocation", R.string.ChatLocation), Theme.chat_attachButtonDrawables[4], Theme.key_chat_attachLocationBackground, Theme.key_chat_attachLocationText);
+                        attachButton.setTextAndIcon(6, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATLOCATION, R.string.ChatLocation), Theme.chat_attachButtonDrawables[4], Theme.key_chat_attachLocationBackground, Theme.key_chat_attachLocationText);
                         attachButton.setTag(6);
                     } else if (position == musicButton) {
-                        attachButton.setTextAndIcon(3, LocaleController.getString("AttachMusic", R.string.AttachMusic), Theme.chat_attachButtonDrawables[1], Theme.key_chat_attachAudioBackground, Theme.key_chat_attachAudioText);
+                        attachButton.setTextAndIcon(3, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHMUSIC, R.string.AttachMusic), Theme.chat_attachButtonDrawables[1], Theme.key_chat_attachAudioBackground, Theme.key_chat_attachAudioText);
                         attachButton.setTag(3);
                     } else if (position == pollButton) {
-                        attachButton.setTextAndIcon(9, LocaleController.getString("Poll", R.string.Poll), Theme.chat_attachButtonDrawables[5], Theme.key_chat_attachPollBackground, Theme.key_chat_attachPollText);
+                        attachButton.setTextAndIcon(9, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_POLL, R.string.Poll), Theme.chat_attachButtonDrawables[5], Theme.key_chat_attachPollBackground, Theme.key_chat_attachPollText);
                         attachButton.setTag(9);
                     } else if (position == contactButton) {
-                        attachButton.setTextAndIcon(5, LocaleController.getString("AttachContact", R.string.AttachContact), Theme.chat_attachButtonDrawables[3], Theme.key_chat_attachContactBackground, Theme.key_chat_attachContactText);
+                        attachButton.setTextAndIcon(5, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHCONTACT, R.string.AttachContact), Theme.chat_attachButtonDrawables[3], Theme.key_chat_attachContactBackground, Theme.key_chat_attachContactText);
                         attachButton.setTag(5);
                     }
                     break;
@@ -4625,13 +4625,13 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             confirmationAlertShown = true;
             AlertDialog dialog =
                     new AlertDialog.Builder(baseFragment.getParentActivity(), resourcesProvider)
-                            .setTitle(LocaleController.getString("DiscardSelectionAlertTitle", R.string.DiscardSelectionAlertTitle))
-                            .setMessage(LocaleController.getString("DiscardSelectionAlertMessage", R.string.DiscardSelectionAlertMessage))
-                            .setPositiveButton(LocaleController.getString("PassportDiscard", R.string.PassportDiscard), (dialogInterface, i) -> {
+                            .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISCARDSELECTIONALERTTITLE, R.string.DiscardSelectionAlertTitle))
+                            .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISCARDSELECTIONALERTMESSAGE, R.string.DiscardSelectionAlertMessage))
+                            .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSPORTDISCARD, R.string.PassportDiscard), (dialogInterface, i) -> {
                                 allowPassConfirmationAlert = true;
                                 dismiss();
                             })
-                            .setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null)
+                            .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null)
                             .setOnCancelListener(di -> {
                                 if (appearSpringAnimation != null) {
                                     appearSpringAnimation.cancel();

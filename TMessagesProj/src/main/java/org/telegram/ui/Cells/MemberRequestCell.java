@@ -57,7 +57,7 @@ public class MemberRequestCell extends FrameLayout {
         addButton.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
         addButton.setMaxLines(1);
         addButton.setPadding(btnPadding, 0, btnPadding, 0);
-        addButton.setText(isChannel ? LocaleController.getString("AddToChannel", R.string.AddToChannel) : LocaleController.getString("AddToGroup", R.string.AddToGroup));
+        addButton.setText(isChannel ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDTOCHANNEL, R.string.AddToChannel) : LocaleController.getString("AddToGroup", R.string.AddToGroup));
         addButton.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));
         addButton.setTextSize(14);
         addButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
@@ -74,7 +74,7 @@ public class MemberRequestCell extends FrameLayout {
         dismissButton.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
         dismissButton.setMaxLines(1);
         dismissButton.setPadding(btnPadding, 0, btnPadding, 0);
-        dismissButton.setText(LocaleController.getString("Dismiss", R.string.Dismiss));
+        dismissButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISMISS, R.string.Dismiss));
         dismissButton.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText));
         dismissButton.setTextSize(14);
         dismissButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
@@ -101,7 +101,7 @@ public class MemberRequestCell extends FrameLayout {
         nameTextView.setText(UserObject.getUserName(user));
         String dateText = LocaleController.formatDateAudio(importer.date, false);
         if (importer.via_chatlist) {
-            statusTextView.setText(LocaleController.getString("JoinedViaFolder", R.string.JoinedViaFolder));
+            statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_JOINEDVIAFOLDER, R.string.JoinedViaFolder));
         } else if (importer.approved_by == 0) {
             statusTextView.setText(LocaleController.formatString("RequestedToJoinAt", R.string.RequestedToJoinAt, dateText));
         } else {

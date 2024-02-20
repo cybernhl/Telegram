@@ -186,7 +186,7 @@ public class DialogMeUrlCell extends BaseCell {
         messageString = MessagesController.getInstance(currentAccount).linkPrefix + "/" + recentMeUrl.url;
 
         if (TextUtils.isEmpty(nameString)) {
-            nameString = LocaleController.getString("HiddenName", R.string.HiddenName);
+            nameString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_HIDDENNAME, R.string.HiddenName);
         }
 
         int nameWidth;

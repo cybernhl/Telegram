@@ -331,9 +331,9 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                                 performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                             } catch (Throwable ignore) {}
                             new AlertDialog.Builder(getContext(), resourcesProvider)
-                                .setTitle(LocaleController.getString("GroupTooLarge", R.string.GroupTooLarge))
-                                .setMessage(LocaleController.getString("GroupTooLargeMessage", R.string.GroupTooLargeMessage))
-                                .setPositiveButton(LocaleController.getString("OK", R.string.OK), null)
+                                .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GROUPTOOLARGE, R.string.GroupTooLarge))
+                                .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GROUPTOOLARGEMESSAGE, R.string.GroupTooLargeMessage))
+                                .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null)
                                 .show();
                         } else if (selectedUsersByGroup.containsKey(id)) {
                             ArrayList<Long> userIds = selectedUsersByGroup.get(id);
@@ -985,14 +985,14 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 if (canChangePeer && (isEdit || sendAs == null || sendAs.size() <= 1)) {
                     items.add(ItemInner.asHeader2(
                         isEdit ?
-                                LocaleController.getString("StoryPrivacyAlertEditTitle", R.string.StoryPrivacyAlertEditTitle) :
-                                LocaleController.getString("StoryPrivacyAlertTitle", R.string.StoryPrivacyAlertTitle),
+                                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTEDITTITLE, R.string.StoryPrivacyAlertEditTitle) :
+                                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTTITLE, R.string.StoryPrivacyAlertTitle),
                         storyPeriod != Integer.MAX_VALUE ?
                                 LocaleController.formatPluralString("StoryPrivacyAlertSubtitle", storyPeriod / 3600) :
-                                LocaleController.getString("StoryPrivacyAlertSubtitleProfile", R.string.StoryPrivacyAlertSubtitleProfile)
+                                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTSUBTITLEPROFILE, R.string.StoryPrivacyAlertSubtitleProfile)
                     ));
                 } else {
-                    items.add(ItemInner.asHeaderCell(LocaleController.getString(R.string.StoryPrivacyPublishAs)));
+                    items.add(ItemInner.asHeaderCell(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYPUBLISHAS, R.string.StoryPrivacyPublishAs)));
                     if (selectedPeer == null || selectedPeer instanceof TLRPC.TL_inputPeerSelf) {
                         TLRPC.User me = UserConfig.getInstance(currentAccount).getCurrentUser();
                         items.add(ItemInner.asUser(me, false, false).asSendAs());
@@ -1012,7 +1012,7 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                     section.resId = containsPrivacy ? 1 : 2;
                     items.add(section);
                     if (containsPrivacy) {
-                        items.add(ItemInner.asHeaderCell(LocaleController.getString(R.string.StoryPrivacyWhoCanView)));
+                        items.add(ItemInner.asHeaderCell(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYWHOCANVIEW, R.string.StoryPrivacyWhoCanView)));
                     }
                 }
                 if (containsPrivacy) {
@@ -1054,7 +1054,7 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                     int blocklistCount = MessagesController.getInstance(currentAccount).getStoriesController().getBlocklistCount();
                     items.add(ItemInner.asShadow(AndroidUtilities.replaceSingleTag(
                         blocklistCount <= 0 ?
-                            LocaleController.getString("StoryBlockListEmpty") :
+                            LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYBLOCKLISTEMPTY) :
                             LocaleController.formatPluralString("StoryBlockList", blocklistCount),
                         Theme.key_chat_messageLinkIn, 0,
                         () -> {
@@ -1065,12 +1065,12 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                     )));
                 }
                 if (!isEdit) {
-                    items.add(ItemInner.asCheck(LocaleController.getString(R.string.StoryAllowScreenshots), 0, allowScreenshots));
+                    items.add(ItemInner.asCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYALLOWSCREENSHOTS, R.string.StoryAllowScreenshots), 0, allowScreenshots));
                     items.add(ItemInner.asCheck(LocaleController.getString(containsPrivacy ? R.string.StoryKeep : R.string.StoryKeepChannel), 1, keepOnMyPage));
                     items.add(ItemInner.asShadow(LocaleController.formatPluralString(containsPrivacy ? "StoryKeepInfo" : "StoryKeepChannelInfo", (storyPeriod == Integer.MAX_VALUE ? 86400 : storyPeriod) / 3600)));
                 }
             } else if (pageType == PAGE_TYPE_CLOSE_FRIENDS) {
-                headerView.setText(LocaleController.getString("StoryPrivacyAlertCloseFriendsTitle", R.string.StoryPrivacyAlertCloseFriendsTitle));
+                headerView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTCLOSEFRIENDSTITLE, R.string.StoryPrivacyAlertCloseFriendsTitle));
                 headerView.setCloseImageVisible(true);
                 headerView.backDrawable.setRotation(0f, false);
                 items.add(ItemInner.asPad());
@@ -1081,11 +1081,11 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 h += dp(150);
                 items.add(ItemInner.asSection());
                 h += dp(32);
-                sectionCell.setText(LocaleController.getString("StoryPrivacyAlertCloseFriendsSubtitle", R.string.StoryPrivacyAlertCloseFriendsSubtitle));
+                sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTCLOSEFRIENDSSUBTITLE, R.string.StoryPrivacyAlertCloseFriendsSubtitle));
                 updateSectionCell(animated);
                 containsHeader = true;
             } else if (pageType == PAGE_TYPE_EXCLUDE_CONTACTS) {
-                headerView.setText(LocaleController.getString("StoryPrivacyAlertExcludedContactsTitle", R.string.StoryPrivacyAlertExcludedContactsTitle));
+                headerView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTEXCLUDEDCONTACTSTITLE, R.string.StoryPrivacyAlertExcludedContactsTitle));
                 headerView.setCloseImageVisible(true);
                 headerView.backDrawable.setRotation(0f, false);
                 items.add(ItemInner.asPad());
@@ -1096,11 +1096,11 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 h += dp(150);
                 items.add(ItemInner.asSection());
                 h += dp(32);
-                sectionCell.setText(LocaleController.getString("StoryPrivacyAlertExcludedContactsSubtitle", R.string.StoryPrivacyAlertExcludedContactsSubtitle));
+                sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTEXCLUDEDCONTACTSSUBTITLE, R.string.StoryPrivacyAlertExcludedContactsSubtitle));
                 updateSectionCell(animated);
                 containsHeader = true;
             } else if (pageType == PAGE_TYPE_SELECT_CONTACTS) {
-                headerView.setText(LocaleController.getString("StoryPrivacyAlertSelectContactsTitle", R.string.StoryPrivacyAlertSelectContactsTitle));
+                headerView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTSELECTCONTACTSTITLE, R.string.StoryPrivacyAlertSelectContactsTitle));
                 headerView.setCloseImageVisible(true);
                 headerView.backDrawable.setRotation(0f, false);
                 items.add(ItemInner.asPad());
@@ -1111,11 +1111,11 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 h += dp(150);
                 items.add(ItemInner.asSection());
                 h += dp(32);
-                sectionCell.setText(LocaleController.getString("StoryPrivacyAlertSelectContactsSubtitle", R.string.StoryPrivacyAlertSelectContactsSubtitle));
+                sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTSELECTCONTACTSSUBTITLE, R.string.StoryPrivacyAlertSelectContactsSubtitle));
                 updateSectionCell(animated);
                 containsHeader = true;
             } else if (pageType == PAGE_TYPE_SEND_AS_MESSAGE) {
-                headerView.setText(LocaleController.getString("StoryPrivacyAlertAsMessageTitle", R.string.StoryPrivacyAlertAsMessageTitle));
+                headerView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTASMESSAGETITLE, R.string.StoryPrivacyAlertAsMessageTitle));
                 headerView.setCloseImageVisible(startedFromSendAsMessage);
                 headerView.backDrawable.setRotation(0f, false);
                 items.add(ItemInner.asPad());
@@ -1126,11 +1126,11 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 h += dp(150);
                 items.add(ItemInner.asSection());
                 h += dp(32);
-                sectionCell.setText(LocaleController.getString("StoryPrivacyAlertAsMessageSubtitle", R.string.StoryPrivacyAlertAsMessageSubtitle));
+                sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTASMESSAGESUBTITLE, R.string.StoryPrivacyAlertAsMessageSubtitle));
                 updateSectionCell(animated);
                 containsHeader = true;
             } else if (pageType == PAGE_TYPE_BLOCKLIST) {
-                headerView.setText(LocaleController.getString("StoryPrivacyAlertBlocklistTitle", R.string.StoryPrivacyAlertBlocklistTitle));
+                headerView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTBLOCKLISTTITLE, R.string.StoryPrivacyAlertBlocklistTitle));
                 headerView.setCloseImageVisible(true);
                 headerView.backDrawable.setRotation(0f, false);
                 items.add(ItemInner.asPad());
@@ -1141,11 +1141,11 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 h += dp(150);
                 items.add(ItemInner.asSection());
                 h += dp(32);
-                sectionCell.setText(LocaleController.getString("StoryPrivacyAlertBlocklistSubtitle", R.string.StoryPrivacyAlertBlocklistSubtitle));
+                sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTBLOCKLISTSUBTITLE, R.string.StoryPrivacyAlertBlocklistSubtitle));
                 updateSectionCell(animated);
                 containsHeader = true;
             } else if (pageType == PAGE_TYPE_EXCLUDE_EVERYONE) {
-                headerView.setText(LocaleController.getString("StoryPrivacyAlertExcludeFromEveryoneTitle", R.string.StoryPrivacyAlertExcludeFromEveryoneTitle));
+                headerView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTEXCLUDEFROMEVERYONETITLE, R.string.StoryPrivacyAlertExcludeFromEveryoneTitle));
                 headerView.setCloseImageVisible(true);
                 headerView.backDrawable.setRotation(0f, false);
                 items.add(ItemInner.asPad());
@@ -1156,7 +1156,7 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 h += dp(150);
                 items.add(ItemInner.asSection());
                 h += dp(32);
-                sectionCell.setText(LocaleController.getString("StoryPrivacyAlertExcludeFromEveryoneSubtitle", R.string.StoryPrivacyAlertExcludeFromEveryoneSubtitle));
+                sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALERTEXCLUDEFROMEVERYONESUBTITLE, R.string.StoryPrivacyAlertExcludeFromEveryoneSubtitle));
                 updateSectionCell(animated);
                 containsHeader = true;
             }
@@ -1403,15 +1403,15 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 button.setEnabled(true);
                 button.setCount(0, animated);
                 if (isEdit) {
-                    button.setText(LocaleController.getString("StoryPrivacyButtonSave"), animated);
+                    button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYBUTTONSAVE), animated);
                 } else {
-                    button.setText(LocaleController.getString("StoryPrivacyButtonPost", R.string.StoryPrivacyButtonPost), animated);
+                    button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYBUTTONPOST, R.string.StoryPrivacyButtonPost), animated);
 //                    if (selectedType == TYPE_CLOSE_FRIENDS) {
-//                        button.setText(LocaleController.getString("StoryPrivacyButtonCloseFriends", R.string.StoryPrivacyButtonCloseFriends), animated);
+//                        button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYBUTTONCLOSEFRIENDS, R.string.StoryPrivacyButtonCloseFriends), animated);
 //                        button.setCount(getCloseFriends().size(), animated);
 //                    } else if (selectedType == TYPE_CONTACTS) {
 //                        if (excludedContacts.isEmpty()) {
-//                            button.setText(LocaleController.getString("StoryPrivacyButtonAllContacts", R.string.StoryPrivacyButtonAllContacts), animated);
+//                            button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYBUTTONALLCONTACTS, R.string.StoryPrivacyButtonAllContacts), animated);
 //                            button.setCount(0, animated);
 //                        } else {
 //                            button.setText(LocaleController.formatPluralString("StoryPrivacyButtonContacts", 99), animated);
@@ -1424,22 +1424,22 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
 //                        button.setText(LocaleController.formatPluralString("StoryPrivacyButtonSelectedContacts", selectedUsers.size()), animated);
 //                        button.setCount(selectedUsers.size(), animated);
 //                    } else {
-//                        button.setText(LocaleController.getString("StoryPrivacyButtonEveryone", R.string.StoryPrivacyButtonEveryone), animated);
+//                        button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYBUTTONEVERYONE, R.string.StoryPrivacyButtonEveryone), animated);
 //                        button.setCount(selectedUsers.size(), animated);
 //                    }
                 }
                 button2.setVisibility(sendAsMessageEnabled ? View.VISIBLE : View.GONE);
-//                button2.setText(LocaleController.getString("StoryPrivacyButtonMessage", R.string.StoryPrivacyButtonMessage), animated);
+//                button2.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYBUTTONMESSAGE, R.string.StoryPrivacyButtonMessage), animated);
             } else if (pageType == PAGE_TYPE_CLOSE_FRIENDS) {
                 button.setShowZero(false);
                 button.setEnabled(true); // button.setEnabled(!selectedUsers.isEmpty());
-                button.setText(LocaleController.getString("StoryPrivacyButtonSaveCloseFriends", R.string.StoryPrivacyButtonSaveCloseFriends), animated);
+                button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYBUTTONSAVECLOSEFRIENDS, R.string.StoryPrivacyButtonSaveCloseFriends), animated);
                 button.setCount(selectedUsers.size(), animated);
                 button2.setVisibility(View.GONE);
             } else if (pageType == PAGE_TYPE_SELECT_CONTACTS) {
                 int count = selectedContactsCount = mergeUsers(selectedUsers, selectedUsersByGroup).size();
 //                button.setText(LocaleController.formatPluralString("StoryPrivacyButtonContacts", count), animated);
-                button.setText(LocaleController.getString("StoryPrivacyButtonSave"), animated);
+                button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYBUTTONSAVE), animated);
                 button.setShowZero(false);
                 buttonContainer.hide(count <= 0, animated);
                 button.setCount(count, animated);
@@ -1449,10 +1449,10 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 button.setShowZero(false);
                 button.setEnabled(true);
                 if (selectedUsers.isEmpty()) {
-                    button.setText(LocaleController.getString("StoryPrivacyButtonSave"), animated);
+                    button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYBUTTONSAVE), animated);
                     button.setCount(0, animated);
                 } else {
-                    button.setText(LocaleController.getString("StoryPrivacyButtonExcludeContacts", R.string.StoryPrivacyButtonExcludeContacts), animated);
+                    button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYBUTTONEXCLUDECONTACTS, R.string.StoryPrivacyButtonExcludeContacts), animated);
                     button.setCount(selectedUsers.size(), animated);
                 }
                 button2.setVisibility(View.GONE);
@@ -1465,7 +1465,7 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
             } else if (pageType == PAGE_TYPE_BLOCKLIST) {
                 button.setShowZero(false);
                 button.setEnabled(true); // button.setEnabled(!selectedUsers.isEmpty());
-                button.setText(LocaleController.getString("StoryPrivacyButtonSaveCloseFriends", R.string.StoryPrivacyButtonSaveCloseFriends), animated);
+                button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYBUTTONSAVECLOSEFRIENDS, R.string.StoryPrivacyButtonSaveCloseFriends), animated);
                 StoriesController storiesController = MessagesController.getInstance(currentAccount).getStoriesController();
                 if (storiesController.blocklistFull) {
                     button.setCount(selectedUsers.size(), animated);
@@ -1491,7 +1491,7 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
             } else if (pageType == PAGE_TYPE_EXCLUDE_EVERYONE) {
                 int count = excludedEveryoneCount = mergeUsers(excludedEveryone, excludedEveryoneByGroup).size();
 //                button.setText(LocaleController.formatPluralString("StoryPrivacyButtonContacts", count), animated);
-                button.setText(LocaleController.getString("StoryPrivacyButtonSave"), animated);
+                button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYBUTTONSAVE), animated);
                 button.setShowZero(false);
                 buttonContainer.hide(false, animated);
                 button.setCount(count, animated);
@@ -1505,7 +1505,7 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 return;
             }
             if (mergeUsers(selectedUsers, selectedUsersByGroup).size() > 0) {
-                sectionCell.setRightText(LocaleController.getString(R.string.UsersDeselectAll), true, v -> {
+                sectionCell.setRightText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERSDESELECTALL, R.string.UsersDeselectAll), true, v -> {
                     for (long userId : selectedUsers) {
                         changelog.put(userId, false);
                     }
@@ -1782,8 +1782,8 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                     view.setBackgroundColor(Theme.getColor(Theme.key_dialogBackground, resourcesProvider));
                 } else if (viewType == VIEW_TYPE_NO_USERS) {
                     StickerEmptyView searchEmptyView = new StickerEmptyView(context, null, StickerEmptyView.STICKER_TYPE_SEARCH, resourcesProvider);
-                    searchEmptyView.title.setText(LocaleController.getString("NoResult", R.string.NoResult));
-                    searchEmptyView.subtitle.setText(LocaleController.getString("SearchEmptyViewFilteredSubtitle2", R.string.SearchEmptyViewFilteredSubtitle2));
+                    searchEmptyView.title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NORESULT, R.string.NoResult));
+                    searchEmptyView.subtitle.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHEMPTYVIEWFILTEREDSUBTITLE2, R.string.SearchEmptyViewFilteredSubtitle2));
                     searchEmptyView.linearLayout.setTranslationY(AndroidUtilities.dp(24));
                     view = searchEmptyView;
                 } else if (viewType == VIEW_TYPE_SHADOW) {
@@ -2080,12 +2080,12 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 usersString.append(username);
             }
             new AlertDialog.Builder(getContext(), resourcesProvider)
-                .setTitle(LocaleController.getString(R.string.StoryRestrictions))
-                .setMessage(AndroidUtilities.replaceCharSequence("%s", LocaleController.getString(R.string.StoryRestrictionsInfo), usersString))
-                .setPositiveButton(LocaleController.getString(R.string.Proceed), (di, i) -> {
+                .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYRESTRICTIONS, R.string.StoryRestrictions))
+                .setMessage(AndroidUtilities.replaceCharSequence("%s", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYRESTRICTIONSINFO, R.string.StoryRestrictionsInfo), usersString))
+                .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PROCEED, R.string.Proceed), (di, i) -> {
                     done(privacy, loaded, true);
                 })
-                .setNegativeButton(LocaleController.getString(R.string.Cancel), null)
+                .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null)
                 .show();
             return;
         }
@@ -2730,7 +2730,7 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
             titleTextView.setText(text);
             isOnline[0] = false;
             if (sendAs) {
-                setSubtitle(LocaleController.getString(R.string.VoipGroupPersonalAccount));
+                setSubtitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPGROUPPERSONALACCOUNT, R.string.VoipGroupPersonalAccount));
                 subtitleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextGray3, resourcesProvider));
             } else {
                 setSubtitle(LocaleController.formatUserStatus(UserConfig.selectedAccount, user, isOnline));
@@ -2760,16 +2760,16 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 if (participants_count >= 1) {
                     subtitle = LocaleController.formatPluralString("Subscribers", participants_count);
                 } else {
-                    subtitle = LocaleController.getString(R.string.DiscussChannel);
+                    subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISCUSSCHANNEL, R.string.DiscussChannel);
                 }
             } else if (ChatObject.isChannel(chat) && !chat.megagroup) {
                 if (participants_count >= 1) {
                     subtitle = LocaleController.formatPluralStringComma("Subscribers", participants_count - 1);
                 } else {
                     if (!ChatObject.isPublic(chat)) {
-                        subtitle = LocaleController.getString("ChannelPrivate", R.string.ChannelPrivate).toLowerCase();
+                        subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPRIVATE, R.string.ChannelPrivate).toLowerCase();
                     } else {
-                        subtitle = LocaleController.getString("ChannelPublic", R.string.ChannelPublic).toLowerCase();
+                        subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPUBLIC, R.string.ChannelPublic).toLowerCase();
                     }
                 }
             } else {
@@ -2777,11 +2777,11 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                     subtitle = LocaleController.formatPluralStringComma("Members", participants_count - 1);
                 } else {
                     if (chat.has_geo) {
-                        subtitle = LocaleController.getString("MegaLocation", R.string.MegaLocation);
+                        subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEGALOCATION, R.string.MegaLocation);
                     } else if (!ChatObject.isPublic(chat)) {
-                        subtitle = LocaleController.getString("MegaPrivate", R.string.MegaPrivate).toLowerCase();
+                        subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEGAPRIVATE, R.string.MegaPrivate).toLowerCase();
                     } else {
-                        subtitle = LocaleController.getString("MegaPublic", R.string.MegaPublic).toLowerCase();
+                        subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEGAPUBLIC, R.string.MegaPublic).toLowerCase();
                     }
                 }
             }
@@ -2806,7 +2806,7 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
 
         public void setType(int type, int count, TLRPC.User singleUser) {
             if (type == TYPE_EVERYONE) {
-                titleTextView.setText(LocaleController.getString("StoryPrivacyOptionEveryone", R.string.StoryPrivacyOptionEveryone));
+                titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYOPTIONEVERYONE, R.string.StoryPrivacyOptionEveryone));
                 if (count == 1 && singleUser != null) {
                     CharSequence text = LocaleController.formatString(R.string.StoryPrivacyOptionExcludePerson, UserObject.getUserName(singleUser));
                     text = Emoji.replaceEmoji(text, subtitleTextView.getPaint().getFontMetricsInt(), false);
@@ -2814,13 +2814,13 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 } else if (count > 0) {
                     setSubtitle(withArrow(LocaleController.formatPluralString("StoryPrivacyOptionExcludePeople", count)));
                 } else {
-                    setSubtitle(withArrow(LocaleController.getString("StoryPrivacyOptionContactsDetail", R.string.StoryPrivacyOptionContactsDetail)));
+                    setSubtitle(withArrow(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYOPTIONCONTACTSDETAIL, R.string.StoryPrivacyOptionContactsDetail)));
                 }
                 subtitleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2, resourcesProvider));
                 avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_FILTER_CHANNELS);
                 avatarDrawable.setColor(0xFF16A5F2, 0xFF1180F7);
             } else if (type == TYPE_CONTACTS) {
-                titleTextView.setText(LocaleController.getString("StoryPrivacyOptionContacts", R.string.StoryPrivacyOptionContacts));
+                titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYOPTIONCONTACTS, R.string.StoryPrivacyOptionContacts));
                 if (count == 1 && singleUser != null) {
                     CharSequence text = LocaleController.formatString(R.string.StoryPrivacyOptionExcludePerson, UserObject.getUserName(singleUser));
                     text = Emoji.replaceEmoji(text, subtitleTextView.getPaint().getFontMetricsInt(), false);
@@ -2828,13 +2828,13 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 } else if (count > 0) {
                     setSubtitle(withArrow(LocaleController.formatPluralString("StoryPrivacyOptionExcludePeople", count)));
                 } else {
-                    setSubtitle(withArrow(LocaleController.getString("StoryPrivacyOptionContactsDetail", R.string.StoryPrivacyOptionContactsDetail)));
+                    setSubtitle(withArrow(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYOPTIONCONTACTSDETAIL, R.string.StoryPrivacyOptionContactsDetail)));
                 }
                 subtitleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2, resourcesProvider));
                 avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_FILTER_CONTACTS);
                 avatarDrawable.setColor(0xFFC468F2, 0xFF965CFA);
             } else if (type == TYPE_CLOSE_FRIENDS) {
-                titleTextView.setText(LocaleController.getString("StoryPrivacyOptionCloseFriends", R.string.StoryPrivacyOptionCloseFriends));
+                titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYOPTIONCLOSEFRIENDS, R.string.StoryPrivacyOptionCloseFriends));
                 if (count == 1 && singleUser != null) {
                     CharSequence text = UserObject.getUserName(singleUser);
                     text = Emoji.replaceEmoji(text, subtitleTextView.getPaint().getFontMetricsInt(), false);
@@ -2842,13 +2842,13 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 } else if (count > 0) {
                     setSubtitle(withArrow(LocaleController.formatPluralString("StoryPrivacyOptionPeople", count)));
                 } else {
-                    setSubtitle(withArrow(LocaleController.getString("StoryPrivacyOptionCloseFriendsDetail", R.string.StoryPrivacyOptionCloseFriendsDetail)));
+                    setSubtitle(withArrow(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYOPTIONCLOSEFRIENDSDETAIL, R.string.StoryPrivacyOptionCloseFriendsDetail)));
                 }
                 subtitleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2, resourcesProvider));
                 avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_CLOSE_FRIENDS);
                 avatarDrawable.setColor(0xFF88D93A, 0xFF2DB63B);
             } else if (type == TYPE_SELECTED_CONTACTS) {
-                titleTextView.setText(LocaleController.getString("StoryPrivacyOptionSelectedContacts", R.string.StoryPrivacyOptionSelectedContacts));
+                titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYOPTIONSELECTEDCONTACTS, R.string.StoryPrivacyOptionSelectedContacts));
                 if (count == 1 && singleUser != null) {
                     CharSequence text = UserObject.getUserName(singleUser);
                     text = Emoji.replaceEmoji(text, subtitleTextView.getPaint().getFontMetricsInt(), false);
@@ -2856,7 +2856,7 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 } else if (count > 0) {
                     setSubtitle(withArrow(LocaleController.formatPluralString("StoryPrivacyOptionPeople", count)));
                 } else {
-                    setSubtitle(withArrow(LocaleController.getString("StoryPrivacyOptionSelectedContactsDetail", R.string.StoryPrivacyOptionSelectedContactsDetail)));
+                    setSubtitle(withArrow(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYOPTIONSELECTEDCONTACTSDETAIL, R.string.StoryPrivacyOptionSelectedContactsDetail)));
                 }
                 subtitleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2, resourcesProvider));
                 avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_FILTER_GROUPS);
@@ -3101,8 +3101,8 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
             editText.setImeOptions(EditorInfo.IME_ACTION_DONE | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
             editText.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
             spansContainer.addView(editText);
-            editText.setHintText(LocaleController.getString("Search", R.string.Search));
-            hintTextWidth = (int) editText.getPaint().measureText(LocaleController.getString("Search", R.string.Search));
+            editText.setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
+            hintTextWidth = (int) editText.getPaint().measureText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
             editText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -3859,7 +3859,7 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 return LocaleController.formatPluralString("StoryPrivacyRecipients", sendToUsers.size());
             }
             if (rules.isEmpty()) {
-                return LocaleController.getString("StoryPrivacyNone", R.string.StoryPrivacyNone);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYNONE, R.string.StoryPrivacyNone);
             }
             TLRPC.InputPrivacyRule rule1 = rules.get(0);
             if (type == TYPE_EVERYONE) {
@@ -3870,9 +3870,9 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                         return LocaleController.formatPluralString("StoryPrivacyEveryoneExclude", usersCount);
                     }
                 }
-                return LocaleController.getString("StoryPrivacyEveryone", R.string.StoryPrivacyEveryone);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYEVERYONE, R.string.StoryPrivacyEveryone);
             } else if (type == TYPE_CLOSE_FRIENDS) {
-                return LocaleController.getString("StoryPrivacyCloseFriends", R.string.StoryPrivacyCloseFriends);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYCLOSEFRIENDS, R.string.StoryPrivacyCloseFriends);
             } else if (type == TYPE_SELECTED_CONTACTS && rule1 instanceof TLRPC.TL_inputPrivacyValueAllowUsers) {
                 final int usersCount = ((TLRPC.TL_inputPrivacyValueAllowUsers) rule1).users.size();
                 return LocaleController.formatPluralString("StoryPrivacyContacts", usersCount);
@@ -3883,24 +3883,24 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                     if (usersCount > 0) {
                         return LocaleController.formatPluralString("StoryPrivacyContactsExclude", usersCount);
                     } else {
-                        return LocaleController.getString("StoryPrivacyAllContacts", R.string.StoryPrivacyAllContacts);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALLCONTACTS, R.string.StoryPrivacyAllContacts);
                     }
                 } else {
-                    return LocaleController.getString("StoryPrivacyAllContacts", R.string.StoryPrivacyAllContacts);
+                    return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYALLCONTACTS, R.string.StoryPrivacyAllContacts);
                 }
             } else if (type == 0) {
                 if (rule1 instanceof TLRPC.TL_inputPrivacyValueAllowUsers) {
                     final int usersCount = ((TLRPC.TL_inputPrivacyValueAllowUsers) rule1).users.size();
                     if (usersCount <= 0) {
-                        return LocaleController.getString("StoryPrivacyNone", R.string.StoryPrivacyNone);
+                        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYNONE, R.string.StoryPrivacyNone);
                     } else {
                         return LocaleController.formatPluralString("StoryPrivacyContacts", usersCount);
                     }
                 } else {
-                    return LocaleController.getString("StoryPrivacyNone", R.string.StoryPrivacyNone);
+                    return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYNONE, R.string.StoryPrivacyNone);
                 }
             }
-            return LocaleController.getString("StoryPrivacyNone", R.string.StoryPrivacyNone);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYNONE, R.string.StoryPrivacyNone);
         }
 
         public ArrayList<TLRPC.PrivacyRule> toValue() {
@@ -4271,7 +4271,7 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
             headerView.setPadding(backgroundPaddingLeft + dp(22), dp(2), backgroundPaddingLeft + dp(22), dp(14));
             headerView.setBackgroundColor(Theme.getColor(Theme.key_dialogBackground, resourcesProvider));
             headerView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
-            headerView.setText(LocaleController.getString(R.string.StoryPrivacyPublishAs));
+            headerView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPRIVACYPUBLISHAS, R.string.StoryPrivacyPublishAs));
             containerView.addView(headerView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
         }
 

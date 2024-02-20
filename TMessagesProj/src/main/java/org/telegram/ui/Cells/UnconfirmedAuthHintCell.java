@@ -75,7 +75,7 @@ public class UnconfirmedAuthHintCell extends FrameLayout {
         titleTextView.setGravity(Gravity.CENTER);
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         titleTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
-        titleTextView.setText(LocaleController.getString(R.string.UnconfirmedAuthTitle));
+        titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNCONFIRMEDAUTHTITLE, R.string.UnconfirmedAuthTitle));
         linearLayout.addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, Gravity.TOP | Gravity.FILL_HORIZONTAL, 28,  11, 28, 0));
 
         messageTextView = new TextView(context);
@@ -93,7 +93,7 @@ public class UnconfirmedAuthHintCell extends FrameLayout {
         yesButton.setPadding(dp(10), dp(5), dp(10), dp(7));
         yesButton.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         yesButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14.22f);
-        yesButton.setText(LocaleController.getString(R.string.UnconfirmedAuthConfirm));
+        yesButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNCONFIRMEDAUTHCONFIRM, R.string.UnconfirmedAuthConfirm));
         buttonsLayout.addView(yesButton, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 30));
 
         buttonsLayout.addView(new Space(context), LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 1, Gravity.CENTER, 1));
@@ -102,7 +102,7 @@ public class UnconfirmedAuthHintCell extends FrameLayout {
         noButton.setPadding(dp(10), dp(5), dp(10), dp(7));
         noButton.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         noButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14.22f);
-        noButton.setText(LocaleController.getString(R.string.UnconfirmedAuthDeny));
+        noButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNCONFIRMEDAUTHDENY, R.string.UnconfirmedAuthDeny));
         buttonsLayout.addView(noButton, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 30));
 
         buttonsLayout.addView(new Space(context), LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 1, Gravity.CENTER, 1));
@@ -117,10 +117,10 @@ public class UnconfirmedAuthHintCell extends FrameLayout {
     public void set(final BaseFragment fragment, int currentAccount) {
         final ArrayList<UnconfirmedAuthController.UnconfirmedAuth> auths = MessagesController.getInstance(currentAccount).getUnconfirmedAuthController().auths;
 
-        titleTextView.setText(LocaleController.getString(R.string.UnconfirmedAuthTitle));
-        yesButton.setText(LocaleController.getString(R.string.UnconfirmedAuthConfirm));
+        titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNCONFIRMEDAUTHTITLE, R.string.UnconfirmedAuthTitle));
+        yesButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNCONFIRMEDAUTHCONFIRM, R.string.UnconfirmedAuthConfirm));
         yesButton.setLoading(false, false);
-        noButton.setText(LocaleController.getString(R.string.UnconfirmedAuthDeny));
+        noButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNCONFIRMEDAUTHDENY, R.string.UnconfirmedAuthDeny));
         noButton.setLoading(false, false);
 
         if (auths != null && auths.size() == 1) {
@@ -147,7 +147,7 @@ public class UnconfirmedAuthHintCell extends FrameLayout {
         }
 
         yesButton.setOnClickListener(v -> {
-            SpannableStringBuilder message = AndroidUtilities.replaceSingleTag(LocaleController.getString(R.string.UnconfirmedAuthConfirmedMessage), Theme.key_undo_cancelColor, REPLACING_TAG_TYPE_LINK, () -> {
+            SpannableStringBuilder message = AndroidUtilities.replaceSingleTag(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNCONFIRMEDAUTHCONFIRMEDMESSAGE, R.string.UnconfirmedAuthConfirmedMessage), Theme.key_undo_cancelColor, REPLACING_TAG_TYPE_LINK, () -> {
                 Bulletin.hideVisible();
                 fragment.presentFragment(new SessionsActivity(0));
             });
@@ -158,7 +158,7 @@ public class UnconfirmedAuthHintCell extends FrameLayout {
             span.setWidth(dp(12));
             arrowStr.setSpan(span, 0, arrowStr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             AndroidUtilities.replaceCharSequence(">", message, arrowStr);
-            BulletinFactory.of(fragment).createSimpleBulletin(R.raw.contact_check, LocaleController.getString(R.string.UnconfirmedAuthConfirmed), message).show();
+            BulletinFactory.of(fragment).createSimpleBulletin(R.raw.contact_check, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNCONFIRMEDAUTHCONFIRMED, R.string.UnconfirmedAuthConfirmed), message).show();
             MessagesController.getInstance(currentAccount).getUnconfirmedAuthController().confirm(auths, success -> {
 
             });
@@ -276,7 +276,7 @@ public class UnconfirmedAuthHintCell extends FrameLayout {
     public void showLoginPreventedSheet(ArrayList<UnconfirmedAuthController.UnconfirmedAuth> auths) {
         if (auths == null || auths.size() == 0) {
             BulletinFactory.of(Bulletin.BulletinWindow.make(getContext()), null)
-                    .createErrorBulletin(LocaleController.getString(R.string.UnknownError))
+                    .createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNKNOWNERROR, R.string.UnknownError))
                     .show();
             return;
         }
@@ -324,14 +324,14 @@ public class UnconfirmedAuthHintCell extends FrameLayout {
         warningTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         warningTextView.setGravity(Gravity.CENTER);
         warningTextView.setTextColor(Theme.getColor(Theme.key_text_RedBold));
-        warningTextView.setText(LocaleController.getString(R.string.UnconfirmedAuthDeniedWarning));
+        warningTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNCONFIRMEDAUTHDENIEDWARNING, R.string.UnconfirmedAuthDeniedWarning));
         warningLayout.addView(warningTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.FILL));
 
         linearLayout.addView(warningLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 14, 19, 14, 0));
 
         ButtonWithCounterView button = new ButtonWithCounterView(getContext(), null);
         ScaleStateListAnimator.apply(button, 0.02f, 1.5f);
-        button.setText(LocaleController.getString(R.string.GotIt), false);
+        button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GOTIT, R.string.GotIt), false);
         linearLayout.addView(button, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48, 14, 20, 14, 4));
 
         final BottomSheet sheet = new BottomSheet.Builder(getContext())

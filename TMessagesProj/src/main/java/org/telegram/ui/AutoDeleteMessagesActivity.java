@@ -71,7 +71,7 @@ public class AutoDeleteMessagesActivity extends BaseFragment implements Notifica
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("AutoDeleteMessages", R.string.AutoDeleteMessages));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTODELETEMESSAGES, R.string.AutoDeleteMessages));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -105,31 +105,31 @@ public class AutoDeleteMessagesActivity extends BaseFragment implements Notifica
         mainContainer.addView(checkBoxContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         HeaderCell headerCell = new HeaderCell(getContext());
-        headerCell.setText(LocaleController.getString("MessageLifetime", R.string.MessageLifetime));
+        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGELIFETIME, R.string.MessageLifetime));
         checkBoxContainer.addView(headerCell);
 
         offCell = new RadioCellInternal(getContext());
-        offCell.setText(LocaleController.getString("ShortMessageLifetimeForever", R.string.ShortMessageLifetimeForever), false, true);
+        offCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHORTMESSAGELIFETIMEFOREVER, R.string.ShortMessageLifetimeForever), false, true);
         offCell.time = 0;
         checkBoxContainer.addView(offCell);
 
         afterOneDay = new RadioCellInternal(getContext());
-        afterOneDay.setText(LocaleController.getString("AutoDeleteAfter1Day", R.string.AutoDeleteAfter1Day), false, true);
+        afterOneDay.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTODELETEAFTER1DAY, R.string.AutoDeleteAfter1Day), false, true);
         afterOneDay.time = ONE_DAY;
         checkBoxContainer.addView(afterOneDay);
 
         afterOneWeek = new RadioCellInternal(getContext());
-        afterOneWeek.setText(LocaleController.getString("AutoDeleteAfter1Week", R.string.AutoDeleteAfter1Week), false, true);
+        afterOneWeek.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTODELETEAFTER1WEEK, R.string.AutoDeleteAfter1Week), false, true);
         afterOneWeek.time = ONE_WEEK;
         checkBoxContainer.addView(afterOneWeek);
 
         afterOneMonth = new RadioCellInternal(getContext());
-        afterOneMonth.setText(LocaleController.getString("AutoDeleteAfter1Month", R.string.AutoDeleteAfter1Month), false, true);
+        afterOneMonth.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTODELETEAFTER1MONTH, R.string.AutoDeleteAfter1Month), false, true);
         afterOneMonth.time = ONE_MONTH;
         checkBoxContainer.addView(afterOneMonth);
 
         customTimeButton = new RadioCellInternal(getContext());
-        customTimeButton.setText(LocaleController.getString("SetCustomTime", R.string.SetCustomTime), false, false);
+        customTimeButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETCUSTOMTIME, R.string.SetCustomTime), false, false);
         customTimeButton.hideRadioButton();
         checkBoxContainer.addView(customTimeButton);
 
@@ -142,7 +142,7 @@ public class AutoDeleteMessagesActivity extends BaseFragment implements Notifica
         updateItems();
 
         TextInfoPrivacyCell textInfoPrivacyCell = new TextInfoPrivacyCell(context);
-        CharSequence infoText = AndroidUtilities.replaceSingleTag(LocaleController.getString("GlobalAutoDeleteInfo", R.string.GlobalAutoDeleteInfo), new Runnable() {
+        CharSequence infoText = AndroidUtilities.replaceSingleTag(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALAUTODELETEINFO, R.string.GlobalAutoDeleteInfo), new Runnable() {
             @Override
             public void run() {
                 UsersSelectActivity usersSelectActivity = new UsersSelectActivity(UsersSelectActivity.TYPE_AUTO_DELETE_EXISTING_CHATS);
@@ -197,12 +197,12 @@ public class AutoDeleteMessagesActivity extends BaseFragment implements Notifica
                     int selctedTime = getSelectedTime();
                     if (selctedTime == 0 && time > 0) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setTitle(LocaleController.getString("MessageLifetime", R.string.MessageLifetime));
+                        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGELIFETIME, R.string.MessageLifetime));
                         builder.setMessage(LocaleController.formatString("AutoDeleteConfirmMessage", R.string.AutoDeleteConfirmMessage, LocaleController.formatTTLString(time * 60)));
-                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), (dialog, which) -> {
+                        builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), (dialog, which) -> {
                             dialog.dismiss();
                         });
-                        builder.setPositiveButton(LocaleController.getString("Enable", R.string.Enable), (dialog, which) -> {
+                        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENABLE, R.string.Enable), (dialog, which) -> {
                             dialog.dismiss();
                             selectRadioButton(v, true);
                         });

@@ -155,7 +155,7 @@ public class ChatThemeBottomSheet extends BottomSheet implements NotificationCen
         titleView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
         titleView.setLines(1);
         titleView.setSingleLine(true);
-        titleView.setText(LocaleController.getString("SelectTheme", R.string.SelectTheme));
+        titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTTHEME, R.string.SelectTheme));
         titleView.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
@@ -191,9 +191,9 @@ public class ChatThemeBottomSheet extends BottomSheet implements NotificationCen
             public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
                 super.onInitializeAccessibilityNodeInfo(info);
                 if (forceDark) {
-                    info.setText(LocaleController.getString("AccDescrSwitchToDayTheme", R.string.AccDescrSwitchToDayTheme));
+                    info.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRSWITCHTODAYTHEME, R.string.AccDescrSwitchToDayTheme));
                 } else {
-                    info.setText(LocaleController.getString("AccDescrSwitchToNightTheme", R.string.AccDescrSwitchToNightTheme));
+                    info.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRSWITCHTONIGHTTHEME, R.string.AccDescrSwitchToNightTheme));
                 }
             }
         };
@@ -274,9 +274,9 @@ public class ChatThemeBottomSheet extends BottomSheet implements NotificationCen
         chooseBackgroundTextView.setLines(1);
         chooseBackgroundTextView.setSingleLine(true);
         if (currentWallpaper == null) {
-            chooseBackgroundTextView.setText(LocaleController.getString("ChooseBackgroundFromGallery", R.string.ChooseBackgroundFromGallery));
+            chooseBackgroundTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEBACKGROUNDFROMGALLERY, R.string.ChooseBackgroundFromGallery));
         } else {
-            chooseBackgroundTextView.setText(LocaleController.getString("ChooseANewWallpaper", R.string.ChooseANewWallpaper));
+            chooseBackgroundTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEANEWWALLPAPER, R.string.ChooseANewWallpaper));
         }
 
         chooseBackgroundTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
@@ -313,7 +313,7 @@ public class ChatThemeBottomSheet extends BottomSheet implements NotificationCen
             cancelOrResetTextView.setGravity(Gravity.CENTER);
             cancelOrResetTextView.setLines(1);
             cancelOrResetTextView.setSingleLine(true);
-            cancelOrResetTextView.setText(LocaleController.getString("RestToDefaultBackground", R.string.RestToDefaultBackground));
+            cancelOrResetTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTTODEFAULTBACKGROUND, R.string.RestToDefaultBackground));
 
             cancelOrResetTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             cancelOrResetTextView.setOnClickListener(v -> {
@@ -404,9 +404,9 @@ public class ChatThemeBottomSheet extends BottomSheet implements NotificationCen
                 applyButton.setEnabled(true);
                 boolean showSubText = false;
                 if (selectedItem != null && selectedItem.chatTheme != null && selectedItem.chatTheme.showAsDefaultStub && selectedItem.chatTheme.wallpaper == null) {
-                    applyTextView.setText(LocaleController.getString("ChatResetTheme", R.string.ChatResetTheme));
+                    applyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATRESETTHEME, R.string.ChatResetTheme));
                 } else {
-                    applyTextView.setText(LocaleController.getString("ChatApplyTheme", R.string.ChatApplyTheme));
+                    applyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATAPPLYTHEME, R.string.ChatApplyTheme));
                     if (chat != null && boostsStatus != null && boostsStatus.level < chatActivity.getMessagesController().channelWallpaperLevelMin) {
                         showSubText = true;
                         SpannableStringBuilder text = new SpannableStringBuilder("l");
@@ -582,10 +582,10 @@ public class ChatThemeBottomSheet extends BottomSheet implements NotificationCen
     public void close() {
         if (hasChanges()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), resourcesProvider);
-            builder.setTitle(LocaleController.getString("ChatThemeSaveDialogTitle", R.string.ChatThemeSaveDialogTitle));
-            builder.setSubtitle(LocaleController.getString("ChatThemeSaveDialogText", R.string.ChatThemeSaveDialogText));
-            builder.setPositiveButton(LocaleController.getString("ChatThemeSaveDialogApply", R.string.ChatThemeSaveDialogApply), (dialogInterface, i) -> applySelectedTheme());
-            builder.setNegativeButton(LocaleController.getString("ChatThemeSaveDialogDiscard", R.string.ChatThemeSaveDialogDiscard), (dialogInterface, i) -> dismiss());
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATTHEMESAVEDIALOGTITLE, R.string.ChatThemeSaveDialogTitle));
+            builder.setSubtitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATTHEMESAVEDIALOGTEXT, R.string.ChatThemeSaveDialogText));
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATTHEMESAVEDIALOGAPPLY, R.string.ChatThemeSaveDialogApply), (dialogInterface, i) -> applySelectedTheme());
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATTHEMESAVEDIALOGDISCARD, R.string.ChatThemeSaveDialogDiscard), (dialogInterface, i) -> dismiss());
             builder.show();
         } else {
             dismiss();
@@ -1251,7 +1251,7 @@ public class ChatThemeBottomSheet extends BottomSheet implements NotificationCen
     ) {
         ChatAttachAlert chatAttachAlert = new ChatAttachAlert(activity, fragment, false, false, false, resourcesProvider);
         chatAttachAlert.drawNavigationBar = true;
-        chatAttachAlert.setupPhotoPicker(LocaleController.getString("ChooseBackground", R.string.ChooseBackground));
+        chatAttachAlert.setupPhotoPicker(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEBACKGROUND, R.string.ChooseBackground));
         chatAttachAlert.setDelegate(new ChatAttachAlert.ChatAttachViewDelegate() {
             long start;
             @Override
@@ -1358,18 +1358,18 @@ public class ChatThemeBottomSheet extends BottomSheet implements NotificationCen
         };
         AnimatedTextView chatAttachButtonText = new AnimatedTextView(activity, true, true, true);
         chatAttachButtonText.setTextSize(dp(14));
-        chatAttachButtonText.setText(LocaleController.getString(R.string.SetColorAsBackground));
+        chatAttachButtonText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETCOLORASBACKGROUND, R.string.SetColorAsBackground));
         chatAttachButtonText.setGravity(Gravity.CENTER);
         chatAttachButtonText.setTextColor(Theme.getColor(Theme.key_featuredStickers_addButton, resourcesProvider));
         chatAttachButton.addView(chatAttachButtonText, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
         chatAttachButton.setBackground(Theme.createSimpleSelectorRoundRectDrawable(dp(0), Theme.getColor(Theme.key_windowBackgroundWhite, resourcesProvider), ColorUtils.setAlphaComponent(Theme.getColor(Theme.key_featuredStickers_addButton, resourcesProvider), (int) (0.3f * 255))));
         chatAttachButton.setOnClickListener(v -> {
             if (chatAttachAlert.getCurrentAttachLayout() == chatAttachAlert.getPhotoLayout()) {
-                chatAttachButtonText.setText(LocaleController.getString(R.string.ChooseBackgroundFromGallery));
+                chatAttachButtonText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEBACKGROUNDFROMGALLERY, R.string.ChooseBackgroundFromGallery));
                 chatAttachAlert.openColorsLayout();
 //                chatAttachAlert.colorsLayout.updateColors(forceDark);
             } else {
-                chatAttachButtonText.setText(LocaleController.getString(R.string.SetColorAsBackground));
+                chatAttachButtonText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETCOLORASBACKGROUND, R.string.SetColorAsBackground));
                 chatAttachAlert.showLayout(chatAttachAlert.getPhotoLayout());
             }
 //            WallpapersListActivity wallpapersListActivity = new WallpapersListActivity(WallpapersListActivity.TYPE_ALL, chatActivity.getDialogId());
@@ -1384,7 +1384,7 @@ public class ChatThemeBottomSheet extends BottomSheet implements NotificationCen
     private void openGalleryForBackground() {
         chatAttachAlert = new ChatAttachAlert(chatActivity.getParentActivity(), chatActivity, false, false, false, chatActivity.getResourceProvider());
         chatAttachAlert.drawNavigationBar = true;
-        chatAttachAlert.setupPhotoPicker(LocaleController.getString("ChooseBackground", R.string.ChooseBackground));
+        chatAttachAlert.setupPhotoPicker(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEBACKGROUND, R.string.ChooseBackground));
         chatAttachAlert.setDelegate(new ChatAttachAlert.ChatAttachViewDelegate() {
             long start;
             @Override
@@ -1473,18 +1473,18 @@ public class ChatThemeBottomSheet extends BottomSheet implements NotificationCen
         };
         chatAttachButtonText = new AnimatedTextView(getContext(), true, true, true);
         chatAttachButtonText.setTextSize(dp(14));
-        chatAttachButtonText.setText(LocaleController.getString("SetColorAsBackground", R.string.SetColorAsBackground));
+        chatAttachButtonText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETCOLORASBACKGROUND, R.string.SetColorAsBackground));
         chatAttachButtonText.setGravity(Gravity.CENTER);
         chatAttachButtonText.setTextColor(getThemedColor(Theme.key_featuredStickers_addButton));
         chatAttachButton.addView(chatAttachButtonText, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
         chatAttachButton.setBackground(Theme.createSimpleSelectorRoundRectDrawable(dp(0), getThemedColor(Theme.key_windowBackgroundWhite), ColorUtils.setAlphaComponent(getThemedColor(Theme.key_featuredStickers_addButton), (int) (0.3f * 255))));
         chatAttachButton.setOnClickListener(v -> {
             if (chatAttachAlert.getCurrentAttachLayout() == chatAttachAlert.getPhotoLayout()) {
-                chatAttachButtonText.setText(LocaleController.getString("ChooseBackgroundFromGallery", R.string.ChooseBackgroundFromGallery));
+                chatAttachButtonText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEBACKGROUNDFROMGALLERY, R.string.ChooseBackgroundFromGallery));
                 chatAttachAlert.openColorsLayout();
                 chatAttachAlert.colorsLayout.updateColors(forceDark);
             } else {
-                chatAttachButtonText.setText(LocaleController.getString("SetColorAsBackground", R.string.SetColorAsBackground));
+                chatAttachButtonText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETCOLORASBACKGROUND, R.string.SetColorAsBackground));
                 chatAttachAlert.showLayout(chatAttachAlert.getPhotoLayout());
             }
 //            WallpapersListActivity wallpapersListActivity = new WallpapersListActivity(WallpapersListActivity.TYPE_ALL, chatActivity.getDialogId());

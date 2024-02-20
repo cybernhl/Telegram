@@ -111,7 +111,7 @@ public class ChannelWallpaperActivity extends BaseFragment {
     @Override
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
-        actionBar.setTitle(LocaleController.getString(R.string.ChannelWallpaper));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELWALLPAPER, R.string.ChannelWallpaper));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -302,13 +302,13 @@ public class ChannelWallpaperActivity extends BaseFragment {
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
             if (position == galleryRow) {
-                ((TextCell) holder.itemView).setTextAndIcon(LocaleController.getString(R.string.ChooseFromGallery2), R.drawable.msg_background, removeRow != -1);
+                ((TextCell) holder.itemView).setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEFROMGALLERY2, R.string.ChooseFromGallery2), R.drawable.msg_background, removeRow != -1);
                 ((TextCell) holder.itemView).setColors(Theme.key_windowBackgroundWhiteBlueIcon, Theme.key_windowBackgroundWhiteBlueButton);
             } else if (position == removeRow) {
-                ((TextCell) holder.itemView).setTextAndIcon(LocaleController.getString(R.string.ChannelWallpaperRemove), R.drawable.msg_delete, false);
+                ((TextCell) holder.itemView).setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELWALLPAPERREMOVE, R.string.ChannelWallpaperRemove), R.drawable.msg_delete, false);
                 ((TextCell) holder.itemView).setColors(Theme.key_text_RedRegular, Theme.key_text_RedRegular);
             } else if (position == infoRow) {
-                ((TextInfoPrivacyCell) holder.itemView).setText(LocaleController.getString(R.string.ChannelWallpaperInfo));
+                ((TextInfoPrivacyCell) holder.itemView).setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELWALLPAPERINFO, R.string.ChannelWallpaperInfo));
                 ((TextInfoPrivacyCell) holder.itemView).setBackgroundColor(getThemedColor(Theme.key_windowBackgroundGray));
                 ((TextInfoPrivacyCell) holder.itemView).setForeground(Theme.getThemedDrawableByKey(getContext(), R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow, resourceProvider));
             } else if (position == themesRow) {

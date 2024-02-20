@@ -320,7 +320,7 @@ public class InviteContactsActivity extends BaseFragment implements Notification
 
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("InviteFriends", R.string.InviteFriends));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITEFRIENDS, R.string.InviteFriends));
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
@@ -429,7 +429,7 @@ public class InviteContactsActivity extends BaseFragment implements Notification
         editText.setImeOptions(EditorInfo.IME_ACTION_DONE | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         editText.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
         spansContainer.addView(editText);
-        editText.setHintText(LocaleController.getString("SearchFriends", R.string.SearchFriends));
+        editText.setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHFRIENDS, R.string.SearchFriends));
         editText.setCustomSelectionActionModeCallback(new ActionMode.Callback() {
             public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
                 return false;
@@ -490,7 +490,7 @@ public class InviteContactsActivity extends BaseFragment implements Notification
                     adapter.searchDialogs(editText.getText().toString());
                     listView.setFastScrollVisible(false);
                     listView.setVerticalScrollBarEnabled(true);
-                    emptyView.setText(LocaleController.getString("NoResult", R.string.NoResult));
+                    emptyView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NORESULT, R.string.NoResult));
                 } else {
                     closeSearch();
                 }
@@ -503,7 +503,7 @@ public class InviteContactsActivity extends BaseFragment implements Notification
         } else {
             emptyView.showTextView();
         }
-        emptyView.setText(LocaleController.getString("NoContacts", R.string.NoContacts));
+        emptyView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOCONTACTS, R.string.NoContacts));
         frameLayout.addView(emptyView);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
@@ -569,7 +569,7 @@ public class InviteContactsActivity extends BaseFragment implements Notification
         infoTextView.setBackgroundColor(Theme.getColor(Theme.key_contacts_inviteBackground));
         infoTextView.setTextColor(Theme.getColor(Theme.key_contacts_inviteText));
         infoTextView.setGravity(Gravity.CENTER);
-        infoTextView.setText(LocaleController.getString("InviteFriendsHelp", R.string.InviteFriendsHelp));
+        infoTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITEFRIENDSHELP, R.string.InviteFriendsHelp));
         infoTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         infoTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         infoTextView.setPadding(AndroidUtilities.dp(17), AndroidUtilities.dp(9), AndroidUtilities.dp(17), AndroidUtilities.dp(9));
@@ -621,7 +621,7 @@ public class InviteContactsActivity extends BaseFragment implements Notification
         textView.setTextColor(Theme.getColor(Theme.key_contacts_inviteText));
         textView.setGravity(Gravity.CENTER);
         textView.setCompoundDrawablePadding(AndroidUtilities.dp(8));
-        textView.setText(LocaleController.getString("InviteToTelegram", R.string.InviteToTelegram).toUpperCase());
+        textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITETOTELEGRAM, R.string.InviteToTelegram).toUpperCase());
         textView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL));
 
@@ -691,7 +691,7 @@ public class InviteContactsActivity extends BaseFragment implements Notification
         adapter.searchDialogs(null);
         listView.setFastScrollVisible(true);
         listView.setVerticalScrollBarEnabled(false);
-        emptyView.setText(LocaleController.getString("NoContacts", R.string.NoContacts));
+        emptyView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOCONTACTS, R.string.NoContacts));
     }
 
     private void fetchContacts() {
@@ -746,7 +746,7 @@ public class InviteContactsActivity extends BaseFragment implements Notification
             switch (viewType) {
                 case 1:
                     view = new InviteTextCell(context);
-                    ((InviteTextCell) view).setTextAndIcon(LocaleController.getString("ShareTelegram", R.string.ShareTelegram), R.drawable.share);
+                    ((InviteTextCell) view).setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHARETELEGRAM, R.string.ShareTelegram), R.drawable.share);
                     break;
                 default:
                     view = new InviteUserCell(context, true);

@@ -594,7 +594,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                 } else if (id == 8) {
                     openSettings(false);
                 } else if (id == 9) {
-                    Browser.openUrl(LaunchActivity.this, LocaleController.getString("TelegramFaqUrl", R.string.TelegramFaqUrl));
+                    Browser.openUrl(LaunchActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TELEGRAMFAQURL, R.string.TelegramFaqUrl));
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (id == 10) {
                     presentFragment(new CallLogActivity());
@@ -631,7 +631,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                     }
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (id == 13) {
-                    Browser.openUrl(LaunchActivity.this, LocaleController.getString("TelegramFeaturesUrl", R.string.TelegramFeaturesUrl));
+                    Browser.openUrl(LaunchActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TELEGRAMFEATURESURL, R.string.TelegramFeaturesUrl));
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (id == 15) {
                     showSelectStatusDialog();
@@ -1224,8 +1224,8 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                             boolean hasStatus = user != null && DialogObject.getEmojiStatusDocumentId(user.emoji_status) != 0;
                             ((DrawerActionCell) child).updateTextAndIcon(
                                 hasStatus ?
-                                    LocaleController.getString("ChangeEmojiStatus", R.string.ChangeEmojiStatus) :
-                                    LocaleController.getString("SetEmojiStatus", R.string.SetEmojiStatus),
+                                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANGEEMOJISTATUS, R.string.ChangeEmojiStatus) :
+                                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETEMOJISTATUS, R.string.SetEmojiStatus),
                                 hasStatus ?
                                     R.drawable.msg_status_edit :
                                     R.drawable.msg_status_set
@@ -3062,7 +3062,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                         } catch (Exception ignore) {
                         }
                         if (!(response instanceof TLRPC.TL_authorization)) {
-                            AndroidUtilities.runOnUIThread(() -> AlertsCreator.showSimpleAlert(fragment, LocaleController.getString("AuthAnotherClient", R.string.AuthAnotherClient), LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred) + "\n" + error.text));
+                            AndroidUtilities.runOnUIThread(() -> AlertsCreator.showSimpleAlert(fragment, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTHANOTHERCLIENT, R.string.AuthAnotherClient), LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred) + "\n" + error.text));
                         }
                     }));
                 });
@@ -3105,9 +3105,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                     final String finalNewContactName = newContactName;
                     final String finalNewContactPhone = NewContactBottomSheet.getPhoneNumber(this, UserConfig.getInstance(currentAccount).getCurrentUser(), newContactPhone, false);
                     final AlertDialog newContactAlertDialog = new AlertDialog.Builder(lastFragment.getParentActivity())
-                            .setTitle(LocaleController.getString("NewContactAlertTitle", R.string.NewContactAlertTitle))
+                            .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWCONTACTALERTTITLE, R.string.NewContactAlertTitle))
                             .setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("NewContactAlertMessage", R.string.NewContactAlertMessage, PhoneFormat.getInstance().format(finalNewContactPhone))))
-                            .setPositiveButton(LocaleController.getString("NewContactAlertButton", R.string.NewContactAlertButton), (d, i) -> {
+                            .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWCONTACTALERTBUTTON, R.string.NewContactAlertButton), (d, i) -> {
                                 final NewContactBottomSheet fragment = new NewContactBottomSheet(lastFragment, this);
                                 fragment.setInitialPhoneNumber(finalNewContactPhone, false);
                                 if (finalNewContactName != null) {
@@ -3117,7 +3117,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                 fragment.show();
                                 //lastFragment.presentFragment(fragment);
                             })
-                            .setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null)
+                            .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null)
                             .create();
                     lastFragment.showDialog(newContactAlertDialog);
                     pushOpened = true;
@@ -3225,12 +3225,12 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
         args.putBoolean("allowSwitchAccount", true);
         if (contactsToSend != null) {
             if (contactsToSend.size() != 1) {
-                args.putString("selectAlertString", LocaleController.getString("SendContactToText", R.string.SendMessagesToText));
-                args.putString("selectAlertStringGroup", LocaleController.getString("SendContactToGroupText", R.string.SendContactToGroupText));
+                args.putString("selectAlertString", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDCONTACTTOTEXT, R.string.SendMessagesToText));
+                args.putString("selectAlertStringGroup", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDCONTACTTOGROUPTEXT, R.string.SendContactToGroupText));
             }
         } else {
-            args.putString("selectAlertString", LocaleController.getString("SendMessagesToText", R.string.SendMessagesToText));
-            args.putString("selectAlertStringGroup", LocaleController.getString("SendMessagesToGroupText", R.string.SendMessagesToGroupText));
+            args.putString("selectAlertString", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMESSAGESTOTEXT, R.string.SendMessagesToText));
+            args.putString("selectAlertStringGroup", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMESSAGESTOGROUPTEXT, R.string.SendMessagesToGroupText));
         }
         DialogsActivity fragment = new DialogsActivity(args) {
             @Override
@@ -3330,7 +3330,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
             if (!chatOpened) {
                 try {
                     if (!mainFragmentsStack.isEmpty()) {
-                        BulletinFactory.of(mainFragmentsStack.get(mainFragmentsStack.size() - 1)).createErrorBulletin(LocaleController.getString("ChannelPostDeleted", R.string.ChannelPostDeleted)).show();
+                        BulletinFactory.of(mainFragmentsStack.get(mainFragmentsStack.size() - 1)).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPOSTDELETED, R.string.ChannelPostDeleted)).show();
                     }
                 } catch (Exception e) {
                     FileLog.e(e);
@@ -3610,7 +3610,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                             }
                         }
                         if (notFound) {
-                            showAlertDialog(AlertsCreator.createNoAccessAlert(LaunchActivity.this, LocaleController.getString(R.string.DialogNotAvailable), LocaleController.getString(R.string.LinkNotFound), null));
+                            showAlertDialog(AlertsCreator.createNoAccessAlert(LaunchActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIALOGNOTAVAILABLE, R.string.DialogNotAvailable), LocaleController.getString(R.string.LinkNotFound), null));
                         }
                     }));
                     if (progress != null) {
@@ -3685,17 +3685,17 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                 NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.didReceiveSmsCode, code);
             } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
-                builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
                 builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("OtherLoginCode", R.string.OtherLoginCode, code)));
-                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                 showAlertDialog(builder);
             }
             return;
         } else if (loginToken != null) {
             AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
-            builder.setTitle(LocaleController.getString("AuthAnotherClient", R.string.AuthAnotherClient));
-            builder.setMessage(LocaleController.getString("AuthAnotherClientUrl", R.string.AuthAnotherClientUrl));
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTHANOTHERCLIENT, R.string.AuthAnotherClient));
+            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUTHANOTHERCLIENTURL, R.string.AuthAnotherClientUrl));
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
             showAlertDialog(builder);
             return;
         }
@@ -3723,7 +3723,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                     presentFragment(new ChatActivity(args));
                 } else {
                     FileLog.e("cant import contact token. token=" + contactToken + " err=" + (error == null ? null : error.text));
-                    BulletinFactory.of(mainFragmentsStack.get(mainFragmentsStack.size() - 1)).createErrorBulletin(LocaleController.getString(R.string.NoUsernameFound)).show();
+                    BulletinFactory.of(mainFragmentsStack.get(mainFragmentsStack.size() - 1)).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOUSERNAMEFOUND, R.string.NoUsernameFound)).show();
                 }
 
                 try {
@@ -3758,10 +3758,10 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                             sheet.show();
                         }
                     } else {
-                        BulletinFactory.of(fragment).createErrorBulletin(LocaleController.getString(R.string.NoFolderFound)).show();
+                        BulletinFactory.of(fragment).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOFOLDERFOUND, R.string.NoFolderFound)).show();
                     }
                 } else {
-                    BulletinFactory.of(fragment).createErrorBulletin(LocaleController.getString(R.string.NoFolderFound)).show();
+                    BulletinFactory.of(fragment).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOFOLDERFOUND, R.string.NoFolderFound)).show();
                 }
 
                 try {
@@ -3777,7 +3777,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
             req.invoice = invoiceSlug;
             requestId[0] = ConnectionsManager.getInstance(intentAccount).sendRequest(req, (response, error) -> AndroidUtilities.runOnUIThread(() -> {
                 if (error != null) {
-                    BulletinFactory.of(mainFragmentsStack.get(mainFragmentsStack.size() - 1)).createErrorBulletin(LocaleController.getString(R.string.PaymentInvoiceLinkInvalid)).show();
+                    BulletinFactory.of(mainFragmentsStack.get(mainFragmentsStack.size() - 1)).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAYMENTINVOICELINKINVALID, R.string.PaymentInvoiceLinkInvalid)).show();
                 } else if (!LaunchActivity.this.isFinishing()) {
                     PaymentFormActivity paymentFormActivity = null;
                     if (response instanceof TLRPC.TL_payments_paymentForm) {
@@ -3827,13 +3827,13 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                             if (storyItem == null) {
                                 BulletinFactory factory = BulletinFactory.global();
                                 if (factory != null) {
-                                    factory.createSimpleBulletin(R.raw.story_bomb2, LocaleController.getString("StoryNotFound", R.string.StoryNotFound)).show();
+                                    factory.createSimpleBulletin(R.raw.story_bomb2, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYNOTFOUND, R.string.StoryNotFound)).show();
                                 }
                                 return;
                             } else if (storyItem instanceof TL_stories.TL_storyItemDeleted) {
                                 BulletinFactory factory = BulletinFactory.global();
                                 if (factory != null) {
-                                    factory.createSimpleBulletin(R.raw.story_bomb1, LocaleController.getString("StoryNotFound", R.string.StoryNotFound)).show();
+                                    factory.createSimpleBulletin(R.raw.story_bomb1, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYNOTFOUND, R.string.StoryNotFound)).show();
                                 }
                                 return;
                             }
@@ -3927,10 +3927,10 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                 if (user.bot_attach_menu) {
                                     processAttachMenuBot(intentAccount, peerId, attachMenuBotChoose, user, setAsAttachBot, botAppStartParam);
                                 } else {
-                                    BulletinFactory.of(mainFragmentsStack.get(mainFragmentsStack.size() - 1)).createErrorBulletin(LocaleController.getString(R.string.BotCantAddToAttachMenu)).show();
+                                    BulletinFactory.of(mainFragmentsStack.get(mainFragmentsStack.size() - 1)).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTCANTADDTOATTACHMENU, R.string.BotCantAddToAttachMenu)).show();
                                 }
                             } else {
-                                BulletinFactory.of(mainFragmentsStack.get(mainFragmentsStack.size() - 1)).createErrorBulletin(LocaleController.getString(R.string.BotSetAttachLinkNotBot)).show();
+                                BulletinFactory.of(mainFragmentsStack.get(mainFragmentsStack.size() - 1)).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTSETATTACHLINKNOTBOT, R.string.BotSetAttachLinkNotBot)).show();
                             }
                         } else if (messageId != null && (commentId != null || threadId != null) && peerId < 0) {
                             TLRPC.Chat chat = MessagesController.getInstance(intentAccount).getChat(-peerId);
@@ -3943,8 +3943,8 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                             args.putBoolean("onlySelect", true);
                             args.putBoolean("cantSendToChannels", true);
                             args.putInt("dialogsType", DialogsActivity.DIALOGS_TYPE_BOT_SHARE);
-                            args.putString("selectAlertString", LocaleController.getString("SendGameToText", R.string.SendGameToText));
-                            args.putString("selectAlertStringGroup", LocaleController.getString("SendGameToGroupText", R.string.SendGameToGroupText));
+                            args.putString("selectAlertString", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDGAMETOTEXT, R.string.SendGameToText));
+                            args.putString("selectAlertStringGroup", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDGAMETOGROUPTEXT, R.string.SendGameToGroupText));
                             DialogsActivity fragment = new DialogsActivity(args);
                             TLRPC.User user = MessagesController.getInstance(intentAccount).getUser(peerId);
                             fragment.setDelegate((fragment1, dids, message1, param, topicsFragment) -> {
@@ -4000,7 +4000,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                             if (user == null || user.bot && user.bot_nochats) {
                                 try {
                                     if (!mainFragmentsStack.isEmpty()) {
-                                        BulletinFactory.of(mainFragmentsStack.get(mainFragmentsStack.size() - 1)).createErrorBulletin(LocaleController.getString("BotCantJoinGroups", R.string.BotCantJoinGroups)).show();
+                                        BulletinFactory.of(mainFragmentsStack.get(mainFragmentsStack.size() - 1)).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTCANTJOINGROUPS, R.string.BotCantJoinGroups)).show();
                                     }
                                 } catch (Exception e) {
                                     FileLog.e(e);
@@ -4124,11 +4124,11 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                     }));
                                 } else {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                                    builder.setTitle(LocaleController.getString("AddBot", R.string.AddBot));
+                                    builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDBOT, R.string.AddBot));
                                     String chatName = chat == null ? "" : chat.title;
                                     builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AddMembersAlertNamesText", R.string.AddMembersAlertNamesText, UserObject.getUserName(user), chatName)));
-                                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                                    builder.setPositiveButton(LocaleController.getString("AddBot", R.string.AddBot), (di, i) -> {
+                                    builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
+                                    builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDBOT, R.string.AddBot), (di, i) -> {
                                         Bundle args12 = new Bundle();
                                         args12.putBoolean("scrollToTopOnResume", true);
                                         args12.putLong("chat_id", -did);
@@ -4260,7 +4260,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                                                 if (chatFull != null) {
                                                                     if (chatFull.call == null) {
                                                                         if (voipLastFragment.getParentActivity() != null) {
-                                                                            BulletinFactory.of(voipLastFragment).createSimpleBulletin(R.raw.linkbroken, LocaleController.getString("InviteExpired", R.string.InviteExpired)).show();
+                                                                            BulletinFactory.of(voipLastFragment).createSimpleBulletin(R.raw.linkbroken, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITEEXPIRED, R.string.InviteExpired)).show();
                                                                         }
                                                                     } else {
                                                                         accountInstance.getMessagesController().getGroupCall(-dialog_id, true, () -> AndroidUtilities.runOnUIThread(() -> {
@@ -4279,7 +4279,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             public void onError() {
                                                 if (!LaunchActivity.this.isFinishing()) {
                                                     BaseFragment fragment = mainFragmentsStack.get(mainFragmentsStack.size() - 1);
-                                                    AlertsCreator.showSimpleAlert(fragment, LocaleController.getString("JoinToGroupErrorNotExist", R.string.JoinToGroupErrorNotExist));
+                                                    AlertsCreator.showSimpleAlert(fragment, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_JOINTOGROUPERRORNOTEXIST, R.string.JoinToGroupErrorNotExist));
                                                 }
                                                 try {
                                                     dismissLoading.run();
@@ -4301,9 +4301,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                     ((ChatActivity) lastFragment).shakeContent();
                                 }
                                 if (AndroidUtilities.isNumeric(username)) {
-                                    BulletinFactory.of(lastFragment).createErrorBulletin(LocaleController.getString("NoPhoneFound", R.string.NoPhoneFound)).show();
+                                    BulletinFactory.of(lastFragment).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOPHONEFOUND, R.string.NoPhoneFound)).show();
                                 } else {
-                                    BulletinFactory.of(lastFragment).createErrorBulletin(LocaleController.getString("NoUsernameFound", R.string.NoUsernameFound)).show();
+                                    BulletinFactory.of(lastFragment).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOUSERNAMEFOUND, R.string.NoUsernameFound)).show();
                                 }
                             }
                         } catch (Exception e) {
@@ -4366,7 +4366,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                             public void onError() {
                                                 if (!LaunchActivity.this.isFinishing()) {
                                                     BaseFragment fragment = mainFragmentsStack.get(mainFragmentsStack.size() - 1);
-                                                    AlertsCreator.showSimpleAlert(fragment, LocaleController.getString("JoinToGroupErrorNotExist", R.string.JoinToGroupErrorNotExist));
+                                                    AlertsCreator.showSimpleAlert(fragment, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_JOINTOGROUPERRORNOTEXIST, R.string.JoinToGroupErrorNotExist));
                                                 }
                                                 try {
                                                     dismissLoading.run();
@@ -4385,16 +4385,16 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                             }
                         } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
-                            builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
+                            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
                             if (error.text.startsWith("FLOOD_WAIT")) {
-                                builder.setMessage(LocaleController.getString("FloodWait", R.string.FloodWait));
+                                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FLOODWAIT, R.string.FloodWait));
                             } else if (error.text.startsWith("INVITE_HASH_EXPIRED")) {
-                                builder.setTitle(LocaleController.getString("ExpiredLink", R.string.ExpiredLink));
-                                builder.setMessage(LocaleController.getString("InviteExpired", R.string.InviteExpired));
+                                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EXPIREDLINK, R.string.ExpiredLink));
+                                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITEEXPIRED, R.string.InviteExpired));
                             } else {
-                                builder.setMessage(LocaleController.getString("JoinToGroupErrorNotExist", R.string.JoinToGroupErrorNotExist));
+                                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_JOINTOGROUPERRORNOTEXIST, R.string.JoinToGroupErrorNotExist));
                             }
-                            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                             showAlertDialog(builder);
                         }
 
@@ -4442,15 +4442,15 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                 }
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
-                                builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
+                                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
                                 if (error.text.startsWith("FLOOD_WAIT")) {
-                                    builder.setMessage(LocaleController.getString("FloodWait", R.string.FloodWait));
+                                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FLOODWAIT, R.string.FloodWait));
                                 } else if (error.text.equals("USERS_TOO_MUCH")) {
-                                    builder.setMessage(LocaleController.getString("JoinToGroupErrorFull", R.string.JoinToGroupErrorFull));
+                                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_JOINTOGROUPERRORFULL, R.string.JoinToGroupErrorFull));
                                 } else {
-                                    builder.setMessage(LocaleController.getString("JoinToGroupErrorNotExist", R.string.JoinToGroupErrorNotExist));
+                                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_JOINTOGROUPERRORNOTEXIST, R.string.JoinToGroupErrorNotExist));
                                 }
-                                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                                 showAlertDialog(builder);
                             }
                         }
@@ -4550,9 +4550,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                         try {
                             dismissLoading.run();
                             if ("APP_VERSION_OUTDATED".equals(error.text)) {
-                                AlertsCreator.showUpdateAppAlert(LaunchActivity.this, LocaleController.getString("UpdateAppAlert", R.string.UpdateAppAlert), true);
+                                AlertsCreator.showUpdateAppAlert(LaunchActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UPDATEAPPALERT, R.string.UpdateAppAlert), true);
                             } else {
-                                showAlertDialog(AlertsCreator.createSimpleAlert(LaunchActivity.this, LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred) + "\n" + error.text));
+                                showAlertDialog(AlertsCreator.createSimpleAlert(LaunchActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ERROROCCURRED, R.string.ErrorOccurred) + "\n" + error.text));
                             }
                         } catch (Exception e) {
                             FileLog.e(e);
@@ -4590,9 +4590,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                     showAlertDialog(AlertsCreator.createLanguageAlert(LaunchActivity.this, res));
                 } else if (error != null) {
                     if ("LANG_CODE_NOT_SUPPORTED".equals(error.text)) {
-                        showAlertDialog(AlertsCreator.createSimpleAlert(LaunchActivity.this, LocaleController.getString("LanguageUnsupportedError", R.string.LanguageUnsupportedError)));
+                        showAlertDialog(AlertsCreator.createSimpleAlert(LaunchActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LANGUAGEUNSUPPORTEDERROR, R.string.LanguageUnsupportedError)));
                     } else {
-                        showAlertDialog(AlertsCreator.createSimpleAlert(LaunchActivity.this, LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred) + "\n" + error.text));
+                        showAlertDialog(AlertsCreator.createSimpleAlert(LaunchActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ERROROCCURRED, R.string.ErrorOccurred) + "\n" + error.text));
                     }
                 }
             }));
@@ -4638,7 +4638,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                         wallpaperActivity.setInitialModes(wallPaper.settings.blur, wallPaper.settings.motion, wallPaper.settings.intensity);
                         presentFragment(wallpaperActivity);
                     } else {
-                        showAlertDialog(AlertsCreator.createSimpleAlert(LaunchActivity.this, LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred) + "\n" + error.text));
+                        showAlertDialog(AlertsCreator.createSimpleAlert(LaunchActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ERROROCCURRED, R.string.ErrorOccurred) + "\n" + error.text));
                     }
                 }));
             }
@@ -4719,9 +4719,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                         FileLog.e(e);
                     }
                     if (notFound == 1) {
-                        showAlertDialog(AlertsCreator.createSimpleAlert(LaunchActivity.this, LocaleController.getString("Theme", R.string.Theme), LocaleController.getString("ThemeNotSupported", R.string.ThemeNotSupported)));
+                        showAlertDialog(AlertsCreator.createSimpleAlert(LaunchActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_THEME, R.string.Theme), LocaleController.getString("ThemeNotSupported", R.string.ThemeNotSupported)));
                     } else {
-                        showAlertDialog(AlertsCreator.createSimpleAlert(LaunchActivity.this, LocaleController.getString("Theme", R.string.Theme), LocaleController.getString("ThemeNotFound", R.string.ThemeNotFound)));
+                        showAlertDialog(AlertsCreator.createSimpleAlert(LaunchActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_THEME, R.string.Theme), LocaleController.getString("ThemeNotFound", R.string.ThemeNotFound)));
                     }
                 }
             }));
@@ -4751,7 +4751,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                             } catch (Exception e) {
                                 FileLog.e(e);
                             }
-                            showAlertDialog(AlertsCreator.createNoAccessAlert(LaunchActivity.this, LocaleController.getString(R.string.DialogNotAvailable), LocaleController.getString(R.string.LinkNotFound), null));
+                            showAlertDialog(AlertsCreator.createNoAccessAlert(LaunchActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIALOGNOTAVAILABLE, R.string.DialogNotAvailable), LocaleController.getString(R.string.LinkNotFound), null));
                         }
                     }));
                 }
@@ -4809,7 +4809,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                         }
                                     }
                                     if (notFound) {
-                                        showAlertDialog(AlertsCreator.createNoAccessAlert(LaunchActivity.this, LocaleController.getString(R.string.DialogNotAvailable), LocaleController.getString(R.string.LinkNotFound), null));
+                                        showAlertDialog(AlertsCreator.createNoAccessAlert(LaunchActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIALOGNOTAVAILABLE, R.string.DialogNotAvailable), LocaleController.getString(R.string.LinkNotFound), null));
                                     }
                                 }));
                             }
@@ -5063,12 +5063,12 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                     } else if (lastFragment instanceof ChatActivity) {
                         ChatActivity chatActivity = (ChatActivity) lastFragment;
                         if (!MediaDataController.canShowAttachMenuBot(attachMenuBot, chatActivity.getCurrentUser() != null ? chatActivity.getCurrentUser() : chatActivity.getCurrentChat())) {
-                            BulletinFactory.of(lastFragment).createErrorBulletin(LocaleController.getString(R.string.BotAlreadyAddedToAttachMenu)).show();
+                            BulletinFactory.of(lastFragment).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTALREADYADDEDTOATTACHMENU, R.string.BotAlreadyAddedToAttachMenu)).show();
                             return;
                         }
                         chatActivity.openAttachBotLayout(user.id, setAsAttachBot, false);
                     } else {
-                        BulletinFactory.of(lastFragment).createErrorBulletin(LocaleController.getString(R.string.BotAlreadyAddedToAttachMenu)).show();
+                        BulletinFactory.of(lastFragment).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTALREADYADDEDTOATTACHMENU, R.string.BotAlreadyAddedToAttachMenu)).show();
                     }
                 } else {
                     AttachBotIntroTopView introTopView = new AttachBotIntroTopView(LaunchActivity.this);
@@ -5106,7 +5106,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                     }, attachMenuBot.request_write_access ? user : null);
                 }
             } else {
-                BulletinFactory.of(mainFragmentsStack.get(mainFragmentsStack.size() - 1)).createErrorBulletin(LocaleController.getString(R.string.BotCantAddToAttachMenu)).show();
+                BulletinFactory.of(mainFragmentsStack.get(mainFragmentsStack.size() - 1)).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTCANTADDTOATTACHMENU, R.string.BotCantAddToAttachMenu)).show();
             }
         }));
     }
@@ -5206,9 +5206,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                                 names[1] = null;
                             }
                             if (UserObject.isReplyUser(user)) {
-                                names[2] = LocaleController.getString("RepliesTitle", R.string.RepliesTitle).toLowerCase();
+                                names[2] = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLIESTITLE, R.string.RepliesTitle).toLowerCase();
                             } else if (user.self) {
-                                names[2] = LocaleController.getString("SavedMessages", R.string.SavedMessages).toLowerCase();
+                                names[2] = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages).toLowerCase();
                             }
 
                             boolean found = false;
@@ -5282,7 +5282,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                         if (!newVersionAvailable) {
                             BaseFragment fragment = getLastFragment();
                             if (fragment != null) {
-                                BulletinFactory.of(fragment).createSimpleBulletin(R.raw.chats_infotip, LocaleController.getString(R.string.YourVersionIsLatest)).show();
+                                BulletinFactory.of(fragment).createSimpleBulletin(R.raw.chats_infotip, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOURVERSIONISLATEST, R.string.YourVersionIsLatest)).show();
                             }
                         }
                     }
@@ -5293,7 +5293,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                         progress.end();
                         BaseFragment fragment = getLastFragment();
                         if (fragment != null) {
-                            BulletinFactory.of(fragment).createSimpleBulletin(R.raw.chats_infotip, LocaleController.getString(R.string.YourVersionIsLatest)).show();
+                            BulletinFactory.of(fragment).createSimpleBulletin(R.raw.chats_infotip, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOURVERSIONISLATEST, R.string.YourVersionIsLatest)).show();
                         }
                     }
                 });
@@ -5698,9 +5698,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
         int percent = LiteMode.getBatteryLevel();
         BulletinFactory.of(lastFragment).createSimpleBulletin(
             new BatteryDrawable(percent / 100F, Color.WHITE, lastFragment.getThemedColor(Theme.key_dialogSwipeRemove), 1.3f),
-            LocaleController.getString("LowPowerEnabledTitle", R.string.LowPowerEnabledTitle),
+            LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOWPOWERENABLEDTITLE, R.string.LowPowerEnabledTitle),
             LocaleController.formatString("LowPowerEnabledSubtitle", R.string.LowPowerEnabledSubtitle, String.format("%d%%", percent)),
-            LocaleController.getString("Disable", R.string.Disable),
+            LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISABLE, R.string.Disable),
             () -> presentFragment(new LiteModeSettingsActivity())
         ).setDuration(Bulletin.DURATION_PROLONG).show();
     }
@@ -6167,7 +6167,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
             }
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
             if (fragment != null) {
                 Map<String, Integer> colorsReplacement = new HashMap<>();
                 colorsReplacement.put("info1.**", fragment.getThemedColor(Theme.key_dialogTopBackground));
@@ -6176,21 +6176,21 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                 builder.setTopAnimationIsNew(true);
             }
             if (reason != 2 && reason != 3) {
-                builder.setNegativeButton(LocaleController.getString("MoreInfo", R.string.MoreInfo), (dialogInterface, i) -> {
+                builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MOREINFO, R.string.MoreInfo), (dialogInterface, i) -> {
                     if (!mainFragmentsStack.isEmpty()) {
                         MessagesController.getInstance(account).openByUserName("spambot", mainFragmentsStack.get(mainFragmentsStack.size() - 1), 1);
                     }
                 });
             }
             if (reason == 5) {
-                builder.setMessage(LocaleController.getString("NobodyLikesSpam3", R.string.NobodyLikesSpam3));
-                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOBODYLIKESSPAM3, R.string.NobodyLikesSpam3));
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
             } else if (reason == 0) {
-                builder.setMessage(LocaleController.getString("NobodyLikesSpam1", R.string.NobodyLikesSpam1));
-                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOBODYLIKESSPAM1, R.string.NobodyLikesSpam1));
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
             } else if (reason == 1) {
-                builder.setMessage(LocaleController.getString("NobodyLikesSpam2", R.string.NobodyLikesSpam2));
-                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOBODYLIKESSPAM2, R.string.NobodyLikesSpam2));
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
             } else if (reason == 2) {
                 SpannableStringBuilder span = SpannableStringBuilder.valueOf((String) args[1]);
                 String type = (String) args[2];
@@ -6215,18 +6215,18 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                 }
                 builder.setMessage(span);
                 if (type.startsWith("AUTH_KEY_DROP_")) {
-                    builder.setPositiveButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    builder.setNegativeButton(LocaleController.getString("LogOut", R.string.LogOut), (dialog, which) -> MessagesController.getInstance(currentAccount).performLogout(2));
+                    builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
+                    builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOGOUT, R.string.LogOut), (dialog, which) -> MessagesController.getInstance(currentAccount).performLogout(2));
                 } else if (type.startsWith("PREMIUM_")) {
-                    builder.setTitle(LocaleController.getString(R.string.TelegramPremium));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                    builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TELEGRAMPREMIUM, R.string.TelegramPremium));
+                    builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                 } else {
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                    builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                 }
             } else if (reason == 3) {
-                builder.setTitle(LocaleController.getString("Proxy", R.string.Proxy));
-                builder.setMessage(LocaleController.getString("UseProxyTelegramError", R.string.UseProxyTelegramError));
-                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PROXY, R.string.Proxy));
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYTELEGRAMERROR, R.string.UseProxyTelegramError));
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                 proxyErrorDialog = showAlertDialog(builder);
                 return;
             }
@@ -6236,9 +6236,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
         } else if (id == NotificationCenter.wasUnableToFindCurrentLocation) {
             final HashMap<String, MessageObject> waitingForLocation = (HashMap<String, MessageObject>) args[0];
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-            builder.setNegativeButton(LocaleController.getString("ShareYouLocationUnableManually", R.string.ShareYouLocationUnableManually), (dialogInterface, i) -> {
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREYOULOCATIONUNABLEMANUALLY, R.string.ShareYouLocationUnableManually), (dialogInterface, i) -> {
                 if (mainFragmentsStack.isEmpty()) {
                     return;
                 }
@@ -6255,7 +6255,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                 });
                 presentFragment(fragment);
             });
-            builder.setMessage(LocaleController.getString("ShareYouLocationUnable", R.string.ShareYouLocationUnable));
+            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREYOULOCATIONUNABLE, R.string.ShareYouLocationUnable));
             if (!mainFragmentsStack.isEmpty()) {
                 mainFragmentsStack.get(mainFragmentsStack.size() - 1).showDialog(builder.create());
             }
@@ -6300,10 +6300,10 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
 
             AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
             builder.setTopAnimation(R.raw.permission_request_contacts, AlertsCreator.PERMISSIONS_REQUEST_TOP_ICON_SIZE, false, Theme.getColor(Theme.key_dialogTopBackground));
-            builder.setTitle(LocaleController.getString("UpdateContactsTitle", R.string.UpdateContactsTitle));
-            builder.setMessage(LocaleController.getString("UpdateContactsMessage", R.string.UpdateContactsMessage));
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialogInterface, i) -> ContactsController.getInstance(account).syncPhoneBookByAlert(contactHashMap, first, schedule, false));
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), (dialog, which) -> ContactsController.getInstance(account).syncPhoneBookByAlert(contactHashMap, first, schedule, true));
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UPDATECONTACTSTITLE, R.string.UpdateContactsTitle));
+            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UPDATECONTACTSMESSAGE, R.string.UpdateContactsMessage));
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), (dialogInterface, i) -> ContactsController.getInstance(account).syncPhoneBookByAlert(contactHashMap, first, schedule, false));
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), (dialog, which) -> ContactsController.getInstance(account).syncPhoneBookByAlert(contactHashMap, first, schedule, true));
             builder.setOnBackButtonListener((dialogInterface, i) -> ContactsController.getInstance(account).syncPhoneBookByAlert(contactHashMap, first, schedule, true));
             AlertDialog dialog = builder.create();
             fragment.showDialog(dialog);
@@ -6583,13 +6583,13 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                 switch (type) {
                     case Bulletin.TYPE_NAME_CHANGED: {
                         long peerId = (long) args[1];
-                        String text = peerId > 0 ? LocaleController.getString("YourNameChanged", R.string.YourNameChanged) : LocaleController.getString("ChannelTitleChanged", R.string.ChannelTitleChanged);
+                        String text = peerId > 0 ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOURNAMECHANGED, R.string.YourNameChanged) : LocaleController.getString("ChannelTitleChanged", R.string.ChannelTitleChanged);
                         (container != null ? BulletinFactory.of(container, null) : BulletinFactory.of(fragment)).createErrorBulletin(text).show();
                         break;
                     }
                     case Bulletin.TYPE_BIO_CHANGED: {
                         long peerId = (long) args[1];
-                        String text = peerId > 0 ? LocaleController.getString("YourBioChanged", R.string.YourBioChanged) : LocaleController.getString("ChannelDescriptionChanged", R.string.ChannelDescriptionChanged);
+                        String text = peerId > 0 ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOURBIOCHANGED, R.string.YourBioChanged) : LocaleController.getString("ChannelDescriptionChanged", R.string.ChannelDescriptionChanged);
                         (container != null ? BulletinFactory.of(container, null) : BulletinFactory.of(fragment)).createErrorBulletin(text).show();
                         break;
                     }
@@ -6909,7 +6909,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
             });
             linearLayout.addView(cell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
             builder.setView(linearLayout);
-            builder.setNegativeButton(LocaleController.getString("OK", R.string.OK), (dialog, which) -> {
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), (dialog, which) -> {
                 LocaleController.getInstance().applyLanguage(selectedLanguage[0], true, false, currentAccount);
                 rebuildAllFragments(true);
             });

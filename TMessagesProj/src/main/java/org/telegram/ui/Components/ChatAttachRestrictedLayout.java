@@ -33,7 +33,7 @@ public class ChatAttachRestrictedLayout extends ChatAttachAlert.AttachAlertLayou
         super(alert, context, resourcesProvider);
         this.id = id;
         progressView = new EmptyTextProgressView(context, null, resourcesProvider);
-        progressView.setText(LocaleController.getString("NoPhotos", R.string.NoPhotos));
+        progressView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOPHOTOS, R.string.NoPhotos));
         progressView.setOnTouchListener(null);
         progressView.setTextSize(16);
         addView(progressView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));

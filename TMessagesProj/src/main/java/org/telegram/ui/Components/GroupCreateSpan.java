@@ -101,56 +101,56 @@ public class GroupCreateSpan extends View {
                 case "contacts":
                     avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_FILTER_CONTACTS);
                     uid = Long.MIN_VALUE;
-                    firstName = LocaleController.getString("FilterContacts", R.string.FilterContacts);
+                    firstName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERCONTACTS, R.string.FilterContacts);
                     break;
                 case "non_contacts":
                     avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_FILTER_NON_CONTACTS);
                     uid = Long.MIN_VALUE + 1;
-                    firstName = LocaleController.getString("FilterNonContacts", R.string.FilterNonContacts);
+                    firstName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERNONCONTACTS, R.string.FilterNonContacts);
                     break;
                 case "groups":
                     avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_FILTER_GROUPS);
                     uid = Long.MIN_VALUE + 2;
-                    firstName = LocaleController.getString("FilterGroups", R.string.FilterGroups);
+                    firstName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERGROUPS, R.string.FilterGroups);
                     break;
                 case "channels":
                     avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_FILTER_CHANNELS);
                     uid = Long.MIN_VALUE + 3;
-                    firstName = LocaleController.getString("FilterChannels", R.string.FilterChannels);
+                    firstName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERCHANNELS, R.string.FilterChannels);
                     break;
                 case "bots":
                     avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_FILTER_BOTS);
                     uid = Long.MIN_VALUE + 4;
-                    firstName = LocaleController.getString("FilterBots", R.string.FilterBots);
+                    firstName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERBOTS, R.string.FilterBots);
                     break;
                 case "muted":
                     avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_FILTER_MUTED);
                     uid = Long.MIN_VALUE + 5;
-                    firstName = LocaleController.getString("FilterMuted", R.string.FilterMuted);
+                    firstName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERMUTED, R.string.FilterMuted);
                     break;
                 case "read":
                     avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_FILTER_READ);
                     uid = Long.MIN_VALUE + 6;
-                    firstName = LocaleController.getString("FilterRead", R.string.FilterRead);
+                    firstName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERREAD, R.string.FilterRead);
                     break;
                 case "archived":
                 default:
                     avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_FILTER_ARCHIVED);
                     uid = Long.MIN_VALUE + 7;
-                    firstName = LocaleController.getString("FilterArchived", R.string.FilterArchived);
+                    firstName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERARCHIVED, R.string.FilterArchived);
                     break;
             }
         } else if (object instanceof TLRPC.User) {
             TLRPC.User user = (TLRPC.User) object;
             uid = user.id;
             if (UserObject.isReplyUser(user)) {
-                firstName = LocaleController.getString("RepliesTitle", R.string.RepliesTitle);
+                firstName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLIESTITLE, R.string.RepliesTitle);
                 avatarDrawable.setScaleSize(.8f);
                 avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_REPLIES);
                 imageLocation = null;
                 imageParent = null;
             } else if (UserObject.isUserSelf(user)) {
-                firstName = LocaleController.getString("SavedMessages", R.string.SavedMessages);
+                firstName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages);
                 avatarDrawable.setScaleSize(.8f);
                 avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_SAVED);
                 imageLocation = null;
@@ -334,6 +334,6 @@ public class GroupCreateSpan extends View {
         super.onInitializeAccessibilityNodeInfo(info);
         info.setText(nameLayout.getText());
         if (isDeleting() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_CLICK.getId(), LocaleController.getString("Delete", R.string.Delete)));
+            info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_CLICK.getId(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete)));
     }
 }

@@ -540,7 +540,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             Runnable undoAction = () -> MessagesController.getInstance(currentAccount).updateEmojiStatus(previousEmojiStatus);
             if (document == null) {
                 final Bulletin.SimpleLayout layout = new Bulletin.SimpleLayout(getContext(), resourcesProvider);
-                layout.textView.setText(LocaleController.getString("RemoveStatusInfo", R.string.RemoveStatusInfo));
+                layout.textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REMOVESTATUSINFO, R.string.RemoveStatusInfo));
                 layout.imageView.setImageResource(R.drawable.msg_settings_premium);
                 layout.imageView.setScaleX(.8f);
                 layout.imageView.setScaleY(.8f);
@@ -555,7 +555,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                 }
             } else {
                 BulletinFactory factory = fragment != null ? BulletinFactory.of(fragment) : BulletinFactory.of(bulletinContainer, resourcesProvider);
-                factory.createEmojiBulletin(document, LocaleController.getString("SetAsEmojiStatusInfo", R.string.SetAsEmojiStatusInfo), LocaleController.getString("Undo", R.string.Undo), undoAction).show();
+                factory.createEmojiBulletin(document, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETASEMOJISTATUSINFO, R.string.SetAsEmojiStatusInfo), LocaleController.getString("Undo", R.string.Undo), undoAction).show();
             }
         }
 
@@ -565,7 +565,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             spannable.setSpan(new AnimatedEmojiSpan(document, null), 0, spannable.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             if (AndroidUtilities.addToClipboard(spannable)) {
                 BulletinFactory factory = fragment != null ? BulletinFactory.of(fragment) : BulletinFactory.of(bulletinContainer, resourcesProvider);
-                factory.createCopyBulletin(LocaleController.getString("EmojiCopied", R.string.EmojiCopied)).show();
+                factory.createCopyBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMOJICOPIED, R.string.EmojiCopied)).show();
             }
         }
 
@@ -796,7 +796,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             searchEditText.setLines(1);
             searchEditText.setSingleLine(true);
             searchEditText.setImeOptions(EditorInfo.IME_ACTION_SEARCH | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
-            searchEditText.setHint(LocaleController.getString("Search", R.string.Search));
+            searchEditText.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
             searchEditText.setCursorColor(getThemedColor(Theme.key_featuredStickers_addedIcon));
             searchEditText.setCursorSize(dp(20));
             searchEditText.setCursorWidth(1.5f);
@@ -1305,15 +1305,15 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                     if (premiumBulletin || fragment == null) {
                         factory.createEmojiBulletin(
                                 document,
-                                AndroidUtilities.replaceTags(LocaleController.getString("UnlockPremiumEmojiHint", R.string.UnlockPremiumEmojiHint)),
-                                LocaleController.getString("PremiumMore", R.string.PremiumMore),
+                                AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNLOCKPREMIUMEMOJIHINT, R.string.UnlockPremiumEmojiHint)),
+                                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMMORE, R.string.PremiumMore),
                                 EmojiView.this::openPremiumAnimatedEmojiFeature
                         ).show();
                     } else {
                         factory.createSimpleBulletin(
                                 R.raw.saved_messages,
-                                AndroidUtilities.replaceTags(LocaleController.getString("UnlockPremiumEmojiHint2", R.string.UnlockPremiumEmojiHint2)),
-                                LocaleController.getString("Open", R.string.Open),
+                                AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNLOCKPREMIUMEMOJIHINT2, R.string.UnlockPremiumEmojiHint2)),
+                                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPEN, R.string.Open),
                                 () -> {
                                     Bundle args = new Bundle();
                                     args.putLong("user_id", UserConfig.getInstance(currentAccount).getClientUserId());
@@ -1496,14 +1496,14 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
         };
 
         emojiTitles = new String[]{
-                LocaleController.getString("Emoji1", R.string.Emoji1),
-                LocaleController.getString("Emoji2", R.string.Emoji2),
-                LocaleController.getString("Emoji3", R.string.Emoji3),
-                LocaleController.getString("Emoji4", R.string.Emoji4),
-                LocaleController.getString("Emoji5", R.string.Emoji5),
-                LocaleController.getString("Emoji6", R.string.Emoji6),
-                LocaleController.getString("Emoji7", R.string.Emoji7),
-                LocaleController.getString("Emoji8", R.string.Emoji8)
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMOJI1, R.string.Emoji1),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMOJI2, R.string.Emoji2),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMOJI3, R.string.Emoji3),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMOJI4, R.string.Emoji4),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMOJI5, R.string.Emoji5),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMOJI6, R.string.Emoji6),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMOJI7, R.string.Emoji7),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMOJI8, R.string.Emoji8)
         };
 
         showGifs = needGif;
@@ -2262,13 +2262,13 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                         if (fragment != null) {
                             BulletinFactory.of(fragment).createSimpleBulletin(
                                 R.raw.filter_reorder,
-                                LocaleController.getString("DynamicPackOrderOff", R.string.DynamicPackOrderOff),
-                                LocaleController.getString("DynamicPackOrderOffInfo", R.string.DynamicPackOrderOffInfo),
-                                LocaleController.getString("Settings"),
+                                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DYNAMICPACKORDEROFF, R.string.DynamicPackOrderOff),
+                                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DYNAMICPACKORDEROFFINFO, R.string.DynamicPackOrderOffInfo),
+                                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETTINGS),
                                 () -> fragment.presentFragment(new StickersActivity(MediaDataController.TYPE_IMAGE, null))
                             ).show();
                         } else if (bulletinContainer != null) {
-                            BulletinFactory.of(bulletinContainer, EmojiView.this.resourcesProvider).createSimpleBulletin(R.raw.filter_reorder, LocaleController.getString("DynamicPackOrderOff", R.string.DynamicPackOrderOff), LocaleController.getString("DynamicPackOrderOffInfo", R.string.DynamicPackOrderOffInfo)).show();
+                            BulletinFactory.of(bulletinContainer, EmojiView.this.resourcesProvider).createSimpleBulletin(R.raw.filter_reorder, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DYNAMICPACKORDEROFF, R.string.DynamicPackOrderOff), LocaleController.getString("DynamicPackOrderOffInfo", R.string.DynamicPackOrderOffInfo)).show();
                         } else {
                             return;
                         }
@@ -2480,7 +2480,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
         backspaceButton.setImageResource(R.drawable.smiles_tab_clear);
         backspaceButton.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_chat_emojiPanelBackspace), PorterDuff.Mode.MULTIPLY));
         backspaceButton.setScaleType(ImageView.ScaleType.CENTER);
-        backspaceButton.setContentDescription(LocaleController.getString("AccDescrBackspace", R.string.AccDescrBackspace));
+        backspaceButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRBACKSPACE, R.string.AccDescrBackspace));
         backspaceButton.setFocusable(true);
         backspaceButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -2529,7 +2529,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             if (Build.VERSION.SDK_INT >= 21) {
                 stickerSettingsButton.setBackground(Theme.createSelectorDrawable(color, Theme.RIPPLE_MASK_CIRCLE_20DP, AndroidUtilities.dp(18)));
             }
-            stickerSettingsButton.setContentDescription(LocaleController.getString("Settings", R.string.Settings));
+            stickerSettingsButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETTINGS, R.string.Settings));
             bottomTabContainer.addView(stickerSettingsButton, LayoutHelper.createFrame(47, 40, Gravity.BOTTOM | Gravity.RIGHT));
             stickerSettingsButton.setOnClickListener(new OnClickListener() {
                 @Override
@@ -2615,7 +2615,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             searchButton.setImageResource(R.drawable.smiles_tab_search);
             searchButton.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_chat_emojiPanelBackspace), PorterDuff.Mode.MULTIPLY));
             searchButton.setScaleType(ImageView.ScaleType.CENTER);
-            searchButton.setContentDescription(LocaleController.getString("Search", R.string.Search));
+            searchButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
             searchButton.setFocusable(true);
             searchButton.setVisibility(View.GONE);
             if (Build.VERSION.SDK_INT >= 21) {
@@ -2671,7 +2671,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             }
             backspaceButton.setPadding(0, 0, AndroidUtilities.dp(2), 0);
             backspaceButton.setBackground(drawable);
-            backspaceButton.setContentDescription(LocaleController.getString("AccDescrBackspace", R.string.AccDescrBackspace));
+            backspaceButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRBACKSPACE, R.string.AccDescrBackspace));
             backspaceButton.setFocusable(true);
             bottomTabContainer.addView(backspaceButton, LayoutHelper.createFrame((Build.VERSION.SDK_INT >= 21 ? 40 : 44) - 4, (Build.VERSION.SDK_INT >= 21 ? 40 : 44) - 4, Gravity.LEFT | Gravity.TOP, 10, 0, 10, 0));
             shadowLine.setVisibility(GONE);
@@ -3534,7 +3534,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
         private ValueAnimator installFadeAway;
         public void updateInstall(boolean installed, boolean animated) {
             CharSequence text = installed ?
-                    LocaleController.getString("Added", R.string.Added) :
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDED, R.string.Added) :
                     LocaleController.formatString("AddStickersCount", R.string.AddStickersCount, lastTitle);
             addButtonTextView.setText(text, animated);
             if (installFadeAway != null) {
@@ -3658,7 +3658,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             addButtonView = new TextView(context);
             addButtonView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             addButtonView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-            addButtonView.setText(LocaleController.getString("Add", R.string.Add));
+            addButtonView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADD, R.string.Add));
             addButtonView.setTextColor(getThemedColor(Theme.key_featuredStickers_buttonText));
             addButtonView.setBackground(Theme.AdaptiveRipple.createRect(getThemedColor(Theme.key_featuredStickers_addButton), getThemedColor(Theme.key_featuredStickers_addButtonPressed), 16));
             addButtonView.setPadding(AndroidUtilities.dp(14), 0, AndroidUtilities.dp(14), 0);
@@ -3713,7 +3713,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             removeButtonView = new TextView(context);
             removeButtonView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             removeButtonView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-            removeButtonView.setText(LocaleController.getString("StickersRemove", R.string.StickersRemove));
+            removeButtonView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STICKERSREMOVE, R.string.StickersRemove));
             removeButtonView.setTextColor(getThemedColor(Theme.key_featuredStickers_removeButtonText));
             removeButtonView.setBackground(Theme.AdaptiveRipple.createRect(0, getThemedColor(Theme.key_featuredStickers_addButton) & 0x1affffff, 16));
             removeButtonView.setPadding(AndroidUtilities.dp(12), 0, AndroidUtilities.dp(12), 0);
@@ -3748,7 +3748,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
 
             premiumButtonView = new PremiumButtonView(context, AndroidUtilities.dp(16), false, resourcesProvider);
             premiumButtonView.setIcon(R.raw.unlock_icon);
-            premiumButtonView.setButton(LocaleController.getString("Unlock", R.string.Unlock), e -> openPremiumAnimatedEmojiFeature());
+            premiumButtonView.setButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNLOCK, R.string.Unlock), e -> openPremiumAnimatedEmojiFeature());
 
             try {
                 MarginLayoutParams iconLayout = (MarginLayoutParams) premiumButtonView.getIconView().getLayoutParams();
@@ -3791,9 +3791,9 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             headerView.setText(pack.set.title);
 
             if (pack.installed && !pack.set.official) {
-                premiumButtonView.setButton(LocaleController.getString("Restore", R.string.Restore), e -> openPremiumAnimatedEmojiFeature());
+                premiumButtonView.setButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTORE, R.string.Restore), e -> openPremiumAnimatedEmojiFeature());
             } else {
-                premiumButtonView.setButton(LocaleController.getString("Unlock", R.string.Unlock), e -> openPremiumAnimatedEmojiFeature());
+                premiumButtonView.setButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNLOCK, R.string.Unlock), e -> openPremiumAnimatedEmojiFeature());
             }
 
             updateState(false);
@@ -5162,8 +5162,8 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
         if (!featured.isEmpty() && (featuredStickerSets.isEmpty() || preferences.getLong("featured_hidden", 0) == featured.get(0).set.id)) {
             final int id = mediaDataController.getUnreadStickerSets().isEmpty() ? 2 : 3;
             final StickerTabView trendingStickersTabView = stickersTab.addStickerIconTab(id, stickerIcons[id]);
-            trendingStickersTabView.textView.setText(LocaleController.getString("FeaturedStickersShort", R.string.FeaturedStickersShort));
-            trendingStickersTabView.setContentDescription(LocaleController.getString("FeaturedStickers", R.string.FeaturedStickers));
+            trendingStickersTabView.textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FEATUREDSTICKERSSHORT, R.string.FeaturedStickersShort));
+            trendingStickersTabView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FEATUREDSTICKERS, R.string.FeaturedStickers));
             trendingTabNum = stickersTabOffset;
             stickersTabOffset++;
         }
@@ -5172,16 +5172,16 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             favTabNum = stickersTabOffset;
             stickersTabOffset++;
             StickerTabView stickerTabView = stickersTab.addStickerIconTab(1, stickerIcons[1]);
-            stickerTabView.textView.setText(LocaleController.getString("FavoriteStickersShort", R.string.FavoriteStickersShort));
-            stickerTabView.setContentDescription(LocaleController.getString("FavoriteStickers", R.string.FavoriteStickers));
+            stickerTabView.textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FAVORITESTICKERSSHORT, R.string.FavoriteStickersShort));
+            stickerTabView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FAVORITESTICKERS, R.string.FavoriteStickers));
         }
 
         if (!recentStickers.isEmpty()) {
             recentTabNum = stickersTabOffset;
             stickersTabOffset++;
             StickerTabView stickerTabView = stickersTab.addStickerIconTab(0, stickerIcons[0]);
-            stickerTabView.textView.setText(LocaleController.getString("RecentStickersShort", R.string.RecentStickersShort));
-            stickerTabView.setContentDescription(LocaleController.getString("RecentStickers", R.string.RecentStickers));
+            stickerTabView.textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RECENTSTICKERSSHORT, R.string.RecentStickersShort));
+            stickerTabView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RECENTSTICKERS, R.string.RecentStickers));
         }
 
 
@@ -5227,8 +5227,8 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
 //            premiumTabNum = stickersTabOffset;
 //            stickersTabOffset++;
 //            StickerTabView stickerTabView = stickersTab.addStickerIconTab(4, PremiumGradient.getInstance().premiumStarMenuDrawable2);
-//            stickerTabView.textView.setText(LocaleController.getString("PremiumStickersShort", R.string.PremiumStickersShort));
-//            stickerTabView.setContentDescription(LocaleController.getString("PremiumStickers", R.string.PremiumStickers));
+//            stickerTabView.textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTICKERSSHORT, R.string.PremiumStickersShort));
+//            stickerTabView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTICKERS, R.string.PremiumStickers));
 //        }
 
         if (info != null) {
@@ -5295,7 +5295,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                 if (thumb == null || stickerSet.set.gifs) {
                     thumb = document;
                 }
-                stickersTab.addStickerTab(thumb, document, stickerSet).setContentDescription(stickerSet.set.title + ", " + LocaleController.getString("AccDescrStickerSet", R.string.AccDescrStickerSet));
+                stickersTab.addStickerTab(thumb, document, stickerSet).setContentDescription(stickerSet.set.title + ", " + LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRSTICKERSET, R.string.AccDescrStickerSet));
             }
         }
         stickersTab.commitUpdate();
@@ -5340,11 +5340,11 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
 
         if (hasRecent) {
             gifRecentTabNum = gifTabsCount++;
-            gifTabs.addIconTab(0, gifIcons[0]).setContentDescription(LocaleController.getString("RecentStickers", R.string.RecentStickers));
+            gifTabs.addIconTab(0, gifIcons[0]).setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RECENTSTICKERS, R.string.RecentStickers));
         }
 
         gifTrendingTabNum = gifTabsCount++;
-        gifTabs.addIconTab(1, gifIcons[1]).setContentDescription(LocaleController.getString("FeaturedGifs", R.string.FeaturedGifs));
+        gifTabs.addIconTab(1, gifIcons[1]).setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FEATUREDGIFS, R.string.FeaturedGifs));
 
         gifFirstEmojiTabNum = gifTabsCount;
         final int hPadding = AndroidUtilities.dp(13);
@@ -5852,11 +5852,11 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
         if (show) {
             if (!ChatObject.hasAdminRights(chat) && chat.default_banned_rights != null && (chat.default_banned_rights.send_stickers || (emoji && chat.default_banned_rights.send_plain))) {
                 if (emoji) {
-                    mediaBanTooltip.setText(LocaleController.getString("GlobalAttachEmojiRestricted", R.string.GlobalAttachEmojiRestricted));
+                    mediaBanTooltip.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHEMOJIRESTRICTED, R.string.GlobalAttachEmojiRestricted));
                 } else if (gif) {
-                    mediaBanTooltip.setText(LocaleController.getString("GlobalAttachGifRestricted", R.string.GlobalAttachGifRestricted));
+                    mediaBanTooltip.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHGIFRESTRICTED, R.string.GlobalAttachGifRestricted));
                 } else {
-                    mediaBanTooltip.setText(LocaleController.getString("GlobalAttachStickersRestricted", R.string.GlobalAttachStickersRestricted));
+                    mediaBanTooltip.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHSTICKERSRESTRICTED, R.string.GlobalAttachStickersRestricted));
                 }
             } else {
                 if (chat.banned_rights == null) {
@@ -5864,11 +5864,11 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                 }
                 if (AndroidUtilities.isBannedForever(chat.banned_rights)) {
                     if (emoji) {
-                        mediaBanTooltip.setText(LocaleController.getString("AttachPlainRestrictedForever", R.string.AttachPlainRestrictedForever));
+                        mediaBanTooltip.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHPLAINRESTRICTEDFOREVER, R.string.AttachPlainRestrictedForever));
                     } else if (gif) {
-                        mediaBanTooltip.setText(LocaleController.getString("AttachGifRestrictedForever", R.string.AttachGifRestrictedForever));
+                        mediaBanTooltip.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHGIFRESTRICTEDFOREVER, R.string.AttachGifRestrictedForever));
                     } else {
-                        mediaBanTooltip.setText(LocaleController.getString("AttachStickersRestrictedForever", R.string.AttachStickersRestrictedForever));
+                        mediaBanTooltip.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHSTICKERSRESTRICTEDFOREVER, R.string.AttachStickersRestrictedForever));
                     }
                 } else {
                     if (emoji) {
@@ -6363,10 +6363,10 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                                 Object object = cache.get(holder.getAdapterPosition());
                                 if (object == recentStickers) {
                                     AlertDialog alertDialog = new AlertDialog.Builder(context)
-                                            .setTitle(LocaleController.getString(R.string.ClearRecentStickersAlertTitle))
-                                            .setMessage(LocaleController.getString(R.string.ClearRecentStickersAlertMessage))
-                                            .setPositiveButton(LocaleController.getString(R.string.ClearButton), (dialog, which) -> MediaDataController.getInstance(currentAccount).clearRecentStickers())
-                                            .setNegativeButton(LocaleController.getString(R.string.Cancel), null)
+                                            .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARRECENTSTICKERSALERTTITLE, R.string.ClearRecentStickersAlertTitle))
+                                            .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARRECENTSTICKERSALERTMESSAGE, R.string.ClearRecentStickersAlertMessage))
+                                            .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARBUTTON, R.string.ClearButton), (dialog, which) -> MediaDataController.getInstance(currentAccount).clearRecentStickers())
+                                            .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null)
                                             .create();
                                     alertDialog.show();
                                     TextView button = (TextView) alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
@@ -6491,11 +6491,11 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                                 cell.setText(set.set.title, 0);
                             }
                         } else if (object == recentStickers) {
-                            cell.setText(LocaleController.getString("RecentStickers", R.string.RecentStickers), R.drawable.msg_close, LocaleController.getString(R.string.ClearRecentStickersAlertTitle));
+                            cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RECENTSTICKERS, R.string.RecentStickers), R.drawable.msg_close, LocaleController.getString(R.string.ClearRecentStickersAlertTitle));
                         } else if (object == favouriteStickers) {
-                            cell.setText(LocaleController.getString("FavoriteStickers", R.string.FavoriteStickers), 0);
+                            cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FAVORITESTICKERS, R.string.FavoriteStickers), 0);
                         } else if (object == premiumStickers) {
-                            cell.setText(LocaleController.getString("PremiumStickers", R.string.PremiumStickers), 0);
+                            cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTICKERS, R.string.PremiumStickers), 0);
                         }
                     }
                     break;
@@ -6507,7 +6507,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                 }
                 case 5: {
                     StickerSetNameCell cell = (StickerSetNameCell) holder.itemView;
-                    cell.setText(MediaDataController.getInstance(currentAccount).loadFeaturedPremium ? LocaleController.getString("FeaturedStickersPremium", R.string.FeaturedStickersPremium) : LocaleController.getString("FeaturedStickers", R.string.FeaturedStickers), R.drawable.msg_close, LocaleController.getString("AccDescrCloseTrendingStickers", R.string.AccDescrCloseTrendingStickers));
+                    cell.setText(MediaDataController.getInstance(currentAccount).loadFeaturedPremium ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FEATUREDSTICKERSPREMIUM, R.string.FeaturedStickersPremium) : LocaleController.getString("FeaturedStickers", R.string.FeaturedStickers), R.drawable.msg_close, LocaleController.getString("AccDescrCloseTrendingStickers", R.string.AccDescrCloseTrendingStickers));
                     break;
                 }
             }
@@ -6896,9 +6896,9 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                     cell.position = position;
                     index = positionToSection.get(position);
                     if (position == trendingHeaderRow) {
-                        cell.setText(LocaleController.getString("FeaturedEmojiPacks", R.string.FeaturedEmojiPacks), R.drawable.msg_close, LocaleController.getString("AccDescrCloseTrendingEmoji", R.string.AccDescrCloseTrendingEmoji));
+                        cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FEATUREDEMOJIPACKS, R.string.FeaturedEmojiPacks), R.drawable.msg_close, LocaleController.getString("AccDescrCloseTrendingEmoji", R.string.AccDescrCloseTrendingEmoji));
                     } else if (position == recentlyUsedHeaderRow) {
-                        cell.setText(LocaleController.getString("RecentlyUsed", R.string.RecentlyUsed), 0);
+                        cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RECENTLYUSED, R.string.RecentlyUsed), 0);
                     } else if (index >= emojiTitles.length) {
                         try {
                             cell.setText(emojipacksProcessed.get(index - emojiTitles.length).set.title, 0);
@@ -7367,7 +7367,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                     };
 
                     TextView textView = new TextView(getContext());
-                    textView.setText(LocaleController.getString("NoEmojiFound", R.string.NoEmojiFound));
+                    textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOEMOJIFOUND, R.string.NoEmojiFound));
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     textView.setTextColor(getThemedColor(Theme.key_chat_emojiPanelEmptyText));
                     frameLayout.addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 10, 0, 0));
@@ -7392,7 +7392,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                             linearLayout.addView(imageView1, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 15, 0, 0));
 
                             TextView textView = new TextView(getContext());
-                            textView.setText(LocaleController.getString("EmojiSuggestions", R.string.EmojiSuggestions));
+                            textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMOJISUGGESTIONS, R.string.EmojiSuggestions));
                             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                             textView.setTextColor(getThemedColor(Theme.key_dialogTextBlue2));
                             textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
@@ -7400,7 +7400,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                             linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 0, 24, 0, 0));
 
                             textView = new TextView(getContext());
-                            textView.setText(AndroidUtilities.replaceTags(LocaleController.getString("EmojiSuggestionsInfo", R.string.EmojiSuggestionsInfo)));
+                            textView.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMOJISUGGESTIONSINFO, R.string.EmojiSuggestionsInfo)));
                             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                             textView.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
                             textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
@@ -7719,11 +7719,11 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return LocaleController.getString("Emoji", R.string.Emoji);
+                    return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMOJI, R.string.Emoji);
                 case 1:
-                    return LocaleController.getString("AccDescrGIFs", R.string.AccDescrGIFs);
+                    return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRGIFS, R.string.AccDescrGIFs);
                 case 2:
-                    return LocaleController.getString("AccDescrStickers", R.string.AccDescrStickers);
+                    return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRSTICKERS, R.string.AccDescrStickers);
             }
             return null;
         }
@@ -7843,7 +7843,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                     break;
                 case 2:
                     final StickerSetNameCell cell1 = new StickerSetNameCell(context, false, resourcesProvider);
-                    cell1.setText(LocaleController.getString("FeaturedGifs", R.string.FeaturedGifs), 0);
+                    cell1.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FEATUREDGIFS, R.string.FeaturedGifs), 0);
                     view = cell1;
                     final RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT);
                     lp.topMargin = AndroidUtilities.dp(2.5f);
@@ -8342,7 +8342,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 8, 0, 0));
 
             textView = new TextView(getContext());
-            textView.setText(LocaleController.getString("NoGIFsFound", R.string.NoGIFsFound));
+            textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOGIFSFOUND, R.string.NoGIFsFound));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setTextColor(getThemedColor(Theme.key_chat_emojiPanelEmptyText));
             addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 42, 0, 0));
@@ -8758,7 +8758,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                     frameLayout.addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 42, 0, 28));
 
                     TextView textView = new TextView(context);
-                    textView.setText(LocaleController.getString("NoStickersFound", R.string.NoStickersFound));
+                    textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSTICKERSFOUND, R.string.NoStickersFound));
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     textView.setTextColor(getThemedColor(Theme.key_chat_emojiPanelEmptyText));
                     frameLayout.addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 42, 0, 9));

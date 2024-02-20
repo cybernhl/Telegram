@@ -489,9 +489,9 @@ public class DualCameraView extends CameraView implements CameraController.Error
             if (!dualAvailableDefault(getContext(), false)) {
                 MessagesController.getGlobalMainSettings().edit().putBoolean("dual_available", dualAvailable = false).apply();
                 new AlertDialog.Builder(getContext())
-                    .setTitle(LocaleController.getString(R.string.DualErrorTitle))
-                    .setMessage(LocaleController.getString(R.string.DualErrorMessage))
-                    .setPositiveButton(LocaleController.getString(R.string.OK), null)
+                    .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DUALERRORTITLE, R.string.DualErrorTitle))
+                    .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DUALERRORMESSAGE, R.string.DualErrorMessage))
+                    .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null)
                     .show();
             }
             log(false);

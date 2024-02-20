@@ -107,7 +107,7 @@ public class NewContactBottomSheet extends BottomSheet implements AdapterView.On
         classGuid = ConnectionsManager.generateClassGuid();
         this.parentFragment = parentFragment;
         setCustomView(createView(getContext()));
-        setTitle(LocaleController.getString("NewContactTitle", R.string.NewContactTitle), true);
+        setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWCONTACTTITLE, R.string.NewContactTitle), true);
     }
 
     public View createView(Context context) {
@@ -129,7 +129,7 @@ public class NewContactBottomSheet extends BottomSheet implements AdapterView.On
         firstNameField = new OutlineEditText(context);
         firstNameField.getEditText().setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
         firstNameField.getEditText().setImeOptions(EditorInfo.IME_ACTION_NEXT);
-        firstNameField.setHint(LocaleController.getString("FirstName", R.string.FirstName));
+        firstNameField.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FIRSTNAME, R.string.FirstName));
         if (initialFirstName != null) {
             firstNameField.getEditText().setText(initialFirstName);
             initialFirstName = null;
@@ -148,7 +148,7 @@ public class NewContactBottomSheet extends BottomSheet implements AdapterView.On
         lastNameField.setBackground(null);
         lastNameField.getEditText().setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
         lastNameField.getEditText().setImeOptions(EditorInfo.IME_ACTION_NEXT);
-        lastNameField.setHint(LocaleController.getString("LastName", R.string.LastName));
+        lastNameField.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LASTNAME, R.string.LastName));
         if (initialLastName != null) {
             lastNameField.getEditText().setText(initialLastName);
             initialLastName = null;
@@ -168,7 +168,7 @@ public class NewContactBottomSheet extends BottomSheet implements AdapterView.On
 
         phoneOutlineView = new OutlineTextContainerView(context);
         phoneOutlineView.addView(linearLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 4, 8, 16, 8));
-        phoneOutlineView.setText(LocaleController.getString(R.string.PhoneNumber));
+        phoneOutlineView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHONENUMBER, R.string.PhoneNumber));
         contentLayout.addView(phoneOutlineView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 58, 0, 12, 0, 8));
 
 
@@ -233,7 +233,7 @@ public class NewContactBottomSheet extends BottomSheet implements AdapterView.On
         codeField.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
         codeField.setImeOptions(EditorInfo.IME_ACTION_NEXT | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         codeField.setBackground(null);
-        codeField.setContentDescription(LocaleController.getString(R.string.LoginAccessibilityCountryCode));
+        codeField.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOGINACCESSIBILITYCOUNTRYCODE, R.string.LoginAccessibilityCountryCode));
         linearLayout.addView(codeField, LayoutHelper.createLinear(55, 36, -9, 0, 0, 0));
         codeField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -393,7 +393,7 @@ public class NewContactBottomSheet extends BottomSheet implements AdapterView.On
         phoneField.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
         phoneField.setImeOptions(EditorInfo.IME_ACTION_NEXT | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         phoneField.setBackground(null);
-        phoneField.setContentDescription(LocaleController.getString(R.string.PhoneNumber));
+        phoneField.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHONENUMBER, R.string.PhoneNumber));
         linearLayout.addView(phoneField, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 36));
         phoneField.addTextChangedListener(new TextWatcher() {
 
@@ -602,7 +602,7 @@ public class NewContactBottomSheet extends BottomSheet implements AdapterView.On
         doneButton.setGravity(Gravity.CENTER);
         doneButton.setLines(1);
         doneButton.setSingleLine(true);
-        doneButton.setText(LocaleController.getString("CreateContact", R.string.CreateContact));
+        doneButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATECONTACT, R.string.CreateContact));
         doneButton.setTextColor(parentFragment.getThemedColor(Theme.key_featuredStickers_buttonText));
         doneButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         doneButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));

@@ -264,14 +264,14 @@ public class UserCell2 extends FrameLayout {
             if (currentUser.bot) {
                 statusTextView.setTextColor(statusColor);
                 if (currentUser.bot_chat_history) {
-                    statusTextView.setText(LocaleController.getString("BotStatusRead", R.string.BotStatusRead));
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTSTATUSREAD, R.string.BotStatusRead));
                 } else {
-                    statusTextView.setText(LocaleController.getString("BotStatusCantRead", R.string.BotStatusCantRead));
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTSTATUSCANTREAD, R.string.BotStatusCantRead));
                 }
             } else {
                 if (currentUser.id == UserConfig.getInstance(currentAccount).getClientUserId() || currentUser.status != null && currentUser.status.expires > ConnectionsManager.getInstance(currentAccount).getCurrentTime() || MessagesController.getInstance(currentAccount).onlinePrivacy.containsKey(currentUser.id)) {
                     statusTextView.setTextColor(statusOnlineColor);
-                    statusTextView.setText(LocaleController.getString("Online", R.string.Online));
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ONLINE, R.string.Online));
                 } else {
                     statusTextView.setTextColor(statusColor);
                     statusTextView.setText(LocaleController.formatUserStatus(currentAccount, currentUser));
@@ -284,19 +284,19 @@ public class UserCell2 extends FrameLayout {
                 if (currentChat.participants_count != 0) {
                     statusTextView.setText(LocaleController.formatPluralString("Subscribers", currentChat.participants_count));
                 } else if (!ChatObject.isPublic(currentChat)) {
-                    statusTextView.setText(LocaleController.getString("ChannelPrivate", R.string.ChannelPrivate));
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPRIVATE, R.string.ChannelPrivate));
                 } else {
-                    statusTextView.setText(LocaleController.getString("ChannelPublic", R.string.ChannelPublic));
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPUBLIC, R.string.ChannelPublic));
                 }
             } else {
                 if (currentChat.participants_count != 0) {
                     statusTextView.setText(LocaleController.formatPluralString("Members", currentChat.participants_count));
                 } else if (currentChat.has_geo) {
-                    statusTextView.setText(LocaleController.getString("MegaLocation", R.string.MegaLocation));
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEGALOCATION, R.string.MegaLocation));
                 } else if (!ChatObject.isPublic(currentChat)) {
-                    statusTextView.setText(LocaleController.getString("MegaPrivate", R.string.MegaPrivate));
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEGAPRIVATE, R.string.MegaPrivate));
                 } else {
-                    statusTextView.setText(LocaleController.getString("MegaPublic", R.string.MegaPublic));
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEGAPUBLIC, R.string.MegaPublic));
                 }
             }
             avatarImageView.setForUserOrChat(currentChat, avatarDrawable);

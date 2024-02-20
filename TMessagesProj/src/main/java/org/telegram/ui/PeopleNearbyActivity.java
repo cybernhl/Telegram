@@ -313,7 +313,7 @@ public class PeopleNearbyActivity extends BaseFragment implements NotificationCe
         actionBar.setCastShadows(false);
         actionBar.setAddToContainer(false);
         actionBar.setOccupyStatusBar(Build.VERSION.SDK_INT >= 21 && !AndroidUtilities.isTablet());
-        actionBar.setTitle(LocaleController.getString("PeopleNearby", R.string.PeopleNearby));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PEOPLENEARBY, R.string.PeopleNearby));
         actionBar.getTitleTextView().setAlpha(0.0f);
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
@@ -402,15 +402,15 @@ public class PeopleNearbyActivity extends BaseFragment implements NotificationCe
                     updateRows(null);
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(LocaleController.getString("MakeMyselfVisibleTitle", R.string.MakeMyselfVisibleTitle));
-                    builder.setMessage(LocaleController.getString("MakeMyselfVisibleInfo", R.string.MakeMyselfVisibleInfo));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialog, which) -> {
+                    builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MAKEMYSELFVISIBLETITLE, R.string.MakeMyselfVisibleTitle));
+                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MAKEMYSELFVISIBLEINFO, R.string.MakeMyselfVisibleInfo));
+                    builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), (dialog, which) -> {
                         userConfig.sharingMyLocationUntil = 0x7fffffff;
                         userConfig.saveConfig(false);
                         sendRequest(false, 1);
                         updateRows(null);
                     });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                    builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                     showDialog(builder.create());
                 }
                 userConfig.saveConfig(false);
@@ -499,7 +499,7 @@ public class PeopleNearbyActivity extends BaseFragment implements NotificationCe
 
     private void openGroupCreate() {
         if (!canCreateGroup) {
-            AlertsCreator.showSimpleAlert(PeopleNearbyActivity.this, LocaleController.getString("YourLocatedChannelsTooMuch", R.string.YourLocatedChannelsTooMuch));
+            AlertsCreator.showSimpleAlert(PeopleNearbyActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOURLOCATEDCHANNELSTOOMUCH, R.string.YourLocatedChannelsTooMuch));
             return;
         }
         groupCreateActivity = new ActionIntroActivity(ActionIntroActivity.ACTION_TYPE_NEARBY_GROUP_CREATE);
@@ -1006,13 +1006,13 @@ public class PeopleNearbyActivity extends BaseFragment implements NotificationCe
                     ManageChatTextCell actionCell = (ManageChatTextCell) holder.itemView;
                     actionCell.setColors(Theme.key_windowBackgroundWhiteBlueIcon, Theme.key_windowBackgroundWhiteBlueButton);
                     if (position == chatsCreateRow) {
-                        actionCell.setText(LocaleController.getString("NearbyCreateGroup", R.string.NearbyCreateGroup), null, R.drawable.msg_groups_create, chatsStartRow != -1);
+                        actionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEARBYCREATEGROUP, R.string.NearbyCreateGroup), null, R.drawable.msg_groups_create, chatsStartRow != -1);
                     } else if (position == showMeRow) {
                         if (showingMe = (getUserConfig().sharingMyLocationUntil > getConnectionsManager().getCurrentTime())) {
-                            actionCell.setText(LocaleController.getString("StopShowingMe", R.string.StopShowingMe), null, R.drawable.msg_nearby_off, usersStartRow != -1);
+                            actionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STOPSHOWINGME, R.string.StopShowingMe), null, R.drawable.msg_nearby_off, usersStartRow != -1);
                             actionCell.setColors(Theme.key_text_RedRegular, Theme.key_text_RedRegular);
                         } else {
-                            actionCell.setText(LocaleController.getString("MakeMyselfVisible", R.string.MakeMyselfVisible), null, R.drawable.msg_nearby, usersStartRow != -1);
+                            actionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MAKEMYSELFVISIBLE, R.string.MakeMyselfVisible), null, R.drawable.msg_nearby, usersStartRow != -1);
                         }
                     } else if (position == showMoreRow) {
                         actionCell.setText(LocaleController.formatPluralString("ShowVotes", users.size() - 5), null, R.drawable.arrow_more, false);
@@ -1021,9 +1021,9 @@ public class PeopleNearbyActivity extends BaseFragment implements NotificationCe
                 case 3:
                     HeaderCellProgress headerCell = (HeaderCellProgress) holder.itemView;
                     if (position == usersHeaderRow) {
-                        headerCell.setText(LocaleController.getString("PeopleNearbyHeader", R.string.PeopleNearbyHeader));
+                        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PEOPLENEARBYHEADER, R.string.PeopleNearbyHeader));
                     } else if (position == chatsHeaderRow) {
-                        headerCell.setText(LocaleController.getString("ChatsNearbyHeader", R.string.ChatsNearbyHeader));
+                        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATSNEARBYHEADER, R.string.ChatsNearbyHeader));
                     }
                     break;
             }

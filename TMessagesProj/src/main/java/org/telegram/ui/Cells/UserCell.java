@@ -127,7 +127,7 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
             addButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             addButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
             addButton.setBackgroundDrawable(Theme.AdaptiveRipple.filledRectByKey(Theme.key_featuredStickers_addButton, 4));
-            addButton.setText(LocaleController.getString("Add", R.string.Add));
+            addButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADD, R.string.Add));
             addButton.setPadding(AndroidUtilities.dp(17), 0, AndroidUtilities.dp(17), 0);
             addView(addButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 28, Gravity.TOP | (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT), LocaleController.isRTL ? 14 : 0, 15, LocaleController.isRTL ? 0 : 14, 0));
             additionalPadding = (int) Math.ceil((addButton.getPaint().measureText(addButton.getText().toString()) + AndroidUtilities.dp(34 + 14)) / AndroidUtilities.density);
@@ -293,11 +293,11 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
         String text;
         if (exception.story) {
             if (exception.notify <= 0 && exception.auto) {
-                text = LocaleController.getString("NotificationEnabledAutomatically");
+                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONENABLEDAUTOMATICALLY);
             } else if (exception.notify <= 0) {
-                text = LocaleController.getString("NotificationEnabled");
+                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONENABLED);
             } else {
-                text = LocaleController.getString("NotificationDisabled");
+                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONDISABLED);
             }
         } else {
             boolean enabled;
@@ -308,9 +308,9 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
                 delta -= ConnectionsManager.getInstance(currentAccount).getCurrentTime();
                 if (delta <= 0) {
                     if (custom) {
-                        text = LocaleController.getString("NotificationsCustom", R.string.NotificationsCustom);
+                        text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSCUSTOM, R.string.NotificationsCustom);
                     } else {
-                        text = LocaleController.getString("NotificationsUnmuted", R.string.NotificationsUnmuted);
+                        text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSUNMUTED, R.string.NotificationsUnmuted);
                     }
                 } else if (delta < 60 * 60) {
                     text = LocaleController.formatString("WillUnmuteIn", R.string.WillUnmuteIn, LocaleController.formatPluralString("Minutes", delta / 60));
@@ -332,13 +332,13 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
                     enabled = false;
                 }
                 if (enabled && custom) {
-                    text = LocaleController.getString("NotificationsCustom", R.string.NotificationsCustom);
+                    text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSCUSTOM, R.string.NotificationsCustom);
                 } else {
-                    text = enabled ? LocaleController.getString("NotificationsUnmuted", R.string.NotificationsUnmuted) : LocaleController.getString("NotificationsMuted", R.string.NotificationsMuted);
+                    text = enabled ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSUNMUTED, R.string.NotificationsUnmuted) : LocaleController.getString("NotificationsMuted", R.string.NotificationsMuted);
                 }
             }
             if (text == null) {
-                text = LocaleController.getString("NotificationsOff", R.string.NotificationsOff);
+                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSOFF, R.string.NotificationsOff);
             }
             if (exception.auto) {
                 text += ", Auto";
@@ -498,7 +498,7 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
             ((LayoutParams) nameTextView.getLayoutParams()).topMargin = AndroidUtilities.dp(10);
             if (currentUser != null) {
                 if (selfAsSavedMessages && UserObject.isUserSelf(currentUser)) {
-                    nameTextView.setText(LocaleController.getString("SavedMessages", R.string.SavedMessages), true);
+                    nameTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages), true);
                     statusTextView.setText(null);
                     avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_SAVED);
                     avatarImageView.setImage(null, "50_50", avatarDrawable, currentUser);
@@ -576,14 +576,14 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
             if (currentUser.bot) {
                 statusTextView.setTextColor(statusColor);
                 if (currentUser.bot_chat_history || adminTextView != null && adminTextView.getVisibility() == VISIBLE) {
-                    statusTextView.setText(LocaleController.getString("BotStatusRead", R.string.BotStatusRead));
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTSTATUSREAD, R.string.BotStatusRead));
                 } else {
-                    statusTextView.setText(LocaleController.getString("BotStatusCantRead", R.string.BotStatusCantRead));
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTSTATUSCANTREAD, R.string.BotStatusCantRead));
                 }
             } else {
                 if (currentUser.id == UserConfig.getInstance(currentAccount).getClientUserId() || currentUser.status != null && currentUser.status.expires > ConnectionsManager.getInstance(currentAccount).getCurrentTime() || MessagesController.getInstance(currentAccount).onlinePrivacy.containsKey(currentUser.id)) {
                     statusTextView.setTextColor(statusOnlineColor);
-                    statusTextView.setText(LocaleController.getString("Online", R.string.Online));
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ONLINE, R.string.Online));
                 } else {
                     statusTextView.setTextColor(statusColor);
                     statusTextView.setText(LocaleController.formatUserStatus(currentAccount, currentUser));

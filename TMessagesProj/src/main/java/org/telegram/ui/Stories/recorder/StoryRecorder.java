@@ -2097,7 +2097,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
                         }, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     }
                 }
-                Bulletin bulletin = BulletinFactory.of(captionContainer, resourcesProvider).createSimpleBulletin(R.raw.caption_limit, LocaleController.getString("CaptionPremiumTitle"), text);
+                Bulletin bulletin = BulletinFactory.of(captionContainer, resourcesProvider).createSimpleBulletin(R.raw.caption_limit, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CAPTIONPREMIUMTITLE), text);
                 bulletin.tag = 2;
                 bulletin.setDuration(5000);
                 bulletin.show(false);
@@ -2267,7 +2267,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
         captionContainer.addView(captionEdit, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.FILL_HORIZONTAL | Gravity.BOTTOM, 0, 200, 0, 0));
 
         backButton = new FlashViews.ImageViewInvertable(context);
-        backButton.setContentDescription(LocaleController.getString("AccDescrGoBack", R.string.AccDescrGoBack));
+        backButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRGOBACK, R.string.AccDescrGoBack));
         backButton.setScaleType(ImageView.ScaleType.CENTER);
         backButton.setImageResource(R.drawable.msg_photo_back);
         backButton.setColorFilter(new PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY));
@@ -2286,7 +2286,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
         titleTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
         titleTextView.setTextColor(0xffffffff);
         titleTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
-        titleTextView.setText(LocaleController.getString("RecorderNewStory", R.string.RecorderNewStory));
+        titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RECORDERNEWSTORY, R.string.RecorderNewStory));
         titleTextView.getPaint().setShadowLayer(dpf2(1), 0, 1, 0x40000000);
         titleTextView.setAlpha(0f);
         titleTextView.setVisibility(View.GONE);
@@ -2431,7 +2431,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
             .setJoint(1, -20)
             .setDuration(5000)
             .setCloseButton(true)
-            .setText(LocaleController.getString(R.string.StoryCameraDualHint))
+            .setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYCAMERADUALHINT, R.string.StoryCameraDualHint))
             .setOnHiddenListener(() -> MessagesController.getGlobalMainSettings().edit().putInt("storydualhint", MessagesController.getGlobalMainSettings().getInt("storydualhint", 0) + 1).apply());
         dualHint.setPadding(dp(8), 0, dp(8), 0);
         actionBarContainer.addView(dualHint, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP, 0, 52, 0, 0));
@@ -2459,7 +2459,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
 
         cameraHint = new HintView2(activity, HintView2.DIRECTION_BOTTOM)
                 .setMultilineText(true)
-                .setText(LocaleController.getString(R.string.StoryCameraHint2))
+                .setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYCAMERAHINT2, R.string.StoryCameraHint2))
                 .setMaxWidth(320)
                 .setDuration(5000L)
                 .setTextAlign(Layout.Alignment.ALIGN_CENTER);
@@ -2536,7 +2536,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
                         ((Spannable) text).getSpans(0, text.length(), TextStyleSpan.class).length > 0 ||
                         ((Spannable) text).getSpans(0, text.length(), URLSpan.class).length > 0
                     )) {
-                        BulletinFactory.of(windowView, resourcesProvider).createSimpleBulletin(R.raw.voip_invite, premiumText(LocaleController.getString("StoryPremiumFormatting", R.string.StoryPremiumFormatting))).show(true);
+                        BulletinFactory.of(windowView, resourcesProvider).createSimpleBulletin(R.raw.voip_invite, premiumText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPREMIUMFORMATTING, R.string.StoryPremiumFormatting))).show(true);
                         AndroidUtilities.shakeViewSpring(captionEdit, shiftDp = -shiftDp);
                         return;
                     }
@@ -2889,16 +2889,16 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
         switch (mode) {
             case Camera.Parameters.FLASH_MODE_ON:
                 resId = R.drawable.media_photo_flash_on2;
-                flashButton.setContentDescription(LocaleController.getString("AccDescrCameraFlashOn", R.string.AccDescrCameraFlashOn));
+                flashButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRCAMERAFLASHON, R.string.AccDescrCameraFlashOn));
                 break;
             case Camera.Parameters.FLASH_MODE_AUTO:
                 resId = R.drawable.media_photo_flash_auto2;
-                flashButton.setContentDescription(LocaleController.getString("AccDescrCameraFlashAuto", R.string.AccDescrCameraFlashAuto));
+                flashButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRCAMERAFLASHAUTO, R.string.AccDescrCameraFlashAuto));
                 break;
             default:
             case Camera.Parameters.FLASH_MODE_OFF:
                 resId = R.drawable.media_photo_flash_off2;
-                flashButton.setContentDescription(LocaleController.getString("AccDescrCameraFlashOff", R.string.AccDescrCameraFlashOff));
+                flashButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRCAMERAFLASHOFF, R.string.AccDescrCameraFlashOff));
                 break;
         }
         flashButton.setIcon(flashButtonResId = resId, animated && flashButtonResId != resId);
@@ -3098,7 +3098,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
             }, () /* onVideoStart */ -> {
                 whenStarted.run();
 
-                hintTextView.setText(byLongPress ? LocaleController.getString("StoryHintSwipeToZoom", R.string.StoryHintSwipeToZoom) : LocaleController.getString("StoryHintPinchToZoom", R.string.StoryHintPinchToZoom), false);
+                hintTextView.setText(byLongPress ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYHINTSWIPETOZOOM, R.string.StoryHintSwipeToZoom) : LocaleController.getString("StoryHintPinchToZoom", R.string.StoryHintPinchToZoom), false);
                 animateRecording(true, true);
                 setAwakeLock(true);
 
@@ -3116,7 +3116,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
 
         @Override
         public void onVideoRecordLocked() {
-            hintTextView.setText(LocaleController.getString("StoryHintPinchToZoom", R.string.StoryHintPinchToZoom), true);
+            hintTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYHINTPINCHTOZOOM, R.string.StoryHintPinchToZoom), true);
         }
 
         @Override
@@ -3431,7 +3431,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
             }
             CharSequence repostCaption = outputEntry.repostCaption;
             if (TextUtils.isEmpty(repostCaption)) {
-                SpannableString s = new SpannableString(LocaleController.getString(R.string.Story));
+                SpannableString s = new SpannableString(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORY, R.string.Story));
                 s.setSpan(new CharacterStyle() {
                     @Override
                     public void updateDrawState(TextPaint tp) {
@@ -3923,7 +3923,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
         }
         if (toPage == PAGE_PREVIEW) {
             videoError = false;
-            previewButtons.setShareText(outputEntry != null && outputEntry.isEdit ? LocaleController.getString("Done", R.string.Done) : LocaleController.getString("Next", R.string.Next));
+            previewButtons.setShareText(outputEntry != null && outputEntry.isEdit ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done) : LocaleController.getString("Next", R.string.Next));
 //            privacySelector.set(outputEntry, false);
             if (!previewAlreadySet) {
                 if (outputEntry != null && outputEntry.isRepostMessage) {
@@ -3934,7 +3934,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
             }
             previewAlreadySet = false;
             captionEdit.editText.getEditText().setOnPremiumMenuLockClickListener(MessagesController.getInstance(currentAccount).storyEntitiesAllowed() ? null : () -> {
-                BulletinFactory.of(windowView, resourcesProvider).createSimpleBulletin(R.raw.voip_invite, premiumText(LocaleController.getString("StoryPremiumFormatting", R.string.StoryPremiumFormatting))).show(true);
+                BulletinFactory.of(windowView, resourcesProvider).createSimpleBulletin(R.raw.voip_invite, premiumText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPREMIUMFORMATTING, R.string.StoryPremiumFormatting))).show(true);
             });
             if (outputEntry != null && (outputEntry.isDraft || outputEntry.isEdit)) {
                 if (outputEntry.paintFile != null) {
@@ -3968,9 +3968,9 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
             titleTextView.setVisibility(View.VISIBLE);
             titleTextView.setTranslationX(0);
             if (outputEntry != null && outputEntry.isEdit) {
-                titleTextView.setText(LocaleController.getString(R.string.RecorderEditStory));
+                titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RECORDEREDITSTORY, R.string.RecorderEditStory));
             } else if (outputEntry != null && outputEntry.isRepostMessage) {
-                titleTextView.setText(LocaleController.getString(R.string.RecorderRepost));
+                titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RECORDERREPOST, R.string.RecorderRepost));
             } else if (outputEntry != null && outputEntry.isRepost) {
                 SpannableStringBuilder title = new SpannableStringBuilder();
                 AvatarSpan span = new AvatarSpan(titleTextView, currentAccount, 32);
@@ -3990,7 +3990,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
                 }
                 titleTextView.setText(title);
             } else {
-                titleTextView.setText(LocaleController.getString(R.string.RecorderNewStory));
+                titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RECORDERNEWSTORY, R.string.RecorderNewStory));
             }
 
 //            MediaDataController.getInstance(currentAccount).checkStickers(MediaDataController.TYPE_EMOJIPACKS);
@@ -5259,7 +5259,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
                             return;
                         }
                         if (savedDualHint != null) {
-                            CharSequence text = isFrontface() ? LocaleController.getString(R.string.StoryCameraSavedDualBackHint) : LocaleController.getString(R.string.StoryCameraSavedDualFrontHint);
+                            CharSequence text = isFrontface() ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYCAMERASAVEDDUALBACKHINT, R.string.StoryCameraSavedDualBackHint) : LocaleController.getString(R.string.StoryCameraSavedDualFrontHint);
                             savedDualHint.setMaxWidthPx(HintView2.cutInFancyHalf(text, savedDualHint.getTextPaint()));
                             savedDualHint.setText(text);
                             savedDualHint.show();
@@ -5415,10 +5415,10 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
 
     private void showDismissEntry() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), resourcesProvider);
-        builder.setTitle(LocaleController.getString("DiscardChanges", R.string.DiscardChanges));
-        builder.setMessage(LocaleController.getString("PhotoEditorDiscardAlert", R.string.PhotoEditorDiscardAlert));
+        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISCARDCHANGES, R.string.DiscardChanges));
+        builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHOTOEDITORDISCARDALERT, R.string.PhotoEditorDiscardAlert));
         if (outputEntry != null && !outputEntry.isEdit) {
-            builder.setNeutralButton(outputEntry.isDraft ? LocaleController.getString("StoryKeepDraft") : LocaleController.getString("StorySaveDraft"), (di, i) -> {
+            builder.setNeutralButton(outputEntry.isDraft ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYKEEPDRAFT) : LocaleController.getString("StorySaveDraft"), (di, i) -> {
                 if (outputEntry == null) {
                     return;
                 }
@@ -5442,7 +5442,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
                 navigateTo(PAGE_CAMERA, true);
             });
         }
-        builder.setPositiveButton(outputEntry != null && outputEntry.isDraft && !outputEntry.isEdit ? LocaleController.getString("StoryDeleteDraft") : LocaleController.getString("Discard", R.string.Discard), (dialogInterface, i) -> {
+        builder.setPositiveButton(outputEntry != null && outputEntry.isDraft && !outputEntry.isEdit ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYDELETEDRAFT) : LocaleController.getString("Discard", R.string.Discard), (dialogInterface, i) -> {
             if (outputEntry != null && !(outputEntry.isEdit || outputEntry.isRepost && !outputEntry.isRepostMessage) && outputEntry.isDraft) {
                 MessagesController.getInstance(currentAccount).getStoriesController().getDraftsController().delete(outputEntry);
                 outputEntry = null;
@@ -5453,7 +5453,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
                 navigateTo(PAGE_CAMERA, true);
             }
         });
-        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+        builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
         AlertDialog dialog = builder.create();
         dialog.show();
         View positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
@@ -5509,8 +5509,8 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
                 if (activity.shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
                     new AlertDialog.Builder(getContext(), resourcesProvider)
                         .setTopAnimation(R.raw.permission_request_camera, AlertsCreator.PERMISSIONS_REQUEST_TOP_ICON_SIZE, false, Theme.getColor(Theme.key_dialogTopBackground))
-                        .setMessage(AndroidUtilities.replaceTags(LocaleController.getString("PermissionNoCameraWithHint", R.string.PermissionNoCameraWithHint)))
-                        .setPositiveButton(LocaleController.getString("PermissionOpenSettings", R.string.PermissionOpenSettings), (dialogInterface, i) -> {
+                        .setMessage(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PERMISSIONNOCAMERAWITHHINT, R.string.PermissionNoCameraWithHint)))
+                        .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PERMISSIONOPENSETTINGS, R.string.PermissionOpenSettings), (dialogInterface, i) -> {
                             try {
                                 Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                                 intent.setData(Uri.parse("package:" + ApplicationLoader.applicationContext.getPackageName()));
@@ -5519,7 +5519,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
                                 FileLog.e(e);
                             }
                         })
-                        .setNegativeButton(LocaleController.getString("ContactsPermissionAlertNotNow", R.string.ContactsPermissionAlertNotNow), null)
+                        .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTACTSPERMISSIONALERTNOTNOW, R.string.ContactsPermissionAlertNotNow), null)
                         .create()
                         .show();
                     return;
@@ -5647,8 +5647,8 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
             } else {
                 new AlertDialog.Builder(getContext(), resourcesProvider)
                     .setTopAnimation(R.raw.permission_request_folder, AlertsCreator.PERMISSIONS_REQUEST_TOP_ICON_SIZE, false, Theme.getColor(Theme.key_dialogTopBackground))
-                    .setMessage(AndroidUtilities.replaceTags(LocaleController.getString(R.string.PermissionStorageWithHint)))
-                    .setPositiveButton(LocaleController.getString("PermissionOpenSettings", R.string.PermissionOpenSettings), (dialogInterface, i) -> {
+                    .setMessage(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PERMISSIONSTORAGEWITHHINT, R.string.PermissionStorageWithHint)))
+                    .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PERMISSIONOPENSETTINGS, R.string.PermissionOpenSettings), (dialogInterface, i) -> {
                         try {
                             Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                             intent.setData(Uri.parse("package:" + ApplicationLoader.applicationContext.getPackageName()));
@@ -5657,7 +5657,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
                             FileLog.e(e);
                         }
                     })
-                    .setNegativeButton(LocaleController.getString("ContactsPermissionAlertNotNow", R.string.ContactsPermissionAlertNotNow), null)
+                    .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTACTSPERMISSIONALERTNOTNOW, R.string.ContactsPermissionAlertNotNow), null)
                     .create()
                     .show();
             }
@@ -5665,8 +5665,8 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
             if (!granted) {
                 new AlertDialog.Builder(getContext(), resourcesProvider)
                     .setTopAnimation(R.raw.permission_request_camera, AlertsCreator.PERMISSIONS_REQUEST_TOP_ICON_SIZE, false, Theme.getColor(Theme.key_dialogTopBackground))
-                    .setMessage(AndroidUtilities.replaceTags(LocaleController.getString("PermissionNoCameraMicVideo", R.string.PermissionNoCameraMicVideo)))
-                    .setPositiveButton(LocaleController.getString("PermissionOpenSettings", R.string.PermissionOpenSettings), (dialogInterface, i) -> {
+                    .setMessage(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PERMISSIONNOCAMERAMICVIDEO, R.string.PermissionNoCameraMicVideo)))
+                    .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PERMISSIONOPENSETTINGS, R.string.PermissionOpenSettings), (dialogInterface, i) -> {
                         try {
                             Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                             intent.setData(Uri.parse("package:" + ApplicationLoader.applicationContext.getPackageName()));
@@ -5675,7 +5675,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
                             FileLog.e(e);
                         }
                     })
-                    .setNegativeButton(LocaleController.getString("ContactsPermissionAlertNotNow", R.string.ContactsPermissionAlertNotNow), null)
+                    .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTACTSPERMISSIONALERTNOTNOW, R.string.ContactsPermissionAlertNotNow), null)
                     .create()
                     .show();
             }
@@ -5683,8 +5683,8 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
             if (!granted) {
                 new AlertDialog.Builder(getContext(), resourcesProvider)
                     .setTopAnimation(R.raw.permission_request_folder, AlertsCreator.PERMISSIONS_REQUEST_TOP_ICON_SIZE, false, Theme.getColor(Theme.key_dialogTopBackground))
-                    .setMessage(AndroidUtilities.replaceTags(LocaleController.getString("PermissionNoAudioStorageStory", R.string.PermissionNoAudioStorageStory)))
-                    .setPositiveButton(LocaleController.getString("PermissionOpenSettings", R.string.PermissionOpenSettings), (dialogInterface, i) -> {
+                    .setMessage(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PERMISSIONNOAUDIOSTORAGESTORY, R.string.PermissionNoAudioStorageStory)))
+                    .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PERMISSIONOPENSETTINGS, R.string.PermissionOpenSettings), (dialogInterface, i) -> {
                         try {
                             Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                             intent.setData(Uri.parse("package:" + ApplicationLoader.applicationContext.getPackageName()));
@@ -5693,7 +5693,7 @@ public class StoryRecorder implements NotificationCenter.NotificationCenterDeleg
                             FileLog.e(e);
                         }
                     })
-                    .setNegativeButton(LocaleController.getString("ContactsPermissionAlertNotNow", R.string.ContactsPermissionAlertNotNow), null)
+                    .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTACTSPERMISSIONALERTNOTNOW, R.string.ContactsPermissionAlertNotNow), null)
                     .create()
                     .show();
             }

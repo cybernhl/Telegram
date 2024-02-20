@@ -216,17 +216,17 @@ public class ContentPreviewViewer {
                 ArrayList<Integer> icons = new ArrayList<>();
                 if (delegate != null) {
                     if (delegate.needSend(currentContentType) && !delegate.isInScheduleMode()) {
-                        items.add(LocaleController.getString("SendStickerPreview", R.string.SendStickerPreview));
+                        items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDSTICKERPREVIEW, R.string.SendStickerPreview));
                         icons.add(R.drawable.msg_send);
                         actions.add(0);
                     }
                     if (delegate.needSend(currentContentType) && !delegate.isInScheduleMode()) {
-                        items.add(LocaleController.getString("SendWithoutSound", R.string.SendWithoutSound));
+                        items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDWITHOUTSOUND, R.string.SendWithoutSound));
                         icons.add(R.drawable.input_notify_off);
                         actions.add(6);
                     }
                     if (delegate.canSchedule()) {
-                        items.add(LocaleController.getString("Schedule", R.string.Schedule));
+                        items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SCHEDULE, R.string.Schedule));
                         icons.add(R.drawable.msg_autodelete);
                         actions.add(3);
                     }
@@ -236,18 +236,18 @@ public class ContentPreviewViewer {
                         actions.add(1);
                     }
                     if (delegate.needRemove()) {
-                        items.add(LocaleController.getString("ImportStickersRemoveMenu", R.string.ImportStickersRemoveMenu));
+                        items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_IMPORTSTICKERSREMOVEMENU, R.string.ImportStickersRemoveMenu));
                         icons.add(R.drawable.msg_delete);
                         actions.add(5);
                     }
                 }
                 if (!MessageObject.isMaskDocument(currentDocument) && (inFavs || MediaDataController.getInstance(currentAccount).canAddStickerToFavorites() && MessageObject.isStickerHasSet(currentDocument))) {
-                    items.add(inFavs ? LocaleController.getString("DeleteFromFavorites", R.string.DeleteFromFavorites) : LocaleController.getString("AddToFavorites", R.string.AddToFavorites));
+                    items.add(inFavs ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETEFROMFAVORITES, R.string.DeleteFromFavorites) : LocaleController.getString("AddToFavorites", R.string.AddToFavorites));
                     icons.add(inFavs ? R.drawable.msg_unfave : R.drawable.msg_fave);
                     actions.add(2);
                 }
                 if (isRecentSticker) {
-                    items.add(LocaleController.getString("DeleteFromRecent", R.string.DeleteFromRecent));
+                    items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETEFROMRECENT, R.string.DeleteFromRecent));
                     icons.add(R.drawable.msg_delete);
                     actions.add(4);
                 }
@@ -359,35 +359,35 @@ public class ContentPreviewViewer {
                 ArrayList<Integer> icons = new ArrayList<>();
 
                 if (delegate.needSend(currentContentType)) {
-                    items.add(LocaleController.getString("SendEmojiPreview", R.string.SendEmojiPreview));
+                    items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDEMOJIPREVIEW, R.string.SendEmojiPreview));
                     icons.add(R.drawable.msg_send);
                     actions.add(0);
                 }
                 Boolean canSetAsStatus = delegate.canSetAsStatus(currentDocument);
                 if (canSetAsStatus != null) {
                     if (canSetAsStatus) {
-                        items.add(LocaleController.getString("SetAsEmojiStatus", R.string.SetAsEmojiStatus));
+                        items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETASEMOJISTATUS, R.string.SetAsEmojiStatus));
                         icons.add(R.drawable.msg_smile_status);
                         actions.add(1);
                     } else {
-                        items.add(LocaleController.getString("RemoveStatus", R.string.RemoveStatus));
+                        items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REMOVESTATUS, R.string.RemoveStatus));
                         icons.add(R.drawable.msg_smile_status);
                         actions.add(2);
                     }
                 }
                 if (delegate.needCopy(currentDocument)) {
-                    items.add(LocaleController.getString("CopyEmojiPreview", R.string.CopyEmojiPreview));
+                    items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_COPYEMOJIPREVIEW, R.string.CopyEmojiPreview));
                     icons.add(R.drawable.msg_copy);
                     actions.add(3);
                 }
                 if (delegate.needRemoveFromRecent(currentDocument)) {
-                    items.add(LocaleController.getString("RemoveFromRecent", R.string.RemoveFromRecent));
+                    items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REMOVEFROMRECENT, R.string.RemoveFromRecent));
                     icons.add(R.drawable.msg_delete);
                     actions.add(4);
                 }
                 final boolean inFavs = MediaDataController.getInstance(currentAccount).isStickerInFavorites(currentDocument);
                 if (!MessageObject.isAnimatedEmoji(currentDocument) && !MessageObject.isMaskDocument(currentDocument) && (inFavs || MediaDataController.getInstance(currentAccount).canAddStickerToFavorites() && MessageObject.isStickerHasSet(currentDocument))) {
-                    items.add(inFavs ? LocaleController.getString("DeleteFromFavorites", R.string.DeleteFromFavorites) : LocaleController.getString("AddToFavorites", R.string.AddToFavorites));
+                    items.add(inFavs ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETEFROMFAVORITES, R.string.DeleteFromFavorites) : LocaleController.getString("AddToFavorites", R.string.AddToFavorites));
                     icons.add(inFavs ? R.drawable.msg_unfave : R.drawable.msg_fave);
                     actions.add(5);
                 }
@@ -497,17 +497,17 @@ public class ContentPreviewViewer {
                 ArrayList<Integer> icons = new ArrayList<>();
 
                 if (delegate.needSend(currentContentType) && !delegate.isInScheduleMode()) {
-                    items.add(LocaleController.getString("SendGifPreview", R.string.SendGifPreview));
+                    items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDGIFPREVIEW, R.string.SendGifPreview));
                     icons.add(R.drawable.msg_send);
                     actions.add(0);
                 }
                 if (delegate.needSend(currentContentType) && !delegate.isInScheduleMode()) {
-                    items.add(LocaleController.getString("SendWithoutSound", R.string.SendWithoutSound));
+                    items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDWITHOUTSOUND, R.string.SendWithoutSound));
                     icons.add(R.drawable.input_notify_off);
                     actions.add(4);
                 }
                 if (delegate.canSchedule()) {
-                    items.add(LocaleController.getString("Schedule", R.string.Schedule));
+                    items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SCHEDULE, R.string.Schedule));
                     icons.add(R.drawable.msg_autodelete);
                     actions.add(3);
                 }

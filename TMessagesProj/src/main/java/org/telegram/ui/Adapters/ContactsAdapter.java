@@ -531,11 +531,11 @@ public class ContactsAdapter extends RecyclerListView.SectionsAdapter {
                 case 2:
                     GraySectionCell sectionCell = (GraySectionCell) holder.itemView;
                     if (sortType == SORT_TYPE_NONE) {
-                        sectionCell.setText(LocaleController.getString("Contacts", R.string.Contacts));
+                        sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTACTS, R.string.Contacts));
                     } else if (sortType == SORT_TYPE_BY_NAME) {
-                        sectionCell.setText(LocaleController.getString("SortedByName", R.string.SortedByName));
+                        sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SORTEDBYNAME, R.string.SortedByName));
                     } else {
-                        sectionCell.setText(LocaleController.getString("SortedByLastSeen", R.string.SortedByLastSeen));
+                        sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SORTEDBYLASTSEEN, R.string.SortedByLastSeen));
                     }
                     break;
             }
@@ -574,23 +574,23 @@ public class ContactsAdapter extends RecyclerListView.SectionsAdapter {
                 if (section == 0) {
                     if (needPhonebook) {
                         if (position == 0) {
-                            textCell.setTextAndIcon(LocaleController.getString("InviteFriends", R.string.InviteFriends), R.drawable.msg_invite, false);
+                            textCell.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITEFRIENDS, R.string.InviteFriends), R.drawable.msg_invite, false);
                         } else if (position == 1) {
-                            textCell.setTextAndIcon(LocaleController.getString("AddPeopleNearby", R.string.AddPeopleNearby), R.drawable.msg_location, false);
+                            textCell.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDPEOPLENEARBY, R.string.AddPeopleNearby), R.drawable.msg_location, false);
                         }
                     } else if (isAdmin) {
                         if (isChannel) {
-                            textCell.setTextAndIcon(LocaleController.getString("ChannelInviteViaLink", R.string.ChannelInviteViaLink), R.drawable.msg_link2, false);
+                            textCell.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELINVITEVIALINK, R.string.ChannelInviteViaLink), R.drawable.msg_link2, false);
                         } else {
-                            textCell.setTextAndIcon(LocaleController.getString("InviteToGroupByLink", R.string.InviteToGroupByLink), R.drawable.msg_link2, false);
+                            textCell.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITETOGROUPBYLINK, R.string.InviteToGroupByLink), R.drawable.msg_link2, false);
                         }
                     } else {
                         if (position == 0) {
-                            textCell.setTextAndIcon(LocaleController.getString("NewGroup", R.string.NewGroup), R.drawable.msg_groups, false);
+                            textCell.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWGROUP, R.string.NewGroup), R.drawable.msg_groups, false);
                         } else if (position == 1) {
-                            textCell.setTextAndIcon(LocaleController.getString("NewSecretChat", R.string.NewSecretChat), R.drawable.msg_secret, false);
+                            textCell.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWSECRETCHAT, R.string.NewSecretChat), R.drawable.msg_secret, false);
                         } else if (position == 2) {
-                            textCell.setTextAndIcon(LocaleController.getString("NewChannel", R.string.NewChannel), R.drawable.msg_channel, false);
+                            textCell.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWCHANNEL, R.string.NewChannel), R.drawable.msg_channel, false);
                         }
                     }
                 } else {
@@ -607,13 +607,13 @@ public class ContactsAdapter extends RecyclerListView.SectionsAdapter {
             case 2:
                 GraySectionCell sectionCell = (GraySectionCell) holder.itemView;
                 if (hasStories) {
-                    sectionCell.setText(LocaleController.getString("HiddenStories", R.string.HiddenStories));
+                    sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_HIDDENSTORIES, R.string.HiddenStories));
                 } else if (sortType == SORT_TYPE_NONE) {
-                    sectionCell.setText(LocaleController.getString("Contacts", R.string.Contacts));
+                    sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTACTS, R.string.Contacts));
                 } else if (sortType == SORT_TYPE_BY_NAME) {
-                    sectionCell.setText(LocaleController.getString("SortedByName", R.string.SortedByName));
+                    sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SORTEDBYNAME, R.string.SortedByName));
                 } else {
-                    sectionCell.setText(LocaleController.getString("SortedByLastSeen", R.string.SortedByLastSeen));
+                    sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SORTEDBYLASTSEEN, R.string.SortedByLastSeen));
                 }
                 break;
         }

@@ -123,7 +123,7 @@ public class ChatCustomReactionsEditActivity extends BaseFragment implements Not
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public View createView(Context context) {
-        actionBar.setTitle(LocaleController.getString("Reactions", R.string.Reactions));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REACTIONS, R.string.Reactions));
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
 
@@ -161,11 +161,11 @@ public class ChatCustomReactionsEditActivity extends BaseFragment implements Not
         infoCell.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText4));
         infoCell.setTopPadding(12);
         infoCell.setBottomPadding(16);
-        infoCell.setText(LocaleController.getString("ReactionAddEmojiFromAnyPack", R.string.ReactionAddEmojiFromAnyPack));
+        infoCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REACTIONADDEMOJIFROMANYPACK, R.string.ReactionAddEmojiFromAnyPack));
         contentLayout.addView(infoCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         HeaderCell headerCell = new HeaderCell(context);
-        headerCell.setText(LocaleController.getString("AvailableReactions", R.string.AvailableReactions));
+        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AVAILABLEREACTIONS, R.string.AvailableReactions));
         headerCell.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
         headerCell.setTextSize(15);
         headerCell.setTopMargin(14);
@@ -208,7 +208,7 @@ public class ChatCustomReactionsEditActivity extends BaseFragment implements Not
         infoCell2.setTopPadding(12);
         infoCell2.setBottomPadding(70);
         infoCell2.setText(AndroidUtilities.replaceSingleTag(
-                LocaleController.getString("ReactionCreateOwnPack", R.string.ReactionCreateOwnPack),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REACTIONCREATEOWNPACK, R.string.ReactionCreateOwnPack),
                 Theme.key_chat_messageLinkIn, 0,
                 () -> presentFragment(ChatActivity.of(429000)),
                 getResourceProvider()
@@ -319,7 +319,7 @@ public class ChatCustomReactionsEditActivity extends BaseFragment implements Not
             editText.append(editable);
             setCheckedEnableReactionCell(SELECT_TYPE_NONE, false);
         }
-        enableReactionsCell.setTextAndCheck(LocaleController.getString("EnableReactions", R.string.EnableReactions), selectedType != SELECT_TYPE_NONE, false);
+        enableReactionsCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENABLEREACTIONS, R.string.EnableReactions), selectedType != SELECT_TYPE_NONE, false);
         editText.addReactionsSpan();
 
         fragmentView = rootLayout;

@@ -214,7 +214,7 @@ public class FloatingDebugView extends FrameLayout implements NotificationCenter
 
         titleView = new TextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        titleView.setText(LocaleController.getString(R.string.DebugMenu));
+        titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DEBUGMENU, R.string.DebugMenu));
         titleView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         titleView.setPadding(AndroidUtilities.dp(24), AndroidUtilities.dp(19), AndroidUtilities.dp(24), AndroidUtilities.dp(19));
         bigLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
@@ -496,7 +496,7 @@ public class FloatingDebugView extends FrameLayout implements NotificationCenter
             showBigMenu(false);
         }));
 
-        items.add(new FloatingDebugController.DebugItem(LocaleController.getString(R.string.DebugGeneral)));
+        items.add(new FloatingDebugController.DebugItem(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DEBUGGENERAL, R.string.DebugGeneral)));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             items.add(new FloatingDebugController.DebugItem(LocaleController.getString(SharedConfig.debugWebView ? R.string.DebugMenuDisableWebViewDebug : R.string.DebugMenuEnableWebViewDebug), ()->{
                 SharedConfig.toggleDebugWebView();
@@ -534,7 +534,7 @@ public class FloatingDebugView extends FrameLayout implements NotificationCenter
                 NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.needSetDayNightTheme, finalThemeInfo, true, null, -1);
             }, 200);
         }));
-        items.add(new FloatingDebugController.DebugItem(LocaleController.getString(R.string.DebugSendLogs), () -> ProfileActivity.sendLogs((Activity) getContext(), false)));
+        items.add(new FloatingDebugController.DebugItem(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DEBUGSENDLOGS, R.string.DebugSendLogs), () -> ProfileActivity.sendLogs((Activity) getContext(), false)));
         return items;
     }
 

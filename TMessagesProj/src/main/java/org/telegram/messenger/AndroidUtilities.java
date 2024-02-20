@@ -1371,7 +1371,7 @@ public class AndroidUtilities {
             }
             AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getParentActivity());
             builder.setMessage(LocaleController.getString(ApplicationLoader.getMapsProvider().getInstallMapsString()));
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialogInterface, i) -> {
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), (dialogInterface, i) -> {
                 try {
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + pkg));
                     fragment.getParentActivity().startActivityForResult(intent, 500);
@@ -1379,7 +1379,7 @@ public class AndroidUtilities {
                     FileLog.e(e1);
                 }
             });
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
             fragment.showDialog(builder.create());
             return false;
         }
@@ -1704,12 +1704,12 @@ public class AndroidUtilities {
 
         public String getType() {
             if (type == 5) {
-                return LocaleController.getString("ContactBirthday", R.string.ContactBirthday);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTACTBIRTHDAY, R.string.ContactBirthday);
             } else if (type == 6) {
                 if ("ORG".equalsIgnoreCase(getRawType(true))) {
-                    return LocaleController.getString("ContactJob", R.string.ContactJob);
+                    return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTACTJOB, R.string.ContactJob);
                 } else {
-                    return LocaleController.getString("ContactJobTitle", R.string.ContactJobTitle);
+                    return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTACTJOBTITLE, R.string.ContactJobTitle);
                 }
             }
             int idx = fullData.indexOf(':');
@@ -1734,20 +1734,20 @@ public class AndroidUtilities {
                 }
                 switch (value) {
                     case "PREF":
-                        value = LocaleController.getString("PhoneMain", R.string.PhoneMain);
+                        value = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHONEMAIN, R.string.PhoneMain);
                         break;
                     case "HOME":
-                        value = LocaleController.getString("PhoneHome", R.string.PhoneHome);
+                        value = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHONEHOME, R.string.PhoneHome);
                         break;
                     case "MOBILE":
                     case "CELL":
-                        value = LocaleController.getString("PhoneMobile", R.string.PhoneMobile);
+                        value = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHONEMOBILE, R.string.PhoneMobile);
                         break;
                     case "OTHER":
-                        value = LocaleController.getString("PhoneOther", R.string.PhoneOther);
+                        value = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHONEOTHER, R.string.PhoneOther);
                         break;
                     case "WORK":
-                        value = LocaleController.getString("PhoneWork", R.string.PhoneWork);
+                        value = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHONEWORK, R.string.PhoneWork);
                         break;
                 }
             }
@@ -3631,8 +3631,8 @@ public class AndroidUtilities {
                     colorsReplacement.put("info2.**", parentFragment.getThemedColor(Theme.key_dialogTopBackground));
                     builder.setTopAnimation(R.raw.not_available, AlertsCreator.NEW_DENY_DIALOG_TOP_ICON_SIZE, false, parentFragment.getThemedColor(Theme.key_dialogTopBackground), colorsReplacement);
                     builder.setTopAnimationIsNew(true);
-                    builder.setMessage(LocaleController.getString("IncorrectTheme", R.string.IncorrectTheme));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INCORRECTTHEME, R.string.IncorrectTheme));
+                    builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                     parentFragment.showDialog(builder.create());
                 }
             } else {
@@ -3681,7 +3681,7 @@ public class AndroidUtilities {
                     colorsReplacement.put("info2.**", parentFragment.getThemedColor(Theme.key_dialogTopBackground));
                     builder.setTopAnimation(R.raw.not_available, AlertsCreator.NEW_DENY_DIALOG_TOP_ICON_SIZE, false, parentFragment.getThemedColor(Theme.key_dialogTopBackground), colorsReplacement);
                     builder.setTopAnimationIsNew(true);
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                    builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                     builder.setMessage(LocaleController.formatString("NoHandleAppInstalled", R.string.NoHandleAppInstalled, message.getDocument().mime_type));
                     if (parentFragment != null) {
                         parentFragment.showDialog(builder.create());
@@ -4065,7 +4065,7 @@ public class AndroidUtilities {
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         if (!TextUtils.isEmpty(secret)) {
             TextView titleTextView = new TextView(activity);
-            titleTextView.setText(LocaleController.getString("UseProxyTelegramInfo2", R.string.UseProxyTelegramInfo2));
+            titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYTELEGRAMINFO2, R.string.UseProxyTelegramInfo2));
             titleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextGray4));
             titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             titleTextView.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
@@ -4080,22 +4080,22 @@ public class AndroidUtilities {
             String detail = null;
             if (a == 0) {
                 text = address;
-                detail = LocaleController.getString("UseProxyAddress", R.string.UseProxyAddress);
+                detail = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYADDRESS, R.string.UseProxyAddress);
             } else if (a == 1) {
                 text = "" + port;
-                detail = LocaleController.getString("UseProxyPort", R.string.UseProxyPort);
+                detail = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYPORT, R.string.UseProxyPort);
             } else if (a == 2) {
                 text = secret;
-                detail = LocaleController.getString("UseProxySecret", R.string.UseProxySecret);
+                detail = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYSECRET, R.string.UseProxySecret);
             } else if (a == 3) {
                 text = user;
-                detail = LocaleController.getString("UseProxyUsername", R.string.UseProxyUsername);
+                detail = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYUSERNAME, R.string.UseProxyUsername);
             } else if (a == 4) {
                 text = password;
-                detail = LocaleController.getString("UseProxyPassword", R.string.UseProxyPassword);
+                detail = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYPASSWORD, R.string.UseProxyPassword);
             } else if (a == 5) {
-                text = LocaleController.getString(R.string.ProxyBottomSheetChecking);
-                detail = LocaleController.getString(R.string.ProxyStatus);
+                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PROXYBOTTOMSHEETCHECKING, R.string.ProxyBottomSheetChecking);
+                detail = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PROXYSTATUS, R.string.ProxyStatus);
             }
             if (TextUtils.isEmpty(text)) {
                 continue;
@@ -4139,15 +4139,15 @@ public class AndroidUtilities {
                 try {
                     ConnectionsManager.getInstance(UserConfig.selectedAccount).checkProxy(address, Integer.parseInt(port), user, password, secret, time -> AndroidUtilities.runOnUIThread(() -> {
                         if (time == -1) {
-                            cell.getTextView().setText(LocaleController.getString(R.string.Unavailable));
+                            cell.getTextView().setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNAVAILABLE, R.string.Unavailable));
                             cell.getTextView().setTextColor(Theme.getColor(Theme.key_text_RedRegular));
                         } else {
-                            cell.getTextView().setText(LocaleController.getString(R.string.Available) + ", " + LocaleController.formatString(R.string.Ping, time));
+                            cell.getTextView().setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AVAILABLE, R.string.Available) + ", " + LocaleController.formatString(R.string.Ping, time));
                             cell.getTextView().setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGreenText));
                         }
                     }));
                 } catch (NumberFormatException ignored) {
-                    cell.getTextView().setText(LocaleController.getString(R.string.Unavailable));
+                    cell.getTextView().setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNAVAILABLE, R.string.Unavailable));
                     cell.getTextView().setTextColor(Theme.getColor(Theme.key_text_RedRegular));
                 }
             }
@@ -4158,12 +4158,12 @@ public class AndroidUtilities {
         linearLayout.addView(pickerBottomLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.LEFT | Gravity.BOTTOM));
         pickerBottomLayout.cancelButton.setPadding(AndroidUtilities.dp(18), 0, AndroidUtilities.dp(18), 0);
         pickerBottomLayout.cancelButton.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2));
-        pickerBottomLayout.cancelButton.setText(LocaleController.getString("Cancel", R.string.Cancel).toUpperCase());
+        pickerBottomLayout.cancelButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel).toUpperCase());
         pickerBottomLayout.cancelButton.setOnClickListener(view -> dismissRunnable.run());
         pickerBottomLayout.doneButtonTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2));
         pickerBottomLayout.doneButton.setPadding(AndroidUtilities.dp(18), 0, AndroidUtilities.dp(18), 0);
         pickerBottomLayout.doneButtonBadgeTextView.setVisibility(View.GONE);
-        pickerBottomLayout.doneButtonTextView.setText(LocaleController.getString("ConnectingConnectProxy", R.string.ConnectingConnectProxy).toUpperCase());
+        pickerBottomLayout.doneButtonTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONNECTINGCONNECTPROXY, R.string.ConnectingConnectProxy).toUpperCase());
         pickerBottomLayout.doneButton.setOnClickListener(v -> {
             SharedPreferences.Editor editor = MessagesController.getGlobalMainSettings().edit();
             editor.putBoolean("proxy_enabled", true);
@@ -4209,10 +4209,10 @@ public class AndroidUtilities {
                     }
                 }
                 if (!bulletinSent) {
-                    NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.showBulletin, Bulletin.TYPE_SUCCESS, LocaleController.getString(R.string.ProxyAddedSuccess));
+                    NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.showBulletin, Bulletin.TYPE_SUCCESS, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PROXYADDEDSUCCESS, R.string.ProxyAddedSuccess));
                 }
             } else {
-                NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.showBulletin, Bulletin.TYPE_SUCCESS, LocaleController.getString(R.string.ProxyAddedSuccess));
+                NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.showBulletin, Bulletin.TYPE_SUCCESS, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PROXYADDEDSUCCESS, R.string.ProxyAddedSuccess));
             }
             dismissRunnable.run();
         });

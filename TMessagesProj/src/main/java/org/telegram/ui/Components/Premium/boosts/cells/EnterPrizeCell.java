@@ -68,7 +68,7 @@ public class EnterPrizeCell extends LinearLayout {
         editText.setCursorColor(Theme.getColor(Theme.key_chat_messagePanelCursor, resourcesProvider));
         editText.setHandlesColor(Theme.getColor(Theme.key_chat_TextSelectionCursor, resourcesProvider));
         editText.setBackground(null);
-        editText.setHint(LocaleController.getString("BoostingGiveawayEnterYourPrize", R.string.BoostingGiveawayEnterYourPrize));
+        editText.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIVEAWAYENTERYOURPRIZE, R.string.BoostingGiveawayEnterYourPrize));
         editText.addTextChangedListener(new TextWatcher() {
 
             @Override

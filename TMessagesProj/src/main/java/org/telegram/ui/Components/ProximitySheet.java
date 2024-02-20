@@ -161,7 +161,7 @@ public class ProximitySheet extends FrameLayout {
         customView.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 22, 0, 0, 4));
 
         TextView titleView = new TextView(context);
-        titleView.setText(LocaleController.getString("LocationNotifiation", R.string.LocationNotifiation));
+        titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOCATIONNOTIFIATION, R.string.LocationNotifiation));
         titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
@@ -318,7 +318,7 @@ public class ProximitySheet extends FrameLayout {
             if (currentUser == null) {
                 buttonTextView.setText(LocaleController.formatString("LocationNotifiationButtonGroup", R.string.LocationNotifiationButtonGroup, distance));
             } else {
-                String format = LocaleController.getString("LocationNotifiationButtonUser", R.string.LocationNotifiationButtonUser);
+                String format = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOCATIONNOTIFIATIONBUTTONUSER, R.string.LocationNotifiationButtonUser);
                 int width = (int) Math.ceil(buttonTextView.getPaint().measureText(format));
                 int restWidth = (int) ((totalWidth - AndroidUtilities.dp(32 + 62)) * 1.5f - width);
                 CharSequence name = TextUtils.ellipsize(UserObject.getFirstName(currentUser), buttonTextView.getPaint(), Math.max(AndroidUtilities.dp(10), restWidth), TextUtils.TruncateAt.END);

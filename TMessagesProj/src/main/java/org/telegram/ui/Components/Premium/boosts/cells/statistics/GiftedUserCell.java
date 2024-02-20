@@ -93,13 +93,13 @@ public class GiftedUserCell extends UserCell {
             badgeLayout.setVisibility(VISIBLE);
             int months = (boost.expires - boost.date) / 30 / 86400;
             if (boost.unclaimed) {
-                nameTextView.setText(LocaleController.getString("BoostingUnclaimed", R.string.BoostingUnclaimed));
+                nameTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGUNCLAIMED, R.string.BoostingUnclaimed));
                 avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_UNCLAIMED);
                 setAvatarColorByMonths(months);
                 avatarImageView.setForUserOrChat(null, avatarDrawable);
                 nameTextView.setRightDrawable(null);
             } else if (boost.user_id == NO_USER_ID) {
-                nameTextView.setText(LocaleController.getString("BoostingToBeDistributed", R.string.BoostingToBeDistributed));
+                nameTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGTOBEDISTRIBUTED, R.string.BoostingToBeDistributed));
                 avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_TO_BE_DISTRIBUTED);
                 setAvatarColorByMonths(months);
                 avatarImageView.setForUserOrChat(null, avatarDrawable);
@@ -118,7 +118,7 @@ public class GiftedUserCell extends UserCell {
                 badgeTextView.setTextColor(0xFFce8e1f);
                 badgeTextView.setCompoundDrawablesWithIntrinsicBounds(giftDrawable, null, null, null);
                 badgeTextView.setCompoundDrawablePadding(AndroidUtilities.dp(4));
-                badgeTextView.setText(LocaleController.getString("BoostingGift", R.string.BoostingGift));
+                badgeTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIFT, R.string.BoostingGift));
                 badgeLayout.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(12), AndroidUtilities.dp(12), Theme.multAlpha(0xFFce8e1f, 0.2f)));
             }
             if (boost.giveaway) {
@@ -129,7 +129,7 @@ public class GiftedUserCell extends UserCell {
                 badgeTextView.setTextColor(0XFF3391d4);
                 badgeTextView.setCompoundDrawablesWithIntrinsicBounds(giveawayDrawable, null, null, null);
                 badgeTextView.setCompoundDrawablePadding(AndroidUtilities.dp(4));
-                badgeTextView.setText(LocaleController.getString("BoostingGiveaway", R.string.BoostingGiveaway));
+                badgeTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIVEAWAY, R.string.BoostingGiveaway));
                 badgeLayout.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(12), AndroidUtilities.dp(12), Theme.multAlpha(0XFF3391d4, 0.2f)));
             }
         } else {

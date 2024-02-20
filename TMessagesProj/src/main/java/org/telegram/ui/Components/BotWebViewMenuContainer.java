@@ -141,8 +141,8 @@ public class BotWebViewMenuContainer extends FrameLayout implements Notification
             botMenuItem = menu.addItem(1000, R.drawable.ic_ab_other);
             botMenuItem.setVisibility(GONE);
 
-            botMenuItem.addSubItem(R.id.menu_reload_page, R.drawable.msg_retry, LocaleController.getString(R.string.BotWebViewReloadPage));
-            settingsItem = botMenuItem.addSubItem(R.id.menu_settings, R.drawable.msg_settings, LocaleController.getString(R.string.BotWebViewSettings));
+            botMenuItem.addSubItem(R.id.menu_reload_page, R.drawable.msg_retry, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWRELOADPAGE, R.string.BotWebViewReloadPage));
+            settingsItem = botMenuItem.addSubItem(R.id.menu_settings, R.drawable.msg_settings, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWSETTINGS, R.string.BotWebViewSettings));
             settingsItem.setVisibility(View.GONE);
         }
     }
@@ -466,9 +466,9 @@ public class BotWebViewMenuContainer extends FrameLayout implements Notification
             }
             AlertDialog dialog = new AlertDialog.Builder(getContext())
                     .setTitle(botName)
-                    .setMessage(LocaleController.getString(R.string.BotWebViewChangesMayNotBeSaved))
-                    .setPositiveButton(LocaleController.getString(R.string.BotWebViewCloseAnyway), (dialog2, which) -> dismiss())
-                    .setNegativeButton(LocaleController.getString(R.string.Cancel), null)
+                    .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWCHANGESMAYNOTBESAVED, R.string.BotWebViewChangesMayNotBeSaved))
+                    .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWCLOSEANYWAY, R.string.BotWebViewCloseAnyway), (dialog2, which) -> dismiss())
+                    .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null)
                     .create();
             dialog.show();
             TextView textView = (TextView) dialog.getButton(AlertDialog.BUTTON_POSITIVE);

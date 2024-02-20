@@ -992,7 +992,7 @@ public class PeerColorActivity extends BaseFragment implements NotificationCente
             actionBarContainer.addView(tabsView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 40, Gravity.CENTER));
         } else {
             titleView = new SimpleTextView(context);
-            titleView.setText(LocaleController.getString(R.string.ChannelColorTitle2));
+            titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELCOLORTITLE2, R.string.ChannelColorTitle2));
             titleView.setEllipsizeByGradient(true);
             titleView.setTextSize(20);
             titleView.setTextColor(getThemedColor(Theme.key_actionBarDefaultTitle));
@@ -1097,10 +1097,10 @@ public class PeerColorActivity extends BaseFragment implements NotificationCente
         AlertDialog alertDialog = new AlertDialog.Builder(getContext(), getResourceProvider())
             .setTitle(LocaleController.getString(isChannel ? R.string.ChannelColorUnsaved : R.string.UserColorUnsaved))
             .setMessage(LocaleController.getString(isChannel ? R.string.ChannelColorUnsavedMessage : R.string.UserColorUnsavedMessage))
-            .setNegativeButton(LocaleController.getString(R.string.Dismiss), (di, w) -> {
+            .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISMISS, R.string.Dismiss), (di, w) -> {
                 finishFragment();
             })
-            .setPositiveButton(LocaleController.getString(R.string.ApplyTheme), (di, w) -> {
+            .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPLYTHEME, R.string.ApplyTheme), (di, w) -> {
                 buttonClick();
             })
             .create();
@@ -2203,7 +2203,7 @@ public class PeerColorActivity extends BaseFragment implements NotificationCente
                     }
                 }
             } else {
-                subtitleView.setText(LocaleController.getString(R.string.Online));
+                subtitleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ONLINE, R.string.Online));
             }
 
             setWillNotDraw(false);

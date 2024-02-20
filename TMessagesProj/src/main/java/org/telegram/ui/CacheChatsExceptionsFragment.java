@@ -67,7 +67,7 @@ public class CacheChatsExceptionsFragment extends BaseFragment {
                 }
             }
         });
-        actionBar.setTitle(LocaleController.getString(R.string.NotificationsExceptions));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSEXCEPTIONS, R.string.NotificationsExceptions));
         recyclerListView = new RecyclerListView(context);
         DefaultItemAnimator defaultItemAnimator = new DefaultItemAnimator();
         defaultItemAnimator.setDelayAnimations(false);
@@ -146,9 +146,9 @@ public class CacheChatsExceptionsFragment extends BaseFragment {
                 });
             } else if (items.get(position).viewType == VIEW_TYPE_DELETE_ALL) {
                 AlertDialog alertDialog = AlertsCreator.createSimpleAlert(getContext(),
-                        LocaleController.getString("NotificationsDeleteAllExceptionTitle", R.string.NotificationsDeleteAllExceptionTitle),
-                        LocaleController.getString("NotificationsDeleteAllExceptionAlert", R.string.NotificationsDeleteAllExceptionAlert),
-                        LocaleController.getString("Delete", R.string.Delete),
+                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSDELETEALLEXCEPTIONTITLE, R.string.NotificationsDeleteAllExceptionTitle),
+                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSDELETEALLEXCEPTIONALERT, R.string.NotificationsDeleteAllExceptionAlert),
+                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete),
                         () -> {
                             exceptionsDialogs.clear();
                             getMessagesController().getCacheByChatsController().saveKeepMediaExceptions(currentType, exceptionsDialogs);
@@ -244,7 +244,7 @@ public class CacheChatsExceptionsFragment extends BaseFragment {
                     break;
                 case VIEW_TYPE_ADD_EXCEPTION:
                     TextCell textCell = new TextCell(parent.getContext());
-                    textCell.setTextAndIcon(LocaleController.getString("NotificationsAddAnException", R.string.NotificationsAddAnException), R.drawable.msg_contact_add, true);
+                    textCell.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSADDANEXCEPTION, R.string.NotificationsAddAnException), R.drawable.msg_contact_add, true);
                     textCell.setColors(Theme.key_windowBackgroundWhiteBlueIcon, Theme.key_windowBackgroundWhiteBlueButton);
                     view = textCell;
                     view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
@@ -254,7 +254,7 @@ public class CacheChatsExceptionsFragment extends BaseFragment {
                     break;
                 case VIEW_TYPE_DELETE_ALL:
                     textCell = new TextCell(parent.getContext());
-                    textCell.setText(LocaleController.getString("NotificationsDeleteAllException", R.string.NotificationsDeleteAllException), false);
+                    textCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSDELETEALLEXCEPTION, R.string.NotificationsDeleteAllException), false);
                     textCell.setColors(-1, Theme.key_text_RedRegular);
                     view = textCell;
                     view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
@@ -274,7 +274,7 @@ public class CacheChatsExceptionsFragment extends BaseFragment {
                 if (object instanceof TLRPC.User) {
                     TLRPC.User user = (TLRPC.User) object;
                     if (user.self) {
-                        title = LocaleController.getString("SavedMessages", R.string.SavedMessages);
+                        title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages);
                     } else {
                         title = ContactsController.formatName(user.first_name, user.last_name);
                     }

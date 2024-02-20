@@ -518,25 +518,25 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
         if (type == TYPE_KICKED) {
-            actionBar.setTitle(LocaleController.getString("ChannelPermissions", R.string.ChannelPermissions));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPERMISSIONS, R.string.ChannelPermissions));
         } else if (type == TYPE_BANNED) {
-            actionBar.setTitle(LocaleController.getString("ChannelBlacklist", R.string.ChannelBlacklist));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELBLACKLIST, R.string.ChannelBlacklist));
         } else if (type == TYPE_ADMIN) {
-            actionBar.setTitle(LocaleController.getString("ChannelAdministrators", R.string.ChannelAdministrators));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELADMINISTRATORS, R.string.ChannelAdministrators));
         } else if (type == TYPE_USERS) {
             if (selectType == SELECT_TYPE_MEMBERS) {
                 if (isChannel) {
-                    actionBar.setTitle(LocaleController.getString("ChannelSubscribers", R.string.ChannelSubscribers));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELSUBSCRIBERS, R.string.ChannelSubscribers));
                 } else {
-                    actionBar.setTitle(LocaleController.getString("ChannelMembers", R.string.ChannelMembers));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELMEMBERS, R.string.ChannelMembers));
                 }
             } else {
                 if (selectType == SELECT_TYPE_ADMIN) {
-                    actionBar.setTitle(LocaleController.getString("ChannelAddAdmin", R.string.ChannelAddAdmin));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELADDADMIN, R.string.ChannelAddAdmin));
                 } else if (selectType == SELECT_TYPE_BLOCK) {
-                    actionBar.setTitle(LocaleController.getString("ChannelBlockUser", R.string.ChannelBlockUser));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELBLOCKUSER, R.string.ChannelBlockUser));
                 } else if (selectType == SELECT_TYPE_EXCEPTION) {
-                    actionBar.setTitle(LocaleController.getString("ChannelAddException", R.string.ChannelAddException));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELADDEXCEPTION, R.string.ChannelAddException));
                 }
             }
         }
@@ -601,16 +601,16 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                 searchItem.setVisibility(View.GONE);
             }
             if (type == TYPE_KICKED) {
-                searchItem.setSearchFieldHint(LocaleController.getString("ChannelSearchException", R.string.ChannelSearchException));
+                searchItem.setSearchFieldHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELSEARCHEXCEPTION, R.string.ChannelSearchException));
             } else {
-                searchItem.setSearchFieldHint(LocaleController.getString("Search", R.string.Search));
+                searchItem.setSearchFieldHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
             }
             if (!(ChatObject.isChannel(currentChat) || currentChat.creator)) {
                 searchItem.setVisibility(View.GONE);
             }
 
             if (type == TYPE_KICKED) {
-                doneItem = menu.addItemWithWidth(done_button, R.drawable.ic_ab_done, AndroidUtilities.dp(56), LocaleController.getString("Done", R.string.Done));
+                doneItem = menu.addItemWithWidth(done_button, R.drawable.ic_ab_done, AndroidUtilities.dp(56), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done));
             }
         }
 
@@ -638,8 +638,8 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
         progressBar.setVisibility(View.GONE);
 
         emptyView = new StickerEmptyView(context, progressLayout, StickerEmptyView.STICKER_TYPE_SEARCH);
-        emptyView.title.setText(LocaleController.getString("NoResult", R.string.NoResult));
-        emptyView.subtitle.setText(LocaleController.getString("SearchEmptyViewFilteredSubtitle2", R.string.SearchEmptyViewFilteredSubtitle2));
+        emptyView.title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NORESULT, R.string.NoResult));
+        emptyView.subtitle.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHEMPTYVIEWFILTEREDSUBTITLE2, R.string.SearchEmptyViewFilteredSubtitle2));
         emptyView.setVisibility(View.GONE);
         emptyView.setAnimateLayoutChange(true);
         emptyView.showProgress(true, false);
@@ -928,7 +928,7 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                                     }
                                     textCell.setChecked(info.antispam = wasAntispam);
                                     textCell.getCheckBox().setIcon(ChatObject.canUserDoAdminAction(currentChat, ChatObject.ACTION_DELETE_MESSAGES) && (info == null || !info.antispam || getParticipantsCount() >= getMessagesController().telegramAntispamGroupSizeMin) ? 0 : R.drawable.permission_locked);
-                                    BulletinFactory.of(ChatUsersActivity.this).createSimpleBulletin(R.raw.error, LocaleController.getString("UnknownError", R.string.UnknownError)).show();
+                                    BulletinFactory.of(ChatUsersActivity.this).createSimpleBulletin(R.raw.error, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNKNOWNERROR, R.string.UnknownError)).show();
                                 });
                             }
                             antiSpamToggleLoading = false;
@@ -958,7 +958,7 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                                     }
                                     textCell.setChecked(info.participants_hidden = wasParticipantsHidden);
                                     textCell.getCheckBox().setIcon(ChatObject.canUserDoAdminAction(currentChat, ChatObject.ACTION_BLOCK_USERS) && (info == null || !info.participants_hidden || getParticipantsCount() >= getMessagesController().hiddenMembersGroupSizeMin) ? 0 : R.drawable.permission_locked);
-                                    BulletinFactory.of(ChatUsersActivity.this).createSimpleBulletin(R.raw.error, LocaleController.getString("UnknownError", R.string.UnknownError)).show();
+                                    BulletinFactory.of(ChatUsersActivity.this).createSimpleBulletin(R.raw.error, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNKNOWNERROR, R.string.UnknownError)).show();
                                 });
                             }
                             hideMembersToggleLoading = false;
@@ -1016,9 +1016,9 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                     }
                     if (checkCell.hasIcon()) {
                         if (ChatObject.isPublic(currentChat) && (position == pinMessagesRow || position == changeInfoRow)) {
-                            BulletinFactory.of(this).createErrorBulletin(LocaleController.getString("EditCantEditPermissionsPublic", R.string.EditCantEditPermissionsPublic)).show();
+                            BulletinFactory.of(this).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDITCANTEDITPERMISSIONSPUBLIC, R.string.EditCantEditPermissionsPublic)).show();
                         } else {
-                            BulletinFactory.of(this).createErrorBulletin(LocaleController.getString("EditCantEditPermissions", R.string.EditCantEditPermissions)).show();
+                            BulletinFactory.of(this).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDITCANTEDITPERMISSIONS, R.string.EditCantEditPermissions)).show();
                         }
                         return;
                     }
@@ -1145,10 +1145,10 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                             final boolean canEdit = canEditAdmin;
                             final String rankFinal = rank;
                             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                            builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
+                            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
                             builder.setMessage(LocaleController.formatString("AdminWillBeRemoved", R.string.AdminWillBeRemoved, UserObject.getUserName(user)));
-                            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialog, which) -> openRightsEdit(user.id, participant, ar, br, rankFinal, canEdit, selectType == SELECT_TYPE_ADMIN ? 0 : 1, false));
-                            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), (dialog, which) -> openRightsEdit(user.id, participant, ar, br, rankFinal, canEdit, selectType == SELECT_TYPE_ADMIN ? 0 : 1, false));
+                            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                             showDialog(builder.create());
                         } else {
                             openRightsEdit(peerId, participant, adminRights, bannedRights, rank, canEditAdmin, selectType == SELECT_TYPE_ADMIN ? 0 : 1, selectType == SELECT_TYPE_ADMIN || selectType == SELECT_TYPE_EXCEPTION);
@@ -1723,22 +1723,22 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
 
             ItemOptions.makeOptions(this, view)
                 .setScrimViewBackground(new ColorDrawable(Theme.getColor(Theme.key_windowBackgroundWhite)))
-                .addIf(allowSetAdmin, R.drawable.msg_admins, editingAdmin ? LocaleController.getString("EditAdminRights", R.string.EditAdminRights) : LocaleController.getString("SetAsAdmin", R.string.SetAsAdmin), () -> openRightsFor.run(0))
-                .addIf(canChangePermission, R.drawable.msg_permissions, LocaleController.getString("ChangePermissions", R.string.ChangePermissions), () -> {
+                .addIf(allowSetAdmin, R.drawable.msg_admins, editingAdmin ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDITADMINRIGHTS, R.string.EditAdminRights) : LocaleController.getString("SetAsAdmin", R.string.SetAsAdmin), () -> openRightsFor.run(0))
+                .addIf(canChangePermission, R.drawable.msg_permissions, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANGEPERMISSIONS, R.string.ChangePermissions), () -> {
                     if (participant instanceof TLRPC.TL_channelParticipantAdmin || participant instanceof TLRPC.TL_chatParticipantAdmin) {
                         showDialog(
                             new AlertDialog.Builder(getParentActivity())
-                                .setTitle(LocaleController.getString("AppName", R.string.AppName))
+                                .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName))
                                 .setMessage(LocaleController.formatString("AdminWillBeRemoved", R.string.AdminWillBeRemoved, UserObject.getUserName(user)))
-                                .setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialog, which) -> openRightsFor.run(1))
-                                .setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null)
+                                .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), (dialog, which) -> openRightsFor.run(1))
+                                .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null)
                                 .create()
                         );
                     } else {
                         openRightsFor.run(1);
                     }
                 })
-                .addIf(ChatObject.canBlockUsers(currentChat) && canEditAdmin, R.drawable.msg_remove, isChannel ? LocaleController.getString("ChannelRemoveUser", R.string.ChannelRemoveUser) : LocaleController.getString("KickFromGroup", R.string.KickFromGroup), true, () -> {
+                .addIf(ChatObject.canBlockUsers(currentChat) && canEditAdmin, R.drawable.msg_remove, isChannel ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELREMOVEUSER, R.string.ChannelRemoveUser) : LocaleController.getString("KickFromGroup", R.string.KickFromGroup), true, () -> {
                     getMessagesController().deleteParticipantFromChat(chatId, user);
                     removeParticipants(peerId);
                     if (currentChat != null && user != null && BulletinFactory.canShowBulletin(this)) {
@@ -1752,7 +1752,7 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
             ItemOptions options = ItemOptions.makeOptions(this, view);
 
             if (type == TYPE_KICKED && ChatObject.canBlockUsers(currentChat)) {
-                options.add(R.drawable.msg_permissions, LocaleController.getString("ChannelEditPermissions", R.string.ChannelEditPermissions), () -> {
+                options.add(R.drawable.msg_permissions, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELEDITPERMISSIONS, R.string.ChannelEditPermissions), () -> {
                     ChatRightsEditActivity fragment = new ChatRightsEditActivity(peerId, chatId, null, defaultBannedRights, bannedRights, rank, ChatRightsEditActivity.TYPE_BANNED, true, false, null);
                     fragment.setDelegate(new ChatRightsEditActivity.ChatRightsEditActivityDelegate() {
                         @Override
@@ -1773,18 +1773,18 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                     });
                     presentFragment(fragment);
                 });
-                options.add(R.drawable.msg_delete, LocaleController.getString("ChannelDeleteFromList", R.string.ChannelDeleteFromList), true, () -> deletePeer(peerId));
+                options.add(R.drawable.msg_delete, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELDELETEFROMLIST, R.string.ChannelDeleteFromList), true, () -> deletePeer(peerId));
             } else if (type == TYPE_BANNED && ChatObject.canBlockUsers(currentChat)) {
                 if (ChatObject.canAddUsers(currentChat) && peerId > 0) {
-                    options.add(R.drawable.msg_contact_add, isChannel ? LocaleController.getString("ChannelAddToChannel", R.string.ChannelAddToChannel) : LocaleController.getString("ChannelAddToGroup", R.string.ChannelAddToGroup), () -> {
+                    options.add(R.drawable.msg_contact_add, isChannel ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELADDTOCHANNEL, R.string.ChannelAddToChannel) : LocaleController.getString("ChannelAddToGroup", R.string.ChannelAddToGroup), () -> {
                         TLRPC.User user = getMessagesController().getUser(peerId);
                         getMessagesController().addUserToChat(chatId, user, 0, null, ChatUsersActivity.this, null);
                     });
                 }
-                options.add(R.drawable.msg_delete, LocaleController.getString("ChannelDeleteFromList", R.string.ChannelDeleteFromList), true, () -> deletePeer(peerId));
+                options.add(R.drawable.msg_delete, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELDELETEFROMLIST, R.string.ChannelDeleteFromList), true, () -> deletePeer(peerId));
             } else if (type == TYPE_ADMIN && ChatObject.canAddAdmins(currentChat) && canEdit) {
                 if (currentChat.creator || !(participant instanceof TLRPC.TL_channelParticipantCreator)) {
-                    options.add(R.drawable.msg_admins, LocaleController.getString("EditAdminRights", R.string.EditAdminRights), () -> {
+                    options.add(R.drawable.msg_admins, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDITADMINRIGHTS, R.string.EditAdminRights), () -> {
                         ChatRightsEditActivity fragment = new ChatRightsEditActivity(peerId, chatId, adminRights, null, null, rank, ChatRightsEditActivity.TYPE_ADMIN, true, false, null);
                         fragment.setDelegate(new ChatRightsEditActivity.ChatRightsEditActivityDelegate() {
                             @Override
@@ -1806,7 +1806,7 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                         presentFragment(fragment);
                     });
                 }
-                options.add(R.drawable.msg_remove, LocaleController.getString("ChannelRemoveUserAdmin", R.string.ChannelRemoveUserAdmin), true, () -> {
+                options.add(R.drawable.msg_remove, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELREMOVEUSERADMIN, R.string.ChannelRemoveUserAdmin), true, () -> {
                     getMessagesController().setUserAdminRole(chatId, getMessagesController().getUser(peerId), new TLRPC.TL_chatAdminRights(), "", !isChannel, ChatUsersActivity.this, false, false, null, null);
                     removeParticipants(peerId);
                 });
@@ -1919,14 +1919,14 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
         String newBannedRights = ChatObject.getBannedRightsString(defaultBannedRights);
         if (!newBannedRights.equals(initialBannedRights) || initialSlowmode != selectedSlowmode) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-            builder.setTitle(LocaleController.getString("UserRestrictionsApplyChanges", R.string.UserRestrictionsApplyChanges));
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSAPPLYCHANGES, R.string.UserRestrictionsApplyChanges));
             if (isChannel) {
-                builder.setMessage(LocaleController.getString("ChannelSettingsChangedAlert", R.string.ChannelSettingsChangedAlert));
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELSETTINGSCHANGEDALERT, R.string.ChannelSettingsChangedAlert));
             } else {
-                builder.setMessage(LocaleController.getString("GroupSettingsChangedAlert", R.string.GroupSettingsChangedAlert));
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GROUPSETTINGSCHANGEDALERT, R.string.GroupSettingsChangedAlert));
             }
-            builder.setPositiveButton(LocaleController.getString("ApplyTheme", R.string.ApplyTheme), (dialogInterface, i) -> processDone());
-            builder.setNegativeButton(LocaleController.getString("PassportDiscard", R.string.PassportDiscard), (dialog, which) -> finishFragment());
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPLYTHEME, R.string.ApplyTheme), (dialogInterface, i) -> processDone());
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSPORTDISCARD, R.string.PassportDiscard), (dialog, which) -> finishFragment());
             showDialog(builder.create());
             return false;
         }
@@ -1943,92 +1943,92 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
         }
         StringBuilder builder = new StringBuilder();
         if (rights.view_messages && defaultBannedRights.view_messages != rights.view_messages) {
-            builder.append(LocaleController.getString("UserRestrictionsNoRead", R.string.UserRestrictionsNoRead));
+            builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOREAD, R.string.UserRestrictionsNoRead));
         }
         if (rights.send_messages && defaultBannedRights.send_plain != rights.send_plain) {
             if (builder.length() != 0) {
                 builder.append(", ");
             }
-            builder.append(LocaleController.getString("UserRestrictionsNoSendText", R.string.UserRestrictionsNoSendText));
+            builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOSENDTEXT, R.string.UserRestrictionsNoSendText));
         }
         if (rights.send_media && defaultBannedRights.send_media != rights.send_media) {
             if (builder.length() != 0) {
                 builder.append(", ");
             }
-            builder.append(LocaleController.getString("UserRestrictionsNoSendMedia", R.string.UserRestrictionsNoSendMedia));
+            builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOSENDMEDIA, R.string.UserRestrictionsNoSendMedia));
         } else {
             if (rights.send_photos && defaultBannedRights.send_photos != rights.send_photos) {
                 if (builder.length() != 0) {
                     builder.append(", ");
                 }
-                builder.append(LocaleController.getString("UserRestrictionsNoSendPhotos", R.string.UserRestrictionsNoSendPhotos));
+                builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOSENDPHOTOS, R.string.UserRestrictionsNoSendPhotos));
             }
             if (rights.send_videos && defaultBannedRights.send_videos != rights.send_videos) {
                 if (builder.length() != 0) {
                     builder.append(", ");
                 }
-                builder.append(LocaleController.getString("UserRestrictionsNoSendVideos", R.string.UserRestrictionsNoSendVideos));
+                builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOSENDVIDEOS, R.string.UserRestrictionsNoSendVideos));
             }
             if (rights.send_audios && defaultBannedRights.send_audios != rights.send_audios) {
                 if (builder.length() != 0) {
                     builder.append(", ");
                 }
-                builder.append(LocaleController.getString("UserRestrictionsNoSendMusic", R.string.UserRestrictionsNoSendMusic));
+                builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOSENDMUSIC, R.string.UserRestrictionsNoSendMusic));
             }
             if (rights.send_docs && defaultBannedRights.send_docs != rights.send_docs) {
                 if (builder.length() != 0) {
                     builder.append(", ");
                 }
-                builder.append(LocaleController.getString("UserRestrictionsNoSendDocs", R.string.UserRestrictionsNoSendDocs));
+                builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOSENDDOCS, R.string.UserRestrictionsNoSendDocs));
             }
             if (rights.send_voices && defaultBannedRights.send_voices != rights.send_voices) {
                 if (builder.length() != 0) {
                     builder.append(", ");
                 }
-                builder.append(LocaleController.getString("UserRestrictionsNoSendVoice", R.string.UserRestrictionsNoSendVoice));
+                builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOSENDVOICE, R.string.UserRestrictionsNoSendVoice));
             }
             if (rights.send_roundvideos && defaultBannedRights.send_roundvideos != rights.send_roundvideos) {
                 if (builder.length() != 0) {
                     builder.append(", ");
                 }
-                builder.append(LocaleController.getString("UserRestrictionsNoSendRound", R.string.UserRestrictionsNoSendRound));
+                builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOSENDROUND, R.string.UserRestrictionsNoSendRound));
             }
         }
         if (rights.send_stickers && defaultBannedRights.send_stickers != rights.send_stickers) {
             if (builder.length() != 0) {
                 builder.append(", ");
             }
-            builder.append(LocaleController.getString("UserRestrictionsNoSendStickers", R.string.UserRestrictionsNoSendStickers));
+            builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOSENDSTICKERS, R.string.UserRestrictionsNoSendStickers));
         }
         if (rights.send_polls && defaultBannedRights.send_polls != rights.send_polls) {
             if (builder.length() != 0) {
                 builder.append(", ");
             }
-            builder.append(LocaleController.getString("UserRestrictionsNoSendPolls", R.string.UserRestrictionsNoSendPolls));
+            builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOSENDPOLLS, R.string.UserRestrictionsNoSendPolls));
         }
         if (rights.embed_links && !rights.send_plain && defaultBannedRights.embed_links != rights.embed_links) {
             if (builder.length() != 0) {
                 builder.append(", ");
             }
-            builder.append(LocaleController.getString("UserRestrictionsNoEmbedLinks", R.string.UserRestrictionsNoEmbedLinks));
+            builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOEMBEDLINKS, R.string.UserRestrictionsNoEmbedLinks));
         }
         if (rights.invite_users && defaultBannedRights.invite_users != rights.invite_users) {
             if (builder.length() != 0) {
                 builder.append(", ");
             }
-            builder.append(LocaleController.getString("UserRestrictionsNoInviteUsers", R.string.UserRestrictionsNoInviteUsers));
+            builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOINVITEUSERS, R.string.UserRestrictionsNoInviteUsers));
         }
         if (rights.pin_messages && defaultBannedRights.pin_messages != rights.pin_messages) {
             if (builder.length() != 0) {
                 builder.append(", ");
             }
-            builder.append(LocaleController.getString("UserRestrictionsNoPinMessages", R.string.UserRestrictionsNoPinMessages));
+            builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOPINMESSAGES, R.string.UserRestrictionsNoPinMessages));
         }
         if (rights.change_info && defaultBannedRights.change_info != rights.change_info) {
             if (builder.length() != 0) {
                 builder.append(", ");
             }
-            builder.append(LocaleController.getString("UserRestrictionsNoChangeInfo", R.string.UserRestrictionsNoChangeInfo));
+            builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSNOCHANGEINFO, R.string.UserRestrictionsNoChangeInfo));
         }
         if (builder.length() != 0) {
             builder.replace(0, 1, builder.substring(0, 1).toUpperCase());
@@ -2887,20 +2887,20 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                     GraySectionCell sectionCell = (GraySectionCell) holder.itemView;
                     if (position == groupStartRow) {
                         if (type == TYPE_BANNED) {
-                            sectionCell.setText(LocaleController.getString("ChannelBlockedUsers", R.string.ChannelBlockedUsers));
+                            sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELBLOCKEDUSERS, R.string.ChannelBlockedUsers));
                         } else if (type == TYPE_KICKED) {
-                            sectionCell.setText(LocaleController.getString("ChannelRestrictedUsers", R.string.ChannelRestrictedUsers));
+                            sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELRESTRICTEDUSERS, R.string.ChannelRestrictedUsers));
                         } else {
                             if (isChannel) {
-                                sectionCell.setText(LocaleController.getString("ChannelSubscribers", R.string.ChannelSubscribers));
+                                sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELSUBSCRIBERS, R.string.ChannelSubscribers));
                             } else {
-                                sectionCell.setText(LocaleController.getString("ChannelMembers", R.string.ChannelMembers));
+                                sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELMEMBERS, R.string.ChannelMembers));
                             }
                         }
                     } else if (position == globalStartRow) {
-                        sectionCell.setText(LocaleController.getString("GlobalSearch", R.string.GlobalSearch));
+                        sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALSEARCH, R.string.GlobalSearch));
                     } else if (position == contactsStartRow) {
-                        sectionCell.setText(LocaleController.getString("Contacts", R.string.Contacts));
+                        sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTACTS, R.string.Contacts));
                     }
                     break;
                 }
@@ -2999,9 +2999,9 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                     view = new TextInfoPrivacyCell(mContext);
                     TextInfoPrivacyCell privacyCell = (TextInfoPrivacyCell) view;
                     if (isChannel) {
-                        privacyCell.setText(LocaleController.getString(R.string.NoBlockedChannel2));
+                        privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOBLOCKEDCHANNEL2, R.string.NoBlockedChannel2));
                     } else {
-                        privacyCell.setText(LocaleController.getString(R.string.NoBlockedGroup2));
+                        privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOBLOCKEDGROUP2, R.string.NoBlockedGroup2));
                     }
                     privacyCell.setBackground(Theme.getThemedDrawableByKey(mContext, R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
                     break;
@@ -3050,7 +3050,7 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                     chooseView.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
                     chooseView.setOptions(
                             selectedSlowmode,
-                            LocaleController.getString("SlowmodeOff", R.string.SlowmodeOff),
+                            LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SLOWMODEOFF, R.string.SlowmodeOff),
                             LocaleController.formatString("SlowmodeSeconds", R.string.SlowmodeSeconds, 10),
                             LocaleController.formatString("SlowmodeSeconds", R.string.SlowmodeSeconds, 30),
                             LocaleController.formatString("SlowmodeMinutes", R.string.SlowmodeMinutes, 1),
@@ -3150,12 +3150,12 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                         } else if (type == TYPE_ADMIN) {
                             String role = null;
                             if (creator) {
-                                role = LocaleController.getString("ChannelCreator", R.string.ChannelCreator);
+                                role = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELCREATOR, R.string.ChannelCreator);
                             } else if (admin) {
                                 TLRPC.User user1 = getMessagesController().getUser(promotedBy);
                                 if (user1 != null) {
                                     if (user1.id == peerId) {
-                                        role = LocaleController.getString("ChannelAdministrator", R.string.ChannelAdministrator);
+                                        role = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELADMINISTRATOR, R.string.ChannelAdministrator);
                                     } else {
                                         role = LocaleController.formatString("EditAdminPromotedBy", R.string.EditAdminPromotedBy, UserObject.getUserName(user1));
                                     }
@@ -3176,22 +3176,22 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                 case 1:
                     TextInfoPrivacyCell privacyCell = (TextInfoPrivacyCell) holder.itemView;
                     if (position == antiSpamInfoRow) {
-                        privacyCell.setText(LocaleController.getString("ChannelAntiSpamInfo", R.string.ChannelAntiSpamInfo));
+                        privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELANTISPAMINFO, R.string.ChannelAntiSpamInfo));
                         privacyCell.setBackgroundDrawable(Theme.getThemedDrawableByKey(mContext, R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
                     } else if (position == participantsInfoRow) {
                         if (type == TYPE_BANNED || type == TYPE_KICKED) {
                             if (isChannel) {
-                                privacyCell.setText(LocaleController.getString("NoBlockedChannel2", R.string.NoBlockedChannel2));
+                                privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOBLOCKEDCHANNEL2, R.string.NoBlockedChannel2));
                             } else {
-                                privacyCell.setText(LocaleController.getString("NoBlockedGroup2", R.string.NoBlockedGroup2));
+                                privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOBLOCKEDGROUP2, R.string.NoBlockedGroup2));
                             }
                             privacyCell.setBackgroundDrawable(Theme.getThemedDrawableByKey(mContext, R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
                         } else if (type == TYPE_ADMIN) {
                             if (addNewRow != -1) {
                                 if (isChannel) {
-                                    privacyCell.setText(LocaleController.getString("ChannelAdminsInfo", R.string.ChannelAdminsInfo));
+                                    privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELADMINSINFO, R.string.ChannelAdminsInfo));
                                 } else {
-                                    privacyCell.setText(LocaleController.getString("MegaAdminsInfo", R.string.MegaAdminsInfo));
+                                    privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEGAADMINSINFO, R.string.MegaAdminsInfo));
                                 }
                             } else {
                                 privacyCell.setText("");
@@ -3201,7 +3201,7 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                             if (!isChannel || selectType != SELECT_TYPE_MEMBERS) {
                                 privacyCell.setText("");
                             } else {
-                                privacyCell.setText(LocaleController.getString("ChannelMembersInfo", R.string.ChannelMembersInfo));
+                                privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELMEMBERSINFO, R.string.ChannelMembersInfo));
                             }
                             privacyCell.setBackgroundDrawable(Theme.getThemedDrawableByKey(mContext, R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
                         }
@@ -3209,15 +3209,15 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                         privacyCell.setBackgroundDrawable(Theme.getThemedDrawableByKey(mContext, R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
                         int seconds = getSecondsForIndex(selectedSlowmode);
                         if (info == null || seconds == 0) {
-                            privacyCell.setText(LocaleController.getString("SlowmodeInfoOff", R.string.SlowmodeInfoOff));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SLOWMODEINFOOFF, R.string.SlowmodeInfoOff));
                         } else {
                             privacyCell.setText(LocaleController.formatString("SlowmodeInfoSelected", R.string.SlowmodeInfoSelected, formatSeconds(seconds)));
                         }
                     } else if (position == hideMembersInfoRow) {
                         privacyCell.setBackgroundDrawable(Theme.getThemedDrawableByKey(mContext, R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
-                        privacyCell.setText(LocaleController.getString("ChannelHideMembersInfo", R.string.ChannelHideMembersInfo));
+                        privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELHIDEMEMBERSINFO, R.string.ChannelHideMembersInfo));
                     } else if (position == gigaInfoRow) {
-                        privacyCell.setText(LocaleController.getString("BroadcastGroupConvertInfo", R.string.BroadcastGroupConvertInfo));
+                        privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BROADCASTGROUPCONVERTINFO, R.string.BroadcastGroupConvertInfo));
                     }
                     break;
                 case 2:
@@ -3226,31 +3226,31 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                     if (position == addNewRow) {
                         if (type == TYPE_KICKED) {
                             actionCell.setColors(Theme.key_windowBackgroundWhiteBlueIcon, Theme.key_windowBackgroundWhiteBlueButton);
-                            actionCell.setText(LocaleController.getString("ChannelAddException", R.string.ChannelAddException), null, R.drawable.msg_contact_add, participantsStartRow != -1);
+                            actionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELADDEXCEPTION, R.string.ChannelAddException), null, R.drawable.msg_contact_add, participantsStartRow != -1);
                         } else if (type == TYPE_BANNED) {
-                            actionCell.setText(LocaleController.getString("ChannelBlockUser", R.string.ChannelBlockUser), null, R.drawable.msg_user_remove, false);
+                            actionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELBLOCKUSER, R.string.ChannelBlockUser), null, R.drawable.msg_user_remove, false);
                         } else if (type == TYPE_ADMIN) {
                             actionCell.setColors(Theme.key_windowBackgroundWhiteBlueIcon, Theme.key_windowBackgroundWhiteBlueButton);
                             boolean showDivider = !(loadingUsers && !firstLoaded);
-                            actionCell.setText(LocaleController.getString("ChannelAddAdmin", R.string.ChannelAddAdmin), null, R.drawable.msg_admin_add, showDivider);
+                            actionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELADDADMIN, R.string.ChannelAddAdmin), null, R.drawable.msg_admin_add, showDivider);
                         } else if (type == TYPE_USERS) {
                             actionCell.setColors(Theme.key_windowBackgroundWhiteBlueIcon, Theme.key_windowBackgroundWhiteBlueButton);
                             boolean showDivider = addNew2Row != -1 || (!(loadingUsers && !firstLoaded) && membersHeaderRow == -1 && !participants.isEmpty());
                             if (isChannel) {
-                                actionCell.setText(LocaleController.getString("AddSubscriber", R.string.AddSubscriber), null, R.drawable.msg_contact_add, showDivider);
+                                actionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDSUBSCRIBER, R.string.AddSubscriber), null, R.drawable.msg_contact_add, showDivider);
                             } else {
-                                actionCell.setText(LocaleController.getString("AddMember", R.string.AddMember), null, R.drawable.msg_contact_add, showDivider);
+                                actionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDMEMBER, R.string.AddMember), null, R.drawable.msg_contact_add, showDivider);
                             }
                         }
                     } else if (position == recentActionsRow) {
-                        actionCell.setText(LocaleController.getString("EventLog", R.string.EventLog), null, R.drawable.msg_log, antiSpamRow > recentActionsRow);
+                        actionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EVENTLOG, R.string.EventLog), null, R.drawable.msg_log, antiSpamRow > recentActionsRow);
                     } else if (position == addNew2Row) {
                         actionCell.setColors(Theme.key_windowBackgroundWhiteBlueIcon, Theme.key_windowBackgroundWhiteBlueButton);
                         boolean showDivider = !(loadingUsers && !firstLoaded) && membersHeaderRow == -1 && !participants.isEmpty();
-                        actionCell.setText(LocaleController.getString("ChannelInviteViaLink", R.string.ChannelInviteViaLink), null, R.drawable.msg_link2, showDivider);
+                        actionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELINVITEVIALINK, R.string.ChannelInviteViaLink), null, R.drawable.msg_link2, showDivider);
                     } else if (position == gigaConvertRow) {
                         actionCell.setColors(Theme.key_windowBackgroundWhiteBlueIcon, Theme.key_windowBackgroundWhiteBlueButton);
-                        actionCell.setText(LocaleController.getString("BroadcastGroupConvert", R.string.BroadcastGroupConvert), null, R.drawable.msg_channel, false);
+                        actionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BROADCASTGROUPCONVERT, R.string.BroadcastGroupConvert), null, R.drawable.msg_channel, false);
                     }
                     break;
                 case 3:
@@ -3268,22 +3268,22 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                             if (count != 0) {
                                 headerCell.setText(LocaleController.formatPluralString("RemovedUser", count));
                             } else {
-                                headerCell.setText(LocaleController.getString("ChannelBlockedUsers", R.string.ChannelBlockedUsers));
+                                headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELBLOCKEDUSERS, R.string.ChannelBlockedUsers));
                             }
                         } else {
-                            headerCell.setText(LocaleController.getString("ChannelRestrictedUsers", R.string.ChannelRestrictedUsers));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELRESTRICTEDUSERS, R.string.ChannelRestrictedUsers));
                         }
                     } else if (position == permissionsSectionRow) {
-                        headerCell.setText(LocaleController.getString("ChannelPermissionsHeader", R.string.ChannelPermissionsHeader));
+                        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPERMISSIONSHEADER, R.string.ChannelPermissionsHeader));
                     } else if (position == slowmodeRow) {
-                        headerCell.setText(LocaleController.getString("Slowmode", R.string.Slowmode));
+                        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SLOWMODE, R.string.Slowmode));
                     } else if (position == gigaHeaderRow) {
-                        headerCell.setText(LocaleController.getString("BroadcastGroup", R.string.BroadcastGroup));
+                        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BROADCASTGROUP, R.string.BroadcastGroup));
                     }
                     break;
                 case 6:
                     TextSettingsCell settingsCell = (TextSettingsCell) holder.itemView;
-                    settingsCell.setTextAndValue(LocaleController.getString("ChannelBlacklist", R.string.ChannelBlacklist), String.format("%d", info != null ? info.kicked_count : 0), false);
+                    settingsCell.setTextAndValue(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELBLACKLIST, R.string.ChannelBlacklist), String.format("%d", info != null ? info.kicked_count : 0), false);
                     break;
                 case VIEW_TYPE_EXPANDABLE_SWITCH:
                 case 7:
@@ -3291,16 +3291,16 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                     boolean animated = checkCell.getTag() != null && (Integer) checkCell.getTag() == position;
                     checkCell.setTag(position);
                     if (position == changeInfoRow) {
-                        checkCell.setTextAndCheck(LocaleController.getString("UserRestrictionsChangeInfo", R.string.UserRestrictionsChangeInfo), !defaultBannedRights.change_info && !ChatObject.isPublic(currentChat), manageTopicsRow != -1, animated);
+                        checkCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSCHANGEINFO, R.string.UserRestrictionsChangeInfo), !defaultBannedRights.change_info && !ChatObject.isPublic(currentChat), manageTopicsRow != -1, animated);
                     } else if (position == addUsersRow) {
-                        checkCell.setTextAndCheck(LocaleController.getString("UserRestrictionsInviteUsers", R.string.UserRestrictionsInviteUsers), !defaultBannedRights.invite_users, true, animated);
+                        checkCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSINVITEUSERS, R.string.UserRestrictionsInviteUsers), !defaultBannedRights.invite_users, true, animated);
                     } else if (position == pinMessagesRow) {
-                        checkCell.setTextAndCheck(LocaleController.getString("UserRestrictionsPinMessages", R.string.UserRestrictionsPinMessages), !defaultBannedRights.pin_messages && !ChatObject.isPublic(currentChat), true, animated);
+                        checkCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSPINMESSAGES, R.string.UserRestrictionsPinMessages), !defaultBannedRights.pin_messages && !ChatObject.isPublic(currentChat), true, animated);
                     } else if (position == sendMessagesRow) {
-                        checkCell.setTextAndCheck(LocaleController.getString("UserRestrictionsSendText", R.string.UserRestrictionsSendText), !defaultBannedRights.send_plain, true, animated);
+                        checkCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSSENDTEXT, R.string.UserRestrictionsSendText), !defaultBannedRights.send_plain, true, animated);
                     } else if (position == sendMediaRow) {
                         int sentMediaCount = getSendMediaSelectedCount();
-                        checkCell.setTextAndCheck(LocaleController.getString("UserRestrictionsSendMedia", R.string.UserRestrictionsSendMedia), sentMediaCount > 0, true, animated);
+                        checkCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSSENDMEDIA, R.string.UserRestrictionsSendMedia), sentMediaCount > 0, true, animated);
                         checkCell.setCollapseArrow(String.format(Locale.US, "%d/9", sentMediaCount), !sendMediaExpanded, new Runnable() {
                             @Override
                             public void run() {
@@ -3311,13 +3311,13 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                             }
                         });
                     } else if (position == sendStickersRow) {
-                        checkCell.setTextAndCheck(LocaleController.getString("UserRestrictionsSendStickers", R.string.UserRestrictionsSendStickers), !defaultBannedRights.send_stickers, true, animated);
+                        checkCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSSENDSTICKERS, R.string.UserRestrictionsSendStickers), !defaultBannedRights.send_stickers, true, animated);
                     } else if (position == embedLinksRow) {
-                        checkCell.setTextAndCheck(LocaleController.getString("UserRestrictionsEmbedLinks", R.string.UserRestrictionsEmbedLinks), !defaultBannedRights.embed_links, true, animated);
+                        checkCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSEMBEDLINKS, R.string.UserRestrictionsEmbedLinks), !defaultBannedRights.embed_links, true, animated);
                     } else if (position == sendPollsRow) {
-                        checkCell.setTextAndCheck(LocaleController.getString("UserRestrictionsSendPollsShort", R.string.UserRestrictionsSendPollsShort), !defaultBannedRights.send_polls, true);
+                        checkCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSSENDPOLLSSHORT, R.string.UserRestrictionsSendPollsShort), !defaultBannedRights.send_polls, true);
                     } else if (position == manageTopicsRow) {
-                        checkCell.setTextAndCheck(LocaleController.getString("CreateTopicsPermission", R.string.CreateTopicsPermission), !defaultBannedRights.manage_topics, false, animated);
+                        checkCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATETOPICSPERMISSION, R.string.CreateTopicsPermission), !defaultBannedRights.manage_topics, false, animated);
                     }
                     if (ChatObject.canBlockUsers(currentChat)) {
                         if (position == addUsersRow && !ChatObject.canUserDoAdminAction(currentChat, ChatObject.ACTION_INVITE) ||
@@ -3337,17 +3337,17 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                     GraySectionCell sectionCell = (GraySectionCell) holder.itemView;
                     if (position == membersHeaderRow) {
                         if (ChatObject.isChannel(currentChat) && !currentChat.megagroup) {
-                            sectionCell.setText(LocaleController.getString("ChannelOtherSubscribers", R.string.ChannelOtherSubscribers));
+                            sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELOTHERSUBSCRIBERS, R.string.ChannelOtherSubscribers));
                         } else {
-                            sectionCell.setText(LocaleController.getString("ChannelOtherMembers", R.string.ChannelOtherMembers));
+                            sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELOTHERMEMBERS, R.string.ChannelOtherMembers));
                         }
                     } else if (position == botHeaderRow) {
-                        sectionCell.setText(LocaleController.getString("ChannelBots", R.string.ChannelBots));
+                        sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELBOTS, R.string.ChannelBots));
                     } else if (position == contactsHeaderRow) {
                         if (ChatObject.isChannel(currentChat) && !currentChat.megagroup) {
-                            sectionCell.setText(LocaleController.getString("ChannelContacts", R.string.ChannelContacts));
+                            sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELCONTACTS, R.string.ChannelContacts));
                         } else {
-                            sectionCell.setText(LocaleController.getString("GroupContacts", R.string.GroupContacts));
+                            sectionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GROUPCONTACTS, R.string.GroupContacts));
                         }
                     } else if (position == loadingHeaderRow) {
                         sectionCell.setText("");
@@ -3365,10 +3365,10 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                     TextCell textCell = (TextCell) holder.itemView;
                     if (position == antiSpamRow) {
                         textCell.getCheckBox().setIcon(ChatObject.canUserDoAdminAction(currentChat, ChatObject.ACTION_DELETE_MESSAGES) && (info == null || info.antispam || getParticipantsCount() >= getMessagesController().telegramAntispamGroupSizeMin) ? 0 : R.drawable.permission_locked);
-                        textCell.setTextAndCheckAndIcon(LocaleController.getString("ChannelAntiSpam", R.string.ChannelAntiSpam), info != null && info.antispam, R.drawable.msg_policy, false);
+                        textCell.setTextAndCheckAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELANTISPAM, R.string.ChannelAntiSpam), info != null && info.antispam, R.drawable.msg_policy, false);
                     } else if (position == hideMembersRow) {
                         textCell.getCheckBox().setIcon(ChatObject.canUserDoAdminAction(currentChat, ChatObject.ACTION_BLOCK_USERS) && (info == null || info.participants_hidden || getParticipantsCount() >= getMessagesController().hiddenMembersGroupSizeMin) ? 0 : R.drawable.permission_locked);
-                        textCell.setTextAndCheck(LocaleController.getString("ChannelHideMembers", R.string.ChannelHideMembers), info != null && info.participants_hidden, false);
+                        textCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELHIDEMEMBERS, R.string.ChannelHideMembers), info != null && info.participants_hidden, false);
                     }
                     break;
                 case VIEW_TYPE_INNER_CHECK:
@@ -3376,23 +3376,23 @@ public class ChatUsersActivity extends BaseFragment implements NotificationCente
                     animated = checkBoxCell.getTag() != null && (Integer) checkBoxCell.getTag() == position;
                     checkBoxCell.setTag(position);
                     if (position == sendMediaPhotosRow) {
-                        checkBoxCell.setText(LocaleController.getString("SendMediaPermissionPhotos", R.string.SendMediaPermissionPhotos), "", !defaultBannedRights.send_photos, true, animated);
+                        checkBoxCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPERMISSIONPHOTOS, R.string.SendMediaPermissionPhotos), "", !defaultBannedRights.send_photos, true, animated);
                     } else if (position == sendMediaVideosRow) {
-                        checkBoxCell.setText(LocaleController.getString("SendMediaPermissionVideos", R.string.SendMediaPermissionVideos), "", !defaultBannedRights.send_videos, true, animated);
+                        checkBoxCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPERMISSIONVIDEOS, R.string.SendMediaPermissionVideos), "", !defaultBannedRights.send_videos, true, animated);
                     } else if (position == sendMediaStickerGifsRow) {
-                        checkBoxCell.setText(LocaleController.getString("SendMediaPermissionStickersGifs", R.string.SendMediaPermissionStickersGifs), "", !defaultBannedRights.send_stickers, true, animated);
+                        checkBoxCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPERMISSIONSTICKERSGIFS, R.string.SendMediaPermissionStickersGifs), "", !defaultBannedRights.send_stickers, true, animated);
                     } else if (position == sendMediaMusicRow) {
-                        checkBoxCell.setText(LocaleController.getString("SendMediaPermissionMusic", R.string.SendMediaPermissionMusic), "", !defaultBannedRights.send_audios, true, animated);
+                        checkBoxCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPERMISSIONMUSIC, R.string.SendMediaPermissionMusic), "", !defaultBannedRights.send_audios, true, animated);
                     } else if (position == sendMediaFilesRow) {
-                        checkBoxCell.setText(LocaleController.getString("SendMediaPermissionFiles", R.string.SendMediaPermissionFiles), "", !defaultBannedRights.send_docs, true, animated);
+                        checkBoxCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPERMISSIONFILES, R.string.SendMediaPermissionFiles), "", !defaultBannedRights.send_docs, true, animated);
                     } else if (position == sendMediaVoiceMessagesRow) {
-                        checkBoxCell.setText(LocaleController.getString("SendMediaPermissionVoice", R.string.SendMediaPermissionVoice), "", !defaultBannedRights.send_voices, true, animated);
+                        checkBoxCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPERMISSIONVOICE, R.string.SendMediaPermissionVoice), "", !defaultBannedRights.send_voices, true, animated);
                     } else if (position == sendMediaVideoMessagesRow) {
-                        checkBoxCell.setText(LocaleController.getString("SendMediaPermissionRound", R.string.SendMediaPermissionRound), "", !defaultBannedRights.send_roundvideos, true, animated);
+                        checkBoxCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPERMISSIONROUND, R.string.SendMediaPermissionRound), "", !defaultBannedRights.send_roundvideos, true, animated);
                     } else if (position == sendMediaEmbededLinksRow) {
-                        checkBoxCell.setText(LocaleController.getString("SendMediaEmbededLinks", R.string.SendMediaEmbededLinks), "", !defaultBannedRights.embed_links && !defaultBannedRights.send_plain, false, animated);
+                        checkBoxCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAEMBEDEDLINKS, R.string.SendMediaEmbededLinks), "", !defaultBannedRights.embed_links && !defaultBannedRights.send_plain, false, animated);
                     }else if (position == sendPollsRow) {
-                        checkBoxCell.setText(LocaleController.getString("SendMediaPolls", R.string.SendMediaPolls), "", !defaultBannedRights.send_polls, false, animated);
+                        checkBoxCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPOLLS, R.string.SendMediaPolls), "", !defaultBannedRights.send_polls, false, animated);
                     }
                     //  checkBoxCell.setText(getCheckBoxTitle(item.headerName, percents[item.index < 0 ? 8 : item.index], item.index < 0), AndroidUtilities.formatFileSize(item.size), selected, item.index < 0 ? !collapsed : !item.last);
                     checkBoxCell.setPad(1);

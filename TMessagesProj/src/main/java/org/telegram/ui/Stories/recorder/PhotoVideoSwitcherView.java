@@ -54,7 +54,7 @@ public class PhotoVideoSwitcherView extends View implements FlashViews.Invertabl
         textPaint.setTextSize(AndroidUtilities.dpf2(14));
         textPaint.setShadowLayer(AndroidUtilities.dpf2(1), 0, AndroidUtilities.dpf2(0.4f), 0x33000000);
 
-        CharSequence text = LocaleController.getString("StoryPhoto");
+        CharSequence text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPHOTO);
         if (text == null) {
             text = "Photo";
         }
@@ -63,7 +63,7 @@ public class PhotoVideoSwitcherView extends View implements FlashViews.Invertabl
         photoTextWidth = photoText.getLineCount() > 0 ? photoText.getLineWidth(0) : 0;
         photoTextHeight = photoText.getHeight();
 
-        text = LocaleController.getString("StoryVideo");
+        text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYVIDEO);
         if (text == null) {
             text = "Video";
         }

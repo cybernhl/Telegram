@@ -334,11 +334,11 @@ public class BoostViaGiftsBottomSheet extends BottomSheetWithRecyclerListView im
         items.add(Item.asDivider());
         if (selectedBoostType == BoostTypeCell.TYPE_GIVEAWAY) {
             if (!isPreparedGiveaway()) {
-                items.add(Item.asSubTitleWithCounter(LocaleController.getString("BoostingQuantityPrizes", R.string.BoostingQuantityPrizes), getSelectedSliderValueWithBoosts()));
+                items.add(Item.asSubTitleWithCounter(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGQUANTITYPRIZES, R.string.BoostingQuantityPrizes), getSelectedSliderValueWithBoosts()));
                 items.add(Item.asSlider(sliderValues, selectedSliderIndex));
-                items.add(Item.asDivider(LocaleController.getString("BoostingChooseHowMany", R.string.BoostingChooseHowMany), false));
+                items.add(Item.asDivider(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGCHOOSEHOWMANY, R.string.BoostingChooseHowMany), false));
             }
-            items.add(Item.asSubTitle(LocaleController.getString("BoostingChannelsIncludedGiveaway", R.string.BoostingChannelsIncludedGiveaway)));
+            items.add(Item.asSubTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGCHANNELSINCLUDEDGIVEAWAY, R.string.BoostingChannelsIncludedGiveaway)));
             if (isPreparedGiveaway()) {
                 items.add(Item.asChat(currentChat, false, prepaidGiveaway.quantity * BoostRepository.giveawayBoostsPerPremium()));
             } else {
@@ -355,15 +355,15 @@ public class BoostViaGiftsBottomSheet extends BottomSheetWithRecyclerListView im
             if (selectedChats.size() < BoostRepository.giveawayAddPeersMax()) {
                 items.add(Item.asAddChannel());
             }
-            items.add(Item.asDivider(LocaleController.getString("BoostingChooseChannelsNeedToJoin", R.string.BoostingChooseChannelsNeedToJoin), false));
-            items.add(Item.asSubTitle(LocaleController.getString("BoostingEligibleUsers", R.string.BoostingEligibleUsers)));
+            items.add(Item.asDivider(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGCHOOSECHANNELSNEEDTOJOIN, R.string.BoostingChooseChannelsNeedToJoin), false));
+            items.add(Item.asSubTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGELIGIBLEUSERS, R.string.BoostingEligibleUsers)));
             items.add(Item.asParticipants(ParticipantsTypeCell.TYPE_ALL, selectedParticipantsType, true, selectedCountries));
             items.add(Item.asParticipants(ParticipantsTypeCell.TYPE_NEW, selectedParticipantsType, false, selectedCountries));
-            items.add(Item.asDivider(LocaleController.getString("BoostingChooseLimitGiveaway", R.string.BoostingChooseLimitGiveaway), false));
+            items.add(Item.asDivider(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGCHOOSELIMITGIVEAWAY, R.string.BoostingChooseLimitGiveaway), false));
         }
 
         if (!isPreparedGiveaway()) {
-            items.add(Item.asSubTitle(LocaleController.getString("BoostingDurationOfPremium", R.string.BoostingDurationOfPremium)));
+            items.add(Item.asSubTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGDURATIONOFPREMIUM, R.string.BoostingDurationOfPremium)));
             List<TLRPC.TL_premiumGiftCodeOption> options = BoostRepository.filterGiftOptions(giftCodeOptions, isGiveaway() ? getSelectedSliderValue() : selectedUsers.size());
             for (int i = 0; i < options.size(); i++) {
                 TLRPC.TL_premiumGiftCodeOption option = options.get(i);
@@ -373,7 +373,7 @@ public class BoostViaGiftsBottomSheet extends BottomSheetWithRecyclerListView im
 
         if (!isPreparedGiveaway()) {
             items.add(Item.asDivider(AndroidUtilities.replaceSingleTag(
-                    LocaleController.getString("BoostingStoriesFeaturesAndTerms", R.string.BoostingStoriesFeaturesAndTerms),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGSTORIESFEATURESANDTERMS, R.string.BoostingStoriesFeaturesAndTerms),
                     Theme.key_chat_messageLinkIn, 0, () -> {
                         PremiumPreviewBottomSheet previewBottomSheet = new PremiumPreviewBottomSheet(getBaseFragment(), currentAccount, null, resourcesProvider);
                         previewBottomSheet.setOnDismissListener(dialog -> adapter.setPausedStars(false));
@@ -384,7 +384,7 @@ public class BoostViaGiftsBottomSheet extends BottomSheetWithRecyclerListView im
         }
 
         if (selectedBoostType == BoostTypeCell.TYPE_GIVEAWAY) {
-            items.add(Item.asSwitcher(LocaleController.getString("BoostingGiveawayAdditionalPrizes", R.string.BoostingGiveawayAdditionalPrizes), isAdditionalPrizeSelected, isAdditionalPrizeSelected, SwitcherCell.TYPE_ADDITION_PRIZE));
+            items.add(Item.asSwitcher(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIVEAWAYADDITIONALPRIZES, R.string.BoostingGiveawayAdditionalPrizes), isAdditionalPrizeSelected, isAdditionalPrizeSelected, SwitcherCell.TYPE_ADDITION_PRIZE));
 
             if (isAdditionalPrizeSelected) {
                 int quantity = isPreparedGiveaway() ? prepaidGiveaway.quantity : getSelectedSliderValue();
@@ -396,20 +396,20 @@ public class BoostViaGiftsBottomSheet extends BottomSheetWithRecyclerListView im
                     items.add(Item.asDivider(AndroidUtilities.replaceTags(LocaleController.formatPluralString("BoostingGiveawayAdditionPrizeCountNameHint", quantity, additionalPrize, months)), false));
                 }
             } else {
-                items.add(Item.asDivider(LocaleController.getString("BoostingGiveawayAdditionPrizeHint", R.string.BoostingGiveawayAdditionPrizeHint), false));
+                items.add(Item.asDivider(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIVEAWAYADDITIONPRIZEHINT, R.string.BoostingGiveawayAdditionPrizeHint), false));
             }
 
-            items.add(Item.asSwitcher(LocaleController.getString("BoostingGiveawayShowWinners", R.string.BoostingGiveawayShowWinners), isShowWinnersSelected, false, SwitcherCell.TYPE_WINNERS));
-            items.add(Item.asDivider(LocaleController.getString("BoostingGiveawayShowWinnersHint", R.string.BoostingGiveawayShowWinnersHint), false));
+            items.add(Item.asSwitcher(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIVEAWAYSHOWWINNERS, R.string.BoostingGiveawayShowWinners), isShowWinnersSelected, false, SwitcherCell.TYPE_WINNERS));
+            items.add(Item.asDivider(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIVEAWAYSHOWWINNERSHINT, R.string.BoostingGiveawayShowWinnersHint), false));
 
-            items.add(Item.asSubTitle(LocaleController.getString("BoostingDateWhenGiveawayEnds", R.string.BoostingDateWhenGiveawayEnds)));
+            items.add(Item.asSubTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGDATEWHENGIVEAWAYENDS, R.string.BoostingDateWhenGiveawayEnds)));
             items.add(Item.asDateEnd(selectedEndDate));
 
             if (!isPreparedGiveaway()) {
                 items.add(Item.asDivider(LocaleController.formatPluralString("BoostingChooseRandom", getSelectedSliderValue()), false));
             } else {
                 items.add(Item.asDivider(AndroidUtilities.replaceSingleTag(
-                        LocaleController.formatPluralString("BoostingChooseRandom", prepaidGiveaway.quantity) + "\n\n" + LocaleController.getString("BoostingStoriesFeaturesAndTerms", R.string.BoostingStoriesFeaturesAndTerms),
+                        LocaleController.formatPluralString("BoostingChooseRandom", prepaidGiveaway.quantity) + "\n\n" + LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGSTORIESFEATURESANDTERMS, R.string.BoostingStoriesFeaturesAndTerms),
                         Theme.key_chat_messageLinkIn, 0, () -> {
                             PremiumPreviewBottomSheet previewBottomSheet = new PremiumPreviewBottomSheet(getBaseFragment(), currentAccount, null, resourcesProvider);
                             previewBottomSheet.setOnDismissListener(dialog -> adapter.setPausedStars(false));
@@ -436,7 +436,7 @@ public class BoostViaGiftsBottomSheet extends BottomSheetWithRecyclerListView im
     @Override
     protected CharSequence getTitle() {
         return selectedBoostType == BoostTypeCell.TYPE_SPECIFIC_USERS ?
-                LocaleController.getString("GiftPremium", R.string.GiftPremium)
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GIFTPREMIUM, R.string.GiftPremium)
                 : LocaleController.formatString("BoostingStartGiveaway", R.string.BoostingStartGiveaway);
     }
 

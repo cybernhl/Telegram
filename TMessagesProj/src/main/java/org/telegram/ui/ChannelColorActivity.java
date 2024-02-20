@@ -282,7 +282,7 @@ public class ChannelColorActivity extends BaseFragment {
         }
 
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
-        actionBar.setTitle(LocaleController.getString(R.string.ChannelColorTitle2));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELCOLORTITLE2, R.string.ChannelColorTitle2));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -387,7 +387,7 @@ public class ChannelColorActivity extends BaseFragment {
         listView.setItemAnimator(itemAnimator);
 
         button = new ButtonWithCounterView(context, resourceProvider);
-        button.setText(LocaleController.getString(R.string.ApplyChanges), false);
+        button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPLYCHANGES, R.string.ApplyChanges), false);
         button.setOnClickListener(v -> buttonClick());
         updateButton(false);
 
@@ -449,7 +449,7 @@ public class ChannelColorActivity extends BaseFragment {
         TLRPC.Chat channel = getMessagesController().getChat(-dialogId);
         if (channel == null) {
             FileLog.e("channel is null in ChannelColorAcitivity");
-            BulletinFactory.of(this).createSimpleBulletin(R.raw.error, LocaleController.getString(R.string.UnknownError)).show();
+            BulletinFactory.of(this).createSimpleBulletin(R.raw.error, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNKNOWNERROR, R.string.UnknownError)).show();
             return;
         }
 
@@ -687,12 +687,12 @@ public class ChannelColorActivity extends BaseFragment {
             return;
         }
         AlertDialog alertDialog = new AlertDialog.Builder(getContext(), getResourceProvider())
-                .setTitle(LocaleController.getString(R.string.ChannelColorUnsaved))
-                .setMessage(LocaleController.getString(R.string.ChannelColorUnsavedMessage))
-                .setNegativeButton(LocaleController.getString(R.string.Dismiss), (di, w) -> {
+                .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELCOLORUNSAVED, R.string.ChannelColorUnsaved))
+                .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELCOLORUNSAVEDMESSAGE, R.string.ChannelColorUnsavedMessage))
+                .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISMISS, R.string.Dismiss), (di, w) -> {
                     finishFragment();
                 })
-                .setPositiveButton(LocaleController.getString(R.string.ApplyTheme), (di, w) -> {
+                .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPLYTHEME, R.string.ApplyTheme), (di, w) -> {
                     buttonClick();
                 })
                 .create();
@@ -920,9 +920,9 @@ public class ChannelColorActivity extends BaseFragment {
                 case VIEW_TYPE_BUTTON:
                     TextCell textCell = (TextCell) holder.itemView;
                     if (position == removeProfileColorRow) {
-                        textCell.setText(LocaleController.getString(R.string.ChannelProfileColorReset), false);
+                        textCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPROFILECOLORRESET, R.string.ChannelProfileColorReset), false);
                     } else {
-                        textCell.setText(LocaleController.getString(R.string.ChannelWallpaper), false);
+                        textCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELWALLPAPER, R.string.ChannelWallpaper), false);
                         if (currentLevel < getMessagesController().channelWallpaperLevelMin) {
                             textCell.setLockLevel(false, getMessagesController().channelWallpaperLevelMin);
                         }
@@ -933,14 +933,14 @@ public class ChannelColorActivity extends BaseFragment {
                     emojiCell.setDivider(false);
                     if (position == replyEmojiRow) {
                         emojiCell.setAdaptiveEmojiColor(currentAccount, selectedReplyColor, true);
-                        emojiCell.setText(LocaleController.getString(R.string.ChannelReplyLogo));
+                        emojiCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELREPLYLOGO, R.string.ChannelReplyLogo));
                         if (currentLevel < getMessagesController().channelBgIconLevelMin) {
                             emojiCell.setLockLevel(getMessagesController().channelBgIconLevelMin);
                         }
                         emojiCell.setEmoji(selectedReplyEmoji, false);
                     } else if (position == profileEmojiRow) {
                         emojiCell.setAdaptiveEmojiColor(currentAccount, selectedProfileColor, false);
-                        emojiCell.setText(LocaleController.getString(R.string.ChannelProfileLogo));
+                        emojiCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPROFILELOGO, R.string.ChannelProfileLogo));
                         emojiCell.setDivider(removeProfileColorRow >= 0);
                         if (currentLevel < getMessagesController().channelProfileIconLevelMin) {
                             emojiCell.setLockLevel(getMessagesController().channelProfileIconLevelMin);
@@ -948,7 +948,7 @@ public class ChannelColorActivity extends BaseFragment {
                         emojiCell.setEmoji(selectedProfileEmoji, false);
                     } else if (position == statusEmojiRow) {
                         emojiCell.setAdaptiveEmojiColor(currentAccount, selectedProfileColor, false);
-                        emojiCell.setText(LocaleController.getString(R.string.ChannelEmojiStatus));
+                        emojiCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELEMOJISTATUS, R.string.ChannelEmojiStatus));
                         if (currentLevel < getMessagesController().channelEmojiStatusLevelMin) {
                             emojiCell.setLockLevel(getMessagesController().channelEmojiStatusLevelMin);
                         }
@@ -959,13 +959,13 @@ public class ChannelColorActivity extends BaseFragment {
                     TextInfoPrivacyCell infoCell = (TextInfoPrivacyCell) holder.itemView;
                     infoCell.setFixedSize(0);
                     if (position == replyHintRow) {
-                        infoCell.setText(LocaleController.getString(R.string.ChannelReplyInfo));
+                        infoCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELREPLYINFO, R.string.ChannelReplyInfo));
                     } else if (position == wallpaperHintRow) {
-                        infoCell.setText(LocaleController.getString(R.string.ChannelWallpaper2Info));
+                        infoCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELWALLPAPER2INFO, R.string.ChannelWallpaper2Info));
                     } else if (position == profileHintRow) {
-                        infoCell.setText(LocaleController.getString(R.string.ChannelProfileInfo));
+                        infoCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPROFILEINFO, R.string.ChannelProfileInfo));
                     } else if (position == statusHintRow) {
-                        infoCell.setText(LocaleController.getString(R.string.ChannelEmojiStatusInfo));
+                        infoCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELEMOJISTATUSINFO, R.string.ChannelEmojiStatusInfo));
                     } else if (position == removeProfileColorShadowRow) {
                         infoCell.setText("");
                         infoCell.setFixedSize(12);
@@ -1210,7 +1210,7 @@ public class ChannelColorActivity extends BaseFragment {
             if (documentId == 0) {
                 imageDrawable.set((Drawable) null, animated);
                 if (offText == null) {
-                    offText = new Text(LocaleController.getString(R.string.ChannelReplyIconOff), 16);
+                    offText = new Text(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELREPLYICONOFF, R.string.ChannelReplyIconOff), 16);
                 }
             } else {
                 imageDrawable.set(documentId, animated);
@@ -1386,7 +1386,7 @@ public class ChannelColorActivity extends BaseFragment {
                     return new RecyclerListView.Holder(new ThemeSmallPreviewView(parent.getContext(), currentAccount, resourcesProvider, grid ? ThemeSmallPreviewView.TYPE_GRID_CHANNEL : ThemeSmallPreviewView.TYPE_CHANNEL) {
                         @Override
                         protected String noThemeString() {
-                            return LocaleController.getString(R.string.ChannelNoWallpaper);
+                            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELNOWALLPAPER, R.string.ChannelNoWallpaper);
                         }
 
                         @Override
@@ -1712,7 +1712,7 @@ public class ChannelColorActivity extends BaseFragment {
             }
             BulletinFactory.of(bulletinFragment).createSimpleBulletin(
                 R.raw.contact_check,
-                LocaleController.getString(R.string.ChannelAppearanceUpdated)
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELAPPEARANCEUPDATED, R.string.ChannelAppearanceUpdated)
             ).show();
             bulletinFragment = null;
         }

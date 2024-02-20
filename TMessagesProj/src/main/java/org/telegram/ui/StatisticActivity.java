@@ -233,18 +233,18 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
                 final ChartViewData[] chartsViewData = new ChartViewData[12];
                 TLRPC.TL_stats_broadcastStats stats = (TLRPC.TL_stats_broadcastStats) response;
 
-                chartsViewData[0] = createViewData(stats.iv_interactions_graph, LocaleController.getString("IVInteractionsChartTitle", R.string.IVInteractionsChartTitle), 1);
-                chartsViewData[1] = createViewData(stats.followers_graph, LocaleController.getString("FollowersChartTitle", R.string.FollowersChartTitle), 0);
-                chartsViewData[2] = createViewData(stats.top_hours_graph, LocaleController.getString("TopHoursChartTitle", R.string.TopHoursChartTitle), 0);
-                chartsViewData[3] = createViewData(stats.interactions_graph, LocaleController.getString("ViewsAndSharesChartTitle", R.string.ViewsAndSharesChartTitle), 1);
-                chartsViewData[4] = createViewData(stats.growth_graph, LocaleController.getString("GrowthChartTitle", R.string.GrowthChartTitle), 0);
-                chartsViewData[5] = createViewData(stats.views_by_source_graph, LocaleController.getString("ViewsBySourceChartTitle", R.string.ViewsBySourceChartTitle), 2);
-                chartsViewData[6] = createViewData(stats.new_followers_by_source_graph, LocaleController.getString("NewFollowersBySourceChartTitle", R.string.NewFollowersBySourceChartTitle), 2);
-                chartsViewData[7] = createViewData(stats.languages_graph, LocaleController.getString("LanguagesChartTitle", R.string.LanguagesChartTitle), 4, true);
-                chartsViewData[8] = createViewData(stats.mute_graph, LocaleController.getString("NotificationsChartTitle", R.string.NotificationsChartTitle), 0);
-                chartsViewData[9] = createViewData(stats.reactions_by_emotion_graph, LocaleController.getString("ReactionsByEmotionChartTitle", R.string.ReactionsByEmotionChartTitle), 2);
-                chartsViewData[10] = createViewData(stats.story_interactions_graph, LocaleController.getString("StoryInteractionsChartTitle", R.string.StoryInteractionsChartTitle), 1);
-                chartsViewData[11] = createViewData(stats.story_reactions_by_emotion_graph, LocaleController.getString("StoryReactionsByEmotionChartTitle", R.string.StoryReactionsByEmotionChartTitle), 2);
+                chartsViewData[0] = createViewData(stats.iv_interactions_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_IVINTERACTIONSCHARTTITLE, R.string.IVInteractionsChartTitle), 1);
+                chartsViewData[1] = createViewData(stats.followers_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLLOWERSCHARTTITLE, R.string.FollowersChartTitle), 0);
+                chartsViewData[2] = createViewData(stats.top_hours_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TOPHOURSCHARTTITLE, R.string.TopHoursChartTitle), 0);
+                chartsViewData[3] = createViewData(stats.interactions_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWSANDSHARESCHARTTITLE, R.string.ViewsAndSharesChartTitle), 1);
+                chartsViewData[4] = createViewData(stats.growth_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GROWTHCHARTTITLE, R.string.GrowthChartTitle), 0);
+                chartsViewData[5] = createViewData(stats.views_by_source_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWSBYSOURCECHARTTITLE, R.string.ViewsBySourceChartTitle), 2);
+                chartsViewData[6] = createViewData(stats.new_followers_by_source_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWFOLLOWERSBYSOURCECHARTTITLE, R.string.NewFollowersBySourceChartTitle), 2);
+                chartsViewData[7] = createViewData(stats.languages_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LANGUAGESCHARTTITLE, R.string.LanguagesChartTitle), 4, true);
+                chartsViewData[8] = createViewData(stats.mute_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSCHARTTITLE, R.string.NotificationsChartTitle), 0);
+                chartsViewData[9] = createViewData(stats.reactions_by_emotion_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REACTIONSBYEMOTIONCHARTTITLE, R.string.ReactionsByEmotionChartTitle), 2);
+                chartsViewData[10] = createViewData(stats.story_interactions_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYINTERACTIONSCHARTTITLE, R.string.StoryInteractionsChartTitle), 1);
+                chartsViewData[11] = createViewData(stats.story_reactions_by_emotion_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYREACTIONSBYEMOTIONCHARTTITLE, R.string.StoryReactionsByEmotionChartTitle), 2);
 
                 if (chartsViewData[2] != null) {
                     chartsViewData[2].useHourFormat = true;
@@ -314,14 +314,14 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
                 final ChartViewData[] chartsViewData = new ChartViewData[8];
                 TLRPC.TL_stats_megagroupStats stats = (TLRPC.TL_stats_megagroupStats) response;
 
-                chartsViewData[0] = createViewData(stats.growth_graph, LocaleController.getString("GrowthChartTitle", R.string.GrowthChartTitle), 0);
-                chartsViewData[1] = createViewData(stats.members_graph, LocaleController.getString("GroupMembersChartTitle", R.string.GroupMembersChartTitle), 0);
-                chartsViewData[2] = createViewData(stats.new_members_by_source_graph, LocaleController.getString("NewMembersBySourceChartTitle", R.string.NewMembersBySourceChartTitle), 2);
-                chartsViewData[3] = createViewData(stats.languages_graph, LocaleController.getString("MembersLanguageChartTitle", R.string.MembersLanguageChartTitle), 4, true);
-                chartsViewData[4] = createViewData(stats.messages_graph, LocaleController.getString("MessagesChartTitle", R.string.MessagesChartTitle), 2);
-                chartsViewData[5] = createViewData(stats.actions_graph, LocaleController.getString("ActionsChartTitle", R.string.ActionsChartTitle), 1);
-                chartsViewData[6] = createViewData(stats.top_hours_graph, LocaleController.getString("TopHoursChartTitle", R.string.TopHoursChartTitle), 0);
-                chartsViewData[7] = createViewData(stats.weekdays_graph, LocaleController.getString("TopDaysOfWeekChartTitle", R.string.TopDaysOfWeekChartTitle), 4);
+                chartsViewData[0] = createViewData(stats.growth_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GROWTHCHARTTITLE, R.string.GrowthChartTitle), 0);
+                chartsViewData[1] = createViewData(stats.members_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GROUPMEMBERSCHARTTITLE, R.string.GroupMembersChartTitle), 0);
+                chartsViewData[2] = createViewData(stats.new_members_by_source_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWMEMBERSBYSOURCECHARTTITLE, R.string.NewMembersBySourceChartTitle), 2);
+                chartsViewData[3] = createViewData(stats.languages_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEMBERSLANGUAGECHARTTITLE, R.string.MembersLanguageChartTitle), 4, true);
+                chartsViewData[4] = createViewData(stats.messages_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGESCHARTTITLE, R.string.MessagesChartTitle), 2);
+                chartsViewData[5] = createViewData(stats.actions_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACTIONSCHARTTITLE, R.string.ActionsChartTitle), 1);
+                chartsViewData[6] = createViewData(stats.top_hours_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TOPHOURSCHARTTITLE, R.string.TopHoursChartTitle), 0);
+                chartsViewData[7] = createViewData(stats.weekdays_graph, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TOPDAYSOFWEEKCHARTTITLE, R.string.TopDaysOfWeekChartTitle), 4);
 
                 if (chartsViewData[6] != null) {
                     chartsViewData[6].useHourFormat = true;
@@ -533,8 +533,8 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
             @Override
             public Tab[] createTabs() {
                 Tab[] tabs = new Tab[]{
-                        new Tab(0, R.raw.stats, LocaleController.getString("Statistics", R.string.Statistics)),
-                        new Tab(1, R.raw.boosts, LocaleController.getString("Boosts", R.string.Boosts))
+                        new Tab(0, R.raw.stats, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STATISTICS, R.string.Statistics)),
+                        new Tab(1, R.raw.boosts, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTS, R.string.Boosts))
                 };
                 tabs[0].customFrameInvert = true;
                 tabs[0].customEndFrameMid = 25;
@@ -638,14 +638,14 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
         loadingTitle.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         loadingTitle.setTextColor(Theme.getColor(Theme.key_player_actionBarTitle));
         loadingTitle.setTag(Theme.key_player_actionBarTitle);
-        loadingTitle.setText(LocaleController.getString("LoadingStats", R.string.LoadingStats));
+        loadingTitle.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOADINGSTATS, R.string.LoadingStats));
         loadingTitle.setGravity(Gravity.CENTER_HORIZONTAL);
 
         TextView loadingSubtitle = new TextView(context);
         loadingSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         loadingSubtitle.setTextColor(Theme.getColor(Theme.key_player_actionBarSubtitle));
         loadingSubtitle.setTag(Theme.key_player_actionBarSubtitle);
-        loadingSubtitle.setText(LocaleController.getString("LoadingStatsDescription", R.string.LoadingStatsDescription));
+        loadingSubtitle.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOADINGSTATSDESCRIPTION, R.string.LoadingStatsDescription));
         loadingSubtitle.setGravity(Gravity.CENTER_HORIZONTAL);
 
         progressLayout.addView(imageView, LayoutHelper.createLinear(120, 120, Gravity.CENTER_HORIZONTAL, 0, 0, 0, 20));
@@ -720,11 +720,11 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
                 final ArrayList<Integer> actions = new ArrayList<>();
                 final ArrayList<Integer> icons = new ArrayList<>();
 
-                items.add(LocaleController.getString("ViewMessageStatistic", R.string.ViewMessageStatistic));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWMESSAGESTATISTIC, R.string.ViewMessageStatistic));
                 actions.add(0);
                 icons.add(R.drawable.msg_stats);
 
-                items.add(LocaleController.getString("ViewMessage", R.string.ViewMessage));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWMESSAGE, R.string.ViewMessage));
                 actions.add(1);
                 icons.add(R.drawable.msg_msgbubble3);
 
@@ -1109,17 +1109,17 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
                 headerCell.setDates(minDateOverview, maxDateOverview);
                 headerCell.setPadding(0, AndroidUtilities.dp(16), 0, AndroidUtilities.dp(16));
                 if (position == overviewHeaderCell) {
-                    headerCell.setTitle(LocaleController.getString("StatisticOverview", R.string.StatisticOverview));
+                    headerCell.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STATISTICOVERVIEW, R.string.StatisticOverview));
                 } else if (position == topAdminsHeaderCell) {
-                    headerCell.setTitle(LocaleController.getString("TopAdmins", R.string.TopAdmins));
+                    headerCell.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TOPADMINS, R.string.TopAdmins));
                 } else if (position == topInviterHeaderCell) {
-                    headerCell.setTitle(LocaleController.getString("TopInviters", R.string.TopInviters));
+                    headerCell.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TOPINVITERS, R.string.TopInviters));
                 } else if (position == topMembersHeaderCell) {
-                    headerCell.setTitle(LocaleController.getString("TopMembers", R.string.TopMembers));
+                    headerCell.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TOPMEMBERS, R.string.TopMembers));
                 } else {
                     headerCell.showDate(false);
                     headerCell.setPadding(AndroidUtilities.dp(2), AndroidUtilities.dp(15), AndroidUtilities.dp(2), AndroidUtilities.dp(6));
-                    headerCell.setTitle(LocaleController.getString("RecentPostsCapitalize", R.string.RecentPostsCapitalize));
+                    headerCell.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RECENTPOSTSCAPITALIZE, R.string.RecentPostsCapitalize));
                 }
             } else if (type == 14) {
                 OverviewCell overviewCell = (OverviewCell) holder.itemView;
@@ -2641,28 +2641,28 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
 
         public OverviewChannelData(TLRPC.TL_stats_broadcastStats stats) {
             Quadruple<String, String, Boolean, Boolean> quadrupleData = prepare(stats.reactions_per_post);
-            reactionsPerPostTitle = LocaleController.getString("ReactionsPerPost", R.string.ReactionsPerPost);
+            reactionsPerPostTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REACTIONSPERPOST, R.string.ReactionsPerPost);
             reactionsPerPostPrimary = quadrupleData.fist;
             reactionsPerPostSecondary = quadrupleData.second;
             reactionsPerPostUp = quadrupleData.third;
             reactionsPerPostVisible = quadrupleData.fourth;
 
             quadrupleData = prepare(stats.reactions_per_story);
-            reactionsPerStoryTitle = LocaleController.getString("ReactionsPerStory", R.string.ReactionsPerStory);
+            reactionsPerStoryTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REACTIONSPERSTORY, R.string.ReactionsPerStory);
             reactionsPerStoryPrimary = quadrupleData.fist;
             reactionsPerStorySecondary = quadrupleData.second;
             reactionsPerStoryUp = quadrupleData.third;
             reactionsPerStoryVisible = quadrupleData.fourth;
 
             quadrupleData = prepare(stats.views_per_story);
-            viewsPerStoryTitle = LocaleController.getString("ViewsPerStory", R.string.ViewsPerStory);
+            viewsPerStoryTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWSPERSTORY, R.string.ViewsPerStory);
             viewsPerStoryPrimary = quadrupleData.fist;
             viewsPerStorySecondary = quadrupleData.second;
             viewsPerStoryUp = quadrupleData.third;
             viewsPerStoryVisible = quadrupleData.fourth;
 
             quadrupleData = prepare(stats.shares_per_story);
-            sharesPerStoryTitle = LocaleController.getString("SharesPerStory", R.string.SharesPerStory);
+            sharesPerStoryTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHARESPERSTORY, R.string.SharesPerStory);
             sharesPerStoryPrimary = quadrupleData.fist;
             sharesPerStorySecondary = quadrupleData.second;
             sharesPerStoryUp = quadrupleData.third;
@@ -2670,7 +2670,7 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
 
             int dif = (int) (stats.followers.current - stats.followers.previous);
             float difPercent = stats.followers.previous == 0 ? 0 : Math.abs(dif / (float) stats.followers.previous * 100f);
-            followersTitle = LocaleController.getString("FollowersChartTitle", R.string.FollowersChartTitle);
+            followersTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLLOWERSCHARTTITLE, R.string.FollowersChartTitle);
             followersPrimary = AndroidUtilities.formatWholeNumber((int) stats.followers.current, 0);
 
             if (dif == 0 || difPercent == 0) {
@@ -2684,7 +2684,7 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
 
             dif = (int) (stats.shares_per_post.current - stats.shares_per_post.previous);
             difPercent = stats.shares_per_post.previous == 0 ? 0 : Math.abs(dif / (float) stats.shares_per_post.previous * 100f);
-            sharesTitle = LocaleController.getString("SharesPerPost", R.string.SharesPerPost);
+            sharesTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHARESPERPOST, R.string.SharesPerPost);
             sharesPrimary = AndroidUtilities.formatWholeNumber((int) stats.shares_per_post.current, 0);
 
             if (dif == 0 || difPercent == 0) {
@@ -2698,7 +2698,7 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
 
             dif = (int) (stats.views_per_post.current - stats.views_per_post.previous);
             difPercent = stats.views_per_post.previous == 0 ? 0 : Math.abs(dif / (float) stats.views_per_post.previous * 100f);
-            viewsTitle = LocaleController.getString("ViewsPerPost", R.string.ViewsPerPost);
+            viewsTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWSPERPOST, R.string.ViewsPerPost);
             viewsPrimary = AndroidUtilities.formatWholeNumber((int) stats.views_per_post.current, 0);
             if (dif == 0 || difPercent == 0) {
                 viewsSecondary = "";
@@ -2710,7 +2710,7 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
             viewsUp = dif >= 0;
 
             difPercent = (float) (stats.enabled_notifications.part / stats.enabled_notifications.total * 100f);
-            notificationsTitle = LocaleController.getString("EnabledNotifications", R.string.EnabledNotifications);
+            notificationsTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENABLEDNOTIFICATIONS, R.string.EnabledNotifications);
             if (difPercent == (int) difPercent) {
                 notificationsPrimary = String.format(Locale.ENGLISH, "%d%s", (int) difPercent, "%");
             } else {
@@ -2744,7 +2744,7 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
         public OverviewChatData(TLRPC.TL_stats_megagroupStats stats) {
             int dif = (int) (stats.members.current - stats.members.previous);
             float difPercent = stats.members.previous == 0 ? 0 : Math.abs(dif / (float) stats.members.previous * 100f);
-            membersTitle = LocaleController.getString("MembersOverviewTitle", R.string.MembersOverviewTitle);
+            membersTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEMBERSOVERVIEWTITLE, R.string.MembersOverviewTitle);
             membersPrimary = AndroidUtilities.formatWholeNumber((int) stats.members.current, 0);
 
             if (dif == 0 || difPercent == 0) {
@@ -2758,7 +2758,7 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
 
             dif = (int) (stats.viewers.current - stats.viewers.previous);
             difPercent = stats.viewers.previous == 0 ? 0 : Math.abs(dif / (float) stats.viewers.previous * 100f);
-            viewingMembersTitle = LocaleController.getString("ViewingMembers", R.string.ViewingMembers);
+            viewingMembersTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWINGMEMBERS, R.string.ViewingMembers);
             viewingMembersPrimary = AndroidUtilities.formatWholeNumber((int) stats.viewers.current, 0);
 
             if (dif == 0 || difPercent == 0) {
@@ -2771,7 +2771,7 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
 
             dif = (int) (stats.posters.current - stats.posters.previous);
             difPercent = stats.posters.previous == 0 ? 0 : Math.abs(dif / (float) stats.posters.previous * 100f);
-            postingMembersTitle = LocaleController.getString("PostingMembers", R.string.PostingMembers);
+            postingMembersTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_POSTINGMEMBERS, R.string.PostingMembers);
             postingMembersPrimary = AndroidUtilities.formatWholeNumber((int) stats.posters.current, 0);
             if (dif == 0 || difPercent == 0) {
                 postingMembersSecondary = "";
@@ -2782,7 +2782,7 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
 
             dif = (int) (stats.messages.current - stats.messages.previous);
             difPercent = stats.messages.previous == 0 ? 0 : Math.abs(dif / (float) stats.messages.previous * 100f);
-            messagesTitle = LocaleController.getString("MessagesOverview", R.string.MessagesOverview);
+            messagesTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGESOVERVIEW, R.string.MessagesOverview);
             messagesPrimary = AndroidUtilities.formatWholeNumber((int) stats.messages.current, 0);
             if (dif == 0 || difPercent == 0) {
                 messagesSecondary = "";
@@ -3078,10 +3078,10 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
                 }
             }
 
-            items.add(LocaleController.getString("StatisticOpenProfile", R.string.StatisticOpenProfile));
+            items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STATISTICOPENPROFILE, R.string.StatisticOpenProfile));
             icons.add(R.drawable.msg_openprofile);
             actions.add(2);
-            items.add(LocaleController.getString("StatisticSearchUserHistory", R.string.StatisticSearchUserHistory));
+            items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STATISTICSEARCHUSERHISTORY, R.string.StatisticSearchUserHistory));
             icons.add(R.drawable.msg_msgbubble3);
             actions.add(1);
 
@@ -3157,7 +3157,7 @@ public class StatisticActivity extends BaseFragment implements NotificationCente
                 }
                 if (canEditAdmin) {
                     isAdmin = channelParticipant.admin_rights == null;
-                    items.add(isAdmin ? LocaleController.getString("SetAsAdmin", R.string.SetAsAdmin) : LocaleController.getString("EditAdminRights", R.string.EditAdminRights));
+                    items.add(isAdmin ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETASADMIN, R.string.SetAsAdmin) : LocaleController.getString("EditAdminRights", R.string.EditAdminRights));
                     icons.add(isAdmin ? R.drawable.msg_admins : R.drawable.msg_permissions);
                     actions.add(0);
                 }

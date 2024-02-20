@@ -391,7 +391,7 @@ public final class FloatingToolbar {
             mOverflowButtonIcon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             mOverflowButtonIcon.setImageDrawable(mOverflow);
             mOverflowButtonText = new TextView(mContext);
-            mOverflowButtonText.setText(LocaleController.getString(R.string.Back));
+            mOverflowButtonText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BACK, R.string.Back));
             mOverflowButtonText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             mOverflowButtonText.setAlpha(0f);
             mOverflowButtonShadow = new View(mContext);
@@ -786,7 +786,7 @@ public final class FloatingToolbar {
                 mOverflowPanel.setAlpha(1);
                 mOverflowPanel.setVisibility(View.VISIBLE);
                 mOverflowButtonIcon.setImageDrawable(mArrow);
-                mOverflowButton.setContentDescription(LocaleController.getString("AccDescrMoreOptions", R.string.AccDescrMoreOptions));
+                mOverflowButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRMOREOPTIONS, R.string.AccDescrMoreOptions));
 
                 if (isInRTLMode()) {
                     mContentContainer.setX(mMarginHorizontal);
@@ -818,7 +818,7 @@ public final class FloatingToolbar {
                 mOverflowPanel.setAlpha(0);
                 mOverflowPanel.setVisibility(View.INVISIBLE);
                 mOverflowButtonIcon.setImageDrawable(mOverflow);
-                mOverflowButton.setContentDescription(LocaleController.getString("AccDescrMoreOptions", R.string.AccDescrMoreOptions));
+                mOverflowButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRMOREOPTIONS, R.string.AccDescrMoreOptions));
                 if (hasOverflow()) {
                     if (isInRTLMode()) {
                         mContentContainer.setX(mMarginHorizontal);

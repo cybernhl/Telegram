@@ -232,7 +232,7 @@ public class FiltersView extends RecyclerListView {
                     TLRPC.User user = (TLRPC.User) object;
                     String title;
                     if (UserConfig.getInstance(UserConfig.selectedAccount).getCurrentUser().id == user.id) {
-                        title = LocaleController.getString("SavedMessages", R.string.SavedMessages);
+                        title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages);
                     } else {
                         title = ContactsController.formatName(user.first_name, user.last_name, 10);
                     }
@@ -292,7 +292,7 @@ public class FiltersView extends RecyclerListView {
         if (q.length() < 3) {
             return;
         }
-        if (LocaleController.getString("SearchTipToday", R.string.SearchTipToday).toLowerCase().startsWith(q) || "today".startsWith(q)) {
+        if (LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHTIPTODAY, R.string.SearchTipToday).toLowerCase().startsWith(q) || "today".startsWith(q)) {
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
             int month = calendar.get(Calendar.MONTH);
@@ -301,11 +301,11 @@ public class FiltersView extends RecyclerListView {
             long minDate = calendar.getTimeInMillis();
             calendar.set(year, month, day + 1, 0, 0, 0);
             long maxDate = calendar.getTimeInMillis() - 1;
-            dates.add(new DateData(LocaleController.getString("SearchTipToday", R.string.SearchTipToday), minDate, maxDate));
+            dates.add(new DateData(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHTIPTODAY, R.string.SearchTipToday), minDate, maxDate));
             return;
         }
 
-        if (LocaleController.getString("SearchTipYesterday", R.string.SearchTipYesterday).toLowerCase().startsWith(q) || "yesterday".startsWith(q)) {
+        if (LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHTIPYESTERDAY, R.string.SearchTipYesterday).toLowerCase().startsWith(q) || "yesterday".startsWith(q)) {
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
             int month = calendar.get(Calendar.MONTH);
@@ -314,7 +314,7 @@ public class FiltersView extends RecyclerListView {
             long minDate = calendar.getTimeInMillis() - 86400000L;
             calendar.set(year, month, day + 1, 0, 0, 0);
             long maxDate = calendar.getTimeInMillis() - 86400001L;
-            dates.add(new DateData(LocaleController.getString("SearchTipYesterday", R.string.SearchTipYesterday), minDate, maxDate));
+            dates.add(new DateData(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHTIPYESTERDAY, R.string.SearchTipYesterday), minDate, maxDate));
             return;
         }
         Matcher matcher;
@@ -539,18 +539,18 @@ public class FiltersView extends RecyclerListView {
 
     public static int getMonth(String q) {
         String[] months = new String[]{
-                LocaleController.getString("January", R.string.January).toLowerCase(),
-                LocaleController.getString("February", R.string.February).toLowerCase(),
-                LocaleController.getString("March", R.string.March).toLowerCase(),
-                LocaleController.getString("April", R.string.April).toLowerCase(),
-                LocaleController.getString("May", R.string.May).toLowerCase(),
-                LocaleController.getString("June", R.string.June).toLowerCase(),
-                LocaleController.getString("July", R.string.July).toLowerCase(),
-                LocaleController.getString("August", R.string.August).toLowerCase(),
-                LocaleController.getString("September", R.string.September).toLowerCase(),
-                LocaleController.getString("October", R.string.October).toLowerCase(),
-                LocaleController.getString("November", R.string.November).toLowerCase(),
-                LocaleController.getString("December", R.string.December).toLowerCase()
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_JANUARY, R.string.January).toLowerCase(),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FEBRUARY, R.string.February).toLowerCase(),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MARCH, R.string.March).toLowerCase(),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APRIL, R.string.April).toLowerCase(),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MAY, R.string.May).toLowerCase(),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_JUNE, R.string.June).toLowerCase(),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_JULY, R.string.July).toLowerCase(),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUGUST, R.string.August).toLowerCase(),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEPTEMBER, R.string.September).toLowerCase(),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OCTOBER, R.string.October).toLowerCase(),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOVEMBER, R.string.November).toLowerCase(),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DECEMBER, R.string.December).toLowerCase()
         };
 
         String[] monthsEng = new String[12];

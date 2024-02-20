@@ -495,7 +495,7 @@ public class ActionBarMenuSlider extends FrameLayout {
 
                 @Override
                 public CharSequence getContentDescription(View host) {
-                    return SpeedIconDrawable.formatNumber(getSpeed()) + "x  " + LocaleController.getString("AccDescrSpeedSlider", R.string.AccDescrSpeedSlider);
+                    return SpeedIconDrawable.formatNumber(getSpeed()) + "x  " + LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRSPEEDSLIDER, R.string.AccDescrSpeedSlider);
                 }
             });
         }

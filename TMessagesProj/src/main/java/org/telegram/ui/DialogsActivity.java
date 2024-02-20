@@ -2187,7 +2187,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                                 ((DialogCell) view).startOutAnimation();
                                 parentPage.archivePullViewState = ARCHIVE_ITEM_STATE_SHOWED;
                                 if (AndroidUtilities.isAccessibilityScreenReaderEnabled()) {
-                                    AndroidUtilities.makeAccessibilityAnnouncement(LocaleController.getString(R.string.AccDescrArchivedChatsShown));
+                                    AndroidUtilities.makeAccessibilityAnnouncement(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRARCHIVEDCHATSSHOWN, R.string.AccDescrArchivedChatsShown));
                                 }
                             }
                         }
@@ -2953,7 +2953,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         ActionBarMenu menu = actionBar.createMenu();
         if (!onlySelect && searchString == null && folderId == 0) {
             doneItem = new ActionBarMenuItem(context, null, Theme.getColor(Theme.key_actionBarDefaultSelector), Theme.getColor(Theme.key_actionBarDefaultIcon), true);
-            doneItem.setText(LocaleController.getString("Done", R.string.Done).toUpperCase());
+            doneItem.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done).toUpperCase());
             actionBar.addView(doneItem, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.RIGHT, 0, 0, 10, 0));
             doneItem.setOnClickListener(v -> {
                 filterTabsView.setIsEditing(false);
@@ -2963,15 +2963,15 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             doneItem.setVisibility(View.GONE);
             proxyDrawable = new ProxyDrawable(context);
             proxyItem = menu.addItem(2, proxyDrawable);
-            proxyItem.setContentDescription(LocaleController.getString("ProxySettings", R.string.ProxySettings));
+            proxyItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PROXYSETTINGS, R.string.ProxySettings));
 
             passcodeDrawable = new RLottieDrawable(R.raw.passcode_lock_close, "passcode_lock_close", AndroidUtilities.dp(28), AndroidUtilities.dp(28), true, null);
             passcodeItem = menu.addItem(1, passcodeDrawable);
-            passcodeItem.setContentDescription(LocaleController.getString("AccDescrPasscodeLock", R.string.AccDescrPasscodeLock));
+            passcodeItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRPASSCODELOCK, R.string.AccDescrPasscodeLock));
 
             downloadsItem = menu.addItem(3, new ColorDrawable(Color.TRANSPARENT));
             downloadsItem.addView(new DownloadProgressIcon(currentAccount, context));
-            downloadsItem.setContentDescription(LocaleController.getString("DownloadsTabs", R.string.DownloadsTabs));
+            downloadsItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DOWNLOADSTABS, R.string.DownloadsTabs));
             downloadsItem.setVisibility(View.GONE);
 
             updatePasscodeButton();
@@ -3040,7 +3040,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 }
                 updatePasscodeButton();
                 updateProxyButton(false, false);
-                actionBar.setBackButtonContentDescription(LocaleController.getString("AccDescrGoBack", R.string.AccDescrGoBack));
+                actionBar.setBackButtonContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRGOBACK, R.string.AccDescrGoBack));
                 NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.needCheckSystemBarColors);
                 ((SizeNotifierFrameLayout) fragmentView).invalidateBlur();
                 if (optionsItem != null) {
@@ -3091,7 +3091,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         actionBar.setBackButtonDrawable(menuDrawable);
                         menuDrawable.setRotation(0, true);
                     }
-                    actionBar.setBackButtonContentDescription(LocaleController.getString("AccDescrOpenMenu", R.string.AccDescrOpenMenu));
+                    actionBar.setBackButtonContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCROPENMENU, R.string.AccDescrOpenMenu));
                 }
                 NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.needCheckSystemBarColors, true);
                 ((SizeNotifierFrameLayout) fragmentView).invalidateBlur();
@@ -3133,53 +3133,53 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         }
         if (isArchive()) {
             optionsItem = menu.addItem(4, R.drawable.ic_ab_other);
-            optionsItem.addSubItem(5, R.drawable.msg_customize, LocaleController.getString("ArchiveSettings")).setColors(getThemedColor(Theme.key_actionBarDefaultSubmenuItem), getThemedColor(Theme.key_actionBarDefaultSubmenuItem));
-            optionsItem.addSubItem(6, R.drawable.msg_help, LocaleController.getString("HowDoesItWork")).setColors(getThemedColor(Theme.key_actionBarDefaultSubmenuItem), getThemedColor(Theme.key_actionBarDefaultSubmenuItem));
+            optionsItem.addSubItem(5, R.drawable.msg_customize, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVESETTINGS)).setColors(getThemedColor(Theme.key_actionBarDefaultSubmenuItem), getThemedColor(Theme.key_actionBarDefaultSubmenuItem));
+            optionsItem.addSubItem(6, R.drawable.msg_help, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_HOWDOESITWORK)).setColors(getThemedColor(Theme.key_actionBarDefaultSubmenuItem), getThemedColor(Theme.key_actionBarDefaultSubmenuItem));
             optionsItem.setOnClickListener(v -> {
                 getContactsController().loadGlobalPrivacySetting();
                 optionsItem.toggleSubMenu();
             });
         }
-        searchItem.setSearchFieldHint(LocaleController.getString("Search", R.string.Search));
-        searchItem.setContentDescription(LocaleController.getString("Search", R.string.Search));
+        searchItem.setSearchFieldHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
+        searchItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
         if (onlySelect) {
             actionBar.setBackButtonImage(R.drawable.ic_ab_back);
             if (isReplyTo) {
-                actionBar.setTitle(LocaleController.getString(R.string.ReplyToDialog));
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLYTODIALOG, R.string.ReplyToDialog));
             } else if (isQuote) {
-                actionBar.setTitle(LocaleController.getString(R.string.QuoteTo));
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_QUOTETO, R.string.QuoteTo));
             } else if (initialDialogsType == DIALOGS_TYPE_FORWARD && selectAlertString == null) {
-                actionBar.setTitle(LocaleController.getString("ForwardTo", R.string.ForwardTo));
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDTO, R.string.ForwardTo));
             } else if (initialDialogsType == DIALOGS_TYPE_WIDGET) {
-                actionBar.setTitle(LocaleController.getString("SelectChats", R.string.SelectChats));
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTCHATS, R.string.SelectChats));
             } else if (initialDialogsType == DIALOGS_TYPE_START_ATTACH_BOT) {
                 if (allowBots && !allowUsers && !allowGroups && !allowChannels) {
-                    actionBar.setTitle(LocaleController.getString("ChooseBot", R.string.ChooseBot));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEBOT, R.string.ChooseBot));
                 } else if (allowUsers && !allowBots && !allowGroups && !allowChannels) {
-                    actionBar.setTitle(LocaleController.getString("ChooseUser", R.string.ChooseUser));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEUSER, R.string.ChooseUser));
                 } else if (allowGroups && !allowUsers && !allowBots && !allowChannels) {
-                    actionBar.setTitle(LocaleController.getString("ChooseGroup", R.string.ChooseGroup));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEGROUP, R.string.ChooseGroup));
                 } else if (allowChannels && !allowUsers && !allowBots && !allowGroups) {
-                    actionBar.setTitle(LocaleController.getString("ChooseChannel", R.string.ChooseChannel));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSECHANNEL, R.string.ChooseChannel));
                 } else {
-                    actionBar.setTitle(LocaleController.getString("SelectChat", R.string.SelectChat));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTCHAT, R.string.SelectChat));
                 }
             } else if (requestPeerType instanceof TLRPC.TL_requestPeerTypeUser) {
                 if (((TLRPC.TL_requestPeerTypeUser) requestPeerType).bot != null) {
                     if (((TLRPC.TL_requestPeerTypeUser) requestPeerType).bot) {
-                        actionBar.setTitle(LocaleController.getString("ChooseBot", R.string.ChooseBot));
+                        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEBOT, R.string.ChooseBot));
                     } else {
-                        actionBar.setTitle(LocaleController.getString("ChooseUser", R.string.ChooseUser));
+                        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEUSER, R.string.ChooseUser));
                     }
                 } else {
-                    actionBar.setTitle(LocaleController.getString("ChooseUser", R.string.ChooseUser));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEUSER, R.string.ChooseUser));
                 }
             } else if (requestPeerType instanceof TLRPC.TL_requestPeerTypeBroadcast) {
-                actionBar.setTitle(LocaleController.getString("ChooseChannel", R.string.ChooseChannel));
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSECHANNEL, R.string.ChooseChannel));
             } else if (requestPeerType instanceof TLRPC.TL_requestPeerTypeChat) {
-                actionBar.setTitle(LocaleController.getString("ChooseGroup", R.string.ChooseGroup));
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEGROUP, R.string.ChooseGroup));
             } else {
-                actionBar.setTitle(LocaleController.getString("SelectChat", R.string.SelectChat));
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTCHAT, R.string.SelectChat));
             }
             actionBar.setBackgroundColor(Theme.getColor(Theme.key_actionBarDefault));
         } else {
@@ -3188,17 +3188,17 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             } else {
                 actionBar.setBackButtonDrawable(menuDrawable = new MenuDrawable());
                 menuDrawable.setRoundCap();
-                actionBar.setBackButtonContentDescription(LocaleController.getString("AccDescrOpenMenu", R.string.AccDescrOpenMenu));
+                actionBar.setBackButtonContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCROPENMENU, R.string.AccDescrOpenMenu));
             }
             if (folderId != 0) {
-                actionBar.setTitle(LocaleController.getString("ArchivedChats", R.string.ArchivedChats));
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVEDCHATS, R.string.ArchivedChats));
             } else {
                 statusDrawable = new AnimatedEmojiDrawable.SwapAnimatedEmojiDrawable(null, AndroidUtilities.dp(26));
                 statusDrawable.center = true;
                 if (BuildVars.DEBUG_VERSION) {
-                    actionBar.setTitle(LocaleController.getString("AppNameBeta", R.string.AppNameBeta), statusDrawable);
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAMEBETA, R.string.AppNameBeta), statusDrawable);
                 } else {
-                    actionBar.setTitle(LocaleController.getString("AppName", R.string.AppName), statusDrawable);
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName), statusDrawable);
                 }
                 updateStatus(UserConfig.getInstance(currentAccount).getCurrentUser(), false);
             }
@@ -3252,7 +3252,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                             performHapticFeedback(HapticFeedbackConstants.KEYBOARD_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
                         } catch (Exception ignore) {
                         }
-                        topBulletin = BulletinFactory.of(DialogsActivity.this).createSimpleBulletin(R.raw.filter_reorder, AndroidUtilities.replaceTags(LocaleController.formatString("LimitReachedReorderFolder", R.string.LimitReachedReorderFolder, LocaleController.getString(R.string.FilterAllChats))), LocaleController.getString("PremiumMore", R.string.PremiumMore), Bulletin.DURATION_PROLONG, () -> {
+                        topBulletin = BulletinFactory.of(DialogsActivity.this).createSimpleBulletin(R.raw.filter_reorder, AndroidUtilities.replaceTags(LocaleController.formatString("LimitReachedReorderFolder", R.string.LimitReachedReorderFolder, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERALLCHATS, R.string.FilterAllChats))), LocaleController.getString("PremiumMore", R.string.PremiumMore), Bulletin.DURATION_PROLONG, () -> {
                             showDialog(new PremiumFeatureBottomSheet(DialogsActivity.this, PremiumPreviewFragment.PREMIUM_FEATURE_ADVANCED_CHAT_MANAGEMENT, true));
                             filterTabsView.setIsEditing(false);
                             showDoneItem(false);
@@ -3270,10 +3270,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         FolderBottomSheet.showForDeletion(DialogsActivity.this, dialogFilter.id, null);
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setTitle(LocaleController.getString("FilterDelete", R.string.FilterDelete));
-                        builder.setMessage(LocaleController.getString("FilterDeleteAlert", R.string.FilterDeleteAlert));
-                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                        builder.setPositiveButton(LocaleController.getString("Delete", R.string.Delete), (dialog2, which2) -> {
+                        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERDELETE, R.string.FilterDelete));
+                        builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERDELETEALERT, R.string.FilterDeleteAlert));
+                        builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
+                        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete), (dialog2, which2) -> {
                             TLRPC.TL_messages_updateDialogFilter req = new TLRPC.TL_messages_updateDialogFilter();
                             req.id = dialogFilter.id;
                             getConnectionsManager().sendRequest(req, null);
@@ -3453,15 +3453,15 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
                     filterOptions = ItemOptions.makeOptions(DialogsActivity.this, tabView)
                             .setScrimViewBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(6), 0, Theme.getColor(Theme.key_actionBarDefault)))
-                            .addIf(getMessagesController().getDialogFilters().size() > 1, R.drawable.tabs_reorder, LocaleController.getString("FilterReorder", R.string.FilterReorder), () -> {
+                            .addIf(getMessagesController().getDialogFilters().size() > 1, R.drawable.tabs_reorder, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERREORDER, R.string.FilterReorder), () -> {
                                 resetScroll();
                                 filterTabsView.setIsEditing(true);
                                 showDoneItem(true);
                             })
-                            .add(R.drawable.msg_edit, defaultTab ? LocaleController.getString("FilterEditAll", R.string.FilterEditAll) : LocaleController.getString("FilterEdit", R.string.FilterEdit), () -> {
+                            .add(R.drawable.msg_edit, defaultTab ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTEREDITALL, R.string.FilterEditAll) : LocaleController.getString("FilterEdit", R.string.FilterEdit), () -> {
                                 presentFragment(defaultTab ? new FiltersSetupActivity() : new FilterCreateActivity(dialogFilter));
                             })
-                            .addIf(dialogFilter != null && !dialogs.isEmpty(), muteAll ? R.drawable.msg_mute : R.drawable.msg_unmute, muteAll ? LocaleController.getString("FilterMuteAll", R.string.FilterMuteAll) : LocaleController.getString("FilterUnmuteAll", R.string.FilterUnmuteAll), () -> {
+                            .addIf(dialogFilter != null && !dialogs.isEmpty(), muteAll ? R.drawable.msg_mute : R.drawable.msg_unmute, muteAll ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERMUTEALL, R.string.FilterMuteAll) : LocaleController.getString("FilterUnmuteAll", R.string.FilterUnmuteAll), () -> {
                                 int count = 0;
                                 for (int i = 0; i < dialogs.size(); ++i) {
                                     TLRPC.Dialog dialog = dialogs.get(i);
@@ -3472,17 +3472,17 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                                 }
                                 BulletinFactory.createMuteBulletin(DialogsActivity.this, finalMuteAll, count, null).show();
                             })
-                            .addIf(hasUnread, R.drawable.msg_markread, LocaleController.getString("MarkAllAsRead", R.string.MarkAllAsRead), () -> {
+                            .addIf(hasUnread, R.drawable.msg_markread, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MARKALLASREAD, R.string.MarkAllAsRead), () -> {
                                 markDialogsAsRead(dialogs);
                             })
-                            .addIf(hasShare, R.drawable.msg_share, FilterCreateActivity.withNew(filter != null && filter.isMyChatlist() ? -1 : 0, LocaleController.getString("LinkActionShare", R.string.LinkActionShare), true), () -> {
+                            .addIf(hasShare, R.drawable.msg_share, FilterCreateActivity.withNew(filter != null && filter.isMyChatlist() ? -1 : 0, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKACTIONSHARE, R.string.LinkActionShare), true), () -> {
                                 if (shareEmpty[0]) {
                                     presentFragment(new FilterChatlistActivity(finalFilter, null));
                                 } else {
                                     FilterCreateActivity.FilterInvitesBottomSheet.show(DialogsActivity.this, finalFilter, null);
                                 }
                             })
-                            .addIf(!defaultTab, R.drawable.msg_delete, LocaleController.getString("FilterDeleteItem", R.string.FilterDeleteItem), true, () -> {
+                            .addIf(!defaultTab, R.drawable.msg_delete, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERDELETEITEM, R.string.FilterDeleteItem), true, () -> {
                                 showDeleteAlert(dialogFilter);
                             })
                             .setGravity(Gravity.LEFT)
@@ -3814,7 +3814,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                             boolean changed = viewPage.archivePullViewState != ARCHIVE_ITEM_STATE_HIDDEN;
                             viewPage.archivePullViewState = ARCHIVE_ITEM_STATE_HIDDEN;
                             if (changed && AndroidUtilities.isAccessibilityScreenReaderEnabled()) {
-                                AndroidUtilities.makeAccessibilityAnnouncement(LocaleController.getString(R.string.AccDescrArchivedChatsHidden));
+                                AndroidUtilities.makeAccessibilityAnnouncement(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRARCHIVEDCHATSHIDDEN, R.string.AccDescrArchivedChatsHidden));
                             }
                             if (viewPage.pullForegroundDrawable != null) {
                                 viewPage.pullForegroundDrawable.resetText();
@@ -4092,7 +4092,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
             viewPage.archivePullViewState = SharedConfig.archiveHidden ? ARCHIVE_ITEM_STATE_HIDDEN : ARCHIVE_ITEM_STATE_PINNED;
             if (viewPage.pullForegroundDrawable == null && folderId == 0) {
-                viewPage.pullForegroundDrawable = new PullForegroundDrawable(LocaleController.getString("AccSwipeForArchive", R.string.AccSwipeForArchive), LocaleController.getString("AccReleaseForArchive", R.string.AccReleaseForArchive)) {
+                viewPage.pullForegroundDrawable = new PullForegroundDrawable(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCSWIPEFORARCHIVE, R.string.AccSwipeForArchive), LocaleController.getString("AccReleaseForArchive", R.string.AccReleaseForArchive)) {
                     @Override
                     protected float getViewOffset() {
                         return viewPage.listView.getViewOffset();
@@ -4311,10 +4311,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     return;
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setTitle(LocaleController.getString("ChatHintsDeleteAlertTitle", R.string.ChatHintsDeleteAlertTitle));
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATHINTSDELETEALERTTITLE, R.string.ChatHintsDeleteAlertTitle));
                 builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("ChatHintsDeleteAlert", R.string.ChatHintsDeleteAlert, ContactsController.formatName(user.first_name, user.last_name))));
-                builder.setPositiveButton(LocaleController.getString("StickersRemove", R.string.StickersRemove), (dialogInterface, i) -> getMediaDataController().removePeer(did));
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STICKERSREMOVE, R.string.StickersRemove), (dialogInterface, i) -> getMediaDataController().removePeer(did));
+                builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                 AlertDialog dialog = builder.create();
                 showDialog(dialog);
                 TextView button = (TextView) dialog.getButton(DialogInterface.BUTTON_POSITIVE);
@@ -4327,15 +4327,15 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             public void needClearList() {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 if (searchViewPager.dialogsSearchAdapter.isSearchWas() && searchViewPager.dialogsSearchAdapter.isRecentSearchDisplayed()) {
-                    builder.setTitle(LocaleController.getString("ClearSearchAlertPartialTitle", R.string.ClearSearchAlertPartialTitle));
+                    builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARSEARCHALERTPARTIALTITLE, R.string.ClearSearchAlertPartialTitle));
                     builder.setMessage(LocaleController.formatPluralString("ClearSearchAlertPartial", searchViewPager.dialogsSearchAdapter.getRecentResultsCount()));
-                    builder.setPositiveButton(LocaleController.getString("Clear", R.string.Clear), (dialogInterface, i) -> {
+                    builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEAR, R.string.Clear), (dialogInterface, i) -> {
                         searchViewPager.dialogsSearchAdapter.clearRecentSearch();
                     });
                 } else {
-                    builder.setTitle(LocaleController.getString("ClearSearchAlertTitle", R.string.ClearSearchAlertTitle));
-                    builder.setMessage(LocaleController.getString("ClearSearchAlert", R.string.ClearSearchAlert));
-                    builder.setPositiveButton(LocaleController.getString("ClearButton", R.string.ClearButton), (dialogInterface, i) -> {
+                    builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARSEARCHALERTTITLE, R.string.ClearSearchAlertTitle));
+                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARSEARCHALERT, R.string.ClearSearchAlert));
+                    builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARBUTTON, R.string.ClearButton), (dialogInterface, i) -> {
                         if (searchViewPager.dialogsSearchAdapter.isRecentSearchDisplayed()) {
                             searchViewPager.dialogsSearchAdapter.clearRecentSearch();
                         } else {
@@ -4343,7 +4343,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         }
                     });
                 }
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                 AlertDialog dialog = builder.create();
                 showDialog(dialog);
                 TextView button = (TextView) dialog.getButton(DialogInterface.BUTTON_POSITIVE);
@@ -4452,7 +4452,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             floatingButton2.setScaleType(ImageView.ScaleType.CENTER);
             floatingButton2.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_windowBackgroundWhiteGrayIcon), PorterDuff.Mode.MULTIPLY));
             floatingButton2.setImageResource(R.drawable.fab_compose_small);
-            floatingButton2Container.setContentDescription(LocaleController.getString("NewMessageTitle", R.string.NewMessageTitle));
+            floatingButton2Container.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWMESSAGETITLE, R.string.NewMessageTitle));
             floatingButton2Container.addView(floatingButton2, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
             floating2ProgressView = new RadialProgressView(context);
@@ -4547,7 +4547,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         .setCloseButton(true)
                         .setMaxWidth(165)
                         .setMultilineText(true)
-                        .setText(AndroidUtilities.replaceCharSequence("%s", LocaleController.getString(R.string.StoryCameraHint), StoryRecorder.cameraBtnSpan(context)))
+                        .setText(AndroidUtilities.replaceCharSequence("%s", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYCAMERAHINT, R.string.StoryCameraHint), StoryRecorder.cameraBtnSpan(context)))
                         .setJoint(1, -40)
                         .setBgColor(getThemedColor(Theme.key_undo_background))
                         .setOnHiddenListener(() -> MessagesController.getInstance(currentAccount).getMainSettings().edit().putBoolean("storyhint", false).commit());
@@ -4909,10 +4909,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         }
                         return;
                     }
-                    filterOptions.add(R.drawable.msg_stories_add, LocaleController.getString("AddStory", R.string.AddStory), Theme.key_actionBarDefaultSubmenuItemIcon, Theme.key_actionBarDefaultSubmenuItem, () -> {
+                    filterOptions.add(R.drawable.msg_stories_add, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDSTORY, R.string.AddStory), Theme.key_actionBarDefaultSubmenuItemIcon, Theme.key_actionBarDefaultSubmenuItem, () -> {
                         dialogStoriesCell.openStoryRecorder();
                     });
-                    filterOptions.add(R.drawable.msg_stories_archive, LocaleController.getString("ArchivedStories", R.string.ArchivedStories), Theme.key_actionBarDefaultSubmenuItemIcon, Theme.key_actionBarDefaultSubmenuItem, () -> {
+                    filterOptions.add(R.drawable.msg_stories_archive, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVEDSTORIES, R.string.ArchivedStories), Theme.key_actionBarDefaultSubmenuItemIcon, Theme.key_actionBarDefaultSubmenuItem, () -> {
                         Bundle args = new Bundle();
                         args.putLong("dialog_id", UserConfig.getInstance(currentAccount).getClientUserId());
                         args.putInt("type", MediaActivity.TYPE_STORIES);
@@ -4920,7 +4920,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         MediaActivity mediaActivity = new MediaActivity(args, null);
                         presentFragment(mediaActivity);
                     });
-                    filterOptions.add(R.drawable.msg_stories_saved,  LocaleController.getString("SavedStories", R.string.SavedStories), Theme.key_actionBarDefaultSubmenuItemIcon, Theme.key_actionBarDefaultSubmenuItem, () -> {
+                    filterOptions.add(R.drawable.msg_stories_saved,  LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDSTORIES, R.string.SavedStories), Theme.key_actionBarDefaultSubmenuItemIcon, Theme.key_actionBarDefaultSubmenuItem, () -> {
                         Bundle args = new Bundle();
                         args.putLong("dialog_id", UserConfig.getInstance(currentAccount).getClientUserId());
                         args.putInt("type", MediaActivity.TYPE_STORIES);
@@ -4930,15 +4930,15 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     final String key = NotificationsController.getSharedPrefKey(dialogId, 0);
                     boolean muted = !NotificationsCustomSettingsActivity.areStoriesNotMuted(currentAccount, dialogId);
                     filterOptions
-                            .addIf(dialogId > 0, R.drawable.msg_discussion, LocaleController.getString("SendMessage", R.string.SendMessage), () -> {
+                            .addIf(dialogId > 0, R.drawable.msg_discussion, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMESSAGE, R.string.SendMessage), () -> {
                                 presentFragment(ChatActivity.of(dialogId));
                             })
-                            .addIf(dialogId > 0, R.drawable.msg_openprofile, LocaleController.getString("OpenProfile", R.string.OpenProfile), () -> {
+                            .addIf(dialogId > 0, R.drawable.msg_openprofile, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENPROFILE, R.string.OpenProfile), () -> {
                                 presentFragment(ProfileActivity.of(dialogId));
                             })
-                            .addIf(dialogId < 0, R.drawable.msg_channel, LocaleController.getString("OpenChannel2", R.string.OpenChannel2), () -> {
+                            .addIf(dialogId < 0, R.drawable.msg_channel, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENCHANNEL2, R.string.OpenChannel2), () -> {
                                 presentFragment(ChatActivity.of(dialogId));
-                            }).addIf(!muted && dialogId > 0, R.drawable.msg_mute, LocaleController.getString("NotificationsStoryMute2", R.string.NotificationsStoryMute2), () -> {
+                            }).addIf(!muted && dialogId > 0, R.drawable.msg_mute, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSSTORYMUTE2, R.string.NotificationsStoryMute2), () -> {
                                 MessagesController.getNotificationsSettings(currentAccount).edit().putBoolean("stories_" + key, false).apply();
                                 getNotificationsController().updateServerNotificationsSettings(dialogId, 0);
                                 TLRPC.User user = MessagesController.getInstance(currentAccount).getUser(dialogId);
@@ -4948,7 +4948,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                                     name = name.substring(0, index);
                                 }
                                 BulletinFactory.of(DialogsActivity.this).createUsersBulletin(Arrays.asList(user), AndroidUtilities.replaceTags(LocaleController.formatString("NotificationsStoryMutedHint", R.string.NotificationsStoryMutedHint, name))).show();
-                            }).makeMultiline(false).addIf(muted && dialogId > 0, R.drawable.msg_unmute, LocaleController.getString("NotificationsStoryUnmute2", R.string.NotificationsStoryUnmute2), () -> {
+                            }).makeMultiline(false).addIf(muted && dialogId > 0, R.drawable.msg_unmute, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSSTORYUNMUTE2, R.string.NotificationsStoryUnmute2), () -> {
                                 MessagesController.getNotificationsSettings(currentAccount).edit().putBoolean("stories_" + key, true).apply();
                                 getNotificationsController().updateServerNotificationsSettings(dialogId, 0);
                                 TLRPC.User user = MessagesController.getInstance(currentAccount).getUser(dialogId);
@@ -4958,9 +4958,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                                     name = name.substring(0, index);
                                 }
                                 BulletinFactory.of(DialogsActivity.this).createUsersBulletin(Arrays.asList(user), AndroidUtilities.replaceTags(LocaleController.formatString("NotificationsStoryUnmutedHint", R.string.NotificationsStoryUnmutedHint, name))).show();
-                            }).makeMultiline(false).addIf(!isArchive(), R.drawable.msg_archive, LocaleController.getString("ArchivePeerStories", R.string.ArchivePeerStories), () -> {
+                            }).makeMultiline(false).addIf(!isArchive(), R.drawable.msg_archive, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVEPEERSTORIES, R.string.ArchivePeerStories), () -> {
                                 toggleArciveForStory(dialogId);
-                            }).makeMultiline(false).addIf(isArchive(), R.drawable.msg_unarchive, LocaleController.getString("UnarchiveStories", R.string.UnarchiveStories), () -> {
+                            }).makeMultiline(false).addIf(isArchive(), R.drawable.msg_unarchive, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNARCHIVESTORIES, R.string.UnarchiveStories), () -> {
                                 toggleArciveForStory(dialogId);
                             }).makeMultiline(false);
                 }
@@ -5069,7 +5069,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             updateTextView = new TextView(context);
             updateTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             updateTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-            updateTextView.setText(LocaleController.getString("AppUpdateNow", R.string.AppUpdateNow).toUpperCase());
+            updateTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPUPDATENOW, R.string.AppUpdateNow).toUpperCase());
             updateTextView.setTextColor(0xffffffff);
             updateTextView.setPadding(AndroidUtilities.dp(30), 0, 0, 0);
             updateLayout.addView(updateTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 0, 0, 0));
@@ -5576,7 +5576,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             bulletin = BulletinFactory.of(this).createSimpleBulletin(R.raw.star_premium_2, AndroidUtilities.replaceTags(LocaleController.formatString(R.string.UserBlockedNonPremium, username)));
         } else {
             bulletin = BulletinFactory.of(this)
-                .createSimpleBulletin(R.raw.star_premium_2, AndroidUtilities.replaceTags(LocaleController.formatString(R.string.UserBlockedNonPremium, username)), LocaleController.getString(R.string.UserBlockedNonPremiumButton), () -> {
+                .createSimpleBulletin(R.raw.star_premium_2, AndroidUtilities.replaceTags(LocaleController.formatString(R.string.UserBlockedNonPremium, username)), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERBLOCKEDNONPREMIUMBUTTON, R.string.UserBlockedNonPremiumButton), () -> {
                     BaseFragment lastFragment = LaunchActivity.getLastFragment();
                     if (lastFragment != null) {
                         presentFragment(new PremiumPreviewFragment("noncontacts"));
@@ -5707,7 +5707,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             dialogsHintCell.setOnClickListener(v -> UserSelectorBottomSheet.open());
             dialogsHintCell.setText(
                     AndroidUtilities.replaceSingleTag(
-                            LocaleController.getString("BoostingPremiumChristmasTitle", R.string.BoostingPremiumChristmasTitle),
+                            LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGPREMIUMCHRISTMASTITLE, R.string.BoostingPremiumChristmasTitle),
                             Theme.key_windowBackgroundWhiteValueText,
                             AndroidUtilities.REPLACING_TAG_TYPE_LINKBOLD,
                             null
@@ -5721,7 +5721,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 TransitionManager.beginDelayedTransition((ViewGroup) dialogsHintCell.getParent(), transition);
                 updateDialogsHint();
                 BulletinFactory.of(this)
-                        .createSimpleBulletin(R.raw.chats_infotip, LocaleController.getString("BoostingPremiumChristmasToast", R.string.BoostingPremiumChristmasToast), 4)
+                        .createSimpleBulletin(R.raw.chats_infotip, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGPREMIUMCHRISTMASTOAST, R.string.BoostingPremiumChristmasToast), 4)
                         .setDuration(Bulletin.DURATION_PROLONG)
                         .show();
             });
@@ -5743,7 +5743,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                             AndroidUtilities.REPLACING_TAG_TYPE_LINKBOLD,
                             null
                     ),
-                    LocaleController.getString(R.string.RestorePremiumHintMessage)
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPREMIUMHINTMESSAGE, R.string.RestorePremiumHintMessage)
             );
             updateAuthHintCellVisibility(false);
         } else if (isPremiumHintVisible()) {
@@ -5783,7 +5783,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                             AndroidUtilities.REPLACING_TAG_TYPE_LINKBOLD,
                             null
                     ),
-                    LocaleController.getString(R.string.ClearStorageHintMessage)
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARSTORAGEHINTMESSAGE, R.string.ClearStorageHintMessage)
             );
             updateAuthHintCellVisibility(false);
         } else {
@@ -6255,15 +6255,15 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         pinItem = actionMode.addItemWithWidth(pin, R.drawable.msg_pin, AndroidUtilities.dp(54));
         muteItem = actionMode.addItemWithWidth(mute, R.drawable.msg_mute, AndroidUtilities.dp(54));
         archive2Item = actionMode.addItemWithWidth(archive2, R.drawable.msg_archive, AndroidUtilities.dp(54));
-        deleteItem = actionMode.addItemWithWidth(delete, R.drawable.msg_delete, AndroidUtilities.dp(54), LocaleController.getString("Delete", R.string.Delete));
-        ActionBarMenuItem otherItem = actionMode.addItemWithWidth(0, R.drawable.ic_ab_other, AndroidUtilities.dp(54), LocaleController.getString("AccDescrMoreOptions", R.string.AccDescrMoreOptions));
-        archiveItem = otherItem.addSubItem(archive, R.drawable.msg_archive, LocaleController.getString("Archive", R.string.Archive));
-        pin2Item = otherItem.addSubItem(pin2, R.drawable.msg_pin, LocaleController.getString("DialogPin", R.string.DialogPin));
-        addToFolderItem = otherItem.addSubItem(add_to_folder, R.drawable.msg_addfolder, LocaleController.getString("FilterAddTo", R.string.FilterAddTo));
-        removeFromFolderItem = otherItem.addSubItem(remove_from_folder, R.drawable.msg_removefolder, LocaleController.getString("FilterRemoveFrom", R.string.FilterRemoveFrom));
-        readItem = otherItem.addSubItem(read, R.drawable.msg_markread, LocaleController.getString("MarkAsRead", R.string.MarkAsRead));
-        clearItem = otherItem.addSubItem(clear, R.drawable.msg_clear, LocaleController.getString("ClearHistory", R.string.ClearHistory));
-        blockItem = otherItem.addSubItem(block, R.drawable.msg_block, LocaleController.getString("BlockUser", R.string.BlockUser));
+        deleteItem = actionMode.addItemWithWidth(delete, R.drawable.msg_delete, AndroidUtilities.dp(54), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete));
+        ActionBarMenuItem otherItem = actionMode.addItemWithWidth(0, R.drawable.ic_ab_other, AndroidUtilities.dp(54), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRMOREOPTIONS, R.string.AccDescrMoreOptions));
+        archiveItem = otherItem.addSubItem(archive, R.drawable.msg_archive, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVE, R.string.Archive));
+        pin2Item = otherItem.addSubItem(pin2, R.drawable.msg_pin, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIALOGPIN, R.string.DialogPin));
+        addToFolderItem = otherItem.addSubItem(add_to_folder, R.drawable.msg_addfolder, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERADDTO, R.string.FilterAddTo));
+        removeFromFolderItem = otherItem.addSubItem(remove_from_folder, R.drawable.msg_removefolder, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERREMOVEFROM, R.string.FilterRemoveFrom));
+        readItem = otherItem.addSubItem(read, R.drawable.msg_markread, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MARKASREAD, R.string.MarkAsRead));
+        clearItem = otherItem.addSubItem(clear, R.drawable.msg_clear, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARHISTORY, R.string.ClearHistory));
+        blockItem = otherItem.addSubItem(block, R.drawable.msg_block, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BLOCKUSER, R.string.BlockUser));
 
         muteItem.setOnLongClickListener(e -> {
             performSelectedDialogsAction(selectedDialogs, mute, true, true);
@@ -6392,7 +6392,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                             currentCount = 0;
                         }
                         if (currentCount + neverShow.size() > 100) {
-                            showDialog(AlertsCreator.createSimpleAlert(getParentActivity(), LocaleController.getString("FilterAddToAlertFullTitle", R.string.FilterAddToAlertFullTitle), LocaleController.getString("FilterAddToAlertFullText", R.string.FilterAddToAlertFullText)).create());
+                            showDialog(AlertsCreator.createSimpleAlert(getParentActivity(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERADDTOALERTFULLTITLE, R.string.FilterAddToAlertFullTitle), LocaleController.getString("FilterAddToAlertFullText", R.string.FilterAddToAlertFullText)).create());
                             return;
                         }
                         if (!neverShow.isEmpty()) {
@@ -6532,7 +6532,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 filterTabsView.removeTabs();
                 for (int a = 0, N = filters.size(); a < N; a++) {
                     if (filters.get(a).isDefault()) {
-                        filterTabsView.addTab(a, 0, LocaleController.getString("FilterAllChats", R.string.FilterAllChats), true, filters.get(a).locked);
+                        filterTabsView.addTab(a, 0, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERALLCHATS, R.string.FilterAllChats), true, filters.get(a).locked);
                     } else {
                         filterTabsView.addTab(a, filters.get(a).localId, filters.get(a).name, false, filters.get(a).locked);
                     }
@@ -6747,7 +6747,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         } else if (hasNotStoragePermission && activity.shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                             if (activity instanceof BasePermissionsActivity) {
                                 BasePermissionsActivity basePermissionsActivity = (BasePermissionsActivity) activity;
-                                showDialog(permissionDialog = basePermissionsActivity.createPermissionErrorAlert(R.raw.permission_request_folder, LocaleController.getString(R.string.PermissionStorageWithHint)));
+                                showDialog(permissionDialog = basePermissionsActivity.createPermissionErrorAlert(R.raw.permission_request_folder, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PERMISSIONSTORAGEWITHHINT, R.string.PermissionStorageWithHint)));
                             }
                         } else {
                             askForPermissons(true);
@@ -6764,8 +6764,8 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             }
             showDialog(new AlertDialog.Builder(getParentActivity())
                     .setTopAnimation(R.raw.permission_request_apk, AlertsCreator.PERMISSIONS_REQUEST_TOP_ICON_SIZE, false, Theme.getColor(Theme.key_dialogTopBackground))
-                    .setMessage(LocaleController.getString("PermissionXiaomiLockscreen", R.string.PermissionXiaomiLockscreen))
-                    .setPositiveButton(LocaleController.getString("PermissionOpenSettings", R.string.PermissionOpenSettings), (dialog, which) -> {
+                    .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PERMISSIONXIAOMILOCKSCREEN, R.string.PermissionXiaomiLockscreen))
+                    .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PERMISSIONOPENSETTINGS, R.string.PermissionOpenSettings), (dialog, which) -> {
                         Intent intent = XiaomiUtilities.getPermissionManagerIntent();
                         if (intent != null) {
                             try {
@@ -6781,7 +6781,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                             }
                         }
                     })
-                    .setNegativeButton(LocaleController.getString("ContactsPermissionAlertNotNow", R.string.ContactsPermissionAlertNotNow), (dialog, which) -> MessagesController.getGlobalNotificationsSettings().edit().putBoolean("askedAboutMiuiLockscreen", true).commit())
+                    .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTACTSPERMISSIONALERTNOTNOW, R.string.ContactsPermissionAlertNotNow), (dialog, which) -> MessagesController.getGlobalNotificationsSettings().edit().putBoolean("askedAboutMiuiLockscreen", true).commit())
                     .create());
         }
         showFiltersHint();
@@ -7951,7 +7951,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             Object item = searchViewPager.dialogsSearchAdapter.getItem(position);
             if (!searchViewPager.dialogsSearchAdapter.isSearchWas()) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setTitle(LocaleController.getString("ClearSearchSingleAlertTitle", R.string.ClearSearchSingleAlertTitle));
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARSEARCHSINGLEALERTTITLE, R.string.ClearSearchSingleAlertTitle));
                 long did;
                 if (item instanceof TLRPC.Chat) {
                     TLRPC.Chat chat = (TLRPC.Chat) item;
@@ -7960,7 +7960,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 } else if (item instanceof TLRPC.User) {
                     TLRPC.User user = (TLRPC.User) item;
                     if (user.id == getUserConfig().clientUserId) {
-                        builder.setMessage(LocaleController.formatString("ClearSearchSingleChatAlertText", R.string.ClearSearchSingleChatAlertText, LocaleController.getString("SavedMessages", R.string.SavedMessages)));
+                        builder.setMessage(LocaleController.formatString("ClearSearchSingleChatAlertText", R.string.ClearSearchSingleChatAlertText, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages)));
                     } else {
                         builder.setMessage(LocaleController.formatString("ClearSearchSingleUserAlertText", R.string.ClearSearchSingleUserAlertText, ContactsController.formatName(user.first_name, user.last_name)));
                     }
@@ -7973,8 +7973,8 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 } else {
                     return false;
                 }
-                builder.setPositiveButton(LocaleController.getString("ClearSearchRemove", R.string.ClearSearchRemove), (dialogInterface, i) -> searchViewPager.dialogsSearchAdapter.removeRecentSearch(did));
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARSEARCHREMOVE, R.string.ClearSearchRemove), (dialogInterface, i) -> searchViewPager.dialogsSearchAdapter.removeRecentSearch(did));
+                builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                 AlertDialog alertDialog = builder.create();
                 showDialog(alertDialog);
                 TextView button = (TextView) alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
@@ -8046,8 +8046,8 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 SharedConfig.archiveHidden ? R.drawable.chats_pin : R.drawable.chats_unpin,
         };
         CharSequence[] items = new CharSequence[]{
-                hasUnread ? LocaleController.getString("MarkAllAsRead", R.string.MarkAllAsRead) : null,
-                SharedConfig.archiveHidden ? LocaleController.getString("PinInTheList", R.string.PinInTheList) : LocaleController.getString("HideAboveTheList", R.string.HideAboveTheList)
+                hasUnread ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MARKALLASREAD, R.string.MarkAllAsRead) : null,
+                SharedConfig.archiveHidden ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PININTHELIST, R.string.PinInTheList) : LocaleController.getString("HideAboveTheList", R.string.HideAboveTheList)
         };
         builder.setItems(items, icons, (d, which) -> {
             if (which == 0) {
@@ -8180,7 +8180,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 //                ActionBarPopupWindow.GapView gap = new ActionBarPopupWindow.GapView(getParentActivity(), getResourceProvider(), Theme.key_actionBarDefaultSubmenuSeparator);
 //                gap.setTag(R.id.fit_width_tag, 1);
 //                ActionBarMenuSubItem backItem = new ActionBarMenuSubItem(getParentActivity(), backButtonAtTop, !backButtonAtTop);
-//                backItem.setTextAndIcon(LocaleController.getString("Back", R.string.Back), R.drawable.ic_ab_back);
+//                backItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BACK, R.string.Back), R.drawable.ic_ab_back);
 //                backItem.setMinimumWidth(160);
 //                backItem.setOnClickListener(e -> {
 //                    if (previewMenu[0] != null) {
@@ -8210,7 +8210,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 //        if (hasFolders) {
 //            foldersMenu[0] = previewMenu[0].addViewToSwipeBack(foldersMenuView);
 //            ActionBarMenuSubItem addToFolderItem = new ActionBarMenuSubItem(getParentActivity(), true, false);
-//            addToFolderItem.setTextAndIcon(LocaleController.getString("FilterAddTo", R.string.FilterAddTo), R.drawable.msg_addfolder);
+//            addToFolderItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERADDTO, R.string.FilterAddTo), R.drawable.msg_addfolder);
 //            addToFolderItem.setMinimumWidth(160);
 //            addToFolderItem.setOnClickListener(e ->
 //                    previewMenu[0].getSwipeBack().openForeground(foldersMenu[0])
@@ -8230,9 +8230,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
         ActionBarMenuSubItem markAsUnreadItem = new ActionBarMenuSubItem(getParentActivity(), true, false);
         if (cell.getHasUnread()) {
-            markAsUnreadItem.setTextAndIcon(LocaleController.getString("MarkAsRead", R.string.MarkAsRead), R.drawable.msg_markread);
+            markAsUnreadItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MARKASREAD, R.string.MarkAsRead), R.drawable.msg_markread);
         } else {
-            markAsUnreadItem.setTextAndIcon(LocaleController.getString("MarkAsUnread", R.string.MarkAsUnread), R.drawable.msg_markunread);
+            markAsUnreadItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MARKASUNREAD, R.string.MarkAsUnread), R.drawable.msg_markunread);
         }
         markAsUnreadItem.setMinimumWidth(160);
         markAsUnreadItem.setOnClickListener(e -> {
@@ -8307,9 +8307,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         if (hasPinAction[0]) {
             ActionBarMenuSubItem unpinItem = new ActionBarMenuSubItem(getParentActivity(), false, false);
             if (isDialogPinned(dialog)) {
-                unpinItem.setTextAndIcon(LocaleController.getString("UnpinMessage", R.string.UnpinMessage), R.drawable.msg_unpin);
+                unpinItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNPINMESSAGE, R.string.UnpinMessage), R.drawable.msg_unpin);
             } else {
-                unpinItem.setTextAndIcon(LocaleController.getString("PinMessage", R.string.PinMessage), R.drawable.msg_pin);
+                unpinItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PINMESSAGE, R.string.PinMessage), R.drawable.msg_pin);
             }
             unpinItem.setMinimumWidth(160);
             unpinItem.setOnClickListener(e -> {
@@ -8368,9 +8368,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         if (!DialogObject.isUserDialog(dialogId) || !UserObject.isUserSelf(getMessagesController().getUser(dialogId))) {
             ActionBarMenuSubItem muteItem = new ActionBarMenuSubItem(getParentActivity(), false, false);
             if (!getMessagesController().isDialogMuted(dialogId, 0)) {
-                muteItem.setTextAndIcon(LocaleController.getString("Mute", R.string.Mute), R.drawable.msg_mute);
+                muteItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MUTE, R.string.Mute), R.drawable.msg_mute);
             } else {
-                muteItem.setTextAndIcon(LocaleController.getString("Unmute", R.string.Unmute), R.drawable.msg_unmute);
+                muteItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNMUTE, R.string.Unmute), R.drawable.msg_unmute);
             }
             muteItem.setMinimumWidth(160);
             muteItem.setOnClickListener(e -> {
@@ -8390,7 +8390,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         deleteItem.setIconColor(getThemedColor(Theme.key_text_RedRegular));
         deleteItem.setTextColor(getThemedColor(Theme.key_text_RedBold));
         deleteItem.setSelectorColor(Theme.multAlpha(getThemedColor(Theme.key_text_RedBold), .12f));
-        deleteItem.setTextAndIcon(LocaleController.getString("Delete", R.string.Delete), R.drawable.msg_delete);
+        deleteItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete), R.drawable.msg_delete);
         deleteItem.setMinimumWidth(160);
         deleteItem.setOnClickListener(e -> {
             performSelectedDialogsAction(dialogIdArray, delete, false, false);
@@ -8453,13 +8453,13 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
         if (initialDialogsType == DIALOGS_TYPE_WIDGET) {
             floatingButton.setImageResource(R.drawable.floating_check);
-            floatingButtonContainer.setContentDescription(LocaleController.getString("Done", R.string.Done));
+            floatingButtonContainer.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done));
         } else if (storiesEnabled) {
             floatingButton.setAnimation(R.raw.write_contacts_fab_icon_camera, 56, 56);
-            floatingButtonContainer.setContentDescription(LocaleController.getString("AccDescrCaptureStory", R.string.AccDescrCaptureStory));
+            floatingButtonContainer.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRCAPTURESTORY, R.string.AccDescrCaptureStory));
         } else {
             floatingButton.setAnimation(R.raw.write_contacts_fab_icon, 52, 52);
-            floatingButtonContainer.setContentDescription(LocaleController.getString("NewMessageTitle", R.string.NewMessageTitle));
+            floatingButtonContainer.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWMESSAGETITLE, R.string.NewMessageTitle));
         }
     }
 
@@ -8570,7 +8570,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private void hideActionMode(boolean animateCheck) {
         actionBar.hideActionMode();
         if (menuDrawable != null) {
-            actionBar.setBackButtonContentDescription(LocaleController.getString("AccDescrOpenMenu", R.string.AccDescrOpenMenu));
+            actionBar.setBackButtonContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCROPENMENU, R.string.AccDescrOpenMenu));
         }
         selectedDialogs.clear();
         if (menuDrawable != null) {
@@ -8803,19 +8803,19 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
             if (action == delete) {
                 builder.setTitle(LocaleController.formatString("DeleteFewChatsTitle", R.string.DeleteFewChatsTitle, LocaleController.formatPluralString("ChatsSelected", count)));
-                builder.setMessage(LocaleController.getString("AreYouSureDeleteFewChats", R.string.AreYouSureDeleteFewChats));
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AREYOUSUREDELETEFEWCHATS, R.string.AreYouSureDeleteFewChats));
             } else {
                 if (canClearCacheCount != 0) {
                     builder.setTitle(LocaleController.formatString("ClearCacheFewChatsTitle", R.string.ClearCacheFewChatsTitle, LocaleController.formatPluralString("ChatsSelectedClearCache", count)));
-                    builder.setMessage(LocaleController.getString("AreYouSureClearHistoryCacheFewChats", R.string.AreYouSureClearHistoryCacheFewChats));
+                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AREYOUSURECLEARHISTORYCACHEFEWCHATS, R.string.AreYouSureClearHistoryCacheFewChats));
                 } else {
                     builder.setTitle(LocaleController.formatString("ClearFewChatsTitle", R.string.ClearFewChatsTitle, LocaleController.formatPluralString("ChatsSelectedClear", count)));
-                    builder.setMessage(LocaleController.getString("AreYouSureClearHistoryFewChats", R.string.AreYouSureClearHistoryFewChats));
+                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AREYOUSURECLEARHISTORYFEWCHATS, R.string.AreYouSureClearHistoryFewChats));
                 }
             }
-            builder.setPositiveButton(action == delete ? LocaleController.getString("Delete", R.string.Delete)
-                    : canClearCacheCount != 0 ? LocaleController.getString("ClearHistoryCache", R.string.ClearHistoryCache)
-                    : LocaleController.getString("ClearHistory", R.string.ClearHistory), (dialog1, which) -> {
+            builder.setPositiveButton(action == delete ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete)
+                    : canClearCacheCount != 0 ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARHISTORYCACHE, R.string.ClearHistoryCache)
+                    : LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARHISTORY, R.string.ClearHistory), (dialog1, which) -> {
                 if (selectedDialogs.isEmpty()) {
                     return;
                 }
@@ -8840,7 +8840,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 }
                 hideActionMode(action == clear);
             });
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
             AlertDialog alertDialog = builder.create();
             showDialog(alertDialog);
             TextView button = (TextView) alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
@@ -8944,13 +8944,13 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 if (count == 1) {
                     if (action == delete && canDeletePsaSelected) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setTitle(LocaleController.getString("PsaHideChatAlertTitle", R.string.PsaHideChatAlertTitle));
-                        builder.setMessage(LocaleController.getString("PsaHideChatAlertText", R.string.PsaHideChatAlertText));
-                        builder.setPositiveButton(LocaleController.getString("PsaHide", R.string.PsaHide), (dialog1, which) -> {
+                        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PSAHIDECHATALERTTITLE, R.string.PsaHideChatAlertTitle));
+                        builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PSAHIDECHATALERTTEXT, R.string.PsaHideChatAlertText));
+                        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PSAHIDE, R.string.PsaHide), (dialog1, which) -> {
                             getMessagesController().hidePromoDialog();
                             hideActionMode(false);
                         });
-                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                        builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                         showDialog(builder.create());
                     } else {
                         AlertsCreator.createClearOrDeleteDialogAlert(DialogsActivity.this, action == clear, chat, user, DialogObject.isEncryptedDialog(dialog.id), action == delete, (param) -> {
@@ -9411,13 +9411,13 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         } else {
             clearItem.setVisibility(View.VISIBLE);
             if (canClearCacheCount != 0) {
-                clearItem.setText(LocaleController.getString("ClearHistoryCache", R.string.ClearHistoryCache));
+                clearItem.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARHISTORYCACHE, R.string.ClearHistoryCache));
             } else {
-                clearItem.setText(LocaleController.getString("ClearHistory", R.string.ClearHistory));
+                clearItem.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARHISTORY, R.string.ClearHistory));
             }
         }
         if (canUnarchiveCount != 0) {
-            final String contentDescription = LocaleController.getString("Unarchive", R.string.Unarchive);
+            final String contentDescription = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNARCHIVE, R.string.Unarchive);
             archiveItem.setTextAndIcon(contentDescription, R.drawable.msg_unarchive);
             archive2Item.setIcon(R.drawable.msg_unarchive);
             archive2Item.setContentDescription(contentDescription);
@@ -9429,7 +9429,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 archive2Item.setVisibility(View.GONE);
             }
         } else if (canArchiveCount != 0) {
-            final String contentDescription = LocaleController.getString("Archive", R.string.Archive);
+            final String contentDescription = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVE, R.string.Archive);
             archiveItem.setTextAndIcon(contentDescription, R.drawable.msg_archive);
             archive2Item.setIcon(R.drawable.msg_archive);
             archive2Item.setContentDescription(contentDescription);
@@ -9481,17 +9481,17 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         }
         if (canUnmuteCount != 0) {
             muteItem.setIcon(R.drawable.msg_unmute);
-            muteItem.setContentDescription(LocaleController.getString("ChatsUnmute", R.string.ChatsUnmute));
+            muteItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATSUNMUTE, R.string.ChatsUnmute));
         } else {
             muteItem.setIcon(R.drawable.msg_mute);
-            muteItem.setContentDescription(LocaleController.getString("ChatsMute", R.string.ChatsMute));
+            muteItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATSMUTE, R.string.ChatsMute));
         }
         if (canReadCount != 0) {
-            readItem.setTextAndIcon(LocaleController.getString("MarkAsRead", R.string.MarkAsRead), R.drawable.msg_markread);
+            readItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MARKASREAD, R.string.MarkAsRead), R.drawable.msg_markread);
             readItem.setVisibility(View.VISIBLE);
         } else {
             if (forumCount == 0) {
-                readItem.setTextAndIcon(LocaleController.getString("MarkAsUnread", R.string.MarkAsUnread), R.drawable.msg_markunread);
+                readItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MARKASUNREAD, R.string.MarkAsUnread), R.drawable.msg_markunread);
                 readItem.setVisibility(View.VISIBLE);
             } else {
                 readItem.setVisibility(View.GONE);
@@ -9499,12 +9499,12 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         }
         if (canPinCount != 0) {
             pinItem.setIcon(R.drawable.msg_pin);
-            pinItem.setContentDescription(LocaleController.getString("PinToTop", R.string.PinToTop));
-            pin2Item.setText(LocaleController.getString("DialogPin", R.string.DialogPin));
+            pinItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PINTOTOP, R.string.PinToTop));
+            pin2Item.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIALOGPIN, R.string.DialogPin));
         } else {
             pinItem.setIcon(R.drawable.msg_unpin);
-            pinItem.setContentDescription(LocaleController.getString("UnpinFromTop", R.string.UnpinFromTop));
-            pin2Item.setText(LocaleController.getString("DialogUnpin", R.string.DialogUnpin));
+            pinItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNPINFROMTOP, R.string.UnpinFromTop));
+            pin2Item.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIALOGUNPIN, R.string.DialogUnpin));
         }
     }
 
@@ -9517,7 +9517,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         }
         TLRPC.Chat chat = getMessagesController().getChat(-dialogId);
         if (chat != null && !ChatObject.hasAdminRights(chat) && chat.slowmode_enabled) {
-            AlertsCreator.showSimpleAlert(DialogsActivity.this, LocaleController.getString("Slowmode", R.string.Slowmode), LocaleController.getString("SlowmodeSendError", R.string.SlowmodeSendError));
+            AlertsCreator.showSimpleAlert(DialogsActivity.this, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SLOWMODE, R.string.Slowmode), LocaleController.getString("SlowmodeSendError", R.string.SlowmodeSendError));
             return false;
         }
         return true;
@@ -9548,7 +9548,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 resetScroll();
             }
             if (menuDrawable != null) {
-                actionBar.setBackButtonContentDescription(LocaleController.getString("AccDescrGoBack", R.string.AccDescrGoBack));
+                actionBar.setBackButtonContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRGOBACK, R.string.AccDescrGoBack));
             }
             if (getPinnedCount() > 1) {
                 if (viewPages != null) {
@@ -9867,9 +9867,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         if (commentView != null) {
             if (selectedDialogs.isEmpty()) {
                 if (initialDialogsType == 3 && selectAlertString == null) {
-                    actionBar.setTitle(LocaleController.getString("ForwardTo", R.string.ForwardTo));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDTO, R.string.ForwardTo));
                 } else {
-                    actionBar.setTitle(LocaleController.getString("SelectChat", R.string.SelectChat));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTCHAT, R.string.SelectChat));
                 }
                 if (commentView.getTag() != null) {
                     commentView.hidePopup(false);
@@ -10501,10 +10501,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private boolean showSuggestion(String suggestion) {
         if ("AUTOARCHIVE_POPULAR".equals(suggestion)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-            builder.setTitle(LocaleController.getString("HideNewChatsAlertTitle", R.string.HideNewChatsAlertTitle));
-            builder.setMessage(AndroidUtilities.replaceTags(LocaleController.getString("HideNewChatsAlertText", R.string.HideNewChatsAlertText)));
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-            builder.setPositiveButton(LocaleController.getString("GoToSettings", R.string.GoToSettings), (dialog, which) -> {
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_HIDENEWCHATSALERTTITLE, R.string.HideNewChatsAlertTitle));
+            builder.setMessage(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_HIDENEWCHATSALERTTEXT, R.string.HideNewChatsAlertText)));
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GOTOSETTINGS, R.string.GoToSettings), (dialog, which) -> {
                 presentFragment(new PrivacySettingsActivity());
                 AndroidUtilities.scrollToFragmentRow(parentLayout, "newChatsRow");
             });
@@ -11074,25 +11074,25 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 TLRPC.Chat chat = getMessagesController().getChat(-dialogId);
                 if (ChatObject.isChannel(chat) && !chat.megagroup && ((cantSendToChannels || !ChatObject.isCanWriteToChannel(-dialogId, currentAccount)) || hasPoll == 2)) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(LocaleController.getString("SendMessageTitle", R.string.SendMessageTitle));
+                    builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMESSAGETITLE, R.string.SendMessageTitle));
                     if (hasPoll == 2) {
-                        builder.setMessage(LocaleController.getString("PublicPollCantForward", R.string.PublicPollCantForward));
+                        builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PUBLICPOLLCANTFORWARD, R.string.PublicPollCantForward));
                     } else {
-                        builder.setMessage(LocaleController.getString("ChannelCantSendMessage", R.string.ChannelCantSendMessage));
+                        builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELCANTSENDMESSAGE, R.string.ChannelCantSendMessage));
                     }
-                    builder.setNegativeButton(LocaleController.getString("OK", R.string.OK), null);
+                    builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                     showDialog(builder.create());
                     return false;
                 }
             } else if (DialogObject.isEncryptedDialog(dialogId) && (hasPoll != 0 || hasInvoice)) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setTitle(LocaleController.getString("SendMessageTitle", R.string.SendMessageTitle));
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMESSAGETITLE, R.string.SendMessageTitle));
                 if (hasPoll != 0) {
-                    builder.setMessage(LocaleController.getString("PollCantForwardSecretChat", R.string.PollCantForwardSecretChat));
+                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_POLLCANTFORWARDSECRETCHAT, R.string.PollCantForwardSecretChat));
                 } else {
-                    builder.setMessage(LocaleController.getString("InvoiceCantForwardSecretChat", R.string.InvoiceCantForwardSecretChat));
+                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVOICECANTFORWARDSECRETCHAT, R.string.InvoiceCantForwardSecretChat));
                 }
-                builder.setNegativeButton(LocaleController.getString("OK", R.string.OK), null);
+                builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                 showDialog(builder.create());
                 return false;
             }
@@ -11177,22 +11177,22 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 if (user == null) {
                     return;
                 }
-                title = LocaleController.getString("SendMessageTitle", R.string.SendMessageTitle);
+                title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMESSAGETITLE, R.string.SendMessageTitle);
                 message = LocaleController.formatStringSimple(selectAlertString, UserObject.getUserName(user));
-                buttonText = LocaleController.getString("Send", R.string.Send);
+                buttonText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEND, R.string.Send);
             } else if (DialogObject.isUserDialog(dialogId)) {
                 if (dialogId == getUserConfig().getClientUserId()) {
-                    title = LocaleController.getString("SendMessageTitle", R.string.SendMessageTitle);
-                    message = LocaleController.formatStringSimple(selectAlertStringGroup, LocaleController.getString("SavedMessages", R.string.SavedMessages));
-                    buttonText = LocaleController.getString("Send", R.string.Send);
+                    title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMESSAGETITLE, R.string.SendMessageTitle);
+                    message = LocaleController.formatStringSimple(selectAlertStringGroup, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages));
+                    buttonText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEND, R.string.Send);
                 } else {
                     TLRPC.User user = getMessagesController().getUser(dialogId);
                     if (user == null || selectAlertString == null) {
                         return;
                     }
-                    title = LocaleController.getString("SendMessageTitle", R.string.SendMessageTitle);
+                    title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMESSAGETITLE, R.string.SendMessageTitle);
                     message = LocaleController.formatStringSimple(selectAlertString, UserObject.getUserName(user));
-                    buttonText = LocaleController.getString("Send", R.string.Send);
+                    buttonText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEND, R.string.Send);
                 }
             } else {
                 TLRPC.Chat chat = getMessagesController().getChat(-dialogId);
@@ -11208,19 +11208,19 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 }
 
                 if (addToGroupAlertString != null) {
-                    title = LocaleController.getString("AddToTheGroupAlertTitle", R.string.AddToTheGroupAlertTitle);
+                    title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDTOTHEGROUPALERTTITLE, R.string.AddToTheGroupAlertTitle);
                     message = LocaleController.formatStringSimple(addToGroupAlertString, chatTitle);
-                    buttonText = LocaleController.getString("Add", R.string.Add);
+                    buttonText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADD, R.string.Add);
                 } else {
-                    title = LocaleController.getString("SendMessageTitle", R.string.SendMessageTitle);
+                    title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMESSAGETITLE, R.string.SendMessageTitle);
                     message = LocaleController.formatStringSimple(selectAlertStringGroup, chatTitle);
-                    buttonText = LocaleController.getString("Send", R.string.Send);
+                    buttonText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEND, R.string.Send);
                 }
             }
             builder.setTitle(title);
             builder.setMessage(AndroidUtilities.replaceTags(message));
             builder.setPositiveButton(buttonText, (dialogInterface, i) -> didSelectResult(dialogId, topicId, false, false, topicsFragment));
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
             Dialog dialog = builder.create();
             if (showDialog(dialog) == null) {
                 dialog.show();
@@ -11357,7 +11357,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         sendPopupLayout2.setupRadialSelectors(getThemedColor(Theme.key_dialogButtonSelector));
 
         ActionBarMenuSubItem sendWithoutSound = new ActionBarMenuSubItem(parentActivity, true, true, resourcesProvider);
-        sendWithoutSound.setTextAndIcon(LocaleController.getString("SendWithoutSound", R.string.SendWithoutSound), R.drawable.input_notify_off);
+        sendWithoutSound.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDWITHOUTSOUND, R.string.SendWithoutSound), R.drawable.input_notify_off);
         sendWithoutSound.setMinimumWidth(AndroidUtilities.dp(196));
         sendPopupLayout2.addView(sendWithoutSound, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
         sendWithoutSound.setOnClickListener(v -> {
@@ -12204,12 +12204,12 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     @Override
     public List<FloatingDebugController.DebugItem> onGetDebugItems() {
         return Arrays.asList(
-                new FloatingDebugController.DebugItem(LocaleController.getString(R.string.DebugDialogsActivity)),
-                new FloatingDebugController.DebugItem(LocaleController.getString(R.string.ClearLocalDatabase), () -> {
+                new FloatingDebugController.DebugItem(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DEBUGDIALOGSACTIVITY, R.string.DebugDialogsActivity)),
+                new FloatingDebugController.DebugItem(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARLOCALDATABASE, R.string.ClearLocalDatabase), () -> {
                     getMessagesStorage().clearLocalDatabase();
-                    Toast.makeText(getContext(), LocaleController.getString(R.string.DebugClearLocalDatabaseSuccess), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DEBUGCLEARLOCALDATABASESUCCESS, R.string.DebugClearLocalDatabaseSuccess), Toast.LENGTH_SHORT).show();
                 }),
-                new FloatingDebugController.DebugItem(LocaleController.getString(R.string.DebugClearSendMessageAsPeers), () -> getMessagesController().clearSendAsPeers())
+                new FloatingDebugController.DebugItem(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DEBUGCLEARSENDMESSAGEASPEERS, R.string.DebugClearSendMessageAsPeers), () -> getMessagesController().clearSendAsPeers())
         );
     }
 

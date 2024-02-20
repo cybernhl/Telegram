@@ -57,7 +57,7 @@ public class ArchiveHelp extends FrameLayout implements NotificationCenter.Notif
         titleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         titleTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         titleTextView.setGravity(Gravity.CENTER_HORIZONTAL);
-        titleTextView.setText(LocaleController.getString("ArchiveHintHeader1", R.string.ArchiveHintHeader1));
+        titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVEHINTHEADER1, R.string.ArchiveHintHeader1));
         layout.addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 32, 0, 32, 9));
 
         subtitleTextView = new LinkSpanDrawable.LinksTextView(context);
@@ -68,21 +68,21 @@ public class ArchiveHelp extends FrameLayout implements NotificationCenter.Notif
         layout.addView(subtitleTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 32, 0, 32, 25));
 
         layout.addView(
-            makeHint(R.drawable.msg_archive_archive, LocaleController.getString("ArchiveHintSection1"), LocaleController.getString("ArchiveHintSection1Info"), resourcesProvider),
+            makeHint(R.drawable.msg_archive_archive, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVEHINTSECTION1), LocaleController.getString("ArchiveHintSection1Info"), resourcesProvider),
             LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL, 32, 0, 32, 16)
         );
         layout.addView(
-            makeHint(R.drawable.msg_archive_hide, LocaleController.getString("ArchiveHintSection2"), LocaleController.getString("ArchiveHintSection2Info"), resourcesProvider),
+            makeHint(R.drawable.msg_archive_hide, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVEHINTSECTION2), LocaleController.getString("ArchiveHintSection2Info"), resourcesProvider),
             LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL, 32, 0, 32, 16)
         );
         layout.addView(
-            makeHint(R.drawable.msg_archive_stories, LocaleController.getString("ArchiveHintSection3"), LocaleController.getString("ArchiveHintSection3Info"), resourcesProvider),
+            makeHint(R.drawable.msg_archive_stories, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVEHINTSECTION3), LocaleController.getString("ArchiveHintSection3Info"), resourcesProvider),
             LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL, 32, 0, 32, 16)
         );
 
         if (buttonCallback != null) {
             ButtonWithCounterView button = new ButtonWithCounterView(context, resourcesProvider);
-            button.setText(LocaleController.getString("GotIt"), false);
+            button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GOTIT), false);
             button.setOnClickListener(e -> buttonCallback.run());
             layout.addView(button, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48, 14, 18, 14, 0));
         }

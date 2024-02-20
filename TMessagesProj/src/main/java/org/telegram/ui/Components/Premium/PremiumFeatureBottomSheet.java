@@ -256,10 +256,10 @@ public class PremiumFeatureBottomSheet extends BottomSheet implements Notificati
             @Override
             public void onPageSelected(int i) {
                 if (premiumFeatures.get(i).type == PremiumPreviewFragment.PREMIUM_FEATURE_LIMITS) {
-                    actionBar.setTitle(LocaleController.getString("DoubledLimits", R.string.DoubledLimits));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DOUBLEDLIMITS, R.string.DoubledLimits));
                     actionBar.requestLayout();
                 } else if (premiumFeatures.get(i).type == PremiumPreviewFragment.PREMIUM_FEATURE_STORIES) {
-                    actionBar.setTitle(LocaleController.getString("UpgradedStories", R.string.UpgradedStories));
+                    actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UPGRADEDSTORIES, R.string.UpgradedStories));
                     actionBar.requestLayout();
                 }
                 checkPage();
@@ -370,7 +370,7 @@ public class PremiumFeatureBottomSheet extends BottomSheet implements Notificati
         linearLayout.addView(buttonContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 68, Gravity.BOTTOM));
 
         if (UserConfig.getInstance(currentAccount).isPremium()) {
-            premiumButtonView.setOverlayText(LocaleController.getString("OK", R.string.OK), false, false);
+            premiumButtonView.setOverlayText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), false, false);
         }
 
         ScrollView scrollView = new ScrollView(getContext());
@@ -483,16 +483,16 @@ public class PremiumFeatureBottomSheet extends BottomSheet implements Notificati
 
     private void setButtonText() {
         if (forceAbout) {
-            premiumButtonView.buttonTextView.setText(LocaleController.getString(R.string.AboutTelegramPremium));
+            premiumButtonView.buttonTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ABOUTTELEGRAMPREMIUM, R.string.AboutTelegramPremium));
         } else if (onlySelectedType) {
             if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_REACTIONS) {
-                premiumButtonView.buttonTextView.setText(LocaleController.getString(R.string.UnlockPremiumReactions));
+                premiumButtonView.buttonTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNLOCKPREMIUMREACTIONS, R.string.UnlockPremiumReactions));
                 premiumButtonView.setIcon(R.raw.unlock_icon);
             } else if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_APPLICATION_ICONS) {
-                premiumButtonView.buttonTextView.setText(LocaleController.getString(R.string.UnlockPremiumIcons));
+                premiumButtonView.buttonTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNLOCKPREMIUMICONS, R.string.UnlockPremiumIcons));
                 premiumButtonView.setIcon(R.raw.unlock_icon);
             } else {
-                premiumButtonView.buttonTextView.setText(LocaleController.getString(R.string.AboutTelegramPremium));
+                premiumButtonView.buttonTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ABOUTTELEGRAMPREMIUM, R.string.AboutTelegramPremium));
             }
         } else {
             premiumButtonView.buttonTextView.setText(PremiumPreviewFragment.getPremiumButtonText(currentAccount, selectedTier));
@@ -550,10 +550,10 @@ public class PremiumFeatureBottomSheet extends BottomSheet implements Notificati
         AndroidUtilities.updateViewVisibilityAnimated(actionBar, false, 1f, false);
 
         if (premiumFeatures.get(selectedPosition).type == PremiumPreviewFragment.PREMIUM_FEATURE_STORIES) {
-            actionBar.setTitle(LocaleController.getString("UpgradedStories", R.string.UpgradedStories));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UPGRADEDSTORIES, R.string.UpgradedStories));
             actionBar.requestLayout();
         } else {
-            actionBar.setTitle(LocaleController.getString("DoubledLimits", R.string.DoubledLimits));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DOUBLEDLIMITS, R.string.DoubledLimits));
             actionBar.requestLayout();
         }
     }
@@ -575,7 +575,7 @@ public class PremiumFeatureBottomSheet extends BottomSheet implements Notificati
             setButtonText();
         } else if (id == NotificationCenter.currentUserPremiumStatusChanged) {
             if (UserConfig.getInstance(currentAccount).isPremium()) {
-                premiumButtonView.setOverlayText(LocaleController.getString("OK", R.string.OK), false, true);
+                premiumButtonView.setOverlayText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), false, true);
             } else {
                 premiumButtonView.clearOverlayText();
             }
@@ -673,35 +673,35 @@ public class PremiumFeatureBottomSheet extends BottomSheet implements Notificati
                 topViewOnFullHeight = true;
             } else if (onlySelectedType) {
                 if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_REACTIONS) {
-                    title.setText(LocaleController.getString("AdditionalReactions", R.string.AdditionalReactions));
-                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString("AdditionalReactionsDescription", R.string.AdditionalReactionsDescription)));
+                    title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDITIONALREACTIONS, R.string.AdditionalReactions));
+                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDITIONALREACTIONSDESCRIPTION, R.string.AdditionalReactionsDescription)));
                 } else if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_ADS) {
-                    title.setText(LocaleController.getString(R.string.PremiumPreviewNoAds));
-                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.PremiumPreviewNoAdsDescription2)));
+                    title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWNOADS, R.string.PremiumPreviewNoAds));
+                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWNOADSDESCRIPTION2, R.string.PremiumPreviewNoAdsDescription2)));
                 } else if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_SAVED_TAGS) {
-                    title.setText(LocaleController.getString(R.string.PremiumPreviewTags));
-                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.PremiumPreviewTagsDescription)));
+                    title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWTAGS, R.string.PremiumPreviewTags));
+                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWTAGSDESCRIPTION, R.string.PremiumPreviewTagsDescription)));
                 } else if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_APPLICATION_ICONS) {
-                    title.setText(LocaleController.getString("PremiumPreviewAppIcon", R.string.PremiumPreviewAppIcon));
-                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString("PremiumPreviewAppIconDescription2", R.string.PremiumPreviewAppIconDescription2)));
+                    title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWAPPICON, R.string.PremiumPreviewAppIcon));
+                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWAPPICONDESCRIPTION2, R.string.PremiumPreviewAppIconDescription2)));
                 } else if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_DOWNLOAD_SPEED) {
-                    title.setText(LocaleController.getString(R.string.PremiumPreviewDownloadSpeed));
-                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.PremiumPreviewDownloadSpeedDescription2)));
+                    title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWDOWNLOADSPEED, R.string.PremiumPreviewDownloadSpeed));
+                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWDOWNLOADSPEEDDESCRIPTION2, R.string.PremiumPreviewDownloadSpeedDescription2)));
                 } else if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_ADVANCED_CHAT_MANAGEMENT) {
-                    title.setText(LocaleController.getString(R.string.PremiumPreviewAdvancedChatManagement));
-                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.PremiumPreviewAdvancedChatManagementDescription2)));
+                    title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWADVANCEDCHATMANAGEMENT, R.string.PremiumPreviewAdvancedChatManagement));
+                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWADVANCEDCHATMANAGEMENTDESCRIPTION2, R.string.PremiumPreviewAdvancedChatManagementDescription2)));
                 } else if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_VOICE_TO_TEXT) {
-                    title.setText(LocaleController.getString(R.string.PremiumPreviewVoiceToText));
-                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.PremiumPreviewVoiceToTextDescription2)));
+                    title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWVOICETOTEXT, R.string.PremiumPreviewVoiceToText));
+                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWVOICETOTEXTDESCRIPTION2, R.string.PremiumPreviewVoiceToTextDescription2)));
                 } else if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_TRANSLATIONS) {
-                    title.setText(LocaleController.getString(R.string.PremiumPreviewTranslations));
-                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.PremiumPreviewTranslationsDescription)));
+                    title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWTRANSLATIONS, R.string.PremiumPreviewTranslations));
+                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWTRANSLATIONSDESCRIPTION, R.string.PremiumPreviewTranslationsDescription)));
                 } else if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_WALLPAPER) {
-                    title.setText(LocaleController.getString(R.string.PremiumPreviewWallpaper));
-                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.PremiumPreviewWallpaperDescription)));
+                    title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWWALLPAPER, R.string.PremiumPreviewWallpaper));
+                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWWALLPAPERDESCRIPTION, R.string.PremiumPreviewWallpaperDescription)));
                 } else if (startType == PremiumPreviewFragment.PREMIUM_FEATURE_NAME_COLOR) {
-                    title.setText(LocaleController.getString(R.string.PremiumPreviewProfileColor));
-                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.PremiumPreviewProfileColorDescription)));
+                    title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWPROFILECOLOR, R.string.PremiumPreviewProfileColor));
+                    description.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMPREVIEWPROFILECOLORDESCRIPTION, R.string.PremiumPreviewProfileColorDescription)));
                 } else {
                     title.setText(featureData.title);
                     description.setText(AndroidUtilities.replaceTags(featureData.description));

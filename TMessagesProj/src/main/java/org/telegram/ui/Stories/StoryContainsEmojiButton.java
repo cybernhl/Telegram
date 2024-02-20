@@ -319,11 +319,11 @@ public class StoryContainsEmojiButton extends View {
         }
         String string;
         if (emoji && stickers) {
-            string = LocaleController.getString(R.string.StoryContainsStickersEmojiFrom);
+            string = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYCONTAINSSTICKERSEMOJIFROM, R.string.StoryContainsStickersEmojiFrom);
         } else if (emoji) {
-            string = LocaleController.getString(R.string.StoryContainsEmojiFrom);
+            string = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYCONTAINSEMOJIFROM, R.string.StoryContainsEmojiFrom);
         } else {
-            string = LocaleController.getString(R.string.StoryContainsStickersFrom);
+            string = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYCONTAINSSTICKERSFROM, R.string.StoryContainsStickersFrom);
         }
         setText(AndroidUtilities.replaceCharSequence("%s", string, packString));
     }
@@ -352,11 +352,11 @@ public class StoryContainsEmojiButton extends View {
         }
         String string;
         if (emoji && stickers) {
-            string = LocaleController.getString(R.string.StoryContainsStickersEmojiFrom);
+            string = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYCONTAINSSTICKERSEMOJIFROM, R.string.StoryContainsStickersEmojiFrom);
         } else if (emoji) {
-            string = LocaleController.getString(R.string.StoryContainsEmojiFrom);
+            string = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYCONTAINSEMOJIFROM, R.string.StoryContainsEmojiFrom);
         } else {
-            string = LocaleController.getString(R.string.StoryContainsStickersFrom);
+            string = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYCONTAINSSTICKERSFROM, R.string.StoryContainsStickersFrom);
         }
         setText(AndroidUtilities.replaceCharSequence("%s", string, packString));
     }

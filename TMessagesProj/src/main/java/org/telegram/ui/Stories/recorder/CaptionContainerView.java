@@ -237,7 +237,7 @@ public class CaptionContainerView extends FrameLayout {
         editText.getEditText().setSupportRtlHint(true);
         captionBlur = new BlurringShader.StoryBlurDrawer(blurManager, editText.getEditText(), customBlur() ? BlurringShader.StoryBlurDrawer.BLUR_TYPE_CAPTION : BlurringShader.StoryBlurDrawer.BLUR_TYPE_CAPTION_XFER);
         editText.getEditText().setHintColor(0xffffffff);
-        editText.getEditText().setHintText(LocaleController.getString(R.string.AddCaption), false);
+        editText.getEditText().setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDCAPTION, R.string.AddCaption), false);
         hintTextBitmapPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
         editText.getEditText().setTranslationX(AndroidUtilities.dp(-40 + 18));
         editText.getEmojiButton().setAlpha(0f);
@@ -1211,7 +1211,7 @@ public class CaptionContainerView extends FrameLayout {
             }
             hintTextPaint.setColor(0xff000000);
             hintTextPaint.setTextSize(dp(16));
-            final String text = LocaleController.getString(R.string.AddCaption);
+            final String text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDCAPTION, R.string.AddCaption);
             final int w = (int) Math.ceil(hintTextPaint.measureText(text));
             final int h = (int) Math.ceil(hintTextPaint.getFontMetrics().descent - hintTextPaint.getFontMetrics().ascent);
             hintTextBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);

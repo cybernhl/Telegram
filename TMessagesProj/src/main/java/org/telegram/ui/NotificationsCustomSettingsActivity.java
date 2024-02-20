@@ -282,7 +282,7 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
 
     private String getSound() {
         final SharedPreferences prefs = getNotificationsSettings();
-        String value = LocaleController.getString("SoundDefault", R.string.SoundDefault);
+        String value = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SOUNDDEFAULT, R.string.SoundDefault);
         long documentId;
         switch (currentType) {
             case TYPE_PRIVATE:
@@ -305,14 +305,14 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
         if (documentId != 0) {
             TLRPC.Document document = getMediaDataController().ringtoneDataStore.getDocument(documentId);
             if (document == null) {
-                return LocaleController.getString("CustomSound", R.string.CustomSound);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CUSTOMSOUND, R.string.CustomSound);
             } else {
                 return NotificationsSoundActivity.trimTitle(document, FileLoader.getDocumentFileName(document));
             }
         } else if (value.equals("NoSound")) {
-            return LocaleController.getString("NoSound", R.string.NoSound);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSOUND, R.string.NoSound);
         } else if (value.equals("Default")) {
-            return LocaleController.getString("SoundDefault", R.string.SoundDefault);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SOUNDDEFAULT, R.string.SoundDefault);
         }
         return value;
     }
@@ -336,9 +336,9 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
         if (currentType == -1) {
-            actionBar.setTitle(LocaleController.getString("NotificationsExceptions", R.string.NotificationsExceptions));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSEXCEPTIONS, R.string.NotificationsExceptions));
         } else {
-            actionBar.setTitle(LocaleController.getString("Notifications", R.string.Notifications));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONS, R.string.Notifications));
         }
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
@@ -362,7 +362,7 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
                     searchAdapter.searchDialogs(null);
                     searching = false;
                     searchWas = false;
-                    emptyView.setText(LocaleController.getString("NoExceptions", R.string.NoExceptions));
+                    emptyView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOEXCEPTIONS, R.string.NoExceptions));
                     listView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                     listView.setFastScrollVisible(true);
@@ -379,7 +379,7 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
                     if (text.length() != 0) {
                         searchWas = true;
                         if (listView != null) {
-                            emptyView.setText(LocaleController.getString("NoResult", R.string.NoResult));
+                            emptyView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NORESULT, R.string.NoResult));
                             emptyView.showProgress();
                             listView.setAdapter(searchAdapter);
                             searchAdapter.notifyDataSetChanged();
@@ -390,7 +390,7 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
                     searchAdapter.searchDialogs(text);
                 }
             });
-            searchItem.setSearchFieldHint(LocaleController.getString("Search", R.string.Search));
+            searchItem.setSearchFieldHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
         }
 
         searchAdapter = new SearchAdapter(context);
@@ -401,7 +401,7 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
 
         emptyView = new EmptyTextProgressView(context);
         emptyView.setTextSize(18);
-        emptyView.setText(LocaleController.getString("NoExceptions", R.string.NoExceptions));
+        emptyView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOEXCEPTIONS, R.string.NoExceptions));
         emptyView.showTextView();
         frameLayout.addView(emptyView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
@@ -432,13 +432,13 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
             if (currentType == TYPE_STORIES && item != null && item.exception != null) {
                 NotificationsSettingsActivity.NotificationException exception = item.exception;
                 ItemOptions.makeOptions(NotificationsCustomSettingsActivity.this, view)
-                    .addIf(exception.notify <= 0 || exception.auto, R.drawable.msg_mute, LocaleController.getString(R.string.NotificationsStoryMute), false, () -> {
+                    .addIf(exception.notify <= 0 || exception.auto, R.drawable.msg_mute, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSSTORYMUTE, R.string.NotificationsStoryMute), false, () -> {
                         updateMute(exception, view, position, false, true);
                     })
-                    .addIf(exception.notify > 0 || exception.auto, R.drawable.msg_unmute, LocaleController.getString(R.string.NotificationsStoryUnmute), false, () -> {
+                    .addIf(exception.notify > 0 || exception.auto, R.drawable.msg_unmute, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSSTORYUNMUTE, R.string.NotificationsStoryUnmute), false, () -> {
                         updateMute(exception, view, position, false, false);
                     })
-                    .addIf(!exception.auto, R.drawable.msg_delete, LocaleController.getString("DeleteException", R.string.DeleteException), true, () -> {
+                    .addIf(!exception.auto, R.drawable.msg_delete, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETEEXCEPTION, R.string.DeleteException), true, () -> {
                         deleteException(exception, view, position);
                     })
                     .show();
@@ -482,15 +482,15 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
                 }
 
                 ItemOptions.makeOptions(NotificationsCustomSettingsActivity.this, view)
-                    .addIf(exception.notify <= 0 || exception.auto, R.drawable.msg_mute, LocaleController.getString(R.string.NotificationsStoryMute), false, () -> {
+                    .addIf(exception.notify <= 0 || exception.auto, R.drawable.msg_mute, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSSTORYMUTE, R.string.NotificationsStoryMute), false, () -> {
                         actionBar.closeSearchField();
                         updateMute(exception, view, -1, newException, true);
                     })
-                    .addIf(exception.notify > 0 || exception.auto, R.drawable.msg_unmute, LocaleController.getString(R.string.NotificationsStoryUnmute), false, () -> {
+                    .addIf(exception.notify > 0 || exception.auto, R.drawable.msg_unmute, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSSTORYUNMUTE, R.string.NotificationsStoryUnmute), false, () -> {
                         actionBar.closeSearchField();
                         updateMute(exception, view, -1, newException, false);
                     })
-                    .addIf(!newException && !exception.auto, R.drawable.msg_delete, LocaleController.getString("DeleteException", R.string.DeleteException), true, () -> {
+                    .addIf(!newException && !exception.auto, R.drawable.msg_delete, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETEEXCEPTION, R.string.DeleteException), true, () -> {
                         deleteException(exception, view, position);
                     })
                     .show();
@@ -719,9 +719,9 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
                 presentFragment(activity);
             } else if (item.id == 7) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setTitle(LocaleController.getString("NotificationsDeleteAllExceptionTitle", R.string.NotificationsDeleteAllExceptionTitle));
-                builder.setMessage(LocaleController.getString("NotificationsDeleteAllExceptionAlert", R.string.NotificationsDeleteAllExceptionAlert));
-                builder.setPositiveButton(LocaleController.getString("Delete", R.string.Delete), (dialogInterface, i) -> {
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSDELETEALLEXCEPTIONTITLE, R.string.NotificationsDeleteAllExceptionTitle));
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSDELETEALLEXCEPTIONALERT, R.string.NotificationsDeleteAllExceptionAlert));
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete), (dialogInterface, i) -> {
                     SharedPreferences preferences = getNotificationsSettings();
                     SharedPreferences.Editor editor = preferences.edit();
                     for (int a = 0, N = exceptions.size(); a < N; a++) {
@@ -748,7 +748,7 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
                     updateRows(true);
                     getNotificationCenter().postNotificationName(NotificationCenter.notificationsSettingsUpdated);
                 });
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                 AlertDialog alertDialog = builder.create();
                 showDialog(alertDialog);
                 TextView button = (TextView) alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
@@ -850,7 +850,7 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
                         if (position >= 0 && position < items.size()) {
                             items.get(position).color = getLedColor();
                         }
-                        ((TextColorCell) view).setTextAndColor(LocaleController.getString("LedColor", R.string.LedColor), getLedColor(), true);
+                        ((TextColorCell) view).setTextAndColor(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LEDCOLOR, R.string.LedColor), getLedColor(), true);
                     } else {
                         updateRows(true);
                     }
@@ -864,7 +864,7 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
                         if (position >= 0 && position < items.size()) {
                             items.get(position).text2 = getPopupOption();
                         }
-                        ((TextSettingsCell) view).setTextAndValue(LocaleController.getString("PopupNotification", R.string.PopupNotification), getPopupOption(), true, ((TextSettingsCell) view).needDivider);
+                        ((TextSettingsCell) view).setTextAndValue(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_POPUPNOTIFICATION, R.string.PopupNotification), getPopupOption(), true, ((TextSettingsCell) view).needDivider);
                     } else {
                         updateRows(true);
                     }
@@ -889,7 +889,7 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
                         if (position >= 0 && position < items.size()) {
                             items.get(position).text2 = value;
                         }
-                        ((TextSettingsCell) view).setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), value, true, true);
+                        ((TextSettingsCell) view).setTextAndValue(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIBRATE, R.string.Vibrate), value, true, true);
                     } else {
                         updateRows(true);
                     }
@@ -903,7 +903,7 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
                         if (position >= 0 && position < items.size()) {
                             items.get(position).text2 = getPriorityOption();
                         }
-                        ((TextSettingsCell) view).setTextAndValue(LocaleController.getString("NotificationsImportance", R.string.NotificationsImportance), getPriorityOption(), true, ((TextSettingsCell) view).needDivider);
+                        ((TextSettingsCell) view).setTextAndValue(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSIMPORTANCE, R.string.NotificationsImportance), getPriorityOption(), true, ((TextSettingsCell) view).needDivider);
                     } else {
                         updateRows(true);
                     }
@@ -1305,20 +1305,20 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
         if (currentType != -1) {
             items.add(ItemInner.asCheck2());
             items.add(ItemInner.asShadow(null));
-            items.add(ItemInner.asHeader(LocaleController.getString(R.string.SETTINGS)));
+            items.add(ItemInner.asHeader(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETTINGS, R.string.SETTINGS)));
 
             if (currentType == TYPE_STORIES) {
-                items.add(ItemInner.asCheck(0, LocaleController.getString(R.string.NotificationShowSenderNames), !prefs.getBoolean("EnableHideStoriesSenders", false)));
+                items.add(ItemInner.asCheck(0, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSHOWSENDERNAMES, R.string.NotificationShowSenderNames), !prefs.getBoolean("EnableHideStoriesSenders", false)));
             } else {
                 switch (currentType) {
                     case TYPE_PRIVATE: enabled = prefs.getBoolean("EnablePreviewAll", true); break;
                     case TYPE_GROUP:   enabled = prefs.getBoolean("EnablePreviewGroup", true); break;
                     case TYPE_CHANNEL: enabled = prefs.getBoolean("EnablePreviewChannel", true); break;
                 }
-                items.add(ItemInner.asCheck(0, LocaleController.getString(R.string.MessagePreview), enabled));
+                items.add(ItemInner.asCheck(0, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGEPREVIEW, R.string.MessagePreview), enabled));
             }
 
-            items.add(ItemInner.asColor(LocaleController.getString("LedColor", R.string.LedColor), getLedColor()));
+            items.add(ItemInner.asColor(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LEDCOLOR, R.string.LedColor), getLedColor()));
 
             int vibrate = 0;
             switch (currentType) {
@@ -1327,26 +1327,26 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
                 case TYPE_STORIES: vibrate = prefs.getInt("vibrate_stories", 0); break;
                 case TYPE_CHANNEL: vibrate = prefs.getInt("vibrate_channel", 0); break;
             }
-            items.add(ItemInner.asSetting(1, LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString(vibrateLabels[Utilities.clamp(vibrate, vibrateLabels.length - 1, 0)])));
+            items.add(ItemInner.asSetting(1, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIBRATE, R.string.Vibrate), LocaleController.getString(vibrateLabels[Utilities.clamp(vibrate, vibrateLabels.length - 1, 0)])));
 
             if (currentType == TYPE_PRIVATE || currentType == TYPE_GROUP) {
-                items.add(ItemInner.asSetting(2, LocaleController.getString("PopupNotification", R.string.PopupNotification), getPopupOption()));
+                items.add(ItemInner.asSetting(2, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_POPUPNOTIFICATION, R.string.PopupNotification), getPopupOption()));
             }
 
-            items.add(ItemInner.asSetting(3, LocaleController.getString("Sound", R.string.Sound), getSound()));
+            items.add(ItemInner.asSetting(3, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SOUND, R.string.Sound), getSound()));
 
             if (Build.VERSION.SDK_INT >= 21) {
-                items.add(ItemInner.asSetting(4, LocaleController.getString("NotificationsImportance", R.string.NotificationsImportance), getPriorityOption()));
+                items.add(ItemInner.asSetting(4, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSIMPORTANCE, R.string.NotificationsImportance), getPriorityOption()));
             }
 
             if (currentType == TYPE_STORIES) {
-                items.add(ItemInner.asCheck(5, LocaleController.getString(R.string.StoryAutoExceptions), storiesAuto && (storiesEnabled == null || !storiesEnabled)));
-                items.add(ItemInner.asShadow(LocaleController.getString(R.string.StoryAutoExceptionsInfo)));
+                items.add(ItemInner.asCheck(5, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYAUTOEXCEPTIONS, R.string.StoryAutoExceptions), storiesAuto && (storiesEnabled == null || !storiesEnabled)));
+                items.add(ItemInner.asShadow(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYAUTOEXCEPTIONSINFO, R.string.StoryAutoExceptionsInfo)));
             } else {
                 items.add(ItemInner.asShadow(null));
             }
 
-            items.add(ItemInner.asButton(6, R.drawable.msg_contact_add, LocaleController.getString("NotificationsAddAnException", R.string.NotificationsAddAnException)));
+            items.add(ItemInner.asButton(6, R.drawable.msg_contact_add, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSADDANEXCEPTION, R.string.NotificationsAddAnException)));
         }
         exceptionsStart = items.size() - 1;
         if (autoExceptions != null && showAutoExceptions) {
@@ -1364,7 +1364,7 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
             items.add(ItemInner.asShadow(null));
         }
         if (exceptions != null && !exceptions.isEmpty()) {
-            items.add(ItemInner.asButton(7, 0, LocaleController.getString("NotificationsDeleteAllException", R.string.NotificationsDeleteAllException)));
+            items.add(ItemInner.asButton(7, 0, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSDELETEALLEXCEPTION, R.string.NotificationsDeleteAllException)));
         }
         if (adapter != null) {
             if (animated) {
@@ -1390,7 +1390,7 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
                 Ringtone rng = RingtoneManager.getRingtone(getParentActivity(), ringtone);
                 if (rng != null) {
                     if (ringtone.equals(Settings.System.DEFAULT_NOTIFICATION_URI)) {
-                        name = LocaleController.getString("SoundDefault", R.string.SoundDefault);
+                        name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SOUNDDEFAULT, R.string.SoundDefault);
                     } else {
                         name = rng.getTitle(getParentActivity());
                     }
@@ -1676,14 +1676,14 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
                         position -= searchResult.size() + 1;
                         ArrayList<TLObject> globalSearch = searchAdapterHelper.getGlobalSearch();
                         TLObject object = globalSearch.get(position);
-                        cell.setData(object, null, LocaleController.getString("NotificationsOn", R.string.NotificationsOn), 0, position != globalSearch.size() - 1);
+                        cell.setData(object, null, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSON, R.string.NotificationsOn), 0, position != globalSearch.size() - 1);
                         cell.setAddButtonVisible(true);
                     }
                     break;
                 }
                 case 1: {
                     GraySectionCell cell = (GraySectionCell) holder.itemView;
-                    cell.setText(LocaleController.getString("AddToExceptions", R.string.AddToExceptions));
+                    cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDTOEXCEPTIONS, R.string.AddToExceptions));
                     break;
                 }
             }
@@ -1895,26 +1895,26 @@ public class NotificationsCustomSettingsActivity extends BaseFragment implements
                     SharedPreferences preferences = getNotificationsSettings();
 
                     if (currentType == TYPE_PRIVATE) {
-                        text = LocaleController.getString("NotificationsForPrivateChats", R.string.NotificationsForPrivateChats);
+                        text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSFORPRIVATECHATS, R.string.NotificationsForPrivateChats);
                         offUntil = preferences.getInt("EnableAll2", 0);
                     } else if (currentType == TYPE_GROUP) {
-                        text = LocaleController.getString("NotificationsForGroups", R.string.NotificationsForGroups);
+                        text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSFORGROUPS, R.string.NotificationsForGroups);
                         offUntil = preferences.getInt("EnableGroup2", 0);
                     } else if (currentType == TYPE_STORIES) {
-                        text = LocaleController.getString("NotificationsForStories", R.string.NotificationsForStories);
+                        text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSFORSTORIES, R.string.NotificationsForStories);
                         offUntil = preferences.getBoolean("EnableAllStories", false) ? 0 : Integer.MAX_VALUE;
                     } else {
-                        text = LocaleController.getString("NotificationsForChannels", R.string.NotificationsForChannels);
+                        text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSFORCHANNELS, R.string.NotificationsForChannels);
                         offUntil = preferences.getInt("EnableChannel2", 0);
                     }
                     int currentTime = getConnectionsManager().getCurrentTime();
                     boolean enabled;
                     int iconType;
                     if (enabled = offUntil < currentTime) {
-                        builder.append(LocaleController.getString("NotificationsOn", R.string.NotificationsOn));
+                        builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSON, R.string.NotificationsOn));
                         iconType = 0;
                     } else if (offUntil - 60 * 60 * 24 * 365 >= currentTime) {
-                        builder.append(LocaleController.getString("NotificationsOff", R.string.NotificationsOff));
+                        builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSOFF, R.string.NotificationsOff));
                         iconType = 0;
                     } else {
                         builder.append(LocaleController.formatString("NotificationsOffUntil", R.string.NotificationsOffUntil, LocaleController.stringForMessageListDate(offUntil)));

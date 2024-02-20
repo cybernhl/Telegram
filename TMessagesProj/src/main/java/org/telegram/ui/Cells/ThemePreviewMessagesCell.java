@@ -129,7 +129,7 @@ public class ThemePreviewMessagesCell extends LinearLayout {
             message.media.webpage = new TLRPC.TL_webPage();
             message.media.webpage.embed_url = "https://telegram.org/";
             message.media.webpage.flags |= 2;
-            message.media.webpage.site_name = LocaleController.getString(R.string.AppName);
+            message.media.webpage.site_name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName);
             message.media.webpage.flags |= 4;
             message.media.webpage.title = LocaleController.getString(isChannel ? R.string.ChannelColorPreviewLinkTitle : R.string.UserColorPreviewLinkTitle);
             message.media.webpage.flags |= 8;
@@ -160,7 +160,7 @@ public class ThemePreviewMessagesCell extends LinearLayout {
             message1.eventId = 1;
         } else if (type == TYPE_REACTIONS_DOUBLE_TAP)  {
             TLRPC.Message message = new TLRPC.TL_message();
-            message.message = LocaleController.getString("DoubleTapPreviewMessage", R.string.DoubleTapPreviewMessage);
+            message.message = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DOUBLETAPPREVIEWMESSAGE, R.string.DoubleTapPreviewMessage);
             message.date = date + 60;
             message.dialog_id = 1;
             message.flags = 259;
@@ -175,16 +175,16 @@ public class ThemePreviewMessagesCell extends LinearLayout {
             message1 = new MessageObject(UserConfig.selectedAccount, message, true, false);
             message1.resetLayout();
             message1.eventId = 1;
-            message1.customName = LocaleController.getString("DoubleTapPreviewSenderName", R.string.DoubleTapPreviewSenderName);
+            message1.customName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DOUBLETAPPREVIEWSENDERNAME, R.string.DoubleTapPreviewSenderName);
             message1.customAvatarDrawable = ContextCompat.getDrawable(context, R.drawable.dino_pic);
             message1.overrideLinkColor = 5;
             message1.overrideLinkEmoji = 0;
         } else {
             TLRPC.Message message = new TLRPC.TL_message();
             if (type == 0) {
-                message.message = LocaleController.getString("FontSizePreviewReply", R.string.FontSizePreviewReply);
+                message.message = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FONTSIZEPREVIEWREPLY, R.string.FontSizePreviewReply);
             } else {
-                message.message = LocaleController.getString("NewThemePreviewReply", R.string.NewThemePreviewReply);
+                message.message = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWTHEMEPREVIEWREPLY, R.string.NewThemePreviewReply);
             }
             String greeting = "\uD83D\uDC4B";
             int index = message.message.indexOf(greeting);
@@ -209,9 +209,9 @@ public class ThemePreviewMessagesCell extends LinearLayout {
 
             message = new TLRPC.TL_message();
             if (type == 0) {
-                message.message = LocaleController.getString("FontSizePreviewLine2", R.string.FontSizePreviewLine2);
+                message.message = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FONTSIZEPREVIEWLINE2, R.string.FontSizePreviewLine2);
             } else {
-                String text = LocaleController.getString("NewThemePreviewLine3", R.string.NewThemePreviewLine3);
+                String text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWTHEMEPREVIEWLINE3, R.string.NewThemePreviewLine3);
                 StringBuilder builder = new StringBuilder(text);
                 int index1 = text.indexOf('*');
                 int index2 = text.lastIndexOf('*');
@@ -253,9 +253,9 @@ public class ThemePreviewMessagesCell extends LinearLayout {
 
             message = new TLRPC.TL_message();
             if (type == 0) {
-                message.message = LocaleController.getString("FontSizePreviewLine1", R.string.FontSizePreviewLine1);
+                message.message = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FONTSIZEPREVIEWLINE1, R.string.FontSizePreviewLine1);
             } else {
-                message.message = LocaleController.getString("NewThemePreviewLine1", R.string.NewThemePreviewLine1);
+                message.message = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWTHEMEPREVIEWLINE1, R.string.NewThemePreviewLine1);
             }
             message.date = date + 60;
             message.dialog_id = 1;
@@ -271,9 +271,9 @@ public class ThemePreviewMessagesCell extends LinearLayout {
             message.peer_id.user_id = UserConfig.getInstance(UserConfig.selectedAccount).getClientUserId();
             message2 = new MessageObject(UserConfig.selectedAccount, message, true, false);
             if (type == 0) {
-//                message2.customReplyName = LocaleController.getString("FontSizePreviewName", R.string.FontSizePreviewName);
+//                message2.customReplyName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FONTSIZEPREVIEWNAME, R.string.FontSizePreviewName);
             } else {
-                message2.customReplyName = LocaleController.getString("NewThemePreviewName", R.string.NewThemePreviewName);
+                message2.customReplyName = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWTHEMEPREVIEWNAME, R.string.NewThemePreviewName);
             }
             message2.eventId = 1;
             message2.resetLayout();

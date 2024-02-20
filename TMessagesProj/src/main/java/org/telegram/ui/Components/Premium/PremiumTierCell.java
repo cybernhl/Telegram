@@ -253,13 +253,13 @@ public class PremiumTierCell extends ViewGroup {
                 titleView.setText(LocaleController.formatPluralString("Months", tier.getMonths()));
                 break;
             case 12:
-                titleView.setText(LocaleController.getString(R.string.PremiumTierAnnual));
+                titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMTIERANNUAL, R.string.PremiumTierAnnual));
                 break;
             case 6:
-                titleView.setText(LocaleController.getString(R.string.PremiumTierSemiannual));
+                titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMTIERSEMIANNUAL, R.string.PremiumTierSemiannual));
                 break;
             case 1:
-                titleView.setText(LocaleController.getString(R.string.PremiumTierMonthly));
+                titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMTIERMONTHLY, R.string.PremiumTierMonthly));
                 break;
         }
 
@@ -281,7 +281,7 @@ public class PremiumTierCell extends ViewGroup {
 
             if (tier.subscriptionOption.current) {
                 pricePerYearView.setVisibility(VISIBLE);
-                pricePerYearView.setText(LocaleController.getString(R.string.YourCurrentPlan));
+                pricePerYearView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOURCURRENTPLAN, R.string.YourCurrentPlan));
             }
         } else {
             discountView.setText(LocaleController.formatString(R.string.GiftPremiumOptionDiscount, 10));

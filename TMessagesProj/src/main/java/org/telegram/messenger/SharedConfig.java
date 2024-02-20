@@ -86,9 +86,9 @@ public class SharedConfig {
 
                     readOnlyStorageDirAlertShowed = true;
                     AlertDialog.Builder dialog = new AlertDialog.Builder(fragment.getParentActivity());
-                    dialog.setTitle(LocaleController.getString("SdCardError", R.string.SdCardError));
-                    dialog.setSubtitle(LocaleController.getString("SdCardErrorDescription", R.string.SdCardErrorDescription));
-                    dialog.setPositiveButton(LocaleController.getString("DoNotUseSDCard", R.string.DoNotUseSDCard), (dialog1, which) -> {
+                    dialog.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SDCARDERROR, R.string.SdCardError));
+                    dialog.setSubtitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SDCARDERRORDESCRIPTION, R.string.SdCardErrorDescription));
+                    dialog.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONOTUSESDCARD, R.string.DoNotUseSDCard), (dialog1, which) -> {
 
                     });
                     Dialog dialogFinal = dialog.create();

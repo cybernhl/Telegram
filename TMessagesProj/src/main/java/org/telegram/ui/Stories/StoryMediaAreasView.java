@@ -262,9 +262,9 @@ public class StoryMediaAreasView extends FrameLayout implements View.OnClickList
 
         SpannableStringBuilder text = new SpannableStringBuilder();
         if (selectedArea.mediaArea instanceof TL_stories.TL_mediaAreaChannelPost) {
-            text.append(LocaleController.getString(R.string.StoryViewMessage));
+            text.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYVIEWMESSAGE, R.string.StoryViewMessage));
         } else {
-            text.append(LocaleController.getString(R.string.StoryViewLocation));
+            text.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYVIEWLOCATION, R.string.StoryViewLocation));
         }
         SpannableString arrowRight = new SpannableString(">");
         ColoredImageSpan imageSpan = new ColoredImageSpan(R.drawable.photos_arrow);

@@ -109,18 +109,18 @@ public class DialogsRequestedEmptyCell extends LinearLayout implements Notificat
 
     public void set(TLRPC.RequestPeerType requestPeerType) {
         if (requestPeerType instanceof TLRPC.TL_requestPeerTypeBroadcast) {
-            titleView.setText(LocaleController.getString("NoSuchChannels", R.string.NoSuchChannels));
-            subtitleView.setText(LocaleController.getString("NoSuchChannelsInfo", R.string.NoSuchChannelsInfo));
+            titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSUCHCHANNELS, R.string.NoSuchChannels));
+            subtitleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSUCHCHANNELSINFO, R.string.NoSuchChannelsInfo));
             buttonView.setVisibility(View.VISIBLE);
-            buttonView.setText(LocaleController.getString("CreateChannelForThis", R.string.CreateChannelForThis));
+            buttonView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATECHANNELFORTHIS, R.string.CreateChannelForThis));
         } else if (requestPeerType instanceof TLRPC.TL_requestPeerTypeChat) {
-            titleView.setText(LocaleController.getString("NoSuchGroups", R.string.NoSuchGroups));
-            subtitleView.setText(LocaleController.getString("NoSuchGroupsInfo", R.string.NoSuchGroupsInfo));
+            titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSUCHGROUPS, R.string.NoSuchGroups));
+            subtitleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSUCHGROUPSINFO, R.string.NoSuchGroupsInfo));
             buttonView.setVisibility(View.VISIBLE);
-            buttonView.setText(LocaleController.getString("CreateGroupForThis", R.string.CreateGroupForThis));
+            buttonView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATEGROUPFORTHIS, R.string.CreateGroupForThis));
         } else {
-            titleView.setText(LocaleController.getString("NoSuchUsers", R.string.NoSuchUsers));
-            subtitleView.setText(LocaleController.getString("NoSuchUsersInfo", R.string.NoSuchUsersInfo));
+            titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSUCHUSERS, R.string.NoSuchUsers));
+            subtitleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSUCHUSERSINFO, R.string.NoSuchUsersInfo));
             buttonView.setVisibility(View.GONE);
         }
     }

@@ -841,7 +841,7 @@ public class EmojiBottomSheet extends BottomSheet implements NotificationCenter.
                         }
                         faveSet.documents = favorites;
                         faveSet.set = new TLRPC.TL_stickerSet();
-                        faveSet.set.title = LocaleController.getString("FavoriteStickers", R.string.FavoriteStickers);
+                        faveSet.set.title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FAVORITESTICKERS, R.string.FavoriteStickers);
                         stickerSets.add(faveSet);
                     }
 
@@ -852,7 +852,7 @@ public class EmojiBottomSheet extends BottomSheet implements NotificationCenter.
                         }
                         recentSet.documents = recent;
                         recentSet.set = new TLRPC.TL_stickerSet();
-                        recentSet.set.title = LocaleController.getString("RecentStickers", R.string.RecentStickers);
+                        recentSet.set.title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RECENTSTICKERS, R.string.RecentStickers);
                         stickerSets.add(recentSet);
                     }
                 }
@@ -1220,7 +1220,7 @@ public class EmojiBottomSheet extends BottomSheet implements NotificationCenter.
         container.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
         BulletinFactory.of(container, resourcesProvider).createSimpleBulletin(
                 R.raw.star_premium_2,
-                LocaleController.getString(R.string.IncreaseLimit),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INCREASELIMIT, R.string.IncreaseLimit),
                 premiumText(text)
         ).show(true);
     }
@@ -2219,7 +2219,7 @@ public class EmojiBottomSheet extends BottomSheet implements NotificationCenter.
             editText.setLines(1);
             editText.setSingleLine(true);
             editText.setImeOptions(EditorInfo.IME_ACTION_SEARCH | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
-            editText.setHint(LocaleController.getString("Search", R.string.Search));
+            editText.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
             editText.setCursorColor(Theme.getColor(Theme.key_featuredStickers_addedIcon, resourcesProvider));
             editText.setHandlesColor(Theme.getColor(Theme.key_featuredStickers_addedIcon, resourcesProvider));
             editText.setCursorSize(dp(20));
@@ -2458,15 +2458,15 @@ public class EmojiBottomSheet extends BottomSheet implements NotificationCenter.
             textPaint.setTextSize(dp(14));
             textPaint.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
 
-            emojiLayout = new StaticLayout(LocaleController.getString("Emoji"), textPaint, getMeasuredWidth(), Layout.Alignment.ALIGN_NORMAL, 1, 0, false);
+            emojiLayout = new StaticLayout(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMOJI), textPaint, getMeasuredWidth(), Layout.Alignment.ALIGN_NORMAL, 1, 0, false);
             emojiLayoutWidth = emojiLayout.getLineCount() >= 1 ? emojiLayout.getLineWidth(0) : 0;
             emojiLayoutLeft = emojiLayout.getLineCount() >= 1 ? emojiLayout.getLineLeft(0) : 0;
 
-            stickersLayout = new StaticLayout(LocaleController.getString("AccDescrStickers"), textPaint, getMeasuredWidth(), Layout.Alignment.ALIGN_NORMAL, 1, 0, false);
+            stickersLayout = new StaticLayout(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRSTICKERS), textPaint, getMeasuredWidth(), Layout.Alignment.ALIGN_NORMAL, 1, 0, false);
             stickersLayoutWidth = stickersLayout.getLineCount() >= 1 ? stickersLayout.getLineWidth(0) : 0;
             stickersLayoutLeft = stickersLayout.getLineCount() >= 1 ? stickersLayout.getLineLeft(0) : 0;
 
-            gifsLayout = new StaticLayout(LocaleController.getString("AccDescrGIFs", R.string.AccDescrGIFs), textPaint, getMeasuredWidth(), Layout.Alignment.ALIGN_NORMAL, 1, 0, false);
+            gifsLayout = new StaticLayout(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRGIFS, R.string.AccDescrGIFs), textPaint, getMeasuredWidth(), Layout.Alignment.ALIGN_NORMAL, 1, 0, false);
             gifsLayoutWidth = gifsLayout.getLineCount() >= 1 ? gifsLayout.getLineWidth(0) : 0;
             gifsLayoutLeft = gifsLayout.getLineCount() >= 1 ? gifsLayout.getLineLeft(0) : 0;
 
@@ -2559,7 +2559,7 @@ public class EmojiBottomSheet extends BottomSheet implements NotificationCenter.
             textView = new TextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             textView.setTextColor(-8553090); // Theme.getColor(Theme.key_chat_emojiPanelEmptyText, resourcesProvider)
-            textView.setText(emoji ? LocaleController.getString("NoEmojiFound", R.string.NoEmojiFound) : LocaleController.getString("NoStickersFound", R.string.NoStickersFound));
+            textView.setText(emoji ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOEMOJIFOUND, R.string.NoEmojiFound) : LocaleController.getString("NoStickersFound", R.string.NoStickersFound));
             addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 18 + 16, 0, 0));
         }
 
@@ -2606,11 +2606,11 @@ public class EmojiBottomSheet extends BottomSheet implements NotificationCenter.
             super(context);
             setPadding(0, 0, 0, 0);
             if (canShowWidget(WIDGET_LOCATION))
-                widgets.add(new Button(WIDGET_LOCATION, R.drawable.map_pin3, LocaleController.getString(R.string.StoryWidgetLocation)));
+                widgets.add(new Button(WIDGET_LOCATION, R.drawable.map_pin3, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYWIDGETLOCATION, R.string.StoryWidgetLocation)));
             if (canShowWidget(WIDGET_AUDIO))
-                widgets.add(new Button(WIDGET_AUDIO, R.drawable.filled_widget_music, LocaleController.getString(R.string.StoryWidgetAudio)));
+                widgets.add(new Button(WIDGET_AUDIO, R.drawable.filled_widget_music, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYWIDGETAUDIO, R.string.StoryWidgetAudio)));
             if (canShowWidget(WIDGET_PHOTO))
-                widgets.add(new Button(WIDGET_PHOTO, R.drawable.files_gallery, LocaleController.getString(R.string.StoryWidgetPhoto)));
+                widgets.add(new Button(WIDGET_PHOTO, R.drawable.files_gallery, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYWIDGETPHOTO, R.string.StoryWidgetPhoto)));
             if (canShowWidget(WIDGET_REACTION))
                 widgets.add(new ReactionWidget());
         }

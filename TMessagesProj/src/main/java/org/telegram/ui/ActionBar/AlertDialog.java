@@ -1213,10 +1213,10 @@ public class AlertDialog extends Dialog implements Drawable.Callback, Notificati
             return;
         }
         Builder builder = new Builder(getContext(), resourcesProvider);
-        builder.setTitle(LocaleController.getString("StopLoadingTitle", R.string.StopLoadingTitle));
-        builder.setMessage(LocaleController.getString("StopLoading", R.string.StopLoading));
-        builder.setPositiveButton(LocaleController.getString("WaitMore", R.string.WaitMore), null);
-        builder.setNegativeButton(LocaleController.getString("Stop", R.string.Stop), (dialogInterface, i) -> {
+        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STOPLOADINGTITLE, R.string.StopLoadingTitle));
+        builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STOPLOADING, R.string.StopLoading));
+        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WAITMORE, R.string.WaitMore), null);
+        builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STOP, R.string.Stop), (dialogInterface, i) -> {
             if (onCancelListener != null) {
                 onCancelListener.onCancel(AlertDialog.this);
             }

@@ -393,11 +393,11 @@ public class Browser {
                     PendingIntent copy = PendingIntent.getBroadcast(ApplicationLoader.applicationContext, 0, new Intent(ApplicationLoader.applicationContext, CustomTabsCopyReceiver.class), PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
 
                     CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder(getSession());
-                    builder.addMenuItem(LocaleController.getString("CopyLink", R.string.CopyLink), copy);
+                    builder.addMenuItem(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_COPYLINK, R.string.CopyLink), copy);
 
                     builder.setToolbarColor(Theme.getColor(Theme.key_actionBarBrowser));
                     builder.setShowTitle(true);
-                    builder.setActionButton(BitmapFactory.decodeResource(context.getResources(), R.drawable.msg_filled_shareout), LocaleController.getString("ShareFile", R.string.ShareFile), PendingIntent.getBroadcast(ApplicationLoader.applicationContext, 0, share, PendingIntent.FLAG_MUTABLE ), true);
+                    builder.setActionButton(BitmapFactory.decodeResource(context.getResources(), R.drawable.msg_filled_shareout), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREFILE, R.string.ShareFile), PendingIntent.getBroadcast(ApplicationLoader.applicationContext, 0, share, PendingIntent.FLAG_MUTABLE ), true);
                     CustomTabsIntent intent = builder.build();
                     intent.setUseNewTask();
                     intent.launchUrl(context, uri);

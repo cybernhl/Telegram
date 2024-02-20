@@ -164,18 +164,18 @@ public class PhotoViewerWebView extends FrameLayout {
 
                 switch (errorInt) {
                     case YT_ERR_INVALID:
-                        errorMessage.setText(LocaleController.getString(R.string.YouTubeVideoErrorInvalid));
+                        errorMessage.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOUTUBEVIDEOERRORINVALID, R.string.YouTubeVideoErrorInvalid));
                         break;
                     case YT_ERR_HTML:
-                        errorMessage.setText(LocaleController.getString(R.string.YouTubeVideoErrorHTML));
+                        errorMessage.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOUTUBEVIDEOERRORHTML, R.string.YouTubeVideoErrorHTML));
                         break;
                     case YT_ERR_NOT_FOUND:
-                        errorMessage.setText(LocaleController.getString(R.string.YouTubeVideoErrorNotFound));
+                        errorMessage.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOUTUBEVIDEOERRORNOTFOUND, R.string.YouTubeVideoErrorNotFound));
                         break;
                     case YT_ERR_NOT_AVAILABLE_IN_APP:
                     case YT_ERR_NOT_AVAILABLE_IN_APP_ALT:
-                        errorMessage.setText(LocaleController.getString(R.string.YouTubeVideoErrorNotAvailableInApp));
-                        errorButton.setText(LocaleController.getString(R.string.YouTubeVideoErrorOpenExternal));
+                        errorMessage.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOUTUBEVIDEOERRORNOTAVAILABLEINAPP, R.string.YouTubeVideoErrorNotAvailableInApp));
+                        errorButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOUTUBEVIDEOERROROPENEXTERNAL, R.string.YouTubeVideoErrorOpenExternal));
                         errorButton.setVisibility(VISIBLE);
                         errorButton.setOnClickListener(v -> v.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(currentWebpage.url))));
                         break;

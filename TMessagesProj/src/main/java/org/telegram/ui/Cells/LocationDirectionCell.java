@@ -32,7 +32,7 @@ public class LocationDirectionCell extends FrameLayout {
         buttonTextView.setDrawablePadding(AndroidUtilities.dp(8));
         buttonTextView.setTextColor(getThemedColor(Theme.key_featuredStickers_buttonText));
         buttonTextView.setTextSize(14);
-        buttonTextView.setText(LocaleController.getString("Directions", R.string.Directions));
+        buttonTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIRECTIONS, R.string.Directions));
         buttonTextView.setLeftDrawable(R.drawable.navigate);
         buttonTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         frameLayout.addView(buttonTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));

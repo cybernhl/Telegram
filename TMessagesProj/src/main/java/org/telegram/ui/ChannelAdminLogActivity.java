@@ -320,13 +320,13 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
             emptyView.setText(AndroidUtilities.replaceTags(LocaleController.formatString("EventLogEmptyTextSearch", R.string.EventLogEmptyTextSearch, searchQuery)));
         } else if (selectedAdmins != null || currentFilter != null) {
             emptyView.setPadding(AndroidUtilities.dp(8), AndroidUtilities.dp(5), AndroidUtilities.dp(8), AndroidUtilities.dp(5));
-            emptyView.setText(AndroidUtilities.replaceTags(LocaleController.getString("EventLogEmptySearch", R.string.EventLogEmptySearch)));
+            emptyView.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EVENTLOGEMPTYSEARCH, R.string.EventLogEmptySearch)));
         } else {
             emptyView.setPadding(AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16));
             if (currentChat.megagroup) {
-                emptyView.setText(AndroidUtilities.replaceTags(LocaleController.getString("EventLogEmpty", R.string.EventLogEmpty)));
+                emptyView.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EVENTLOGEMPTY, R.string.EventLogEmpty)));
             } else {
-                emptyView.setText(AndroidUtilities.replaceTags(LocaleController.getString("EventLogEmptyChannel", R.string.EventLogEmptyChannel)));
+                emptyView.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EVENTLOGEMPTYCHANNEL, R.string.EventLogEmptyChannel)));
             }
         }
     }
@@ -593,12 +593,12 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                 //updateSearchButtons(0, 0, 0);
             }
         });
-        searchItem.setSearchFieldHint(LocaleController.getString("Search", R.string.Search));
+        searchItem.setSearchFieldHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
 
         avatarContainer.setEnabled(false);
 
         avatarContainer.setTitle(currentChat.title);
-        avatarContainer.setSubtitle(LocaleController.getString("EventLogAllEvents", R.string.EventLogAllEvents));
+        avatarContainer.setSubtitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EVENTLOGALLEVENTS, R.string.EventLogAllEvents));
         avatarContainer.setChatAvatar(currentChat);
 
         fragmentView = new SizeNotifierFrameLayout(context) {
@@ -1031,9 +1031,9 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                 currentFilter = filter;
                 selectedAdmins = admins;
                 if (currentFilter != null || selectedAdmins != null) {
-                    avatarContainer.setSubtitle(LocaleController.getString("EventLogSelectedEvents", R.string.EventLogSelectedEvents));
+                    avatarContainer.setSubtitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EVENTLOGSELECTEDEVENTS, R.string.EventLogSelectedEvents));
                 } else {
-                    avatarContainer.setSubtitle(LocaleController.getString("EventLogAllEvents", R.string.EventLogAllEvents));
+                    avatarContainer.setSubtitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EVENTLOGALLEVENTS, R.string.EventLogAllEvents));
                 }
                 loadMessages(true);
             });
@@ -1044,7 +1044,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
         bottomOverlayChatText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         bottomOverlayChatText.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         bottomOverlayChatText.setTextColor(Theme.getColor(Theme.key_chat_fieldOverlayText));
-        bottomOverlayChatText.setText(LocaleController.getString("SETTINGS", R.string.SETTINGS).toUpperCase());
+        bottomOverlayChatText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETTINGS, R.string.SETTINGS).toUpperCase());
         bottomOverlayChat.addView(bottomOverlayChatText, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
 
         bottomOverlayImage = new ImageView(context);
@@ -1052,16 +1052,16 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
         bottomOverlayImage.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_chat_fieldOverlayText), PorterDuff.Mode.MULTIPLY));
         bottomOverlayImage.setScaleType(ImageView.ScaleType.CENTER);
         bottomOverlayChat.addView(bottomOverlayImage, LayoutHelper.createFrame(48, 48, Gravity.RIGHT | Gravity.TOP, 3, 0, 0, 0));
-        bottomOverlayImage.setContentDescription(LocaleController.getString("BotHelp", R.string.BotHelp));
+        bottomOverlayImage.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTHELP, R.string.BotHelp));
         bottomOverlayImage.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
             if (currentChat.megagroup) {
-                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.getString("EventLogInfoDetail", R.string.EventLogInfoDetail)));
+                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EVENTLOGINFODETAIL, R.string.EventLogInfoDetail)));
             } else {
-                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.getString("EventLogInfoDetailChannel", R.string.EventLogInfoDetailChannel)));
+                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EVENTLOGINFODETAILCHANNEL, R.string.EventLogInfoDetailChannel)));
             }
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-            builder.setTitle(LocaleController.getString("EventLogInfoTitle", R.string.EventLogInfoTitle));
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EVENTLOGINFOTITLE, R.string.EventLogInfoTitle));
             showDialog(builder.create());
         });
 
@@ -1199,11 +1199,11 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                 arrow.setSpan(new ImageSpan(arrowDrawable, DynamicDrawableSpan.ALIGN_CENTER), 0, arrow.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 SpannableStringBuilder link = new SpannableStringBuilder();
                 link
-                    .append(LocaleController.getString("EventLogFilterGroupInfo", R.string.EventLogFilterGroupInfo))
+                    .append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EVENTLOGFILTERGROUPINFO, R.string.EventLogFilterGroupInfo))
                     .append(" ")
                     .append(arrow)
                     .append(" ")
-                    .append(LocaleController.getString("ChannelAdministrators", R.string.ChannelAdministrators));
+                    .append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELADMINISTRATORS, R.string.ChannelAdministrators));
                 link.setSpan(new ClickableSpan() {
                     @Override
                     public void onClick(@NonNull View view) {
@@ -1216,14 +1216,14 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                         ds.setUnderlineText(false);
                     }
                 }, 0, link.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                CharSequence text = LocaleController.getString("ChannelAntiSpamInfo2", R.string.ChannelAntiSpamInfo2);
+                CharSequence text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELANTISPAMINFO2, R.string.ChannelAntiSpamInfo2);
                 text = AndroidUtilities.replaceCharSequence("%s", text, link);
-                Bulletin bulletin = BulletinFactory.of(this).createSimpleBulletin(R.raw.msg_antispam, LocaleController.getString("ChannelAntiSpamUser", R.string.ChannelAntiSpamUser), text);
+                Bulletin bulletin = BulletinFactory.of(this).createSimpleBulletin(R.raw.msg_antispam, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELANTISPAMUSER, R.string.ChannelAntiSpamUser), text);
                 bulletin.setDuration(Bulletin.DURATION_PROLONG);
                 bulletin.show();
                 return true;
             }
-            items.add(LocaleController.getString("ReportFalsePositive", R.string.ReportFalsePositive));
+            items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPORTFALSEPOSITIVE, R.string.ReportFalsePositive));
             icons.add(R.drawable.msg_notspam);
             options.add(OPTION_REPORT_FALSE_POSITIVE);
             items.add(null);
@@ -1232,7 +1232,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
         }
 
         if (selectedObject.type == MessageObject.TYPE_TEXT || selectedObject.caption != null) {
-            items.add(LocaleController.getString("Copy", R.string.Copy));
+            items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_COPY, R.string.Copy));
             icons.add(R.drawable.msg_copy);
             options.add(OPTION_COPY);
         }
@@ -1265,77 +1265,77 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
             }
         } else if (type == 3) {
             if (selectedObject.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && MessageObject.isNewGifDocument(selectedObject.messageOwner.media.webpage.document)) {
-                items.add(LocaleController.getString("SaveToGIFs", R.string.SaveToGIFs));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGIFS, R.string.SaveToGIFs));
                 icons.add(R.drawable.msg_gif);
                 options.add(OPTION_SAVE_TO_GIFS);
             }
         } else if (type == 4) {
             if (selectedObject.isVideo()) {
-                items.add(LocaleController.getString("SaveToGallery", R.string.SaveToGallery));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERY, R.string.SaveToGallery));
                 icons.add(R.drawable.msg_gallery);
                 options.add(OPTION_SAVE_TO_GALLERY);
-                items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREFILE, R.string.ShareFile));
                 icons.add(R.drawable.msg_share);
                 options.add(OPTION_SHARE);
             } else if (selectedObject.isMusic()) {
-                items.add(LocaleController.getString("SaveToMusic", R.string.SaveToMusic));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOMUSIC, R.string.SaveToMusic));
                 icons.add(R.drawable.msg_download);
                 options.add(OPTION_SAVE_TO_DOWNLOADS_OR_MUSIC);
-                items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREFILE, R.string.ShareFile));
                 icons.add(R.drawable.msg_share);
                 options.add(OPTION_SHARE);
             } else if (selectedObject.getDocument() != null) {
                 if (MessageObject.isNewGifDocument(selectedObject.getDocument())) {
-                    items.add(LocaleController.getString("SaveToGIFs", R.string.SaveToGIFs));
+                    items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGIFS, R.string.SaveToGIFs));
                     icons.add(R.drawable.msg_gif);
                     options.add(OPTION_SAVE_TO_GIFS);
                 }
-                items.add(LocaleController.getString("SaveToDownloads", R.string.SaveToDownloads));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETODOWNLOADS, R.string.SaveToDownloads));
                 icons.add(R.drawable.msg_download);
                 options.add(OPTION_SAVE_TO_DOWNLOADS_OR_MUSIC);
-                items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREFILE, R.string.ShareFile));
                 icons.add(R.drawable.msg_share);
                 options.add(OPTION_SHARE);
             } else {
-                items.add(LocaleController.getString("SaveToGallery", R.string.SaveToGallery));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERY, R.string.SaveToGallery));
                 icons.add(R.drawable.msg_gallery);
                 options.add(OPTION_SAVE_TO_GALLERY);
             }
         } else if (type == 5) {
-            items.add(LocaleController.getString("ApplyLocalizationFile", R.string.ApplyLocalizationFile));
+            items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPLYLOCALIZATIONFILE, R.string.ApplyLocalizationFile));
             icons.add(R.drawable.msg_language);
             options.add(OPTION_APPLY_FILE);
-            items.add(LocaleController.getString("SaveToDownloads", R.string.SaveToDownloads));
+            items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETODOWNLOADS, R.string.SaveToDownloads));
             icons.add(R.drawable.msg_download);
             options.add(OPTION_SAVE_TO_DOWNLOADS_OR_MUSIC);
-            items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
+            items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREFILE, R.string.ShareFile));
             icons.add(R.drawable.msg_share);
             options.add(OPTION_SHARE);
         } else if (type == 10) {
-            items.add(LocaleController.getString("ApplyThemeFile", R.string.ApplyThemeFile));
+            items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPLYTHEMEFILE, R.string.ApplyThemeFile));
             icons.add(R.drawable.msg_theme);
             options.add(OPTION_APPLY_FILE);
-            items.add(LocaleController.getString("SaveToDownloads", R.string.SaveToDownloads));
+            items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETODOWNLOADS, R.string.SaveToDownloads));
             icons.add(R.drawable.msg_download);
             options.add(OPTION_SAVE_TO_DOWNLOADS_OR_MUSIC);
-            items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
+            items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREFILE, R.string.ShareFile));
             icons.add(R.drawable.msg_share);
             options.add(OPTION_SHARE);
         } else if (type == 6) {
-            items.add(LocaleController.getString("SaveToGallery", R.string.SaveToGallery));
+            items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERY, R.string.SaveToGallery));
             icons.add(R.drawable.msg_gallery);
             options.add(OPTION_SAVE_TO_GALLERY2);
-            items.add(LocaleController.getString("SaveToDownloads", R.string.SaveToDownloads));
+            items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETODOWNLOADS, R.string.SaveToDownloads));
             icons.add(R.drawable.msg_download);
             options.add(OPTION_SAVE_TO_DOWNLOADS_OR_MUSIC);
-            items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
+            items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREFILE, R.string.ShareFile));
             icons.add(R.drawable.msg_share);
             options.add(OPTION_SHARE);
         } else if (type == 7) {
             if (selectedObject.isMask()) {
-                items.add(LocaleController.getString("AddToMasks", R.string.AddToMasks));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDTOMASKS, R.string.AddToMasks));
             } else {
-                items.add(LocaleController.getString("AddToStickers", R.string.AddToStickers));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDTOSTICKERS, R.string.AddToStickers));
             }
             icons.add(R.drawable.msg_sticker);
             options.add(OPTION_SAVE_STICKER);
@@ -1346,15 +1346,15 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                 user = MessagesController.getInstance(currentAccount).getUser(uid);
             }
             if (user != null && user.id != UserConfig.getInstance(currentAccount).getClientUserId() && ContactsController.getInstance(currentAccount).contactsDict.get(user.id) == null) {
-                items.add(LocaleController.getString("AddContactTitle", R.string.AddContactTitle));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDCONTACTTITLE, R.string.AddContactTitle));
                 icons.add(R.drawable.msg_addcontact);
                 options.add(OPTION_ADD_CONTACT);
             }
             if (!TextUtils.isEmpty(selectedObject.messageOwner.media.phone_number)) {
-                items.add(LocaleController.getString("Copy", R.string.Copy));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_COPY, R.string.Copy));
                 icons.add(R.drawable.msg_copy);
                 options.add(OPTION_COPY_PHONE);
-                items.add(LocaleController.getString("Call", R.string.Call));
+                items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALL, R.string.Call));
                 icons.add(R.drawable.msg_calls);
                 options.add(OPTION_CALL);
             }
@@ -1485,7 +1485,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                 callbackSent = true;
                 getMessagesController().checkIsInChat(true, currentChat, user, (isInChat, rights, rank) -> {
                     if (isInChat) {
-                        items.add(LocaleController.getString("BanUser", R.string.BanUser));
+                        items.add(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BANUSER, R.string.BanUser));
                         icons.add(R.drawable.msg_block2);
                         options.add(OPTION_RESTRICT);
                     }
@@ -1623,7 +1623,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
         switch (option) {
             case OPTION_COPY: {
                 AndroidUtilities.addToClipboard(getMessageContent(selectedObject, 0, true));
-                BulletinFactory.of(ChannelAdminLogActivity.this).createCopyBulletin(LocaleController.getString("MessageCopied", R.string.MessageCopied)).show();
+                BulletinFactory.of(ChannelAdminLogActivity.this).createCopyBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGECOPIED, R.string.MessageCopied)).show();
                 break;
             }
             case OPTION_SAVE_TO_GALLERY: {
@@ -1687,9 +1687,9 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                                 return;
                             }
                             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                            builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                            builder.setMessage(LocaleController.getString("IncorrectTheme", R.string.IncorrectTheme));
-                            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
+                            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INCORRECTTHEME, R.string.IncorrectTheme));
+                            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                             showDialog(builder.create());
                         }
                     } else {
@@ -1701,9 +1701,9 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                                 return;
                             }
                             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                            builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                            builder.setMessage(LocaleController.getString("IncorrectLocalization", R.string.IncorrectLocalization));
-                            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
+                            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INCORRECTLOCALIZATION, R.string.IncorrectLocalization));
+                            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                             showDialog(builder.create());
                         }
                     }
@@ -1734,7 +1734,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                     intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(path)));
                 }
                 try {
-                    getParentActivity().startActivityForResult(Intent.createChooser(intent, LocaleController.getString("ShareFile", R.string.ShareFile)), 500);
+                    getParentActivity().startActivityForResult(Intent.createChooser(intent, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREFILE, R.string.ShareFile)), 500);
                 } catch (Exception e) {
 
                 }
@@ -1801,7 +1801,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
             }
             case OPTION_COPY_PHONE: {
                 AndroidUtilities.addToClipboard(selectedObject.messageOwner.media.phone_number);
-                BulletinFactory.of(ChannelAdminLogActivity.this).createCopyBulletin(LocaleController.getString("PhoneCopied", R.string.PhoneCopied)).show();
+                BulletinFactory.of(ChannelAdminLogActivity.this).createCopyBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHONECOPIED, R.string.PhoneCopied)).show();
                 break;
             }
             case OPTION_CALL: {
@@ -1821,11 +1821,11 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                 getConnectionsManager().sendRequest(req, (res, err) -> {
                     AndroidUtilities.runOnUIThread(() -> {
                         if (res instanceof TLRPC.TL_boolTrue) {
-                            BulletinFactory.of(this).createSimpleBulletin(R.raw.msg_antispam, LocaleController.getString("ChannelAntiSpamFalsePositiveReported", R.string.ChannelAntiSpamFalsePositiveReported)).show();
+                            BulletinFactory.of(this).createSimpleBulletin(R.raw.msg_antispam, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELANTISPAMFALSEPOSITIVEREPORTED, R.string.ChannelAntiSpamFalsePositiveReported)).show();
                         } else if (res instanceof TLRPC.TL_boolFalse) {
-                            BulletinFactory.of(this).createSimpleBulletin(R.raw.error, LocaleController.getString("UnknownError", R.string.UnknownError)).show();
+                            BulletinFactory.of(this).createSimpleBulletin(R.raw.error, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNKNOWNERROR, R.string.UnknownError)).show();
                         } else {
-                            BulletinFactory.of(this).createSimpleBulletin(R.raw.error, LocaleController.getString("UnknownError", R.string.UnknownError)).show();
+                            BulletinFactory.of(this).createSimpleBulletin(R.raw.error, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNKNOWNERROR, R.string.UnknownError)).show();
                         }
                     });
                 });
@@ -2256,10 +2256,10 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
             return;
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-        builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
+        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
         if (message.type == MessageObject.TYPE_VIDEO) {
-            builder.setMessage(LocaleController.getString("NoPlayerInstalled", R.string.NoPlayerInstalled));
+            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOPLAYERINSTALLED, R.string.NoPlayerInstalled));
         } else {
             builder.setMessage(LocaleController.formatString("NoHandleAppInstalled", R.string.NoHandleAppInstalled, message.getDocument().mime_type));
         }
@@ -2291,10 +2291,10 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
             Browser.openUrl(getParentActivity(), url, true);
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-            builder.setTitle(LocaleController.getString("OpenUrlTitle", R.string.OpenUrlTitle));
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENURLTITLE, R.string.OpenUrlTitle));
             builder.setMessage(LocaleController.formatString("OpenUrlAlert2", R.string.OpenUrlAlert2, url));
-            builder.setPositiveButton(LocaleController.getString("Open", R.string.Open), (dialogInterface, i) -> Browser.openUrl(getParentActivity(), url, true));
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPEN, R.string.Open), (dialogInterface, i) -> Browser.openUrl(getParentActivity(), url, true));
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
             showDialog(builder.create());
         }
     }
@@ -2485,7 +2485,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                         if (url instanceof URLSpanMono) {
                             ((URLSpanMono) url).copyToClipboard();
                             if (AndroidUtilities.shouldShowClipboardToast()) {
-                                Toast.makeText(getParentActivity(), LocaleController.getString("TextCopied", R.string.TextCopied), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getParentActivity(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TEXTCOPIED, R.string.TextCopied), Toast.LENGTH_SHORT).show();
                             }
                         } else if (url instanceof URLSpanUserMention) {
                             long peerId = Utilities.parseLong(((URLSpanUserMention) url).getURL());
@@ -2514,7 +2514,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                             if (longPress) {
                                 BottomSheet.Builder builder = new BottomSheet.Builder(getParentActivity());
                                 builder.setTitle(urlFinal);
-                                builder.setItems(new CharSequence[]{LocaleController.getString("Open", R.string.Open), LocaleController.getString("Copy", R.string.Copy)}, (dialog, which) -> {
+                                builder.setItems(new CharSequence[]{LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPEN, R.string.Open), LocaleController.getString("Copy", R.string.Copy)}, (dialog, which) -> {
                                     if (which == 0) {
                                         Browser.openUrl(getParentActivity(), urlFinal, true);
                                     } else if (which == 1) {
@@ -2755,7 +2755,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                                     if (finalInvite != null) {
                                         showInviteLinkBottomSheet(finalInvite, usersMap);
                                     } else {
-                                        BulletinFactory.of(ChannelAdminLogActivity.this).createSimpleBulletin(R.raw.linkbroken, LocaleController.getString("LinkHashExpired", R.string.LinkHashExpired)).show();
+                                        BulletinFactory.of(ChannelAdminLogActivity.this).createSimpleBulletin(R.raw.linkbroken, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKHASHEXPIRED, R.string.LinkHashExpired)).show();
                                     }
                                 });
                             });
@@ -2763,7 +2763,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
                         } else if (cachedInvite instanceof TLRPC.TL_messages_exportedChatInvite) {
                             showInviteLinkBottomSheet((TLRPC.TL_messages_exportedChatInvite) cachedInvite, usersMap);
                         } else {
-                            BulletinFactory.of(ChannelAdminLogActivity.this).createSimpleBulletin(R.raw.linkbroken, LocaleController.getString("LinkHashExpired", R.string.LinkHashExpired)).show();
+                            BulletinFactory.of(ChannelAdminLogActivity.this).createSimpleBulletin(R.raw.linkbroken, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKHASHEXPIRED, R.string.LinkHashExpired)).show();
                         }
 
                     }

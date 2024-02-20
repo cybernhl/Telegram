@@ -1430,7 +1430,7 @@ public class Bulletin {
             reactionsContainerLayout.setClipToPadding(false);
             reactionsContainerLayout.setVisibility(View.VISIBLE);
             reactionsContainerLayout.setBubbleOffset(-AndroidUtilities.dp(80));
-            reactionsContainerLayout.setHint(LocaleController.getString(R.string.SavedTagReactionsHint));
+            reactionsContainerLayout.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDTAGREACTIONSHINT, R.string.SavedTagReactionsHint));
             addView(reactionsContainerLayout, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 92.5f, Gravity.CENTER_HORIZONTAL, 0, 36, 0, 0));
             reactionsContainerLayout.setMessage(null, null);
         }
@@ -1753,7 +1753,7 @@ public class Bulletin {
                 undoTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 undoTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
                 undoTextView.setTextColor(undoCancelColor);
-                undoTextView.setText(LocaleController.getString("Undo", R.string.Undo));
+                undoTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNDO, R.string.Undo));
                 undoTextView.setGravity(Gravity.CENTER_VERTICAL);
                 ViewHelper.setPaddingRelative(undoTextView, 12, 8, 12, 8);
                 addView(undoTextView, LayoutHelper.createFrameRelatively(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 8, 0, 8, 0));

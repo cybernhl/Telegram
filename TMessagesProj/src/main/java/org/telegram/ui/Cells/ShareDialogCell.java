@@ -187,7 +187,7 @@ public class ShareDialogCell extends FrameLayout implements NotificationCenter.N
     }
 
     protected String repostToCustomName() {
-        return LocaleController.getString(R.string.FwdMyStory);
+        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FWDMYSTORY, R.string.FwdMyStory);
     }
 
     public void setDialog(long uid, boolean checked, CharSequence name) {
@@ -205,11 +205,11 @@ public class ShareDialogCell extends FrameLayout implements NotificationCenter.N
             invalidate();
             avatarDrawable.setInfo(currentAccount, user);
             if (currentType != TYPE_CREATE && UserObject.isReplyUser(user)) {
-                nameTextView.setText(LocaleController.getString("RepliesTitle", R.string.RepliesTitle));
+                nameTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLIESTITLE, R.string.RepliesTitle));
                 avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_REPLIES);
                 imageView.setImage(null, null, avatarDrawable, user);
             } else if (currentType != TYPE_CREATE && UserObject.isUserSelf(user)) {
-                nameTextView.setText(LocaleController.getString("SavedMessages", R.string.SavedMessages));
+                nameTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages));
                 avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_SAVED);
                 imageView.setImage(null, null, avatarDrawable, user);
             } else {

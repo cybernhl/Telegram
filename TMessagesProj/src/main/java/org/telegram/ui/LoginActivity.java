@@ -667,7 +667,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 finishFragment();
             }
         });
-        backButtonView.setContentDescription(LocaleController.getString(R.string.Back));
+        backButtonView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BACK, R.string.Back));
         int padding = AndroidUtilities.dp(4);
         backButtonView.setPadding(padding, padding, padding, padding);
         sizeNotifierFrameLayout.addView(backButtonView, LayoutHelper.createFrame(32, 32, Gravity.LEFT | Gravity.TOP, 16, 16, 0, 0));
@@ -691,7 +691,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
         floatingButtonIcon.setTransformType(TransformableLoginButtonView.TRANSFORM_OPEN_ARROW);
         floatingButtonIcon.setProgress(1f);
         floatingButtonIcon.setDrawBackground(false);
-        floatingButtonContainer.setContentDescription(LocaleController.getString("Done", R.string.Done));
+        floatingButtonContainer.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done));
         floatingButtonContainer.addView(floatingButtonIcon, LayoutHelper.createFrame(Build.VERSION.SDK_INT >= 21 ? 56 : 60, Build.VERSION.SDK_INT >= 21 ? 56 : 60));
 
         floatingProgressView = new RadialProgressView(context);
@@ -1048,7 +1048,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
         builder.setTitle(title);
         builder.setMessage(text);
-        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
         showDialog(builder.create());
     }
 
@@ -1112,8 +1112,8 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getParentActivity());
         if (banned) {
-            builder.setTitle(LocaleController.getString(R.string.RestorePasswordNoEmailTitle));
-            builder.setMessage(LocaleController.getString("BannedPhoneNumber", R.string.BannedPhoneNumber));
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle));
+            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BANNEDPHONENUMBER, R.string.BannedPhoneNumber));
         } else {
             if (inputData != null && inputData.patterns != null && !inputData.patterns.isEmpty() && inputData.country != null) {
                 int patternLength = Integer.MAX_VALUE;
@@ -1124,18 +1124,18 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                     }
                 }
                 if (PhoneFormat.stripExceptNumbers(phoneNumber).length() - inputData.country.code.length() < patternLength) {
-                    builder.setTitle(LocaleController.getString(R.string.WrongNumberFormat));
+                    builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WRONGNUMBERFORMAT, R.string.WrongNumberFormat));
                     builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("ShortNumberInfo", R.string.ShortNumberInfo, inputData.country.name, inputData.phoneNumber)));
                 } else {
-                    builder.setTitle(LocaleController.getString(R.string.RestorePasswordNoEmailTitle));
-                    builder.setMessage(LocaleController.getString(R.string.InvalidPhoneNumber));
+                    builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle));
+                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVALIDPHONENUMBER, R.string.InvalidPhoneNumber));
                 }
             } else {
-                builder.setTitle(LocaleController.getString(R.string.RestorePasswordNoEmailTitle));
-                builder.setMessage(LocaleController.getString(R.string.InvalidPhoneNumber));
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle));
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVALIDPHONENUMBER, R.string.InvalidPhoneNumber));
             }
         }
-        builder.setNeutralButton(LocaleController.getString("BotHelp", R.string.BotHelp), (dialog, which) -> {
+        builder.setNeutralButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTHELP, R.string.BotHelp), (dialog, which) -> {
             try {
                 PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
                 String version = String.format(Locale.US, "%s (%d)", pInfo.versionName, pInfo.versionCode);
@@ -1153,13 +1153,13 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 fragment.getParentActivity().startActivity(Intent.createChooser(mailer, "Send email..."));
             } catch (Exception e) {
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(fragment.getParentActivity());
-                builder2.setTitle(LocaleController.getString(R.string.RestorePasswordNoEmailTitle));
-                builder2.setMessage(LocaleController.getString("NoMailInstalled", R.string.NoMailInstalled));
-                builder2.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                builder2.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle));
+                builder2.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOMAILINSTALLED, R.string.NoMailInstalled));
+                builder2.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                 fragment.showDialog(builder2.create());
             }
         });
-        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
         fragment.showDialog(builder.create());
     }
 
@@ -1275,10 +1275,10 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 return;
             }
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-            builder.setTitle(LocaleController.getString("StopLoadingTitle", R.string.StopLoadingTitle));
-            builder.setMessage(LocaleController.getString("StopLoading", R.string.StopLoading));
-            builder.setPositiveButton(LocaleController.getString("WaitMore", R.string.WaitMore), null);
-            builder.setNegativeButton(LocaleController.getString("Stop", R.string.Stop), (dialogInterface, i) -> {
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STOPLOADINGTITLE, R.string.StopLoadingTitle));
+            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STOPLOADING, R.string.StopLoading));
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WAITMORE, R.string.WaitMore), null);
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STOP, R.string.Stop), (dialogInterface, i) -> {
                 views[currentViewNum].onCancelPressed();
                 needHideProgress(true);
             });
@@ -1669,9 +1669,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                         return;
                     }
                     new AlertDialog.Builder(getContext())
-                            .setTitle(LocaleController.getString(R.string.RestorePasswordNoEmailTitle))
-                            .setMessage(LocaleController.getString(R.string.SafetyNetErrorOccurred))
-                            .setPositiveButton(LocaleController.getString(R.string.OK), (dialog, which) -> {
+                            .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle))
+                            .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAFETYNETERROROCCURRED, R.string.SafetyNetErrorOccurred))
+                            .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), (dialog, which) -> {
                                 forceDisableSafetyNet = true;
                                 if (currentViewNum != VIEW_PHONE_INPUT) {
                                     setPage(VIEW_PHONE_INPUT, true, null, true);
@@ -1888,11 +1888,11 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             countryButtonLinearLayout.addView(chevronRight, LayoutHelper.createLinearRelatively(24, 24, 0, 0, 0, 14, 0));
 
             countryOutlineView = new OutlineTextContainerView(context);
-            countryOutlineView.setText(LocaleController.getString(R.string.Country));
+            countryOutlineView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_COUNTRY, R.string.Country));
             countryOutlineView.addView(countryButtonLinearLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP, 0, 0, 0, 0));
             countryOutlineView.setForceUseCenter(true);
             countryOutlineView.setFocusable(true);
-            countryOutlineView.setContentDescription(LocaleController.getString(R.string.Country));
+            countryOutlineView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_COUNTRY, R.string.Country));
             countryOutlineView.setOnFocusChangeListener((v, hasFocus) -> countryOutlineView.animateSelection(hasFocus ? 1 : 0));
             addView(countryOutlineView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 58, 16, 24, 16, 14));
             countryOutlineView.setOnClickListener(view -> {
@@ -1911,7 +1911,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
             phoneOutlineView = new OutlineTextContainerView(context);
             phoneOutlineView.addView(linearLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 16, 8, 16, 8));
-            phoneOutlineView.setText(LocaleController.getString(R.string.PhoneNumber));
+            phoneOutlineView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHONENUMBER, R.string.PhoneNumber));
             addView(phoneOutlineView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 58, 16, 8, 16, 8));
 
             plusTextView = new TextView(context);
@@ -1944,7 +1944,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 codeField.setShowSoftInputOnFocus(!(hasCustomKeyboard() && !isCustomKeyboardForceDisabled()));
             }
-            codeField.setContentDescription(LocaleController.getString(R.string.LoginAccessibilityCountryCode));
+            codeField.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOGINACCESSIBILITYCOUNTRYCODE, R.string.LoginAccessibilityCountryCode));
             linearLayout.addView(codeField, LayoutHelper.createLinear(55, 36, -9, 0, 0, 0));
             codeField.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -2117,7 +2117,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                         keyboardView.setDispatchBackWhenEmpty(true);
 
                         if (countryState == COUNTRY_STATE_INVALID) {
-                            setCountryButtonText(LocaleController.getString(R.string.WrongCountry));
+                            setCountryButtonText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WRONGCOUNTRY, R.string.WrongCountry));
                         }
                     } else {
                         if (countryState == COUNTRY_STATE_INVALID) {
@@ -2139,7 +2139,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 phoneField.setShowSoftInputOnFocus(!(hasCustomKeyboard() && !isCustomKeyboardForceDisabled()));
             }
-            phoneField.setContentDescription(LocaleController.getString(R.string.PhoneNumber));
+            phoneField.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHONENUMBER, R.string.PhoneNumber));
             linearLayout.addView(phoneField, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 36));
             phoneField.addTextChangedListener(new TextWatcher() {
 
@@ -2267,7 +2267,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             int bottomMargin = 72;
             if (newAccount && activityMode == MODE_LOGIN) {
                 syncContactsBox = new CheckBoxCell(context, 2);
-                syncContactsBox.setText(LocaleController.getString("SyncContacts", R.string.SyncContacts), "", syncContacts, false);
+                syncContactsBox.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SYNCCONTACTS, R.string.SyncContacts), "", syncContacts, false);
                 addView(syncContactsBox, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT | Gravity.TOP, 16, 0, 16 + (LocaleController.isRTL && AndroidUtilities.isSmallScreen() ? Build.VERSION.SDK_INT >= 21 ? 56 : 60 : 0), 0));
                 bottomMargin -= 24;
                 syncContactsBox.setOnClickListener(v -> {
@@ -2278,16 +2278,16 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                     syncContacts = !syncContacts;
                     cell.setChecked(syncContacts, true);
                     if (syncContacts) {
-                        BulletinFactory.of(slideViewsContainer, null).createSimpleBulletin(R.raw.contacts_sync_on, LocaleController.getString("SyncContactsOn", R.string.SyncContactsOn)).show();
+                        BulletinFactory.of(slideViewsContainer, null).createSimpleBulletin(R.raw.contacts_sync_on, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SYNCCONTACTSON, R.string.SyncContactsOn)).show();
                     } else {
-                        BulletinFactory.of(slideViewsContainer, null).createSimpleBulletin(R.raw.contacts_sync_off, LocaleController.getString("SyncContactsOff", R.string.SyncContactsOff)).show();
+                        BulletinFactory.of(slideViewsContainer, null).createSimpleBulletin(R.raw.contacts_sync_off, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SYNCCONTACTSOFF, R.string.SyncContactsOff)).show();
                     }
                 });
             }
 
             if (BuildVars.DEBUG_VERSION && activityMode == MODE_LOGIN) {
                 testBackendCheckBox = new CheckBoxCell(context, 2);
-                testBackendCheckBox.setText(LocaleController.getString(R.string.DebugTestBackend), "", testBackend, false);
+                testBackendCheckBox.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DEBUGTESTBACKEND, R.string.DebugTestBackend), "", testBackend, false);
                 addView(testBackendCheckBox, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT | Gravity.TOP, 16, 0, 16 + (LocaleController.isRTL && AndroidUtilities.isSmallScreen() ? Build.VERSION.SDK_INT >= 21 ? 56 : 60 : 0), 0));
                 bottomMargin -= 24;
                 testBackendCheckBox.setOnClickListener(v -> {
@@ -2734,16 +2734,16 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                                         preferences.edit().putBoolean("firstlogin", false).commit();
                                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
 
-                                        builder.setPositiveButton(LocaleController.getString("Continue", R.string.Continue), null);
+                                        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTINUE, R.string.Continue), null);
                                         int resId;
                                         if (!allowCall && (!allowCancelCall || !allowReadCallLog)) {
-                                            builder.setMessage(LocaleController.getString("AllowReadCallAndLog", R.string.AllowReadCallAndLog));
+                                            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ALLOWREADCALLANDLOG, R.string.AllowReadCallAndLog));
                                             resId = R.raw.calls_log;
                                         } else if (!allowCancelCall || !allowReadCallLog) {
-                                            builder.setMessage(LocaleController.getString("AllowReadCallLog", R.string.AllowReadCallLog));
+                                            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ALLOWREADCALLLOG, R.string.AllowReadCallLog));
                                             resId = R.raw.calls_log;
                                         } else {
-                                            builder.setMessage(LocaleController.getString("AllowReadCall", R.string.AllowReadCall));
+                                            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ALLOWREADCALL, R.string.AllowReadCall));
                                             resId = R.raw.incoming_calls;
                                         }
                                         builder.setTopAnimation(resId, 46, false, Theme.getColor(Theme.key_dialogTopBackground));
@@ -2811,16 +2811,16 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                             preferences.edit().putBoolean("firstlogin", false).commit();
                             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
 
-                            builder.setPositiveButton(LocaleController.getString("Continue", R.string.Continue), null);
+                            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTINUE, R.string.Continue), null);
                             int resId;
                             if (!allowCall && (!allowCancelCall || !allowReadCallLog)) {
-                                builder.setMessage(LocaleController.getString("AllowReadCallAndLog", R.string.AllowReadCallAndLog));
+                                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ALLOWREADCALLANDLOG, R.string.AllowReadCallAndLog));
                                 resId = R.raw.calls_log;
                             } else if (!allowCancelCall || !allowReadCallLog) {
-                                builder.setMessage(LocaleController.getString("AllowReadCallLog", R.string.AllowReadCallLog));
+                                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ALLOWREADCALLLOG, R.string.AllowReadCallLog));
                                 resId = R.raw.calls_log;
                             } else {
-                                builder.setMessage(LocaleController.getString("AllowReadCall", R.string.AllowReadCall));
+                                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ALLOWREADCALL, R.string.AllowReadCall));
                                 resId = R.raw.incoming_calls;
                             }
                             builder.setTopAnimation(resId, 46, false, Theme.getColor(Theme.key_dialogTopBackground));
@@ -2839,11 +2839,11 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             }
 
             if (countryState == COUNTRY_STATE_EMPTY) {
-                needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ChooseCountry", R.string.ChooseCountry));
+                needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ChooseCountry", R.string.ChooseCountry));
                 needHideProgress(false);
                 return;
             } else if (countryState == COUNTRY_STATE_INVALID && !BuildVars.DEBUG_VERSION) {
-                needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("WrongCountry", R.string.WrongCountry));
+                needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("WrongCountry", R.string.WrongCountry));
                 needHideProgress(false);
                 return;
             }
@@ -2859,15 +2859,15 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                         if (PhoneNumberUtils.compare(phone, userPhone) && ConnectionsManager.getInstance(a).isTestBackend() == testBackend) {
                             final int num = a;
                             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                            builder.setTitle(LocaleController.getString(R.string.AppName));
-                            builder.setMessage(LocaleController.getString("AccountAlreadyLoggedIn", R.string.AccountAlreadyLoggedIn));
-                            builder.setPositiveButton(LocaleController.getString("AccountSwitch", R.string.AccountSwitch), (dialog, which) -> {
+                            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
+                            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCOUNTALREADYLOGGEDIN, R.string.AccountAlreadyLoggedIn));
+                            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCOUNTSWITCH, R.string.AccountSwitch), (dialog, which) -> {
                                 if (UserConfig.selectedAccount != num) {
                                     ((LaunchActivity) getParentActivity()).switchToAccount(num, false);
                                 }
                                 finishFragment();
                             });
-                            builder.setNegativeButton(LocaleController.getString("OK", R.string.OK), null);
+                            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                             showDialog(builder.create());
                             needHideProgress(false);
                             return;
@@ -3004,7 +3004,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                                 if (error1 == null) {
                                     TLRPC.account_Password password = (TLRPC.account_Password) response1;
                                     if (!TwoStepVerificationActivity.canHandleCurrentPassword(password, true)) {
-                                        AlertsCreator.showUpdateAppAlert(getParentActivity(), LocaleController.getString("UpdateAppAlert", R.string.UpdateAppAlert), true);
+                                        AlertsCreator.showUpdateAppAlert(getParentActivity(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UPDATEAPPALERT, R.string.UpdateAppAlert), true);
                                         return;
                                     }
                                     Bundle bundle = new Bundle();
@@ -3014,25 +3014,25 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                                     bundle.putString("phoneFormated", phone);
                                     setPage(VIEW_PASSWORD, true, bundle, false);
                                 } else {
-                                    needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), error1.text);
+                                    needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), error1.text);
                                 }
                             }), ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);
                         } else if (error.text.contains("PHONE_NUMBER_INVALID")) {
                             needShowInvalidAlert(LoginActivity.this, phone, phoneInputData, false);
                         } else if (error.text.contains("PHONE_PASSWORD_FLOOD")) {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
                         } else if (error.text.contains("PHONE_NUMBER_FLOOD")) {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("PhoneNumberFlood", R.string.PhoneNumberFlood));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("PhoneNumberFlood", R.string.PhoneNumberFlood));
                         } else if (error.text.contains("PHONE_NUMBER_BANNED")) {
                             needShowInvalidAlert(LoginActivity.this, phone, phoneInputData, true);
                         } else if (error.text.contains("PHONE_CODE_EMPTY") || error.text.contains("PHONE_CODE_INVALID")) {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidCode", R.string.InvalidCode));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidCode", R.string.InvalidCode));
                         } else if (error.text.contains("PHONE_CODE_EXPIRED")) {
                             onBackPressed(true);
                             setPage(VIEW_PHONE_INPUT, true, null, true);
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
                         } else if (error.text.startsWith("FLOOD_WAIT")) {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
                         } else if (error.code != -1000) {
                             AlertsCreator.processError(currentAccount, error, LoginActivity.this, req, phoneInputData.phoneNumber);
                         }
@@ -3077,8 +3077,8 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
 
                                         builder.setTopAnimation(R.raw.incoming_calls, 46, false, Theme.getColor(Theme.key_dialogTopBackground));
-                                        builder.setPositiveButton(LocaleController.getString("Continue", R.string.Continue), null);
-                                        builder.setMessage(LocaleController.getString("AllowFillNumber", R.string.AllowFillNumber));
+                                        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTINUE, R.string.Continue), null);
+                                        builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ALLOWFILLNUMBER, R.string.AllowFillNumber));
                                         permissionsShowDialog = showDialog(builder.create(), true, null);
                                         needRequestPermissions = true;
                                     } else {
@@ -3195,7 +3195,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
         @Override
         public String getHeaderName() {
-            return LocaleController.getString("YourPhone", R.string.YourPhone);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOURPHONE, R.string.YourPhone);
         }
 
         @Override
@@ -3329,12 +3329,12 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                     overrideTitle = null;
                     break;
                 case MODE_CANCEL_ACCOUNT_DELETION:
-                    overrideTitle = LocaleController.getString(R.string.CancelAccountReset);
+                    overrideTitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCELACCOUNTRESET, R.string.CancelAccountReset);
                     break;
             }
             FrameLayout centerContainer = null;
             if (currentType == AUTH_TYPE_MISSED_CALL) {
-                titleTextView.setText(overrideTitle != null ? overrideTitle : LocaleController.getString("MissedCallDescriptionTitle", R.string.MissedCallDescriptionTitle));
+                titleTextView.setText(overrideTitle != null ? overrideTitle : LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MISSEDCALLDESCRIPTIONTITLE, R.string.MissedCallDescriptionTitle));
 
                 FrameLayout frameLayout = new FrameLayout(context);
                 missedCallArrowIcon = new ImageView(context);
@@ -3352,7 +3352,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 missedCallDescriptionSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 missedCallDescriptionSubtitle.setGravity(Gravity.CENTER_HORIZONTAL);
                 missedCallDescriptionSubtitle.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
-                missedCallDescriptionSubtitle.setText(AndroidUtilities.replaceTags(LocaleController.getString("MissedCallDescriptionSubtitle", R.string.MissedCallDescriptionSubtitle)));
+                missedCallDescriptionSubtitle.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MISSEDCALLDESCRIPTIONSUBTITLE, R.string.MissedCallDescriptionSubtitle)));
 
                 addView(missedCallDescriptionSubtitle, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 36, 16, 36, 0));
 
@@ -3381,7 +3381,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 missedCallDescriptionSubtitle2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 missedCallDescriptionSubtitle2.setGravity(Gravity.CENTER_HORIZONTAL);
                 missedCallDescriptionSubtitle2.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
-                missedCallDescriptionSubtitle2.setText(AndroidUtilities.replaceTags(LocaleController.getString("MissedCallDescriptionSubtitle2", R.string.MissedCallDescriptionSubtitle2)));
+                missedCallDescriptionSubtitle2.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MISSEDCALLDESCRIPTIONSUBTITLE2, R.string.MissedCallDescriptionSubtitle2)));
 
                 addView(missedCallDescriptionSubtitle2, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 36, 28, 36, 12));
             } else if (currentType == AUTH_TYPE_FLASH_CALL) {
@@ -3404,7 +3404,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 blueImageView.setAnimation(hintDrawable);
                 frameLayout.addView(blueImageView, LayoutHelper.createFrame(64, 64));
 
-                titleTextView.setText(overrideTitle != null ? overrideTitle : LocaleController.getString(R.string.YourCode));
+                titleTextView.setText(overrideTitle != null ? overrideTitle : LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOURCODE, R.string.YourCode));
                 innerLinearLayout.addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 16, 0, 0));
                 innerLinearLayout.addView(confirmTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 8, 0, 0));
             } else {
@@ -3474,9 +3474,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 if (nextType == AUTH_TYPE_CALL || nextType == AUTH_TYPE_SMS || nextType == AUTH_TYPE_MISSED_CALL || nextType == AUTH_TYPE_FRAGMENT_SMS) {
 //                    timeText.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText6));
                     if (nextType == AUTH_TYPE_CALL || nextType == AUTH_TYPE_MISSED_CALL) {
-                        timeText.setText(LocaleController.getString("Calling", R.string.Calling));
+                        timeText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLING, R.string.Calling));
                     } else {
-                        timeText.setText(LocaleController.getString("SendingSms", R.string.SendingSms));
+                        timeText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDINGSMS, R.string.SendingSms));
                     }
                     Bundle params = new Bundle();
                     params.putString("phone", phone);
@@ -3560,7 +3560,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 openFragmentButton.addView(openFragmentImageView, LayoutHelper.createLinear(36, 36, Gravity.CENTER_VERTICAL, 0, 0, 2, 0));
 
                 openFragmentButtonText = new TextView(context);
-                openFragmentButtonText.setText(LocaleController.getString(R.string.OpenFragment));
+                openFragmentButtonText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENFRAGMENT, R.string.OpenFragment));
                 openFragmentButtonText.setTextColor(Color.WHITE);
                 openFragmentButtonText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                 openFragmentButtonText.setGravity(Gravity.CENTER);
@@ -3569,7 +3569,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             }
 
             wrongCode = new TextView(context);
-            wrongCode.setText(LocaleController.getString("WrongCode", R.string.WrongCode));
+            wrongCode.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WRONGCODE, R.string.WrongCode));
             wrongCode.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             wrongCode.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             wrongCode.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.TOP);
@@ -3598,9 +3598,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                         resendCode();
                     } else {
                         new AlertDialog.Builder(context)
-                                .setTitle(LocaleController.getString(R.string.RestorePasswordNoEmailTitle))
+                                .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle))
                                 .setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("DidNotGetTheCodeInfo", R.string.DidNotGetTheCodeInfo, phone)))
-                                .setNeutralButton(LocaleController.getString(R.string.DidNotGetTheCodeHelpButton), (dialog, which) -> {
+                                .setNeutralButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIDNOTGETTHECODEHELPBUTTON, R.string.DidNotGetTheCodeHelpButton), (dialog, which) -> {
                                     try {
                                         PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
                                         String version = String.format(Locale.US, "%s (%d)", pInfo.versionName, pInfo.versionCode);
@@ -3612,11 +3612,11 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                                         mailer.putExtra(Intent.EXTRA_TEXT, "Phone: " + requestPhone + "\nApp version: " + version + "\nOS version: SDK " + Build.VERSION.SDK_INT + "\nDevice Name: " + Build.MANUFACTURER + Build.MODEL + "\nLocale: " + Locale.getDefault() + "\nError: " + lastError);
                                         getContext().startActivity(Intent.createChooser(mailer, "Send email..."));
                                     } catch (Exception e) {
-                                        needShowAlert(LocaleController.getString(R.string.AppName), LocaleController.getString("NoMailInstalled", R.string.NoMailInstalled));
+                                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName), LocaleController.getString("NoMailInstalled", R.string.NoMailInstalled));
                                     }
                                 })
-                                .setPositiveButton(LocaleController.getString(R.string.Close), null)
-                                .setNegativeButton(LocaleController.getString(R.string.DidNotGetTheCodeEditNumberButton), (dialog, which) -> setPage(VIEW_PHONE_INPUT, true, null, true))
+                                .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLOSE, R.string.Close), null)
+                                .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIDNOTGETTHECODEEDITNUMBERBUTTON, R.string.DidNotGetTheCodeEditNumberButton), (dialog, which) -> setPage(VIEW_PHONE_INPUT, true, null, true))
                                 .show();
                     }
                 });
@@ -3702,17 +3702,17 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 } else {
                     if (error.text != null) {
                         if (error.text.contains("PHONE_NUMBER_INVALID")) {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidPhoneNumber", R.string.InvalidPhoneNumber));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidPhoneNumber", R.string.InvalidPhoneNumber));
                         } else if (error.text.contains("PHONE_CODE_EMPTY") || error.text.contains("PHONE_CODE_INVALID")) {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidCode", R.string.InvalidCode));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidCode", R.string.InvalidCode));
                         } else if (error.text.contains("PHONE_CODE_EXPIRED")) {
                             onBackPressed(true);
                             setPage(VIEW_PHONE_INPUT, true, null, true);
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
                         } else if (error.text.startsWith("FLOOD_WAIT")) {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
                         } else if (error.code != -1000) {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred) + "\n" + error.text);
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred) + "\n" + error.text);
                         }
                     }
                 }
@@ -3798,7 +3798,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             if (currentType == AUTH_TYPE_FLASH_CALL || currentType == AUTH_TYPE_MISSED_CALL) {
                 return phone;
             } else {
-                return LocaleController.getString("YourCode", R.string.YourCode);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOURCODE, R.string.YourCode);
             }
         }
 
@@ -3913,16 +3913,16 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             if (currentType != AUTH_TYPE_FRAGMENT_SMS) {
                 if (currentType == AUTH_TYPE_MESSAGE) {
                     if (nextType == AUTH_TYPE_FLASH_CALL || nextType == AUTH_TYPE_CALL || nextType == AUTH_TYPE_MISSED_CALL) {
-                        problemText.setText(LocaleController.getString("DidNotGetTheCodePhone", R.string.DidNotGetTheCodePhone));
+                        problemText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIDNOTGETTHECODEPHONE, R.string.DidNotGetTheCodePhone));
                     } else if (nextType == AUTH_TYPE_FRAGMENT_SMS) {
-                        problemText.setText(LocaleController.getString("DidNotGetTheCodeFragment", R.string.DidNotGetTheCodeFragment));
+                        problemText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIDNOTGETTHECODEFRAGMENT, R.string.DidNotGetTheCodeFragment));
                     } else if (nextType == 0) {
-                        problemText.setText(LocaleController.getString("DidNotGetTheCode", R.string.DidNotGetTheCode));
+                        problemText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIDNOTGETTHECODE, R.string.DidNotGetTheCode));
                     } else {
-                        problemText.setText(LocaleController.getString("DidNotGetTheCodeSms", R.string.DidNotGetTheCodeSms));
+                        problemText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIDNOTGETTHECODESMS, R.string.DidNotGetTheCodeSms));
                     }
                 } else {
-                    problemText.setText(LocaleController.getString("DidNotGetTheCode", R.string.DidNotGetTheCode));
+                    problemText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIDNOTGETTHECODE, R.string.DidNotGetTheCode));
                 }
             }
 
@@ -4225,11 +4225,11 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                             destroyTimer();
                             if (nextType == AUTH_TYPE_FLASH_CALL || nextType == AUTH_TYPE_CALL || nextType == AUTH_TYPE_SMS || nextType == AUTH_TYPE_MISSED_CALL) {
                                 if (nextType == AUTH_TYPE_CALL) {
-                                    timeText.setText(LocaleController.getString("RequestCallButton", R.string.RequestCallButton));
+                                    timeText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REQUESTCALLBUTTON, R.string.RequestCallButton));
                                 } else if (nextType == AUTH_TYPE_MISSED_CALL || nextType == AUTH_TYPE_FLASH_CALL) {
-                                    timeText.setText(LocaleController.getString("RequestMissedCall", R.string.RequestMissedCall));
+                                    timeText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REQUESTMISSEDCALL, R.string.RequestMissedCall));
                                 } else {
-                                    timeText.setText(LocaleController.getString("RequestSmsButton", R.string.RequestSmsButton));
+                                    timeText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REQUESTSMSBUTTON, R.string.RequestSmsButton));
                                 }
                                 timeText.setTextColor(Theme.getColor(Theme.key_chats_actionBackground));
                                 timeText.setTag(R.id.color_key_tag, Theme.key_chats_actionBackground);
@@ -4329,9 +4329,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                                     fragmentView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                                 } catch (Exception ignored) {}
                                 new AlertDialog.Builder(getContext())
-                                        .setTitle(LocaleController.getString(R.string.YourPasswordSuccess))
+                                        .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOURPASSWORDSUCCESS, R.string.YourPasswordSuccess))
                                         .setMessage(LocaleController.formatString(R.string.ChangePhoneNumberSuccessWithPhone, PhoneFormat.getInstance().format("+" + requestPhone)))
-                                        .setPositiveButton(LocaleController.getString(R.string.OK), null)
+                                        .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null)
                                         .setOnDismissListener(dialog -> finishFragment())
                                         .show();
                             });
@@ -4355,18 +4355,18 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                             if (currentType != AUTH_TYPE_FLASH_CALL) {
                                 boolean isWrongCode = false;
                                 if (error.text.contains("PHONE_NUMBER_INVALID")) {
-                                    needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidPhoneNumber", R.string.InvalidPhoneNumber));
+                                    needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidPhoneNumber", R.string.InvalidPhoneNumber));
                                 } else if (error.text.contains("PHONE_CODE_EMPTY") || error.text.contains("PHONE_CODE_INVALID")) {
                                     shakeWrongCode();
                                     isWrongCode = true;
                                 } else if (error.text.contains("PHONE_CODE_EXPIRED")) {
                                     onBackPressed(true);
                                     setPage(VIEW_PHONE_INPUT, true, null, true);
-                                    needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
+                                    needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
                                 } else if (error.text.startsWith("FLOOD_WAIT")) {
-                                    needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
+                                    needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
                                 } else {
-                                    needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred) + "\n" + error.text);
+                                    needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred) + "\n" + error.text);
                                 }
 
                                 if (!isWrongCode) {
@@ -4405,9 +4405,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                                 return;
                             }
                             animateSuccess(() -> new AlertDialog.Builder(activity)
-                                    .setTitle(LocaleController.getString(R.string.CancelLinkSuccessTitle))
+                                    .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCELLINKSUCCESSTITLE, R.string.CancelLinkSuccessTitle))
                                     .setMessage(LocaleController.formatString("CancelLinkSuccess", R.string.CancelLinkSuccess, PhoneFormat.getInstance().format("+" + phone)))
-                                    .setPositiveButton(LocaleController.getString(R.string.Close), null)
+                                    .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLOSE, R.string.Close), null)
                                     .setOnDismissListener(dialog -> finishFragment())
                                     .show());
                         } else {
@@ -4489,7 +4489,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                                     if (error1 == null) {
                                         TLRPC.account_Password password = (TLRPC.account_Password) response1;
                                         if (!TwoStepVerificationActivity.canHandleCurrentPassword(password, true)) {
-                                            AlertsCreator.showUpdateAppAlert(getParentActivity(), LocaleController.getString("UpdateAppAlert", R.string.UpdateAppAlert), true);
+                                            AlertsCreator.showUpdateAppAlert(getParentActivity(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UPDATEAPPALERT, R.string.UpdateAppAlert), true);
                                             return;
                                         }
                                         Bundle bundle = new Bundle();
@@ -4502,7 +4502,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
                                         animateSuccess(() -> setPage(VIEW_PASSWORD, true, bundle, false));
                                     } else {
-                                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), error1.text);
+                                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), error1.text);
                                     }
                                 }), ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);
                                 destroyTimer();
@@ -4529,18 +4529,18 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                                 if (currentType != AUTH_TYPE_FLASH_CALL) {
                                     boolean isWrongCode = false;
                                     if (error.text.contains("PHONE_NUMBER_INVALID")) {
-                                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidPhoneNumber", R.string.InvalidPhoneNumber));
+                                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidPhoneNumber", R.string.InvalidPhoneNumber));
                                     } else if (error.text.contains("PHONE_CODE_EMPTY") || error.text.contains("PHONE_CODE_INVALID")) {
                                         shakeWrongCode();
                                         isWrongCode = true;
                                     } else if (error.text.contains("PHONE_CODE_EXPIRED")) {
                                         onBackPressed(true);
                                         setPage(VIEW_PHONE_INPUT, true, null, true);
-                                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
+                                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
                                     } else if (error.text.startsWith("FLOOD_WAIT")) {
-                                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
+                                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
                                     } else {
-                                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred) + "\n" + error.text);
+                                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred) + "\n" + error.text);
                                     }
 
                                     if (!isWrongCode) {
@@ -4629,10 +4629,10 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
             if (!force) {
                 showDialog(new AlertDialog.Builder(getParentActivity())
-                        .setTitle(LocaleController.getString(R.string.EditNumber))
+                        .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDITNUMBER, R.string.EditNumber))
                         .setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("EditNumberInfo", R.string.EditNumberInfo, phone)))
-                        .setPositiveButton(LocaleController.getString(R.string.Close), null)
-                        .setNegativeButton(LocaleController.getString(R.string.Edit), (dialogInterface, i) -> {
+                        .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLOSE, R.string.Close), null)
+                        .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDIT, R.string.Edit), (dialogInterface, i) -> {
                             onBackPressed(true);
                             setPage(VIEW_PHONE_INPUT, true, null, true);
                         })
@@ -4816,7 +4816,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             titleView = new TextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
             titleView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-            titleView.setText(LocaleController.getString(R.string.YourPasswordHeader));
+            titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOURPASSWORDHEADER, R.string.YourPasswordHeader));
             titleView.setGravity(Gravity.CENTER);
             titleView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             addView(titleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 32, 16, 32, 0));
@@ -4825,11 +4825,11 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             confirmTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             confirmTextView.setGravity(Gravity.CENTER_HORIZONTAL);
             confirmTextView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
-            confirmTextView.setText(LocaleController.getString(R.string.LoginPasswordTextShort));
+            confirmTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOGINPASSWORDTEXTSHORT, R.string.LoginPasswordTextShort));
             addView(confirmTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 12, 8, 12, 0));
 
             outlineCodeField = new OutlineTextContainerView(context);
-            outlineCodeField.setText(LocaleController.getString(R.string.EnterPassword));
+            outlineCodeField.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENTERPASSWORD, R.string.EnterPassword));
             codeField = new EditTextBoldCursor(context);
             codeField.setCursorSize(AndroidUtilities.dp(20));
             codeField.setCursorWidth(1.5f);
@@ -4857,7 +4857,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
             cancelButton = new TextView(context);
             cancelButton.setGravity(Gravity.CENTER | Gravity.LEFT);
-            cancelButton.setText(LocaleController.getString("ForgotPassword", R.string.ForgotPassword));
+            cancelButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORGOTPASSWORD, R.string.ForgotPassword));
             cancelButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             cancelButton.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             cancelButton.setPadding(AndroidUtilities.dp(16), 0, AndroidUtilities.dp(16), 0);
@@ -4893,9 +4893,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                                 run.end = endIndex + 1;
                                 emailPattern.setSpan(new TextStyleSpan(run), startIndex, endIndex + 1, 0);
                             }
-                            builder.setMessage(AndroidUtilities.formatSpannable(LocaleController.getString(R.string.RestoreEmailSent), emailPattern));
-                            builder.setTitle(LocaleController.getString("RestoreEmailSentTitle", R.string.RestoreEmailSentTitle));
-                            builder.setPositiveButton(LocaleController.getString(R.string.Continue), (dialogInterface, i) -> {
+                            builder.setMessage(AndroidUtilities.formatSpannable(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREEMAILSENT, R.string.RestoreEmailSent), emailPattern));
+                            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREEMAILSENTTITLE, R.string.RestoreEmailSentTitle));
+                            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTINUE, R.string.Continue), (dialogInterface, i) -> {
                                 Bundle bundle = new Bundle();
                                 bundle.putString("email_unconfirmed_pattern", res.email_pattern);
                                 bundle.putString("password", passwordString);
@@ -4918,19 +4918,19 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                                 } else {
                                     timeString = LocaleController.formatPluralString("Minutes", time / 60);
                                 }
-                                needShowAlert(LocaleController.getString(R.string.WrongCodeTitle), LocaleController.formatString("FloodWaitTime", R.string.FloodWaitTime, timeString));
+                                needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WRONGCODETITLE, R.string.WrongCodeTitle), LocaleController.formatString("FloodWaitTime", R.string.FloodWaitTime, timeString));
                             } else {
-                                needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), error.text);
+                                needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), error.text);
                             }
                         }
                     }), ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);
                 } else {
                     AndroidUtilities.hideKeyboard(codeField);
                     new AlertDialog.Builder(context)
-                            .setTitle(LocaleController.getString(R.string.RestorePasswordNoEmailTitle))
-                            .setMessage(LocaleController.getString(R.string.RestorePasswordNoEmailText))
-                            .setPositiveButton(LocaleController.getString(R.string.Close), null)
-                            .setNegativeButton(LocaleController.getString(R.string.ResetAccount), (dialog, which) -> tryResetAccount(requestPhone, phoneHash, phoneCode))
+                            .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle))
+                            .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTEXT, R.string.RestorePasswordNoEmailText))
+                            .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLOSE, R.string.Close), null)
+                            .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESETACCOUNT, R.string.ResetAccount), (dialog, which) -> tryResetAccount(requestPhone, phoneHash, phoneCode))
                             .show();
                 }
             });
@@ -4949,7 +4949,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
         @Override
         public String getHeaderName() {
-            return LocaleController.getString("LoginPassword", R.string.LoginPassword);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOGINPASSWORD, R.string.LoginPassword);
         }
 
         @Override
@@ -5056,9 +5056,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                             } else {
                                 timeString = LocaleController.formatPluralString("Minutes", time / 60);
                             }
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.formatString("FloodWaitTime", R.string.FloodWaitTime, timeString));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.formatString("FloodWaitTime", R.string.FloodWaitTime, timeString));
                         } else {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), error.text);
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), error.text);
                         }
                     }
                 });
@@ -5166,7 +5166,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             titleView = new TextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
             titleView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-            titleView.setText(LocaleController.getString(R.string.ResetAccount));
+            titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESETACCOUNT, R.string.ResetAccount));
             titleView.setGravity(Gravity.CENTER);
             titleView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             innerLinearLayout.addView(titleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 32, 16, 32, 0));
@@ -5181,7 +5181,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
             resetAccountText = new TextView(context);
             resetAccountText.setGravity(Gravity.CENTER_HORIZONTAL);
-            resetAccountText.setText(LocaleController.getString("ResetAccountStatus", R.string.ResetAccountStatus));
+            resetAccountText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESETACCOUNTSTATUS, R.string.ResetAccountStatus));
             resetAccountText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             resetAccountText.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             addView(resetAccountText, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 24, 0, 0));
@@ -5195,7 +5195,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
             resetAccountButton = new TextView(context);
             resetAccountButton.setGravity(Gravity.CENTER);
-            resetAccountButton.setText(LocaleController.getString(R.string.ResetAccount));
+            resetAccountButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESETACCOUNT, R.string.ResetAccount));
             resetAccountButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
             resetAccountButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             resetAccountButton.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
@@ -5207,9 +5207,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                     return;
                 }
                 showDialog(new AlertDialog.Builder(getParentActivity())
-                        .setTitle(LocaleController.getString("ResetMyAccountWarning", R.string.ResetMyAccountWarning))
-                        .setMessage(LocaleController.getString("ResetMyAccountWarningText", R.string.ResetMyAccountWarningText))
-                        .setPositiveButton(LocaleController.getString("ResetMyAccountWarningReset", R.string.ResetMyAccountWarningReset), (dialogInterface, i) -> {
+                        .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESETMYACCOUNTWARNING, R.string.ResetMyAccountWarning))
+                        .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESETMYACCOUNTWARNINGTEXT, R.string.ResetMyAccountWarningText))
+                        .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESETMYACCOUNTWARNINGRESET, R.string.ResetMyAccountWarningReset), (dialogInterface, i) -> {
                             needShowProgress(0);
                             TLRPC.TL_account_deleteAccount req = new TLRPC.TL_account_deleteAccount();
                             req.reason = "Forgot password";
@@ -5228,14 +5228,14 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                                     setPage(VIEW_REGISTER, true, params, false);
                                 } else {
                                     if (error.text.equals("2FA_RECENT_CONFIRM")) {
-                                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ResetAccountCancelledAlert", R.string.ResetAccountCancelledAlert));
+                                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ResetAccountCancelledAlert", R.string.ResetAccountCancelledAlert));
                                     } else {
-                                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), error.text);
+                                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), error.text);
                                     }
                                 }
                             }), ConnectionsManager.RequestFlagWithoutLogin | ConnectionsManager.RequestFlagFailOnServerErrors);
                         })
-                        .setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null).create());
+                        .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null).create());
             });
         }
 
@@ -5250,7 +5250,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
         @Override
         public String getHeaderName() {
-            return LocaleController.getString("ResetAccount", R.string.ResetAccount);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESETACCOUNT, R.string.ResetAccount);
         }
 
         private void updateTimeText() {
@@ -5384,7 +5384,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             subtitleView.setGravity(Gravity.CENTER);
             subtitleView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
-            subtitleView.setText(LocaleController.getString(R.string.AddEmailSubtitle));
+            subtitleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDEMAILSUBTITLE, R.string.AddEmailSubtitle));
             addView(subtitleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 32, 8, 32, 0));
 
             emailOutlineView = new OutlineTextContainerView(context);
@@ -5434,7 +5434,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 @Override
                 public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, @NonNull Paint paint) {}
             }, 1, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            str.append(LocaleController.getString(R.string.SignInWithGoogle));
+            str.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SIGNINWITHGOOGLE, R.string.SignInWithGoogle));
             signInWithGoogleView.setText(str);
 
             loginOrView = new LoginOrView(context);
@@ -5495,7 +5495,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
         @Override
         public String getHeaderName() {
-            return LocaleController.getString("AddEmailTitle", R.string.AddEmailTitle);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDEMAILTITLE, R.string.AddEmailTitle);
         }
 
         @Override
@@ -5575,9 +5575,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                         fillNextCodeParams(params, emailVerifiedLogin.sent_code);
                     } else if (error != null) {
                         if (error.text.contains("EMAIL_NOT_ALLOWED")) {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString(R.string.EmailNotAllowed));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString(R.string.EmailNotAllowed));
                         } else if (error.text.contains("EMAIL_TOKEN_INVALID")) {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString(R.string.EmailTokenInvalid));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString(R.string.EmailTokenInvalid));
                         } else if (error.code != -1000) {
                             AlertsCreator.processError(currentAccount, error, LoginActivity.this, verifyEmail);
                         }
@@ -5614,19 +5614,19 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                     if (error.text.contains("EMAIL_INVALID")) {
                         onPasscodeError(false);
                     } else if (error.text.contains("EMAIL_NOT_ALLOWED")) {
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString(R.string.EmailNotAllowed));
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString(R.string.EmailNotAllowed));
                     } else if (error.text.contains("PHONE_PASSWORD_FLOOD")) {
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
                     } else if (error.text.contains("PHONE_NUMBER_FLOOD")) {
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("PhoneNumberFlood", R.string.PhoneNumberFlood));
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("PhoneNumberFlood", R.string.PhoneNumberFlood));
                     } else if (error.text.contains("PHONE_CODE_EMPTY") || error.text.contains("PHONE_CODE_INVALID")) {
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidCode", R.string.InvalidCode));
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidCode", R.string.InvalidCode));
                     } else if (error.text.contains("PHONE_CODE_EXPIRED")) {
                         onBackPressed(true);
                         setPage(VIEW_PHONE_INPUT, true, null, true);
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
                     } else if (error.text.startsWith("FLOOD_WAIT")) {
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
                     } else if (error.code != -1000) {
                         AlertsCreator.processError(currentAccount, error, LoginActivity.this, req, requestPhone);
                     }
@@ -5774,7 +5774,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 @Override
                 public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, @NonNull Paint paint) {}
             }, 1, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            str.append(LocaleController.getString(R.string.SignInWithGoogle));
+            str.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SIGNINWITHGOOGLE, R.string.SignInWithGoogle));
             signInWithGoogleView.setText(str);
 
             signInWithGoogleView.setOnClickListener(view -> {
@@ -5818,7 +5818,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                     super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(100), MeasureSpec.AT_MOST));
                 }
             };
-            cantAccessEmailView.setText(LocaleController.getString(R.string.LoginCantAccessThisEmail));
+            cantAccessEmailView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOGINCANTACCESSTHISEMAIL, R.string.LoginCantAccessThisEmail));
             cantAccessEmailView.setGravity(Gravity.CENTER);
             cantAccessEmailView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             cantAccessEmailView.setPadding(AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16));
@@ -5836,9 +5836,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 }
 
                 new AlertDialog.Builder(context)
-                        .setTitle(LocaleController.getString(R.string.LoginEmailResetTitle))
-                        .setMessage(AndroidUtilities.formatSpannable(AndroidUtilities.replaceTags(LocaleController.getString(R.string.LoginEmailResetMessage)), email, getTimePattern(resetAvailablePeriod)))
-                        .setPositiveButton(LocaleController.getString(R.string.LoginEmailResetButton), (dialog, which) -> {
+                        .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOGINEMAILRESETTITLE, R.string.LoginEmailResetTitle))
+                        .setMessage(AndroidUtilities.formatSpannable(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOGINEMAILRESETMESSAGE, R.string.LoginEmailResetMessage)), email, getTimePattern(resetAvailablePeriod)))
+                        .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOGINEMAILRESETBUTTON, R.string.LoginEmailResetButton), (dialog, which) -> {
                             Bundle params = new Bundle();
                             params.putString("phone", phone);
                             params.putString("ephone", emailPhone);
@@ -5859,14 +5859,14 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                                     if (error.text.contains("PHONE_CODE_EXPIRED")) {
                                         onBackPressed(true);
                                         setPage(VIEW_PHONE_INPUT, true, null, true);
-                                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
+                                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
                                     } else {
                                         AlertsCreator.processError(currentAccount, error, LoginActivity.this, req);
                                     }
                                 }
                             }), ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);
                         })
-                        .setNegativeButton(LocaleController.getString(R.string.Cancel), null)
+                        .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null)
                         .show();
             });
             cantAccessEmailFrameLayout.addView(cantAccessEmailView);
@@ -5892,7 +5892,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             resendCodeView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             resendCodeView.setPadding(AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16));
             resendCodeView.setMaxLines(2);
-            resendCodeView.setText(LocaleController.getString(R.string.ResendCode));
+            resendCodeView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESENDCODE, R.string.ResendCode));
             resendCodeView.setOnClickListener(v -> {
                 if (resendCodeView.getVisibility() != View.VISIBLE || resendCodeView.getAlpha() != 1f) {
                     return;
@@ -5944,7 +5944,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             errorViewSwitcher.addView(resendFrameLayout);
 
             wrongCodeView = new TextView(context);
-            wrongCodeView.setText(LocaleController.getString("WrongCode", R.string.WrongCode));
+            wrongCodeView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WRONGCODE, R.string.WrongCode));
             wrongCodeView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             wrongCodeView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             wrongCodeView.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.TOP);
@@ -5989,14 +5989,14 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 } else if (error != null && error.text != null) {
                     if (error.text.contains("TASK_ALREADY_EXISTS")) {
                         new AlertDialog.Builder(getContext())
-                                .setTitle(LocaleController.getString(R.string.LoginEmailResetPremiumRequiredTitle))
+                                .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOGINEMAILRESETPREMIUMREQUIREDTITLE, R.string.LoginEmailResetPremiumRequiredTitle))
                                 .setMessage(AndroidUtilities.replaceTags(LocaleController.formatString(R.string.LoginEmailResetPremiumRequiredMessage, LocaleController.addNbsp(PhoneFormat.getInstance().format("+" + requestPhone)))))
-                                .setPositiveButton(LocaleController.getString(R.string.OK), null)
+                                .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null)
                                 .show();
                     } else if (error.text.contains("PHONE_CODE_EXPIRED")) {
                         onBackPressed(true);
                         setPage(VIEW_PHONE_INPUT, true, null, true);
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
                     } else {
                         AlertsCreator.processError(currentAccount, error, LoginActivity.this, req);
                     }
@@ -6047,7 +6047,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
         @Override
         public String getHeaderName() {
-            return LocaleController.getString(R.string.VerificationCode);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VERIFICATIONCODE, R.string.VerificationCode);
         }
 
         @Override
@@ -6122,7 +6122,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                     confirmText.setSpan(new TextStyleSpan(run), startIndex, endIndex + 1, 0);
                 }
 
-                confirmTextView.setText(AndroidUtilities.formatSpannable(LocaleController.getString(R.string.CheckYourEmailSubtitle), confirmText));
+                confirmTextView.setText(AndroidUtilities.formatSpannable(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHECKYOUREMAILSUBTITLE, R.string.CheckYourEmailSubtitle), confirmText));
             }
 
             int v = params.getBoolean("googleSignInAllowed") && PushListenerController.GooglePushListenerServiceProvider.INSTANCE.hasServices() ? VISIBLE : GONE;
@@ -6198,7 +6198,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             int timeRemaining = (int) (resetPendingDate - System.currentTimeMillis() / 1000L);
             if (resetPendingDate <= 0 || timeRemaining <= 0) {
                 emailResetInView.setVisibility(VISIBLE);
-                emailResetInView.setText(LocaleController.getString(R.string.LoginEmailResetPleaseWait));
+                emailResetInView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOGINEMAILRESETPLEASEWAIT, R.string.LoginEmailResetPleaseWait));
                 AndroidUtilities.runOnUIThread(this::requestEmailReset, 1000);
                 return;
             }
@@ -6354,7 +6354,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                             if (error1 == null) {
                                 TLRPC.account_Password password = (TLRPC.account_Password) response1;
                                 if (!TwoStepVerificationActivity.canHandleCurrentPassword(password, true)) {
-                                    AlertsCreator.showUpdateAppAlert(getParentActivity(), LocaleController.getString("UpdateAppAlert", R.string.UpdateAppAlert), true);
+                                    AlertsCreator.showUpdateAppAlert(getParentActivity(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UPDATEAPPALERT, R.string.UpdateAppAlert), true);
                                     return;
                                 }
                                 Bundle bundle = new Bundle();
@@ -6367,7 +6367,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
                                 animateSuccess(() -> setPage(VIEW_PASSWORD, true, bundle, false));
                             } else {
-                                needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), error1.text);
+                                needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), error1.text);
                             }
                         }), ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);
                     } else {
@@ -6375,22 +6375,22 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                         showDoneButton(false, true);
                         boolean isWrongCode = false;
                         if (error.text.contains("EMAIL_ADDRESS_INVALID")) {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString(R.string.EmailAddressInvalid));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString(R.string.EmailAddressInvalid));
                         } else if (error.text.contains("PHONE_NUMBER_INVALID")) {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidPhoneNumber", R.string.InvalidPhoneNumber));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidPhoneNumber", R.string.InvalidPhoneNumber));
                         } else if (error.text.contains("CODE_EMPTY") || error.text.contains("CODE_INVALID") || error.text.contains("EMAIL_CODE_INVALID") || error.text.contains("PHONE_CODE_INVALID")) {
                             shakeWrongCode();
                             isWrongCode = true;
                         } else if (error.text.contains("EMAIL_TOKEN_INVALID")) {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString(R.string.EmailTokenInvalid));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString(R.string.EmailTokenInvalid));
                         } else if (error.text.contains("EMAIL_VERIFY_EXPIRED")) {
                             onBackPressed(true);
                             setPage(VIEW_PHONE_INPUT, true, null, true);
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
                         } else if (error.text.startsWith("FLOOD_WAIT")) {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("FloodWait", R.string.FloodWait));
                         } else {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred) + "\n" + error.text);
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred) + "\n" + error.text);
                         }
 
                         if (!isWrongCode) {
@@ -6536,7 +6536,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             titleView = new TextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
             titleView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-            titleView.setText(LocaleController.getString(R.string.EnterCode));
+            titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENTERCODE, R.string.EnterCode));
             titleView.setGravity(Gravity.CENTER);
             titleView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             addView(titleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 32, 16, 32, 0));
@@ -6545,7 +6545,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             confirmTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             confirmTextView.setGravity(Gravity.CENTER);
             confirmTextView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
-            confirmTextView.setText(LocaleController.getString(R.string.RestoreEmailSentInfo));
+            confirmTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREEMAILSENTINFO, R.string.RestoreEmailSentInfo));
             addView(confirmTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 12, 8, 12, 0));
 
             codeFieldContainer = new CodeFieldContainer(context) {
@@ -6591,10 +6591,10 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
             troubleButton.setOnClickListener(view -> {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity())
-                        .setTitle(LocaleController.getString("RestorePasswordNoEmailTitle", R.string.RestorePasswordNoEmailTitle))
-                        .setMessage(LocaleController.getString("RestoreEmailTroubleText", R.string.RestoreEmailTroubleText))
-                        .setPositiveButton(LocaleController.getString(R.string.OK), (dialogInterface, i) -> setPage(VIEW_PASSWORD, true, new Bundle(), true))
-                        .setNegativeButton(LocaleController.getString(R.string.ResetAccount), (dialog, which) -> tryResetAccount(requestPhone, phoneHash, phoneCode));
+                        .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle))
+                        .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREEMAILTROUBLETEXT, R.string.RestoreEmailTroubleText))
+                        .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), (dialogInterface, i) -> setPage(VIEW_PASSWORD, true, new Bundle(), true))
+                        .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESETACCOUNT, R.string.ResetAccount), (dialog, which) -> tryResetAccount(requestPhone, phoneHash, phoneCode));
                 Dialog dialog = showDialog(builder.create());
                 if (dialog != null) {
                     dialog.setCanceledOnTouchOutside(false);
@@ -6640,7 +6640,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
         @Override
         public String getHeaderName() {
-            return LocaleController.getString("LoginPassword", R.string.LoginPassword);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOGINPASSWORD, R.string.LoginPassword);
         }
 
         @Override
@@ -6664,7 +6664,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 run.end = endIndex + 1;
                 unconfirmedPattern.setSpan(new TextStyleSpan(run), startIndex, endIndex + 1, 0);
             }
-            troubleButton.setText(AndroidUtilities.formatSpannable(LocaleController.getString(R.string.RestoreEmailNoAccess), unconfirmedPattern));
+            troubleButton.setText(AndroidUtilities.formatSpannable(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREEMAILNOACCESS, R.string.RestoreEmailNoAccess), unconfirmedPattern));
 
             showKeyboard(codeFieldContainer);
             codeFieldContainer.requestFocus();
@@ -6742,9 +6742,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                         } else {
                             timeString = LocaleController.formatPluralString("Minutes", time / 60);
                         }
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.formatString("FloodWaitTime", R.string.FloodWaitTime, timeString));
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.formatString("FloodWaitTime", R.string.FloodWaitTime, timeString));
                     } else {
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), error.text);
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), error.text);
                     }
                 }
             }), ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);
@@ -6827,7 +6827,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
             titleTextView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             titleTextView.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
-            titleTextView.setText(LocaleController.getString(R.string.SetNewPassword));
+            titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETNEWPASSWORD, R.string.SetNewPassword));
             addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 8, AndroidUtilities.isSmallScreen() ? 16 : 72, 8, 0));
 
             confirmTextView = new TextView(context);
@@ -6926,9 +6926,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             }
 
             if (stage == 0) {
-                confirmTextView.setText(LocaleController.getString("PleaseEnterNewFirstPasswordLogin", R.string.PleaseEnterNewFirstPasswordLogin));
+                confirmTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PLEASEENTERNEWFIRSTPASSWORDLOGIN, R.string.PleaseEnterNewFirstPasswordLogin));
             } else {
-                confirmTextView.setText(LocaleController.getString("PasswordHintTextLogin", R.string.PasswordHintTextLogin));
+                confirmTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSWORDHINTTEXTLOGIN, R.string.PasswordHintTextLogin));
             }
 
             cancelButton = new TextView(context);
@@ -6936,7 +6936,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             cancelButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             cancelButton.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
             cancelButton.setPadding(AndroidUtilities.dp(16), 0, AndroidUtilities.dp(16), 0);
-            cancelButton.setText(LocaleController.getString(R.string.YourEmailSkip));
+            cancelButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOUREMAILSKIP, R.string.YourEmailSkip));
 
             FrameLayout bottomContainer = new FrameLayout(context);
             bottomContainer.addView(cancelButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, (Build.VERSION.SDK_INT >= 21 ? 56 : 60), Gravity.BOTTOM, 0, 0, 0, 32));
@@ -6982,7 +6982,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
         @Override
         public String getHeaderName() {
-            return LocaleController.getString("NewPassword", R.string.NewPassword);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEWPASSWORD, R.string.NewPassword);
         }
 
         @Override
@@ -7078,13 +7078,13 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                     needHideProgress(false);
                     if (response instanceof TLRPC.auth_Authorization) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setPositiveButton(LocaleController.getString(R.string.Continue), (dialogInterface, i) -> onAuthSuccess((TLRPC.TL_auth_authorization) response));
+                        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTINUE, R.string.Continue), (dialogInterface, i) -> onAuthSuccess((TLRPC.TL_auth_authorization) response));
                         if (TextUtils.isEmpty(password)) {
-                            builder.setMessage(LocaleController.getString(R.string.YourPasswordReset));
+                            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOURPASSWORDRESET, R.string.YourPasswordReset));
                         } else {
-                            builder.setMessage(LocaleController.getString(R.string.YourPasswordChangedSuccessText));
+                            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOURPASSWORDCHANGEDSUCCESSTEXT, R.string.YourPasswordChangedSuccessText));
                         }
-                        builder.setTitle(LocaleController.getString(R.string.TwoStepVerificationTitle));
+                        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TWOSTEPVERIFICATIONTITLE, R.string.TwoStepVerificationTitle));
                         Dialog dialog = showDialog(builder.create());
                         if (dialog != null) {
                             dialog.setCanceledOnTouchOutside(false);
@@ -7100,9 +7100,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                             } else {
                                 timeString = LocaleController.formatPluralString("Minutes", time / 60);
                             }
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.formatString("FloodWaitTime", R.string.FloodWaitTime, timeString));
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.formatString("FloodWaitTime", R.string.FloodWaitTime, timeString));
                         } else {
-                            needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), error.text);
+                            needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), error.text);
                         }
                     }
                 });
@@ -7212,29 +7212,29 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 return;
             }
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-            builder.setTitle(LocaleController.getString("TermsOfService", R.string.TermsOfService));
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TERMSOFSERVICE, R.string.TermsOfService));
 
             if (needAccept) {
-                builder.setPositiveButton(LocaleController.getString("Accept", R.string.Accept), (dialog, which) -> {
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCEPT, R.string.Accept), (dialog, which) -> {
                     currentTermsOfService.popup = false;
                     onNextPressed(null);
                 });
-                builder.setNegativeButton(LocaleController.getString("Decline", R.string.Decline), (dialog, which) -> {
+                builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DECLINE, R.string.Decline), (dialog, which) -> {
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(getParentActivity());
-                    builder1.setTitle(LocaleController.getString("TermsOfService", R.string.TermsOfService));
-                    builder1.setMessage(LocaleController.getString("TosDecline", R.string.TosDecline));
-                    builder1.setPositiveButton(LocaleController.getString("SignUp", R.string.SignUp), (dialog1, which1) -> {
+                    builder1.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TERMSOFSERVICE, R.string.TermsOfService));
+                    builder1.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TOSDECLINE, R.string.TosDecline));
+                    builder1.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SIGNUP, R.string.SignUp), (dialog1, which1) -> {
                         currentTermsOfService.popup = false;
                         onNextPressed(null);
                     });
-                    builder1.setNegativeButton(LocaleController.getString("Decline", R.string.Decline), (dialog12, which12) -> {
+                    builder1.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DECLINE, R.string.Decline), (dialog12, which12) -> {
                         onBackPressed(true);
                         setPage(VIEW_PHONE_INPUT, true, null, true);
                     });
                     showDialog(builder1.create());
                 });
             } else {
-                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
             }
 
             SpannableStringBuilder text = new SpannableStringBuilder(currentTermsOfService.text);
@@ -7394,7 +7394,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             showAvatarProgress(false, false);
 
             titleTextView = new TextView(context);
-            titleTextView.setText(LocaleController.getString(R.string.RegistrationProfileInfo));
+            titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REGISTRATIONPROFILEINFO, R.string.RegistrationProfileInfo));
             titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
             titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
             titleTextView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
@@ -7402,7 +7402,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 8, 12, 8, 0));
 
             descriptionTextView = new TextView(context);
-            descriptionTextView.setText(LocaleController.getString("RegisterText2", R.string.RegisterText2));
+            descriptionTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REGISTERTEXT2, R.string.RegisterText2));
             descriptionTextView.setGravity(Gravity.CENTER_HORIZONTAL);
             descriptionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             descriptionTextView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
@@ -7412,7 +7412,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             addView(editTextContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 8, 21, 8, 0));
 
             firstNameOutlineView = new OutlineTextContainerView(context);
-            firstNameOutlineView.setText(LocaleController.getString(R.string.FirstName));
+            firstNameOutlineView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FIRSTNAME, R.string.FirstName));
 
             firstNameField = new EditTextBoldCursor(context);
             firstNameField.setCursorSize(AndroidUtilities.dp(20));
@@ -7437,7 +7437,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             });
 
             lastNameOutlineView = new OutlineTextContainerView(context);
-            lastNameOutlineView.setText(LocaleController.getString(R.string.LastName));
+            lastNameOutlineView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LASTNAME, R.string.LastName));
 
             lastNameField = new EditTextBoldCursor(context);
             lastNameField.setCursorSize(AndroidUtilities.dp(20));
@@ -7463,7 +7463,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             buildEditTextLayout(AndroidUtilities.isSmallScreen());
 
             wrongNumber = new TextView(context);
-            wrongNumber.setText(LocaleController.getString("CancelRegistration", R.string.CancelRegistration));
+            wrongNumber.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCELREGISTRATION, R.string.CancelRegistration));
             wrongNumber.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_HORIZONTAL);
             wrongNumber.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             wrongNumber.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
@@ -7488,7 +7488,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             privacyLayout.addView(privacyView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 56 : 60, Gravity.LEFT | Gravity.BOTTOM, 14, 0, 70, 32));
             VerticalPositionAutoAnimator.attach(privacyView);
 
-            String str = LocaleController.getString("TermsOfServiceLogin", R.string.TermsOfServiceLogin);
+            String str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TERMSOFSERVICELOGIN, R.string.TermsOfServiceLogin);
             SpannableStringBuilder text = new SpannableStringBuilder(str);
             int index1 = str.indexOf('*');
             int index2 = str.lastIndexOf('*');
@@ -7525,8 +7525,8 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 LinearLayout linearLayout = new LinearLayout(getParentActivity());
                 linearLayout.setOrientation(HORIZONTAL);
 
-                firstNameOutlineView.setText(LocaleController.getString(R.string.FirstNameSmall));
-                lastNameOutlineView.setText(LocaleController.getString(R.string.LastNameSmall));
+                firstNameOutlineView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FIRSTNAMESMALL, R.string.FirstNameSmall));
+                lastNameOutlineView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LASTNAMESMALL, R.string.LastNameSmall));
 
                 linearLayout.addView(firstNameOutlineView, LayoutHelper.createLinear(0, LayoutHelper.WRAP_CONTENT, 1f, 0, 0, 8, 0));
                 linearLayout.addView(lastNameOutlineView, LayoutHelper.createLinear(0, LayoutHelper.WRAP_CONTENT, 1f, 8, 0, 0, 0));
@@ -7541,8 +7541,8 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                     AndroidUtilities.showKeyboard(lastNameField);
                 }
             } else {
-                firstNameOutlineView.setText(LocaleController.getString(R.string.FirstName));
-                lastNameOutlineView.setText(LocaleController.getString(R.string.LastName));
+                firstNameOutlineView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FIRSTNAME, R.string.FirstName));
+                lastNameOutlineView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LASTNAME, R.string.LastName));
 
                 editTextContainer.addView(firstNameOutlineView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 8, 0, 8, 0));
                 editTextContainer.addView(lastNameOutlineView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 8, 82, 8, 0));
@@ -7619,14 +7619,14 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
         public boolean onBackPressed(boolean force) {
             if (!force) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setTitle(LocaleController.getString(R.string.Warning));
-                builder.setMessage(LocaleController.getString("AreYouSureRegistration", R.string.AreYouSureRegistration));
-                builder.setNegativeButton(LocaleController.getString("Stop", R.string.Stop), (dialogInterface, i) -> {
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WARNING, R.string.Warning));
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AREYOUSUREREGISTRATION, R.string.AreYouSureRegistration));
+                builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STOP, R.string.Stop), (dialogInterface, i) -> {
                     onBackPressed(true);
                     setPage(VIEW_PHONE_INPUT, true, null, true);
                     hidePrivacyView();
                 });
-                builder.setPositiveButton(LocaleController.getString("Continue", R.string.Continue), null);
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTINUE, R.string.Continue), null);
                 showDialog(builder.create());
                 return false;
             }
@@ -7638,7 +7638,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
         @Override
         public String getHeaderName() {
-            return LocaleController.getString("YourName", R.string.YourName);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_YOURNAME, R.string.YourName);
         }
 
         @Override
@@ -7725,19 +7725,19 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                 } else {
                     needHideProgress(false);
                     if (error.text.contains("PHONE_NUMBER_INVALID")) {
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidPhoneNumber", R.string.InvalidPhoneNumber));
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidPhoneNumber", R.string.InvalidPhoneNumber));
                     } else if (error.text.contains("PHONE_CODE_EMPTY") || error.text.contains("PHONE_CODE_INVALID")) {
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidCode", R.string.InvalidCode));
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidCode", R.string.InvalidCode));
                     } else if (error.text.contains("PHONE_CODE_EXPIRED")) {
                         onBackPressed(true);
                         setPage(VIEW_PHONE_INPUT, true, null, true);
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("CodeExpired", R.string.CodeExpired));
                     } else if (error.text.contains("FIRSTNAME_INVALID")) {
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidFirstName", R.string.InvalidFirstName));
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidFirstName", R.string.InvalidFirstName));
                     } else if (error.text.contains("LASTNAME_INVALID")) {
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidLastName", R.string.InvalidLastName));
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("InvalidLastName", R.string.InvalidLastName));
                     } else {
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), error.text);
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), error.text);
                     }
                 }
             }), ConnectionsManager.RequestFlagWithoutLogin | ConnectionsManager.RequestFlagFailOnServerErrors);
@@ -7967,9 +7967,9 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             return;
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-        builder.setMessage(LocaleController.getString("ResetMyAccountWarningText", R.string.ResetMyAccountWarningText));
-        builder.setTitle(LocaleController.getString("ResetMyAccountWarning", R.string.ResetMyAccountWarning));
-        builder.setPositiveButton(LocaleController.getString("ResetMyAccountWarningReset", R.string.ResetMyAccountWarningReset), (dialogInterface, i) -> {
+        builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESETMYACCOUNTWARNINGTEXT, R.string.ResetMyAccountWarningText));
+        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESETMYACCOUNTWARNING, R.string.ResetMyAccountWarning));
+        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESETMYACCOUNTWARNINGRESET, R.string.ResetMyAccountWarningReset), (dialogInterface, i) -> {
             needShowProgress(0);
             TLRPC.TL_account_deleteAccount req = new TLRPC.TL_account_deleteAccount();
             req.reason = "Forgot password";
@@ -7987,7 +7987,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                     setPage(VIEW_REGISTER, true, params, false);
                 } else {
                     if (error.text.equals("2FA_RECENT_CONFIRM")) {
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ResetAccountCancelledAlert", R.string.ResetAccountCancelledAlert));
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), LocaleController.getString("ResetAccountCancelledAlert", R.string.ResetAccountCancelledAlert));
                     } else if (error.text.startsWith("2FA_CONFIRM_WAIT_")) {
                         Bundle params = new Bundle();
                         params.putString("phoneFormated", requestPhone);
@@ -7997,12 +7997,12 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
                         params.putInt("waitTime", Utilities.parseInt(error.text.replace("2FA_CONFIRM_WAIT_", "")));
                         setPage(VIEW_RESET_WAIT, true, params, false);
                     } else {
-                        needShowAlert(LocaleController.getString(R.string.RestorePasswordNoEmailTitle), error.text);
+                        needShowAlert(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RESTOREPASSWORDNOEMAILTITLE, R.string.RestorePasswordNoEmailTitle), error.text);
                     }
                 }
             }), ConnectionsManager.RequestFlagWithoutLogin | ConnectionsManager.RequestFlagFailOnServerErrors);
         });
-        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+        builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
         showDialog(builder.create());
     }
 
@@ -8057,7 +8057,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             floatingProgressView.setScaleY(0.1f);
             popupFabContainer.addView(floatingProgressView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
-            popupFabContainer.setContentDescription(LocaleController.getString(R.string.Done));
+            popupFabContainer.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done));
             addView(popupFabContainer, LayoutHelper.createFrame(Build.VERSION.SDK_INT >= 21 ? 56 : 60, Build.VERSION.SDK_INT >= 21 ? 56 : 60));
 
             popupLayout = new FrameLayout(context);
@@ -8065,7 +8065,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             addView(popupLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 140, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 24, 0, 24, 0));
 
             confirmMessageView = new TextView(context);
-            confirmMessageView.setText(LocaleController.getString(R.string.ConfirmCorrectNumber));
+            confirmMessageView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONFIRMCORRECTNUMBER, R.string.ConfirmCorrectNumber));
             confirmMessageView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             confirmMessageView.setSingleLine();
             popupLayout.addView(confirmMessageView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT, 24, 20, 24, 0));
@@ -8081,7 +8081,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             int buttonMargin = 8;
 
             editTextView = new TextView(context);
-            editTextView.setText(LocaleController.getString(R.string.Edit));
+            editTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDIT, R.string.Edit));
             editTextView.setSingleLine();
             editTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             editTextView.setBackground(Theme.getRoundRectSelectorDrawable(AndroidUtilities.dp(6), Theme.getColor(Theme.key_changephoneinfo_image2)));
@@ -8091,7 +8091,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             popupLayout.addView(editTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT), buttonMargin, buttonMargin, buttonMargin, buttonMargin));
 
             confirmTextView = new TextView(context);
-            confirmTextView.setText(LocaleController.getString(R.string.CheckPhoneNumberYes));
+            confirmTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHECKPHONENUMBERYES, R.string.CheckPhoneNumberYes));
             confirmTextView.setSingleLine();
             confirmTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             confirmTextView.setBackground(Theme.getRoundRectSelectorDrawable(AndroidUtilities.dp(6), Theme.getColor(Theme.key_changephoneinfo_image2)));

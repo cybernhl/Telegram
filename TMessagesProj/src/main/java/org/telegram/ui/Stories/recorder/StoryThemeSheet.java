@@ -56,7 +56,7 @@ public class StoryThemeSheet extends FrameLayout {
         titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         titleView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        titleView.setText(LocaleController.getString(R.string.StorySetWallpaper));
+        titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYSETWALLPAPER, R.string.StorySetWallpaper));
         addView(titleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 54, 16, 24, 0));
 
         themeView = new ChannelColorActivity.ThemeChooser(context, false, currentAccount, resourcesProvider) {

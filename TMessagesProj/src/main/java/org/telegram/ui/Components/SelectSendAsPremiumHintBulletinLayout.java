@@ -21,10 +21,10 @@ public class SelectSendAsPremiumHintBulletinLayout extends Bulletin.MultiLineLay
 
         imageView.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.msg_premium_prolfilestar));
         imageView.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_undo_infoColor), PorterDuff.Mode.SRC_IN));
-        textView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.SelectSendAsPeerPremiumHint)));
+        textView.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTSENDASPEERPREMIUMHINT, R.string.SelectSendAsPeerPremiumHint)));
 
         Bulletin.UndoButton button = new Bulletin.UndoButton(context, true, resourcesProvider);
-        button.setText(LocaleController.getString(R.string.SelectSendAsPeerPremiumOpen));
+        button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTSENDASPEERPREMIUMOPEN, R.string.SelectSendAsPeerPremiumOpen));
         button.setUndoAction(callback);
         setButton(button);
     }

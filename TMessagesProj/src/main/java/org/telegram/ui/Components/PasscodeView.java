@@ -660,7 +660,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
         checkImage.setScaleType(ImageView.ScaleType.CENTER);
         checkImage.setBackgroundResource(R.drawable.bar_selector_lock);
         passwordFrameLayout.addView(checkImage, LayoutHelper.createFrame(60, 60, Gravity.BOTTOM | Gravity.RIGHT, 0, 0, 10, 4));
-        checkImage.setContentDescription(LocaleController.getString("Done", R.string.Done));
+        checkImage.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done));
         checkImage.setOnClickListener(v -> processDone(false));
 
         fingerprintImage = new ImageView(context);
@@ -668,7 +668,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
         fingerprintImage.setScaleType(ImageView.ScaleType.CENTER);
         fingerprintImage.setBackgroundResource(R.drawable.bar_selector_lock);
         passwordFrameLayout.addView(fingerprintImage, LayoutHelper.createFrame(60, 60, Gravity.BOTTOM | Gravity.LEFT, 10, 0, 0, 4));
-        fingerprintImage.setContentDescription(LocaleController.getString("AccDescrFingerprint", R.string.AccDescrFingerprint));
+        fingerprintImage.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRFINGERPRINT, R.string.AccDescrFingerprint));
         fingerprintImage.setOnClickListener(v -> checkFingerprint());
 
         FrameLayout lineFrameLayout = new FrameLayout(context);
@@ -753,7 +753,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
             frameLayout.setBackgroundResource(R.drawable.bar_selector_lock);
             frameLayout.setTag(a);
             if (a == 11) {
-                frameLayout.setContentDescription(LocaleController.getString("AccDescrFingerprint", R.string.AccDescrFingerprint));
+                frameLayout.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRFINGERPRINT, R.string.AccDescrFingerprint));
                 setNextFocus(frameLayout, R.id.passcode_btn_0);
             } else if (a == 10) {
                 frameLayout.setOnLongClickListener(v -> {
@@ -764,7 +764,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
                     }
                     return true;
                 });
-                frameLayout.setContentDescription(LocaleController.getString("AccDescrBackspace", R.string.AccDescrBackspace));
+                frameLayout.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRBACKSPACE, R.string.AccDescrBackspace));
                 setNextFocus(frameLayout, R.id.passcode_btn_1);
             } else {
                 frameLayout.setContentDescription(a + "");
@@ -1150,7 +1150,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
                     fingerprintTextView.setId(id_fingerprint_textview);
                     fingerprintTextView.setTextAppearance(android.R.style.TextAppearance_Material_Subhead);
                     fingerprintTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
-                    fingerprintTextView.setText(LocaleController.getString("FingerprintInfo", R.string.FingerprintInfo));
+                    fingerprintTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FINGERPRINTINFO, R.string.FingerprintInfo));
                     relativeLayout.addView(fingerprintTextView);
                     RelativeLayout.LayoutParams layoutParams = LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT);
                     layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
@@ -1164,7 +1164,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
 
                     fingerprintStatusTextView = new TextView(getContext());
                     fingerprintStatusTextView.setGravity(Gravity.CENTER_VERTICAL);
-                    fingerprintStatusTextView.setText(LocaleController.getString("FingerprintHelp", R.string.FingerprintHelp));
+                    fingerprintStatusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FINGERPRINTHELP, R.string.FingerprintHelp));
                     fingerprintStatusTextView.setTextAppearance(android.R.style.TextAppearance_Material_Body1);
                     fingerprintStatusTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack) & 0x42ffffff);
                     relativeLayout.addView(fingerprintStatusTextView);
@@ -1176,9 +1176,9 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
                     fingerprintStatusTextView.setLayoutParams(layoutParams);
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
+                    builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
                     builder.setView(relativeLayout);
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                    builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                     builder.setOnDismissListener(dialog -> {
                         if (cancellationSignal != null) {
                             selfCancelled = true;
@@ -1227,7 +1227,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
 
                         @Override
                         public void onAuthenticationFailed() {
-                            showFingerprintError(LocaleController.getString("FingerprintNotRecognized", R.string.FingerprintNotRecognized));
+                            showFingerprintError(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FINGERPRINTNOTRECOGNIZED, R.string.FingerprintNotRecognized));
                         }
 
                         @Override
@@ -1352,7 +1352,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
             ((MotionBackgroundDrawable) backgroundDrawable).setParentView(backgroundFrameLayout);
         }
 
-        passcodeTextView.setText(LocaleController.getString("EnterYourTelegramPasscode", R.string.EnterYourTelegramPasscode));
+        passcodeTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENTERYOURTELEGRAMPASSCODE, R.string.EnterYourTelegramPasscode));
 
         if (SharedConfig.passcodeType == SharedConfig.PASSCODE_TYPE_PIN) {
             if (retryTextView.getVisibility() != VISIBLE) {

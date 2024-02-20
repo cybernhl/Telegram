@@ -122,7 +122,7 @@ public class ChatAttachAlertPhotoLayoutPreview extends ChatAttachAlert.AttachAle
         header.setMaxLines(1);
         header.setEllipsize(TextUtils.TruncateAt.END);
         header.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
-        header.setText(LocaleController.getString("AttachMediaPreview", R.string.AttachMediaPreview));
+        header.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHMEDIAPREVIEW, R.string.AttachMediaPreview));
         header.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         header.setCompoundDrawablePadding(AndroidUtilities.dp(4));
         header.setPadding(0, 0, AndroidUtilities.dp(10), 0);
@@ -232,7 +232,7 @@ public class ChatAttachAlertPhotoLayoutPreview extends ChatAttachAlert.AttachAle
                 if (shown) {
                     if (parentAlert.getPhotoLayout() != null) {
                         parentAlert.getPhotoLayout().previewItem.setIcon(R.drawable.ic_ab_back);
-                        parentAlert.getPhotoLayout().previewItem.setText(LocaleController.getString(R.string.Back));
+                        parentAlert.getPhotoLayout().previewItem.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BACK, R.string.Back));
                     }
                 }
             }, 250);
@@ -262,7 +262,7 @@ public class ChatAttachAlertPhotoLayoutPreview extends ChatAttachAlert.AttachAle
         if (getSelectedItemsCount() > 1) {
             if (parentAlert.getPhotoLayout() != null) {
                 parentAlert.getPhotoLayout().previewItem.setIcon(R.drawable.msg_view_file);
-                parentAlert.getPhotoLayout().previewItem.setText(LocaleController.getString(R.string.AttachMediaPreviewButton));
+                parentAlert.getPhotoLayout().previewItem.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHMEDIAPREVIEWBUTTON, R.string.AttachMediaPreviewButton));
             }
         }
 
@@ -925,7 +925,7 @@ public class ChatAttachAlertPhotoLayoutPreview extends ChatAttachAlert.AttachAle
             setWillNotDraw(false);
 
             hintView = new ChatActionCell(context, true, themeDelegate);
-            hintView.setCustomText(LocaleController.getString("AttachMediaDragHint", R.string.AttachMediaDragHint));
+            hintView.setCustomText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHMEDIADRAGHINT, R.string.AttachMediaDragHint));
             addView(hintView);
         }
 

@@ -321,15 +321,15 @@ public class InviteLinkBottomSheet extends BottomSheet {
         titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         if (!permanent) {
             if (invite.expired) {
-                titleTextView.setText(LocaleController.getString("ExpiredLink", R.string.ExpiredLink));
+                titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EXPIREDLINK, R.string.ExpiredLink));
             } else if (invite.revoked) {
-                titleTextView.setText(LocaleController.getString("RevokedLink", R.string.RevokedLink));
+                titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REVOKEDLINK, R.string.RevokedLink));
             } else {
-                titleTextView.setText(LocaleController.getString("InviteLink", R.string.InviteLink));
+                titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITELINK, R.string.InviteLink));
             }
             titleVisible = true;
         } else {
-            titleTextView.setText(LocaleController.getString("InviteLink", R.string.InviteLink));
+            titleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITELINK, R.string.InviteLink));
             titleVisible = false;
             titleTextView.setVisibility(View.INVISIBLE);
             titleTextView.setAlpha(0f);
@@ -693,13 +693,13 @@ public class InviteLinkBottomSheet extends BottomSheet {
                 case 0:
                     HeaderCell headerCell = (HeaderCell) holder.itemView;
                     if (position == creatorHeaderRow) {
-                        headerCell.setText(LocaleController.getString("LinkCreatedeBy", R.string.LinkCreatedeBy));
+                        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKCREATEDEBY, R.string.LinkCreatedeBy));
                         headerCell.setText2(null);
                     } else if (position == joinedHeaderRow) {
                         if (invite.usage > 0) {
                             headerCell.setText(LocaleController.formatPluralString("PeopleJoined", invite.usage));
                         } else {
-                            headerCell.setText(LocaleController.getString("NoOneJoined", R.string.NoOneJoined));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOONEJOINED, R.string.NoOneJoined));
                         }
                         if (!invite.expired && !invite.revoked && invite.usage_limit > 0 && invite.usage > 0) {
                             headerCell.setText2(LocaleController.formatPluralString("PeopleJoinedRemaining", invite.usage_limit - invite.usage));
@@ -734,18 +734,18 @@ public class InviteLinkBottomSheet extends BottomSheet {
                                             role = channelParticipant.rank;
                                         } else {
                                             if (channelParticipant instanceof TLRPC.TL_channelParticipantCreator) {
-                                                role = LocaleController.getString("ChannelCreator", R.string.ChannelCreator);
+                                                role = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELCREATOR, R.string.ChannelCreator);
                                             } else if (channelParticipant instanceof TLRPC.TL_channelParticipantAdmin) {
-                                                role = LocaleController.getString("ChannelAdmin", R.string.ChannelAdmin);
+                                                role = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELADMIN, R.string.ChannelAdmin);
                                             } else {
                                                 role = null;
                                             }
                                         }
                                     } else {
                                         if (part instanceof TLRPC.TL_chatParticipantCreator) {
-                                            role = LocaleController.getString("ChannelCreator", R.string.ChannelCreator);
+                                            role = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELCREATOR, R.string.ChannelCreator);
                                         } else if (part instanceof TLRPC.TL_chatParticipantAdmin) {
-                                            role = LocaleController.getString("ChannelAdmin", R.string.ChannelAdmin);
+                                            role = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELADMIN, R.string.ChannelAdmin);
                                         } else {
                                             role = null;
                                         }
@@ -783,12 +783,12 @@ public class InviteLinkBottomSheet extends BottomSheet {
                     privacyCell.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText4));
                     privacyCell.setFixedSize(0);
                     if (invite.revoked) {
-                        privacyCell.setText(LocaleController.getString("LinkIsNoActive", R.string.LinkIsNoActive));
+                        privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKISNOACTIVE, R.string.LinkIsNoActive));
                     } else if (invite.expired) {
                         if (invite.usage_limit > 0 && invite.usage_limit == invite.usage) {
-                            privacyCell.setText(LocaleController.getString("LinkIsExpiredLimitReached", R.string.LinkIsExpiredLimitReached));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKISEXPIREDLIMITREACHED, R.string.LinkIsExpiredLimitReached));
                         } else {
-                            privacyCell.setText(LocaleController.getString("LinkIsExpired", R.string.LinkIsExpired));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKISEXPIRED, R.string.LinkIsExpired));
                             privacyCell.setTextColor(Theme.getColor(Theme.key_text_RedRegular));
                         }
 

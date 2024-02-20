@@ -78,7 +78,7 @@ public class TextSelectionHint extends View {
                 a.cancel();
             }
 
-            String text = LocaleController.getString(R.string.TextSelectionHint);
+            String text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TEXTSELECTIONHINT, R.string.TextSelectionHint);
             Pattern pattern = Pattern.compile("\\*\\*.*\\*\\*");
             Matcher matcher = pattern.matcher(text);
             String word = null;

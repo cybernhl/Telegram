@@ -266,13 +266,13 @@ public class GroupCallRenderersContainer extends FrameLayout {
         pinTextView.setTextColor(Color.WHITE);
         pinTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         pinTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-        pinTextView.setText(LocaleController.getString("CallVideoPin", R.string.CallVideoPin));
+        pinTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLVIDEOPIN, R.string.CallVideoPin));
 
         unpinTextView = new TextView(context);
         unpinTextView.setTextColor(Color.WHITE);
         unpinTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         unpinTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-        unpinTextView.setText(LocaleController.getString("CallVideoUnpin", R.string.CallVideoUnpin));
+        unpinTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLVIDEOUNPIN, R.string.CallVideoUnpin));
 
 
         addView(pinTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP));
@@ -282,7 +282,7 @@ public class GroupCallRenderersContainer extends FrameLayout {
         pipView.setVisibility(INVISIBLE);
         pipView.setAlpha(0f);
         pipView.setImageResource(R.drawable.ic_goinline);
-        pipView.setContentDescription(LocaleController.getString(R.string.AccDescrPipMode));
+        pipView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRPIPMODE, R.string.AccDescrPipMode));
         int padding = AndroidUtilities.dp(4);
         pipView.setPadding(padding, padding, padding, padding);
         pipView.setBackground(Theme.createSelectorDrawable(ColorUtils.setAlphaComponent(Color.WHITE, 55)));

@@ -1094,7 +1094,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
 
             tooltipPaint.setTextSize(dp(14));
             tooltipBackgroundArrow = ContextCompat.getDrawable(context, R.drawable.tooltip_arrow);
-            tooltipMessage = LocaleController.getString("SlideUpToLock", R.string.SlideUpToLock);
+            tooltipMessage = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SLIDEUPTOLOCK, R.string.SlideUpToLock);
 
             radiiLeft[0] = radiiLeft[1] = radiiLeft[6] = radiiLeft[7] = dp(3);
             radiiLeft[2] = radiiLeft[3] = radiiLeft[4] = radiiLeft[5] = 0;
@@ -2299,11 +2299,11 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
             protected void onPopulateNodeForVirtualView(int id, @NonNull AccessibilityNodeInfoCompat info) {
                 if (id == 1) {
                     info.setBoundsInParent(sendRect);
-                    info.setText(LocaleController.getString("Send", R.string.Send));
+                    info.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEND, R.string.Send));
                 } else if (id == 2) {
                     rect.set((int) pauseRect.left, (int) pauseRect.top, (int) pauseRect.right, (int) pauseRect.bottom);
                     info.setBoundsInParent(rect);
-                    info.setText(LocaleController.getString(R.string.Stop));
+                    info.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STOP, R.string.Stop));
                 } else if (id == 3 && recordCircle != null) {
                     if (slideText != null && slideText.cancelRect != null) {
                         AndroidUtilities.rectTmp2.set(slideText.cancelRect);
@@ -2313,7 +2313,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                         AndroidUtilities.rectTmp2.offset(-coords[0], -coords[1]);
                         info.setBoundsInParent(AndroidUtilities.rectTmp2);
                     }
-                    info.setText(LocaleController.getString("Cancel", R.string.Cancel));
+                    info.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel));
                 }
             }
 
@@ -2495,7 +2495,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                 }
             }
         };
-        emojiButton.setContentDescription(LocaleController.getString(R.string.AccDescrEmojiButton));
+        emojiButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCREMOJIBUTTON, R.string.AccDescrEmojiButton));
         emojiButton.setFocusable(true);
         int padding = dp(9.5f);
         emojiButton.setPadding(padding, padding, padding, padding);
@@ -2558,7 +2558,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
             notifySilentDrawable = new CrossOutDrawable(context, R.drawable.input_notify_on, Theme.key_chat_messagePanelIcons);
             notifyButton.setImageDrawable(notifySilentDrawable);
             notifySilentDrawable.setCrossOut(silent, false);
-            notifyButton.setContentDescription(silent ? LocaleController.getString("AccDescrChanSilentOn", R.string.AccDescrChanSilentOn) : LocaleController.getString("AccDescrChanSilentOff", R.string.AccDescrChanSilentOff));
+            notifyButton.setContentDescription(silent ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRCHANSILENTON, R.string.AccDescrChanSilentOn) : LocaleController.getString("AccDescrChanSilentOff", R.string.AccDescrChanSilentOff));
             notifyButton.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_chat_messagePanelIcons), PorterDuff.Mode.MULTIPLY));
             notifyButton.setScaleType(ImageView.ScaleType.CENTER);
             if (Build.VERSION.SDK_INT >= 21) {
@@ -2581,7 +2581,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                     if (undoView != null) {
                         undoView.showWithAction(0, !silent ? UndoView.ACTION_NOTIFY_ON : UndoView.ACTION_NOTIFY_OFF, null);
                     }
-                    notifyButton.setContentDescription(silent ? LocaleController.getString("AccDescrChanSilentOn", R.string.AccDescrChanSilentOn) : LocaleController.getString("AccDescrChanSilentOff", R.string.AccDescrChanSilentOff));
+                    notifyButton.setContentDescription(silent ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRCHANSILENTON, R.string.AccDescrChanSilentOn) : LocaleController.getString("AccDescrChanSilentOff", R.string.AccDescrChanSilentOff));
                     updateFieldHint(true);
                 }
             });
@@ -2600,7 +2600,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                 }
                 delegate.didPressAttachButton();
             });
-            attachButton.setContentDescription(LocaleController.getString("AccDescrAttachButton", R.string.AccDescrAttachButton));
+            attachButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRATTACHBUTTON, R.string.AccDescrAttachButton));
         }
 
         if (audioToSend != null) {
@@ -3007,7 +3007,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                 return Theme.getColor(Theme.key_chat_messagePanelCancelInlineBot);
             }
         });
-        cancelBotButton.setContentDescription(LocaleController.getString("Cancel", R.string.Cancel));
+        cancelBotButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel));
         cancelBotButton.setSoundEffectsEnabled(false);
         cancelBotButton.setScaleX(0.1f);
         cancelBotButton.setScaleY(0.1f);
@@ -3155,7 +3155,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
         };
         sendButton.setVisibility(INVISIBLE);
         int color = getThemedColor(Theme.key_chat_messagePanelSend);
-        sendButton.setContentDescription(LocaleController.getString("Send", R.string.Send));
+        sendButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEND, R.string.Send));
         sendButton.setSoundEffectsEnabled(false);
         sendButton.setScaleX(0.1f);
         sendButton.setScaleY(0.1f);
@@ -3234,7 +3234,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
         scheduledButton = new ImageView(getContext());
         scheduledButton.setImageDrawable(combinedDrawable);
         scheduledButton.setVisibility(GONE);
-        scheduledButton.setContentDescription(LocaleController.getString("ScheduledMessages", R.string.ScheduledMessages));
+        scheduledButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SCHEDULEDMESSAGES, R.string.ScheduledMessages));
         scheduledButton.setScaleType(ImageView.ScaleType.CENTER);
         if (Build.VERSION.SDK_INT >= 21) {
             scheduledButton.setBackgroundDrawable(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector)));
@@ -3256,7 +3256,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
         giftButton.setImageResource(R.drawable.msg_input_gift);
         giftButton.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_chat_messagePanelIcons), PorterDuff.Mode.MULTIPLY));
         giftButton.setVisibility(GONE);
-        giftButton.setContentDescription(LocaleController.getString(R.string.GiftPremium));
+        giftButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GIFTPREMIUM, R.string.GiftPremium));
         giftButton.setScaleType(ImageView.ScaleType.CENTER);
         if (Build.VERSION.SDK_INT >= 21) {
             giftButton.setBackground(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector)));
@@ -3334,7 +3334,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
         doneButtonImage = new ImageView(getContext());
         doneButtonImage.setScaleType(ImageView.ScaleType.CENTER);
         doneButtonImage.setImageDrawable(combinedDrawable);
-        doneButtonImage.setContentDescription(LocaleController.getString("Done", R.string.Done));
+        doneButtonImage.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done));
         doneButtonContainer.addView(doneButtonImage, LayoutHelper.createFrame(48, 48));
 
         doneButtonProgress = new ContextProgressView(getContext(), 0);
@@ -3405,7 +3405,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                 setStickersExpanded(!stickersExpanded, true, false);
             }
         });
-        expandStickersButton.setContentDescription(LocaleController.getString("AccDescrExpandPanel", R.string.AccDescrExpandPanel));
+        expandStickersButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCREXPANDPANEL, R.string.AccDescrExpandPanel));
     }
 
     private void createRecordAudioPanel() {
@@ -3436,7 +3436,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
         recordDeleteImageView.setAnimation(R.raw.chat_audio_record_delete_2, 28, 28);
         recordDeleteImageView.getAnimatedDrawable().setInvalidateOnProgressSet(true);
         updateRecordedDeleteIconColors();
-        recordDeleteImageView.setContentDescription(LocaleController.getString("Delete", R.string.Delete));
+        recordDeleteImageView.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete));
         if (Build.VERSION.SDK_INT >= 21) {
             recordDeleteImageView.setBackgroundDrawable(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector)));
         }
@@ -3507,7 +3507,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
         recordedAudioPlayButton.setImageMatrix(matrix);
         recordedAudioPlayButton.setImageDrawable(playPauseDrawable = new MediaActionDrawable());
         recordedAudioPlayButton.setScaleType(ImageView.ScaleType.MATRIX);
-        recordedAudioPlayButton.setContentDescription(LocaleController.getString("AccActionPlay", R.string.AccActionPlay));
+        recordedAudioPlayButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONPLAY, R.string.AccActionPlay));
         recordedAudioPanel.addView(recordedAudioPlayButton, LayoutHelper.createFrame(48, 48, Gravity.LEFT | Gravity.BOTTOM, 48, 0, 13, 0));
         recordedAudioPlayButton.setOnClickListener(v -> {
             if (audioToSend == null) {
@@ -3516,11 +3516,11 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
             if (MediaController.getInstance().isPlayingMessage(audioToSendMessageObject) && !MediaController.getInstance().isMessagePaused()) {
                 MediaController.getInstance().pauseMessage(audioToSendMessageObject);
                 playPauseDrawable.setIcon(MediaActionDrawable.ICON_PLAY, true);
-                recordedAudioPlayButton.setContentDescription(LocaleController.getString("AccActionPlay", R.string.AccActionPlay));
+                recordedAudioPlayButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONPLAY, R.string.AccActionPlay));
             } else {
                 playPauseDrawable.setIcon(MediaActionDrawable.ICON_PAUSE, true);
                 MediaController.getInstance().playMessage(audioToSendMessageObject);
-                recordedAudioPlayButton.setContentDescription(LocaleController.getString("AccActionPause", R.string.AccActionPause));
+                recordedAudioPlayButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONPAUSE, R.string.AccActionPause));
             }
         });
 
@@ -4152,9 +4152,9 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
             if (scheduleButtonValue) {
                 actionScheduleButton = new ActionBarMenuSubItem(getContext(), true, !sendWithoutSoundButtonValue, resourcesProvider);
                 if (self) {
-                    actionScheduleButton.setTextAndIcon(LocaleController.getString("SetReminder", R.string.SetReminder), R.drawable.msg_calendar2);
+                    actionScheduleButton.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETREMINDER, R.string.SetReminder), R.drawable.msg_calendar2);
                 } else {
-                    actionScheduleButton.setTextAndIcon(LocaleController.getString("ScheduleMessage", R.string.ScheduleMessage), R.drawable.msg_calendar2);
+                    actionScheduleButton.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SCHEDULEMESSAGE, R.string.ScheduleMessage), R.drawable.msg_calendar2);
                 }
                 actionScheduleButton.setMinimumWidth(dp(196));
                 actionScheduleButton.setOnClickListener(v -> {
@@ -4172,7 +4172,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                 SharedConfig.removeScheduledHint();
                 if (!self && dialog_id > 0) {
                     sendWhenOnlineButton = new ActionBarMenuSubItem(getContext(), true, !sendWithoutSoundButtonValue, resourcesProvider);
-                    sendWhenOnlineButton.setTextAndIcon(LocaleController.getString("SendWhenOnline", R.string.SendWhenOnline), R.drawable.msg_online);
+                    sendWhenOnlineButton.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDWHENONLINE, R.string.SendWhenOnline), R.drawable.msg_online);
                     sendWhenOnlineButton.setMinimumWidth(dp(196));
                     sendWhenOnlineButton.setOnClickListener(v -> {
                         if (sendPopupWindow != null && sendPopupWindow.isShowing()) {
@@ -4185,7 +4185,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
             }
             if (sendWithoutSoundButtonValue) {
                 ActionBarMenuSubItem sendWithoutSoundButton = new ActionBarMenuSubItem(getContext(), !scheduleButtonValue, true, resourcesProvider);
-                sendWithoutSoundButton.setTextAndIcon(LocaleController.getString("SendWithoutSound", R.string.SendWithoutSound), R.drawable.input_notify_off);
+                sendWithoutSoundButton.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDWITHOUTSOUND, R.string.SendWithoutSound), R.drawable.input_notify_off);
                 sendWithoutSoundButton.setMinimumWidth(dp(196));
                 sendWithoutSoundButton.setOnClickListener(v -> {
                     if (sendPopupWindow != null && sendPopupWindow.isShowing()) {
@@ -5830,7 +5830,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
             return;
         }
         if (!sendPlainEnabled && !isEditingMessage()) {
-            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(" d " + LocaleController.getString("PlainTextRestrictedHint", R.string.PlainTextRestrictedHint));
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(" d " + LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PLAINTEXTRESTRICTEDHINT, R.string.PlainTextRestrictedHint));
             spannableStringBuilder.setSpan(new ColoredImageSpan(R.drawable.msg_mini_lock3), 1, 2, 0);
             messageEditText.setHintText(spannableStringBuilder, animated);
             messageEditText.setText(null);
@@ -5848,7 +5848,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
         if (replyingMessageObject != null && replyingMessageObject.messageOwner.reply_markup != null && !TextUtils.isEmpty(replyingMessageObject.messageOwner.reply_markup.placeholder)) {
             messageEditText.setHintText(replyingMessageObject.messageOwner.reply_markup.placeholder, animated);
         } else if (editingMessageObject != null) {
-            messageEditText.setHintText(editingCaption ? LocaleController.getString("Caption", R.string.Caption) : LocaleController.getString("TypeMessage", R.string.TypeMessage));
+            messageEditText.setHintText(editingCaption ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CAPTION, R.string.Caption) : LocaleController.getString("TypeMessage", R.string.TypeMessage));
         } else if (botKeyboardViewVisible && botButtonsMessageObject != null && botButtonsMessageObject.messageOwner.reply_markup != null && !TextUtils.isEmpty(botButtonsMessageObject.messageOwner.reply_markup.placeholder)) {
             messageEditText.setHintText(botButtonsMessageObject.messageOwner.reply_markup.placeholder, animated);
         } else if (parentFragment != null && parentFragment.isForumInViewAsMessagesMode()) {
@@ -5859,7 +5859,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                 if (topic != null && topic.title != null) {
                     messageEditText.setHintText(LocaleController.formatString("TypeMessageIn", R.string.TypeMessageIn, topic.title), animated);
                 } else {
-                    messageEditText.setHintText(LocaleController.getString("TypeMessage", R.string.TypeMessage), animated);
+                    messageEditText.setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TYPEMESSAGE, R.string.TypeMessage), animated);
                 }
             }
         } else {
@@ -5872,22 +5872,22 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                 anonymously = ChatObject.getSendAsPeerId(chat, chatFull) == -dialog_id;
             }
             if (anonymously) {
-                messageEditText.setHintText(LocaleController.getString("SendAnonymously", R.string.SendAnonymously));
+                messageEditText.setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDANONYMOUSLY, R.string.SendAnonymously));
             } else {
                 if (parentFragment != null && parentFragment.isThreadChat() && !parentFragment.isTopic) {
                     if (parentFragment.isReplyChatComment()) {
-                        messageEditText.setHintText(LocaleController.getString("Comment", R.string.Comment));
+                        messageEditText.setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_COMMENT, R.string.Comment));
                     } else {
-                        messageEditText.setHintText(LocaleController.getString("Reply", R.string.Reply));
+                        messageEditText.setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLY, R.string.Reply));
                     }
                 } else if (isChannel) {
                     if (silent) {
-                        messageEditText.setHintText(LocaleController.getString("ChannelSilentBroadcast", R.string.ChannelSilentBroadcast), animated);
+                        messageEditText.setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELSILENTBROADCAST, R.string.ChannelSilentBroadcast), animated);
                     } else {
-                        messageEditText.setHintText(LocaleController.getString("ChannelBroadcast", R.string.ChannelBroadcast), animated);
+                        messageEditText.setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELBROADCAST, R.string.ChannelBroadcast), animated);
                     }
                 } else {
-                    messageEditText.setHintText(LocaleController.getString("TypeMessage", R.string.TypeMessage));
+                    messageEditText.setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TYPEMESSAGE, R.string.TypeMessage));
                 }
             }
         }
@@ -6269,10 +6269,10 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
             TLRPC.Chat chat = parentFragment.getCurrentChat();
             if (chat != null && chat.slowmode_enabled && !ChatObject.hasAdminRights(chat)) {
                 if (message.length() > accountInstance.getMessagesController().maxMessageLength) {
-                    AlertsCreator.showSimpleAlert(parentFragment, LocaleController.getString("Slowmode", R.string.Slowmode), LocaleController.getString("SlowmodeSendErrorTooLong", R.string.SlowmodeSendErrorTooLong), resourcesProvider);
+                    AlertsCreator.showSimpleAlert(parentFragment, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SLOWMODE, R.string.Slowmode), LocaleController.getString("SlowmodeSendErrorTooLong", R.string.SlowmodeSendErrorTooLong), resourcesProvider);
                     return;
                 } else if (forceShowSendButton && message.length() > 0) {
-                    AlertsCreator.showSimpleAlert(parentFragment, LocaleController.getString("Slowmode", R.string.Slowmode), LocaleController.getString("SlowmodeSendError", R.string.SlowmodeSendError), resourcesProvider);
+                    AlertsCreator.showSimpleAlert(parentFragment, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SLOWMODE, R.string.Slowmode), LocaleController.getString("SlowmodeSendError", R.string.SlowmodeSendError), resourcesProvider);
                     return;
                 }
             }
@@ -6386,8 +6386,8 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                             BulletinFactory.of(parentFragment)
                                 .createEmojiBulletin(
                                     emoji,
-                                    AndroidUtilities.replaceTags(LocaleController.getString("UnlockPremiumEmojiHint", R.string.UnlockPremiumEmojiHint)),
-                                    LocaleController.getString("PremiumMore", R.string.PremiumMore),
+                                    AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNLOCKPREMIUMEMOJIHINT, R.string.UnlockPremiumEmojiHint)),
+                                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMMORE, R.string.PremiumMore),
                                     () -> {
                                         if (parentFragment != null) {
                                             new PremiumFeatureBottomSheet(parentFragment, PremiumPreviewFragment.PREMIUM_FEATURE_ANIMATED_EMOJI, false).show();
@@ -9059,13 +9059,13 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                     }
 
                     botButtonDrawable.setIcon(R.drawable.input_bot2, true);
-                    botButton.setContentDescription(LocaleController.getString("AccDescrBotKeyboard", R.string.AccDescrBotKeyboard));
+                    botButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRBOTKEYBOARD, R.string.AccDescrBotKeyboard));
                 }
             } else {
                 if (!canShowBotsMenu) {
                     createBotButton();
                     botButtonDrawable.setIcon(R.drawable.input_bot1, true);
-                    botButton.setContentDescription(LocaleController.getString("AccDescrBotCommands", R.string.AccDescrBotCommands));
+                    botButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRBOTCOMMANDS, R.string.AccDescrBotCommands));
                     botButton.setVisibility(VISIBLE);
                 } else if (botButton != null) {
                     botButton.setVisibility(GONE);
@@ -9081,7 +9081,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
         if (botCommandsMenuButton != null) {
             boolean wasWebView = botCommandsMenuButton.isWebView;
             botCommandsMenuButton.setWebView(botMenuButtonType == BotMenuButtonType.WEB_VIEW);
-            boolean textChanged = botCommandsMenuButton.setMenuText(botMenuButtonType == BotMenuButtonType.COMMANDS ? LocaleController.getString(R.string.BotsMenuTitle) : botMenuWebViewTitle);
+            boolean textChanged = botCommandsMenuButton.setMenuText(botMenuButtonType == BotMenuButtonType.COMMANDS ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTSMENUTITLE, R.string.BotsMenuTitle) : botMenuWebViewTitle);
             AndroidUtilities.updateViewVisibilityAnimated(botCommandsMenuButton, canShowBotsMenu, 0.5f, animated);
             changed = changed || textChanged || wasWebView != botCommandsMenuButton.isWebView;
         }
@@ -9266,9 +9266,9 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
             }
         } else if (button instanceof TLRPC.TL_keyboardButtonRequestGeoLocation) {
             AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
-            builder.setTitle(LocaleController.getString("ShareYouLocationTitle", R.string.ShareYouLocationTitle));
-            builder.setMessage(LocaleController.getString("ShareYouLocationInfo", R.string.ShareYouLocationInfo));
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialogInterface, i) -> {
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREYOULOCATIONTITLE, R.string.ShareYouLocationTitle));
+            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREYOULOCATIONINFO, R.string.ShareYouLocationInfo));
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), (dialogInterface, i) -> {
                 if (Build.VERSION.SDK_INT >= 23 && parentActivity.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     parentActivity.requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 2);
                     pendingMessageObject = messageObject;
@@ -9277,7 +9277,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                 }
                 SendMessagesHelper.getInstance(currentAccount).sendCurrentLocation(messageObject, button);
             });
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
             parentFragment.showDialog(builder.create());
         } else if (button instanceof TLRPC.TL_keyboardButtonCallback || button instanceof TLRPC.TL_keyboardButtonGame || button instanceof TLRPC.TL_keyboardButtonBuy || button instanceof TLRPC.TL_keyboardButtonUrlAuth) {
             SendMessagesHelper.getInstance(currentAccount).sendCallback(true, messageObject, button, parentFragment);
@@ -9673,10 +9673,10 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                     return;
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity, resourcesProvider);
-                builder.setTitle(LocaleController.getString(R.string.ClearRecentEmojiTitle));
-                builder.setMessage(LocaleController.getString(R.string.ClearRecentEmojiText));
-                builder.setPositiveButton(LocaleController.getString(R.string.ClearForAll), (dialogInterface, i) -> emojiView.clearRecentEmoji());
-                builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARRECENTEMOJITITLE, R.string.ClearRecentEmojiTitle));
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARRECENTEMOJITEXT, R.string.ClearRecentEmojiText));
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARFORALL, R.string.ClearForAll), (dialogInterface, i) -> emojiView.clearRecentEmoji());
+                builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                 parentFragment.showDialog(builder.create());
             }
 
@@ -10745,7 +10745,7 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                     playPauseDrawable.setIcon(MediaActionDrawable.ICON_PLAY, true);
                 }
                 if (recordedAudioPlayButton != null) {
-                    recordedAudioPlayButton.setContentDescription(LocaleController.getString("AccActionPlay", R.string.AccActionPlay));
+                    recordedAudioPlayButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONPLAY, R.string.AccActionPlay));
                 }
                 if (recordedAudioSeekBar != null) {
                     recordedAudioSeekBar.setProgress(0);
@@ -11034,9 +11034,9 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
         }
         if (expandStickersButton != null) {
             if (stickersExpanded) {
-                expandStickersButton.setContentDescription(LocaleController.getString("AccDescrCollapsePanel", R.string.AccDescrCollapsePanel));
+                expandStickersButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRCOLLAPSEPANEL, R.string.AccDescrCollapsePanel));
             } else {
-                expandStickersButton.setContentDescription(LocaleController.getString("AccDescrExpandPanel", R.string.AccDescrExpandPanel));
+                expandStickersButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCREXPANDPANEL, R.string.AccDescrExpandPanel));
             }
         }
     }
@@ -11227,9 +11227,9 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
             arrowPaint.setStrokeCap(Paint.Cap.ROUND);
             arrowPaint.setStrokeJoin(Paint.Join.ROUND);
 
-            slideToCancelString = LocaleController.getString(R.string.SlideToCancel2);
+            slideToCancelString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SLIDETOCANCEL2, R.string.SlideToCancel2);
 
-            cancelString = LocaleController.getString("Cancel", R.string.Cancel).toUpperCase();
+            cancelString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel).toUpperCase();
 
             cancelCharOffset = slideToCancelString.indexOf(cancelString);
 

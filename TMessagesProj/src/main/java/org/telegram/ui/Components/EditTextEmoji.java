@@ -313,7 +313,7 @@ public class EditTextEmoji extends FrameLayout implements NotificationCenter.Not
                 openKeyboardInternal();
             }
         });
-        emojiButton.setContentDescription(LocaleController.getString("Emoji", R.string.Emoji));
+        emojiButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMOJI, R.string.Emoji));
     }
 
     protected boolean allowEntities() {
@@ -786,10 +786,10 @@ public class EditTextEmoji extends FrameLayout implements NotificationCenter.Not
             @Override
             public void onClearEmojiRecent() {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), resourcesProvider);
-                builder.setTitle(LocaleController.getString("ClearRecentEmojiTitle", R.string.ClearRecentEmojiTitle));
-                builder.setMessage(LocaleController.getString("ClearRecentEmojiText", R.string.ClearRecentEmojiText));
-                builder.setPositiveButton(LocaleController.getString("ClearButton", R.string.ClearButton), (dialogInterface, i) -> emojiView.clearRecentEmoji());
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARRECENTEMOJITITLE, R.string.ClearRecentEmojiTitle));
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARRECENTEMOJITEXT, R.string.ClearRecentEmojiText));
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARBUTTON, R.string.ClearButton), (dialogInterface, i) -> emojiView.clearRecentEmoji());
+                builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                 if (parentFragment != null) {
                     parentFragment.showDialog(builder.create());
                 } else {

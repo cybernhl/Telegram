@@ -245,7 +245,7 @@ public class GiftPremiumBottomSheet extends BottomSheetWithRecyclerListView impl
             animated = false;
         }
         if (!BuildVars.useInvoiceBilling() && (!BillingController.getInstance().isReady() || giftTiers.get(selectedTierIndex).googlePlayProductDetails == null)) {
-            premiumButtonView.setButton(LocaleController.getString(R.string.Loading), v -> {}, !LocaleController.isRTL);
+            premiumButtonView.setButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOADING, R.string.Loading), v -> {}, !LocaleController.isRTL);
             premiumButtonView.setFlickerDisabled(true);
             return;
         }
@@ -364,7 +364,7 @@ public class GiftPremiumBottomSheet extends BottomSheetWithRecyclerListView impl
 
     @Override
     protected CharSequence getTitle() {
-        return LocaleController.getString(R.string.GiftTelegramPremiumTitle);
+        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GIFTTELEGRAMPREMIUMTITLE, R.string.GiftTelegramPremiumTitle);
     }
 
     @Override
@@ -425,7 +425,7 @@ public class GiftPremiumBottomSheet extends BottomSheetWithRecyclerListView impl
                         TextInfoPrivacyCell privacyCell = new TextInfoPrivacyCell(getContext());
                         privacyCell.setTopPadding(28);
                         privacyCell.getTextView().setGravity(Gravity.CENTER_HORIZONTAL);
-                        String str = LocaleController.getString(R.string.GiftPremiumListFeaturesAndTerms);
+                        String str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GIFTPREMIUMLISTFEATURESANDTERMS, R.string.GiftPremiumListFeaturesAndTerms);
                         int startIndex = str.indexOf('*'), lastIndex = str.lastIndexOf('*');
                         if (startIndex != -1 && lastIndex != -1) {
                             str = str.substring(0, startIndex) + str.substring(startIndex + 1, lastIndex) + str.substring(lastIndex + 1);

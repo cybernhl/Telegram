@@ -63,10 +63,10 @@ public class ChatActivityEnterViewAnimatedIconView extends RLottieImageView {
 
         switch (state) {
             case VOICE:
-                setContentDescription(LocaleController.getString("AccDescrVoiceMessage", R.string.AccDescrVoiceMessage));
+                setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRVOICEMESSAGE, R.string.AccDescrVoiceMessage));
                 break;
             case VIDEO:
-                setContentDescription(LocaleController.getString("AccDescrVideoMessage", R.string.AccDescrVideoMessage));
+                setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRVIDEOMESSAGE, R.string.AccDescrVideoMessage));
                 break;
         }
     }

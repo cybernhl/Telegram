@@ -556,7 +556,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
         zoomOutText.setTextColor(Color.WHITE);
         zoomOutText.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         zoomOutText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-        zoomOutText.setText(LocaleController.getString(R.string.PhotoEditorZoomOut));
+        zoomOutText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHOTOEDITORZOOMOUT, R.string.PhotoEditorZoomOut));
         zoomOutImage = new ImageView(context);
         zoomOutImage.setImageResource(R.drawable.photo_zoomout);
         zoomOutButton.addView(zoomOutImage, LayoutHelper.createLinear(24, 24, Gravity.CENTER_VERTICAL, 0, 0, 8, 0));
@@ -570,7 +570,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
         undoAllButton = new TextView(context);
         undoAllButton.setBackground(Theme.createSelectorDrawable(0x30ffffff, Theme.RIPPLE_MASK_ROUNDRECT_6DP));
         undoAllButton.setPadding(AndroidUtilities.dp(8), 0, AndroidUtilities.dp(8), 0);
-        undoAllButton.setText(LocaleController.getString(R.string.PhotoEditorClearAll));
+        undoAllButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHOTOEDITORCLEARALL, R.string.PhotoEditorClearAll));
         undoAllButton.setGravity(Gravity.CENTER_VERTICAL);
         undoAllButton.setTextColor(Color.WHITE);
         undoAllButton.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
@@ -593,7 +593,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
 
         cancelTextButton = new TextView(context);
         cancelTextButton.setBackground(Theme.createSelectorDrawable(0x30ffffff, Theme.RIPPLE_MASK_ROUNDRECT_6DP));
-        cancelTextButton.setText(LocaleController.getString(R.string.Clear));
+        cancelTextButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEAR, R.string.Clear));
         cancelTextButton.setPadding(AndroidUtilities.dp(8), 0, AndroidUtilities.dp(8), 0);
         cancelTextButton.setGravity(Gravity.CENTER_VERTICAL);
         cancelTextButton.setTextColor(Color.WHITE);
@@ -615,7 +615,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
 
         doneTextButton = new TextView(context);
         doneTextButton.setBackground(Theme.createSelectorDrawable(0x30ffffff, Theme.RIPPLE_MASK_ROUNDRECT_6DP));
-        doneTextButton.setText(LocaleController.getString(R.string.Done));
+        doneTextButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done));
         doneTextButton.setPadding(AndroidUtilities.dp(8), 0, AndroidUtilities.dp(8), 0);
         doneTextButton.setGravity(Gravity.CENTER_VERTICAL);
         doneTextButton.setTextColor(Color.WHITE);
@@ -1255,7 +1255,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
         bottomLayout.addView(tabsLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 32 + 8, Gravity.BOTTOM, 52, 0, 52, 0));
 
         drawTab = new TextView(context);
-        drawTab.setText(LocaleController.getString(R.string.PhotoEditorDraw).toUpperCase());
+        drawTab.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHOTOEDITORDRAW, R.string.PhotoEditorDraw).toUpperCase());
         drawTab.setBackground(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector), Theme.RIPPLE_MASK_ROUNDRECT_6DP));
         drawTab.setPadding(0, AndroidUtilities.dp(8), 0, AndroidUtilities.dp(8));
         drawTab.setTextColor(Color.WHITE);
@@ -1273,7 +1273,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
         tabsLayout.addView(drawTab, LayoutHelper.createLinear(0, LayoutHelper.WRAP_CONTENT, 1f));
 
         stickerTab = new TextView(context);
-        stickerTab.setText(LocaleController.getString(R.string.PhotoEditorSticker).toUpperCase());
+        stickerTab.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHOTOEDITORSTICKER, R.string.PhotoEditorSticker).toUpperCase());
         stickerTab.setBackground(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector), Theme.RIPPLE_MASK_ROUNDRECT_6DP));
         stickerTab.setPadding(0, AndroidUtilities.dp(8), 0, AndroidUtilities.dp(8));
         stickerTab.setOnClickListener(v -> openStickersView());
@@ -1286,7 +1286,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
         tabsLayout.addView(stickerTab, LayoutHelper.createLinear(0, LayoutHelper.WRAP_CONTENT, 1f));
 
         textTab = new TextView(context);
-        textTab.setText(LocaleController.getString(R.string.PhotoEditorText).toUpperCase());
+        textTab.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHOTOEDITORTEXT, R.string.PhotoEditorText).toUpperCase());
         textTab.setBackground(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector), Theme.RIPPLE_MASK_ROUNDRECT_6DP));
         textTab.setPadding(0, AndroidUtilities.dp(8), 0, AndroidUtilities.dp(8));
         textTab.setTextColor(Color.WHITE);
@@ -1458,7 +1458,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
 
         }, false, false, false, resourcesProvider);
         chatAttachAlert.drawNavigationBar = true;
-        chatAttachAlert.setupPhotoPicker(LocaleController.getString(R.string.AddImage));
+        chatAttachAlert.setupPhotoPicker(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDIMAGE, R.string.AddImage));
         chatAttachAlert.setDelegate(new ChatAttachAlert.ChatAttachViewDelegate() {
             long start;
             @Override
@@ -2042,10 +2042,10 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
                 return;
             }
             AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity, resourcesProvider);
-            builder.setMessage(LocaleController.getString("PhotoEditorDiscardAlert", R.string.PhotoEditorDiscardAlert));
-            builder.setTitle(LocaleController.getString("DiscardChanges", R.string.DiscardChanges));
-            builder.setPositiveButton(LocaleController.getString("PassportDiscard", R.string.PassportDiscard), (dialogInterface, i) -> okRunnable.run());
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHOTOEDITORDISCARDALERT, R.string.PhotoEditorDiscardAlert));
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISCARDCHANGES, R.string.DiscardChanges));
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSPORTDISCARD, R.string.PassportDiscard), (dialogInterface, i) -> okRunnable.run());
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
             photoViewer.showAlertDialog(builder);
         } else {
             okRunnable.run();
@@ -2691,7 +2691,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
             deleteView.setPadding(AndroidUtilities.dp(16), 0, AndroidUtilities.dp(14), 0);
             deleteView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             deleteView.setTag(0);
-            deleteView.setText(LocaleController.getString("PaintDelete", R.string.PaintDelete));
+            deleteView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTDELETE, R.string.PaintDelete));
             deleteView.setEllipsize(TextUtils.TruncateAt.END);
             deleteView.setOnClickListener(v -> {
                 removeEntity(entityView);
@@ -2711,7 +2711,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
                 editView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 editView.setEllipsize(TextUtils.TruncateAt.END);
                 editView.setTag(1);
-                editView.setText(LocaleController.getString("PaintEdit", R.string.PaintEdit));
+                editView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTEDIT, R.string.PaintEdit));
                 editView.setOnClickListener(v -> {
                     editSelectedTextEntity();
 
@@ -2731,7 +2731,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
                 flipView.setPadding(AndroidUtilities.dp(14), 0, AndroidUtilities.dp(16), 0);
                 flipView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 flipView.setTag(2);
-                flipView.setText(LocaleController.getString("Flip", R.string.Flip));
+                flipView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FLIP, R.string.Flip));
                 flipView.setOnClickListener(v -> {
                     ((StickerView) entityView).mirror(true);
 
@@ -2751,7 +2751,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
                 duplicateView.setPadding(AndroidUtilities.dp(14), 0, AndroidUtilities.dp(16), 0);
                 duplicateView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 duplicateView.setTag(2);
-                duplicateView.setText(LocaleController.getString("PaintDuplicate", R.string.PaintDuplicate));
+                duplicateView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTDUPLICATE, R.string.PaintDuplicate));
                 duplicateView.setOnClickListener(v -> {
                     duplicateSelectedEntity();
 
@@ -3616,10 +3616,10 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
             @Override
             public void onClearEmojiRecent() {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), resourcesProvider);
-                builder.setTitle(LocaleController.getString("ClearRecentEmojiTitle", R.string.ClearRecentEmojiTitle));
-                builder.setMessage(LocaleController.getString("ClearRecentEmojiText", R.string.ClearRecentEmojiText));
-                builder.setPositiveButton(LocaleController.getString("ClearButton", R.string.ClearButton), (dialogInterface, i) -> emojiView.clearRecentEmoji());
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARRECENTEMOJITITLE, R.string.ClearRecentEmojiTitle));
+                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARRECENTEMOJITEXT, R.string.ClearRecentEmojiText));
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLEARBUTTON, R.string.ClearButton), (dialogInterface, i) -> emojiView.clearRecentEmoji());
+                builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                 builder.show();
             }
         });

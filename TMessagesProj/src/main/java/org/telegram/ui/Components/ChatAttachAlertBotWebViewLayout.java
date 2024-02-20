@@ -167,11 +167,11 @@ public class ChatAttachAlertBotWebViewLayout extends ChatAttachAlert.AttachAlert
 
         ActionBarMenu menu = parentAlert.actionBar.createMenu();
         otherItem = menu.addItem(0, R.drawable.ic_ab_other);
-        otherItem.addSubItem(R.id.menu_open_bot, R.drawable.msg_bot, LocaleController.getString(R.string.BotWebViewOpenBot));
-        settingsItem = otherItem.addSubItem(R.id.menu_settings, R.drawable.msg_settings, LocaleController.getString(R.string.BotWebViewSettings));
+        otherItem.addSubItem(R.id.menu_open_bot, R.drawable.msg_bot, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWOPENBOT, R.string.BotWebViewOpenBot));
+        settingsItem = otherItem.addSubItem(R.id.menu_settings, R.drawable.msg_settings, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWSETTINGS, R.string.BotWebViewSettings));
         settingsItem.setVisibility(View.GONE);
-        otherItem.addSubItem(R.id.menu_reload_page, R.drawable.msg_retry, LocaleController.getString(R.string.BotWebViewReloadPage));
-        otherItem.addSubItem(R.id.menu_delete_bot, R.drawable.msg_delete, LocaleController.getString(R.string.BotWebViewDeleteBot));
+        otherItem.addSubItem(R.id.menu_reload_page, R.drawable.msg_retry, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWRELOADPAGE, R.string.BotWebViewReloadPage));
+        otherItem.addSubItem(R.id.menu_delete_bot, R.drawable.msg_delete, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWDELETEBOT, R.string.BotWebViewDeleteBot));
 
         webViewContainer = new BotWebViewContainer(context, resourcesProvider, getThemedColor(Theme.key_dialogBackground)) {
             @Override
@@ -253,9 +253,9 @@ public class ChatAttachAlertBotWebViewLayout extends ChatAttachAlert.AttachAlert
             }
             AlertDialog dialog = new AlertDialog.Builder(getContext())
                     .setTitle(botName)
-                    .setMessage(LocaleController.getString(R.string.BotWebViewChangesMayNotBeSaved))
-                    .setPositiveButton(LocaleController.getString(R.string.BotWebViewCloseAnyway), (dialog2, which) -> parentAlert.dismiss())
-                    .setNegativeButton(LocaleController.getString(R.string.Cancel), null)
+                    .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWCHANGESMAYNOTBESAVED, R.string.BotWebViewChangesMayNotBeSaved))
+                    .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWCLOSEANYWAY, R.string.BotWebViewCloseAnyway), (dialog2, which) -> parentAlert.dismiss())
+                    .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null)
                     .create();
             dialog.show();
             TextView textView = (TextView) dialog.getButton(AlertDialog.BUTTON_POSITIVE);

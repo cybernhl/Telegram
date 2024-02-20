@@ -44,15 +44,15 @@ public class ChannelBoostsController {
                 BaseFragment fragment = LaunchActivity.getLastFragment();
                 if (error != null && fragment != null && "CHANNEL_PRIVATE".equals(error.text)) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getContext(), fragment.getResourceProvider());
-                    builder.setTitle(LocaleController.getString(R.string.AppName));
+                    builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
                     Map<String, Integer> colorsReplacement = new HashMap<>();
                     colorsReplacement.put("info1.**", Theme.getColor(Theme.key_dialogTopBackground));
                     colorsReplacement.put("info2.**", Theme.getColor(Theme.key_dialogTopBackground));
                     builder.setTopAnimation(R.raw.not_available, AlertsCreator.NEW_DENY_DIALOG_TOP_ICON_SIZE, false, Theme.getColor(Theme.key_dialogTopBackground), colorsReplacement);
                     builder.setTopAnimationIsNew(true);
-                    builder.setTitle(LocaleController.getString(R.string.ChannelPrivate));
-                    builder.setMessage(LocaleController.getString("ChannelCantOpenPrivate2", R.string.ChannelCantOpenPrivate2));
-                    builder.setPositiveButton(LocaleController.getString(R.string.Close), null);
+                    builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPRIVATE, R.string.ChannelPrivate));
+                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELCANTOPENPRIVATE2, R.string.ChannelCantOpenPrivate2));
+                    builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLOSE, R.string.Close), null);
                     builder.show();
                 } else {
                     BulletinFactory.global().showForError(error);

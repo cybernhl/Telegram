@@ -118,7 +118,7 @@ public class GroupStickersActivity extends BaseFragment implements NotificationC
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("GroupStickers", R.string.GroupStickers));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GROUPSTICKERS, R.string.GroupStickers));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -158,7 +158,7 @@ public class GroupStickersActivity extends BaseFragment implements NotificationC
                 }
             }
         });
-        searchItem.setSearchFieldHint(LocaleController.getString(R.string.Search));
+        searchItem.setSearchFieldHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
 
         listAdapter = new ListAdapter(context);
         searchAdapter = new SearchAdapter(context);
@@ -382,7 +382,7 @@ public class GroupStickersActivity extends BaseFragment implements NotificationC
                 finishFragment();
             } else {
                 if (getParentActivity() != null) {
-                    Toast.makeText(getParentActivity(), LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred) + "\n" + error.text, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getParentActivity(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ERROROCCURRED, R.string.ErrorOccurred) + "\n" + error.text, Toast.LENGTH_SHORT).show();
                 }
             }
         }));
@@ -550,7 +550,7 @@ public class GroupStickersActivity extends BaseFragment implements NotificationC
                 case TYPE_MY_STICKERS_HEADER:
                     view = new HeaderCell(mContext, Theme.key_windowBackgroundWhiteGrayText4, 21, 0, 0, false, getResourceProvider());
                     view.setBackground(Theme.getThemedDrawableByKey(mContext, R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
-                    ((HeaderCell) view).setText(LocaleController.getString(R.string.ChooseStickerMyStickerSets));
+                    ((HeaderCell) view).setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSESTICKERMYSTICKERSETS, R.string.ChooseStickerMyStickerSets));
                     break;
             }
             view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
@@ -637,7 +637,7 @@ public class GroupStickersActivity extends BaseFragment implements NotificationC
                 }
                 case TYPE_INFO: {
                     if (position == infoRow) {
-                        String text = LocaleController.getString("ChooseStickerSetMy", R.string.ChooseStickerSetMy);
+                        String text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSESTICKERSETMY, R.string.ChooseStickerSetMy);
                         String botName = "@stickers";
                         int index = text.indexOf(botName);
                         if (index != -1) {
@@ -662,7 +662,7 @@ public class GroupStickersActivity extends BaseFragment implements NotificationC
                     break;
                 }
                 case TYPE_CHOOSE_HEADER: {
-                    ((HeaderCell) holder.itemView).setText(LocaleController.getString(R.string.ChooseStickerSetHeader));
+                    ((HeaderCell) holder.itemView).setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSESTICKERSETHEADER, R.string.ChooseStickerSetHeader));
                     break;
                 }
             }

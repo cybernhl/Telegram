@@ -111,7 +111,7 @@ public class DialogObject {
         if (dialog instanceof TLRPC.User) {
             TLRPC.User user = (TLRPC.User) dialog;
             if (UserObject.isReplyUser(user)) {
-                title = LocaleController.getString("RepliesTitle", R.string.RepliesTitle);
+                title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLIESTITLE, R.string.RepliesTitle);
                 if (avatarDrawable != null) {
                     avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_REPLIES);
                 }
@@ -119,7 +119,7 @@ public class DialogObject {
                     imageReceiver.setForUserOrChat(null, avatarDrawable);
                 }
             } else if (UserObject.isUserSelf(user)) {
-                title = LocaleController.getString("SavedMessages", R.string.SavedMessages);
+                title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages);
                 if (avatarDrawable != null) {
                     avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_SAVED);
                 }

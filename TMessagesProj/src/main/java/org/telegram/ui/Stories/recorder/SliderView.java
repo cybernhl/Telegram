@@ -85,11 +85,11 @@ public class SliderView extends View {
             text2.setCallback(this);
             text2.setTextColor(0xffffffff);
             if (currentType == TYPE_WARMTH) {
-                text2.setText(LocaleController.getString(R.string.FlashWarmth));
+                text2.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FLASHWARMTH, R.string.FlashWarmth));
             } else if (currentType == TYPE_INTENSITY) {
-                text2.setText(LocaleController.getString(R.string.FlashIntensity));
+                text2.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FLASHINTENSITY, R.string.FlashIntensity));
             } else if (currentType == TYPE_DIMMING) {
-                text2.setText(LocaleController.getString(R.string.WallpaperDimming));
+                text2.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WALLPAPERDIMMING, R.string.WallpaperDimming));
             }
         }
         text.setText("");
@@ -265,7 +265,7 @@ public class SliderView extends View {
         text.setTextSize(dp(15));
         if (currentType == TYPE_VOLUME) {
             // TODO: fix this nonsense
-            w = (int) Math.min(textPaint.measureText(LocaleController.getString(R.string.StoryAudioRemove)) + dp(88), MeasureSpec.getSize(widthMeasureSpec));
+            w = (int) Math.min(textPaint.measureText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYAUDIOREMOVE, R.string.StoryAudioRemove)) + dp(88), MeasureSpec.getSize(widthMeasureSpec));
             h = dp(48);
         } else {
             w = dp(190);

@@ -118,14 +118,14 @@ public class MessagePrivateSeenView extends FrameLayout {
         ConnectionsManager.getInstance(currentAccount).sendRequest(req, (res, err) -> AndroidUtilities.runOnUIThread(() -> {
             if (err != null) {
                 if ("USER_PRIVACY_RESTRICTED".equals(err.text)) {
-                    valueTextView.setText(LocaleController.getString(R.string.PmReadUnknown));
+                    valueTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PMREADUNKNOWN, R.string.PmReadUnknown));
                     premiumTextView.setVisibility(View.GONE);
                 } else if ("YOUR_PRIVACY_RESTRICTED".equals(err.text)) {
                     isPremiumLocked = true;
-                    valueTextView.setText(LocaleController.getString(R.string.PmRead));
-                    premiumTextView.setText(LocaleController.getString(R.string.PmReadShowWhen));
+                    valueTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PMREAD, R.string.PmRead));
+                    premiumTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PMREADSHOWWHEN, R.string.PmReadShowWhen));
                 } else {
-                    valueTextView.setText(LocaleController.getString("UnknownError"));
+                    valueTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNKNOWNERROR));
                     premiumTextView.setVisibility(View.GONE);
                     BulletinFactory.of(Bulletin.BulletinWindow.make(getContext()), resourcesProvider).showForError(err);
                 }
@@ -205,7 +205,7 @@ public class MessagePrivateSeenView extends FrameLayout {
                     button1.setLoading(false);
                     sheet.dismiss();
 
-                    BulletinFactory.global().createSimpleBulletin(R.raw.chats_infotip, LocaleController.getString(R.string.PremiumLastSeenSet)).show();
+                    BulletinFactory.global().createSimpleBulletin(R.raw.chats_infotip, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMLASTSEENSET, R.string.PremiumLastSeenSet)).show();
                     if (updated != null) {
                         updated.run();
                     }
@@ -226,7 +226,7 @@ public class MessagePrivateSeenView extends FrameLayout {
                     button1.setLoading(false);
                     sheet.dismiss();
 
-                    BulletinFactory.of(Bulletin.BulletinWindow.make(context), resourcesProvider).createSimpleBulletin(R.raw.chats_infotip, LocaleController.getString(R.string.PremiumReadSet)).show();
+                    BulletinFactory.of(Bulletin.BulletinWindow.make(context), resourcesProvider).createSimpleBulletin(R.raw.chats_infotip, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMREADSET, R.string.PremiumReadSet)).show();
                     if (updated != null) {
                         updated.run();
                     }
@@ -253,7 +253,7 @@ public class MessagePrivateSeenView extends FrameLayout {
             or.setGravity(Gravity.CENTER);
             or.setAlignment(Layout.Alignment.ALIGN_CENTER);
             or.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
-            or.setText(" " + LocaleController.getString(R.string.PremiumOr) + " ");
+            or.setText(" " + LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMOR, R.string.PremiumOr) + " ");
             or.setTextSize(14);
             layout.addView(or, LayoutHelper.createLinear(270, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 12, 17, 12, 17));
 
@@ -309,8 +309,8 @@ public class MessagePrivateSeenView extends FrameLayout {
             minWidth = 0;
             final long date = System.currentTimeMillis();
             minWidth = Math.max(minWidth, dp(40 + 96 + 8));
-            minWidth = Math.max(minWidth, dp(40 + 8) + valueTextView.getPaint().measureText(LocaleController.getString(R.string.PmReadUnknown)));
-            minWidth = Math.max(minWidth, dp(40 + 16 + 8) + valueTextView.getPaint().measureText(LocaleController.getString(R.string.PmRead) + premiumTextView.getPaint().measureText(LocaleController.getString(R.string.PmReadShowWhen))));
+            minWidth = Math.max(minWidth, dp(40 + 8) + valueTextView.getPaint().measureText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PMREADUNKNOWN, R.string.PmReadUnknown)));
+            minWidth = Math.max(minWidth, dp(40 + 16 + 8) + valueTextView.getPaint().measureText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PMREAD, R.string.PmRead) + premiumTextView.getPaint().measureText(LocaleController.getString(R.string.PmReadShowWhen))));
             minWidth = Math.max(minWidth, dp(40 + 8) + valueTextView.getPaint().measureText(LocaleController.formatString(R.string.PmReadTodayAt, LocaleController.getInstance().formatterDay.format(new Date(date)))));
             if (messageDiff > 60 * 60 * 24) {
                 minWidth = Math.max(minWidth, dp(40 + 8) + valueTextView.getPaint().measureText(LocaleController.formatString(R.string.PmReadYesterdayAt, LocaleController.getInstance().formatterDay.format(new Date(date)))));

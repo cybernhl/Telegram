@@ -169,7 +169,7 @@ public abstract class GiftInfoAdapter extends RecyclerListView.SelectionAdapter 
                 if (giftCode.boost != null) {
                     if (slug == null || slug.isEmpty()) {
                         //not activated link
-                        cell.setText(LocaleController.getString("BoostingLinkNotActivated", R.string.BoostingLinkNotActivated));
+                        cell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGLINKNOTACTIVATED, R.string.BoostingLinkNotActivated));
                     } else {
                         //activated link
                         cell.setFixedSize(14);
@@ -181,8 +181,8 @@ public abstract class GiftInfoAdapter extends RecyclerListView.SelectionAdapter 
                 if (isUnused) {
                     SpannableStringBuilder text = AndroidUtilities.replaceSingleTag(
                             giftCode.to_id == NO_USER_ID ?
-                                    LocaleController.getString("BoostingSendLinkToAnyone", R.string.BoostingSendLinkToAnyone)
-                                    : LocaleController.getString("BoostingSendLinkToFriends", R.string.BoostingSendLinkToFriends),
+                                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGSENDLINKTOANYONE, R.string.BoostingSendLinkToAnyone)
+                                    : LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGSENDLINKTOFRIENDS, R.string.BoostingSendLinkToFriends),
                             Theme.key_chat_messageLinkIn, 0,
                             this::share,
                             resourcesProvider

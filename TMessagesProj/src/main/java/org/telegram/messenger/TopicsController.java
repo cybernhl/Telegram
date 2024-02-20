@@ -693,9 +693,9 @@ public class TopicsController extends BaseController {
                     AndroidUtilities.runOnUIThread(() -> {
                         fragment.showDialog(
                             new AlertDialog.Builder(fragment.getContext())
-                                .setTitle(LocaleController.getString("LimitReached", R.string.LimitReached))
+                                .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LIMITREACHED, R.string.LimitReached))
                                 .setMessage(LocaleController.formatString("LimitReachedPinnedTopics", R.string.LimitReachedPinnedTopics, MessagesController.getInstance(currentAccount).topicsPinnedLimit))
-                                .setPositiveButton(LocaleController.getString("OK", R.string.OK), null)
+                                .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null)
                                 .create()
                         );
                     });

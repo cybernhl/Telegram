@@ -9028,77 +9028,77 @@ public class MessagesController extends BaseController implements NotificationCe
                         if (isGroup) {
                             text = LocaleController.formatString("IsRecordingAudio", R.string.IsRecordingAudio, getUserNameForTyping(user));
                         } else {
-                            text = LocaleController.getString("RecordingAudio", R.string.RecordingAudio);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RECORDINGAUDIO, R.string.RecordingAudio);
                         }
                         type = 1;
                     } else if (pu.action instanceof TLRPC.TL_sendMessageRecordRoundAction) {
                         if (isGroup) {
                             text = LocaleController.formatString("IsRecordingRound", R.string.IsRecordingRound, getUserNameForTyping(user));
                         } else {
-                            text = LocaleController.getString("RecordingRound", R.string.RecordingRound);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RECORDINGROUND, R.string.RecordingRound);
                         }
                         type = 4;
                     } else if (pu.action instanceof TLRPC.TL_sendMessageUploadRoundAction) {
                         if (isGroup) {
                             text = LocaleController.formatString("IsSendingVideo", R.string.IsSendingVideo, getUserNameForTyping(user));
                         } else {
-                            text = LocaleController.getString("SendingVideoStatus", R.string.SendingVideoStatus);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDINGVIDEOSTATUS, R.string.SendingVideoStatus);
                         }
                         type = 4;
                     } else if (pu.action instanceof TLRPC.TL_sendMessageUploadAudioAction) {
                         if (isGroup) {
                             text = LocaleController.formatString("IsSendingAudio", R.string.IsSendingAudio, getUserNameForTyping(user));
                         } else {
-                            text = LocaleController.getString("SendingAudio", R.string.SendingAudio);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDINGAUDIO, R.string.SendingAudio);
                         }
                         type = 2;
                     } else if (pu.action instanceof TLRPC.TL_sendMessageUploadVideoAction) {
                         if (isGroup) {
                             text = LocaleController.formatString("IsSendingVideo", R.string.IsSendingVideo, getUserNameForTyping(user));
                         } else {
-                            text = LocaleController.getString("SendingVideoStatus", R.string.SendingVideoStatus);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDINGVIDEOSTATUS, R.string.SendingVideoStatus);
                         }
                         type = 2;
                     } else if (pu.action instanceof TLRPC.TL_sendMessageRecordVideoAction) {
                         if (isGroup) {
                             text = LocaleController.formatString("IsRecordingVideo", R.string.IsRecordingVideo, getUserNameForTyping(user));
                         } else {
-                            text = LocaleController.getString("RecordingVideoStatus", R.string.RecordingVideoStatus);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RECORDINGVIDEOSTATUS, R.string.RecordingVideoStatus);
                         }
                         type = 2;
                     } else if (pu.action instanceof TLRPC.TL_sendMessageUploadDocumentAction) {
                         if (isGroup) {
                             text = LocaleController.formatString("IsSendingFile", R.string.IsSendingFile, getUserNameForTyping(user));
                         } else {
-                            text = LocaleController.getString("SendingFile", R.string.SendingFile);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDINGFILE, R.string.SendingFile);
                         }
                         type = 2;
                     } else if (pu.action instanceof TLRPC.TL_sendMessageUploadPhotoAction) {
                         if (isGroup) {
                             text = LocaleController.formatString("IsSendingPhoto", R.string.IsSendingPhoto, getUserNameForTyping(user));
                         } else {
-                            text = LocaleController.getString("SendingPhoto", R.string.SendingPhoto);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDINGPHOTO, R.string.SendingPhoto);
                         }
                         type = 2;
                     } else if (pu.action instanceof TLRPC.TL_sendMessageGamePlayAction) {
                         if (isGroup) {
                             text = LocaleController.formatString("IsSendingGame", R.string.IsSendingGame, getUserNameForTyping(user));
                         } else {
-                            text = LocaleController.getString("SendingGame", R.string.SendingGame);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDINGGAME, R.string.SendingGame);
                         }
                         type = 3;
                     } else if (pu.action instanceof TLRPC.TL_sendMessageGeoLocationAction) {
                         if (isGroup) {
                             text = LocaleController.formatString("IsSelectingLocation", R.string.IsSelectingLocation, getUserNameForTyping(user));
                         } else {
-                            text = LocaleController.getString("SelectingLocation", R.string.SelectingLocation);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTINGLOCATION, R.string.SelectingLocation);
                         }
                         type = 0;
                     } else if (pu.action instanceof TLRPC.TL_sendMessageChooseContactAction) {
                         if (isGroup) {
                             text = LocaleController.formatString("IsSelectingContact", R.string.IsSelectingContact, getUserNameForTyping(user));
                         } else {
-                            text = LocaleController.getString("SelectingContact", R.string.SelectingContact);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTINGCONTACT, R.string.SelectingContact);
                         }
                         type = 0;
                     } else if (pu.action instanceof TLRPC.TL_sendMessageEmojiInteractionSeen) {
@@ -9113,14 +9113,14 @@ public class MessagesController extends BaseController implements NotificationCe
                         if (isGroup) {
                             text = LocaleController.formatString("IsChoosingSticker", R.string.IsChoosingSticker, getUserNameForTyping(user));
                         } else {
-                            text = LocaleController.getString("ChoosingSticker", R.string.ChoosingSticker);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSINGSTICKER, R.string.ChoosingSticker);
                         }
                         type = 5;
                     } else {
                         if (isGroup) {
                             text = LocaleController.formatString("IsTypingGroup", R.string.IsTypingGroup, getUserNameForTyping(user));
                         } else {
-                            text = LocaleController.getString("Typing", R.string.Typing);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TYPING, R.string.Typing);
                         }
                         type = 0;
                     }
@@ -9927,7 +9927,7 @@ public class MessagesController extends BaseController implements NotificationCe
         dialogFolder.peer = new TLRPC.TL_peerUser();
         dialogFolder.folder = new TLRPC.TL_folder();
         dialogFolder.folder.id = folderId;
-        dialogFolder.folder.title = LocaleController.getString("ArchivedChats", R.string.ArchivedChats);
+        dialogFolder.folder.title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ARCHIVEDCHATS, R.string.ArchivedChats);
         dialogFolder.pinned = true;
 
         int maxPinnedNum = 0;
@@ -12860,25 +12860,25 @@ public class MessagesController extends BaseController implements NotificationCe
 //                        CharSequence title, description;
 //                        if (userRestrictedPrivacy.size() == 1) {
 //                            if (count > 1) {
-//                                title = LocaleController.getString("InviteToGroupErrorTitleAUser", R.string.InviteToGroupErrorTitleAUser);
+//                                title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITETOGROUPERRORTITLEAUSER, R.string.InviteToGroupErrorTitleAUser);
 //                            } else {
-//                                title = LocaleController.getString("InviteToGroupErrorTitleThisUser", R.string.InviteToGroupErrorTitleThisUser);
+//                                title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITETOGROUPERRORTITLETHISUSER, R.string.InviteToGroupErrorTitleThisUser);
 //                            }
 //                            description = AndroidUtilities.replaceTags(LocaleController.formatString("InviteToGroupErrorMessageSingle", R.string.InviteToGroupErrorMessageSingle, UserObject.getFirstName(userRestrictedPrivacy.get(0))));
 //                        } else if (userRestrictedPrivacy.size() == 2) {
-//                            title = LocaleController.getString("InviteToGroupErrorTitleSomeUsers", R.string.InviteToGroupErrorTitleSomeUsers);
+//                            title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITETOGROUPERRORTITLESOMEUSERS, R.string.InviteToGroupErrorTitleSomeUsers);
 //                            description = AndroidUtilities.replaceTags(LocaleController.formatString("InviteToGroupErrorMessageDouble", R.string.InviteToGroupErrorMessageDouble, UserObject.getFirstName(userRestrictedPrivacy.get(0)), UserObject.getFirstName(userRestrictedPrivacy.get(1))));
 //                        } else if (userRestrictedPrivacy.size() == count) {
-//                            title = LocaleController.getString("InviteToGroupErrorTitleTheseUsers", R.string.InviteToGroupErrorTitleTheseUsers);
-//                            description = LocaleController.getString("InviteToGroupErrorMessageMultipleAll", R.string.InviteToGroupErrorMessageMultipleAll);
+//                            title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITETOGROUPERRORTITLETHESEUSERS, R.string.InviteToGroupErrorTitleTheseUsers);
+//                            description = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITETOGROUPERRORMESSAGEMULTIPLEALL, R.string.InviteToGroupErrorMessageMultipleAll);
 //                        } else {
-//                            title = LocaleController.getString("InviteToGroupErrorTitleSomeUsers", R.string.InviteToGroupErrorTitleSomeUsers);
-//                            description = LocaleController.getString("InviteToGroupErrorMessageMultipleSome", R.string.InviteToGroupErrorMessageMultipleSome);
+//                            title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITETOGROUPERRORTITLESOMEUSERS, R.string.InviteToGroupErrorTitleSomeUsers);
+//                            description = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITETOGROUPERRORMESSAGEMULTIPLESOME, R.string.InviteToGroupErrorMessageMultipleSome);
 //                        }
 //                        new AlertDialog.Builder(lastFragment.getParentActivity())
 //                                .setTitle(title)
 //                                .setMessage(description)
-//                                .setPositiveButton(LocaleController.getString("OK", R.string.OK), null)
+//                                .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null)
 //                                .show();
 //                    }
                 }
@@ -19035,13 +19035,13 @@ public class MessagesController extends BaseController implements NotificationCe
             return;
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getParentActivity(), fragment.getResourceProvider());
-        builder.setTitle(LocaleController.getString(R.string.DialogNotAvailable));
+        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DIALOGNOTAVAILABLE, R.string.DialogNotAvailable));
         Map<String, Integer> colorsReplacement = new HashMap<>();
         colorsReplacement.put("info1.**", fragment.getThemedColor(Theme.key_dialogTopBackground));
         colorsReplacement.put("info2.**", fragment.getThemedColor(Theme.key_dialogTopBackground));
         builder.setTopAnimation(R.raw.not_available, AlertsCreator.NEW_DENY_DIALOG_TOP_ICON_SIZE, false, fragment.getThemedColor(Theme.key_dialogTopBackground), colorsReplacement);
         builder.setTopAnimationIsNew(true);
-        builder.setPositiveButton(LocaleController.getString(R.string.Close), null);
+        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLOSE, R.string.Close), null);
         builder.setMessage(reason);
         fragment.showDialog(builder.create());
     }
@@ -19227,7 +19227,7 @@ public class MessagesController extends BaseController implements NotificationCe
                             if (fragment instanceof ChatActivity) {
                                 ((ChatActivity) fragment).shakeContent();
                             }
-                            BulletinFactory.of(fragment).createErrorBulletin(LocaleController.getString("NoUsernameFound", R.string.NoUsernameFound)).show();
+                            BulletinFactory.of(fragment).createErrorBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOUSERNAMEFOUND, R.string.NoUsernameFound)).show();
                         } catch (Exception e) {
                             FileLog.e(e);
                         }
@@ -19654,9 +19654,9 @@ public class MessagesController extends BaseController implements NotificationCe
             if (mute_until >= getConnectionsManager().getCurrentTime()) {
                 return LocaleController.formatString("NotificationsMutedForHint", R.string.NotificationsMutedForHint, LocaleController.formatTTLString(mute_until));
             }
-            return LocaleController.getString(R.string.NotificationsMuted);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSMUTED, R.string.NotificationsMuted);
         } else {
-            return LocaleController.getString(R.string.NotificationsUnmuted);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSUNMUTED, R.string.NotificationsUnmuted);
         }
     }
 

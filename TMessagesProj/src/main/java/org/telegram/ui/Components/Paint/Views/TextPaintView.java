@@ -157,7 +157,7 @@ public class TextPaintView extends EntityView {
 
     private void updateHint() {
         if (editText.getText().length() <= 0) {
-            editText.setHint(LocaleController.getString(R.string.TextPlaceholder));
+            editText.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TEXTPLACEHOLDER, R.string.TextPlaceholder));
             editText.setHintTextColor(0x60ffffff);
         } else {
             editText.setHint(null);

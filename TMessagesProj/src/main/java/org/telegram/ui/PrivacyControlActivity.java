@@ -225,7 +225,7 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
                 user.first_name = getUserConfig().getCurrentUser().first_name;
                 user.last_name = getUserConfig().getCurrentUser().last_name;
                 user.access_hash = getUserConfig().getCurrentUser().access_hash;
-                BulletinFactory.of(this).createUsersBulletin(Collections.singletonList(user), LocaleController.getString("PhotoForRestTooltip", R.string.PhotoForRestTooltip)).show();
+                BulletinFactory.of(this).createUsersBulletin(Collections.singletonList(user), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHOTOFORRESTTOOLTIP, R.string.PhotoForRestTooltip)).show();
             }
             updateRows(false);
         });
@@ -281,7 +281,7 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
             TLRPC.User currentUser = MessagesController.getInstance(currentAccount).getUser(UserConfig.getInstance(currentAccount).getClientUserId());
 
             TLRPC.Message message = new TLRPC.TL_message();
-            message.message = LocaleController.getString("PrivacyForwardsMessageLine", R.string.PrivacyForwardsMessageLine);
+            message.message = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYFORWARDSMESSAGELINE, R.string.PrivacyForwardsMessageLine);
             message.date = date + 60;
             message.dialog_id = 1;
             message.flags = 257 + TLRPC.MESSAGE_FLAG_FWD;
@@ -455,25 +455,25 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
         if (rulesType == PRIVACY_RULES_TYPE_PHONE) {
-            actionBar.setTitle(LocaleController.getString("PrivacyPhone", R.string.PrivacyPhone));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYPHONE, R.string.PrivacyPhone));
         } else if (rulesType == PRIVACY_RULES_TYPE_FORWARDS) {
-            actionBar.setTitle(LocaleController.getString("PrivacyForwards", R.string.PrivacyForwards));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYFORWARDS, R.string.PrivacyForwards));
         } else if (rulesType == PRIVACY_RULES_TYPE_PHOTO) {
-            actionBar.setTitle(LocaleController.getString("PrivacyProfilePhoto", R.string.PrivacyProfilePhoto));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYPROFILEPHOTO, R.string.PrivacyProfilePhoto));
         } else if (rulesType == PRIVACY_RULES_TYPE_BIO) {
-            actionBar.setTitle(LocaleController.getString("PrivacyBio", R.string.PrivacyBio));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYBIO, R.string.PrivacyBio));
         } else if (rulesType == PRIVACY_RULES_TYPE_P2P) {
-            actionBar.setTitle(LocaleController.getString("PrivacyP2P", R.string.PrivacyP2P));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYP2P, R.string.PrivacyP2P));
         } else if (rulesType == PRIVACY_RULES_TYPE_CALLS) {
-            actionBar.setTitle(LocaleController.getString("Calls", R.string.Calls));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLS, R.string.Calls));
         } else if (rulesType == PRIVACY_RULES_TYPE_INVITE) {
-            actionBar.setTitle(LocaleController.getString("GroupsAndChannels", R.string.GroupsAndChannels));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GROUPSANDCHANNELS, R.string.GroupsAndChannels));
         } else if (rulesType == PRIVACY_RULES_TYPE_VOICE_MESSAGES) {
-            actionBar.setTitle(LocaleController.getString("PrivacyVoiceMessages", R.string.PrivacyVoiceMessages));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYVOICEMESSAGES, R.string.PrivacyVoiceMessages));
         } else if (rulesType == PRIVACY_RULES_TYPE_LASTSEEN) {
-            actionBar.setTitle(LocaleController.getString("PrivacyLastSeen", R.string.PrivacyLastSeen));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYLASTSEEN, R.string.PrivacyLastSeen));
         } else if (rulesType == PRIVACY_RULES_TYPE_MESSAGES) {
-            actionBar.setTitle(LocaleController.getString(R.string.PrivacyMessages));
+            actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYMESSAGES, R.string.PrivacyMessages));
         }
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
@@ -489,7 +489,7 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
         });
 
         ActionBarMenu menu = actionBar.createMenu();
-        doneButton = menu.addItemWithWidth(done_button, R.drawable.ic_ab_done, AndroidUtilities.dp(56), LocaleController.getString("Done", R.string.Done));
+        doneButton = menu.addItemWithWidth(done_button, R.drawable.ic_ab_done, AndroidUtilities.dp(56), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done));
         boolean hasChanges = hasChanges();
         doneButton.setAlpha(hasChanges ? 1.0f : 0.0f);
         doneButton.setScaleX(hasChanges ? 1.0f : 0.0f);
@@ -517,9 +517,9 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
         listView.setOnItemClickListener((view, position) -> {
             if (position == currentPhotoForRestRow) {
                 AlertDialog alertDialog = AlertsCreator.createSimpleAlert(getContext(),
-                        LocaleController.getString("RemovePublicPhoto", R.string.RemovePublicPhoto),
-                        LocaleController.getString("RemovePhotoForRestDescription", R.string.RemovePhotoForRestDescription),
-                        LocaleController.getString("Remove", R.string.Remove),
+                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REMOVEPUBLICPHOTO, R.string.RemovePublicPhoto),
+                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REMOVEPHOTOFORRESTDESCRIPTION, R.string.RemovePhotoForRestDescription),
+                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REMOVE, R.string.Remove),
                         () -> {
                             avatarForRest = null;
                             avatarForRestPhoto = null;
@@ -567,9 +567,9 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
             } else if (rulesType == PRIVACY_RULES_TYPE_MESSAGES && position == myContactsRow && !getUserConfig().isPremium()) {
                 BulletinFactory.of(this).createSimpleBulletin(
                     R.raw.star_premium_2,
-                    LocaleController.getString(R.string.OptionPremiumRequiredTitle),
-                    AndroidUtilities.replaceTags(LocaleController.getString(R.string.OptionPremiumRequiredMessage)),
-                    LocaleController.getString(R.string.OptionPremiumRequiredButton),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPTIONPREMIUMREQUIREDTITLE, R.string.OptionPremiumRequiredTitle),
+                    AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPTIONPREMIUMREQUIREDMESSAGE, R.string.OptionPremiumRequiredMessage)),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPTIONPREMIUMREQUIREDBUTTON, R.string.OptionPremiumRequiredButton),
                     () -> {
                         presentFragment(new PremiumPreviewFragment("noncontacts"));
                     }
@@ -579,9 +579,9 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
             } else if (rulesType == PRIVACY_RULES_TYPE_VOICE_MESSAGES && (position == myContactsRow || position == nobodyRow) && !getUserConfig().isPremium()) {
                 BulletinFactory.of(this).createSimpleBulletin(
                         R.raw.star_premium_2,
-                        LocaleController.getString(R.string.OptionPremiumRequiredTitle),
-                        AndroidUtilities.replaceTags(LocaleController.getString(R.string.OptionPremiumRequiredMessage)),
-                        LocaleController.getString(R.string.OptionPremiumRequiredButton),
+                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPTIONPREMIUMREQUIREDTITLE, R.string.OptionPremiumRequiredTitle),
+                        AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPTIONPREMIUMREQUIREDMESSAGE, R.string.OptionPremiumRequiredMessage)),
+                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPTIONPREMIUMREQUIREDBUTTON, R.string.OptionPremiumRequiredButton),
                         () -> {
                             presentFragment(new PremiumPreviewFragment("settings"));
                         }
@@ -867,9 +867,9 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
             return;
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-        builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-        builder.setMessage(LocaleController.getString("PrivacyFloodControlError", R.string.PrivacyFloodControlError));
-        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
+        builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYFLOODCONTROLERROR, R.string.PrivacyFloodControlError));
+        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
         showDialog(builder.create());
     }
 
@@ -1129,13 +1129,13 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
         if (messageCell != null) {
             messageCell.messageObject.messageOwner.fwd_from.from_id = new TLRPC.TL_peerUser();
             if (currentType == TYPE_EVERYBODY) {
-                messageCell.hintView.setOverrideText(LocaleController.getString("PrivacyForwardsEverybody", R.string.PrivacyForwardsEverybody));
+                messageCell.hintView.setOverrideText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYFORWARDSEVERYBODY, R.string.PrivacyForwardsEverybody));
                 messageCell.messageObject.messageOwner.fwd_from.from_id.user_id = 1;
             } else if (currentType == TYPE_NOBODY) {
-                messageCell.hintView.setOverrideText(LocaleController.getString("PrivacyForwardsNobody", R.string.PrivacyForwardsNobody));
+                messageCell.hintView.setOverrideText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYFORWARDSNOBODY, R.string.PrivacyForwardsNobody));
                 messageCell.messageObject.messageOwner.fwd_from.from_id.user_id = 0;
             } else {
-                messageCell.hintView.setOverrideText(LocaleController.getString("PrivacyForwardsContacts", R.string.PrivacyForwardsContacts));
+                messageCell.hintView.setOverrideText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYFORWARDSCONTACTS, R.string.PrivacyForwardsContacts));
                 messageCell.messageObject.messageOwner.fwd_from.from_id.user_id = 1;
             }
             messageCell.cell.forceResetMessageObject();
@@ -1176,16 +1176,16 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
             if (!showed) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 if (rulesType == PRIVACY_RULES_TYPE_INVITE) {
-                    builder.setMessage(LocaleController.getString("WhoCanAddMeInfo", R.string.WhoCanAddMeInfo));
+                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WHOCANADDMEINFO, R.string.WhoCanAddMeInfo));
                 } else {
-                    builder.setMessage(LocaleController.getString("CustomHelp", R.string.CustomHelp));
+                    builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CUSTOMHELP, R.string.CustomHelp));
                 }
-                builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialogInterface, i) -> {
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), (dialogInterface, i) -> {
                     applyCurrentPrivacySettings();
                     preferences.edit().putBoolean("privacyAlertShowed", true).commit();
                 });
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                 showDialog(builder.create());
                 return;
             }
@@ -1196,10 +1196,10 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
     private boolean checkDiscard() {
         if (doneButton.getAlpha() == 1.0f) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-            builder.setTitle(LocaleController.getString("UserRestrictionsApplyChanges", R.string.UserRestrictionsApplyChanges));
-            builder.setMessage(LocaleController.getString("PrivacySettingsChangedAlert", R.string.PrivacySettingsChangedAlert));
-            builder.setPositiveButton(LocaleController.getString("ApplyTheme", R.string.ApplyTheme), (dialogInterface, i) -> processDone());
-            builder.setNegativeButton(LocaleController.getString("PassportDiscard", R.string.PassportDiscard), (dialog, which) -> finishFragment());
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERRESTRICTIONSAPPLYCHANGES, R.string.UserRestrictionsApplyChanges));
+            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYSETTINGSCHANGEDALERT, R.string.PrivacySettingsChangedAlert));
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPLYTHEME, R.string.ApplyTheme), (dialogInterface, i) -> processDone());
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSPORTDISCARD, R.string.PassportDiscard), (dialog, which) -> finishFragment());
             showDialog(builder.create());
             return false;
         }
@@ -1303,7 +1303,7 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
                         }
                     }
                     oldPhotoCell.addView(oldAvatarView, LayoutHelper.createFrame(30, 30, Gravity.CENTER_VERTICAL, 21, 0, 21, 0));
-                    oldPhotoCell.setText(LocaleController.getString("RemovePublicPhoto", R.string.RemovePublicPhoto), false);
+                    oldPhotoCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REMOVEPUBLICPHOTO, R.string.RemovePublicPhoto), false);
                     oldPhotoCell.getImageView().setVisibility(View.VISIBLE);
                     oldPhotoCell.setBackgroundDrawable(Theme.getSelectorDrawable(false));
                     oldPhotoCell.setColors(Theme.key_text_RedRegular, Theme.key_text_RedRegular);
@@ -1346,12 +1346,12 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
                         if (currentPlus.size() != 0) {
                             value = LocaleController.formatPluralString("Users", getUsersCount(currentPlus));
                         } else {
-                            value = LocaleController.getString("EmpryUsersPlaceholder", R.string.EmpryUsersPlaceholder);
+                            value = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMPRYUSERSPLACEHOLDER, R.string.EmpryUsersPlaceholder);
                         }
                         if (rulesType != PRIVACY_RULES_TYPE_LASTSEEN && rulesType != PRIVACY_RULES_TYPE_PHOTO && rulesType != PRIVACY_RULES_TYPE_BIO) {
-                            textCell.setTextAndValue(LocaleController.getString("AlwaysAllow", R.string.AlwaysAllow), value, neverShareRow != -1);
+                            textCell.setTextAndValue(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ALWAYSALLOW, R.string.AlwaysAllow), value, neverShareRow != -1);
                         } else {
-                            textCell.setTextAndValue(LocaleController.getString("AlwaysShareWith", R.string.AlwaysShareWith), value, neverShareRow != -1);
+                            textCell.setTextAndValue(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ALWAYSSHAREWITH, R.string.AlwaysShareWith), value, neverShareRow != -1);
                         }
                     } else if (position == neverShareRow) {
                         String value;
@@ -1359,21 +1359,21 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
                         if (currentMinus.size() != 0) {
                             value = LocaleController.formatPluralString("Users", getUsersCount(currentMinus));
                         } else {
-                            value = LocaleController.getString("EmpryUsersPlaceholder", R.string.EmpryUsersPlaceholder);
+                            value = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EMPRYUSERSPLACEHOLDER, R.string.EmpryUsersPlaceholder);
                         }
                         if (rulesType != PRIVACY_RULES_TYPE_LASTSEEN && rulesType != PRIVACY_RULES_TYPE_PHOTO && rulesType != PRIVACY_RULES_TYPE_BIO) {
-                            textCell.setTextAndValue(LocaleController.getString("NeverAllow", R.string.NeverAllow), value, false);
+                            textCell.setTextAndValue(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEVERALLOW, R.string.NeverAllow), value, false);
                         } else {
-                            textCell.setTextAndValue(LocaleController.getString("NeverShareWith", R.string.NeverShareWith), value, false);
+                            textCell.setTextAndValue(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEVERSHAREWITH, R.string.NeverShareWith), value, false);
                         }
                     } else if (position == p2pRow) {
                         String value;
                         if (ContactsController.getInstance(currentAccount).getLoadingPrivacyInfo(ContactsController.PRIVACY_RULES_TYPE_P2P)) {
-                            value = LocaleController.getString("Loading", R.string.Loading);
+                            value = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOADING, R.string.Loading);
                         } else {
                             value = PrivacySettingsActivity.formatRulesString(getAccountInstance(), ContactsController.PRIVACY_RULES_TYPE_P2P);
                         }
-                        textCell.setTextAndValue(LocaleController.getString("PrivacyP2P2", R.string.PrivacyP2P2), value, false);
+                        textCell.setTextAndValue(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYP2P2, R.string.PrivacyP2P2), value, false);
                     } else if (position == readPremiumRow) {
                         textCell.setText(LocaleController.getString(getUserConfig().isPremium() ? R.string.PrivacyLastSeenPremiumForPremium : R.string.PrivacyLastSeenPremium), false);
                         textCell.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteBlueText));
@@ -1383,12 +1383,12 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
                     TextInfoPrivacyCell privacyCell = (TextInfoPrivacyCell) holder.itemView;
                     int backgroundResId = 0;
                     if (position == detailRow && rulesType == PRIVACY_RULES_TYPE_MESSAGES) {
-                        privacyCell.setText(AndroidUtilities.replaceSingleTag(LocaleController.getString(R.string.PrivacyMessagesInfo), () -> {
+                        privacyCell.setText(AndroidUtilities.replaceSingleTag(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYMESSAGESINFO, R.string.PrivacyMessagesInfo), () -> {
                             presentFragment(new PremiumPreviewFragment("noncontacts"));
                         }));
                         backgroundResId = R.drawable.greydivider_bottom;
                     } else if (position == detailRow && rulesType == PRIVACY_RULES_TYPE_VOICE_MESSAGES) {
-                        privacyCell.setText(LocaleController.getString(R.string.PrivacyVoiceMessagesInfo));
+                        privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYVOICEMESSAGESINFO, R.string.PrivacyVoiceMessagesInfo));
                         if (getUserConfig().isPremium()) {
                             backgroundResId = R.drawable.greydivider;
                         } else {
@@ -1397,7 +1397,7 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
                     } else if (position == detailRow) {
                         if (rulesType == PRIVACY_RULES_TYPE_PHONE) {
                             if (prevSubtypeContacts = (currentType == TYPE_NOBODY && currentSubType == 1)) {
-                                privacyCell.setText(LocaleController.getString("PrivacyPhoneInfo3", R.string.PrivacyPhoneInfo3));
+                                privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYPHONEINFO3, R.string.PrivacyPhoneInfo3));
                             } else {
                                 SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
                                 String phoneLinkStr = String.format(Locale.ENGLISH, "https://t.me/+%s", getUserConfig().getClientPhone());
@@ -1408,59 +1408,59 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
                                         android.content.ClipboardManager clipboard = (android.content.ClipboardManager) ApplicationLoader.applicationContext.getSystemService(Context.CLIPBOARD_SERVICE);
                                         android.content.ClipData clip = android.content.ClipData.newPlainText("label", phoneLinkStr);
                                         clipboard.setPrimaryClip(clip);
-                                        BulletinFactory.of(PrivacyControlActivity.this).createCopyLinkBulletin(LocaleController.getString("LinkCopied", R.string.LinkCopied), getResourceProvider()).show();
+                                        BulletinFactory.of(PrivacyControlActivity.this).createCopyLinkBulletin(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKCOPIED, R.string.LinkCopied), getResourceProvider()).show();
                                     }
                                 }, 0, phoneLinkStr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-                                spannableStringBuilder.append(LocaleController.getString("PrivacyPhoneInfo", R.string.PrivacyPhoneInfo))
+                                spannableStringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYPHONEINFO, R.string.PrivacyPhoneInfo))
                                         .append("\n\n")
-                                        .append(LocaleController.getString("PrivacyPhoneInfo4", R.string.PrivacyPhoneInfo4))
+                                        .append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYPHONEINFO4, R.string.PrivacyPhoneInfo4))
                                         .append("\n")
                                         .append(phoneLink);
 
                                 privacyCell.setText(spannableStringBuilder);
                             }
                         } else if (rulesType == PRIVACY_RULES_TYPE_FORWARDS) {
-                            privacyCell.setText(LocaleController.getString("PrivacyForwardsInfo", R.string.PrivacyForwardsInfo));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYFORWARDSINFO, R.string.PrivacyForwardsInfo));
                         } else if (rulesType == PRIVACY_RULES_TYPE_PHOTO) {
-                            privacyCell.setText(LocaleController.getString("PrivacyProfilePhotoInfo", R.string.PrivacyProfilePhotoInfo));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYPROFILEPHOTOINFO, R.string.PrivacyProfilePhotoInfo));
                         } else if (rulesType == PRIVACY_RULES_TYPE_BIO) {
-                            privacyCell.setText(LocaleController.getString("PrivacyBioInfo", R.string.PrivacyBioInfo));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYBIOINFO, R.string.PrivacyBioInfo));
                         } else if (rulesType == PRIVACY_RULES_TYPE_P2P) {
-                            privacyCell.setText(LocaleController.getString("PrivacyCallsP2PHelp", R.string.PrivacyCallsP2PHelp));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYCALLSP2PHELP, R.string.PrivacyCallsP2PHelp));
                         } else if (rulesType == PRIVACY_RULES_TYPE_CALLS) {
-                            privacyCell.setText(LocaleController.getString("WhoCanCallMeInfo", R.string.WhoCanCallMeInfo));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WHOCANCALLMEINFO, R.string.WhoCanCallMeInfo));
                         } else if (rulesType == PRIVACY_RULES_TYPE_INVITE) {
-                            privacyCell.setText(LocaleController.getString("WhoCanAddMeInfo", R.string.WhoCanAddMeInfo));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WHOCANADDMEINFO, R.string.WhoCanAddMeInfo));
                         } else {
-                            privacyCell.setText(LocaleController.getString(R.string.CustomHelp));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CUSTOMHELP, R.string.CustomHelp));
                         }
                         backgroundResId = R.drawable.greydivider;
                     } else if (position == shareDetailRow) {
                         if (rulesType == PRIVACY_RULES_TYPE_PHONE) {
-                            privacyCell.setText(LocaleController.getString("PrivacyPhoneInfo2", R.string.PrivacyPhoneInfo2));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYPHONEINFO2, R.string.PrivacyPhoneInfo2));
                         } else if (rulesType == PRIVACY_RULES_TYPE_FORWARDS) {
-                            privacyCell.setText(LocaleController.getString("PrivacyForwardsInfo2", R.string.PrivacyForwardsInfo2));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYFORWARDSINFO2, R.string.PrivacyForwardsInfo2));
                         } else if (rulesType == PRIVACY_RULES_TYPE_PHOTO) {
                             if (currentType == TYPE_CONTACTS) {
-                                privacyCell.setText(AndroidUtilities.replaceTags(LocaleController.getString("PrivacyProfilePhotoInfo5", R.string.PrivacyProfilePhotoInfo5)));
+                                privacyCell.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYPROFILEPHOTOINFO5, R.string.PrivacyProfilePhotoInfo5)));
                             } else if (currentType == TYPE_EVERYBODY) {
-                                privacyCell.setText(AndroidUtilities.replaceTags(LocaleController.getString("PrivacyProfilePhotoInfo3", R.string.PrivacyProfilePhotoInfo3)));
+                                privacyCell.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYPROFILEPHOTOINFO3, R.string.PrivacyProfilePhotoInfo3)));
                             } else {
-                                privacyCell.setText(LocaleController.getString("PrivacyProfilePhotoInfo4", R.string.PrivacyProfilePhotoInfo4));
+                                privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYPROFILEPHOTOINFO4, R.string.PrivacyProfilePhotoInfo4));
                             }
                         } else if (rulesType == PRIVACY_RULES_TYPE_P2P) {
-                            privacyCell.setText(LocaleController.getString("CustomP2PInfo", R.string.CustomP2PInfo));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CUSTOMP2PINFO, R.string.CustomP2PInfo));
                         } else if (rulesType == PRIVACY_RULES_TYPE_BIO) {
-                            privacyCell.setText(LocaleController.getString("PrivacyBioInfo", R.string.PrivacyBioInfo));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYBIOINFO, R.string.PrivacyBioInfo));
                         } else if (rulesType == PRIVACY_RULES_TYPE_CALLS) {
-                            privacyCell.setText(LocaleController.getString("CustomCallInfo", R.string.CustomCallInfo));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CUSTOMCALLINFO, R.string.CustomCallInfo));
                         } else if (rulesType == PRIVACY_RULES_TYPE_INVITE) {
-                            privacyCell.setText(LocaleController.getString("CustomShareInfo", R.string.CustomShareInfo));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CUSTOMSHAREINFO, R.string.CustomShareInfo));
                         } else if (rulesType == PRIVACY_RULES_TYPE_VOICE_MESSAGES) {
-                            privacyCell.setText(LocaleController.getString("PrivacyVoiceMessagesInfo2", R.string.PrivacyVoiceMessagesInfo2));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYVOICEMESSAGESINFO2, R.string.PrivacyVoiceMessagesInfo2));
                         } else {
-                            privacyCell.setText(LocaleController.getString("CustomShareSettingsHelp", R.string.CustomShareSettingsHelp));
+                            privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CUSTOMSHARESETTINGSHELP, R.string.CustomShareSettingsHelp));
                         }
                         if (rulesType == PRIVACY_RULES_TYPE_CALLS || rulesType == PRIVACY_RULES_TYPE_LASTSEEN) {
                             backgroundResId = R.drawable.greydivider;
@@ -1470,9 +1470,9 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
                     } else if (position == p2pDetailRow) {
                         backgroundResId = R.drawable.greydivider_bottom;
                     } else if (position == photoForRestDescriptionRow) {
-                        privacyCell.setText(LocaleController.getString("PhotoForRestDescription", R.string.PhotoForRestDescription));
+                        privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHOTOFORRESTDESCRIPTION, R.string.PhotoForRestDescription));
                     } else if (position == readDetailRow) {
-                        privacyCell.setText(LocaleController.getString(R.string.HideReadTimeInfo));
+                        privacyCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_HIDEREADTIMEINFO, R.string.HideReadTimeInfo));
                         backgroundResId = readPremiumDetailRow == -1 ? R.drawable.greydivider_bottom : R.drawable.greydivider;
                     } else if (position == readPremiumDetailRow) {
                         privacyCell.setText(LocaleController.getString(getUserConfig().isPremium() ? R.string.PrivacyLastSeenPremiumInfoForPremium : R.string.PrivacyLastSeenPremiumInfo));
@@ -1489,32 +1489,32 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
                     HeaderCell headerCell = (HeaderCell) holder.itemView;
                     if (position == sectionRow) {
                         if (rulesType == PRIVACY_RULES_TYPE_PHONE) {
-                            headerCell.setText(LocaleController.getString("PrivacyPhoneTitle", R.string.PrivacyPhoneTitle));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYPHONETITLE, R.string.PrivacyPhoneTitle));
                         } else if (rulesType == PRIVACY_RULES_TYPE_FORWARDS) {
-                            headerCell.setText(LocaleController.getString("PrivacyForwardsTitle", R.string.PrivacyForwardsTitle));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYFORWARDSTITLE, R.string.PrivacyForwardsTitle));
                         } else if (rulesType == PRIVACY_RULES_TYPE_PHOTO) {
-                            headerCell.setText(LocaleController.getString("PrivacyProfilePhotoTitle", R.string.PrivacyProfilePhotoTitle));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYPROFILEPHOTOTITLE, R.string.PrivacyProfilePhotoTitle));
                         } else if (rulesType == PRIVACY_RULES_TYPE_BIO) {
-                            headerCell.setText(LocaleController.getString("PrivacyBioTitle", R.string.PrivacyBioTitle));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYBIOTITLE, R.string.PrivacyBioTitle));
                         } else if (rulesType == PRIVACY_RULES_TYPE_P2P) {
-                            headerCell.setText(LocaleController.getString("P2PEnabledWith", R.string.P2PEnabledWith));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_P2PENABLEDWITH, R.string.P2PEnabledWith));
                         } else if (rulesType == PRIVACY_RULES_TYPE_CALLS) {
-                            headerCell.setText(LocaleController.getString("WhoCanCallMe", R.string.WhoCanCallMe));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WHOCANCALLME, R.string.WhoCanCallMe));
                         } else if (rulesType == PRIVACY_RULES_TYPE_INVITE) {
-                            headerCell.setText(LocaleController.getString("WhoCanAddMe", R.string.WhoCanAddMe));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WHOCANADDME, R.string.WhoCanAddMe));
                         } else if (rulesType == PRIVACY_RULES_TYPE_VOICE_MESSAGES) {
-                            headerCell.setText(LocaleController.getString("PrivacyVoiceMessagesTitle", R.string.PrivacyVoiceMessagesTitle));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYVOICEMESSAGESTITLE, R.string.PrivacyVoiceMessagesTitle));
                         } else if (rulesType == PRIVACY_RULES_TYPE_MESSAGES) {
-                            headerCell.setText(LocaleController.getString(R.string.PrivacyMessagesTitle));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYMESSAGESTITLE, R.string.PrivacyMessagesTitle));
                         } else {
-                            headerCell.setText(LocaleController.getString("LastSeenTitle", R.string.LastSeenTitle));
+                            headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LASTSEENTITLE, R.string.LastSeenTitle));
                         }
                     } else if (position == shareSectionRow) {
-                        headerCell.setText(LocaleController.getString("AddExceptions", R.string.AddExceptions));
+                        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDEXCEPTIONS, R.string.AddExceptions));
                     } else if (position == p2pSectionRow) {
-                        headerCell.setText(LocaleController.getString("PrivacyP2PHeader", R.string.PrivacyP2PHeader));
+                        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYP2PHEADER, R.string.PrivacyP2PHeader));
                     } else if (position == phoneSectionRow) {
-                        headerCell.setText(LocaleController.getString("PrivacyPhoneTitle2", R.string.PrivacyPhoneTitle2));
+                        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYPHONETITLE2, R.string.PrivacyPhoneTitle2));
                     }
                     break;
                 case 3:
@@ -1523,43 +1523,43 @@ public class PrivacyControlActivity extends BaseFragment implements Notification
                     if (position == everybodyRow || position == myContactsRow || position == nobodyRow) {
                         if (position == everybodyRow) {
                             if (rulesType == PRIVACY_RULES_TYPE_P2P) {
-                                radioCell.setText(LocaleController.getString("P2PEverybody", R.string.P2PEverybody), currentType == TYPE_EVERYBODY, true);
+                                radioCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_P2PEVERYBODY, R.string.P2PEverybody), currentType == TYPE_EVERYBODY, true);
                             } else {
-                                radioCell.setText(LocaleController.getString("LastSeenEverybody", R.string.LastSeenEverybody), currentType == TYPE_EVERYBODY, true);
+                                radioCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LASTSEENEVERYBODY, R.string.LastSeenEverybody), currentType == TYPE_EVERYBODY, true);
                             }
                         } else if (position == myContactsRow) {
                             if ((rulesType == PRIVACY_RULES_TYPE_VOICE_MESSAGES || rulesType == PRIVACY_RULES_TYPE_MESSAGES) && !getUserConfig().isPremium()) {
                                 radioCell.setRadioIcon(getContext().getResources().getDrawable(R.drawable.mini_switch_lock).mutate());
                             }
                             if (rulesType == PRIVACY_RULES_TYPE_P2P) {
-                                radioCell.setText(LocaleController.getString("P2PContacts", R.string.P2PContacts), currentType == TYPE_CONTACTS, nobodyRow != -1);
+                                radioCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_P2PCONTACTS, R.string.P2PContacts), currentType == TYPE_CONTACTS, nobodyRow != -1);
                             } else if (rulesType == PRIVACY_RULES_TYPE_MESSAGES) {
-                                radioCell.setText(LocaleController.getString(R.string.PrivacyMessagesContactsAndPremium), currentType == TYPE_CONTACTS, nobodyRow != -1);
+                                radioCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYMESSAGESCONTACTSANDPREMIUM, R.string.PrivacyMessagesContactsAndPremium), currentType == TYPE_CONTACTS, nobodyRow != -1);
                             } else {
-                                radioCell.setText(LocaleController.getString("LastSeenContacts", R.string.LastSeenContacts), currentType == TYPE_CONTACTS, nobodyRow != -1);
+                                radioCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LASTSEENCONTACTS, R.string.LastSeenContacts), currentType == TYPE_CONTACTS, nobodyRow != -1);
                             }
                         } else {
                             if ((rulesType == PRIVACY_RULES_TYPE_VOICE_MESSAGES || rulesType == PRIVACY_RULES_TYPE_MESSAGES) && !getUserConfig().isPremium()) {
                                 radioCell.setRadioIcon(getContext().getResources().getDrawable(R.drawable.mini_switch_lock).mutate());
                             }
                             if (rulesType == PRIVACY_RULES_TYPE_P2P) {
-                                radioCell.setText(LocaleController.getString("P2PNobody", R.string.P2PNobody), currentType == TYPE_NOBODY, false);
+                                radioCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_P2PNOBODY, R.string.P2PNobody), currentType == TYPE_NOBODY, false);
                             } else {
-                                radioCell.setText(LocaleController.getString("LastSeenNobody", R.string.LastSeenNobody), currentType == TYPE_NOBODY, false);
+                                radioCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LASTSEENNOBODY, R.string.LastSeenNobody), currentType == TYPE_NOBODY, false);
                             }
                         }
                     } else {
                         if (position == phoneContactsRow) {
-                            radioCell.setText(LocaleController.getString("LastSeenContacts", R.string.LastSeenContacts), currentSubType == 1, false);
+                            radioCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LASTSEENCONTACTS, R.string.LastSeenContacts), currentSubType == 1, false);
                         } else if (position == phoneEverybodyRow) {
-                            radioCell.setText(LocaleController.getString("LastSeenEverybody", R.string.LastSeenEverybody), currentSubType == 0, true);
+                            radioCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LASTSEENEVERYBODY, R.string.LastSeenEverybody), currentSubType == 0, true);
                         }
                     }
                     break;
                 case 8:
                     TextCheckCell checkCell = (TextCheckCell) holder.itemView;
                     if (position == readRow) {
-                        checkCell.setTextAndCheck(LocaleController.getString(R.string.HideReadTime), selectedReadValue, false);
+                        checkCell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_HIDEREADTIME, R.string.HideReadTime), selectedReadValue, false);
                     }
                     break;
             }

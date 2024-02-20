@@ -65,7 +65,7 @@ public class BoostTypeCell extends BaseCell {
             } else if (count > 0) {
                 setSubtitle(withArrow(LocaleController.formatPluralString("Recipient", count)));
             } else {
-                setSubtitle(withArrow(LocaleController.getString("BoostingSelectRecipients", R.string.BoostingSelectRecipients)));
+                setSubtitle(withArrow(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGSELECTRECIPIENTS, R.string.BoostingSelectRecipients)));
             }
             subtitleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2, resourcesProvider));
             avatarDrawable.setAvatarType(AvatarDrawable.AVATAR_TYPE_FILTER_GROUPS);

@@ -20,7 +20,7 @@ public class CustomTabsCopyReceiver extends BroadcastReceiver {
         String url = intent.getDataString();
         if (url != null) {
             AndroidUtilities.addToClipboard(url);
-            Toast.makeText(context, LocaleController.getString("LinkCopied", R.string.LinkCopied), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKCOPIED, R.string.LinkCopied), Toast.LENGTH_SHORT).show();
         }
     }
 }

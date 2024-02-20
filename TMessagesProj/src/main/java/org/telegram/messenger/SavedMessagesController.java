@@ -154,10 +154,10 @@ public class SavedMessagesController {
             final String name;
             String name2 = null;
             if (d.dialogId == UserObject.ANONYMOUS) {
-                name = LocaleController.getString(R.string.AnonymousForward);
+                name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ANONYMOUSFORWARD, R.string.AnonymousForward);
             } else if (d.dialogId == UserConfig.getInstance(currentAccount).getClientUserId()) {
-                name = LocaleController.getString(R.string.MyNotes);
-                name2 = LocaleController.getString(R.string.SavedMessages);
+                name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MYNOTES, R.string.MyNotes);
+                name2 = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages);
             } else if (d.dialogId >= 0) {
                 TLRPC.User user = MessagesController.getInstance(currentAccount).getUser(d.dialogId);
                 name = UserObject.getUserName(user);

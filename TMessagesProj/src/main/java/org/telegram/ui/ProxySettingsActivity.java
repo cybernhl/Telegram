@@ -195,7 +195,7 @@ public class ProxySettingsActivity extends BaseFragment {
 
     @Override
     public View createView(Context context) {
-        actionBar.setTitle(LocaleController.getString("ProxyDetails", R.string.ProxyDetails));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PROXYDETAILS, R.string.ProxyDetails));
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(false);
         if (AndroidUtilities.isTablet()) {
@@ -253,7 +253,7 @@ public class ProxySettingsActivity extends BaseFragment {
         });
 
         doneItem = actionBar.createMenu().addItemWithWidth(done_button, R.drawable.ic_ab_done, AndroidUtilities.dp(56));
-        doneItem.setContentDescription(LocaleController.getString("Done", R.string.Done));
+        doneItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DONE, R.string.Done));
 
         fragmentView = new FrameLayout(context);
         FrameLayout frameLayout = (FrameLayout) fragmentView;
@@ -275,9 +275,9 @@ public class ProxySettingsActivity extends BaseFragment {
             typeCell[a].setBackground(Theme.getSelectorDrawable(true));
             typeCell[a].setTag(a);
             if (a == 0) {
-                typeCell[a].setText(LocaleController.getString("UseProxySocks5", R.string.UseProxySocks5), a == currentType, true);
+                typeCell[a].setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYSOCKS5, R.string.UseProxySocks5), a == currentType, true);
             } else {
-                typeCell[a].setText(LocaleController.getString("UseProxyTelegram", R.string.UseProxyTelegram), a == currentType, false);
+                typeCell[a].setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYTELEGRAM, R.string.UseProxyTelegram), a == currentType, false);
             }
             linearLayout2.addView(typeCell[a], LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
             typeCell[a].setOnClickListener(typeCellClickListener);
@@ -393,23 +393,23 @@ public class ProxySettingsActivity extends BaseFragment {
             inputFields[a].setImeOptions(EditorInfo.IME_ACTION_NEXT | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
             switch (a) {
                 case FIELD_IP:
-                    inputFields[a].setHintText(LocaleController.getString("UseProxyAddress", R.string.UseProxyAddress));
+                    inputFields[a].setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYADDRESS, R.string.UseProxyAddress));
                     inputFields[a].setText(currentProxyInfo.address);
                     break;
                 case FIELD_PASSWORD:
-                    inputFields[a].setHintText(LocaleController.getString("UseProxyPassword", R.string.UseProxyPassword));
+                    inputFields[a].setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYPASSWORD, R.string.UseProxyPassword));
                     inputFields[a].setText(currentProxyInfo.password);
                     break;
                 case FIELD_PORT:
-                    inputFields[a].setHintText(LocaleController.getString("UseProxyPort", R.string.UseProxyPort));
+                    inputFields[a].setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYPORT, R.string.UseProxyPort));
                     inputFields[a].setText("" + currentProxyInfo.port);
                     break;
                 case FIELD_USER:
-                    inputFields[a].setHintText(LocaleController.getString("UseProxyUsername", R.string.UseProxyUsername));
+                    inputFields[a].setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYUSERNAME, R.string.UseProxyUsername));
                     inputFields[a].setText(currentProxyInfo.username);
                     break;
                 case FIELD_SECRET:
-                    inputFields[a].setHintText(LocaleController.getString("UseProxySecret", R.string.UseProxySecret));
+                    inputFields[a].setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYSECRET, R.string.UseProxySecret));
                     inputFields[a].setText(currentProxyInfo.secret);
                     break;
             }
@@ -438,9 +438,9 @@ public class ProxySettingsActivity extends BaseFragment {
             bottomCells[i] = new TextInfoPrivacyCell(context);
             bottomCells[i].setBackground(Theme.getThemedDrawableByKey(context, R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
             if (i == 0) {
-                bottomCells[i].setText(LocaleController.getString("UseProxyInfo", R.string.UseProxyInfo));
+                bottomCells[i].setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYINFO, R.string.UseProxyInfo));
             } else {
-                bottomCells[i].setText(LocaleController.getString("UseProxyTelegramInfo", R.string.UseProxyTelegramInfo) + "\n\n" + LocaleController.getString("UseProxyTelegramInfo2", R.string.UseProxyTelegramInfo2));
+                bottomCells[i].setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEPROXYTELEGRAMINFO, R.string.UseProxyTelegramInfo) + "\n\n" + LocaleController.getString("UseProxyTelegramInfo2", R.string.UseProxyTelegramInfo2));
                 bottomCells[i].setVisibility(View.GONE);
             }
             linearLayout2.addView(bottomCells[i], LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
@@ -448,7 +448,7 @@ public class ProxySettingsActivity extends BaseFragment {
 
         pasteCell = new TextSettingsCell(fragmentView.getContext());
         pasteCell.setBackground(Theme.getSelectorDrawable(true));
-        pasteCell.setText(LocaleController.getString("PasteFromClipboard", R.string.PasteFromClipboard), false);
+        pasteCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASTEFROMCLIPBOARD, R.string.PasteFromClipboard), false);
         pasteCell.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText4));
         pasteCell.setOnClickListener(v -> {
             if (pasteType != -1) {
@@ -493,7 +493,7 @@ public class ProxySettingsActivity extends BaseFragment {
 
         shareCell = new TextSettingsCell(context);
         shareCell.setBackgroundDrawable(Theme.getSelectorDrawable(true));
-        shareCell.setText(LocaleController.getString("ShareFile", R.string.ShareFile), false);
+        shareCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREFILE, R.string.ShareFile), false);
         shareCell.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText4));
         linearLayout2.addView(shareCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
         shareCell.setOnClickListener(v -> {
@@ -542,7 +542,7 @@ public class ProxySettingsActivity extends BaseFragment {
                 return;
             }
             String link = url + params.toString();
-            QRCodeBottomSheet alert = new QRCodeBottomSheet(context, LocaleController.getString("ShareQrCode", R.string.ShareQrCode), link, LocaleController.getString("QRCodeLinkHelpProxy", R.string.QRCodeLinkHelpProxy), true);
+            QRCodeBottomSheet alert = new QRCodeBottomSheet(context, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREQRCODE, R.string.ShareQrCode), link, LocaleController.getString("QRCodeLinkHelpProxy", R.string.QRCodeLinkHelpProxy), true);
             Bitmap icon = SvgHelper.getBitmap(RLottieDrawable.readRes(null, R.raw.qr_dog), AndroidUtilities.dp(60), AndroidUtilities.dp(60), false);
             alert.setCenterImage(icon);
             showDialog(alert);

@@ -47,7 +47,7 @@ public class UserObject {
     @NonNull
     public static String getUserName(TLRPC.User user) {
         if (user == null || isDeleted(user)) {
-            return LocaleController.getString("HiddenName", R.string.HiddenName);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_HIDDENNAME, R.string.HiddenName);
         }
         String name = ContactsController.formatName(user.first_name, user.last_name);
         return name.length() != 0 || TextUtils.isEmpty(user.phone) ? name : PhoneFormat.getInstance().format("+" + user.phone);
@@ -107,7 +107,7 @@ public class UserObject {
         } else if (!allowShort && name.length() <= 2) {
             return ContactsController.formatName(user.first_name, user.last_name);
         }
-        return !TextUtils.isEmpty(name) ? name : LocaleController.getString("HiddenName", R.string.HiddenName);
+        return !TextUtils.isEmpty(name) ? name : LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_HIDDENNAME, R.string.HiddenName);
     }
 
     public static boolean hasPhoto(TLRPC.User user) {

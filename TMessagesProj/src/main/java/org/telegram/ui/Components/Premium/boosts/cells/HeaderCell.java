@@ -164,7 +164,7 @@ public class HeaderCell extends FrameLayout {
     public void setGiftLinkToUserText(long toUserId, Utilities.Callback<TLObject> onObjectClicked) {
         titleView.setText(LocaleController.formatString("BoostingGiftLink", R.string.BoostingGiftLink));
 
-        CharSequence description = AndroidUtilities.replaceTags(LocaleController.getString("BoostingLinkAllowsToUser", R.string.BoostingLinkAllowsToUser));
+        CharSequence description = AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGLINKALLOWSTOUSER, R.string.BoostingLinkAllowsToUser));
         TLRPC.User toUser = MessagesController.getInstance(UserConfig.selectedAccount).getUser(toUserId);
 
         SpannableStringBuilder link = AndroidUtilities.replaceSingleTag(

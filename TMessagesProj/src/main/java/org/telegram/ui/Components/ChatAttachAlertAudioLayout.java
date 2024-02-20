@@ -139,7 +139,7 @@ public class ChatAttachAlertAudioLayout extends ChatAttachAlert.AttachAlertLayou
                 parentAlert.makeFocusable(editText, true);
             }
         };
-        searchField.setHint(LocaleController.getString("SearchMusic", R.string.SearchMusic));
+        searchField.setHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHMUSIC, R.string.SearchMusic));
         frameLayout.addView(searchField, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
 
         progressView = new EmptyTextProgressView(context, null, resourcesProvider);
@@ -266,10 +266,10 @@ public class ChatAttachAlertAudioLayout extends ChatAttachAlert.AttachAlertLayou
             emptyView.setVisibility(View.GONE);
         } else {
             if (listView.getAdapter() == searchAdapter) {
-                emptyTitleTextView.setText(LocaleController.getString("NoAudioFound", R.string.NoAudioFound));
+                emptyTitleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOAUDIOFOUND, R.string.NoAudioFound));
             } else {
-                emptyTitleTextView.setText(LocaleController.getString("NoAudioFiles", R.string.NoAudioFiles));
-                emptySubtitleTextView.setText(LocaleController.getString("NoAudioFilesInfo", R.string.NoAudioFilesInfo));
+                emptyTitleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOAUDIOFILES, R.string.NoAudioFiles));
+                emptySubtitleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOAUDIOFILESINFO, R.string.NoAudioFilesInfo));
             }
             currentEmptyView = emptyView;
             progressView.setVisibility(View.GONE);
@@ -454,7 +454,7 @@ public class ChatAttachAlertAudioLayout extends ChatAttachAlert.AttachAlertLayou
     }
 
     private void showErrorBox(String error) {
-        new AlertDialog.Builder(getContext(), resourcesProvider).setTitle(LocaleController.getString("AppName", R.string.AppName)).setMessage(error).setPositiveButton(LocaleController.getString("OK", R.string.OK), null).show();
+        new AlertDialog.Builder(getContext(), resourcesProvider).setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName)).setMessage(error).setPositiveButton(LocaleController.getString("OK", R.string.OK), null).show();
     }
 
     private void onItemClick(View view) {

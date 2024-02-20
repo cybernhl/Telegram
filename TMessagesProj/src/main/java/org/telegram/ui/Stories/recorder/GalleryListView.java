@@ -289,7 +289,7 @@ public class GalleryListView extends FrameLayout implements NotificationCenter.N
                 super.notifyDataSetChanged();
                 if (TextUtils.isEmpty(query)) {
                     searchEmptyView.setStickerType(StickerEmptyView.STICKER_TYPE_ALBUM);
-                    searchEmptyView.title.setText(LocaleController.getString(R.string.SearchImagesType));
+                    searchEmptyView.title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHIMAGESTYPE, R.string.SearchImagesType));
                 } else {
                     searchEmptyView.setStickerType(StickerEmptyView.STICKER_TYPE_SEARCH);
                     searchEmptyView.title.setText(LocaleController.formatString(R.string.NoResultFoundFor, query));
@@ -333,7 +333,7 @@ public class GalleryListView extends FrameLayout implements NotificationCenter.N
         searchEmptyView.title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         searchEmptyView.title.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText, resourcesProvider));
         searchEmptyView.title.setTypeface(null);
-        searchEmptyView.title.setText(LocaleController.getString(R.string.SearchImagesType));
+        searchEmptyView.title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHIMAGESTYPE, R.string.SearchImagesType));
         keyboardNotifier = new KeyboardNotifier(this, h -> searchEmptyView.animate().translationY(-h / 2f + dp(80)).setDuration(AdjustPanLayoutHelper.keyboardDuration).setInterpolator(AdjustPanLayoutHelper.keyboardInterpolator).start());
         searchContainer.addView(searchEmptyView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.FILL));
         searchListView.setEmptyView(searchEmptyView);
@@ -437,7 +437,7 @@ public class GalleryListView extends FrameLayout implements NotificationCenter.N
             }
         });
         searchItem.setVisibility(View.GONE);
-        searchItem.setSearchFieldHint(LocaleController.getString("SearchImagesTitle", R.string.SearchImagesTitle));
+        searchItem.setSearchFieldHint(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHIMAGESTITLE, R.string.SearchImagesTitle));
 
         searchListView.setOnItemClickListener((view, position) -> {
             if (searchItem != null) {
@@ -474,9 +474,9 @@ public class GalleryListView extends FrameLayout implements NotificationCenter.N
         selectedPhotos = getPhotoEntries(selectedAlbum);
         updateContainsDrafts();
         if (selectedAlbum == MediaController.allMediaAlbumEntry) {
-            dropDown.setText(LocaleController.getString("ChatGallery", R.string.ChatGallery));
+            dropDown.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATGALLERY, R.string.ChatGallery));
         } else if (selectedAlbum == draftsAlbum) {
-            dropDown.setText(LocaleController.getString("StoryDraftsAlbum"));
+            dropDown.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYDRAFTSALBUM));
         } else {
             dropDown.setText(selectedAlbum.bucketName);
         }
@@ -630,7 +630,7 @@ public class GalleryListView extends FrameLayout implements NotificationCenter.N
                 MediaController.AlbumEntry album = dropDownAlbums.get(a);
                 AlbumButton button;
                 if (album == draftsAlbum) {
-                    button = new AlbumButton(getContext(), album.coverPhoto, LocaleController.getString("StoryDraftsAlbum"), drafts.size(), resourcesProvider);
+                    button = new AlbumButton(getContext(), album.coverPhoto, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYDRAFTSALBUM), drafts.size(), resourcesProvider);
                 } else {
                     ArrayList<MediaController.PhotoEntry> photoEntries = getPhotoEntries(album);
                     if (photoEntries.isEmpty()) {
@@ -652,9 +652,9 @@ public class GalleryListView extends FrameLayout implements NotificationCenter.N
         selectedPhotos = getPhotoEntries(selectedAlbum);
         updateContainsDrafts();
         if (selectedAlbum == MediaController.allMediaAlbumEntry) {
-            dropDown.setText(LocaleController.getString("ChatGallery", R.string.ChatGallery));
+            dropDown.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATGALLERY, R.string.ChatGallery));
         } else if (selectedAlbum == draftsAlbum) {
-            dropDown.setText(LocaleController.getString("StoryDraftsAlbum"));
+            dropDown.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYDRAFTSALBUM));
         } else {
             dropDown.setText(selectedAlbum.bucketName);
         }
@@ -1112,7 +1112,7 @@ public class GalleryListView extends FrameLayout implements NotificationCenter.N
 
         private void setDraft(boolean draft) {
             if (draft) {
-                draftLayout = new StaticLayout(LocaleController.getString("StoryDraft"), draftTextPaint, getMeasuredWidth() > 0 ? getMeasuredWidth() : AndroidUtilities.displaySize.x, Layout.Alignment.ALIGN_NORMAL, 1, 0, false);
+                draftLayout = new StaticLayout(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYDRAFT), draftTextPaint, getMeasuredWidth() > 0 ? getMeasuredWidth() : AndroidUtilities.displaySize.x, Layout.Alignment.ALIGN_NORMAL, 1, 0, false);
                 draftLayoutWidth = draftLayout.getLineCount() > 0 ? draftLayout.getLineWidth(0) : 0;
                 draftLayoutLeft = draftLayout.getLineCount() > 0 ? draftLayout.getLineLeft(0) : 0;
             } else {

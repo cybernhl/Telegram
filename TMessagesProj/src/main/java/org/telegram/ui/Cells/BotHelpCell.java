@@ -163,7 +163,7 @@ public class BotHelpCell extends View {
         if (isTextVisible) {
             String[] lines = text.split("\n");
             SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
-            String help = LocaleController.getString(R.string.BotInfoTitle);
+            String help = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTINFOTITLE, R.string.BotInfoTitle);
             if (bot) {
                 stringBuilder.append(help);
                 stringBuilder.append("\n\n");

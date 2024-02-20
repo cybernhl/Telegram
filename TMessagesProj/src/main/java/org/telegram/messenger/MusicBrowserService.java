@@ -158,7 +158,7 @@ public class MusicBrowserService extends MediaBrowserService implements Notifica
     @Override
     public void onLoadChildren(String parentMediaId, Result<List<MediaBrowser.MediaItem>> result) {
         if (passcode()) {
-            Toast.makeText(getApplicationContext(), LocaleController.getString(R.string.EnterYourTelegramPasscode), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ENTERYOURTELEGRAMPASSCODE, R.string.EnterYourTelegramPasscode), Toast.LENGTH_LONG).show();
             stopSelf();
             result.detach();
             return;

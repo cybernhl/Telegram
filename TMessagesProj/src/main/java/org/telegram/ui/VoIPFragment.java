@@ -869,7 +869,7 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
         emojiLayout.setOrientation(LinearLayout.HORIZONTAL);
         emojiLayout.setPadding(0, 0, 0, AndroidUtilities.dp(30));
         emojiLayout.setClipToPadding(false);
-        emojiLayout.setContentDescription(LocaleController.getString("VoipHintEncryptionKey", R.string.VoipHintEncryptionKey));
+        emojiLayout.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPHINTENCRYPTIONKEY, R.string.VoipHintEncryptionKey));
         emojiLayout.setOnClickListener(view -> {
             if (System.currentTimeMillis() - lastContentTapTime < 500) {
                 return;
@@ -899,7 +899,7 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
         emojiRationalLayout.setOrientation(LinearLayout.VERTICAL);
 
         emojiRationalTopTextView = new TextView(context);
-        emojiRationalTopTextView.setText(LocaleController.getString("VoipCallEncryptionEndToEnd", R.string.VoipCallEncryptionEndToEnd));
+        emojiRationalTopTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPCALLENCRYPTIONENDTOEND, R.string.VoipCallEncryptionEndToEnd));
         emojiRationalTopTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         emojiRationalTopTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         emojiRationalTopTextView.setTextColor(Color.WHITE);
@@ -941,9 +941,9 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
 
                     builder.append(", ");
                     if (service.privateCall != null && service.privateCall.video) {
-                        builder.append(LocaleController.getString("VoipInVideoCallBranding", R.string.VoipInVideoCallBranding));
+                        builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPINVIDEOCALLBRANDING, R.string.VoipInVideoCallBranding));
                     } else {
-                        builder.append(LocaleController.getString("VoipInCallBranding", R.string.VoipInCallBranding));
+                        builder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPINCALLBRANDING, R.string.VoipInCallBranding));
                     }
 
                     final long callDuration = service.getCallDuration();
@@ -1091,7 +1091,7 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
         backIcon.setBackground(Theme.createSelectorDrawable(ColorUtils.setAlphaComponent(Color.WHITE, (int) (255 * 0.3f))));
         backIcon.setImageResource(R.drawable.msg_call_minimize_shadow);
         backIcon.setPadding(AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16));
-        backIcon.setContentDescription(LocaleController.getString("Back", R.string.Back));
+        backIcon.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BACK, R.string.Back));
         frameLayout.addView(backIcon, LayoutHelper.createFrame(56, 56, Gravity.TOP | Gravity.LEFT));
 
         speakerPhoneIcon = new ImageView(context) {
@@ -1106,7 +1106,7 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
                 }
             }
         };
-        speakerPhoneIcon.setContentDescription(LocaleController.getString("VoipSpeaker", R.string.VoipSpeaker));
+        speakerPhoneIcon.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPSPEAKER, R.string.VoipSpeaker));
         speakerPhoneIcon.setBackground(Theme.createSelectorDrawable(ColorUtils.setAlphaComponent(Color.WHITE, (int) (255 * 0.3f))));
         speakerPhoneIcon.setPadding(AndroidUtilities.dp(12), AndroidUtilities.dp(12), AndroidUtilities.dp(12), AndroidUtilities.dp(12));
         frameLayout.addView(speakerPhoneIcon, LayoutHelper.createFrame(56, 56, Gravity.TOP | Gravity.RIGHT));
@@ -1157,7 +1157,7 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
                 .useScale(true)
                 .setInnerPadding(10, 6, 10, 6)
                 .setRounding(8);
-        tapToVideoTooltip.setText(LocaleController.getString("TapToTurnCamera", R.string.TapToTurnCamera));
+        tapToVideoTooltip.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TAPTOTURNCAMERA, R.string.TapToTurnCamera));
         frameLayout.addView(tapToVideoTooltip, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM, 19, 0, 19, 0));
 
         encryptionTooltip = new VoIpHintView(context, HintView2.DIRECTION_TOP, backgroundProvider, false)
@@ -1169,7 +1169,7 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
                 .useScale(true)
                 .setInnerPadding(10, 6, 10, 6)
                 .setRounding(8);
-        encryptionTooltip.setText(LocaleController.getString("VoipHintEncryptionKey", R.string.VoipHintEncryptionKey));
+        encryptionTooltip.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPHINTENCRYPTIONKEY, R.string.VoipHintEncryptionKey));
         frameLayout.addView(encryptionTooltip, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 0, 0, 0));
 
         updateViewState();
@@ -1203,7 +1203,7 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
         acceptDeclineView.getLocationOnScreen(loc);
         acceptDeclineView.stopAnimations();
         //callingUserPhotoView.switchToCallConnected(loc[0] + AndroidUtilities.dp(82), loc[1] + AndroidUtilities.dp(74));
-        bottomEndCallBtn.setData(R.drawable.calls_decline, Color.WHITE, 0xFFF01D2C, LocaleController.getString("VoipEndCall2", R.string.VoipEndCall2), false, false);
+        bottomEndCallBtn.setData(R.drawable.calls_decline, Color.WHITE, 0xFFF01D2C, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPENDCALL2, R.string.VoipEndCall2), false, false);
         bottomSpeakerBtn.setType(VoIpSwitchLayout.Type.SPEAKER, false);
         bottomMuteBtn.setType(VoIpSwitchLayout.Type.MICRO, false);
         bottomVideoBtn.setType(VoIpSwitchLayout.Type.VIDEO, true);
@@ -1695,38 +1695,38 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
                 lockOnScreen = false;
                 acceptDeclineView.setRetryMod(false);
                 if (service != null && service.privateCall.video) {
-                    statusTextView.setText(LocaleController.getString("VoipInVideoCallBranding", R.string.VoipInVideoCallBranding), false, animated);
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPINVIDEOCALLBRANDING, R.string.VoipInVideoCallBranding), false, animated);
                     acceptDeclineView.setTranslationY(-AndroidUtilities.dp(60));
                 } else {
-                    statusTextView.setText(LocaleController.getString("VoipInCallBranding", R.string.VoipInCallBranding), false, animated);
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPINCALLBRANDING, R.string.VoipInCallBranding), false, animated);
                     acceptDeclineView.setTranslationY(0);
                 }
                 break;
             case VoIPService.STATE_WAIT_INIT:
             case VoIPService.STATE_WAIT_INIT_ACK:
-                statusTextView.setText(LocaleController.getString("VoipConnecting", R.string.VoipConnecting), true, animated);
+                statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPCONNECTING, R.string.VoipConnecting), true, animated);
                 break;
             case VoIPService.STATE_EXCHANGING_KEYS:
                 if (previousState != VoIPService.STATE_EXCHANGING_KEYS) {
-                    statusTextView.setText(LocaleController.getString("VoipExchangingKeys", R.string.VoipExchangingKeys), true, animated);
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPEXCHANGINGKEYS, R.string.VoipExchangingKeys), true, animated);
                 }
                 break;
             case VoIPService.STATE_WAITING:
-                statusTextView.setText(LocaleController.getString("VoipWaiting", R.string.VoipWaiting), true, animated);
+                statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPWAITING, R.string.VoipWaiting), true, animated);
                 break;
             case VoIPService.STATE_RINGING:
                 if (previousState != VoIPService.STATE_RINGING) {
-                    statusTextView.setText(LocaleController.getString("VoipRinging", R.string.VoipRinging), true, animated);
+                    statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPRINGING, R.string.VoipRinging), true, animated);
                 }
                 break;
             case VoIPService.STATE_REQUESTING:
-                statusTextView.setText(LocaleController.getString("VoipRequesting", R.string.VoipRequesting), true, animated);
+                statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPREQUESTING, R.string.VoipRequesting), true, animated);
                 break;
             case VoIPService.STATE_HANGING_UP:
                 break;
             case VoIPService.STATE_BUSY:
                 showAcceptDeclineView = true;
-                statusTextView.setText(LocaleController.getString("VoipBusy", R.string.VoipBusy), false, animated);
+                statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPBUSY, R.string.VoipBusy), false, animated);
                 acceptDeclineView.setRetryMod(true);
                 currentUserIsVideo = false;
                 callingUserIsVideo = false;
@@ -1737,7 +1737,7 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
                 if (currentState == VoIPService.STATE_RECONNECTING) {
                     showReconnecting = wasEstablished;
                     if (!wasEstablished && previousState != VoIPService.STATE_RECONNECTING) {
-                        statusTextView.setText(LocaleController.getString("VoipConnecting", R.string.VoipConnecting), true, animated);
+                        statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPCONNECTING, R.string.VoipConnecting), true, animated);
                     }
                 } else {
                     wasEstablished = true;
@@ -1801,7 +1801,7 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
                     callingUserTitle.animate().alpha(0f).setDuration(70).setListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
-                            callingUserTitle.setText(LocaleController.getString("VoipCallEnded", R.string.VoipCallEnded));
+                            callingUserTitle.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPCALLENDED, R.string.VoipCallEnded));
                             callingUserTitle.animate().alpha(1f).setDuration(70).setListener(null).start();
                         }
                     }).start();
@@ -1826,7 +1826,7 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
                 }
                 break;
             case VoIPService.STATE_FAILED:
-                statusTextView.setText(LocaleController.getString("VoipFailed", R.string.VoipFailed), false, animated);
+                statusTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPFAILED, R.string.VoipFailed), false, animated);
                 final VoIPService voipService = VoIPService.getSharedInstance();
                 final String lastError = voipService != null ? voipService.getLastError() : Instance.ERROR_UNKNOWN;
                 if (!TextUtils.equals(lastError, Instance.ERROR_UNKNOWN)) {
@@ -1840,10 +1840,10 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
                             final String message = LocaleController.formatString("VoipPeerVideoOutdated", R.string.VoipPeerVideoOutdated, name);
                             boolean[] callAgain = new boolean[1];
                             AlertDialog dlg = new DarkAlertDialog.Builder(activity)
-                                    .setTitle(LocaleController.getString("VoipFailed", R.string.VoipFailed))
+                                    .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPFAILED, R.string.VoipFailed))
                                     .setMessage(AndroidUtilities.replaceTags(message))
-                                    .setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), (dialogInterface, i) -> windowView.finish())
-                                    .setPositiveButton(LocaleController.getString("VoipPeerVideoOutdatedMakeVoice", R.string.VoipPeerVideoOutdatedMakeVoice), (dialogInterface, i) -> {
+                                    .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), (dialogInterface, i) -> windowView.finish())
+                                    .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPPEERVIDEOOUTDATEDMAKEVOICE, R.string.VoipPeerVideoOutdatedMakeVoice), (dialogInterface, i) -> {
                                         callAgain[0] = true;
                                         currentState = VoIPService.STATE_BUSY;
                                         Intent intent = new Intent(activity, VoIPService.class);
@@ -1880,7 +1880,7 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
                     } else if (TextUtils.equals(lastError, Instance.ERROR_LOCALIZED)) {
                         windowView.finish();
                     } else if (TextUtils.equals(lastError, Instance.ERROR_CONNECTION_SERVICE)) {
-                        showErrorDialog(LocaleController.getString("VoipErrorUnknown", R.string.VoipErrorUnknown));
+                        showErrorDialog(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPERRORUNKNOWN, R.string.VoipErrorUnknown));
                     } else {
                         AndroidUtilities.runOnUIThread(() -> windowView.finish(), 1000);
                     }
@@ -2035,7 +2035,7 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
                 notificationsLayout.beforeLayoutChanges();
             }
             if (service.isMicMute()) {
-                notificationsLayout.addNotification(R.drawable.calls_mute_mini, LocaleController.getString(R.string.VoipMyMicrophoneState), "self-muted", animated);
+                notificationsLayout.addNotification(R.drawable.calls_mute_mini, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPMYMICROPHONESTATE, R.string.VoipMyMicrophoneState), "self-muted", animated);
             } else {
                 notificationsLayout.removeNotification("self-muted");
             }
@@ -2546,7 +2546,7 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
             setVideoAction(bottomVideoBtn, service, false);
             setMicrohoneAction(bottomMuteBtn, service, animated);
 
-            bottomEndCallBtn.setData(R.drawable.calls_decline, Color.WHITE, 0xFFF01D2C, LocaleController.getString("VoipEndCall2", R.string.VoipEndCall2), false, animated);
+            bottomEndCallBtn.setData(R.drawable.calls_decline, Color.WHITE, 0xFFF01D2C, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPENDCALL2, R.string.VoipEndCall2), false, animated);
             bottomEndCallBtn.setOnClickListener(view -> {
                 if (VoIPService.getSharedInstance() != null) {
                     AndroidUtilities.cancelRunOnUIThread(hideUIRunnable);
@@ -2587,9 +2587,9 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
                 if (accessibilityManager.isTouchExplorationEnabled()) {
                     final String text;
                     if (micMute) {
-                        text = LocaleController.getString("AccDescrVoipMicOff", R.string.AccDescrVoipMicOff);
+                        text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRVOIPMICOFF, R.string.AccDescrVoipMicOff);
                     } else {
-                        text = LocaleController.getString("AccDescrVoipMicOn", R.string.AccDescrVoipMicOn);
+                        text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRVOIPMICON, R.string.AccDescrVoipMicOn);
                     }
                     view.announceForAccessibility(text);
                 }
@@ -2625,12 +2625,12 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
                 } else {
                     if (Build.VERSION.SDK_INT < 21 && service.privateCall != null && !service.privateCall.video && !callingUserIsVideo && !service.sharedUIParams.cameraAlertWasShowed) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                        builder.setMessage(LocaleController.getString("VoipSwitchToVideoCall", R.string.VoipSwitchToVideoCall));
-                        builder.setPositiveButton(LocaleController.getString("VoipSwitch", R.string.VoipSwitch), (dialogInterface, i) -> {
+                        builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPSWITCHTOVIDEOCALL, R.string.VoipSwitchToVideoCall));
+                        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPSWITCH, R.string.VoipSwitch), (dialogInterface, i) -> {
                             service.sharedUIParams.cameraAlertWasShowed = true;
                             toggleCameraInput();
                         });
-                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                        builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
                         builder.create().show();
                     } else {
                         toggleCameraInput();
@@ -2708,9 +2708,9 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
                     if (accessibilityManager.isTouchExplorationEnabled()) {
                         final String text;
                         if (service.isFrontFaceCamera()) {
-                            text = LocaleController.getString("AccDescrVoipCamSwitchedToBack", R.string.AccDescrVoipCamSwitchedToBack);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRVOIPCAMSWITCHEDTOBACK, R.string.AccDescrVoipCamSwitchedToBack);
                         } else {
-                            text = LocaleController.getString("AccDescrVoipCamSwitchedToFront", R.string.AccDescrVoipCamSwitchedToFront);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRVOIPCAMSWITCHEDTOFRONT, R.string.AccDescrVoipCamSwitchedToFront);
                         }
                         view.announceForAccessibility(text);
                     }
@@ -2734,9 +2734,9 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
             if (accessibilityManager.isTouchExplorationEnabled()) {
                 final String text;
                 if (!currentUserIsVideo) {
-                    text = LocaleController.getString("AccDescrVoipCamOn", R.string.AccDescrVoipCamOn);
+                    text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRVOIPCAMON, R.string.AccDescrVoipCamOn);
                 } else {
-                    text = LocaleController.getString("AccDescrVoipCamOff", R.string.AccDescrVoipCamOff);
+                    text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRVOIPCAMOFF, R.string.AccDescrVoipCamOff);
                 }
                 fragmentView.announceForAccessibility(text);
             }
@@ -2944,9 +2944,9 @@ public class VoIPFragment implements VoIPService.StateListener, NotificationCent
             return;
         }
         AlertDialog dlg = new DarkAlertDialog.Builder(activity)
-                .setTitle(LocaleController.getString("VoipFailed", R.string.VoipFailed))
+                .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPFAILED, R.string.VoipFailed))
                 .setMessage(message)
-                .setPositiveButton(LocaleController.getString("OK", R.string.OK), null)
+                .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null)
                 .show();
         dlg.setCanceledOnTouchOutside(true);
         dlg.setOnDismissListener(dialog -> windowView.finish());

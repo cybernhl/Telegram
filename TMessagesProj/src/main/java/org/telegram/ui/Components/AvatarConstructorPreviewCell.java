@@ -133,7 +133,7 @@ public class AvatarConstructorPreviewCell extends FrameLayout {
         textView.setTextColor(Theme.getColor(Theme.key_avatar_text));
         textView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         textView.setGravity(Gravity.CENTER);
-        textView.setText(LocaleController.getString("UseEmoji", R.string.UseEmoji));
+        textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USEEMOJI, R.string.UseEmoji));
 
         addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 28, Gravity.BOTTOM, 10, 10, 10, 10));
 

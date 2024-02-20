@@ -178,7 +178,7 @@ public class SharingLocationsAlert extends BottomSheet implements NotificationCe
         containerView.addView(pickerBottomLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.LEFT | Gravity.BOTTOM));
         pickerBottomLayout.cancelButton.setPadding(AndroidUtilities.dp(18), 0, AndroidUtilities.dp(18), 0);
         pickerBottomLayout.cancelButton.setTextColor(getThemedColor(Theme.key_text_RedBold));
-        pickerBottomLayout.cancelButton.setText(LocaleController.getString("StopAllLocationSharings", R.string.StopAllLocationSharings));
+        pickerBottomLayout.cancelButton.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STOPALLLOCATIONSHARINGS, R.string.StopAllLocationSharings));
         pickerBottomLayout.cancelButton.setOnClickListener(view -> {
             for (int a = 0; a < UserConfig.MAX_ACCOUNT_COUNT; a++) {
                 LocationController.getInstance(a).removeAllLocationSharings();
@@ -186,7 +186,7 @@ public class SharingLocationsAlert extends BottomSheet implements NotificationCe
             dismiss();
         });
         pickerBottomLayout.doneButtonTextView.setTextColor(getThemedColor(Theme.key_dialogTextBlue2));
-        pickerBottomLayout.doneButtonTextView.setText(LocaleController.getString("Close", R.string.Close).toUpperCase());
+        pickerBottomLayout.doneButtonTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLOSE, R.string.Close).toUpperCase());
         pickerBottomLayout.doneButton.setPadding(AndroidUtilities.dp(18), 0, AndroidUtilities.dp(18), 0);
         pickerBottomLayout.doneButton.setOnClickListener(view -> dismiss());
         pickerBottomLayout.doneButtonBadgeTextView.setVisibility(View.GONE);

@@ -189,7 +189,7 @@ public class SearchTagsList extends BlurredFrameLayout implements NotificationCe
         SpannableString lock = new SpannableString("l");
         lock.setSpan(span, 0, lock.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         ssb.append(lock);
-        ssb.append(" ").append(LocaleController.getString(R.string.AddTagsToYourSavedMessages1));
+        ssb.append(" ").append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDTAGSTOYOURSAVEDMESSAGES1, R.string.AddTagsToYourSavedMessages1));
         tagView.setText(ssb);
         tagView.setPadding(dp(4), dp(4), dp(9), dp(4));
 
@@ -197,7 +197,7 @@ public class SearchTagsList extends BlurredFrameLayout implements NotificationCe
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText2, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
-        ssb = new SpannableStringBuilder(LocaleController.getString(R.string.AddTagsToYourSavedMessages2));
+        ssb = new SpannableStringBuilder(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDTAGSTOYOURSAVEDMESSAGES2, R.string.AddTagsToYourSavedMessages2));
         SpannableString arrow = new SpannableString(">");
         Drawable imageDrawable = getContext().getResources().getDrawable(R.drawable.msg_arrowright).mutate();
         imageDrawable.setColorFilter(new PorterDuffColorFilter(Theme.key_chat_messageLinkIn, PorterDuff.Mode.SRC_IN));
@@ -451,7 +451,7 @@ public class SearchTagsList extends BlurredFrameLayout implements NotificationCe
         editText.setText(name == null ? "" : name);
         editText.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         editText.setHintColor(Theme.getColor(Theme.key_groupcreate_hintText, resourcesProvider));
-        editText.setHintText(LocaleController.getString(R.string.SavedTagLabelPlaceholder));
+        editText.setHintText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDTAGLABELPLACEHOLDER, R.string.SavedTagLabelPlaceholder));
         editText.setSingleLine(true);
         editText.setFocusable(true);
         editText.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
@@ -486,14 +486,14 @@ public class SearchTagsList extends BlurredFrameLayout implements NotificationCe
         TextView textView = new TextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-        textView.setText(LocaleController.getString(R.string.SavedTagLabelTagText));
+        textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDTAGLABELTAGTEXT, R.string.SavedTagLabelTagText));
         container.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 24, 5, 24, 12));
 
         container.addView(editText, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 24, 0, 24, 10));
         builder.setView(container);
         builder.setWidth(dp(292));
 
-        builder.setPositiveButton(LocaleController.getString(R.string.Save), (dialogInterface, i) -> {
+        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVE, R.string.Save), (dialogInterface, i) -> {
             String text = editText.getText().toString();
             if (text.length() > MAX_NAME_LENGTH) {
                 AndroidUtilities.shakeView(editText);
@@ -502,7 +502,7 @@ public class SearchTagsList extends BlurredFrameLayout implements NotificationCe
             MessagesController.getInstance(currentAccount).renameSavedReactionTag(ReactionsLayoutInBubble.VisibleReaction.fromTLReaction(reaction), text);
             dialogInterface.dismiss();
         });
-        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), (dialogInterface, i) -> {
+        builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), (dialogInterface, i) -> {
             dialogInterface.dismiss();
         });
         if (adaptive) {

@@ -1660,11 +1660,11 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
         });
         searchItem.setTranslationY(dp(10));
         searchItem.setSearchFieldHint(LocaleController.getString(searchTagsList != null && searchTagsList.hasFilters() && getSelectedTab() == TAB_SAVED_DIALOGS ? R.string.SavedTagSearchHint : R.string.Search));
-        searchItem.setContentDescription(LocaleController.getString("Search", R.string.Search));
+        searchItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCH, R.string.Search));
         searchItem.setVisibility(isStoriesView() ? View.GONE : View.INVISIBLE);
 
         photoVideoOptionsItem = new ImageView(context);
-        photoVideoOptionsItem.setContentDescription(LocaleController.getString("AccDescrMoreOptions", R.string.AccDescrMoreOptions));
+        photoVideoOptionsItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRMOREOPTIONS, R.string.AccDescrMoreOptions));
         photoVideoOptionsItem.setTranslationY(dp(10));
         photoVideoOptionsItem.setVisibility(View.INVISIBLE);
 
@@ -1689,21 +1689,21 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
             public void onClick(View view) {
                 if (getSelectedTab() == TAB_SAVED_DIALOGS) {
                     ItemOptions.makeOptions(profileActivity, photoVideoOptionsItem)
-                        .add(R.drawable.msg_discussion, LocaleController.getString(R.string.SavedViewAsMessages), () -> {
+                        .add(R.drawable.msg_discussion, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDVIEWASMESSAGES, R.string.SavedViewAsMessages), () -> {
                             profileActivity.getMessagesController().setSavedViewAs(false);
                             Bundle args = new Bundle();
                             args.putLong("user_id", profileActivity.getUserConfig().getClientUserId());
                             profileActivity.presentFragment(new ChatActivity(args), true);
                         })
                         .addGap()
-                        .add(R.drawable.msg_home, LocaleController.getString(R.string.AddShortcut), () -> {
+                        .add(R.drawable.msg_home, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDSHORTCUT, R.string.AddShortcut), () -> {
                             try {
                                 profileActivity.getMediaDataController().installShortcut(profileActivity.getUserConfig().getClientUserId());
                             } catch (Exception e) {
                                 FileLog.e(e);
                             }
                         })
-                        .add(R.drawable.msg_delete, LocaleController.getString(R.string.DeleteAll), () -> {
+                        .add(R.drawable.msg_delete, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETEALL, R.string.DeleteAll), () -> {
                             TLRPC.User currentUser = profileActivity.getUserConfig().getCurrentUser();
                             AlertsCreator.createClearOrDeleteDialogAlert(profileActivity, false, null, currentUser, false, true, true, (param) -> {
                                 profileActivity.finishFragment();
@@ -1742,11 +1742,11 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
                 mediaZoomInItem = new ActionBarMenuSubItem(context, true, false, resourcesProvider);
                 mediaZoomOutItem = new ActionBarMenuSubItem(context, false, false, resourcesProvider);
 
-                mediaZoomInItem.setTextAndIcon(LocaleController.getString("MediaZoomIn", R.string.MediaZoomIn), R.drawable.msg_zoomin);
+                mediaZoomInItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEDIAZOOMIN, R.string.MediaZoomIn), R.drawable.msg_zoomin);
                 mediaZoomInItem.setOnClickListener(view1 -> zoomIn());
                 popupLayout.addView(mediaZoomInItem);
 
-                mediaZoomOutItem.setTextAndIcon(LocaleController.getString("MediaZoomOut", R.string.MediaZoomOut), R.drawable.msg_zoomout);
+                mediaZoomOutItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEDIAZOOMOUT, R.string.MediaZoomOut), R.drawable.msg_zoomout);
                 mediaZoomOutItem.setOnClickListener(view1 -> zoomOut());
                 popupLayout.addView(mediaZoomOutItem);
 
@@ -1766,7 +1766,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
                 boolean hasDifferentTypes = isStories || (sharedMediaData[0].hasPhotos && sharedMediaData[0].hasVideos) || !sharedMediaData[0].endReached[0] || !sharedMediaData[0].endReached[1] || !sharedMediaData[0].startReached;
                 if (!DialogObject.isEncryptedDialog(dialog_id)) {
                     ActionBarMenuSubItem calendarItem = new ActionBarMenuSubItem(context, false, false, resourcesProvider);
-                    calendarItem.setTextAndIcon(LocaleController.getString("Calendar", R.string.Calendar), R.drawable.msg_calendar2);
+                    calendarItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALENDAR, R.string.Calendar), R.drawable.msg_calendar2);
                     popupLayout.addView(calendarItem);
                     calendarItem.setOnClickListener(new OnClickListener() {
                         @Override
@@ -1782,7 +1782,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
                         TLRPC.Chat chat = MessagesController.getInstance(profileActivity.getCurrentAccount()).getChat(info.id);
                         if (chat != null && chat.admin_rights != null && chat.admin_rights.edit_stories) {
                             ActionBarMenuSubItem openArchiveItem = new ActionBarMenuSubItem(context, false, true, resourcesProvider);
-                            openArchiveItem.setTextAndIcon(LocaleController.getString(R.string.OpenChannelArchiveStories), R.drawable.msg_archive);
+                            openArchiveItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENCHANNELARCHIVESTORIES, R.string.OpenChannelArchiveStories), R.drawable.msg_archive);
                             openArchiveItem.setOnClickListener(e -> {
                                 Bundle args = new Bundle();
                                 args.putInt("type", MediaActivity.TYPE_ARCHIVED_CHANNEL_STORIES);
@@ -1805,10 +1805,10 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
                         ActionBarMenuSubItem showPhotosItem = new ActionBarMenuSubItem(context, true, false, false, resourcesProvider);
                         ActionBarMenuSubItem showVideosItem = new ActionBarMenuSubItem(context, true, false, true, resourcesProvider);
 
-                        showPhotosItem.setTextAndIcon(LocaleController.getString("MediaShowPhotos", R.string.MediaShowPhotos), 0);
+                        showPhotosItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEDIASHOWPHOTOS, R.string.MediaShowPhotos), 0);
                         popupLayout.addView(showPhotosItem);
 
-                        showVideosItem.setTextAndIcon(LocaleController.getString("MediaShowVideos", R.string.MediaShowVideos), 0);
+                        showVideosItem.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEDIASHOWVIDEOS, R.string.MediaShowVideos), 0);
                         popupLayout.addView(showVideosItem);
 
                         if (isStories) {
@@ -1915,7 +1915,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
         closeButton.setImageDrawable(backDrawable = new BackDrawable(true));
         backDrawable.setColor(getThemedColor(Theme.key_actionBarActionModeDefaultIcon));
         closeButton.setBackground(Theme.createSelectorDrawable(getThemedColor(Theme.key_actionBarActionModeDefaultSelector), 1));
-        closeButton.setContentDescription(LocaleController.getString("Close", R.string.Close));
+        closeButton.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLOSE, R.string.Close));
         actionModeLayout.addView(closeButton, new LinearLayout.LayoutParams(dp(54), ViewGroup.LayoutParams.MATCH_PARENT));
         actionModeViews.add(closeButton);
         closeButton.setOnClickListener(v -> closeActionMode());
@@ -1930,7 +1930,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
         if (!DialogObject.isEncryptedDialog(dialog_id)) {
             gotoItem = new ActionBarMenuItem(context, null, getThemedColor(Theme.key_actionBarActionModeDefaultSelector), getThemedColor(Theme.key_actionBarActionModeDefaultIcon), false);
             gotoItem.setIcon(R.drawable.msg_message);
-            gotoItem.setContentDescription(LocaleController.getString("AccDescrGoToMessage", R.string.AccDescrGoToMessage));
+            gotoItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRGOTOMESSAGE, R.string.AccDescrGoToMessage));
             gotoItem.setDuplicateParentStateEnabled(false);
             actionModeLayout.addView(gotoItem, new LinearLayout.LayoutParams(dp(54), ViewGroup.LayoutParams.MATCH_PARENT));
             actionModeViews.add(gotoItem);
@@ -1938,7 +1938,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
 
             forwardItem = new ActionBarMenuItem(context, null, getThemedColor(Theme.key_actionBarActionModeDefaultSelector), getThemedColor(Theme.key_actionBarActionModeDefaultIcon), false);
             forwardItem.setIcon(R.drawable.msg_forward);
-            forwardItem.setContentDescription(LocaleController.getString("Forward", R.string.Forward));
+            forwardItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARD, R.string.Forward));
             forwardItem.setDuplicateParentStateEnabled(false);
             actionModeLayout.addView(forwardItem, new LinearLayout.LayoutParams(dp(54), ViewGroup.LayoutParams.MATCH_PARENT));
             actionModeViews.add(forwardItem);
@@ -1946,7 +1946,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
 
             pinItem = new ActionBarMenuItem(context, null, getThemedColor(Theme.key_actionBarActionModeDefaultSelector), getThemedColor(Theme.key_actionBarActionModeDefaultIcon), false);
             pinItem.setIcon(R.drawable.msg_pin);
-            pinItem.setContentDescription(LocaleController.getString(R.string.PinMessage));
+            pinItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PINMESSAGE, R.string.PinMessage));
             pinItem.setDuplicateParentStateEnabled(false);
             pinItem.setVisibility(View.GONE);
             actionModeLayout.addView(pinItem, new LinearLayout.LayoutParams(dp(54), ViewGroup.LayoutParams.MATCH_PARENT));
@@ -1955,7 +1955,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
 
             unpinItem = new ActionBarMenuItem(context, null, getThemedColor(Theme.key_actionBarActionModeDefaultSelector), getThemedColor(Theme.key_actionBarActionModeDefaultIcon), false);
             unpinItem.setIcon(R.drawable.msg_unpin);
-            unpinItem.setContentDescription(LocaleController.getString(R.string.UnpinMessage));
+            unpinItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNPINMESSAGE, R.string.UnpinMessage));
             unpinItem.setDuplicateParentStateEnabled(false);
             unpinItem.setVisibility(View.GONE);
             actionModeLayout.addView(unpinItem, new LinearLayout.LayoutParams(dp(54), ViewGroup.LayoutParams.MATCH_PARENT));
@@ -1966,7 +1966,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
         }
         deleteItem = new ActionBarMenuItem(context, null, getThemedColor(Theme.key_actionBarActionModeDefaultSelector), getThemedColor(Theme.key_actionBarActionModeDefaultIcon), false);
         deleteItem.setIcon(R.drawable.msg_delete);
-        deleteItem.setContentDescription(LocaleController.getString("Delete", R.string.Delete));
+        deleteItem.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete));
         deleteItem.setDuplicateParentStateEnabled(false);
         actionModeLayout.addView(deleteItem, new LinearLayout.LayoutParams(dp(54), ViewGroup.LayoutParams.MATCH_PARENT));
         actionModeViews.add(deleteItem);
@@ -2993,8 +2993,8 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
             mediaPages[a].addView(mediaPages[a].emptyView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
             mediaPages[a].emptyView.setOnTouchListener((v, event) -> true);
             mediaPages[a].emptyView.showProgress(true, false);
-            mediaPages[a].emptyView.title.setText(LocaleController.getString("NoResult", R.string.NoResult));
-            mediaPages[a].emptyView.subtitle.setText(LocaleController.getString("SearchEmptyViewFilteredSubtitle2", R.string.SearchEmptyViewFilteredSubtitle2));
+            mediaPages[a].emptyView.title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NORESULT, R.string.NoResult));
+            mediaPages[a].emptyView.subtitle.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHEMPTYVIEWFILTEREDSUBTITLE2, R.string.SearchEmptyViewFilteredSubtitle2));
             mediaPages[a].emptyView.addView(mediaPages[a].progressView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
             mediaPages[a].listView.setEmptyView(mediaPages[a].emptyView);
@@ -4233,7 +4233,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
                         TLRPC.User user = profileActivity.getMessagesController().getUser(did);
                         if (user != null) {
                             if (UserObject.isAnonymous(user)) {
-                                firstDialog = LocaleController.getString(R.string.AnonymousForward);
+                                firstDialog = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ANONYMOUSFORWARD, R.string.AnonymousForward);
                             } else {
                                 firstDialog = UserObject.getUserName(user);
                             }
@@ -4243,14 +4243,14 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
                 AlertDialog dialog = new AlertDialog.Builder(getContext(), resourcesProvider)
                     .setTitle(selectedDialogs.size() == 1 ? LocaleController.formatString(firstDialogSelf ? R.string.ClearHistoryMyNotesTitle : R.string.ClearHistoryTitleSingle2, firstDialog) : LocaleController.formatPluralString("ClearHistoryTitleMultiple", selectedDialogs.size()))
                     .setMessage(selectedDialogs.size() == 1 ? LocaleController.formatString(firstDialogSelf ? R.string.ClearHistoryMyNotesMessage : R.string.ClearHistoryMessageSingle, firstDialog) : LocaleController.formatPluralString("ClearHistoryMessageMultiple", selectedDialogs.size()))
-                    .setPositiveButton(LocaleController.getString(R.string.Remove), (di, w) -> {
+                    .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REMOVE, R.string.Remove), (di, w) -> {
                         for (int i = 0; i < selectedDialogs.size(); ++i) {
                             final long did = selectedDialogs.get(i);
                             profileActivity.getMessagesController().deleteSavedDialog(did);
                         }
                         closeActionMode();
                     })
-                    .setNegativeButton(LocaleController.getString(R.string.Cancel), null)
+                    .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null)
                     .create();
                 profileActivity.showDialog(dialog);
                 TextView button = (TextView) dialog.getButton(DialogInterface.BUTTON_POSITIVE);
@@ -4279,8 +4279,8 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
                 TLRPC.Chat chat = profileActivity.getMessagesController().getChat(info.id);
                 if (profileActivity.getMessagesController().isChatNoForwards(chat)) {
                     if (fwdRestrictedHint != null) {
-                        fwdRestrictedHint.setText(ChatObject.isChannel(chat) && !chat.megagroup ? LocaleController.getString("ForwardsRestrictedInfoChannel", R.string.ForwardsRestrictedInfoChannel) :
-                                LocaleController.getString("ForwardsRestrictedInfoGroup", R.string.ForwardsRestrictedInfoGroup));
+                        fwdRestrictedHint.setText(ChatObject.isChannel(chat) && !chat.megagroup ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDSRESTRICTEDINFOCHANNEL, R.string.ForwardsRestrictedInfoChannel) :
+                                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDSRESTRICTEDINFOGROUP, R.string.ForwardsRestrictedInfoGroup));
                         fwdRestrictedHint.showForView(v, true);
                     }
                     return;
@@ -4288,7 +4288,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
             }
             if (hasNoforwardsMessage()) {
                 if (fwdRestrictedHint != null) {
-                    fwdRestrictedHint.setText(LocaleController.getString("ForwardsRestrictedInfoBot", R.string.ForwardsRestrictedInfoBot));
+                    fwdRestrictedHint.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDSRESTRICTEDINFOBOT, R.string.ForwardsRestrictedInfoBot));
                     fwdRestrictedHint.showForView(v, true);
                 }
                 return;
@@ -5601,16 +5601,16 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
             if ((DialogObject.isUserDialog(dialog_id) || DialogObject.isChatDialog(dialog_id)) && !DialogObject.isEncryptedDialog(dialog_id) && (userInfo != null && userInfo.stories_pinned_available || info != null && info.stories_pinned_available || isStoriesView()) && includeStories()) {
                 if (isArchivedOnlyStoriesView()) {
                     if (!scrollSlidingTextTabStrip.hasTab(TAB_ARCHIVED_STORIES)) {
-                        scrollSlidingTextTabStrip.addTextTab(TAB_ARCHIVED_STORIES, LocaleController.getString("ProfileStories", R.string.ProfileStories), idToView);
+                        scrollSlidingTextTabStrip.addTextTab(TAB_ARCHIVED_STORIES, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PROFILESTORIES, R.string.ProfileStories), idToView);
                     }
                     scrollSlidingTextTabStrip.animationDuration = 420;
                 } else {
                     if (!scrollSlidingTextTabStrip.hasTab(TAB_STORIES)) {
-                        scrollSlidingTextTabStrip.addTextTab(TAB_STORIES, LocaleController.getString("ProfileStories", R.string.ProfileStories), idToView);
+                        scrollSlidingTextTabStrip.addTextTab(TAB_STORIES, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PROFILESTORIES, R.string.ProfileStories), idToView);
                     }
                     if (isStoriesView()) {
                         if (!scrollSlidingTextTabStrip.hasTab(TAB_ARCHIVED_STORIES)) {
-                            scrollSlidingTextTabStrip.addTextTab(TAB_ARCHIVED_STORIES, LocaleController.getString("ProfileStories", R.string.ProfileStories), idToView);
+                            scrollSlidingTextTabStrip.addTextTab(TAB_ARCHIVED_STORIES, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PROFILESTORIES, R.string.ProfileStories), idToView);
                         }
                         scrollSlidingTextTabStrip.animationDuration = 420;
                     }
@@ -5619,70 +5619,70 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
             if (!isStoriesView()) {
                 if (hasSavedDialogs) {
                     if (!scrollSlidingTextTabStrip.hasTab(TAB_SAVED_DIALOGS)) {
-                        scrollSlidingTextTabStrip.addTextTab(TAB_SAVED_DIALOGS, LocaleController.getString(R.string.SavedDialogsTab), idToView);
+                        scrollSlidingTextTabStrip.addTextTab(TAB_SAVED_DIALOGS, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDDIALOGSTAB, R.string.SavedDialogsTab), idToView);
                     }
                 }
                 if (chatUsersAdapter.chatInfo != null) {
                     if (!scrollSlidingTextTabStrip.hasTab(TAB_GROUPUSERS)) {
-                        scrollSlidingTextTabStrip.addTextTab(TAB_GROUPUSERS, LocaleController.getString("GroupMembers", R.string.GroupMembers), idToView);
+                        scrollSlidingTextTabStrip.addTextTab(TAB_GROUPUSERS, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GROUPMEMBERS, R.string.GroupMembers), idToView);
                     }
                 }
                 if (hasMedia[0] > 0) {
                     if (!scrollSlidingTextTabStrip.hasTab(TAB_PHOTOVIDEO)) {
                         if (hasMedia[1] == 0 && hasMedia[2] == 0 && hasMedia[3] == 0 && hasMedia[4] == 0 && hasMedia[5] == 0 && hasMedia[6] == 0 && chatUsersAdapter.chatInfo == null) {
-                            scrollSlidingTextTabStrip.addTextTab(TAB_PHOTOVIDEO, LocaleController.getString("SharedMediaTabFull2", R.string.SharedMediaTabFull2), idToView);
+                            scrollSlidingTextTabStrip.addTextTab(TAB_PHOTOVIDEO, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREDMEDIATABFULL2, R.string.SharedMediaTabFull2), idToView);
                         } else {
-                            scrollSlidingTextTabStrip.addTextTab(TAB_PHOTOVIDEO, LocaleController.getString("SharedMediaTab2", R.string.SharedMediaTab2), idToView);
+                            scrollSlidingTextTabStrip.addTextTab(TAB_PHOTOVIDEO, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREDMEDIATAB2, R.string.SharedMediaTab2), idToView);
                         }
                     }
                 }
                 if (hasSavedMessages) {
                     if (!scrollSlidingTextTabStrip.hasTab(TAB_SAVED_MESSAGES)) {
-                        scrollSlidingTextTabStrip.addTextTab(TAB_SAVED_MESSAGES, LocaleController.getString(R.string.SavedMessagesTab2), idToView);
+                        scrollSlidingTextTabStrip.addTextTab(TAB_SAVED_MESSAGES, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGESTAB2, R.string.SavedMessagesTab2), idToView);
                     }
                     MessagesController.getGlobalMainSettings().edit().putInt("savedhint", 3).apply();
                 }
                 if (hasMedia[1] > 0) {
                     if (!scrollSlidingTextTabStrip.hasTab(TAB_FILES)) {
-                        scrollSlidingTextTabStrip.addTextTab(TAB_FILES, LocaleController.getString("SharedFilesTab2", R.string.SharedFilesTab2), idToView);
+                        scrollSlidingTextTabStrip.addTextTab(TAB_FILES, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREDFILESTAB2, R.string.SharedFilesTab2), idToView);
                     }
                 }
                 if (!DialogObject.isEncryptedDialog(dialog_id)) {
                     if (hasMedia[3] > 0) {
                         if (!scrollSlidingTextTabStrip.hasTab(TAB_LINKS)) {
-                            scrollSlidingTextTabStrip.addTextTab(TAB_LINKS, LocaleController.getString("SharedLinksTab2", R.string.SharedLinksTab2), idToView);
+                            scrollSlidingTextTabStrip.addTextTab(TAB_LINKS, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREDLINKSTAB2, R.string.SharedLinksTab2), idToView);
                         }
                     }
                     if (hasMedia[4] > 0) {
                         if (!scrollSlidingTextTabStrip.hasTab(TAB_AUDIO)) {
-                            scrollSlidingTextTabStrip.addTextTab(TAB_AUDIO, LocaleController.getString("SharedMusicTab2", R.string.SharedMusicTab2), idToView);
+                            scrollSlidingTextTabStrip.addTextTab(TAB_AUDIO, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREDMUSICTAB2, R.string.SharedMusicTab2), idToView);
                         }
                     }
                 } else {
                     if (hasMedia[4] > 0) {
                         if (!scrollSlidingTextTabStrip.hasTab(TAB_AUDIO)) {
-                            scrollSlidingTextTabStrip.addTextTab(TAB_AUDIO, LocaleController.getString("SharedMusicTab2", R.string.SharedMusicTab2), idToView);
+                            scrollSlidingTextTabStrip.addTextTab(TAB_AUDIO, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREDMUSICTAB2, R.string.SharedMusicTab2), idToView);
                         }
                     }
                 }
                 if (hasMedia[2] > 0) {
                     if (!scrollSlidingTextTabStrip.hasTab(TAB_VOICE)) {
-                        scrollSlidingTextTabStrip.addTextTab(TAB_VOICE, LocaleController.getString("SharedVoiceTab2", R.string.SharedVoiceTab2), idToView);
+                        scrollSlidingTextTabStrip.addTextTab(TAB_VOICE, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREDVOICETAB2, R.string.SharedVoiceTab2), idToView);
                     }
                 }
                 if (hasMedia[5] > 0) {
                     if (!scrollSlidingTextTabStrip.hasTab(TAB_GIF)) {
-                        scrollSlidingTextTabStrip.addTextTab(TAB_GIF, LocaleController.getString("SharedGIFsTab2", R.string.SharedGIFsTab2), idToView);
+                        scrollSlidingTextTabStrip.addTextTab(TAB_GIF, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREDGIFSTAB2, R.string.SharedGIFsTab2), idToView);
                     }
                 }
                 if (hasMedia[6] > 0) {
                     if (!scrollSlidingTextTabStrip.hasTab(TAB_COMMON_GROUPS)) {
-                        scrollSlidingTextTabStrip.addTextTab(TAB_COMMON_GROUPS, LocaleController.getString("SharedGroupsTab2", R.string.SharedGroupsTab2), idToView);
+                        scrollSlidingTextTabStrip.addTextTab(TAB_COMMON_GROUPS, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREDGROUPSTAB2, R.string.SharedGroupsTab2), idToView);
                     }
                 }
                 if (hasRecommendations) {
                     if (!scrollSlidingTextTabStrip.hasTab(TAB_RECOMMENDED_CHANNELS)) {
-                        scrollSlidingTextTabStrip.addTextTab(TAB_RECOMMENDED_CHANNELS, LocaleController.getString(R.string.SimilarChannelsTab), idToView);
+                        scrollSlidingTextTabStrip.addTextTab(TAB_RECOMMENDED_CHANNELS, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SIMILARCHANNELSTAB, R.string.SimilarChannelsTab), idToView);
                     }
                 }
             }
@@ -6012,16 +6012,16 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
             }
             if (mediaPages[a].selectedType == TAB_STORIES) {
                 mediaPages[a].emptyView.setStickerType(StickerEmptyView.STICKER_TYPE_ALBUM);
-                mediaPages[a].emptyView.title.setText(isStoriesView() ? LocaleController.getString(R.string.NoPublicStoriesTitle) : LocaleController.getString(R.string.NoStoriesTitle));
-                mediaPages[a].emptyView.subtitle.setText(isStoriesView() ? LocaleController.getString("NoStoriesSubtitle") : "");
+                mediaPages[a].emptyView.title.setText(isStoriesView() ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOPUBLICSTORIESTITLE, R.string.NoPublicStoriesTitle) : LocaleController.getString(R.string.NoStoriesTitle));
+                mediaPages[a].emptyView.subtitle.setText(isStoriesView() ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSTORIESSUBTITLE) : "");
             } else if (mediaPages[a].selectedType == TAB_ARCHIVED_STORIES) {
                 mediaPages[a].emptyView.setStickerType(StickerEmptyView.STICKER_TYPE_ALBUM);
-                mediaPages[a].emptyView.title.setText(LocaleController.getString("NoArchivedStoriesTitle"));
-                mediaPages[a].emptyView.subtitle.setText(isStoriesView() ? LocaleController.getString("NoArchivedStoriesSubtitle") : "");
+                mediaPages[a].emptyView.title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOARCHIVEDSTORIESTITLE));
+                mediaPages[a].emptyView.subtitle.setText(isStoriesView() ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOARCHIVEDSTORIESSUBTITLE) : "");
             } else {
                 mediaPages[a].emptyView.setStickerType(StickerEmptyView.STICKER_TYPE_SEARCH);
-                mediaPages[a].emptyView.title.setText(LocaleController.getString("NoResult", R.string.NoResult));
-                mediaPages[a].emptyView.subtitle.setText(LocaleController.getString("SearchEmptyViewFilteredSubtitle2", R.string.SearchEmptyViewFilteredSubtitle2));
+                mediaPages[a].emptyView.title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NORESULT, R.string.NoResult));
+                mediaPages[a].emptyView.subtitle.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEARCHEMPTYVIEWFILTEREDSUBTITLE2, R.string.SearchEmptyViewFilteredSubtitle2));
             }
             mediaPages[a].listView.setVisibility(View.VISIBLE);
         }
@@ -6288,7 +6288,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
             if (longPress) {
                 BottomSheet.Builder builder = new BottomSheet.Builder(profileActivity.getParentActivity());
                 builder.setTitle(urlFinal);
-                builder.setItems(new CharSequence[]{LocaleController.getString("Open", R.string.Open), LocaleController.getString("Copy", R.string.Copy)}, (dialog, which) -> {
+                builder.setItems(new CharSequence[]{LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPEN, R.string.Open), LocaleController.getString("Copy", R.string.Copy)}, (dialog, which) -> {
                     if (which == 0) {
                         openUrl(urlFinal);
                     } else if (which == 1) {
@@ -6670,43 +6670,43 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
         EmptyStubView emptyStubView = new EmptyStubView(context, resourcesProvider);
         if (currentType == 0) {
             if (DialogObject.isEncryptedDialog(dialog_id)) {
-                emptyStubView.emptyTextView.setText(LocaleController.getString("NoMediaSecret", R.string.NoMediaSecret));
+                emptyStubView.emptyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOMEDIASECRET, R.string.NoMediaSecret));
             } else {
-                emptyStubView.emptyTextView.setText(LocaleController.getString("NoMedia", R.string.NoMedia));
+                emptyStubView.emptyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOMEDIA, R.string.NoMedia));
             }
         } else if (currentType == 1) {
             if (DialogObject.isEncryptedDialog(dialog_id)) {
-                emptyStubView.emptyTextView.setText(LocaleController.getString("NoSharedFilesSecret", R.string.NoSharedFilesSecret));
+                emptyStubView.emptyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSHAREDFILESSECRET, R.string.NoSharedFilesSecret));
             } else {
-                emptyStubView.emptyTextView.setText(LocaleController.getString("NoSharedFiles", R.string.NoSharedFiles));
+                emptyStubView.emptyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSHAREDFILES, R.string.NoSharedFiles));
             }
         } else if (currentType == 2) {
             if (DialogObject.isEncryptedDialog(dialog_id)) {
-                emptyStubView.emptyTextView.setText(LocaleController.getString("NoSharedVoiceSecret", R.string.NoSharedVoiceSecret));
+                emptyStubView.emptyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSHAREDVOICESECRET, R.string.NoSharedVoiceSecret));
             } else {
-                emptyStubView.emptyTextView.setText(LocaleController.getString("NoSharedVoice", R.string.NoSharedVoice));
+                emptyStubView.emptyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSHAREDVOICE, R.string.NoSharedVoice));
             }
         } else if (currentType == 3) {
             if (DialogObject.isEncryptedDialog(dialog_id)) {
-                emptyStubView.emptyTextView.setText(LocaleController.getString("NoSharedLinksSecret", R.string.NoSharedLinksSecret));
+                emptyStubView.emptyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSHAREDLINKSSECRET, R.string.NoSharedLinksSecret));
             } else {
-                emptyStubView.emptyTextView.setText(LocaleController.getString("NoSharedLinks", R.string.NoSharedLinks));
+                emptyStubView.emptyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSHAREDLINKS, R.string.NoSharedLinks));
             }
         } else if (currentType == 4) {
             if (DialogObject.isEncryptedDialog(dialog_id)) {
-                emptyStubView.emptyTextView.setText(LocaleController.getString("NoSharedAudioSecret", R.string.NoSharedAudioSecret));
+                emptyStubView.emptyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSHAREDAUDIOSECRET, R.string.NoSharedAudioSecret));
             } else {
-                emptyStubView.emptyTextView.setText(LocaleController.getString("NoSharedAudio", R.string.NoSharedAudio));
+                emptyStubView.emptyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSHAREDAUDIO, R.string.NoSharedAudio));
             }
         } else if (currentType == 5) {
             if (DialogObject.isEncryptedDialog(dialog_id)) {
-                emptyStubView.emptyTextView.setText(LocaleController.getString("NoSharedGifSecret", R.string.NoSharedGifSecret));
+                emptyStubView.emptyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOSHAREDGIFSECRET, R.string.NoSharedGifSecret));
             } else {
-                emptyStubView.emptyTextView.setText(LocaleController.getString("NoGIFs", R.string.NoGIFs));
+                emptyStubView.emptyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOGIFS, R.string.NoGIFs));
             }
         } else if (currentType == 6) {
             emptyStubView.emptyImageView.setImageDrawable(null);
-            emptyStubView.emptyTextView.setText(LocaleController.getString("NoGroupsInCommon", R.string.NoGroupsInCommon));
+            emptyStubView.emptyTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOGROUPSINCOMMON, R.string.NoGroupsInCommon));
         } else if (currentType == 7) {
             emptyStubView.emptyImageView.setImageDrawable(null);
             emptyStubView.emptyTextView.setText("");
@@ -7316,7 +7316,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
                 for (int a = 0; a < mediaPages.length; a++) {
                     if (mediaPages[a].selectedType == currentType) {
                         if (searchesInProgress == 0 && count == 0) {
-                            mediaPages[a].emptyView.title.setText(LocaleController.getString("NoResult", R.string.NoResult));
+                            mediaPages[a].emptyView.title.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NORESULT, R.string.NoResult));
                             mediaPages[a].emptyView.showProgress(false, true);
                         } else if (oldItemCount == 0) {
                             animateItemsEnter(mediaPages[a].listView, 0, null);
@@ -7909,7 +7909,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
                 for (int a = 0; a < mediaPages.length; a++) {
                     if (mediaPages[a].selectedType == TAB_SAVED_DIALOGS) {
                         if (messages.isEmpty() && dialogs.isEmpty()) {
-                            mediaPages[a].emptyView.title.setText(lastReaction != null && TextUtils.isEmpty(lastQuery) ? AndroidUtilities.replaceCharSequence("%s", LocaleController.getString(R.string.NoResultFoundForTag), lastReaction.toCharSequence(mediaPages[a].emptyView.title.getPaint().getFontMetricsInt())) : LocaleController.formatString(R.string.NoResultFoundFor, lastQuery));
+                            mediaPages[a].emptyView.title.setText(lastReaction != null && TextUtils.isEmpty(lastQuery) ? AndroidUtilities.replaceCharSequence("%s", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NORESULTFOUNDFORTAG, R.string.NoResultFoundForTag), lastReaction.toCharSequence(mediaPages[a].emptyView.title.getPaint().getFontMetricsInt())) : LocaleController.formatString(R.string.NoResultFoundFor, lastQuery));
                             mediaPages[a].emptyView.showProgress(false, true);
                         }
                     }
@@ -8058,7 +8058,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
             previewMenu.setBackgroundColor(getThemedColor(Theme.key_actionBarDefaultSubmenuBackground));
 
             ActionBarMenuSubItem openChannel = new ActionBarMenuSubItem(getContext(), false, false);
-            openChannel.setTextAndIcon(LocaleController.getString(R.string.OpenChannel2), R.drawable.msg_channel);
+            openChannel.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENCHANNEL2, R.string.OpenChannel2), R.drawable.msg_channel);
             openChannel.setMinimumWidth(160);
             openChannel.setOnClickListener(view -> {
                 if (profileActivity != null && profileActivity.getParentLayout() != null) {
@@ -8068,7 +8068,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
             previewMenu.addView(openChannel);
 
             ActionBarMenuSubItem joinChannel = new ActionBarMenuSubItem(getContext(), false, false);
-            joinChannel.setTextAndIcon(LocaleController.getString(R.string.ProfileJoinChannel), R.drawable.msg_addbot);
+            joinChannel.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PROFILEJOINCHANNEL, R.string.ProfileJoinChannel), R.drawable.msg_addbot);
             joinChannel.setMinimumWidth(160);
             joinChannel.setOnClickListener(view -> {
                 profileActivity.finishPreviewFragment();
@@ -8145,7 +8145,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
 
             button = new ButtonWithCounterView(context, resourcesProvider);
             SpannableStringBuilder buttonText = new SpannableStringBuilder();
-            buttonText.append(LocaleController.getString(R.string.MoreSimilarButton));
+            buttonText.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MORESIMILARBUTTON, R.string.MoreSimilarButton));
             buttonText.append(" ");
             SpannableString lock = new SpannableString("l");
             lock.setSpan(new ColoredImageSpan(R.drawable.msg_mini_lock2), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -8165,7 +8165,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             textView.setLinkTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText, resourcesProvider));
             textView.setLineSpacing(dp(3), 1f);
-            SpannableStringBuilder text = AndroidUtilities.premiumText(LocaleController.getString(R.string.MoreSimilarText), () -> {
+            SpannableStringBuilder text = AndroidUtilities.premiumText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MORESIMILARTEXT, R.string.MoreSimilarText), () -> {
                 if (onPremiumClick != null) {
                     onPremiumClick.run();
                 }
@@ -8595,18 +8595,18 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
                         role = channelParticipant.rank;
                     } else {
                         if (channelParticipant instanceof TLRPC.TL_channelParticipantCreator) {
-                            role = LocaleController.getString("ChannelCreator", R.string.ChannelCreator);
+                            role = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELCREATOR, R.string.ChannelCreator);
                         } else if (channelParticipant instanceof TLRPC.TL_channelParticipantAdmin) {
-                            role = LocaleController.getString("ChannelAdmin", R.string.ChannelAdmin);
+                            role = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELADMIN, R.string.ChannelAdmin);
                         } else {
                             role = null;
                         }
                     }
                 } else {
                     if (part instanceof TLRPC.TL_chatParticipantCreator) {
-                        role = LocaleController.getString("ChannelCreator", R.string.ChannelCreator);
+                        role = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELCREATOR, R.string.ChannelCreator);
                     } else if (part instanceof TLRPC.TL_chatParticipantAdmin) {
-                        role = LocaleController.getString("ChannelAdmin", R.string.ChannelAdmin);
+                        role = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELADMIN, R.string.ChannelAdmin);
                     } else {
                         role = null;
                     }

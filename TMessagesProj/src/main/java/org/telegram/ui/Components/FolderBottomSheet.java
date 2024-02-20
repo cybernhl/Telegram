@@ -139,14 +139,14 @@ public class FolderBottomSheet extends BottomSheetWithRecyclerListView {
 
         if (filter != null && filter.isMyChatlist()) {
             AlertDialog alertDialog = new AlertDialog.Builder(fragment.getContext())
-                .setTitle(LocaleController.getString("FilterDelete", R.string.FilterDelete))
-                .setMessage(LocaleController.getString("FilterDeleteAlertLinks", R.string.FilterDeleteAlertLinks))
-                .setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), (d, w) -> {
+                .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERDELETE, R.string.FilterDelete))
+                .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERDELETEALERTLINKS, R.string.FilterDeleteAlertLinks))
+                .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), (d, w) -> {
                     if (whenDone != null) {
                         whenDone.run(false);
                     }
                 })
-                .setPositiveButton(LocaleController.getString("Delete", R.string.Delete), (d, w) -> {
+                .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete), (d, w) -> {
                     showDeleteAlert.run();
                 })
                 .create();
@@ -610,9 +610,9 @@ public class FolderBottomSheet extends BottomSheetWithRecyclerListView {
                         } else {
                             TLRPC.Chat chat = getBaseFragment().getMessagesController().getChat(-did);
                             if (ChatObject.isChannelAndNotMegaGroup(chat)) {
-                                text = LocaleController.getString("FolderLinkAlreadySubscribed", R.string.FolderLinkAlreadySubscribed);
+                                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLDERLINKALREADYSUBSCRIBED, R.string.FolderLinkAlreadySubscribed);
                             } else {
-                                text = LocaleController.getString("FolderLinkAlreadyJoined", R.string.FolderLinkAlreadyJoined);
+                                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLDERLINKALREADYJOINED, R.string.FolderLinkAlreadyJoined);
                             }
                             array.add(chat);
                         }
@@ -641,13 +641,13 @@ public class FolderBottomSheet extends BottomSheetWithRecyclerListView {
         int count = selectedPeers.size();
         if (button != null) {
             if (deleting) {
-                button.setText(count > 0 ? LocaleController.getString("FolderLinkButtonRemoveChats", R.string.FolderLinkButtonRemoveChats) : LocaleController.getString("FolderLinkButtonRemove", R.string.FolderLinkButtonRemove), animated);
+                button.setText(count > 0 ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLDERLINKBUTTONREMOVECHATS, R.string.FolderLinkButtonRemoveChats) : LocaleController.getString("FolderLinkButtonRemove", R.string.FolderLinkButtonRemove), animated);
             } else if (peers == null || peers.isEmpty()) {
-                button.setText(LocaleController.getString("OK", R.string.OK), animated);
+                button.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), animated);
             } else if (invite instanceof TL_chatlists.TL_chatlists_chatlistInvite) {
                 button.setText(LocaleController.formatString("FolderLinkButtonAdd", R.string.FolderLinkButtonAdd, title), animated);
             } else {
-                button.setText(count > 0 ? LocaleController.formatPluralString("FolderLinkButtonJoinPlural", count) : LocaleController.getString("FolderLinkButtonNone", R.string.FolderLinkButtonNone), animated);
+                button.setText(count > 0 ? LocaleController.formatPluralString("FolderLinkButtonJoinPlural", count) : LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLDERLINKBUTTONNONE, R.string.FolderLinkButtonNone), animated);
             }
             button.setCount(count, animated);
             if (invite instanceof TL_chatlists.TL_chatlists_chatlistInvite) {
@@ -905,13 +905,13 @@ public class FolderBottomSheet extends BottomSheetWithRecyclerListView {
     @Override
     protected CharSequence getTitle() {
         if (deleting) {
-            return LocaleController.getString("FolderLinkTitleRemove", R.string.FolderLinkTitleRemove);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLDERLINKTITLEREMOVE, R.string.FolderLinkTitleRemove);
         } else if (invite instanceof TL_chatlists.TL_chatlists_chatlistInvite) {
-            return LocaleController.getString("FolderLinkTitleAdd", R.string.FolderLinkTitleAdd);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLDERLINKTITLEADD, R.string.FolderLinkTitleAdd);
         } else if (peers == null || peers.isEmpty()) {
-            return LocaleController.getString("FolderLinkTitleAlready", R.string.FolderLinkTitleAlready);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLDERLINKTITLEALREADY, R.string.FolderLinkTitleAlready);
         } else {
-            return LocaleController.getString("FolderLinkTitleAddChats", R.string.FolderLinkTitleAddChats);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLDERLINKTITLEADDCHATS, R.string.FolderLinkTitleAddChats);
         }
     }
 
@@ -972,9 +972,9 @@ public class FolderBottomSheet extends BottomSheetWithRecyclerListView {
                             object = user;
                             name = UserObject.getUserName(user);
                             if (user != null && user.bot) {
-                                status = LocaleController.getString("FilterInviteBot", R.string.FilterInviteBot);
+                                status = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEBOT, R.string.FilterInviteBot);
                             } else {
-                                status = LocaleController.getString("FilterInviteUser", R.string.FilterInviteUser);
+                                status = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERINVITEUSER, R.string.FilterInviteUser);
                             }
                         } else if (peer instanceof TLRPC.TL_peerChat) {
                             did = -peer.chat_id;
@@ -995,9 +995,9 @@ public class FolderBottomSheet extends BottomSheetWithRecyclerListView {
                             }
                         } else {
                             if (ChatObject.isChannelAndNotMegaGroup(chat)) {
-                                status = LocaleController.getString("ChannelPublic", R.string.ChannelPublic);
+                                status = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPUBLIC, R.string.ChannelPublic);
                             } else {
-                                status = LocaleController.getString("MegaPublic", R.string.MegaPublic);
+                                status = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEGAPUBLIC, R.string.MegaPublic);
                             }
                         }
                     }
@@ -1008,7 +1008,7 @@ public class FolderBottomSheet extends BottomSheetWithRecyclerListView {
                 } else if (viewType == VIEW_TYPE_HEADER) {
                     HeaderCell headerCell = (HeaderCell) holder.itemView;
                     if (position == alreadyHeaderRow) {
-                        headerCell.setText(LocaleController.getString("FolderLinkHeaderAlready", R.string.FolderLinkHeaderAlready), false);
+                        headerCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLDERLINKHEADERALREADY, R.string.FolderLinkHeaderAlready), false);
                         headerCell.setAction("", null);
                     } else {
                         FolderBottomSheet.this.headerCell = headerCell;
@@ -1023,9 +1023,9 @@ public class FolderBottomSheet extends BottomSheetWithRecyclerListView {
                     } else {
                         hintCell.setFixedSize(0);
                         if (deleting) {
-                            hintCell.setText(LocaleController.getString("FolderLinkHintRemove", R.string.FolderLinkHintRemove));
+                            hintCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLDERLINKHINTREMOVE, R.string.FolderLinkHintRemove));
                         } else {
-                            hintCell.setText(LocaleController.getString("FolderLinkHint", R.string.FolderLinkHint));
+                            hintCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLDERLINKHINT, R.string.FolderLinkHint));
                         }
                     }
                 } else if (viewType == VIEW_TYPE_TITLE) {
@@ -1057,7 +1057,7 @@ public class FolderBottomSheet extends BottomSheetWithRecyclerListView {
         if (filter == null)
             return null;
         if (filter.isDefault())
-            return LocaleController.getString("FilterAllChats", R.string.FilterAllChats);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERALLCHATS, R.string.FilterAllChats);
         return filter.name;
     }
 
@@ -1127,8 +1127,8 @@ public class FolderBottomSheet extends BottomSheetWithRecyclerListView {
             this.title = title;
 
             String left2Folder = null,
-                   left1Folder = LocaleController.getString("FolderLinkPreviewLeft"),
-                   right1Folder = LocaleController.getString("FolderLinkPreviewRight"),
+                   left1Folder = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLDERLINKPREVIEWLEFT),
+                   right1Folder = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FOLDERLINKPREVIEWRIGHT),
                    right2Folder = null;
 //            try {
 //                ArrayList<MessagesController.DialogFilter> filters = MessagesController.getInstance(UserConfig.selectedAccount).dialogFilters;
@@ -1289,7 +1289,7 @@ public class FolderBottomSheet extends BottomSheetWithRecyclerListView {
 
             private StaticLayout makeLayout(CharSequence text, boolean selected) {
                 if (text == null || "ALL_CHATS".equals(text.toString())) {
-                    text = LocaleController.getString("FilterAllChats", R.string.FilterAllChats);
+                    text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FILTERALLCHATS, R.string.FilterAllChats);
                 }
                 return new StaticLayout(text, selected ? selectedTextPaint : paint, AndroidUtilities.displaySize.x, Layout.Alignment.ALIGN_NORMAL, 1f, 0, false);
             }
@@ -1420,7 +1420,7 @@ public class FolderBottomSheet extends BottomSheetWithRecyclerListView {
         if (peers != null && (peers.size() - alreadyJoined.size()) > 1) {
             final boolean deselect = selectedPeers.size() >= peers.size() - alreadyJoined.size();
             headerCell.setAction(
-                    deselect ? LocaleController.getString(R.string.DeselectAll) : LocaleController.getString(R.string.SelectAll), () -> deselectAll(headerCell, deselect)
+                    deselect ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DESELECTALL, R.string.DeselectAll) : LocaleController.getString(R.string.SelectAll), () -> deselectAll(headerCell, deselect)
             );
         } else {
             headerCell.setAction("", null);
@@ -1445,7 +1445,7 @@ public class FolderBottomSheet extends BottomSheetWithRecyclerListView {
             }
         }
         updateCount(true);
-        headerCell.setAction(deselect ? LocaleController.getString(R.string.SelectAll) : LocaleController.getString(R.string.DeselectAll), () -> deselectAll(headerCell, !deselect));
+        headerCell.setAction(deselect ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SELECTALL, R.string.SelectAll) : LocaleController.getString(R.string.DeselectAll), () -> deselectAll(headerCell, !deselect));
         announceSelection(true);
         for (int i = 0; i < recyclerListView.getChildCount(); ++i) {
             View child = recyclerListView.getChildAt(i);

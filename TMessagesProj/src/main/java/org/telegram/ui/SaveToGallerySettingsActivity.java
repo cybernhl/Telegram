@@ -132,17 +132,17 @@ public class SaveToGallerySettingsActivity extends BaseFragment {
         });
         if (dialogException != null) {
             if (isNewException) {
-                actionBar.setTitle(LocaleController.getString(R.string.NotificationsNewException));
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSNEWEXCEPTION, R.string.NotificationsNewException));
             } else {
-                actionBar.setTitle(LocaleController.getString(R.string.SaveToGalleryException));
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERYEXCEPTION, R.string.SaveToGalleryException));
             }
         } else {
             if (type == SAVE_TO_GALLERY_FLAG_PEER) {
-                actionBar.setTitle(LocaleController.getString(R.string.SaveToGalleryPrivate));
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERYPRIVATE, R.string.SaveToGalleryPrivate));
             } else if (type == SAVE_TO_GALLERY_FLAG_GROUP) {
-                actionBar.setTitle(LocaleController.getString(R.string.SaveToGalleryGroups));
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERYGROUPS, R.string.SaveToGalleryGroups));
             } else {
-                actionBar.setTitle(LocaleController.getString(R.string.SaveToGalleryChannels));
+                actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERYCHANNELS, R.string.SaveToGalleryChannels));
             }
         }
 
@@ -196,9 +196,9 @@ public class SaveToGallerySettingsActivity extends BaseFragment {
                 presentFragment(addExceptionActivity);
             } else if (items.get(position).viewType == VIEW_TYPE_DELETE_ALL) {
                 AlertDialog alertDialog = AlertsCreator.createSimpleAlert(getContext(),
-                        LocaleController.getString("NotificationsDeleteAllExceptionTitle", R.string.NotificationsDeleteAllExceptionTitle),
-                        LocaleController.getString("NotificationsDeleteAllExceptionAlert", R.string.NotificationsDeleteAllExceptionAlert),
-                        LocaleController.getString("Delete", R.string.Delete),
+                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSDELETEALLEXCEPTIONTITLE, R.string.NotificationsDeleteAllExceptionTitle),
+                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSDELETEALLEXCEPTIONALERT, R.string.NotificationsDeleteAllExceptionAlert),
+                        LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETE, R.string.Delete),
                         () -> {
                             exceptionsDialogs.clear();
                             getUserConfig().updateSaveGalleryExceptions(type, exceptionsDialogs);
@@ -213,8 +213,8 @@ public class SaveToGallerySettingsActivity extends BaseFragment {
 
                 SaveToGallerySettingsHelper.DialogException exception = items.get(position).exception;
                 ActionBarPopupWindow.ActionBarPopupWindowLayout actionBarPopupWindowLayout = new ActionBarPopupWindow.ActionBarPopupWindowLayout(getContext());
-                ActionBarMenuSubItem edit = ActionBarMenuItem.addItem(actionBarPopupWindowLayout, R.drawable.msg_customize, LocaleController.getString("EditException", R.string.EditException), false, null);
-                ActionBarMenuSubItem delete = ActionBarMenuItem.addItem(actionBarPopupWindowLayout, R.drawable.msg_delete, LocaleController.getString("DeleteException", R.string.DeleteException), false, null);
+                ActionBarMenuSubItem edit = ActionBarMenuItem.addItem(actionBarPopupWindowLayout, R.drawable.msg_customize, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDITEXCEPTION, R.string.EditException), false, null);
+                ActionBarMenuSubItem delete = ActionBarMenuItem.addItem(actionBarPopupWindowLayout, R.drawable.msg_delete, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DELETEEXCEPTION, R.string.DeleteException), false, null);
                 delete.setColors(Theme.getColor(Theme.key_text_RedRegular), Theme.getColor(Theme.key_text_RedRegular));
                 ActionBarPopupWindow popupWindow = AlertsCreator.createSimplePopup(SaveToGallerySettingsActivity.this, actionBarPopupWindowLayout, view, x, y);
                 actionBarPopupWindowLayout.setParentWindow(popupWindow);
@@ -249,7 +249,7 @@ public class SaveToGallerySettingsActivity extends BaseFragment {
 
             TextView textView = new TextView(getContext());
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-            textView.setText(isNewException ? LocaleController.getString("AddException", R.string.AddException) : LocaleController.getString("SaveException", R.string.SaveException));
+            textView.setText(isNewException ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ADDEXCEPTION, R.string.AddException) : LocaleController.getString("SaveException", R.string.SaveException));
             textView.setGravity(Gravity.CENTER);
             textView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
             textView.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));
@@ -283,25 +283,25 @@ public class SaveToGallerySettingsActivity extends BaseFragment {
             items.add(new Item(VIEW_TYPE_USER_INFO));
             items.add(new Item(VIEW_TYPE_DIVIDER));
         }
-        items.add(new Item(VIEW_TYPE_HEADER, LocaleController.getString("SaveToGallery", R.string.SaveToGallery)));
+        items.add(new Item(VIEW_TYPE_HEADER, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERY, R.string.SaveToGallery)));
         savePhotosRow = items.size();
         items.add(new Item(VIEW_TYPE_TOGGLE));
         saveVideosRow = items.size();
         items.add(new Item(VIEW_TYPE_TOGGLE));
         String text = null;
         if (dialogException != null) {
-            text = LocaleController.getString("SaveToGalleryHintCurrent", R.string.SaveToGalleryHintCurrent);
+            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERYHINTCURRENT, R.string.SaveToGalleryHintCurrent);
         } else if (type == SAVE_TO_GALLERY_FLAG_PEER) {
-            text = LocaleController.getString("SaveToGalleryHintUser", R.string.SaveToGalleryHintUser);
+            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERYHINTUSER, R.string.SaveToGalleryHintUser);
         } else if (type == SAVE_TO_GALLERY_FLAG_CHANNELS) {
-            text = LocaleController.getString("SaveToGalleryHintChannels", R.string.SaveToGalleryHintChannels);
+            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERYHINTCHANNELS, R.string.SaveToGalleryHintChannels);
         } else if (type == SAVE_TO_GALLERY_FLAG_GROUP) {
-            text = LocaleController.getString("SaveToGalleryHintGroup", R.string.SaveToGalleryHintGroup);
+            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERYHINTGROUP, R.string.SaveToGalleryHintGroup);
         }
         items.add(new Item(VIEW_TYPE_DIVIDER_INFO, text));
 
         if (getSettings().saveVideo) {
-            items.add(new Item(VIEW_TYPE_HEADER, LocaleController.getString("MaxVideoSize", R.string.MaxVideoSize)));
+            items.add(new Item(VIEW_TYPE_HEADER, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MAXVIDEOSIZE, R.string.MaxVideoSize)));
             items.add(new Item(VIEW_TYPE_CHOOSER));
             videoDividerRow = items.size();
             items.add(new Item(VIEW_TYPE_DIVIDER_INFO));
@@ -358,7 +358,7 @@ public class SaveToGallerySettingsActivity extends BaseFragment {
                     break;
                 case VIEW_TYPE_ADD_EXCEPTION:
                     TextCell textCell = new TextCell(parent.getContext());
-                    textCell.setTextAndIcon(LocaleController.getString("NotificationsAddAnException", R.string.NotificationsAddAnException), R.drawable.msg_contact_add, true);
+                    textCell.setTextAndIcon(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSADDANEXCEPTION, R.string.NotificationsAddAnException), R.drawable.msg_contact_add, true);
                     textCell.setColors(Theme.key_windowBackgroundWhiteBlueIcon, Theme.key_windowBackgroundWhiteBlueButton);
                     view = textCell;
                     view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
@@ -372,7 +372,7 @@ public class SaveToGallerySettingsActivity extends BaseFragment {
                     break;
                 case VIEW_TYPE_DELETE_ALL:
                     textCell = new TextCell(parent.getContext());
-                    textCell.setText(LocaleController.getString("NotificationsDeleteAllException", R.string.NotificationsDeleteAllException), false);
+                    textCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSDELETEALLEXCEPTION, R.string.NotificationsDeleteAllException), false);
                     textCell.setColors(-1, Theme.key_text_RedRegular);
                     view = textCell;
                     view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
@@ -502,10 +502,10 @@ public class SaveToGallerySettingsActivity extends BaseFragment {
                 TextCheckCell cell = (TextCheckCell) holder.itemView;
                 SaveToGallerySettingsHelper.Settings settings = getSettings();
                 if (position == savePhotosRow) {
-                    cell.setTextAndCheck(LocaleController.getString(R.string.SaveToGalleryPhotos), settings.savePhoto, true);
+                    cell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERYPHOTOS, R.string.SaveToGalleryPhotos), settings.savePhoto, true);
                     cell.setColorfullIcon(getThemedColor(Theme.key_statisticChartLine_lightblue), R.drawable.msg_filled_data_photos);
                 } else {
-                    cell.setTextAndCheck(LocaleController.getString(R.string.SaveToGalleryVideos), settings.saveVideo, false);
+                    cell.setTextAndCheck(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVETOGALLERYVIDEOS, R.string.SaveToGalleryVideos), settings.saveVideo, false);
                     cell.setColorfullIcon(getThemedColor(Theme.key_statisticChartLine_green), R.drawable.msg_filled_data_videos);
                 }
 
@@ -539,7 +539,7 @@ public class SaveToGallerySettingsActivity extends BaseFragment {
                 if (object instanceof TLRPC.User) {
                     TLRPC.User user = (TLRPC.User) object;
                     if (user.self) {
-                        title = LocaleController.getString("SavedMessages", R.string.SavedMessages);
+                        title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages);
                     } else {
                         title = ContactsController.formatName(user.first_name, user.last_name);
                     }

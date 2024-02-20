@@ -2009,9 +2009,9 @@ public class SecretChatHelper extends BaseController {
                                     FileLog.e(e);
                                 }
                                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                                builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                                builder.setMessage(LocaleController.getString("CreateEncryptedChatError", R.string.CreateEncryptedChatError));
-                                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+                                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
+                                builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CREATEENCRYPTEDCHATERROR, R.string.CreateEncryptedChatError));
+                                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), null);
                                 builder.show().setCanceledOnTouchOutside(true);
                             }
                         });

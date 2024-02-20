@@ -103,49 +103,49 @@ public class ChatObject {
     public static String getAllowedSendString(TLRPC.Chat chat) {
         StringBuilder stringBuilder = new StringBuilder();
         if (ChatObject.canSendPhoto(chat)) {
-            stringBuilder.append(LocaleController.getString("SendMediaPermissionPhotos", R.string.SendMediaPermissionPhotos));
+            stringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPERMISSIONPHOTOS, R.string.SendMediaPermissionPhotos));
         }
         if (ChatObject.canSendVideo(chat)) {
             if (stringBuilder.length() > 0) {
                 stringBuilder.append(", ");
             }
-            stringBuilder.append(LocaleController.getString("SendMediaPermissionVideos", R.string.SendMediaPermissionVideos));
+            stringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPERMISSIONVIDEOS, R.string.SendMediaPermissionVideos));
         }
         if (ChatObject.canSendStickers(chat)) {
             if (stringBuilder.length() > 0) {
                 stringBuilder.append(", ");
             }
-            stringBuilder.append(LocaleController.getString("SendMediaPermissionStickersGifs", R.string.SendMediaPermissionStickersGifs));
+            stringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPERMISSIONSTICKERSGIFS, R.string.SendMediaPermissionStickersGifs));
         }
         if (ChatObject.canSendMusic(chat)) {
             if (stringBuilder.length() > 0) {
                 stringBuilder.append(", ");
             }
-            stringBuilder.append(LocaleController.getString("SendMediaPermissionMusic", R.string.SendMediaPermissionMusic));
+            stringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPERMISSIONMUSIC, R.string.SendMediaPermissionMusic));
         }
         if (ChatObject.canSendDocument(chat)) {
             if (stringBuilder.length() > 0) {
                 stringBuilder.append(", ");
             }
-            stringBuilder.append(LocaleController.getString("SendMediaPermissionFiles", R.string.SendMediaPermissionFiles));
+            stringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPERMISSIONFILES, R.string.SendMediaPermissionFiles));
         }
         if (ChatObject.canSendVoice(chat)) {
             if (stringBuilder.length() > 0) {
                 stringBuilder.append(", ");
             }
-            stringBuilder.append(LocaleController.getString("SendMediaPermissionVoice", R.string.SendMediaPermissionVoice));
+            stringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPERMISSIONVOICE, R.string.SendMediaPermissionVoice));
         }
         if (ChatObject.canSendRoundVideo(chat)) {
             if (stringBuilder.length() > 0) {
                 stringBuilder.append(", ");
             }
-            stringBuilder.append(LocaleController.getString("SendMediaPermissionRound", R.string.SendMediaPermissionRound));
+            stringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAPERMISSIONROUND, R.string.SendMediaPermissionRound));
         }
         if (ChatObject.canSendEmbed(chat)) {
             if (stringBuilder.length() > 0) {
                 stringBuilder.append(", ");
             }
-            stringBuilder.append(LocaleController.getString("SendMediaEmbededLinks", R.string.SendMediaEmbededLinks));
+            stringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMEDIAEMBEDEDLINKS, R.string.SendMediaEmbededLinks));
         }
 
         return stringBuilder.toString();
@@ -1960,7 +1960,7 @@ public class ChatObject {
     public static String getRestrictedErrorText(TLRPC.Chat chat, int action) {
         if (action == ACTION_SEND_GIFS) {
             if (chat == null || ChatObject.isActionBannedByDefault(chat, action)) {
-                return LocaleController.getString("GlobalAttachGifRestricted", R.string.GlobalAttachGifRestricted);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHGIFRESTRICTED, R.string.GlobalAttachGifRestricted);
             } else if (AndroidUtilities.isBannedForever(chat.banned_rights)) {
                 return LocaleController.formatString("AttachGifRestrictedForever", R.string.AttachGifRestrictedForever);
             } else {
@@ -1968,7 +1968,7 @@ public class ChatObject {
             }
         } else if (action == ACTION_SEND_STICKERS) {
             if (chat == null || ChatObject.isActionBannedByDefault(chat, action)) {
-                return LocaleController.getString("GlobalAttachStickersRestricted", R.string.GlobalAttachStickersRestricted);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHSTICKERSRESTRICTED, R.string.GlobalAttachStickersRestricted);
             } else if (AndroidUtilities.isBannedForever(chat.banned_rights)) {
                 return LocaleController.formatString("AttachStickersRestrictedForever", R.string.AttachStickersRestrictedForever);
             } else {
@@ -1976,7 +1976,7 @@ public class ChatObject {
             }
         } else if (action == ACTION_SEND_PHOTO) {
             if (chat == null || ChatObject.isActionBannedByDefault(chat, action)) {
-                return LocaleController.getString("GlobalAttachPhotoRestricted", R.string.GlobalAttachPhotoRestricted);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHPHOTORESTRICTED, R.string.GlobalAttachPhotoRestricted);
             } else if (AndroidUtilities.isBannedForever(chat.banned_rights)) {
                 return LocaleController.formatString("AttachPhotoRestrictedForever", R.string.AttachPhotoRestrictedForever);
             } else {
@@ -1984,7 +1984,7 @@ public class ChatObject {
             }
         } else if (action == ACTION_SEND_VIDEO) {
             if (chat == null || ChatObject.isActionBannedByDefault(chat, action)) {
-                return LocaleController.getString("GlobalAttachVideoRestricted", R.string.GlobalAttachVideoRestricted);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHVIDEORESTRICTED, R.string.GlobalAttachVideoRestricted);
             } else if (AndroidUtilities.isBannedForever(chat.banned_rights)) {
                 return LocaleController.formatString("AttachVideoRestrictedForever", R.string.AttachVideoRestrictedForever);
             } else {
@@ -1992,7 +1992,7 @@ public class ChatObject {
             }
         } else if (action == ACTION_SEND_DOCUMENTS) {
             if (chat == null || ChatObject.isActionBannedByDefault(chat, action)) {
-                return LocaleController.getString("GlobalAttachDocumentsRestricted", R.string.GlobalAttachDocumentsRestricted);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHDOCUMENTSRESTRICTED, R.string.GlobalAttachDocumentsRestricted);
             } else if (AndroidUtilities.isBannedForever(chat.banned_rights)) {
                 return LocaleController.formatString("AttachDocumentsRestrictedForever", R.string.AttachDocumentsRestrictedForever);
             } else {
@@ -2000,7 +2000,7 @@ public class ChatObject {
             }
         } else if (action == ACTION_SEND_MEDIA) {
             if (chat == null || ChatObject.isActionBannedByDefault(chat, action)) {
-                return LocaleController.getString("GlobalAttachMediaRestricted", R.string.GlobalAttachMediaRestricted);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHMEDIARESTRICTED, R.string.GlobalAttachMediaRestricted);
             } else if (AndroidUtilities.isBannedForever(chat.banned_rights)) {
                 return LocaleController.formatString("AttachMediaRestrictedForever", R.string.AttachMediaRestrictedForever);
             } else {
@@ -2008,7 +2008,7 @@ public class ChatObject {
             }
         } else if (action == ACTION_SEND_MUSIC) {
             if (chat == null || ChatObject.isActionBannedByDefault(chat, action)) {
-                return LocaleController.getString("GlobalAttachAudioRestricted", R.string.GlobalAttachAudioRestricted);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHAUDIORESTRICTED, R.string.GlobalAttachAudioRestricted);
             } else if (AndroidUtilities.isBannedForever(chat.banned_rights)) {
                 return LocaleController.formatString("AttachAudioRestrictedForever", R.string.AttachAudioRestrictedForever);
             } else {
@@ -2016,7 +2016,7 @@ public class ChatObject {
             }
         } else if (action == ACTION_SEND_PLAIN) {
             if (chat == null || ChatObject.isActionBannedByDefault(chat, action)) {
-                return LocaleController.getString("GlobalAttachPlainRestricted", R.string.GlobalAttachPlainRestricted);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHPLAINRESTRICTED, R.string.GlobalAttachPlainRestricted);
             } else if (AndroidUtilities.isBannedForever(chat.banned_rights)) {
                 return LocaleController.formatString("AttachPlainRestrictedForever", R.string.AttachPlainRestrictedForever);
             } else {
@@ -2024,7 +2024,7 @@ public class ChatObject {
             }
         } else if (action == ACTION_SEND_ROUND) {
             if (chat == null || ChatObject.isActionBannedByDefault(chat, action)) {
-                return LocaleController.getString("GlobalAttachRoundRestricted", R.string.GlobalAttachRoundRestricted);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHROUNDRESTRICTED, R.string.GlobalAttachRoundRestricted);
             } else if (AndroidUtilities.isBannedForever(chat.banned_rights)) {
                 return LocaleController.formatString("AttachRoundRestrictedForever", R.string.AttachRoundRestrictedForever);
             } else {
@@ -2032,7 +2032,7 @@ public class ChatObject {
             }
         } else if (action == ACTION_SEND_VOICE) {
             if (chat == null || ChatObject.isActionBannedByDefault(chat, action)) {
-                return LocaleController.getString("GlobalAttachVoiceRestricted", R.string.GlobalAttachVoiceRestricted);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GLOBALATTACHVOICERESTRICTED, R.string.GlobalAttachVoiceRestricted);
             } else if (AndroidUtilities.isBannedForever(chat.banned_rights)) {
                 return LocaleController.formatString("AttachVoiceRestrictedForever", R.string.AttachVoiceRestrictedForever);
             } else {

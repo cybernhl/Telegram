@@ -52,43 +52,43 @@ public class StoriesPageView extends BaseListPageView {
         super(context, resourcesProvider);
         ArrayList<Item> itemsTmp = new ArrayList<>();
         itemsTmp.add(new Item(VIEW_TYPE_ITEM, R.drawable.msg_stories_order,
-                LocaleController.getString("PremiumStoriesPriority", R.string.PremiumStoriesPriority),
-                LocaleController.getString("PremiumStoriesPriorityDescription", R.string.PremiumStoriesPriorityDescription),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESPRIORITY, R.string.PremiumStoriesPriority),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESPRIORITYDESCRIPTION, R.string.PremiumStoriesPriorityDescription),
                 PremiumPreviewFragment.PREMIUM_FEATURE_STORIES_PRIORITY_ORDER
         ));
         itemsTmp.add(new Item(VIEW_TYPE_ITEM, R.drawable.msg_stories_stealth,
-                LocaleController.getString("PremiumStoriesStealth", R.string.PremiumStoriesStealth),
-                LocaleController.getString("PremiumStoriesStealthDescription", R.string.PremiumStoriesStealthDescription),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESSTEALTH, R.string.PremiumStoriesStealth),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESSTEALTHDESCRIPTION, R.string.PremiumStoriesStealthDescription),
                 PremiumPreviewFragment.PREMIUM_FEATURE_STORIES_STEALTH_MODE
         ));
         itemsTmp.add(new Item(VIEW_TYPE_ITEM, R.drawable.menu_quality_hd,
-                LocaleController.getString(R.string.PremiumStoriesQuality),
-                LocaleController.getString(R.string.PremiumStoriesQualityDescription),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESQUALITY, R.string.PremiumStoriesQuality),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESQUALITYDESCRIPTION, R.string.PremiumStoriesQualityDescription),
                 PremiumPreviewFragment.PREMIUM_FEATURE_STORIES_QUALITY
         ));
         itemsTmp.add(new Item(VIEW_TYPE_ITEM, R.drawable.msg_stories_views,
-                LocaleController.getString("PremiumStoriesViews", R.string.PremiumStoriesViews),
-                LocaleController.getString("PremiumStoriesViewsDescription", R.string.PremiumStoriesViewsDescription),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESVIEWS, R.string.PremiumStoriesViews),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESVIEWSDESCRIPTION, R.string.PremiumStoriesViewsDescription),
                 PremiumPreviewFragment.PREMIUM_FEATURE_STORIES_VIEWS_HISTORY
         ));
         itemsTmp.add(new Item(VIEW_TYPE_ITEM, R.drawable.msg_stories_timer,
-                LocaleController.getString("PremiumStoriesExpiration", R.string.PremiumStoriesExpiration),
-                LocaleController.getString("PremiumStoriesExpirationDescription", R.string.PremiumStoriesExpirationDescription),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESEXPIRATION, R.string.PremiumStoriesExpiration),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESEXPIRATIONDESCRIPTION, R.string.PremiumStoriesExpirationDescription),
                 PremiumPreviewFragment.PREMIUM_FEATURE_STORIES_EXPIRATION_DURATION
         ));
         itemsTmp.add(new Item(VIEW_TYPE_ITEM, R.drawable.msg_stories_save,
-                LocaleController.getString("PremiumStoriesSaveToGallery", R.string.PremiumStoriesSaveToGallery),
-                LocaleController.getString("PremiumStoriesSaveToGalleryDescription", R.string.PremiumStoriesSaveToGalleryDescription),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESSAVETOGALLERY, R.string.PremiumStoriesSaveToGallery),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESSAVETOGALLERYDESCRIPTION, R.string.PremiumStoriesSaveToGalleryDescription),
                 PremiumPreviewFragment.PREMIUM_FEATURE_STORIES_SAVE_TO_GALLERY
         ));
         itemsTmp.add(new Item(VIEW_TYPE_ITEM, R.drawable.msg_stories_caption,
-                LocaleController.getString("PremiumStoriesCaption", R.string.PremiumStoriesCaption),
-                LocaleController.getString("PremiumStoriesCaptionDescription", R.string.PremiumStoriesCaptionDescription),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESCAPTION, R.string.PremiumStoriesCaption),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESCAPTIONDESCRIPTION, R.string.PremiumStoriesCaptionDescription),
                 PremiumPreviewFragment.PREMIUM_FEATURE_STORIES_CAPTION
         ));
         itemsTmp.add(new Item(VIEW_TYPE_ITEM, R.drawable.msg_stories_link,
-                LocaleController.getString("PremiumStoriesFormatting", R.string.PremiumStoriesFormatting),
-                LocaleController.getString("PremiumStoriesFormattingDescription", R.string.PremiumStoriesFormattingDescription),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESFORMATTING, R.string.PremiumStoriesFormatting),
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSTORIESFORMATTINGDESCRIPTION, R.string.PremiumStoriesFormattingDescription),
                 PremiumPreviewFragment.PREMIUM_FEATURE_STORIES_LINKS_AND_FORMATTING
         ));
 
@@ -202,7 +202,7 @@ public class StoriesPageView extends BaseListPageView {
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             textView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
-            textView.setText(LocaleController.getString("UpgradedStories", R.string.UpgradedStories));
+            textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UPGRADEDSTORIES, R.string.UpgradedStories));
             addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 111, 0, 0));
 
             gradientTools.isLinear = true;

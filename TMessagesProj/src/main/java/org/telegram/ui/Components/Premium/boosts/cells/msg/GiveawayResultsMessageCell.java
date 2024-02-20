@@ -330,7 +330,7 @@ public class GiveawayResultsMessageCell {
             bottomStringBuilder.setSpan(new RelativeSizeSpan(1.05f), 0, bottomStringBuilder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             bottomStringBuilder.append("\n");
         }
-        bottomStringBuilder.append(LocaleController.getString("BoostingGiveawayResultsMsgAllWinnersReceivedLinks", R.string.BoostingGiveawayResultsMsgAllWinnersReceivedLinks));
+        bottomStringBuilder.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIVEAWAYRESULTSMSGALLWINNERSRECEIVEDLINKS, R.string.BoostingGiveawayResultsMsgAllWinnersReceivedLinks));
 
         titleLayout = StaticLayoutEx.createStaticLayout(titleStringBuilder, textPaint, maxWidth, Layout.Alignment.ALIGN_CENTER, 1.0f, AndroidUtilities.dp(2), false, TextUtils.TruncateAt.END, maxWidth, 10);
         topLayout = StaticLayoutEx.createStaticLayout(topStringBuilder, textPaint, maxWidth, Layout.Alignment.ALIGN_CENTER, 1.0f, AndroidUtilities.dp(2), false, TextUtils.TruncateAt.END, maxWidth, 10);

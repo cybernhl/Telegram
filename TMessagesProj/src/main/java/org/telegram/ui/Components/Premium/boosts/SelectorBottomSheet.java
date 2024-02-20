@@ -463,7 +463,7 @@ public class SelectorBottomSheet extends BottomSheetWithRecyclerListView {
                 text = LocaleController.formatPluralString("BoostingSelectUpToWarningChannelsPlural", (int) BoostRepository.giveawayAddPeersMax());
                 break;
             case TYPE_USER:
-                text = LocaleController.getString("BoostingSelectUpToWarningUsers", R.string.BoostingSelectUpToWarningUsers);
+                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGSELECTUPTOWARNINGUSERS, R.string.BoostingSelectUpToWarningUsers);
                 break;
             case TYPE_COUNTRY:
                 text = LocaleController.formatPluralString("BoostingSelectUpToWarningCountriesPlural", (int) BoostRepository.giveawayCountriesMax());
@@ -532,10 +532,10 @@ public class SelectorBottomSheet extends BottomSheetWithRecyclerListView {
         switch (type) {
             case TYPE_COUNTRY:
             case TYPE_CHANNEL:
-                text = LocaleController.getString("Save", R.string.Save);
+                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVE, R.string.Save);
                 break;
             case TYPE_USER:
-                text = LocaleController.getString("BoostingSaveRecipients", R.string.BoostingSaveRecipients);
+                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGSAVERECIPIENTS, R.string.BoostingSaveRecipients);
                 break;
             default:
                 text = "";
@@ -573,7 +573,7 @@ public class SelectorBottomSheet extends BottomSheetWithRecyclerListView {
 
     private void updateSectionCell(boolean animated) {
         if (selectedIds.size() > 0 && type != TYPE_COUNTRY) {
-            sectionCell.setRightText(LocaleController.getString(R.string.UsersDeselectAll), true, v -> {
+            sectionCell.setRightText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_USERSDESELECTALL, R.string.UsersDeselectAll), true, v -> {
                 selectedIds.clear();
                 searchField.spansContainer.removeAllSpans(true);
                 updateList(true, false);
@@ -671,11 +671,11 @@ public class SelectorBottomSheet extends BottomSheetWithRecyclerListView {
     protected CharSequence getTitle() {
         switch (type) {
             case TYPE_CHANNEL:
-                return LocaleController.getString("BoostingAddChannel", R.string.BoostingAddChannel);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGADDCHANNEL, R.string.BoostingAddChannel);
             case TYPE_USER:
-                return LocaleController.getString("GiftPremium", R.string.GiftPremium);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GIFTPREMIUM, R.string.GiftPremium);
             case TYPE_COUNTRY:
-                return LocaleController.getString("BoostingSelectCountry", R.string.BoostingSelectCountry);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGSELECTCOUNTRY, R.string.BoostingSelectCountry);
         }
         return "";
     }

@@ -85,7 +85,7 @@ public class LiteModeSettingsActivity extends BaseFragment {
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("PowerUsage", R.string.PowerUsage));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_POWERUSAGE, R.string.PowerUsage));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -116,7 +116,7 @@ public class LiteModeSettingsActivity extends BaseFragment {
 
             if (item.viewType == VIEW_TYPE_SWITCH || item.viewType == VIEW_TYPE_CHECKBOX) {
                 if (LiteMode.isPowerSaverApplied()) {
-                    restrictBulletin = BulletinFactory.of(this).createSimpleBulletin(new BatteryDrawable(.1f, Color.WHITE, Theme.getColor(Theme.key_dialogSwipeRemove), 1.3f), LocaleController.getString("LiteBatteryRestricted", R.string.LiteBatteryRestricted)).show();
+                    restrictBulletin = BulletinFactory.of(this).createSimpleBulletin(new BatteryDrawable(.1f, Color.WHITE, Theme.getColor(Theme.key_dialogSwipeRemove), 1.3f), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYRESTRICTED, R.string.LiteBatteryRestricted)).show();
                     return;
                 }
                 if (item.viewType == VIEW_TYPE_SWITCH && item.getFlagsCount() > 1 && (LocaleController.isRTL ? x > dp(19 + 37 + 19) : x < view.getMeasuredWidth() - dp(19 + 37 + 19))) {
@@ -228,47 +228,47 @@ public class LiteModeSettingsActivity extends BaseFragment {
             items.add(Item.asSlider());
             items.add(Item.asInfo(
                 LiteMode.getPowerSaverLevel() <= 0 ?
-                    LocaleController.getString(R.string.LiteBatteryInfoDisabled) :
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYINFODISABLED, R.string.LiteBatteryInfoDisabled) :
                 LiteMode.getPowerSaverLevel() >= 100 ?
-                    LocaleController.getString(R.string.LiteBatteryInfoEnabled) :
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYINFOENABLED, R.string.LiteBatteryInfoEnabled) :
                     LocaleController.formatString(R.string.LiteBatteryInfoBelow, String.format("%d%%", LiteMode.getPowerSaverLevel()))
             ));
         }
 
-        items.add(Item.asHeader(LocaleController.getString("LiteOptionsTitle")));
-        items.add(Item.asSwitch(R.drawable.msg2_sticker, LocaleController.getString("LiteOptionsStickers", R.string.LiteOptionsStickers), LiteMode.FLAGS_ANIMATED_STICKERS));
+        items.add(Item.asHeader(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSTITLE)));
+        items.add(Item.asSwitch(R.drawable.msg2_sticker, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSSTICKERS, R.string.LiteOptionsStickers), LiteMode.FLAGS_ANIMATED_STICKERS));
         if (expanded[0]) {
-            items.add(Item.asCheckbox(LocaleController.getString("LiteOptionsAutoplayKeyboard"), LiteMode.FLAG_ANIMATED_STICKERS_KEYBOARD));
-            items.add(Item.asCheckbox(LocaleController.getString("LiteOptionsAutoplayChat"), LiteMode.FLAG_ANIMATED_STICKERS_CHAT));
+            items.add(Item.asCheckbox(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSAUTOPLAYKEYBOARD), LiteMode.FLAG_ANIMATED_STICKERS_KEYBOARD));
+            items.add(Item.asCheckbox(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSAUTOPLAYCHAT), LiteMode.FLAG_ANIMATED_STICKERS_CHAT));
         }
-        items.add(Item.asSwitch(R.drawable.msg2_smile_status, LocaleController.getString("LiteOptionsEmoji", R.string.LiteOptionsEmoji), LiteMode.FLAGS_ANIMATED_EMOJI));
+        items.add(Item.asSwitch(R.drawable.msg2_smile_status, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSEMOJI, R.string.LiteOptionsEmoji), LiteMode.FLAGS_ANIMATED_EMOJI));
         if (expanded[1]) {
-            items.add(Item.asCheckbox(LocaleController.getString("LiteOptionsAutoplayKeyboard"), LiteMode.FLAG_ANIMATED_EMOJI_KEYBOARD));
-            items.add(Item.asCheckbox(LocaleController.getString("LiteOptionsAutoplayReactions"), LiteMode.FLAG_ANIMATED_EMOJI_REACTIONS));
-            items.add(Item.asCheckbox(LocaleController.getString("LiteOptionsAutoplayChat"), LiteMode.FLAG_ANIMATED_EMOJI_CHAT));
+            items.add(Item.asCheckbox(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSAUTOPLAYKEYBOARD), LiteMode.FLAG_ANIMATED_EMOJI_KEYBOARD));
+            items.add(Item.asCheckbox(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSAUTOPLAYREACTIONS), LiteMode.FLAG_ANIMATED_EMOJI_REACTIONS));
+            items.add(Item.asCheckbox(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSAUTOPLAYCHAT), LiteMode.FLAG_ANIMATED_EMOJI_CHAT));
         }
-        items.add(Item.asSwitch(R.drawable.msg2_ask_question, LocaleController.getString("LiteOptionsChat"), FLAGS_CHAT));
+        items.add(Item.asSwitch(R.drawable.msg2_ask_question, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSCHAT), FLAGS_CHAT));
         if (expanded[2]) {
-            items.add(Item.asCheckbox(LocaleController.getString("LiteOptionsBackground"), LiteMode.FLAG_CHAT_BACKGROUND));
+            items.add(Item.asCheckbox(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSBACKGROUND), LiteMode.FLAG_CHAT_BACKGROUND));
             if (!AndroidUtilities.isTablet()) {
-                items.add(Item.asCheckbox(LocaleController.getString("LiteOptionsTopics"), LiteMode.FLAG_CHAT_FORUM_TWOCOLUMN));
+                items.add(Item.asCheckbox(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSTOPICS), LiteMode.FLAG_CHAT_FORUM_TWOCOLUMN));
             }
-            items.add(Item.asCheckbox(LocaleController.getString("LiteOptionsSpoiler"), LiteMode.FLAG_CHAT_SPOILER));
+            items.add(Item.asCheckbox(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSSPOILER), LiteMode.FLAG_CHAT_SPOILER));
             if (SharedConfig.getDevicePerformanceClass() >= SharedConfig.PERFORMANCE_CLASS_AVERAGE) {
-                items.add(Item.asCheckbox(LocaleController.getString("LiteOptionsBlur"), LiteMode.FLAG_CHAT_BLUR));
+                items.add(Item.asCheckbox(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSBLUR), LiteMode.FLAG_CHAT_BLUR));
             }
-            items.add(Item.asCheckbox(LocaleController.getString("LiteOptionsScale"), LiteMode.FLAG_CHAT_SCALE));
+            items.add(Item.asCheckbox(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSSCALE), LiteMode.FLAG_CHAT_SCALE));
             if (ThanosEffect.supports()) {
-                items.add(Item.asCheckbox(LocaleController.getString("LiteOptionsThanos"), LiteMode.FLAG_CHAT_THANOS));
+                items.add(Item.asCheckbox(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSTHANOS), LiteMode.FLAG_CHAT_THANOS));
             }
         }
-        items.add(Item.asSwitch(R.drawable.msg2_call_earpiece, LocaleController.getString("LiteOptionsCalls"), LiteMode.FLAG_CALLS_ANIMATIONS));
-        items.add(Item.asSwitch(R.drawable.msg2_videocall, LocaleController.getString("LiteOptionsAutoplayVideo"), LiteMode.FLAG_AUTOPLAY_VIDEOS));
-        items.add(Item.asSwitch(R.drawable.msg2_gif, LocaleController.getString("LiteOptionsAutoplayGifs"), LiteMode.FLAG_AUTOPLAY_GIFS));
+        items.add(Item.asSwitch(R.drawable.msg2_call_earpiece, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSCALLS), LiteMode.FLAG_CALLS_ANIMATIONS));
+        items.add(Item.asSwitch(R.drawable.msg2_videocall, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSAUTOPLAYVIDEO), LiteMode.FLAG_AUTOPLAY_VIDEOS));
+        items.add(Item.asSwitch(R.drawable.msg2_gif, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEOPTIONSAUTOPLAYGIFS), LiteMode.FLAG_AUTOPLAY_GIFS));
         items.add(Item.asInfo(""));
 
-        items.add(Item.asSwitch(LocaleController.getString("LiteSmoothTransitions"), SWITCH_TYPE_SMOOTH_TRANSITIONS));
-        items.add(Item.asInfo(LocaleController.getString("LiteSmoothTransitionsInfo")));
+        items.add(Item.asSwitch(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITESMOOTHTRANSITIONS), SWITCH_TYPE_SMOOTH_TRANSITIONS));
+        items.add(Item.asInfo(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITESMOOTHTRANSITIONSINFO)));
 
         adapter.setItems(oldItems, items);
     }
@@ -283,9 +283,9 @@ public class LiteModeSettingsActivity extends BaseFragment {
         } else if (items.size() >= 2) {
             items.set(1, Item.asInfo(
                 LiteMode.getPowerSaverLevel() <= 0 ?
-                    LocaleController.getString(R.string.LiteBatteryInfoDisabled) :
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYINFODISABLED, R.string.LiteBatteryInfoDisabled) :
                 LiteMode.getPowerSaverLevel() >= 100 ?
-                    LocaleController.getString(R.string.LiteBatteryInfoEnabled) :
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYINFOENABLED, R.string.LiteBatteryInfoEnabled) :
                     LocaleController.formatString(R.string.LiteBatteryInfoBelow, String.format("%d%%", LiteMode.getPowerSaverLevel()))
             ));
             adapter.notifyItemChanged(1);
@@ -707,7 +707,7 @@ public class LiteModeSettingsActivity extends BaseFragment {
             headerTextView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
             headerTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueHeader));
             headerTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
-            headerTextView.setText(LocaleController.getString("LiteBatteryTitle"));
+            headerTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYTITLE));
             headerLayout.addView(headerTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL));
 
             headerOnView = new AnimatedTextView(context, true, false, false) {
@@ -765,7 +765,7 @@ public class LiteModeSettingsActivity extends BaseFragment {
             leftTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             leftTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             leftTextView.setGravity(Gravity.LEFT);
-            leftTextView.setText(LocaleController.getString("LiteBatteryDisabled", R.string.LiteBatteryDisabled));
+            leftTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYDISABLED, R.string.LiteBatteryDisabled));
             valuesView.addView(leftTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.CENTER_VERTICAL));
 
             middleTextView = new AnimatedTextView(context, false, true, true) {
@@ -797,7 +797,7 @@ public class LiteModeSettingsActivity extends BaseFragment {
             rightTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             rightTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             rightTextView.setGravity(Gravity.RIGHT);
-            rightTextView.setText(LocaleController.getString("LiteBatteryEnabled", R.string.LiteBatteryEnabled));
+            rightTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYENABLED, R.string.LiteBatteryEnabled));
             valuesView.addView(rightTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.RIGHT | Gravity.CENTER_VERTICAL));
 
             addView(valuesView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.FILL_HORIZONTAL, 21, 52, 21, 0));
@@ -835,12 +835,12 @@ public class LiteModeSettingsActivity extends BaseFragment {
                 public void onPopulateAccessibilityEvent(@NonNull View host, @NonNull AccessibilityEvent event) {
                     super.onPopulateAccessibilityEvent(host, event);
 
-                    StringBuilder sb = new StringBuilder(LocaleController.getString(R.string.LiteBatteryTitle)).append(", ");
+                    StringBuilder sb = new StringBuilder(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYTITLE, R.string.LiteBatteryTitle)).append(", ");
                     int percent = LiteMode.getPowerSaverLevel();
                     if (percent <= 0) {
-                        sb.append(LocaleController.getString(R.string.LiteBatteryAlwaysDisabled));
+                        sb.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYALWAYSDISABLED, R.string.LiteBatteryAlwaysDisabled));
                     } else if (percent >= 100) {
-                        sb.append(LocaleController.getString(R.string.LiteBatteryAlwaysEnabled));
+                        sb.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYALWAYSENABLED, R.string.LiteBatteryAlwaysEnabled));
                     } else {
                         sb.append(LocaleController.formatString(R.string.AccDescrLiteBatteryWhenBelow, Math.round(percent)));
                     }
@@ -877,15 +877,15 @@ public class LiteModeSettingsActivity extends BaseFragment {
 
             middleTextView.cancelAnimation();
             if (percent <= 0) {
-                middleTextView.setText(LocaleController.getString("LiteBatteryAlwaysDisabled", R.string.LiteBatteryAlwaysDisabled), !LocaleController.isRTL);
+                middleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYALWAYSDISABLED, R.string.LiteBatteryAlwaysDisabled), !LocaleController.isRTL);
             } else if (percent >= 100) {
-                middleTextView.setText(LocaleController.getString("LiteBatteryAlwaysEnabled", R.string.LiteBatteryAlwaysEnabled), !LocaleController.isRTL);
+                middleTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYALWAYSENABLED, R.string.LiteBatteryAlwaysEnabled), !LocaleController.isRTL);
             } else {
                 batteryIcon.setFillValue(percent / 100F, true);
-                middleTextView.setText(AndroidUtilities.replaceCharSequence("%s", LocaleController.getString("LiteBatteryWhenBelow", R.string.LiteBatteryWhenBelow), TextUtils.concat(String.format("%d%% ", Math.round(percent)), batteryText)), !LocaleController.isRTL);
+                middleTextView.setText(AndroidUtilities.replaceCharSequence("%s", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYWHENBELOW, R.string.LiteBatteryWhenBelow), TextUtils.concat(String.format("%d%% ", Math.round(percent)), batteryText)), !LocaleController.isRTL);
             }
 
-            headerOnView.setText((LiteMode.isPowerSaverApplied() ? LocaleController.getString("LiteBatteryEnabled", R.string.LiteBatteryEnabled) : LocaleController.getString("LiteBatteryDisabled", R.string.LiteBatteryDisabled)).toUpperCase());
+            headerOnView.setText((LiteMode.isPowerSaverApplied() ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LITEBATTERYENABLED, R.string.LiteBatteryEnabled) : LocaleController.getString("LiteBatteryDisabled", R.string.LiteBatteryDisabled)).toUpperCase());
             updateHeaderOnVisibility(percent > 0 && percent < 100);
 
             updateOnActive(percent >= 100);

@@ -58,12 +58,12 @@ public class SwipeGestureSettingsView extends FrameLayout {
     public SwipeGestureSettingsView(Context context, int currentAccount) {
         super(context);
 
-        strings[SWIPE_GESTURE_PIN] = LocaleController.getString("SwipeSettingsPin", R.string.SwipeSettingsPin);
-        strings[SWIPE_GESTURE_READ] = LocaleController.getString("SwipeSettingsRead", R.string.SwipeSettingsRead);
-        strings[SWIPE_GESTURE_ARCHIVE] = LocaleController.getString("SwipeSettingsArchive", R.string.SwipeSettingsArchive);
-        strings[SWIPE_GESTURE_MUTE] = LocaleController.getString("SwipeSettingsMute", R.string.SwipeSettingsMute);
-        strings[SWIPE_GESTURE_DELETE] = LocaleController.getString("SwipeSettingsDelete", R.string.SwipeSettingsDelete);
-        strings[SWIPE_GESTURE_FOLDERS] = LocaleController.getString("SwipeSettingsFolders", R.string.SwipeSettingsFolders);
+        strings[SWIPE_GESTURE_PIN] = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SWIPESETTINGSPIN, R.string.SwipeSettingsPin);
+        strings[SWIPE_GESTURE_READ] = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SWIPESETTINGSREAD, R.string.SwipeSettingsRead);
+        strings[SWIPE_GESTURE_ARCHIVE] = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SWIPESETTINGSARCHIVE, R.string.SwipeSettingsArchive);
+        strings[SWIPE_GESTURE_MUTE] = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SWIPESETTINGSMUTE, R.string.SwipeSettingsMute);
+        strings[SWIPE_GESTURE_DELETE] = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SWIPESETTINGSDELETE, R.string.SwipeSettingsDelete);
+        strings[SWIPE_GESTURE_FOLDERS] = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SWIPESETTINGSFOLDERS, R.string.SwipeSettingsFolders);
 
         backgroundKeys[SWIPE_GESTURE_PIN] = Theme.key_chats_archiveBackground;
         backgroundKeys[SWIPE_GESTURE_READ] = Theme.key_chats_archiveBackground;

@@ -2473,7 +2473,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         selectorDrawable[0].setState(StateSet.NOTHING);
                     }
                     if (currentMessageObject.scheduled) {
-                        Toast.makeText(getContext(), LocaleController.getString("MessageScheduledVote", R.string.MessageScheduledVote), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGESCHEDULEDVOTE, R.string.MessageScheduledVote), Toast.LENGTH_LONG).show();
                     } else {
                         PollButton button = pollButtons.get(pressedVoteButton);
                         TLRPC.TL_pollAnswer answer = button.answer;
@@ -2542,7 +2542,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 if (delegate != null) {
                     if (lastPoll != null) {
                         if (currentMessageObject.scheduled) {
-                            Toast.makeText(getContext(), LocaleController.getString("MessageScheduledVoteResults", R.string.MessageScheduledVoteResults), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGESCHEDULEDVOTERESULTS, R.string.MessageScheduledVoteResults), Toast.LENGTH_LONG).show();
                         } else {
                             if (pollVoted || pollClosed) {
                                 delegate.didPressInstantButton(this, drawInstantViewType);
@@ -3350,7 +3350,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
                 button.setPressed(false);
                 if (currentMessageObject.scheduled) {
-                    Toast.makeText(getContext(), LocaleController.getString("MessageScheduledBotAction", R.string.MessageScheduledBotAction), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGESCHEDULEDBOTACTION, R.string.MessageScheduledBotAction), Toast.LENGTH_LONG).show();
                 } else {
                     if (button.button != null) {
                         delegate.didPressBotButton(this, button.button);
@@ -4925,7 +4925,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         }
                     }
                     if (chosenAnswer != null) {
-                        sendAccessibilityEventForVirtualView(MessageAccessibilityNodeProvider.POLL_BUTTONS_START + a, AccessibilityEvent.TYPE_VIEW_SELECTED, chosenAnswer.correct ? LocaleController.getString("AccDescrQuizCorrectAnswer", R.string.AccDescrQuizCorrectAnswer) : LocaleController.getString("AccDescrQuizIncorrectAnswer", R.string.AccDescrQuizIncorrectAnswer));
+                        sendAccessibilityEventForVirtualView(MessageAccessibilityNodeProvider.POLL_BUTTONS_START + a, AccessibilityEvent.TYPE_VIEW_SELECTED, chosenAnswer.correct ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRQUIZCORRECTANSWER, R.string.AccDescrQuizCorrectAnswer) : LocaleController.getString("AccDescrQuizIncorrectAnswer", R.string.AccDescrQuizIncorrectAnswer));
                     }
                 }
             }
@@ -5217,12 +5217,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         commentProgress = new InfiniteProgress(AndroidUtilities.dp(7));
                     }
                     if (isRepliesChat) {
-                        comment = LocaleController.getString("ViewInChat", R.string.ViewInChat);
+                        comment = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWINCHAT, R.string.ViewInChat);
                     } else {
                         if (LocaleController.isRTL) {
-                            comment = commentCount == 0 ? LocaleController.getString("LeaveAComment", R.string.LeaveAComment) : LocaleController.formatPluralString("CommentsCount", commentCount);
+                            comment = commentCount == 0 ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LEAVEACOMMENT, R.string.LeaveAComment) : LocaleController.formatPluralString("CommentsCount", commentCount);
                         } else {
-                            comment = commentCount == 0 ? LocaleController.getString("LeaveAComment", R.string.LeaveAComment) : LocaleController.getPluralString("CommentsNoNumber", commentCount);
+                            comment = commentCount == 0 ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LEAVEACOMMENT, R.string.LeaveAComment) : LocaleController.getPluralString("CommentsNoNumber", commentCount);
                         }
                         ArrayList<TLRPC.Peer> recentRepliers = getRecentRepliers();
                         if (commentCount != 0 && recentRepliers != null && !recentRepliers.isEmpty()) {
@@ -5834,15 +5834,15 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         smallImage = false;
                     }
                     if (drawInstantViewType == 18) {
-                        site_name = LocaleController.getString("BoostChannel", R.string.BoostChannel);
+                        site_name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTCHANNEL, R.string.BoostChannel);
                     } else if (drawInstantViewType == 11) {
-                        site_name = LocaleController.getString("VoipChannelVoiceChat", R.string.VoipChannelVoiceChat);
+                        site_name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPCHANNELVOICECHAT, R.string.VoipChannelVoiceChat);
                     } else if (drawInstantViewType == 9) {
-                        site_name = LocaleController.getString("VoipGroupVoiceChat", R.string.VoipGroupVoiceChat);
+                        site_name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPGROUPVOICECHAT, R.string.VoipGroupVoiceChat);
                     } else if (drawInstantViewType == 6) {
-                        site_name = LocaleController.getString("ChatBackground", R.string.ChatBackground);
+                        site_name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATBACKGROUND, R.string.ChatBackground);
                     } else if ("telegram_theme".equals(webpageType)) {
-                        site_name = LocaleController.getString("ColorTheme", R.string.ColorTheme);
+                        site_name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_COLORTHEME, R.string.ColorTheme);
                     }
 
                     int additinalWidth = AndroidUtilities.dp(20);
@@ -6572,7 +6572,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                                 } catch (Exception e) {
                                 }
                                 if (showGameOverlay) {
-                                    String str = LocaleController.getString("AttachGame", R.string.AttachGame).toUpperCase();
+                                    String str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHGAME, R.string.AttachGame).toUpperCase();
                                     durationWidth = (int) Math.ceil(Theme.chat_gamePaint.measureText(str));
                                     videoInfoLayout = new StaticLayout(str, Theme.chat_gamePaint, durationWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
                                 }
@@ -6589,12 +6589,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         if (hasInvoicePreview) {
                             CharSequence str;
                             if ((MessageObject.getMedia(messageObject.messageOwner).flags & 4) != 0) {
-                                str = LocaleController.getString("PaymentReceipt", R.string.PaymentReceipt).toUpperCase();
+                                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAYMENTRECEIPT, R.string.PaymentReceipt).toUpperCase();
                             } else {
                                 if (MessageObject.getMedia(messageObject.messageOwner).test) {
-                                    str = LocaleController.getString("PaymentTestInvoice", R.string.PaymentTestInvoice).toUpperCase();
+                                    str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAYMENTTESTINVOICE, R.string.PaymentTestInvoice).toUpperCase();
                                 } else {
-                                    str = LocaleController.getString("PaymentInvoice", R.string.PaymentInvoice).toUpperCase();
+                                    str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAYMENTINVOICE, R.string.PaymentInvoice).toUpperCase();
                                 }
                             }
                             String price = LocaleController.getInstance().formatCurrencyString(MessageObject.getMedia(messageObject.messageOwner).total_amount, MessageObject.getMedia(messageObject.messageOwner).currency);
@@ -6670,35 +6670,35 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 if (messageObject.isOutOwner()) {
                     if (isMissed) {
                         if (call.video) {
-                            text = LocaleController.getString("CallMessageVideoOutgoingMissed", R.string.CallMessageVideoOutgoingMissed);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLMESSAGEVIDEOOUTGOINGMISSED, R.string.CallMessageVideoOutgoingMissed);
                         } else {
-                            text = LocaleController.getString("CallMessageOutgoingMissed", R.string.CallMessageOutgoingMissed);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLMESSAGEOUTGOINGMISSED, R.string.CallMessageOutgoingMissed);
                         }
                     } else {
                         if (call.video) {
-                            text = LocaleController.getString("CallMessageVideoOutgoing", R.string.CallMessageVideoOutgoing);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLMESSAGEVIDEOOUTGOING, R.string.CallMessageVideoOutgoing);
                         } else {
-                            text = LocaleController.getString("CallMessageOutgoing", R.string.CallMessageOutgoing);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLMESSAGEOUTGOING, R.string.CallMessageOutgoing);
                         }
                     }
                 } else {
                     if (isMissed) {
                         if (call.video) {
-                            text = LocaleController.getString("CallMessageVideoIncomingMissed", R.string.CallMessageVideoIncomingMissed);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLMESSAGEVIDEOINCOMINGMISSED, R.string.CallMessageVideoIncomingMissed);
                         } else {
-                            text = LocaleController.getString("CallMessageIncomingMissed", R.string.CallMessageIncomingMissed);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLMESSAGEINCOMINGMISSED, R.string.CallMessageIncomingMissed);
                         }
                     } else if (call.reason instanceof TLRPC.TL_phoneCallDiscardReasonBusy) {
                         if (call.video) {
-                            text = LocaleController.getString("CallMessageVideoIncomingDeclined", R.string.CallMessageVideoIncomingDeclined);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLMESSAGEVIDEOINCOMINGDECLINED, R.string.CallMessageVideoIncomingDeclined);
                         } else {
-                            text = LocaleController.getString("CallMessageIncomingDeclined", R.string.CallMessageIncomingDeclined);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLMESSAGEINCOMINGDECLINED, R.string.CallMessageIncomingDeclined);
                         }
                     } else {
                         if (call.video) {
-                            text = LocaleController.getString("CallMessageVideoIncoming", R.string.CallMessageVideoIncoming);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLMESSAGEVIDEOINCOMING, R.string.CallMessageVideoIncoming);
                         } else {
-                            text = LocaleController.getString("CallMessageIncoming", R.string.CallMessageIncoming);
+                            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLMESSAGEINCOMING, R.string.CallMessageIncoming);
                         }
                     }
                 }
@@ -6763,7 +6763,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         if (!TextUtils.isEmpty(phone)) {
                             phone = PhoneFormat.getInstance().format((String) phone);
                         } else {
-                            phone = LocaleController.getString("NumberUnknown", R.string.NumberUnknown);
+                            phone = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NUMBERUNKNOWN, R.string.NumberUnknown);
                         }
                     }
                 }
@@ -6939,18 +6939,18 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
                 String title;
                 if (pollClosed) {
-                    title = LocaleController.getString("FinalResults", R.string.FinalResults);
+                    title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FINALRESULTS, R.string.FinalResults);
                 } else {
                     if (media.poll.quiz) {
                         if (media.poll.public_voters) {
-                            title = LocaleController.getString("QuizPoll", R.string.QuizPoll);
+                            title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_QUIZPOLL, R.string.QuizPoll);
                         } else {
-                            title = LocaleController.getString("AnonymousQuizPoll", R.string.AnonymousQuizPoll);
+                            title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ANONYMOUSQUIZPOLL, R.string.AnonymousQuizPoll);
                         }
                     } else if (media.poll.public_voters) {
-                        title = LocaleController.getString("PublicPoll", R.string.PublicPoll);
+                        title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PUBLICPOLL, R.string.PublicPoll);
                     } else {
-                        title = LocaleController.getString("AnonymousPoll", R.string.AnonymousPoll);
+                        title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ANONYMOUSPOLL, R.string.AnonymousPoll);
                     }
                 }
                 docTitleLayout = new StaticLayout(TextUtils.ellipsize(title, Theme.chat_timePaint, maxWidth, TextUtils.TruncateAt.END), Theme.chat_timePaint, maxWidth + AndroidUtilities.dp(2) - getExtraTextX() * 2, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
@@ -6969,9 +6969,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     TextPaint textPaint = !media.poll.public_voters && !media.poll.multiple_choice ? Theme.chat_livePaint : Theme.chat_locationAddressPaint;
                     CharSequence votes;
                     if (media.poll.quiz) {
-                        votes = TextUtils.ellipsize(media.results.total_voters == 0 ? LocaleController.getString("NoVotesQuiz", R.string.NoVotesQuiz) : LocaleController.formatPluralString("Answer", media.results.total_voters), textPaint, w, TextUtils.TruncateAt.END);
+                        votes = TextUtils.ellipsize(media.results.total_voters == 0 ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOVOTESQUIZ, R.string.NoVotesQuiz) : LocaleController.formatPluralString("Answer", media.results.total_voters), textPaint, w, TextUtils.TruncateAt.END);
                     } else {
-                        votes = TextUtils.ellipsize(media.results.total_voters == 0 ? LocaleController.getString("NoVotes", R.string.NoVotes) : LocaleController.formatPluralString("Vote", media.results.total_voters), textPaint, w, TextUtils.TruncateAt.END);
+                        votes = TextUtils.ellipsize(media.results.total_voters == 0 ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOVOTES, R.string.NoVotes) : LocaleController.formatPluralString("Vote", media.results.total_voters), textPaint, w, TextUtils.TruncateAt.END);
                     }
                     infoLayout = new StaticLayout(votes, textPaint, w, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
                     if (infoLayout != null) {
@@ -7171,11 +7171,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     for (int a = 0; a < 3; a++) {
                         String str;
                         if (a == 0) {
-                            str = LocaleController.getString("PollViewResults", R.string.PollViewResults);
+                            str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_POLLVIEWRESULTS, R.string.PollViewResults);
                         } else if (a == 1) {
-                            str = LocaleController.getString("PollSubmitVotes", R.string.PollSubmitVotes);
+                            str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_POLLSUBMITVOTES, R.string.PollSubmitVotes);
                         } else {
-                            str = LocaleController.getString("NoVotes", R.string.NoVotes);
+                            str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOVOTES, R.string.NoVotes);
                         }
                         instantTextWidth = Math.max(instantTextWidth, (int) Math.ceil(Theme.chat_instantViewPaint.measureText(str)));
                     }
@@ -7363,7 +7363,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         } else {
                             backgroundWidth -= AndroidUtilities.dp(9);
                         }
-                        docTitleLayout = new StaticLayout(TextUtils.ellipsize(LocaleController.getString("AttachLiveLocation", R.string.AttachLiveLocation), Theme.chat_locationTitlePaint, maxWidth, TextUtils.TruncateAt.END), Theme.chat_locationTitlePaint, maxWidth + AndroidUtilities.dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+                        docTitleLayout = new StaticLayout(TextUtils.ellipsize(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHLIVELOCATION, R.string.AttachLiveLocation), Theme.chat_locationTitlePaint, maxWidth, TextUtils.TruncateAt.END), Theme.chat_locationTitlePaint, maxWidth + AndroidUtilities.dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
 
                         updateCurrentUserAndChat();
                         if (currentUser != null) {
@@ -8632,7 +8632,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             CharSequence buttonText;
                             TextPaint botButtonPaint = (TextPaint) getThemedPaint(Theme.key_paint_chatBotButton);
                             if (botButton.button instanceof TLRPC.TL_keyboardButtonBuy && (MessageObject.getMedia(messageObject.messageOwner).flags & 4) != 0) {
-                                buttonText = LocaleController.getString("PaymentReceipt", R.string.PaymentReceipt);
+                                buttonText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAYMENTRECEIPT, R.string.PaymentReceipt);
                             } else {
                                 buttonText = botButton.button.text == null ? "" : botButton.button.text;
                                 buttonText = Emoji.replaceEmoji(buttonText, botButtonPaint.getFontMetricsInt(), AndroidUtilities.dp(15), false);
@@ -9493,7 +9493,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             documentAttachType = DOCUMENT_ATTACH_TYPE_GIF;
             if (!messageObject.needDrawBluredPreview()) {
 
-                String str = LocaleController.getString("AttachGif", R.string.AttachGif);
+                String str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHGIF, R.string.AttachGif);
                 infoWidth = (int) Math.ceil(Theme.chat_infoPaint.measureText(str));
                 infoLayout = new StaticLayout(str, Theme.chat_infoPaint, infoWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
 
@@ -9510,7 +9510,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             documentAttachType = DOCUMENT_ATTACH_TYPE_DOCUMENT;
             String name = FileLoader.getDocumentFileName(documentAttach);
             if (name.length() == 0) {
-                name = LocaleController.getString("AttachDocument", R.string.AttachDocument);
+                name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHDOCUMENT, R.string.AttachDocument);
             }
             docTitleLayout = StaticLayoutEx.createStaticLayout(name, Theme.chat_docNamePaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false, TextUtils.TruncateAt.MIDDLE, maxWidth, 2, false);
             docTitleOffsetX = Integer.MIN_VALUE;
@@ -9903,7 +9903,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 AndroidUtilities.runOnUIThread(invalidateRunnable, 1000);
                 scheduledInvalidate = true;
                 int maxWidth = backgroundWidth - AndroidUtilities.dp(37 + 54);
-                docTitleLayout = new StaticLayout(TextUtils.ellipsize(LocaleController.getString("AttachLiveLocation", R.string.AttachLiveLocation), Theme.chat_locationTitlePaint, maxWidth, TextUtils.TruncateAt.END), Theme.chat_locationTitlePaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+                docTitleLayout = new StaticLayout(TextUtils.ellipsize(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHLIVELOCATION, R.string.AttachLiveLocation), Theme.chat_locationTitlePaint, maxWidth, TextUtils.TruncateAt.END), Theme.chat_locationTitlePaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
             } else {
                 MessageObject messageObject = currentMessageObject;
                 currentMessageObject = null;
@@ -10061,54 +10061,54 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             if (instantViewButtonText != null) {
                 str = instantViewButtonText;
             } else if (drawInstantViewType == 12) {
-                str = LocaleController.getString("OpenChannelPost", R.string.OpenChannelPost);
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENCHANNELPOST, R.string.OpenChannelPost);
             } else if (drawInstantViewType == 1) {
-                str = LocaleController.getString("OpenChannel", R.string.OpenChannel);
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENCHANNEL, R.string.OpenChannel);
             } else if (drawInstantViewType == 13) {
-                str = LocaleController.getString("SendMessage", R.string.SendMessage).toUpperCase();
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDMESSAGE, R.string.SendMessage).toUpperCase();
             } else if (drawInstantViewType == 10) {
-                str = LocaleController.getString("OpenBot", R.string.OpenBot);
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENBOT, R.string.OpenBot);
             } else if (drawInstantViewType == 2) {
-                str = LocaleController.getString("OpenGroup", R.string.OpenGroup);
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENGROUP, R.string.OpenGroup);
             } else if (drawInstantViewType == 3) {
-                str = LocaleController.getString("OpenMessage", R.string.OpenMessage);
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENMESSAGE, R.string.OpenMessage);
             } else if (drawInstantViewType == 5) {
-                str = LocaleController.getString("ViewContact", R.string.ViewContact);
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWCONTACT, R.string.ViewContact);
             } else if (drawInstantViewType == 6) {
-                str = LocaleController.getString("OpenBackground", R.string.OpenBackground);
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENBACKGROUND, R.string.OpenBackground);
             } else if (drawInstantViewType == 7) {
-                str = LocaleController.getString("OpenTheme", R.string.OpenTheme);
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENTHEME, R.string.OpenTheme);
             } else if (drawInstantViewType == 8) {
                 if (pollVoted || pollClosed) {
-                    str = LocaleController.getString("PollViewResults", R.string.PollViewResults);
+                    str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_POLLVIEWRESULTS, R.string.PollViewResults);
                 } else {
-                    str = LocaleController.getString("PollSubmitVotes", R.string.PollSubmitVotes);
+                    str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_POLLSUBMITVOTES, R.string.PollSubmitVotes);
                 }
             } else if (drawInstantViewType == 9 || drawInstantViewType == 11) {
                 TLRPC.TL_webPage webPage = (TLRPC.TL_webPage) MessageObject.getMedia(currentMessageObject.messageOwner).webpage;
                 if (webPage != null && webPage.url.contains("voicechat=")) {
-                    str = LocaleController.getString("VoipGroupJoinAsSpeaker", R.string.VoipGroupJoinAsSpeaker);
+                    str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPGROUPJOINASSPEAKER, R.string.VoipGroupJoinAsSpeaker);
                 } else {
-                    str = LocaleController.getString("VoipGroupJoinAsLinstener", R.string.VoipGroupJoinAsLinstener);
+                    str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VOIPGROUPJOINASLINSTENER, R.string.VoipGroupJoinAsLinstener);
                 }
             } else if (drawInstantViewType == 14) {
-                str = LocaleController.getString("ViewChatList", R.string.ViewChatList).toUpperCase();
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWCHATLIST, R.string.ViewChatList).toUpperCase();
             } else if (drawInstantViewType == 15) {
-                str = LocaleController.getString(R.string.BotWebAppInstantViewOpen).toUpperCase();
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBAPPINSTANTVIEWOPEN, R.string.BotWebAppInstantViewOpen).toUpperCase();
             } else if (drawInstantViewType == 16) {
-                str = LocaleController.getString("OpenLink").toUpperCase();
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENLINK).toUpperCase();
             } else if (drawInstantViewType == 17) {
-                str = LocaleController.getString("ViewStory").toUpperCase();
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWSTORY).toUpperCase();
             } else if (drawInstantViewType == 18) {
-                str = LocaleController.getString("BoostLinkButton", R.string.BoostLinkButton);
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTLINKBUTTON, R.string.BoostLinkButton);
             } else if (drawInstantViewType == 19) {
-                str = LocaleController.getString("BoostingHowItWork", R.string.BoostingHowItWork);
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGHOWITWORK, R.string.BoostingHowItWork);
             } else if (drawInstantViewType == 20) {
-                str = LocaleController.getString(R.string.OpenGift);
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENGIFT, R.string.OpenGift);
             } else if (drawInstantViewType == 21) {
-                str = LocaleController.getString(R.string.AppUpdate);
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPUPDATE, R.string.AppUpdate);
             } else {
-                str = LocaleController.getString(R.string.InstantView);
+                str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INSTANTVIEW, R.string.InstantView);
             }
             if (currentMessageObject.isSponsored()) {
                 int buttonWidth = (int) (Theme.chat_instantViewPaint.measureText(str) + AndroidUtilities.dp(10 + 24 + 10 + 31));
@@ -10176,19 +10176,19 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
                 if (drawContactView) {
                     drawnContactButtonsFlag |= 1;
-                    String str = LocaleController.getString("ViewContact", R.string.ViewContact);
+                    String str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWCONTACT, R.string.ViewContact);
                     InstantViewButton instantViewButton = createInstantViewButton(INSTANT_BUTTON_TYPE_CONTACT_VIEW, str, mWidth, parentWidth);
                     contactButtons.add(instantViewButton);
                 }
                 if (drawContactSendMessage) {
                     drawnContactButtonsFlag |= 2;
-                    String str = LocaleController.getString("SharedContactMessage", R.string.SharedContactMessage);
+                    String str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREDCONTACTMESSAGE, R.string.SharedContactMessage);
                     InstantViewButton instantViewButton = createInstantViewButton(INSTANT_BUTTON_TYPE_CONTACT_SEND_MESSAGE, str, mWidth, parentWidth);
                     contactButtons.add(instantViewButton);
                 }
                 if (drawContactAdd) {
                     drawnContactButtonsFlag |= 4;
-                    String str = LocaleController.getString("SharedContactAdd", R.string.SharedContactAdd);
+                    String str = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREDCONTACTADD, R.string.SharedContactAdd);
                     InstantViewButton instantViewButton = createInstantViewButton(INSTANT_BUTTON_TYPE_CONTACT_ADD, str, mWidth, parentWidth);
                     contactButtons.add(instantViewButton);
                 }
@@ -14229,9 +14229,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             signString = messageObject.messageOwner.fwd_from.post_author.replace("\n", "");
         } else if (messageObject.messageOwner.fwd_from != null && messageObject.messageOwner.fwd_from.imported) {
             if (messageObject.messageOwner.fwd_from.date == messageObject.messageOwner.date) {
-                signString = LocaleController.getString("ImportedMessage", R.string.ImportedMessage);
+                signString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_IMPORTEDMESSAGE, R.string.ImportedMessage);
             } else {
-                signString = LocaleController.formatImportedDate(messageObject.messageOwner.fwd_from.date) + " " + LocaleController.getString("ImportedMessage", R.string.ImportedMessage);
+                signString = LocaleController.formatImportedDate(messageObject.messageOwner.fwd_from.date) + " " + LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_IMPORTEDMESSAGE, R.string.ImportedMessage);
             }
         } else if (!messageObject.isOutOwner() && fromId > 0 && messageObject.messageOwner.post) {
             TLRPC.User signUser = MessagesController.getInstance(currentAccount).getUser(fromId);
@@ -14273,7 +14273,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         } else if (currentMessageObject.isRepostPreview) {
             timeString = LocaleController.formatSmallDateChat(messageObject.messageOwner.date) + ", " + LocaleController.getInstance().formatterDay.format((long) (messageObject.messageOwner.date) * 1000);
         } else if (edited) {
-            timeString = LocaleController.getString("EditedMessage", R.string.EditedMessage) + " " + LocaleController.getInstance().formatterDay.format((long) (messageObject.messageOwner.date) * 1000);
+            timeString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDITEDMESSAGE, R.string.EditedMessage) + " " + LocaleController.getInstance().formatterDay.format((long) (messageObject.messageOwner.date) * 1000);
         } else if (currentMessageObject.isSaved && currentMessageObject.messageOwner.fwd_from != null && (currentMessageObject.messageOwner.fwd_from.date != 0 || currentMessageObject.messageOwner.fwd_from.saved_date != 0)) {
             int date = currentMessageObject.messageOwner.fwd_from.date;
             if (date == 0) {
@@ -14481,13 +14481,13 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             TLRPC.User botUser = MessagesController.getInstance(currentAccount).getUser(messageObject.messageOwner.via_bot_id);
             if (botUser != null && !TextUtils.isEmpty(botUser.username)) {
                 viaUsername = "@" + botUser.username;
-                viaString = AndroidUtilities.replaceTags(String.format(" %s <b>%s</b>", LocaleController.getString("ViaBot", R.string.ViaBot), viaUsername));
+                viaString = AndroidUtilities.replaceTags(String.format(" %s <b>%s</b>", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIABOT, R.string.ViaBot), viaUsername));
                 viaWidth = (int) Math.ceil(Theme.chat_replyNamePaint.measureText(viaString, 0, viaString.length()));
                 currentViaBotUser = botUser;
             }
         } else if (!TextUtils.isEmpty(messageObject.messageOwner.via_bot_name)) {
             viaUsername = "@" + messageObject.messageOwner.via_bot_name;
-            viaString = AndroidUtilities.replaceTags(String.format(" %s <b>%s</b>", LocaleController.getString("ViaBot", R.string.ViaBot), viaUsername));
+            viaString = AndroidUtilities.replaceTags(String.format(" %s <b>%s</b>", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIABOT, R.string.ViaBot), viaUsername));
             viaWidth = (int) Math.ceil(Theme.chat_replyNamePaint.measureText(viaString, 0, viaString.length()));
         }
 
@@ -14507,12 +14507,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 adminWidth = (int) Math.ceil(Theme.chat_adminPaint.measureText(adminString));
                 nameWidth -= adminWidth;
             } else if (isMegagroup && currentChat != null && currentMessageObject.isForwardedChannelPost()) {
-                adminString = LocaleController.getString("DiscussChannel", R.string.DiscussChannel);
+                adminString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISCUSSCHANNEL, R.string.DiscussChannel);
                 adminWidth = (int) Math.ceil(Theme.chat_adminPaint.measureText(adminString));
                 nameWidth -= adminWidth;
             } else if ((currentUser != null || currentChat != null) && !currentMessageObject.isOutOwner() && !currentMessageObject.isAnyKindOfSticker() && currentMessageObject.type != MessageObject.TYPE_ROUND_VIDEO && delegate != null && (adminLabel = delegate.getAdminRank(currentUser != null ? currentUser.id : currentChat.id)) != null) {
                 if (adminLabel.length() == 0) {
-                    adminLabel = LocaleController.getString("ChatAdmin", R.string.ChatAdmin);
+                    adminLabel = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHATADMIN, R.string.ChatAdmin);
                 }
                 adminString = adminLabel;
                 adminWidth = (int) Math.ceil(Theme.chat_adminPaint.measureText(adminString));
@@ -14548,7 +14548,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 } else {
                     color = getThemedColor(currentMessageObject.isOutOwner() ? Theme.key_chat_outViaBotNameText : Theme.key_chat_inViaBotNameText);
                 }
-                String viaBotString = LocaleController.getString("ViaBot", R.string.ViaBot);
+                String viaBotString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIABOT, R.string.ViaBot);
                 if (currentNameString.length() > 0) {
                     SpannableStringBuilder stringBuilder = new SpannableStringBuilder(String.format("%s %s %s", nameStringFinal, viaBotString, viaUsername));
                     stringBuilder.setSpan(viaSpan1 = new TypefaceSpan(Typeface.DEFAULT, 0, color), nameStringFinal.length() + 1, nameStringFinal.length() + 1 + viaBotString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -14639,7 +14639,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 String forwardedString;
                 CharSequence lastLine;
                 if (messageObject.type == MessageObject.TYPE_STORY) {
-                    currentForwardNameString = forwardedString = LocaleController.getString("ForwardedStory", R.string.ForwardedStory);
+                    currentForwardNameString = forwardedString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDEDSTORY, R.string.ForwardedStory);
                     long storyDialogId = DialogObject.getPeerDialogId(messageObject.messageOwner.media.peer);
                     if (storyDialogId > 0) {
                         currentForwardUser = MessagesController.getInstance(currentAccount).getUser(storyDialogId);
@@ -14648,7 +14648,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     }
                     String name = getNameFromDialogId(storyDialogId);
                     if (storyDialogId < 0 && currentForwardChannel == null) {
-                        name = LocaleController.getString("ChannelPrivate", R.string.ChannelPrivate);
+                        name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPRIVATE, R.string.ChannelPrivate);
                     }
                     lastLine = AndroidUtilities.replaceTags(LocaleController.formatString("ForwardedStoryFrom", R.string.ForwardedStoryFrom, name));
                     forwardedNameWidth = getMaxNameWidth();
@@ -14672,8 +14672,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     if (hasPsaHint) {
                         forwardedNameWidth -= AndroidUtilities.dp(36);
                     }
-                    String from = LocaleController.getString("From", R.string.From);
-                    String fromFormattedString = LocaleController.getString("FromFormatted", R.string.FromFormatted);
+                    String from = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FROM, R.string.From);
+                    String fromFormattedString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FROMFORMATTED, R.string.FromFormatted);
                     int idx = fromFormattedString.indexOf("%1$s");
                     int fromWidth = (int) Math.ceil(Theme.chat_forwardNamePaint.measureText(from + " "));
                     CharSequence name = TextUtils.ellipsize(currentForwardNameString.replace('\n', ' '), Theme.chat_replyNamePaint, forwardedNameWidth - fromWidth - viaWidth, TextUtils.TruncateAt.END);
@@ -14686,7 +14686,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
                     SpannableStringBuilder stringBuilder;
                     if (viaString != null) {
-                        stringBuilder = new SpannableStringBuilder(String.format("%s %s %s", fromString, LocaleController.getString("ViaBot", R.string.ViaBot), viaUsername));
+                        stringBuilder = new SpannableStringBuilder(String.format("%s %s %s", fromString, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIABOT, R.string.ViaBot), viaUsername));
                         viaNameWidth = (int) Math.ceil(Theme.chat_forwardNamePaint.measureText(fromString));
                         stringBuilder.setSpan(new TypefaceSpan(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM)), stringBuilder.length() - viaUsername.length() - 1, stringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     } else {
@@ -14800,7 +14800,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     name = getNameFromDialogId(messageObject.messageOwner.reply_to.user_id);
                     if (messageObject.messageOwner.replyStory == null || messageObject.messageOwner.replyStory instanceof TL_stories.TL_storyItemDeleted) {
                         if (messageObject.messageOwner.replyStory == null) {
-                            stringFinalText = LocaleController.getString("Loading", R.string.Loading);
+                            stringFinalText = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOADING, R.string.Loading);
                         } else {
                             stringFinalText = StoriesUtilities.createExpiredStoryString();
                         }
@@ -14930,7 +14930,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     }
 
                     if (name == null) {
-                        name = LocaleController.getString("Loading", R.string.Loading);
+                        name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOADING, R.string.Loading);
                     }
                     if (hasReplyQuote || messageObject.messageOwner.reply_to != null && messageObject.messageOwner.reply_to.quote_text != null && messageObject.messageOwner.reply_to.reply_from != null) {
                         String mess = messageObject.messageOwner.reply_to.quote_text;
@@ -15015,8 +15015,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             currentForwardNameString = currentForwardName;
                         }
                         name = getForwardedMessageText(messageObject);
-                        String from = LocaleController.getString("From", R.string.From);
-                        String fromFormattedString = LocaleController.getString("FromFormatted", R.string.FromFormatted);
+                        String from = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FROM, R.string.From);
+                        String fromFormattedString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FROMFORMATTED, R.string.FromFormatted);
                         int idx = fromFormattedString.indexOf("%1$s");
                         int fromWidth = (int) Math.ceil(Theme.chat_replyNamePaint.measureText(from + " "));
                         CharSequence text = currentForwardNameString == null ? "" : currentForwardNameString.replace('\n', ' ');
@@ -15146,7 +15146,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     maxWidth += AndroidUtilities.dp(13);
                 }
 
-                replyNameLayout = new StaticLayout(LocaleController.getString("Loading", R.string.Loading), Theme.chat_replyNamePaint, maxWidth + AndroidUtilities.dp(6), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+                replyNameLayout = new StaticLayout(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOADING, R.string.Loading), Theme.chat_replyNamePaint, maxWidth + AndroidUtilities.dp(6), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
                 if (replyNameLayout.getLineCount() > 0) {
                     replyNameWidth += (int) Math.ceil(replyNameLayout.getLineWidth(0)) + AndroidUtilities.dp(8);
                     replyNameOffset = (int) replyNameLayout.getLineLeft(0);
@@ -15229,11 +15229,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         if (hasPsaHint) {
             String forwardedString = LocaleController.getString("PsaMessage_" + messageObject.messageOwner.fwd_from.psa_type);
             if (forwardedString == null) {
-                forwardedString = LocaleController.getString("PsaMessageDefault", R.string.PsaMessageDefault);
+                forwardedString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PSAMESSAGEDEFAULT, R.string.PsaMessageDefault);
             }
             return forwardedString;
         } else {
-            return LocaleController.getString("ForwardedMessage", R.string.ForwardedMessage);
+            return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FORWARDEDMESSAGE, R.string.ForwardedMessage);
         }
     }
 
@@ -20581,9 +20581,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         sb.append(LocaleController.formatDuration((int) currentMessageObject.getDuration()));
                         sb.append(", ");
                         if (currentMessageObject.isContentUnread()) {
-                            sb.append(LocaleController.getString("AccDescrMsgNotPlayed", R.string.AccDescrMsgNotPlayed));
+                            sb.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRMSGNOTPLAYED, R.string.AccDescrMsgNotPlayed));
                         } else {
-                            sb.append(LocaleController.getString("AccDescrMsgPlayed", R.string.AccDescrMsgPlayed));
+                            sb.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRMSGPLAYED, R.string.AccDescrMsgPlayed));
                         }
                     }
                     if (lastPoll != null) {
@@ -20592,18 +20592,18 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         sb.append(", ");
                         String title;
                         if (pollClosed) {
-                            title = LocaleController.getString("FinalResults", R.string.FinalResults);
+                            title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FINALRESULTS, R.string.FinalResults);
                         } else {
                             if (lastPoll.quiz) {
                                 if (lastPoll.public_voters) {
-                                    title = LocaleController.getString("QuizPoll", R.string.QuizPoll);
+                                    title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_QUIZPOLL, R.string.QuizPoll);
                                 } else {
-                                    title = LocaleController.getString("AnonymousQuizPoll", R.string.AnonymousQuizPoll);
+                                    title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ANONYMOUSQUIZPOLL, R.string.AnonymousQuizPoll);
                                 }
                             } else if (lastPoll.public_voters) {
-                                title = LocaleController.getString("PublicPoll", R.string.PublicPoll);
+                                title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PUBLICPOLL, R.string.PublicPoll);
                             } else {
-                                title = LocaleController.getString("AnonymousPoll", R.string.AnonymousPoll);
+                                title = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ANONYMOUSPOLL, R.string.AnonymousPoll);
                             }
                         }
                         sb.append(title);
@@ -20633,24 +20633,24 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             if (currentMessageObject.scheduled) {
                                 sb.append(LocaleController.formatString("AccDescrScheduledDate", R.string.AccDescrScheduledDate, currentTimeString));
                             } else {
-                                sb.append(LocaleController.formatString("AccDescrSentDate", R.string.AccDescrSentDate, LocaleController.getString("TodayAt", R.string.TodayAt) + " " + currentTimeString));
+                                sb.append(LocaleController.formatString("AccDescrSentDate", R.string.AccDescrSentDate, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TODAYAT, R.string.TodayAt) + " " + currentTimeString));
                                 sb.append(", ");
-                                sb.append(currentMessageObject.isUnread() ? LocaleController.getString("AccDescrMsgUnread", R.string.AccDescrMsgUnread) : LocaleController.getString("AccDescrMsgRead", R.string.AccDescrMsgRead));
+                                sb.append(currentMessageObject.isUnread() ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRMSGUNREAD, R.string.AccDescrMsgUnread) : LocaleController.getString("AccDescrMsgRead", R.string.AccDescrMsgRead));
                             }
                         } else if (currentMessageObject.isSending()) {
                             sb.append("\n");
-                            sb.append(LocaleController.getString("AccDescrMsgSending", R.string.AccDescrMsgSending));
+                            sb.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRMSGSENDING, R.string.AccDescrMsgSending));
                             final float sendingProgress = radialProgress.getProgress();
                             if (sendingProgress > 0f) {
                                 sb.append(Integer.toString(Math.round(sendingProgress * 100))).append("%");
                             }
                         } else if (currentMessageObject.isSendError()) {
                             sb.append("\n");
-                            sb.append(LocaleController.getString("AccDescrMsgSendingError", R.string.AccDescrMsgSendingError));
+                            sb.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRMSGSENDINGERROR, R.string.AccDescrMsgSendingError));
                         }
                     } else {
                         sb.append("\n");
-                        sb.append(LocaleController.formatString("AccDescrReceivedDate", R.string.AccDescrReceivedDate, LocaleController.getString("TodayAt", R.string.TodayAt) + " " + currentTimeString));
+                        sb.append(LocaleController.formatString("AccDescrReceivedDate", R.string.AccDescrReceivedDate, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TODAYAT, R.string.TodayAt) + " " + currentTimeString));
                     }
                     if (getRepliesCount() > 0 && !hasCommentLayout()) {
                         sb.append("\n");
@@ -20684,7 +20684,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                                 sb.append(LocaleController.formatPluralString("AccDescrNumberOfPeopleReactions", reaction.count, emoticon));
                             }
                         } else {
-                            sb.append(LocaleController.getString("Reactions", R.string.Reactions)).append((": "));
+                            sb.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REACTIONS, R.string.Reactions)).append((": "));
                             final int count = currentMessageObject.messageOwner.reactions.results.size();
                             for (int i = 0; i < count; ++i) {
                                 TLRPC.ReactionCount reactionCount = currentMessageObject.messageOwner.reactions.results.get(i);
@@ -20744,35 +20744,35 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     }
                 }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.acc_action_msg_options, LocaleController.getString("AccActionMessageOptions", R.string.AccActionMessageOptions)));
+                    info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.acc_action_msg_options, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONMESSAGEOPTIONS, R.string.AccActionMessageOptions)));
                     int icon = getIconForCurrentState();
                     CharSequence actionLabel = null;
                     switch (icon) {
                         case MediaActionDrawable.ICON_PLAY:
-                            actionLabel = LocaleController.getString("AccActionPlay", R.string.AccActionPlay);
+                            actionLabel = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONPLAY, R.string.AccActionPlay);
                             break;
                         case MediaActionDrawable.ICON_PAUSE:
-                            actionLabel = LocaleController.getString("AccActionPause", R.string.AccActionPause);
+                            actionLabel = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONPAUSE, R.string.AccActionPause);
                             break;
                         case MediaActionDrawable.ICON_FILE:
-                            actionLabel = LocaleController.getString("AccActionOpenFile", R.string.AccActionOpenFile);
+                            actionLabel = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONOPENFILE, R.string.AccActionOpenFile);
                             break;
                         case MediaActionDrawable.ICON_DOWNLOAD:
-                            actionLabel = LocaleController.getString("AccActionDownload", R.string.AccActionDownload);
+                            actionLabel = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONDOWNLOAD, R.string.AccActionDownload);
                             break;
                         case MediaActionDrawable.ICON_CANCEL:
-                            actionLabel = LocaleController.getString("AccActionCancelDownload", R.string.AccActionCancelDownload);
+                            actionLabel = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONCANCELDOWNLOAD, R.string.AccActionCancelDownload);
                             break;
                         default:
                             if (currentMessageObject.type == MessageObject.TYPE_PHONE_CALL) {
-                                actionLabel = LocaleController.getString("CallAgain", R.string.CallAgain);
+                                actionLabel = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CALLAGAIN, R.string.CallAgain);
                             }
                     }
                     info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, actionLabel));
-                    info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_LONG_CLICK, LocaleController.getString("AccActionEnterSelectionMode", R.string.AccActionEnterSelectionMode)));
+                    info.addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityNodeInfo.ACTION_LONG_CLICK, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONENTERSELECTIONMODE, R.string.AccActionEnterSelectionMode)));
                     int smallIcon = getMiniIconForCurrentState();
                     if (smallIcon == MediaActionDrawable.ICON_DOWNLOAD) {
-                        info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.acc_action_small_button, LocaleController.getString("AccActionDownload", R.string.AccActionDownload)));
+                        info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.acc_action_small_button, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONDOWNLOAD, R.string.AccActionDownload)));
                     }
                 } else {
                     info.addAction(AccessibilityNodeInfo.ACTION_CLICK);
@@ -20854,7 +20854,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
                 if (forwardedNameLayout[0] != null && forwardedNameLayout[1] != null) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.acc_action_open_forwarded_origin, LocaleController.getString("AccActionOpenForwardedOrigin", R.string.AccActionOpenForwardedOrigin)));
+                        info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.acc_action_open_forwarded_origin, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONOPENFORWARDEDORIGIN, R.string.AccActionOpenForwardedOrigin)));
                     } else {
                         info.addChild(ChatMessageCell.this, FORWARD);
                     }
@@ -20998,7 +20998,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         info.setSelected(button.chosen);
                         sb.append(", ").append(button.percent).append("%");
                         if (lastPoll != null && lastPoll.quiz && (button.chosen || button.correct)) {
-                            sb.append(", ").append(button.correct ? LocaleController.getString("AccDescrQuizCorrectAnswer", R.string.AccDescrQuizCorrectAnswer) : LocaleController.getString("AccDescrQuizIncorrectAnswer", R.string.AccDescrQuizIncorrectAnswer));
+                            sb.append(", ").append(button.correct ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRQUIZCORRECTANSWER, R.string.AccDescrQuizCorrectAnswer) : LocaleController.getString("AccDescrQuizIncorrectAnswer", R.string.AccDescrQuizIncorrectAnswer));
                         }
                     }
                     info.setText(sb);
@@ -21019,7 +21019,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 } else if (virtualViewId == POLL_HINT) {
                     info.setClassName("android.widget.Button");
                     info.setEnabled(true);
-                    info.setText(LocaleController.getString("AccDescrQuizExplanation", R.string.AccDescrQuizExplanation));
+                    info.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRQUIZEXPLANATION, R.string.AccDescrQuizExplanation));
                     info.addAction(AccessibilityNodeInfo.ACTION_CLICK);
                     rect.set(pollHintX - AndroidUtilities.dp(8), pollHintY - AndroidUtilities.dp(8), pollHintX + AndroidUtilities.dp(32), pollHintY + AndroidUtilities.dp(32));
                     info.setBoundsInParent(rect);
@@ -21098,9 +21098,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     info.setClassName("android.widget.ImageButton");
                     info.setEnabled(true);
                     if (isOpenChatByShare(currentMessageObject)) {
-                        info.setContentDescription(LocaleController.getString("AccDescrOpenChat", R.string.AccDescrOpenChat));
+                        info.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCROPENCHAT, R.string.AccDescrOpenChat));
                     } else {
-                        info.setContentDescription(LocaleController.getString("ShareFile", R.string.ShareFile));
+                        info.setContentDescription(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREFILE, R.string.ShareFile));
                     }
                     info.addAction(AccessibilityNodeInfo.ACTION_CLICK);
                     rect.set((int) sideStartX, (int) sideStartY, (int) sideStartX + AndroidUtilities.dp(40), (int) sideStartY + AndroidUtilities.dp(32));
@@ -21114,7 +21114,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 } else if (virtualViewId == REPLY) {
                     info.setEnabled(true);
                     StringBuilder sb = new StringBuilder();
-                    sb.append(LocaleController.getString("Reply", R.string.Reply));
+                    sb.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLY, R.string.Reply));
                     sb.append(", ");
                     if (replyNameLayout != null) {
                         sb.append(replyNameLayout.getText());
@@ -21162,9 +21162,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     String comment = null;
                     if (currentMessageObject != null && !currentMessageObject.shouldDrawWithoutBackground() && !currentMessageObject.isAnimatedEmoji()) {
                         if (isRepliesChat) {
-                            comment = LocaleController.getString("ViewInChat", R.string.ViewInChat);
+                            comment = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_VIEWINCHAT, R.string.ViewInChat);
                         } else {
-                            comment = commentCount == 0 ? LocaleController.getString("LeaveAComment", R.string.LeaveAComment) : LocaleController.formatPluralString("CommentsCount", commentCount);
+                            comment = commentCount == 0 ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LEAVEACOMMENT, R.string.LeaveAComment) : LocaleController.formatPluralString("CommentsCount", commentCount);
                         }
                     } else if (!isRepliesChat && commentCount > 0) {
                         comment = LocaleController.formatShortNumber(commentCount, null);
@@ -21184,7 +21184,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 } else if (virtualViewId == TRANSCRIBE) {
                     info.setClassName("android.widget.Button");
                     info.setEnabled(true);
-                    info.setText(currentMessageObject.isVoiceTranscriptionOpen() ? LocaleController.getString("AccActionCloseTranscription", R.string.AccActionCloseTranscription) : LocaleController.getString("AccActionOpenTranscription", R.string.AccActionOpenTranscription));
+                    info.setText(currentMessageObject.isVoiceTranscriptionOpen() ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCACTIONCLOSETRANSCRIPTION, R.string.AccActionCloseTranscription) : LocaleController.getString("AccActionOpenTranscription", R.string.AccActionOpenTranscription));
                     info.addAction(AccessibilityNodeInfo.ACTION_CLICK);
                     if (transcribeButton != null) {
                         rect.set((int) transcribeX, (int) transcribeY, (int) (transcribeX + transcribeButton.width()), (int) (transcribeY + transcribeButton.height()));
@@ -21805,7 +21805,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
             }
             if (edited && !lastDrawingEdited && timeLayout != null) {
-                String editedStr = LocaleController.getString("EditedMessage", R.string.EditedMessage);
+                String editedStr = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_EDITEDMESSAGE, R.string.EditedMessage);
                 CharSequence text = timeLayout.getText();
                 int i = text.toString().indexOf(editedStr);
                 if (i >= 0) {

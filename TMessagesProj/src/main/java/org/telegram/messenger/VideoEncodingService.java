@@ -132,7 +132,7 @@ public class VideoEncodingService extends Service implements NotificationCenter.
             builder.setSmallIcon(android.R.drawable.stat_sys_upload);
             builder.setWhen(System.currentTimeMillis());
             builder.setChannelId(NotificationsController.OTHER_NOTIFICATIONS_CHANNEL);
-            builder.setContentTitle(LocaleController.getString("AppName", R.string.AppName));
+            builder.setContentTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APPNAME, R.string.AppName));
         }
         setCurrentMessage(videoConvertMessage);
         try {
@@ -151,11 +151,11 @@ public class VideoEncodingService extends Service implements NotificationCenter.
         }
         boolean isGif = videoConvertMessage.messageObject != null && MessageObject.isGifMessage(videoConvertMessage.messageObject.messageOwner);
         if (isGif) {
-            builder.setTicker(LocaleController.getString("SendingGif", R.string.SendingGif));
-            builder.setContentText(LocaleController.getString("SendingGif", R.string.SendingGif));
+            builder.setTicker(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDINGGIF, R.string.SendingGif));
+            builder.setContentText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDINGGIF, R.string.SendingGif));
         } else {
-            builder.setTicker(LocaleController.getString("SendingVideo", R.string.SendingVideo));
-            builder.setContentText(LocaleController.getString("SendingVideo", R.string.SendingVideo));
+            builder.setTicker(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDINGVIDEO, R.string.SendingVideo));
+            builder.setContentText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SENDINGVIDEO, R.string.SendingVideo));
         }
         int currentProgress = 0;
         builder.setProgress(100, currentProgress, true);

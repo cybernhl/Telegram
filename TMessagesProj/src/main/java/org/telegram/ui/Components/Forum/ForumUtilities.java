@@ -308,7 +308,7 @@ public class ForumUtilities {
             return null;
         }
         if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionTopicCreate) {
-            return AndroidUtilities.replaceCharSequence("%s", LocaleController.getString(R.string.TopicWasCreatedAction), ForumUtilities.getTopicSpannedName(topic, null, false));
+            return AndroidUtilities.replaceCharSequence("%s", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TOPICWASCREATEDACTION, R.string.TopicWasCreatedAction), ForumUtilities.getTopicSpannedName(topic, null, false));
         }
         if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionTopicEdit) {
             TLRPC.TL_messageActionTopicEdit topicEdit = (TLRPC.TL_messageActionTopicEdit) messageObject.messageOwner.action;
@@ -328,28 +328,28 @@ public class ForumUtilities {
             }
 
             if ((topicEdit.flags & 8) != 0) {
-                return AndroidUtilities.replaceCharSequence("%s", topicEdit.hidden ? LocaleController.getString(R.string.TopicHidden2) :  LocaleController.getString(R.string.TopicShown2), name);
+                return AndroidUtilities.replaceCharSequence("%s", topicEdit.hidden ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TOPICHIDDEN2, R.string.TopicHidden2) :  LocaleController.getString(R.string.TopicShown2), name);
             }
             if ((topicEdit.flags & 4) != 0) {
-                CharSequence charSequence = AndroidUtilities.replaceCharSequence("%2$s", topicEdit.closed ? LocaleController.getString(R.string.TopicWasClosedAction) :  LocaleController.getString(R.string.TopicWasReopenedAction), ForumUtilities.getTopicSpannedName(topic, null, false));
+                CharSequence charSequence = AndroidUtilities.replaceCharSequence("%2$s", topicEdit.closed ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TOPICWASCLOSEDACTION, R.string.TopicWasClosedAction) :  LocaleController.getString(R.string.TopicWasReopenedAction), ForumUtilities.getTopicSpannedName(topic, null, false));
                 return AndroidUtilities.replaceCharSequence("%1$s", charSequence, name);
             }
             if ((topicEdit.flags & 1) != 0 && (topicEdit.flags & 2) != 0) {
                 TLRPC.TL_forumTopic forumTopic = new TLRPC.TL_forumTopic();
                 forumTopic.icon_emoji_id = topicEdit.icon_emoji_id;
                 forumTopic.title = topicEdit.title;
-                CharSequence charSequence = AndroidUtilities.replaceCharSequence("%2$s", LocaleController.getString(R.string.TopicWasRenamedToAction2), ForumUtilities.getTopicSpannedName(forumTopic, null, false));
+                CharSequence charSequence = AndroidUtilities.replaceCharSequence("%2$s", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TOPICWASRENAMEDTOACTION2, R.string.TopicWasRenamedToAction2), ForumUtilities.getTopicSpannedName(forumTopic, null, false));
                 return AndroidUtilities.replaceCharSequence("%1$s", charSequence, name);
             }
             if ((topicEdit.flags & 1) != 0) {
-                CharSequence charSequence = AndroidUtilities.replaceCharSequence("%2$s", LocaleController.getString(R.string.TopicWasRenamedToAction), topicEdit.title);
+                CharSequence charSequence = AndroidUtilities.replaceCharSequence("%2$s", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TOPICWASRENAMEDTOACTION, R.string.TopicWasRenamedToAction), topicEdit.title);
                 return AndroidUtilities.replaceCharSequence("%1$s", charSequence, name);
             }
             if ((topicEdit.flags & 2) != 0) {
                 TLRPC.TL_forumTopic forumTopic = new TLRPC.TL_forumTopic();
                 forumTopic.icon_emoji_id = topicEdit.icon_emoji_id;
                 forumTopic.title = "";
-                CharSequence charSequence = AndroidUtilities.replaceCharSequence("%2$s", LocaleController.getString(R.string.TopicWasIconChangedToAction), ForumUtilities.getTopicSpannedName(forumTopic, null, false));
+                CharSequence charSequence = AndroidUtilities.replaceCharSequence("%2$s", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TOPICWASICONCHANGEDTOACTION, R.string.TopicWasIconChangedToAction), ForumUtilities.getTopicSpannedName(forumTopic, null, false));
                 return AndroidUtilities.replaceCharSequence("%1$s", charSequence, name);
             }
 

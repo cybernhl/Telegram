@@ -16124,9 +16124,9 @@ public class MessagesStorage extends BaseController {
             if (TextUtils.isEmpty(search1)) {
                 return;
             }
-            String savedMessages = LocaleController.getString("SavedMessages", R.string.SavedMessages).toLowerCase();
+            String savedMessages = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SAVEDMESSAGES, R.string.SavedMessages).toLowerCase();
             String savedMessages2 = "saved messages";
-            String replies = LocaleController.getString("RepliesTitle", R.string.RepliesTitle).toLowerCase();
+            String replies = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLIESTITLE, R.string.RepliesTitle).toLowerCase();
             String replies2 = "replies";
             String search2 = LocaleController.getInstance().getTranslitString(search1);
             if (search1.equals(search2) || search2.length() == 0) {
@@ -16206,7 +16206,7 @@ public class MessagesStorage extends BaseController {
                 if (user != null) {
                     DialogsSearchAdapter.DialogSearchResult dialogSearchResult = new DialogsSearchAdapter.DialogSearchResult();
                     dialogSearchResult.date = Integer.MAX_VALUE;
-                    dialogSearchResult.name = LocaleController.getString("RepliesTitle", R.string.RepliesTitle);
+                    dialogSearchResult.name = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REPLIESTITLE, R.string.RepliesTitle);
                     dialogSearchResult.object = user;
                     dialogsResult.put(user.id, dialogSearchResult);
                     resultCount++;

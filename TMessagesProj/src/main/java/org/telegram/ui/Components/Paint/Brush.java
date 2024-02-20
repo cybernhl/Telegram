@@ -372,7 +372,7 @@ public abstract class Brush {
 
             @Override
             public String getShapeName() {
-                return LocaleController.getString(R.string.PaintCircle);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTCIRCLE, R.string.PaintCircle);
             }
 
             @Override
@@ -394,7 +394,7 @@ public abstract class Brush {
 
             @Override
             public String getShapeName() {
-                return LocaleController.getString(R.string.PaintRectangle);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTRECTANGLE, R.string.PaintRectangle);
             }
 
             @Override
@@ -416,7 +416,7 @@ public abstract class Brush {
 
             @Override
             public String getShapeName() {
-                return LocaleController.getString(R.string.PaintStar);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTSTAR, R.string.PaintStar);
             }
 
             @Override
@@ -438,7 +438,7 @@ public abstract class Brush {
 
             @Override
             public String getShapeName() {
-                return LocaleController.getString(R.string.PaintBubble);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTBUBBLE, R.string.PaintBubble);
             }
 
             @Override
@@ -460,7 +460,7 @@ public abstract class Brush {
 
             @Override
             public String getShapeName() {
-                return LocaleController.getString(R.string.PaintArrow);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PAINTARROW, R.string.PaintArrow);
             }
 
             @Override

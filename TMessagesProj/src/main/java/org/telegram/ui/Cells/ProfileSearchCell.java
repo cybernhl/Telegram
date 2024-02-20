@@ -195,9 +195,9 @@ public class ProfileSearchCell extends BaseCell implements NotificationCenter.No
             delta -= ConnectionsManager.getInstance(currentAccount).getCurrentTime();
             if (delta <= 0) {
                 if (custom) {
-                    text = LocaleController.getString("NotificationsCustom", R.string.NotificationsCustom);
+                    text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSCUSTOM, R.string.NotificationsCustom);
                 } else {
-                    text = LocaleController.getString("NotificationsUnmuted", R.string.NotificationsUnmuted);
+                    text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSUNMUTED, R.string.NotificationsUnmuted);
                 }
             } else if (delta < 60 * 60) {
                 text = LocaleController.formatString("WillUnmuteIn", R.string.WillUnmuteIn, LocaleController.formatPluralString("Minutes", delta / 60));
@@ -219,13 +219,13 @@ public class ProfileSearchCell extends BaseCell implements NotificationCenter.No
                 enabled = false;
             }
             if (enabled && custom) {
-                text = LocaleController.getString("NotificationsCustom", R.string.NotificationsCustom);
+                text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSCUSTOM, R.string.NotificationsCustom);
             } else {
-                text = enabled ? LocaleController.getString("NotificationsUnmuted", R.string.NotificationsUnmuted) : LocaleController.getString("NotificationsMuted", R.string.NotificationsMuted);
+                text = enabled ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSUNMUTED, R.string.NotificationsUnmuted) : LocaleController.getString("NotificationsMuted", R.string.NotificationsMuted);
             }
         }
         if (text == null) {
-            text = LocaleController.getString("NotificationsOff", R.string.NotificationsOff);
+            text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSOFF, R.string.NotificationsOff);
         }
 
         if (DialogObject.isEncryptedDialog(exception.did)) {
@@ -400,7 +400,7 @@ public class ProfileSearchCell extends BaseCell implements NotificationCenter.No
             if (user != null && user.phone != null && user.phone.length() != 0) {
                 nameString = PhoneFormat.getInstance().format("+" + user.phone);
             } else {
-                nameString = LocaleController.getString("HiddenName", R.string.HiddenName);
+                nameString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_HIDDENNAME, R.string.HiddenName);
             }
         }
         if (customPaints) {
@@ -431,9 +431,9 @@ public class ProfileSearchCell extends BaseCell implements NotificationCenter.No
             nameWidth -= AndroidUtilities.dp(6) + Theme.dialogs_lockDrawable.getIntrinsicWidth();
         }
         if (contact != null) {
-            int w = (int) (Theme.dialogs_countTextPaint.measureText(LocaleController.getString(R.string.Invite)) + 1);
+            int w = (int) (Theme.dialogs_countTextPaint.measureText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITE, R.string.Invite)) + 1);
 
-            actionLayout = new StaticLayout(LocaleController.getString(R.string.Invite), Theme.dialogs_countTextPaint, w, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+            actionLayout = new StaticLayout(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_INVITE, R.string.Invite), Theme.dialogs_countTextPaint, w, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
             if (!LocaleController.isRTL) {
                 actionLeft = getMeasuredWidth() - w - AndroidUtilities.dp(19) - AndroidUtilities.dp(16);
             } else {
@@ -490,11 +490,11 @@ public class ProfileSearchCell extends BaseCell implements NotificationCenter.No
                 statusString = subLabel;
             } else if (user != null) {
                 if (MessagesController.isSupportUser(user)) {
-                    statusString = LocaleController.getString("SupportStatus", R.string.SupportStatus);
+                    statusString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SUPPORTSTATUS, R.string.SupportStatus);
                 } else if (user.bot) {
-                    statusString = LocaleController.getString("Bot", R.string.Bot);
+                    statusString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOT, R.string.Bot);
                 } else if (user.id == 333000 || user.id == 777000) {
-                    statusString = LocaleController.getString("ServiceNotifications", R.string.ServiceNotifications);
+                    statusString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SERVICENOTIFICATIONS, R.string.ServiceNotifications);
                 } else {
                     if (isOnline == null) {
                         isOnline = new boolean[1];
@@ -506,7 +506,7 @@ public class ProfileSearchCell extends BaseCell implements NotificationCenter.No
                     }
                     if (user != null && (user.id == UserConfig.getInstance(currentAccount).getClientUserId() || user.status != null && user.status.expires > ConnectionsManager.getInstance(currentAccount).getCurrentTime())) {
                         currentStatusPaint = Theme.dialogs_onlinePaint;
-                        statusString = LocaleController.getString("Online", R.string.Online);
+                        statusString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ONLINE, R.string.Online);
                     }
                 }
             }
@@ -520,9 +520,9 @@ public class ProfileSearchCell extends BaseCell implements NotificationCenter.No
                     statusString = LocaleController.formatPluralStringComma("Subscribers", chat.participants_count);
                 } else {
                     if (!ChatObject.isPublic(chat)) {
-                        statusString = LocaleController.getString("ChannelPrivate", R.string.ChannelPrivate).toLowerCase();
+                        statusString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPRIVATE, R.string.ChannelPrivate).toLowerCase();
                     } else {
-                        statusString = LocaleController.getString("ChannelPublic", R.string.ChannelPublic).toLowerCase();
+                        statusString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHANNELPUBLIC, R.string.ChannelPublic).toLowerCase();
                     }
                 }
             } else {
@@ -530,11 +530,11 @@ public class ProfileSearchCell extends BaseCell implements NotificationCenter.No
                     statusString = LocaleController.formatPluralStringComma("Members", chat.participants_count);
                 } else {
                     if (chat.has_geo) {
-                        statusString = LocaleController.getString("MegaLocation", R.string.MegaLocation);
+                        statusString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEGALOCATION, R.string.MegaLocation);
                     } else if (!ChatObject.isPublic(chat)) {
-                        statusString = LocaleController.getString("MegaPrivate", R.string.MegaPrivate).toLowerCase();
+                        statusString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEGAPRIVATE, R.string.MegaPrivate).toLowerCase();
                     } else {
-                        statusString = LocaleController.getString("MegaPublic", R.string.MegaPublic).toLowerCase();
+                        statusString = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MEGAPUBLIC, R.string.MegaPublic).toLowerCase();
                     }
                 }
             }
@@ -871,7 +871,7 @@ public class ProfileSearchCell extends BaseCell implements NotificationCenter.No
             builder.append(nameLayout.getText());
         }
         if (drawCheck) {
-            builder.append(", ").append(LocaleController.getString("AccDescrVerified", R.string.AccDescrVerified)).append("\n");
+            builder.append(", ").append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ACCDESCRVERIFIED, R.string.AccDescrVerified)).append("\n");
         }
         if (statusLayout != null) {
             if (builder.length() > 0) {

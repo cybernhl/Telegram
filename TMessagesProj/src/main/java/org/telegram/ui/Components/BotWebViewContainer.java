@@ -187,7 +187,7 @@ public abstract class BotWebViewContainer extends FrameLayout implements Notific
         addView(flickerView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP));
 
         webViewNotAvailableText = new TextView(context);
-        webViewNotAvailableText.setText(LocaleController.getString(R.string.BotWebViewNotAvailablePlaceholder));
+        webViewNotAvailableText.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWNOTAVAILABLEPLACEHOLDER, R.string.BotWebViewNotAvailablePlaceholder));
         webViewNotAvailableText.setTextColor(getColor(Theme.key_windowBackgroundWhiteGrayText));
         webViewNotAvailableText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         webViewNotAvailableText.setGravity(Gravity.CENTER);
@@ -357,7 +357,7 @@ public abstract class BotWebViewContainer extends FrameLayout implements Notific
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                     intent.addCategory(Intent.CATEGORY_OPENABLE);
                     intent.setType("*/*");
-                    activity.startActivityForResult(Intent.createChooser(intent, LocaleController.getString(R.string.BotWebViewFileChooserTitle)), REQUEST_CODE_WEB_VIEW_FILE);
+                    activity.startActivityForResult(Intent.createChooser(intent, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWFILECHOOSERTITLE, R.string.BotWebViewFileChooserTitle)), REQUEST_CODE_WEB_VIEW_FILE);
                 }
 
                 return true;
@@ -1457,9 +1457,9 @@ public abstract class BotWebViewContainer extends FrameLayout implements Notific
 
                     final String[] status = new String[] { "cancelled" };
                     showDialog(3, new AlertDialog.Builder(getContext())
-                        .setTitle(LocaleController.getString(R.string.BotWebViewRequestWriteTitle))
-                        .setMessage(LocaleController.getString(R.string.BotWebViewRequestWriteMessage))
-                        .setPositiveButton(LocaleController.getString(R.string.BotWebViewRequestAllow), (di, w) -> {
+                        .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWREQUESTWRITETITLE, R.string.BotWebViewRequestWriteTitle))
+                        .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWREQUESTWRITEMESSAGE, R.string.BotWebViewRequestWriteMessage))
+                        .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWREQUESTALLOW, R.string.BotWebViewRequestAllow), (di, w) -> {
                             TLRPC.TL_bots_allowSendMessage req2 = new TLRPC.TL_bots_allowSendMessage();
                             req2.bot = MessagesController.getInstance(currentAccount).getInputUser(botUser);
                             ConnectionsManager.getInstance(currentAccount).sendRequest(req2, (res2, err2) -> AndroidUtilities.runOnUIThread(() -> {
@@ -1475,7 +1475,7 @@ public abstract class BotWebViewContainer extends FrameLayout implements Notific
                                 di.dismiss();
                             }));
                         })
-                        .setNegativeButton(LocaleController.getString(R.string.BotWebViewRequestDontAllow), (di, w) -> {
+                        .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBVIEWREQUESTDONTALLOW, R.string.BotWebViewRequestDontAllow), (di, w) -> {
                             di.dismiss();
                         })
                         .create(),
@@ -1547,21 +1547,21 @@ public abstract class BotWebViewContainer extends FrameLayout implements Notific
 
                 final String[] status = new String[] { "cancelled" };
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), resourcesProvider);
-                builder.setTitle(LocaleController.getString("ShareYouPhoneNumberTitle", R.string.ShareYouPhoneNumberTitle));
+                builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHAREYOUPHONENUMBERTITLE, R.string.ShareYouPhoneNumberTitle));
                 SpannableStringBuilder message = new SpannableStringBuilder();
                 String botName = UserObject.getUserName(botUser);
                 if (!TextUtils.isEmpty(botName)) {
                     message.append(AndroidUtilities.replaceTags(LocaleController.formatString(R.string.AreYouSureShareMyContactInfoWebapp, botName)));
                 } else {
-                    message.append(AndroidUtilities.replaceTags(LocaleController.getString(R.string.AreYouSureShareMyContactInfoBot)));
+                    message.append(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AREYOUSURESHAREMYCONTACTINFOBOT, R.string.AreYouSureShareMyContactInfoBot)));
                 }
                 final boolean blocked = MessagesController.getInstance(currentAccount).blockePeers.indexOfKey(botUser.id) >= 0;
                 if (blocked) {
                     message.append("\n\n");
-                    message.append(LocaleController.getString(R.string.AreYouSureShareMyContactInfoBotUnblock));
+                    message.append(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AREYOUSURESHAREMYCONTACTINFOBOTUNBLOCK, R.string.AreYouSureShareMyContactInfoBotUnblock));
                 }
                 builder.setMessage(message);
-                builder.setPositiveButton(LocaleController.getString("ShareContact", R.string.ShareContact), (di, i) -> {
+                builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHARECONTACT, R.string.ShareContact), (di, i) -> {
                     status[0] = null;
                     di.dismiss();
 
@@ -1589,7 +1589,7 @@ public abstract class BotWebViewContainer extends FrameLayout implements Notific
                         }
                     }
                 });
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), (di, i) -> {
+                builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), (di, i) -> {
                     di.dismiss();
                 });
                 showDialog(4, builder.create(), () -> {
@@ -1618,7 +1618,7 @@ public abstract class BotWebViewContainer extends FrameLayout implements Notific
     }
 
     private void unknownError(String errCode) {
-        error(LocaleController.getString("UnknownError", R.string.UnknownError) + (errCode != null ? ": " + errCode : ""));
+        error(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_UNKNOWNERROR, R.string.UnknownError) + (errCode != null ? ": " + errCode : ""));
     }
 
     private void error(String reason) {
@@ -1853,15 +1853,15 @@ public abstract class BotWebViewContainer extends FrameLayout implements Notific
                     break;
                 }
                 case "ok": {
-                    text = LocaleController.getString(R.string.OK);
+                    text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK);
                     break;
                 }
                 case "close": {
-                    text = LocaleController.getString(R.string.Close);
+                    text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CLOSE, R.string.Close);
                     break;
                 }
                 case "cancel": {
-                    text = LocaleController.getString(R.string.Cancel);
+                    text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel);
                     break;
                 }
                 case "destructive": {

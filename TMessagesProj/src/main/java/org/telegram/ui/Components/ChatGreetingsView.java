@@ -80,11 +80,11 @@ public class ChatGreetingsView extends LinearLayout {
         updateColors();
 
         if (distance <= 0) {
-            titleView.setText(LocaleController.getString("NoMessages", R.string.NoMessages));
-            descriptionView.setText(LocaleController.getString("NoMessagesGreetingsDescription", R.string.NoMessagesGreetingsDescription));
+            titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOMESSAGES, R.string.NoMessages));
+            descriptionView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOMESSAGESGREETINGSDESCRIPTION, R.string.NoMessagesGreetingsDescription));
         } else {
             titleView.setText(LocaleController.formatString("NearbyPeopleGreetingsMessage", R.string.NearbyPeopleGreetingsMessage, user.first_name, LocaleController.formatDistance(distance, 1)));
-            descriptionView.setText(LocaleController.getString("NearbyPeopleGreetingsDescription", R.string.NearbyPeopleGreetingsDescription));
+            descriptionView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NEARBYPEOPLEGREETINGSDESCRIPTION, R.string.NearbyPeopleGreetingsDescription));
         }
         descriptionView.setMaxWidth(HintView2.cutInFancyHalf(descriptionView.getText(), descriptionView.getPaint()));
         stickerToSendView.setContentDescription(descriptionView.getText());
@@ -192,7 +192,7 @@ public class ChatGreetingsView extends LinearLayout {
 
                 ScaleStateListAnimator.apply(premiumButtonView);
             }
-            premiumButtonView.setText(LocaleController.getString(R.string.MessagePremiumUnlock));
+            premiumButtonView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MESSAGEPREMIUMUNLOCK, R.string.MessagePremiumUnlock));
             premiumButtonView.setTextColor(getThemedColor(Theme.key_chat_serviceText));
             premiumButtonView.setOnClickListener(v -> {
                 BaseFragment fragment = LaunchActivity.getLastFragment();
@@ -396,7 +396,7 @@ public class ChatGreetingsView extends LinearLayout {
                     sheet.dismiss();
                 }
             });
-            button2.setOverlayText(LocaleController.getString(R.string.PremiumMessageButton), false, false);
+            button2.setOverlayText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMMESSAGEBUTTON, R.string.PremiumMessageButton), false, false);
             layout.addView(button2, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48, Gravity.CENTER_HORIZONTAL, 0, 0, 0, 4));
         }
 

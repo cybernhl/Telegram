@@ -384,7 +384,7 @@ public class PremiumPreviewBottomSheet extends BottomSheetWithRecyclerListView i
                     titleView[0].setText(title, null);
                 }
             }
-            subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.TelegramPremiumUserStatusDialogSubtitle)));
+            subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TELEGRAMPREMIUMUSERSTATUSDIALOGSUBTITLE, R.string.TelegramPremiumUserStatusDialogSubtitle)));
         } else if (isEmojiStatus) {
             titleView[0].setText(AndroidUtilities.replaceTags(LocaleController.formatString(R.string.TelegramPremiumUserStatusDefaultDialogTitle, ContactsController.formatName(user.first_name, user.last_name))));
             subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.formatString(R.string.TelegramPremiumUserStatusDialogSubtitle, ContactsController.formatName(user.first_name, user.last_name))));
@@ -394,18 +394,18 @@ public class PremiumPreviewBottomSheet extends BottomSheetWithRecyclerListView i
                 subtitleView.setText(AndroidUtilities.replaceSingleLink(LocaleController.formatString(R.string.TelegramPremiumUserGiftedPremiumOutboundDialogSubtitle, user != null ? user.first_name : ""), accentColor == null ? getThemedColor(Theme.key_windowBackgroundWhiteBlueButton) : accentColor));
             } else if (user == null || TextUtils.isEmpty(user.first_name) || user.id == 777000) {
                 titleView[0].setText(AndroidUtilities.replaceSingleLink(LocaleController.formatString(R.string.TelegramPremiumUserGiftedPremiumDialogTitleWithPluralSomeone, LocaleController.formatPluralString("GiftMonths", giftTier.getMonths())), accentColor == null ? getThemedColor(Theme.key_windowBackgroundWhiteBlueButton) : accentColor));
-                subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.TelegramPremiumUserGiftedPremiumDialogSubtitle)));
+                subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TELEGRAMPREMIUMUSERGIFTEDPREMIUMDIALOGSUBTITLE, R.string.TelegramPremiumUserGiftedPremiumDialogSubtitle)));
             } else {
                 titleView[0].setText(AndroidUtilities.replaceSingleLink(LocaleController.formatString(R.string.TelegramPremiumUserGiftedPremiumDialogTitleWithPlural, user.first_name, LocaleController.formatPluralString("GiftMonths", giftTier.getMonths())), accentColor == null ? getThemedColor(Theme.key_windowBackgroundWhiteBlueButton) : accentColor));
-                subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.TelegramPremiumUserGiftedPremiumDialogSubtitle)));
+                subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TELEGRAMPREMIUMUSERGIFTEDPREMIUMDIALOGSUBTITLE, R.string.TelegramPremiumUserGiftedPremiumDialogSubtitle)));
             }
         } else {
             if (user == null) {
-                titleView[0].setText(LocaleController.getString(R.string.TelegramPremium));
-                subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.TelegramPremiumSubscribedSubtitle)));
+                titleView[0].setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TELEGRAMPREMIUM, R.string.TelegramPremium));
+                subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TELEGRAMPREMIUMSUBSCRIBEDSUBTITLE, R.string.TelegramPremiumSubscribedSubtitle)));
             } else {
                 titleView[0].setText(AndroidUtilities.replaceSingleLink(LocaleController.formatString(R.string.TelegramPremiumUserDialogTitle, ContactsController.formatName(user.first_name, user.last_name)), accentColor == null ? getThemedColor(Theme.key_windowBackgroundWhiteBlueButton) : accentColor));
-                subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.TelegramPremiumUserDialogSubtitle)));
+                subtitleView.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TELEGRAMPREMIUMUSERDIALOGSUBTITLE, R.string.TelegramPremiumUserDialogSubtitle)));
             }
         }
         try {
@@ -415,7 +415,7 @@ public class PremiumPreviewBottomSheet extends BottomSheetWithRecyclerListView i
 
     @Override
     protected CharSequence getTitle() {
-        return LocaleController.getString("TelegramPremium", R.string.TelegramPremium);
+        return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TELEGRAMPREMIUM, R.string.TelegramPremium);
     }
 
     @Override
@@ -623,12 +623,12 @@ public class PremiumPreviewBottomSheet extends BottomSheetWithRecyclerListView i
                     SpannableStringBuilder stringBuilder1 = AndroidUtilities.replaceSingleTag(
                             terms1,
                             Theme.key_chat_messageLinkIn, 0,
-                            () -> Browser.openUrl(fragment.getParentActivity(), LocaleController.getString("TermsOfServiceUrl", R.string.TermsOfServiceUrl)));
+                            () -> Browser.openUrl(fragment.getParentActivity(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TERMSOFSERVICEURL, R.string.TermsOfServiceUrl)));
                     String terms2 = getString("GiftPremiumPrivacyPolicy", R.string.GiftPremiumPrivacyPolicy);
                     SpannableStringBuilder stringBuilder2 = AndroidUtilities.replaceSingleTag(
                             terms2,
                             Theme.key_chat_messageLinkIn, 0,
-                            () -> Browser.openUrl(fragment.getParentActivity(), LocaleController.getString("PrivacyPolicyUrl", R.string.PrivacyPolicyUrl)));
+                            () -> Browser.openUrl(fragment.getParentActivity(), LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PRIVACYPOLICYURL, R.string.PrivacyPolicyUrl)));
                     cell.setText(AndroidUtilities.replaceCharSequence("%1$s", stringBuilder1, stringBuilder2));
                     view = cell;
                     break;

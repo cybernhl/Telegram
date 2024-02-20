@@ -43,7 +43,7 @@ public class DraftSavedHint extends View {
         textPaint.setTextSize(dp(14));
         textPaint.setColor(0xffffffff);
 
-        CharSequence text = LocaleController.getString("StoryDraftSaved");
+        CharSequence text = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYDRAFTSAVED);
         text = TextUtils.ellipsize(text, textPaint, AndroidUtilities.displaySize.x, TextUtils.TruncateAt.END);
         layout = new StaticLayout(text, textPaint, AndroidUtilities.displaySize.x, Layout.Alignment.ALIGN_NORMAL, 1f, 0f, false);
         layoutWidth = layout.getLineCount() > 0 ? layout.getLineWidth(0) : 0;

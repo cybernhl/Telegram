@@ -542,6 +542,6 @@ public class Switch extends View {
         info.setClassName("android.widget.Switch");
         info.setCheckable(true);
         info.setChecked(isChecked);
-        //info.setContentDescription(isChecked ? LocaleController.getString("NotificationsOn", R.string.NotificationsOn) : LocaleController.getString("NotificationsOff", R.string.NotificationsOff));
+        //info.setContentDescription(isChecked ? LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSON, R.string.NotificationsOn) : LocaleController.getString("NotificationsOff", R.string.NotificationsOff));
     }
 }

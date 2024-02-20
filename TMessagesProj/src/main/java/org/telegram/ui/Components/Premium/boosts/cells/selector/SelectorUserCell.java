@@ -109,7 +109,7 @@ public class SelectorUserCell extends BaseCell {
         if (participants_count >= 1) {
             subtitle = LocaleController.formatPluralString("Subscribers", participants_count);
         } else {
-            subtitle = LocaleController.getString(R.string.DiscussChannel);
+            subtitle = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISCUSSCHANNEL, R.string.DiscussChannel);
         }
         setSubtitle(subtitle);
         subtitleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextGray3, resourcesProvider));

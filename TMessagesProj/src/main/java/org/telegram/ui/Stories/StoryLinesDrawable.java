@@ -41,7 +41,7 @@ public class StoryLinesDrawable {
         zoomHintPaint.setTextSize(dp(14));
         zoomHintPaint.setColor(0xffffffff);
         zoomHintPaint.setShadowLayer(dp(3), 0, dp(1), 0x30000000);
-        zoomHintLayout = new StaticLayout(LocaleController.getString(R.string.StorySeekHelp), zoomHintPaint, AndroidUtilities.displaySize.x, Layout.Alignment.ALIGN_NORMAL, 1f, 0f, false);
+        zoomHintLayout = new StaticLayout(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYSEEKHELP, R.string.StorySeekHelp), zoomHintPaint, AndroidUtilities.displaySize.x, Layout.Alignment.ALIGN_NORMAL, 1f, 0f, false);
         zoomHintLayoutLeft = zoomHintLayout.getLineCount() > 0 ? zoomHintLayout.getLineLeft(0) : 0;
         zoomHintLayoutWidth = zoomHintLayout.getLineCount() > 0 ? zoomHintLayout.getLineWidth(0) : 0;
     }

@@ -239,7 +239,7 @@ public class TimelineView extends View {
                 ItemOptions itemOptions = ItemOptions.makeOptions(container, resourcesProvider, this)
                     .addView(slider)
                     .addSpaceGap()
-                    .add(R.drawable.msg_delete, LocaleController.getString(R.string.StoryAudioRemove), () -> {
+                    .add(R.drawable.msg_delete, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYAUDIOREMOVE, R.string.StoryAudioRemove), () -> {
                         if (delegate != null) {
                             delegate.onAudioRemove();
                         }
@@ -270,7 +270,7 @@ public class TimelineView extends View {
                 ItemOptions itemOptions = ItemOptions.makeOptions(container, resourcesProvider, this)
                     .addView(slider)
                     .addSpaceGap()
-                    .add(R.drawable.msg_delete, LocaleController.getString(R.string.StoryRoundRemove), () -> {
+                    .add(R.drawable.msg_delete, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYROUNDREMOVE, R.string.StoryRoundRemove), () -> {
                         if (delegate != null) {
                             delegate.onRoundRemove();
                         }

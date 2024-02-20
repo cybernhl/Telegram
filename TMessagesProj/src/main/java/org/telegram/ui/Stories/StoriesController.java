@@ -1879,7 +1879,7 @@ public class StoriesController {
             } else if (id == NotificationCenter.fileUploadFailed) {
                 String location = (String) args[0];
                 if (path != null && location.equals(path)) {
-                    NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.showBulletin, Bulletin.TYPE_ERROR, LocaleController.getString("StoryUploadError", R.string.StoryUploadError));
+                    NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.showBulletin, Bulletin.TYPE_ERROR, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYUPLOADERROR, R.string.StoryUploadError));
                     cleanup();
                 }
             } else if (id == NotificationCenter.fileUploadProgressChanged) {

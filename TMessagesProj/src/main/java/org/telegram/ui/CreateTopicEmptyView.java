@@ -44,7 +44,7 @@ public class CreateTopicEmptyView extends LinearLayout {
         headerTextView.setGravity(Gravity.CENTER_HORIZONTAL);
         headerTextView.setMaxWidth(AndroidUtilities.dp(210));
 
-        headerTextView.setText(LocaleController.getString(R.string.AlmostDone));
+        headerTextView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ALMOSTDONE, R.string.AlmostDone));
 
 
         TextView description = new TextView(context);
@@ -53,7 +53,7 @@ public class CreateTopicEmptyView extends LinearLayout {
         description.setGravity(Gravity.CENTER_HORIZONTAL);
         description.setMaxWidth(AndroidUtilities.dp(160));
 
-        description.setText(LocaleController.getString(R.string.TopicEmptyViewDescription));
+        description.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TOPICEMPTYVIEWDESCRIPTION, R.string.TopicEmptyViewDescription));
 
         addView(backupImageView, LayoutHelper.createLinear(58, 58, Gravity.CENTER_HORIZONTAL, 0, 8, 0, 8));
         addView(headerTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 0, 2, 0));

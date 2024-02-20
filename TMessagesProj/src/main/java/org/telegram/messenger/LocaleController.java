@@ -1759,7 +1759,7 @@ public class LocaleController {
             int dateYear = rightNow.get(Calendar.YEAR);
 
             if (timeInMillis - date < 1000 * 60) {
-                return LocaleController.getString(R.string.ShortNow);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHORTNOW, R.string.ShortNow);
             } else if (timeInMillis - date < 1000 * 60 * 60) {
                 int minutesAgo = (int) ((timeInMillis - date) / (1000 * 60));
                 return LocaleController.formatPluralString("ShortMinutesAgo", minutesAgo);
@@ -1768,10 +1768,10 @@ public class LocaleController {
                     int hoursAgo = (int) ((timeInMillis - date) / (1000 * 60 * 60));
                     return LocaleController.formatPluralString("ShortHoursAgo", hoursAgo);
                 } else {
-                    return LocaleController.getString(R.string.ShortToday);
+                    return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHORTTODAY, R.string.ShortToday);
                 }
             } else if (dateDay + 1 == day && year == dateYear) {
-                return LocaleController.getString(R.string.ShortYesterday);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHORTYESTERDAY, R.string.ShortYesterday);
             } else if (Math.abs(System.currentTimeMillis() - date) < 31536000000L) {
                 return getInstance().formatterDayMonth.format(new Date(date));
             } else {
@@ -1795,7 +1795,7 @@ public class LocaleController {
             int dateYear = rightNow.get(Calendar.YEAR);
 
             if (timeInMillis - date < 1000 * 60) {
-                return LocaleController.getString("RightNow", R.string.RightNow);
+                return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_RIGHTNOW, R.string.RightNow);
             } else if (timeInMillis - date < 1000 * 60 * 60) {
                 int minutesAgo = (int) ((timeInMillis - date) / (1000 * 60));
                 return LocaleController.formatPluralString("MinutesAgo", minutesAgo, minutesAgo);
@@ -1900,7 +1900,7 @@ public class LocaleController {
             if (dateDay == day && year == dateYear) {
                 int diff = (int) (ConnectionsManager.getInstance(UserConfig.selectedAccount).getCurrentTime() - date / 1000) / 60;
                 if (diff < 1) {
-                    return LocaleController.getString("LocationUpdatedJustNow", R.string.LocationUpdatedJustNow);
+                    return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOCATIONUPDATEDJUSTNOW, R.string.LocationUpdatedJustNow);
                 } else if (diff < 60) {
                     return LocaleController.formatPluralString("UpdatedMinutes", diff);
                 }
@@ -1952,7 +1952,7 @@ public class LocaleController {
                 return LocaleController.formatString("LastSeenFormatted", R.string.LastSeenFormatted, LocaleController.formatString("TodayAtFormatted", R.string.TodayAtFormatted, getInstance().formatterDay.format(new Date(date))));
                 /*int diff = (int) (ConnectionsManager.getInstance().getCurrentTime() - date) / 60;
                 if (diff < 1) {
-                    return LocaleController.getString("LastSeenNow", R.string.LastSeenNow);
+                    return LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LASTSEENNOW, R.string.LastSeenNow);
                 } else if (diff < 60) {
                     return LocaleController.formatPluralString("LastSeenMinutes", diff);
                 } else {
@@ -2100,18 +2100,18 @@ public class LocaleController {
             int month = rightNow.get(Calendar.MONTH);
 
             final String[] months = new String[]{
-                    LocaleController.getString("January", R.string.January),
-                    LocaleController.getString("February", R.string.February),
-                    LocaleController.getString("March", R.string.March),
-                    LocaleController.getString("April", R.string.April),
-                    LocaleController.getString("May", R.string.May),
-                    LocaleController.getString("June", R.string.June),
-                    LocaleController.getString("July", R.string.July),
-                    LocaleController.getString("August", R.string.August),
-                    LocaleController.getString("September", R.string.September),
-                    LocaleController.getString("October", R.string.October),
-                    LocaleController.getString("November", R.string.November),
-                    LocaleController.getString("December", R.string.December)
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_JANUARY, R.string.January),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_FEBRUARY, R.string.February),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MARCH, R.string.March),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_APRIL, R.string.April),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_MAY, R.string.May),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_JUNE, R.string.June),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_JULY, R.string.July),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_AUGUST, R.string.August),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SEPTEMBER, R.string.September),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OCTOBER, R.string.October),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOVEMBER, R.string.November),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DECEMBER, R.string.December)
             };
             if (year == dateYear && !alwaysShowYear) {
                 return months[month];

@@ -271,7 +271,7 @@ public class MessageSeenView extends FrameLayout {
             titleView.setText(ContactsController.formatName(users.get(0)));
         } else {
             if (peerIds.size() == 0) {
-                titleView.setText(LocaleController.getString("NobodyViewed", R.string.NobodyViewed));
+                titleView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOBODYVIEWED, R.string.NobodyViewed));
             } else {
                 titleView.setText(LocaleController.formatPluralString(isVoice ? "MessagePlayed" : "MessageSeen", peerIds.size()));
             }

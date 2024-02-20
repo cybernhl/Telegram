@@ -87,7 +87,7 @@ public class BoostDialogs {
                     Theme.key_undo_cancelColor, 0,
                     share);
             BulletinFactory.of(containerLayout, resourcesProvider).createSimpleBulletin(R.raw.chats_infotip,
-                    LocaleController.getString("GiftPremiumActivateErrorTitle", R.string.GiftPremiumActivateErrorTitle),
+                    LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_GIFTPREMIUMACTIVATEERRORTITLE, R.string.GiftPremiumActivateErrorTitle),
                     AndroidUtilities.replaceCharSequence("%1$s", subTitleWithLink, replaceTags("**" + formattedDate + "**"))
             ).show();
             try {
@@ -125,7 +125,7 @@ public class BoostDialogs {
     public static void showGiftLinkForwardedBulletin(long did) {
         CharSequence text;
         if (did == UserConfig.getInstance(UserConfig.selectedAccount).clientUserId) {
-            text = AndroidUtilities.replaceTags(LocaleController.getString("BoostingGiftLinkForwardedToSavedMsg", R.string.BoostingGiftLinkForwardedToSavedMsg));
+            text = AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIFTLINKFORWARDEDTOSAVEDMSG, R.string.BoostingGiftLinkForwardedToSavedMsg));
         } else {
             if (DialogObject.isChatDialog(did)) {
                 TLRPC.Chat chat = MessagesController.getInstance(UserConfig.selectedAccount).getChat(-did);
@@ -779,15 +779,15 @@ public class BoostDialogs {
 
             if (result instanceof TLRPC.TL_payments_giveawayInfoResults) {
                 layout.setAnimation(R.raw.chats_infotip, 30, 30);
-                layout.textView.setText(LocaleController.getString("BoostingGiveawayShortStatusEnded", R.string.BoostingGiveawayShortStatusEnded));
+                layout.textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIVEAWAYSHORTSTATUSENDED, R.string.BoostingGiveawayShortStatusEnded));
             } else if (result instanceof TLRPC.TL_payments_giveawayInfo) {
                 TLRPC.TL_payments_giveawayInfo giveawayInfo = (TLRPC.TL_payments_giveawayInfo) result;
                 if (giveawayInfo.participating) {
                     layout.setAnimation(R.raw.forward, 30, 30);
-                    layout.textView.setText(LocaleController.getString("BoostingGiveawayShortStatusParticipating", R.string.BoostingGiveawayShortStatusParticipating));
+                    layout.textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIVEAWAYSHORTSTATUSPARTICIPATING, R.string.BoostingGiveawayShortStatusParticipating));
                 } else {
                     layout.setAnimation(R.raw.chats_infotip, 30, 30);
-                    layout.textView.setText(LocaleController.getString("BoostingGiveawayShortStatusNotParticipating", R.string.BoostingGiveawayShortStatusNotParticipating));
+                    layout.textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGIVEAWAYSHORTSTATUSNOTPARTICIPATING, R.string.BoostingGiveawayShortStatusNotParticipating));
                 }
             }
 
@@ -795,7 +795,7 @@ public class BoostDialogs {
             layout.textView.setMaxLines(2);
 
             layout.setButton(new Bulletin.UndoButton(fragment.getParentActivity(), true, fragment.getResourceProvider())
-                    .setText(LocaleController.getString("LearnMore", R.string.LearnMore))
+                    .setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LEARNMORE, R.string.LearnMore))
                     .setUndoAction(() -> {
                         if (result instanceof TLRPC.TL_payments_giveawayInfo) {
                             TLRPC.TL_payments_giveawayInfo giveawayInfo = (TLRPC.TL_payments_giveawayInfo) result;
@@ -818,7 +818,7 @@ public class BoostDialogs {
             return;
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(baseFragment.getContext(), baseFragment.getResourceProvider());
-        builder.setTitle(LocaleController.getString("BoostingMoreBoostsNeeded", R.string.BoostingMoreBoostsNeeded));
+        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGMOREBOOSTSNEEDED, R.string.BoostingMoreBoostsNeeded));
         builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatPluralString("BoostingGetMoreBoostByGiftingCount", BoostRepository.boostsPerSentGift(), chat.title)));
         builder.setNegativeButton(getString("GiftPremium", R.string.GiftPremium), (dialogInterface, i) -> {
             bottomSheet.dismiss();
@@ -846,9 +846,9 @@ public class BoostDialogs {
             timeString = LocaleController.formatPluralString("Hours", time / 60 / 60) + " " + LocaleController.formatPluralString("Minutes", time % 60);
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(baseFragment.getContext(), baseFragment.getResourceProvider());
-        builder.setTitle(LocaleController.getString("CantBoostTooOften", R.string.CantBoostTooOften));
+        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANTBOOSTTOOOFTEN, R.string.CantBoostTooOften));
         builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("CantBoostTooOftenDescription", R.string.CantBoostTooOftenDescription, timeString)));
-        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialog, which) -> {
+        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OK, R.string.OK), (dialog, which) -> {
             dialog.dismiss();
         });
         builder.show();
@@ -860,12 +860,12 @@ public class BoostDialogs {
             return;
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(baseFragment.getContext(), baseFragment.getResourceProvider());
-        builder.setTitle(LocaleController.getString("BoostingStartGiveawayConfirmTitle", R.string.BoostingStartGiveawayConfirmTitle));
-        builder.setMessage(AndroidUtilities.replaceTags(LocaleController.getString("BoostingStartGiveawayConfirmText", R.string.BoostingStartGiveawayConfirmText)));
-        builder.setPositiveButton(LocaleController.getString("Start", R.string.Start), (dialog, which) -> {
+        builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGSTARTGIVEAWAYCONFIRMTITLE, R.string.BoostingStartGiveawayConfirmTitle));
+        builder.setMessage(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGSTARTGIVEAWAYCONFIRMTEXT, R.string.BoostingStartGiveawayConfirmText)));
+        builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_START, R.string.Start), (dialog, which) -> {
             onStart.run();
         });
-        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), (dialog, which) -> {
+        builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), (dialog, which) -> {
             dialog.dismiss();
         });
         builder.show();

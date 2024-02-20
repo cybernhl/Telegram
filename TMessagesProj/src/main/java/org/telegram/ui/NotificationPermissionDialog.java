@@ -79,7 +79,7 @@ public class NotificationPermissionDialog extends BottomSheet implements Notific
         textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setGravity(Gravity.CENTER_HORIZONTAL);
-        textView.setText(LocaleController.getString("NotificationsPermissionAlertTitle"));
+        textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSPERMISSIONALERTTITLE));
         textView.setPadding(AndroidUtilities.dp(30), 0, AndroidUtilities.dp(30), 0);
         linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
@@ -87,19 +87,19 @@ public class NotificationPermissionDialog extends BottomSheet implements Notific
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setGravity(Gravity.CENTER_HORIZONTAL);
-        textView.setText(LocaleController.getString("NotificationsPermissionAlertSubtitle"));
+        textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSPERMISSIONALERTSUBTITLE));
         textView.setPadding(AndroidUtilities.dp(30), AndroidUtilities.dp(10), AndroidUtilities.dp(30), AndroidUtilities.dp(21));
         linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-        linearLayout.addView(new SectionView(context, R.drawable.msg_message_s,     LocaleController.getString("NotificationsPermissionAlert1")), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
-        linearLayout.addView(new SectionView(context, R.drawable.msg_members_list2, LocaleController.getString("NotificationsPermissionAlert2")), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
-        linearLayout.addView(new SectionView(context, R.drawable.msg_customize_s,   LocaleController.getString("NotificationsPermissionAlert3")), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+        linearLayout.addView(new SectionView(context, R.drawable.msg_message_s,     LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSPERMISSIONALERT1)), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+        linearLayout.addView(new SectionView(context, R.drawable.msg_members_list2, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSPERMISSIONALERT2)), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+        linearLayout.addView(new SectionView(context, R.drawable.msg_customize_s,   LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSPERMISSIONALERT3)), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         setCustomView(linearLayout);
         fixNavigationBar(getThemedColor(Theme.key_dialogBackground));
 
         textView = new TextView(context);
-        textView.setText(LocaleController.getString("NotificationsPermissionContinue"));
+        textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOTIFICATIONSPERMISSIONCONTINUE));
         textView.setGravity(Gravity.CENTER);
         textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

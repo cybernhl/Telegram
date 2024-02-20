@@ -251,9 +251,9 @@ public class SharedPhotoVideoCell extends FrameLayout {
         public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
             super.onInitializeAccessibilityNodeInfo(info);
             if (currentMessageObject.isVideo()) {
-                info.setText(LocaleController.getString("AttachVideo", R.string.AttachVideo) + ", " + LocaleController.formatDuration((int) currentMessageObject.getDuration()));
+                info.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHVIDEO, R.string.AttachVideo) + ", " + LocaleController.formatDuration((int) currentMessageObject.getDuration()));
             } else {
-                info.setText(LocaleController.getString("AttachPhoto", R.string.AttachPhoto));
+                info.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHPHOTO, R.string.AttachPhoto));
             }
             if (checkBox.isChecked()) {
                 info.setCheckable(true);

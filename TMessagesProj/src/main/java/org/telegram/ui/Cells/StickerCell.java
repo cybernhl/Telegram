@@ -202,9 +202,9 @@ public class StickerCell extends FrameLayout {
             }
         }
         if (emoji != null)
-            info.setText(emoji + " " + LocaleController.getString("AttachSticker", R.string.AttachSticker));
+            info.setText(emoji + " " + LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHSTICKER, R.string.AttachSticker));
         else
-            info.setText(LocaleController.getString("AttachSticker", R.string.AttachSticker));
+            info.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_ATTACHSTICKER, R.string.AttachSticker));
         info.setEnabled(true);
     }
 

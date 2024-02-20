@@ -164,14 +164,14 @@ public class OtherDocumentPlaceholderDrawable extends RecyclableDrawable impleme
         TextPaint paint;
         int offsetY;
         if (loaded) {
-            button = LocaleController.getString("OpenFile", R.string.OpenFile);
+            button = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_OPENFILE, R.string.OpenFile);
             paint = openPaint;
             offsetY = 0;
         } else {
             if (loading) {
-                button = LocaleController.getString("Cancel", R.string.Cancel).toUpperCase();
+                button = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel).toUpperCase();
             } else {
-                button = LocaleController.getString("TapToDownload", R.string.TapToDownload);
+                button = LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TAPTODOWNLOAD, R.string.TapToDownload);
             }
             offsetY = AndroidUtilities.dp(28);
             paint = buttonPaint;

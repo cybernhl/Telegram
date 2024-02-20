@@ -35,7 +35,7 @@ public class WebAppDisclaimerAlert {
         WebAppDisclaimerAlert alert = new WebAppDisclaimerAlert();
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-        alertDialog.setTitle(LocaleController.getString("TermsOfUse", R.string.TermsOfUse));
+        alertDialog.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_TERMSOFUSE, R.string.TermsOfUse));
         LinearLayout linearLayout = new LinearLayout(context);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         TextView textView = new TextView(context);
@@ -61,16 +61,16 @@ public class WebAppDisclaimerAlert {
 //            });
 //        }
 
-        textView.setText(AndroidUtilities.replaceTags(LocaleController.getString("BotWebAppDisclaimerSubtitle", R.string.BotWebAppDisclaimerSubtitle)));
-        alert.cell.setText(AndroidUtilities.replaceSingleTag(LocaleController.getString("BotWebAppDisclaimerCheck", R.string.BotWebAppDisclaimerCheck), () -> {
-            Browser.openUrl(context, LocaleController.getString("WebAppDisclaimerUrl", R.string.WebAppDisclaimerUrl));
+        textView.setText(AndroidUtilities.replaceTags(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBAPPDISCLAIMERSUBTITLE, R.string.BotWebAppDisclaimerSubtitle)));
+        alert.cell.setText(AndroidUtilities.replaceSingleTag(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOTWEBAPPDISCLAIMERCHECK, R.string.BotWebAppDisclaimerCheck), () -> {
+            Browser.openUrl(context, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_WEBAPPDISCLAIMERURL, R.string.WebAppDisclaimerUrl));
         }), "", false, false);
         alertDialog.setView(linearLayout);
-        alertDialog.setPositiveButton(LocaleController.getString("Continue", R.string.Continue), (dialog, which) -> {
+        alertDialog.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CONTINUE, R.string.Continue), (dialog, which) -> {
             consumer.accept(true);
             dialog.dismiss();
         });
-        alertDialog.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), (dialog, which) -> {
+        alertDialog.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), (dialog, which) -> {
             dialog.dismiss();
         });
         alert.alert = alertDialog.create();

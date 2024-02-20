@@ -129,7 +129,7 @@ public class AvatarConstructorFragment extends BaseFragment {
         actionBar.setItemsBackgroundColor(Theme.getColor(Theme.key_listSelector), false);
         actionBar.setBackButtonDrawable(new BackDrawable(false));
         actionBar.setAllowOverlayTitle(false);
-        actionBar.setTitle(LocaleController.getString("PhotoEditor", R.string.PhotoEditor));
+        actionBar.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHOTOEDITOR, R.string.PhotoEditor));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -154,8 +154,8 @@ public class AvatarConstructorFragment extends BaseFragment {
         ActionBarMenu menuOverlay = overlayActionBar.createMenu();
         menuOverlay.setClipChildren(false);
         setPhotoItem = menuOverlay.addItem(1, avatarFor != null && avatarFor.type == TYPE_SUGGEST_PHOTO_FOR_USER ?
-                LocaleController.getString("SuggestPhoto", R.string.SuggestPhoto) :
-                LocaleController.getString("SetPhoto", R.string.SetPhoto)
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SUGGESTPHOTO, R.string.SuggestPhoto) :
+                LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETPHOTO, R.string.SetPhoto)
         );
         setPhotoItem.setBackground(Theme.createSelectorDrawable(selectorColor, Theme.RIPPLE_MASK_CIRCLE_TO_BOUND_EDGE));
         overlayActionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
@@ -365,7 +365,7 @@ public class AvatarConstructorFragment extends BaseFragment {
         });
 
         chooseBackgroundHint = new TextView(getContext());
-        chooseBackgroundHint.setText(LocaleController.getString("ChooseBackground", R.string.ChooseBackground));
+        chooseBackgroundHint.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEBACKGROUND, R.string.ChooseBackground));
         chooseBackgroundHint.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         chooseBackgroundHint.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         chooseBackgroundHint.setGravity(Gravity.CENTER);
@@ -395,7 +395,7 @@ public class AvatarConstructorFragment extends BaseFragment {
         linearLayout.addView(backgroundContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48, 0, 12, 0, 12, 0));
 
         chooseEmojiHint = new TextView(getContext());
-        chooseEmojiHint.setText(LocaleController.getString("ChooseEmojiOrSticker", R.string.ChooseEmojiOrSticker));
+        chooseEmojiHint.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CHOOSEEMOJIORSTICKER, R.string.ChooseEmojiOrSticker));
         chooseEmojiHint.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         chooseEmojiHint.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         chooseEmojiHint.setGravity(Gravity.CENTER);
@@ -438,13 +438,13 @@ public class AvatarConstructorFragment extends BaseFragment {
         TextView textView = new TextView(getContext());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         if (imageUpdater.setForType == FOR_TYPE_CHANNEL) {
-            textView.setText(LocaleController.getString("SetChannelPhoto", R.string.SetChannelPhoto));
+            textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETCHANNELPHOTO, R.string.SetChannelPhoto));
         } else if (imageUpdater.setForType == FOR_TYPE_GROUP) {
-            textView.setText(LocaleController.getString("SetGroupPhoto", R.string.SetGroupPhoto));
+            textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETGROUPPHOTO, R.string.SetGroupPhoto));
         } else if (avatarFor != null && avatarFor.type == TYPE_SUGGEST_PHOTO_FOR_USER) {
-            textView.setText(LocaleController.getString("SuggestPhoto", R.string.SuggestPhoto));
+            textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SUGGESTPHOTO, R.string.SuggestPhoto));
         } else {
-            textView.setText(LocaleController.getString("SetProfilePhotoAvatarConstructor", R.string.SetProfilePhotoAvatarConstructor));
+            textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETPROFILEPHOTOAVATARCONSTRUCTOR, R.string.SetProfilePhotoAvatarConstructor));
         }
         textView.setGravity(Gravity.CENTER);
         textView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
@@ -492,10 +492,10 @@ public class AvatarConstructorFragment extends BaseFragment {
         }
         if (wasChanged) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-            builder.setMessage(LocaleController.getString("PhotoEditorDiscardAlert", R.string.PhotoEditorDiscardAlert));
-            builder.setTitle(LocaleController.getString("DiscardChanges", R.string.DiscardChanges));
-            builder.setPositiveButton(LocaleController.getString("PassportDiscard", R.string.PassportDiscard), (dialogInterface, i) -> finishFragment());
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+            builder.setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PHOTOEDITORDISCARDALERT, R.string.PhotoEditorDiscardAlert));
+            builder.setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_DISCARDCHANGES, R.string.DiscardChanges));
+            builder.setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PASSPORTDISCARD, R.string.PassportDiscard), (dialogInterface, i) -> finishFragment());
+            builder.setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null);
             AlertDialog dialog = builder.create();
             showDialog(dialog);
             dialog.redPositive();
@@ -1114,7 +1114,7 @@ public class AvatarConstructorFragment extends BaseFragment {
 
         TextView textView = new TextView(getContext());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-        textView.setText(LocaleController.getString("SetColor", R.string.SetColor));
+        textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SETCOLOR, R.string.SetColor));
         textView.setGravity(Gravity.CENTER);
         textView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         textView.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));

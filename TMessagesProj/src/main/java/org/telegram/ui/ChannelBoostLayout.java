@@ -214,7 +214,7 @@ public class ChannelBoostLayout extends FrameLayout {
                         }
                     };
                     TextView textView = new TextView(getContext());
-                    textView.setText(LocaleController.getString("NoBoostersHint", R.string.NoBoostersHint));
+                    textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_NOBOOSTERSHINT, R.string.NoBoostersHint));
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
                     textView.setGravity(Gravity.CENTER);
@@ -229,7 +229,7 @@ public class ChannelBoostLayout extends FrameLayout {
                         }
                     };
                     actionCell.setColors(Theme.key_windowBackgroundWhiteBlueIcon, Theme.key_windowBackgroundWhiteBlueButton);
-                    // actionCell.setText(LocaleController.getString("ShowMore", R.string.ShowMore), null, R.drawable.arrow_more, false);
+                    // actionCell.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SHOWMORE, R.string.ShowMore), null, R.drawable.arrow_more, false);
                     view = actionCell;
                     break;
                 default:
@@ -253,15 +253,15 @@ public class ChannelBoostLayout extends FrameLayout {
             } else if (holder.getItemViewType() == OVERVIEW_TYPE) {
                 StatisticActivity.OverviewCell overviewCell = (StatisticActivity.OverviewCell) holder.itemView;
 
-                overviewCell.setData(0, Integer.toString(boostsStatus.level), null, LocaleController.getString("BoostsLevel2", R.string.BoostsLevel2));
+                overviewCell.setData(0, Integer.toString(boostsStatus.level), null, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTSLEVEL2, R.string.BoostsLevel2));
                 if (boostsStatus.premium_audience != null && boostsStatus.premium_audience.total != 0) {
                     float percent = (((float) boostsStatus.premium_audience.part / (float) boostsStatus.premium_audience.total) * 100f);
-                    overviewCell.setData(1, "~" + (int) boostsStatus.premium_audience.part, String.format(Locale.US, "%.1f", percent) + "%", LocaleController.getString("PremiumSubscribers", R.string.PremiumSubscribers));
+                    overviewCell.setData(1, "~" + (int) boostsStatus.premium_audience.part, String.format(Locale.US, "%.1f", percent) + "%", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSUBSCRIBERS, R.string.PremiumSubscribers));
                 } else {
-                    overviewCell.setData(1, "~0", "0%", LocaleController.getString("PremiumSubscribers", R.string.PremiumSubscribers));
+                    overviewCell.setData(1, "~0", "0%", LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_PREMIUMSUBSCRIBERS, R.string.PremiumSubscribers));
                 }
-                overviewCell.setData(2, String.valueOf(boostsStatus.boosts), null, LocaleController.getString("BoostsExisting", R.string.BoostsExisting));
-                overviewCell.setData(3, String.valueOf(Math.max(0, boostsStatus.next_level_boosts - boostsStatus.boosts)), null, LocaleController.getString("BoostsToLevel", R.string.BoostsToLevel));
+                overviewCell.setData(2, String.valueOf(boostsStatus.boosts), null, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTSEXISTING, R.string.BoostsExisting));
+                overviewCell.setData(3, String.valueOf(Math.max(0, boostsStatus.next_level_boosts - boostsStatus.boosts)), null, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTSTOLEVEL, R.string.BoostsToLevel));
             } else if (holder.getItemViewType() == USER_VIEW_TYPE) {
                 TL_stories.TL_boost booster = items.get(position).booster;
                 TLRPC.User user = MessagesController.getInstance(currentAccount).getUser(booster.user_id);
@@ -360,7 +360,7 @@ public class ChannelBoostLayout extends FrameLayout {
                 } else if (boost.giveaway && boost.user_id == NO_USER_ID) {
                     final Bulletin.LottieLayout layout = new Bulletin.LottieLayout(fragment.getParentActivity(), fragment.getResourceProvider());
                     layout.setAnimation(R.raw.chats_infotip, 36, 36);
-                    layout.textView.setText(LocaleController.getString("BoostingRecipientWillBeSelected", R.string.BoostingRecipientWillBeSelected));
+                    layout.textView.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGRECIPIENTWILLBESELECTED, R.string.BoostingRecipientWillBeSelected));
                     layout.textView.setSingleLine(false);
                     layout.textView.setMaxLines(2);
                     Bulletin.make(fragment, layout, Bulletin.DURATION_LONG).show();
@@ -393,20 +393,20 @@ public class ChannelBoostLayout extends FrameLayout {
         items.clear();
         if (boostsStatus != null) {
             items.add(new ItemInternal(BOOST_VIEW, false));
-            items.add(new ItemInternal(HEADER_VIEW_TYPE, LocaleController.getString("StatisticOverview", R.string.StatisticOverview)));
+            items.add(new ItemInternal(HEADER_VIEW_TYPE, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STATISTICOVERVIEW, R.string.StatisticOverview)));
             items.add(new ItemInternal(OVERVIEW_TYPE, false));
             items.add(new ItemInternal(DIVIDER_VIEW_TYPE, false));
 
             if (boostsStatus.prepaid_giveaways.size() > 0) {
-                items.add(new ItemInternal(HEADER_VIEW_TYPE_SMALL, LocaleController.getString("BoostingPreparedGiveaways", R.string.BoostingPreparedGiveaways)));
+                items.add(new ItemInternal(HEADER_VIEW_TYPE_SMALL, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGPREPAREDGIVEAWAYS, R.string.BoostingPreparedGiveaways)));
                 for (int i = 0; i < boostsStatus.prepaid_giveaways.size(); i++) {
                     TL_stories.TL_prepaidGiveaway prepaidGiveaway = boostsStatus.prepaid_giveaways.get(i);
                     items.add(new ItemInternal(SHOW_PREPARED_GIVE_AWAY, prepaidGiveaway, i == boostsStatus.prepaid_giveaways.size() - 1));
                 }
-                items.add(new ItemInternal(DIVIDER_TEXT_VIEW_TYPE, LocaleController.getString("BoostingSelectPaidGiveaway", R.string.BoostingSelectPaidGiveaway)));
+                items.add(new ItemInternal(DIVIDER_TEXT_VIEW_TYPE, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGSELECTPAIDGIVEAWAY, R.string.BoostingSelectPaidGiveaway)));
             }
 
-            items.add(new ItemInternal(HEADER_VIEW_TYPE_TABS, LocaleController.getString("Boosters", R.string.Boosters)));
+            items.add(new ItemInternal(HEADER_VIEW_TYPE_TABS, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTERS, R.string.Boosters)));
             if (selectedTab == TAB_BOOSTS) {
                 if (boosters.isEmpty()) {
                     items.add(new ItemInternal(NO_USERS_HINT, false));
@@ -420,7 +420,7 @@ public class ChannelBoostLayout extends FrameLayout {
                     } else {
                         items.add(new ItemInternal(EMPTY_VIEW_8DP, false));
                     }
-                    items.add(new ItemInternal(DIVIDER_TEXT_VIEW_TYPE, LocaleController.getString("BoostersInfoDescription", R.string.BoostersInfoDescription)));
+                    items.add(new ItemInternal(DIVIDER_TEXT_VIEW_TYPE, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTERSINFODESCRIPTION, R.string.BoostersInfoDescription)));
                 }
             } else {
                 if (gifts.isEmpty()) {
@@ -435,16 +435,16 @@ public class ChannelBoostLayout extends FrameLayout {
                     } else {
                         items.add(new ItemInternal(EMPTY_VIEW_8DP, false));
                     }
-                    items.add(new ItemInternal(DIVIDER_TEXT_VIEW_TYPE, LocaleController.getString("BoostersInfoDescription", R.string.BoostersInfoDescription)));
+                    items.add(new ItemInternal(DIVIDER_TEXT_VIEW_TYPE, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTERSINFODESCRIPTION, R.string.BoostersInfoDescription)));
                 }
             }
 
-            items.add(new ItemInternal(HEADER_VIEW_TYPE, LocaleController.getString("LinkForBoosting", R.string.LinkForBoosting)));
+            items.add(new ItemInternal(HEADER_VIEW_TYPE, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LINKFORBOOSTING, R.string.LinkForBoosting)));
             items.add(new ItemInternal(LINK_VIEW_TYPE, boostsStatus.boost_url));
             if (MessagesController.getInstance(currentAccount).giveawayGiftsPurchaseAvailable && ChatObject.hasAdminRights(currentChat) && ChatObject.canPost(currentChat)) {
-                items.add(new ItemInternal(DIVIDER_TEXT_VIEW_TYPE, LocaleController.getString("BoostingShareThisLink", R.string.BoostingShareThisLink)));
+                items.add(new ItemInternal(DIVIDER_TEXT_VIEW_TYPE, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGSHARETHISLINK, R.string.BoostingShareThisLink)));
                 items.add(new ItemInternal(SHOW_BOOST_BY_GIFTS, true));
-                items.add(new ItemInternal(DIVIDER_TEXT_VIEW_TYPE, LocaleController.getString("BoostingGetMoreBoosts", R.string.BoostingGetMoreBoosts)));
+                items.add(new ItemInternal(DIVIDER_TEXT_VIEW_TYPE, LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_BOOSTINGGETMOREBOOSTS, R.string.BoostingGetMoreBoosts)));
             }
         }
         if (animated) {
@@ -635,14 +635,14 @@ public class ChannelBoostLayout extends FrameLayout {
         loadingTitle.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         loadingTitle.setTextColor(Theme.getColor(Theme.key_player_actionBarTitle));
         loadingTitle.setTag(Theme.key_player_actionBarTitle);
-        loadingTitle.setText(LocaleController.getString("LoadingStats", R.string.LoadingStats));
+        loadingTitle.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOADINGSTATS, R.string.LoadingStats));
         loadingTitle.setGravity(Gravity.CENTER_HORIZONTAL);
 
         TextView loadingSubtitle = new TextView(context);
         loadingSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         loadingSubtitle.setTextColor(Theme.getColor(Theme.key_player_actionBarSubtitle));
         loadingSubtitle.setTag(Theme.key_player_actionBarSubtitle);
-        loadingSubtitle.setText(LocaleController.getString("LoadingStatsDescription", R.string.LoadingStatsDescription));
+        loadingSubtitle.setText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_LOADINGSTATSDESCRIPTION, R.string.LoadingStatsDescription));
         loadingSubtitle.setGravity(Gravity.CENTER_HORIZONTAL);
 
         progressLayout.addView(imageView, LayoutHelper.createLinear(120, 120, Gravity.CENTER_HORIZONTAL, 0, 0, 0, 20));

@@ -111,14 +111,14 @@ public class CaptionStory extends CaptionContainerView {
             };
 
             periodPopup = ItemOptions.makeOptions(rootView, resourcesProvider, periodButton);
-            periodPopup.addText(LocaleController.getString("StoryPeriodHint"), 13);
+            periodPopup.addText(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPERIODHINT), 13);
             periodPopup.addGap();
             for (int i = 0; i < periods.length; ++i) {
                 final int period = periods[i];
                 periodPopup.add(
                         0,
                         period == Integer.MAX_VALUE ?
-                            LocaleController.getString("StoryPeriodKeep") :
+                            LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYPERIODKEEP) :
                             LocaleController.formatPluralString("Hours", period / 3600),
                         Theme.key_actionBarDefaultSubmenuItem,
                         () -> onPeriodSelected.run(period)
@@ -195,7 +195,7 @@ public class CaptionStory extends CaptionContainerView {
 
             if (slideToCancelAlpha > 0) {
                 if (slideToCancelText == null) {
-                    slideToCancelText = new Text(LocaleController.getString(R.string.SlideToCancel2), 15);
+                    slideToCancelText = new Text(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_SLIDETOCANCEL2, R.string.SlideToCancel2), 15);
                 }
                 if (slideToCancelArrowPath == null) {
                     slideToCancelArrowPath = new Path();
@@ -228,7 +228,7 @@ public class CaptionStory extends CaptionContainerView {
 
             if (cancelAlpha > 0) {
                 if (cancelText == null) {
-                    cancelText = new Text(LocaleController.getString(R.string.CancelRound), 15, AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
+                    cancelText = new Text(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCELROUND, R.string.CancelRound), 15, AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MEDIUM));
                 }
 
                 cancelText.ellipsize((int) (bounds.width() - dp(5 + 21 + 16 + 10 + 64) - timerTextDrawable.getCurrentWidth()));
@@ -718,10 +718,10 @@ public class CaptionStory extends CaptionContainerView {
     public void showRemoveRoundAlert() {
         if (!hasRoundVideo) return;
         AlertDialog d = new AlertDialog.Builder(getContext(), resourcesProvider)
-                .setTitle(LocaleController.getString(R.string.StoryRemoveRoundTitle))
-                .setMessage(LocaleController.getString(R.string.StoryRemoveRoundMessage))
-                .setPositiveButton(LocaleController.getString(R.string.Remove), (di, w) -> removeRound())
-                .setNegativeButton(LocaleController.getString(R.string.Cancel), null)
+                .setTitle(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYREMOVEROUNDTITLE, R.string.StoryRemoveRoundTitle))
+                .setMessage(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_STORYREMOVEROUNDMESSAGE, R.string.StoryRemoveRoundMessage))
+                .setPositiveButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_REMOVE, R.string.Remove), (di, w) -> removeRound())
+                .setNegativeButton(LocaleController.getString(org.telegram.messenger.utils.LangMultiExtKt.KEY_CANCEL, R.string.Cancel), null)
                 .show();
         TextView button = (TextView) d.getButton(DialogInterface.BUTTON_POSITIVE);
         if (button != null) {
