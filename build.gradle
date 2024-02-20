@@ -28,6 +28,7 @@ plugins {
 //apply plugin: 'kotlin-android'
     id "org.jetbrains.kotlin.multiplatform" version "${kotlin_version}" apply false
     //apply plugin: "org.jetbrains.kotlin.multiplatform"
+    id "idv.neo.plugin.modify.collect.i18n.keys"
 }
 
 allprojects {
