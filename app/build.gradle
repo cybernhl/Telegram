@@ -1,0 +1,179 @@
+plugins {
+//    alias(libs.plugins.android.application)//this way include !!
+    alias(libs.plugins.kotlin.android)
+}
+apply plugin: 'com.android.application'
+//TODO 這邊邏輯是 "不變動 telegram 原始碼下 做出更動 & 拆分 telegram變成模組(組件化) 也就是利用sourceSets來重新定向
+ext {
+    def main_telegram_source = ["org\\telegram\\DispatchQueuePriority.java"]
+    def ui_telegram_source = new ArrayList<String>()
+    def message_telegram_source = new ArrayList<String>()
+    def tgnet_telegram_source = new ArrayList<String>()
+    def sqlite_telegram_source = new ArrayList<String>()
+    def phoneformat_telegram_source = new ArrayList<String>()
+    def zxing_source = new ArrayList<String>()
+    def exoplayer_telegram_source = new ArrayList<String>()
+    def randomizedtesting_telegram_source = new ArrayList<String>()
+    def telephony_telegram_source = new ArrayList<String>()
+//    def recycleview_telegram_source = new ArrayList<String>()
+   def recycleview_telegram_source = ["..\\TMessagesProj\\src\\main\\java\\androidx\\recyclerview\\widget\\AdapterHelper.java",]
+}
+
+def toStrArray(ArrayList<String> list) {
+    return list.toArray(new String[list.size()])
+}
+
+android {
+    namespace 'org.telegram.messenger'//keep use Telegram because R.java
+    compileSdk 34
+    ndkVersion "21.4.7075529"
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+        disable 'MissingTranslation'
+        disable 'ExtraTranslation'
+        disable 'BlockedPrivateApi'
+    }
+
+    dexOptions {
+        jumboMode = true
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    defaultConfig {
+        applicationId "idv.neo.im.telegram"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        vectorDrawables.generatedDensities = ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi']
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                version '3.27.7'
+                arguments '-DANDROID_STL=c++_static', '-DANDROID_PLATFORM=android-16'
+            }
+            ndk {
+                abiFilters   'armeabi-v7a', 'arm64-v8a'
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path '../TMessagesProj/jni/CMakeLists.txt'
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            jniDebuggable true
+            minifyEnabled false
+            shrinkResources false
+            multiDexEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), '../TMessagesProj/proguard-rules.pro'
+            ndk.debugSymbolLevel = 'FULL'
+//            buildConfigField "String", "BUILD_VERSION_STRING", "\"" + APP_VERSION_NAME + "\""
+            buildConfigField "String", "APP_CENTER_HASH", "\"\""
+            buildConfigField "boolean", "DEBUG_VERSION", "true"
+            buildConfigField "boolean", "DEBUG_PRIVATE_VERSION", "true"
+        }
+        release {
+            jniDebuggable false
+            minifyEnabled true
+            multiDexEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            ndk.debugSymbolLevel = 'FULL'
+//            buildConfigField "String", "BUILD_VERSION_STRING", "\"" + APP_VERSION_NAME + "\""
+            buildConfigField "String", "APP_CENTER_HASH", "\"\""
+            buildConfigField "boolean", "DEBUG_VERSION", "false"
+            buildConfigField "boolean", "DEBUG_PRIVATE_VERSION", "false"
+        }
+    }
+
+    sourceSets {
+        main {
+//            setRoot ''
+            java {
+                srcDirs = [//use folders FIXME how include or exclude file
+                        "../TMessagesProj/src/main/java/androidx/recyclerview",
+                        "../TMessagesProj/src/main/java/com/android",
+                        "../TMessagesProj/src/main/java/com/carrotsearch",
+                        "../TMessagesProj/src/main/java/com/google",
+                        "../TMessagesProj/src/main/java/org/telegram",
+                ]
+//// excludes &  includes not work
+//                includes = ["..\\TMessagesProj\\src\\main\\java\\org\\telegram\\DispatchQueuePriority.java"]
+//                excludes = ['..\\TMessagesProj\\src\\main\\java\\org\\telegram\\*.java']
+            }
+
+//            res.srcDirs = []
+//            assets.srcDirs = [ ]
+//            renderscript.srcDirs = [ ]
+//            aidl.srcDirs = [ ]
+//            jni.srcDirs = [ ]
+            jniLibs.srcDirs = [ '../TMessagesProj/jni']
+//            manifest.srcFile 'other/AndroidManifest.xml'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+}
+
+dependencies {
+
+    implementation 'androidx.fragment:fragment:1.2.0'
+    implementation 'androidx.core:core:1.10.1'
+    implementation 'androidx.palette:palette:1.0.0'
+    implementation 'androidx.exifinterface:exifinterface:1.3.6'
+    implementation 'androidx.dynamicanimation:dynamicanimation:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation "androidx.sharetarget:sharetarget:1.2.0"
+    implementation 'androidx.interpolator:interpolator:1.0.0'
+
+    compileOnly 'org.checkerframework:checker-qual:2.5.2'
+    compileOnly 'org.checkerframework:checker-compat-qual:2.5.0'
+    implementation 'com.google.firebase:firebase-messaging:22.0.0'
+    implementation 'com.google.firebase:firebase-config:21.0.1'
+    implementation 'com.google.firebase:firebase-datatransport:18.1.0'
+    implementation 'com.google.firebase:firebase-appindexing:20.0.0'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-auth:20.4.0'
+    implementation 'com.google.android.gms:play-services-vision:20.1.3'
+    implementation 'com.google.android.gms:play-services-wearable:18.0.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    implementation 'com.google.android.gms:play-services-wallet:19.1.0'
+    implementation 'com.google.android.gms:play-services-safetynet:18.0.1'
+    implementation 'com.googlecode.mp4parser:isoparser:1.0.6'
+    implementation 'com.stripe:stripe-android:2.0.2'
+    implementation 'com.google.mlkit:language-id:16.1.1'
+    implementation 'com.android.billingclient:billing:5.1.0'
+    implementation 'com.google.code.gson:gson:2.10'
+    implementation 'com.google.guava:guava:31.1-android'
+
+    implementation 'com.google.android.gms:play-services-mlkit-subject-segmentation:16.0.0-beta1'
+    constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+        }
+    }
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+}
